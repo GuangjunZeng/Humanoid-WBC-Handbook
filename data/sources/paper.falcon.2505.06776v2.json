@@ -1,0 +1,33 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Yuanhang Zhang",
+    "Yifu Yuan",
+    "Prajwal Gurunath",
+    "Ishita Gupta",
+    "Shayegan Omidshafiei",
+    "Ali-akbar Agha-mohammadi",
+    "Marcell Vazquez-Chanlatte",
+    "Liam Pedersen",
+    "Tairan He",
+    "Guanya Shi"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2505.06776v2",
+  "captured_at": "2026-08-10T12:00:00+08:00",
+  "content_sha256": "f48925c3df30df49c2b9817f21c2a33ddebb4b94ebf31848b218d27af3bc010d",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2505.06776",
+    "full_paper_reviewed": true,
+    "pages_read": 17
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.falcon.2505.06776v2",
+  "summary": "FALCON jointly trains lower- and upper-body agents with shared history and a Jacobian/torque-limit-aware 3D end-effector force curriculum for force-adaptive loco-manipulation.",
+  "title": "FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation",
+  "version": "arXiv:2505.06776v2"
+}

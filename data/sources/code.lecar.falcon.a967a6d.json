@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "LeCAR-Lab contributors"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/FALCON/tree/a967a6d8494f57777cf8d266a644ac8e45833301",
+  "captured_at": "2026-08-10T12:00:00+08:00",
+  "content_sha256": "49c81d204523e042f0fa5421dc80be11649af0b96f9671872a8ef29e67227dae",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "MIT",
+  "metadata": {
+    "commit": "a967a6d8494f57777cf8d266a644ac8e45833301",
+    "redistribution": "No code, configurations, checkpoints, SDKs, or robot assets are copied.",
+    "repository": "LeCAR-Lab/FALCON"
+  },
+  "published_at": "2026-04-09T21:01:19+00:00",
+  "publisher": "LeCAR-Lab",
+  "source_id": "code.lecar.falcon.a967a6d",
+  "summary": "Official MIT repository exposing torque-aware end-effector force bounds, force/position randomization, force-scale curriculum and multi-agent configurations. Inspected only, not vendored.",
+  "title": "LeCAR-Lab/FALCON official implementation",
+  "version": "a967a6d8494f57777cf8d266a644ac8e45833301"
+}

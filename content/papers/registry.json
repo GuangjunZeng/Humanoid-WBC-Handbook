@@ -64,7 +64,7 @@
       "title": "FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation",
       "primary_domain": "loco_manipulation_wbc",
       "coverage_role": "force_adaptive_loco_manipulation",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/falcon-2505.06776v2.md"
     },
     {
@@ -73,7 +73,7 @@
       "title": "ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation",
       "primary_domain": "loco_manipulation_wbc",
       "coverage_role": "unified_loco_manipulation_policy",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/ulc-2507.06905v2.md"
     },
     {

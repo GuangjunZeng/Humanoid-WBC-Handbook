@@ -1,0 +1,29 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Wandong Sun",
+    "Luying Feng",
+    "Yang Liu",
+    "Baoshi Cao",
+    "Yaochu Jin",
+    "Zongwu Xie"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2507.06905v2",
+  "captured_at": "2026-08-10T12:00:00+08:00",
+  "content_sha256": "64f4498ec94c4f2d8a8a998164fe80821c122c9f35485c7f3ccd76050f45883e",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2507.06905",
+    "full_paper_reviewed": true,
+    "pages_read": 13
+  },
+  "published_at": "2025-07-09T14:44:52+00:00",
+  "publisher": "arXiv",
+  "source_id": "paper.ulc.2507.06905v2",
+  "summary": "ULC trains one G1 policy over root, torso and arm commands using sequential skill acquisition, residual arm actions, smooth/delayed commands, load randomization and center-of-mass tracking.",
+  "title": "ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation",
+  "version": "arXiv:2507.06905v2"
+}

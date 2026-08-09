@@ -1,0 +1,28 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Wandong Sun",
+    "Luying Feng",
+    "Yang Liu",
+    "Baoshi Cao",
+    "Yaochu Jin",
+    "Zongwu Xie"
+  ],
+  "canonical_url": "https://hellod035.github.io/ULC/",
+  "captured_at": "2026-08-10T12:00:00+08:00",
+  "content_sha256": "efe06082841829552b72bb9ccb64894a4b30ab050e9108cfa824737b0c8c6c20",
+  "excerpt": null,
+  "kind": "project_page",
+  "license": null,
+  "metadata": {
+    "code_status": "advertised_not_released",
+    "search_boundary": "Official page and exact title/author repository discovery checked; third-party ULC implementations excluded."
+  },
+  "published_at": null,
+  "publisher": "Harbin Institute of Technology / Westlake University",
+  "source_id": "project.ulc.official.2026-08-10",
+  "summary": "The author-linked project page provides paper and demonstrations while its code control remains marked Coming Soon; no official commit or software license is available at capture time.",
+  "title": "ULC official project page",
+  "version": "accessed-2026-08-10"
+}
