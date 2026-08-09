@@ -1,0 +1,28 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Chenhao Liu",
+    "Leyun Jiang",
+    "Yibo Wang",
+    "Kairan Yao",
+    "Jinchen Fu",
+    "Xiaoyu Ren"
+  ],
+  "canonical_url": "https://humanoid-badminton.github.io/",
+  "captured_at": "2026-08-10T13:00:00+08:00",
+  "content_sha256": "dfb011bfc31f5493070a3bba68de4b08b5192c5b082acbdf5c09e6ffc7174f4f",
+  "excerpt": null,
+  "kind": "project_page",
+  "license": null,
+  "metadata": {
+    "code_status": "no_public_code_found",
+    "search_boundary": "Paper links, official project-page links, and exact-title/author repository discovery checked; third-party implementations excluded."
+  },
+  "published_at": null,
+  "publisher": "Beijing Phybot Technology",
+  "source_id": "project.badminton.official.2026-08-10",
+  "summary": "The author-linked project page provides paper and demonstrations but no uniquely resolvable public code repository or software license at capture time.",
+  "title": "Humanoid Whole-Body Badminton official project page",
+  "version": "accessed-2026-08-10"
+}

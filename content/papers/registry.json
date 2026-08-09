@@ -82,7 +82,7 @@
       "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
       "primary_domain": "sports",
       "coverage_role": "agile_skill_sim_to_real_alignment",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/asap-2502.01143v3.md"
     },
     {
@@ -91,7 +91,7 @@
       "title": "Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning",
       "primary_domain": "sports",
       "coverage_role": "task_specific_dynamic_sport",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/humanoid-badminton-2511.11218v3.md"
     },
     {

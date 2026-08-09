@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "LeCAR-Lab contributors"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/ASAP/tree/df5320cc47dd8cad97961bdfabfe402dd62ad999",
+  "captured_at": "2026-08-10T13:00:00+08:00",
+  "content_sha256": "b90d1b140f81bcb3bb6b8f79f9a499731cf44db9391ee4889df1c16d5191ab33",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "MIT",
+  "metadata": {
+    "commit": "df5320cc47dd8cad97961bdfabfe402dd62ad999",
+    "redistribution": "No external code, motion data, checkpoints, configurations, SDKs, or robot assets are copied.",
+    "repository": "LeCAR-Lab/ASAP"
+  },
+  "published_at": "2026-01-06T04:58:34+00:00",
+  "publisher": "LeCAR-Lab",
+  "source_id": "code.lecar.asap.df5320c",
+  "summary": "Official MIT repository exposing open- and closed-loop delta-action environments, residual-action rewards and dual-policy PPO rollout. Inspected only, not vendored.",
+  "title": "LeCAR-Lab/ASAP official implementation",
+  "version": "df5320cc47dd8cad97961bdfabfe402dd62ad999"
+}

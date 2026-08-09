@@ -59,3 +59,4 @@
 - Completed HOVER's full-paper interpretation and commit-pinned official-code mapping. Added two normalized sources and one bounded claim; the Universal tracking & teleoperation domain is now 2/2 complete.
 - Completed both Locomotion & terrain papers: Humanoid-Gym with commit-pinned code mapping, and HT-2 with an explicit no-public-code finding. Added four sources and two bounded claims; corpus progress is 6/14.
 - Completed both Loco-manipulation papers: FALCON with commit-pinned force-curriculum mapping and ULC with an explicit advertised-not-released code record. Corpus progress is 8/14.
+- Completed both Sports papers: ASAP with commit-pinned delta-action mapping and badminton with an explicit no-public-code finding. Both hardware-critical claims include simulation-first safety gates; corpus progress is 10/14.

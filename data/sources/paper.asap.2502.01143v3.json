@@ -1,0 +1,41 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Tairan He",
+    "Jiawei Gao",
+    "Wenli Xiao",
+    "Yuanhang Zhang",
+    "Zi Wang",
+    "Jiashun Wang",
+    "Zhengyi Luo",
+    "Guanqi He",
+    "Nikhil Sobanbabu",
+    "Chaoyi Pan",
+    "Zeji Yi",
+    "Guannan Qu",
+    "Kris Kitani",
+    "Jessica Hodgins",
+    "Linxi Fan",
+    "Yuke Zhu",
+    "Changliu Liu",
+    "Guanya Shi"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2502.01143v3",
+  "captured_at": "2026-08-10T13:00:00+08:00",
+  "content_sha256": "9fd4139c47aac0777bea8debaf9044ac82f07a7a9c5704843c61f9e03dd67b56",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2502.01143",
+    "full_paper_reviewed": true,
+    "pages_read": 18
+  },
+  "published_at": "2025-02-03T18:56:19+00:00",
+  "publisher": "arXiv",
+  "source_id": "paper.asap.2502.01143v3",
+  "summary": "ASAP learns a delta-action policy from real or target-simulator trajectories, inserts it into the training simulator for policy fine-tuning, and deploys only the adapted whole-body policy.",
+  "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
+  "version": "arXiv:2502.01143v3"
+}
