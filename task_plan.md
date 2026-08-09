@@ -57,6 +57,7 @@ Create an original, open-source-ready engineering handbook and retrieval project
 | GitHub code search for the OmniH2O repository returned one internal error and otherwise no indexed matches | 1 | Used public repository navigation plus exact, commit-pinned file fetches; no repository clone or copied code was added |
 | First content patch could not create two missing parent directories | 1 | Created only `content/papers` and `data/claims` inside the sole writable project root, then reapplied the file patch |
 | Combined skill-file read exceeded the terminal output budget and was truncated | 1 | Re-read `paper-daily`, its paper write-up guide, and the file-planning skill completely in bounded line ranges before research |
+| `pdftotext` is not installed on the host PATH | 1 | Do not install or retry the same command; use the bundled PDF runtime and Python PDF libraries, writing caches only under project-local ignored `var/` |
 
 ## Serial platform order
 1. Xiaohongshu — `skipped_optional`, authenticated browser bridge unavailable; manual import only

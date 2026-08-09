@@ -10,7 +10,7 @@
       "title": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking",
       "primary_domain": "training_data_retargeting",
       "coverage_role": "retargeting_quality_and_feasibility",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/retargeting-matters-2510.02252v1.md"
     },
     {
@@ -19,7 +19,7 @@
       "title": "Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations",
       "primary_domain": "training_data_retargeting",
       "coverage_role": "robot_free_demonstration_construction",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/humi-2602.06643v2.md"
     },
     {

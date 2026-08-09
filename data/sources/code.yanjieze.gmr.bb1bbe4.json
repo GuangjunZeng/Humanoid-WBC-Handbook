@@ -1,0 +1,25 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "YanjieZe/GMR contributors"
+  ],
+  "canonical_url": "https://github.com/YanjieZe/GMR/tree/bb1bbe40774794fceb2a7c579a3464a28e68c844",
+  "captured_at": "2026-08-10T03:00:00+08:00",
+  "content_sha256": "49d66e4b97345d5e8dc5a0e94f3b7b59953f93b26940783776a85c8fb490cd79",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "MIT",
+  "metadata": {
+    "commit": "bb1bbe40774794fceb2a7c579a3464a28e68c844",
+    "paper_version_caveat": "The commit includes post-paper robot/format extensions; only mapped core symbols are used as evidence.",
+    "redistribution": "No external code, configuration, assets, models, or motion data are copied into this handbook.",
+    "repository": "YanjieZe/GMR"
+  },
+  "published_at": "2026-04-02T09:34:42+00:00",
+  "publisher": "YanjieZe",
+  "source_id": "code.yanjieze.gmr.bb1bbe4",
+  "summary": "The official MIT-licensed repository exposes the GeneralMotionRetargeting class, local human-data scaling, two-stage Mink IK loops, and LAFAN1-to-G1 task/weight tables. The inspected commit post-dates the paper and is used only as implementation evidence.",
+  "title": "YanjieZe/GMR official implementation",
+  "version": "bb1bbe40774794fceb2a7c579a3464a28e68c844"
+}

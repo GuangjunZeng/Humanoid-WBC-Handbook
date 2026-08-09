@@ -1,0 +1,20 @@
+{
+  "source_id": "paper.gmr.2510.02252v1",
+  "kind": "paper",
+  "title": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking",
+  "canonical_url": "https://arxiv.org/abs/2510.02252v1",
+  "captured_at": "2026-08-10T03:00:00+08:00",
+  "published_at": "2025-10-02T17:39:04+00:00",
+  "version": "arXiv:2510.02252v1",
+  "summary": "A controlled study of how humanoid motion-retargeting artifacts affect downstream tracking, together with GMR: height-aware local scaling followed by two-stage differential inverse kinematics.",
+  "access_mode": "public_web",
+  "authors": ["Joao Pedro Araujo", "Yanjie Ze", "Pei Xu", "Jiajun Wu", "C. Karen Liu"],
+  "publisher": "arXiv",
+  "metadata": {
+    "arxiv_id": "2510.02252",
+    "pages_read": 9,
+    "full_paper_reviewed": true,
+    "evaluation_scope": "21 LAFAN1 sequences, Unitree G1, IsaacSim and ROS/MuJoCo sim2sim",
+    "license_note": "Link and original summary only; no paper text or figures are redistributed."
+  }
+}

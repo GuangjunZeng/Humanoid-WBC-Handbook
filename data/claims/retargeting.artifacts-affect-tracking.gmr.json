@@ -1,0 +1,40 @@
+{
+  "applicability": {
+    "assumptions": [
+      "Human motion is converted into a robot joint/reference trajectory before tracker training.",
+      "The downstream policy is trained with the same BeyondMimic setup so retargeting is the principal varied factor.",
+      "Reference motions do not require sustained object or environment interaction."
+    ],
+    "controllers": ["BeyondMimic single-trajectory motion trackers", "GMR differential-IK retargeting"],
+    "environments": ["21 selected LAFAN1 sequences", "noise/model/latency perturbations used by the paper"],
+    "robots": ["Unitree G1 in the paper evaluation"],
+    "simulators": ["IsaacSim", "ROS/MuJoCo sim2sim"]
+  },
+  "claim_id": "retargeting.artifacts-affect-tracking.gmr",
+  "confidence": 0.82,
+  "confidence_rationale": "The paper isolates retargeting across a shared tracker and reports per-motion failures, large repeated-trial evaluations, tracking errors, and identifiable artifacts. The official commit exposes the scaling and two-stage IK implementation. Confidence is capped because the study uses one robot, one motion dataset, no object interactions, and no randomized real-robot comparison.",
+  "domain": "training_data_retargeting",
+  "evidence": [
+    {
+      "locator": "Equations 2-6, Figure 2, Table I, Table II, Figure 3, and Table III",
+      "note": "Connects scaling and two-stage IK design to downstream success/error and identifies penetration, self-intersection, joint jumps, and start-frame sensitivity.",
+      "role": "support",
+      "source_id": "paper.gmr.2510.02252v1",
+      "strength": "primary"
+    },
+    {
+      "locator": "GeneralMotionRetargeting.scale_human_data/retarget and bvh_lafan1_to_g1.json at bb1bbe4",
+      "note": "Maps local/root scaling, the two IK task stages, stopping conditions, and G1/LAFAN1 weights to public implementation symbols.",
+      "role": "support",
+      "source_id": "code.yanjieze.gmr.bb1bbe4",
+      "strength": "primary"
+    }
+  ],
+  "question": "人体动作重定向中的穿透、自碰撞和关节突跳，是否真的会影响下游全身跟踪策略？",
+  "review_due_at": "2027-08-10T03:00:00+08:00",
+  "reviewed_at": "2026-08-10T03:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "在 GMR 论文的 Unitree G1、21 条 LAFAN1 动作和统一 BeyondMimic 训练设置中，地面穿透、自碰撞与关节突跳会显著降低特定动作的策略成功率或增大跟踪误差；采用根平移统一缩放、身体局部非均匀缩放和两阶段 IK 的 GMR 整体优于所测 PHC/ProtoMotions 开源重定向，但该结论尚未覆盖其他机器人、物体交互动作或实机随机对照。",
+  "status": "reviewed",
+  "tags": ["GMR", "motion retargeting", "foot penetration", "self collision", "reference quality", "Unitree G1"]
+}

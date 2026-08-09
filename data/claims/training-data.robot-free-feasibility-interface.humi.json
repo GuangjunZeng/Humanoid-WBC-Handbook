@@ -1,0 +1,40 @@
+{
+  "applicability": {
+    "assumptions": [
+      "Robot-free demonstrations include synchronized wrist imagery and tracked hand/pelvis/foot poses.",
+      "A target-robot IK preview is available during collection.",
+      "A hierarchical high-level visuomotor policy and low-level whole-body tracker execute the demonstrations."
+    ],
+    "controllers": ["HuMI 5 Hz Diffusion Policy", "HuMI 50 Hz teacher-student whole-body tracker"],
+    "environments": ["the five reported real-world tasks", "seven training scenes and four unseen evaluation scenes for squat-and-pick"],
+    "robots": ["custom-gripper Unitree G1 in HuMI"],
+    "simulators": ["paper-reported simulation training environment; exact public code/config unverified"]
+  },
+  "claim_id": "training-data.robot-free-feasibility-interface.humi",
+  "confidence": 0.77,
+  "confidence_rationale": "The paper includes real-robot task results and targeted interface ablations with large effect sizes, and the official project page corroborates the system identity and demonstrations. Confidence is capped by one robot, small 10-20 trial ablations, experienced operators, custom hardware/external tracking, and an unverified public code repository.",
+  "domain": "training_data_retargeting",
+  "evidence": [
+    {
+      "locator": "Figures 2-7, Sections II-IV and VI, Appendix B-F, and Appendix Tables I-III",
+      "note": "Supports human-in-loop IK adaptation, whole-body keypoints, chunk-reference and relative-keypoint interfaces, collection throughput, task success, and deployment rates.",
+      "role": "support",
+      "source_id": "paper.humi.2602.06643v2",
+      "strength": "primary"
+    },
+    {
+      "locator": "Official project page capability and portable-data-collection sections captured 2026-08-10",
+      "note": "Confirms the authors' public project identity and demonstrations; advertised Code/Dataset links remain unverified and are not used as code evidence.",
+      "role": "context",
+      "source_id": "project.humi.official.2026-08-10",
+      "strength": "primary"
+    }
+  ],
+  "question": "无机器人参与的人形全身操作示范，是否只记录双手轨迹就足够？",
+  "review_due_at": "2027-08-10T03:00:00+08:00",
+  "reviewed_at": "2026-08-10T03:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "在 HuMI 的自定义夹爪 Unitree G1 与所测任务中，仅记录双手不足以稳定表达深蹲、跪地和移动操作；采集手/骨盆/脚轨迹并用目标机器人实时 IK 预览约束示范，再配合面向跟踪误差设计的高低层接口，显著优于论文中的去除预览或去除全身 specification 消融，但该结果依赖外部 VIVE、熟练操作者和任务专用低层策略。",
+  "status": "reviewed",
+  "tags": ["HuMI", "robot-free demonstration", "whole-body keypoints", "human-in-the-loop IK", "action chunk", "Unitree G1"]
+}

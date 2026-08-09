@@ -19,14 +19,14 @@ The canonical inventory is [`registry.json`](registry.json). “Every paper is i
 
 | Domain | Papers | Complete |
 |---|---:|---:|
-| Training data & retargeting | 2 | 0 |
+| Training data & retargeting | 2 | 2 |
 | Universal tracking & teleoperation | 2 | 1 |
 | Locomotion & terrain | 2 | 0 |
 | Loco-manipulation & EE WBC | 2 | 0 |
 | Sports & athletic skills | 2 | 0 |
 | Motion generation & commandable behavior | 2 | 0 |
 | Recovery, falling, safety & force interaction | 2 | 0 |
-| **Total** | **14** | **1** |
+| **Total** | **14** | **3** |
 
 ## Selection boundary
 

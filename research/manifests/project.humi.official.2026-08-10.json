@@ -1,0 +1,16 @@
+{
+  "source_id": "project.humi.official.2026-08-10",
+  "kind": "project_page",
+  "title": "HuMI official project page",
+  "canonical_url": "https://humanoid-manipulation-interface.github.io/",
+  "captured_at": "2026-08-10T03:00:00+08:00",
+  "summary": "The authors' project page presents the paper, capability videos, and advertised Code and Dataset actions. At capture time a unique public code repository and commit could not be resolved through the available primary-source surfaces, so no code-level claim is made.",
+  "access_mode": "public_web",
+  "authors": ["HuMI authors"],
+  "publisher": "HuMI project",
+  "metadata": {
+    "code_status": "advertised_unverified",
+    "dataset_status": "advertised_unverified",
+    "verification_rule": "Do not mark open-source or add code mappings until a repository, license, and commit are directly inspected."
+  }
+}
