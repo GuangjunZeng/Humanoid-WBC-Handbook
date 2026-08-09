@@ -1,0 +1,28 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Clément Gaspard",
+    "Marc Duclusaud",
+    "Grégoire Passault",
+    "Mélodie Daniel",
+    "Olivier Ly"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2410.08655v3",
+  "captured_at": "2026-08-10T16:00:00+08:00",
+  "content_sha256": "c70fabfc02d4f5e9281354099d08ac4644ab71e0649a8299e214caf6224c675e",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2410.08655",
+    "full_paper_reviewed": true,
+    "pages_read": 7
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.frasa.2410.08655v3",
+  "summary": "FRASA uses a symmetric five-DoF CrossQ/SAC policy, randomized fallen-state initialization and actuator-aware sim-to-real modeling to unify standing up and fall recovery on Sigmaban.",
+  "title": "FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots",
+  "version": "arXiv:2410.08655v3"
+}

@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "OpenRobotLab contributors"
+  ],
+  "canonical_url": "https://github.com/OpenRobotLab/HoST/tree/70bb580949a336a920833700e4b5dc3bf7fe87ce",
+  "captured_at": "2026-08-10T16:00:00+08:00",
+  "content_sha256": "26ca83e580257602e121e0a326e3430307a7c98217ad55c3094f5108d4046ff4",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "MIT",
+  "metadata": {
+    "commit": "70bb580949a336a920833700e4b5dc3bf7fe87ce",
+    "redistribution": "No code, configurations, checkpoints, robot assets, or paper full text are copied.",
+    "repository": "OpenRobotLab/HoST"
+  },
+  "published_at": "2025-06-17T12:14:35+08:00",
+  "publisher": "OpenRobotLab",
+  "source_id": "code.openrobotlab.host.70bb580",
+  "summary": "Official MIT repository exposing multi-critic PPO, force/action curricula, motion regularizers, four terrain environments and evaluation scripts. Inspected only, not vendored.",
+  "title": "OpenRobotLab/HoST official implementation",
+  "version": "70bb580949a336a920833700e4b5dc3bf7fe87ce"
+}

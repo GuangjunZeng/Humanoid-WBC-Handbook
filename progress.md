@@ -61,3 +61,4 @@
 - Completed both Loco-manipulation papers: FALCON with commit-pinned force-curriculum mapping and ULC with an explicit advertised-not-released code record. Corpus progress is 8/14.
 - Completed both Sports papers: ASAP with commit-pinned delta-action mapping and badminton with an explicit no-public-code finding. Both hardware-critical claims include simulation-first safety gates; corpus progress is 10/14.
 - Completed both Motion generation papers: BeyondMimic with an explicit unresolved-advertised-code record and TextOp with commit-pinned streaming generator mapping. Corpus progress is 12/14.
+- Completed both Recovery, falling, safety & force interaction papers: HoST and FRASA each have full-paper interpretations, commit-pinned MIT code mappings and hardware-critical safety cases. Corpus content progress is 14/14; corpus-wide indexing and acceptance remain.

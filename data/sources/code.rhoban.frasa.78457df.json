@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "Rhoban contributors"
+  ],
+  "canonical_url": "https://github.com/Rhoban/frasa/tree/78457df8fb1533b9bbda60a345c015c87cdf9732",
+  "captured_at": "2026-08-10T16:00:00+08:00",
+  "content_sha256": "35e0e4c78003ec071ffe74571e21cb81b69a16837ca958991026a6cd231072a1",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "MIT",
+  "metadata": {
+    "commit": "78457df8fb1533b9bbda60a345c015c87cdf9732",
+    "redistribution": "No code, models, meshes, configurations, checkpoints, or paper full text are copied.",
+    "repository": "Rhoban/frasa"
+  },
+  "published_at": "2025-12-17T12:11:52+01:00",
+  "publisher": "Rhoban",
+  "source_id": "code.rhoban.frasa.78457df",
+  "summary": "Official MIT repository exposing the symmetric five-DoF MuJoCo environment, randomized falls and dynamics, safety termination conditions and CrossQ configuration. Inspected only, not vendored.",
+  "title": "Rhoban/frasa official implementation",
+  "version": "78457df8fb1533b9bbda60a345c015c87cdf9732"
+}

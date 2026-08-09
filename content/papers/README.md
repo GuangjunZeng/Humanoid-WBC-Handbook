@@ -25,8 +25,8 @@ The canonical inventory is [`registry.json`](registry.json). “Every paper is i
 | Loco-manipulation & EE WBC | 2 | 2 |
 | Sports & athletic skills | 2 | 2 |
 | Motion generation & commandable behavior | 2 | 2 |
-| Recovery, falling, safety & force interaction | 2 | 0 |
-| **Total** | **14** | **12** |
+| Recovery, falling, safety & force interaction | 2 | 2 |
+| **Total** | **14** | **14** |
 
 ## Selection boundary
 

@@ -118,7 +118,7 @@
       "title": "Learning Humanoid Standing-up Control across Diverse Postures",
       "primary_domain": "recovery_safety_force",
       "coverage_role": "posture_adaptive_standing_up",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/host-2502.08378v2.md"
     },
     {
@@ -127,7 +127,7 @@
       "title": "FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots",
       "primary_domain": "recovery_safety_force",
       "coverage_role": "fall_recovery_and_stand_up",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/frasa-2410.08655v3.md"
     }
   ]

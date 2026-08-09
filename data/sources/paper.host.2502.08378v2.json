@@ -1,0 +1,32 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Tao Huang",
+    "Junli Ren",
+    "Huayi Wang",
+    "Zirui Wang",
+    "Qingwei Ben",
+    "Muning Wen",
+    "Xiao Chen",
+    "Jianan Li",
+    "Jiangmiao Pang"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2502.08378v2",
+  "captured_at": "2026-08-10T16:00:00+08:00",
+  "content_sha256": "59e8d68bbd59a06a5539fde4eb9ef73b65cce16f5c5524668aa95d5246c1fd69",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2502.08378",
+    "full_paper_reviewed": true,
+    "pages_read": 13
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.host.2502.08378v2",
+  "summary": "HoST learns trajectory-free humanoid standing-up with stage-aware reward groups, multiple critics, a pulling-force exploration curriculum, action rescaling and smoothness constraints.",
+  "title": "Learning Humanoid Standing-up Control across Diverse Postures",
+  "version": "arXiv:2502.08378v2"
+}
