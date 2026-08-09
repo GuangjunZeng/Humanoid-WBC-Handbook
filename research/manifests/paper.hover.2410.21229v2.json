@@ -1,0 +1,14 @@
+{
+  "source_id": "paper.hover.2410.21229v2",
+  "kind": "paper",
+  "title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
+  "canonical_url": "https://arxiv.org/abs/2410.21229v2",
+  "captured_at": "2026-08-10T10:30:00+08:00",
+  "published_at": "2024-10-28T17:15:24+00:00",
+  "version": "arXiv:2410.21229v2",
+  "summary": "HOVER represents key-body, joint, and root commands in one masked space and distills a full-motion oracle into a history-based multi-mode Unitree H1 controller.",
+  "access_mode": "public_web",
+  "authors": ["Tairan He", "Wenli Xiao", "Toru Lin", "Zhengyi Luo", "Zhenjia Xu", "Zhenyu Jiang", "Jan Kautz", "Changliu Liu", "Guanya Shi", "Xiaolong Wang", "Linxi Fan", "Yuke Zhu"],
+  "publisher": "arXiv",
+  "metadata": {"arxiv_id": "2410.21229", "pages_read": 8, "full_paper_reviewed": true, "license_note": "Link and original summary only; verify the arXiv item license before redistributing source text."}
+}

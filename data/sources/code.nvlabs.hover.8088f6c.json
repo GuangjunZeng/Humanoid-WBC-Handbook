@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "NVIDIA contributors"
+  ],
+  "canonical_url": "https://github.com/NVlabs/HOVER/tree/8088f6cfb42a8f307dc614735197796a86ce8490",
+  "captured_at": "2026-08-10T10:30:00+08:00",
+  "content_sha256": "3a28df17afa85466fa709971b87b9038ee7d4df8c2c9da5d4d746c876aa7518c",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "Apache-2.0",
+  "metadata": {
+    "commit": "8088f6cfb42a8f307dc614735197796a86ce8490",
+    "redistribution": "No external code, configuration, weights, or motion data are copied into this handbook.",
+    "repository": "NVlabs/HOVER"
+  },
+  "published_at": "2025-07-30T01:21:51+00:00",
+  "publisher": "NVIDIA",
+  "source_id": "code.nvlabs.hover.8088f6c",
+  "summary": "The official Apache-2.0 repository exposes command-mask construction, student/teacher rollout, and action-label optimization corresponding to the HOVER paper. It is inspected as evidence and not vendored.",
+  "title": "NVlabs/HOVER official implementation",
+  "version": "8088f6cfb42a8f307dc614735197796a86ce8490"
+}

@@ -1,0 +1,24 @@
+{
+  "applicability": {
+    "assumptions": ["All control modes can be represented by subsets of key-body position, local joint-angle, and root commands.", "A full-motion oracle and retargeted AMASS training data are available.", "Deployment supplies the reported proprioceptive and action history."],
+    "controllers": ["HOVER multi-mode student", "full-body motion-imitation oracle"],
+    "environments": ["retargeted AMASS simulation evaluation", "reported 20-motion standing evaluation and qualitative locomotion switching"],
+    "robots": ["19-DoF Unitree H1 in the reported setup"],
+    "simulators": ["Isaac Gym"]
+  },
+  "claim_id": "tracking.unified-masked-command-distillation.hover",
+  "confidence": 0.76,
+  "confidence_rationale": "The paper includes controlled specialist and same-mask multi-mode RL comparisons across five seeds plus a small real-robot evaluation, and official code exposes the corresponding mechanisms. Confidence is capped by the single robot/training family, 20 standing-motion real set, and mostly qualitative runtime switching tests.",
+  "domain": "universal_tracking_teleoperation",
+  "evidence": [
+    {"locator": "Section II-B/II-E, Figure 2, Table III-IV, Figure 4, and Table V", "note": "Defines the atomic masked command space, DAgger distillation, and the reported specialist/generalist comparisons.", "role": "support", "source_id": "paper.hover.2410.21229v2", "strength": "primary"},
+    {"locator": "create_mask; StudentPolicyTrainer.run, _produce_actions, _get_ground_truth_actions, and _update_student_network at commit 8088f6c", "note": "Maps the paper mechanism to public mask sampling, teacher labels, student rollout, and action imitation loss.", "role": "support", "source_id": "code.nvlabs.hover.8088f6c", "strength": "primary"}
+  ],
+  "question": "多个全身控制命令接口能否由一个低层策略覆盖，而不为每种模式单独训练策略？",
+  "review_due_at": "2027-08-10T10:30:00+08:00",
+  "reviewed_at": "2026-08-10T10:30:00+08:00",
+  "safety_level": "caution",
+  "statement": "在 HOVER 报告的 19-DoF Unitree H1、重定向 AMASS 与同一训练栈中，把关键点、关节角和根命令编码为带模式/稀疏掩码的统一空间，再从全身运动教师做 DAgger 蒸馏，可用一个策略覆盖多种接口，并在论文的同栈对照中优于分别训练的专用策略和相同掩码的多模式 RL；该结果不构成跨机器人或安全关键切换保证。",
+  "status": "reviewed",
+  "tags": ["HOVER", "multi-mode", "command mask", "DAgger", "Unitree H1"]
+}

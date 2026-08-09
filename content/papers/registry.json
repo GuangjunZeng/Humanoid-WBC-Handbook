@@ -37,7 +37,7 @@
       "title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
       "primary_domain": "universal_tracking_teleoperation",
       "coverage_role": "multi_mode_whole_body_control",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/hover-2410.21229v2.md"
     },
     {
