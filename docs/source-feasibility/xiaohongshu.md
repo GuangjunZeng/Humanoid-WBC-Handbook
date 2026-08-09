@@ -1,6 +1,6 @@
 # Xiaohongshu source feasibility
 
-Status: `PENDING_CHROME_BRIDGE`
+Status: `SKIPPED_OPTIONAL`
 
 Last probed: 2026-08-10 (Asia/Shanghai)
 
@@ -12,7 +12,7 @@ Anonymous web access loads the search interface but hides results behind `登录
 
 The user has confirmed that Xiaohongshu is signed in within their work Chrome profile. The current blocker is not Xiaohongshu authentication: the selected Chrome profile does not have the ChatGPT browser extension, and the native messaging bridge is absent. Codex therefore cannot attach to that signed-in profile and previously selected an isolated in-app browser session instead.
 
-The platform passes only after the signed-in Chrome session is connected and proves that a relevant result, its note body, and its comments can be read through the visible DOM. Until then it is not a usable collector.
+The platform can be reconsidered only after the signed-in Chrome session is connected and proves that a relevant result, its note body, and its comments can be read through the visible DOM. For the current release it is skipped and is not a collector dependency.
 
 ## Permitted acquisition path
 

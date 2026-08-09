@@ -10,16 +10,18 @@ Create an original, open-source-ready engineering handbook and retrieval project
 - Keep documentation concise but sufficient to reproduce implementation and understand key know-how.
 - Work in staged milestones with local Git commits; do not create or push a remote repository.
 - Never permanently delete files; any removal must use `/usr/bin/trash <absolute-path>`.
+- The only writable local root is `/Users/cengguangjun/Desktop/Humanoid-WBC-Handbook`. Everything outside it is read-only and must not be edited, moved, renamed, or deleted.
+- Use only the single-paper interpretation method from `/Users/cengguangjun/Desktop/paper-daily`; do not invoke its Scholar Inbox, scheduling, Feishu, deduplication, or local-workdir automation.
 
 ## Phases
 - [complete] 0. Establish isolated planning, inspect the provided DOCX, and inventory requirements
-- [in_progress] 1. Validate target social/research platforms one at a time with reproducible probes and record a go/no-go gate
-- [pending] 2. Analyze VLA-Handbook at the behavior and information-workflow level; record originality boundaries
-- [pending] 3. Define product architecture, source policy, schemas, threat model, and open-source governance
+- [complete] 1. Validate target social/research platforms one at a time with reproducible probes and record a conditional-go gate
+- [complete] 2. Analyze VLA-Handbook at the behavior and information-workflow level; record originality boundaries
+- [in_progress] 3. Define product architecture, source policy, schemas, threat model, and open-source governance
 - [pending] 4. Implement the original ingestion, normalization, retrieval, citation, and handbook workflows
 - [pending] 5. Add tests, fixtures, documentation, examples, and offline-safe developer tooling
 - [pending] 6. Run functional, quality, licensing, security, and clean-room acceptance checks
-- [pending] 7. Mirror the completed local Git repository to a new Desktop folder and verify its history
+- [complete] 7. Establish the Desktop repository as the sole writable project root and verify its copied history
 
 ## Stage commit policy
 1. `chore: establish project plan and source validation gate`
@@ -44,12 +46,15 @@ Create an original, open-source-ready engineering handbook and retrieval project
 | First attempt to hand off the Xiaohongshu login page timed out during navigation | 1 | Read browser recovery guidance, created a fresh tab, showed it, and preserved it for user sign-in |
 | Xiaohongshu official agreement page timed out during dynamic browser rendering | 1 | Did not retry the same path; relied on the successful official robots.txt fetch and kept agreement review as a non-blocking legal follow-up |
 | Reopening the Xiaohongshu handoff page produced a navigation timeout; the existing explore tab then timed out during DOM inspection | 1 | Diagnosed browser-session isolation: the user is signed in to Chrome, but the selected profile lacks the ChatGPT extension and native messaging bridge |
+| `git add .` could not create `.git/index.lock` under the managed filesystem sandbox | 1 | Re-ran the same repository-scoped staging command with approved Desktop-project write access; no other path was touched |
 
 ## Serial platform order
-1. Xiaohongshu — `in_progress`, waiting for the signed-in Chrome profile to be connected
-2. Zhihu — `pending`
-3. Bilibili — `pending`
-4. GitHub Issues/Releases/commits — `pending`
-5. Papers/arXiv — `pending`
-6. Project websites, official docs, blogs, Hugging Face — `pending`
-7. Discord/other gated communities — `pending`
+1. Xiaohongshu — `skipped_optional`, authenticated browser bridge unavailable; manual import only
+2. Zhihu — `conditional`, external discovery works; direct fetch returns 403; authorized/manual reading only
+3. Bilibili — `conditional_pass`, public discovery and metadata work; comments/subtitles are optional authorized context
+4. GitHub Issues/Releases/commits — `pass`
+5. Papers/arXiv — `pass`
+6. Project websites and official docs/blogs — `pass`; Hugging Face web pages `conditional_pass`
+7. Discord/other gated communities — `skipped_optional`, authentication and membership required
+
+Gate decision: `CONDITIONAL GO`. GitHub, arXiv, official documentation, and public project pages form a complete core evidence path. Community platforms are supplemental and never required for builds, tests, or conclusions.
