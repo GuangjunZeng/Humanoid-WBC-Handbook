@@ -2,7 +2,7 @@
 
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation. The data model and CLI are usable; handbook content must pass human technical and safety review before hardware use.
+Status: alpha implementation with a complete frozen seed corpus: 14 original paper interpretations across seven WBC engineering domains. Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 
@@ -49,15 +49,16 @@ The importer performs no network access. Review the resulting JSON and add claim
 | Path | Purpose |
 |---|---|
 | `src/wbc_handbook/` | Original models, validation, import, index, answer, and CLI code |
-| `data/` | Canonical human-reviewed source and claim JSON; starts with one OmniH2O content pilot |
+| `content/papers/` | Frozen 14-paper registry, seven domain indexes, and original Chinese engineering interpretations |
+| `data/` | 28 canonical source records and 14 bounded, human-reviewed Engineering Claims |
 | `docs/` | Architecture, safety, source policy, clean-room record, and workflows |
 | `templates/` | Authoring templates, including full-paper interpretation |
 | `tests/` | Offline deterministic acceptance tests |
 | `var/` | Ignored generated indexes and test artifacts |
 
-Start with [architecture](docs/architecture.md), [data contract](docs/data-contract.md), [source gate](docs/source-feasibility/README.md), [safety policy](docs/safety.md), and [clean-room study](docs/clean-room-study.md).
+Start with the [paper corpus](content/papers/README.md), [architecture](docs/architecture.md), [data contract](docs/data-contract.md), [source gate](docs/source-feasibility/README.md), [safety policy](docs/safety.md), and [clean-room study](docs/clean-room-study.md).
 
-The first end-to-end content example is the [OmniH2O paper-to-code interpretation](content/papers/omnih2o-2406.08858v1.md). It intentionally keeps the conclusion narrower than the paper's broad demonstrations.
+Every registered paper has a version-pinned paper record, a commit-pinned official implementation or explicit public-code status, at least one bounded claim, and a full-paper interpretation. The corpus is deliberately bounded and does not claim to exhaust the field.
 
 ## Scope boundary
 
@@ -68,6 +69,7 @@ Core reproducibility uses GitHub, arXiv, official documentation/project pages, a
 ```bash
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 PYTHONPATH=src python3 -m wbc_handbook validate --data-dir data
+python3 scripts/check_corpus.py
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a source or claim. All current work is local; no remote repository is configured or pushed by this build process. Public repository identity and contact details remain explicit items in the [release checklist](docs/release-checklist.md).

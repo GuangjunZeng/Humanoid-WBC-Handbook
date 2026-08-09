@@ -24,9 +24,9 @@ Create an original, open-source-ready engineering handbook and retrieval project
 - [complete] 7. Establish the Desktop repository as the sole writable project root and verify its copied history
 - [complete] 8. Curate and validate the first real paper-to-code Engineering Claim as an end-to-end content pilot
 - [complete] 9. Freeze a seven-domain seed-paper registry with explicit inclusion, exclusion, and completeness criteria
-- [in_progress] 10. Read every registered paper in full and write an original, implementation-aware Chinese interpretation
-- [pending] 11. Add canonical paper/code source records and bounded Engineering Claims for every registered paper
-- [pending] 12. Build domain indexes, run corpus-wide quality/safety/originality acceptance, and create staged local commits
+- [complete] 10. Read every registered paper in full and write an original, implementation-aware Chinese interpretation
+- [complete] 11. Add canonical paper/code source records and bounded Engineering Claims for every registered paper
+- [complete] 12. Build domain indexes, run corpus-wide quality/safety/originality acceptance, and create staged local commits
 
 ## Stage commit policy
 1. `chore: establish project plan and source validation gate`
