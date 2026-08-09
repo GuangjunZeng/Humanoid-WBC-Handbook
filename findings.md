@@ -74,3 +74,13 @@ The deployed VLA-Handbook/Pulsar site was inspected as a public product surface,
 - Unavailable or session-bound community platforms must be optional adapters with a manual-import fallback; they cannot be required for the core offline test suite.
 - Claims need support/conflict/supersede relationships and separate confidence from attention.
 - The target machine provides Python 3.9.6 and setuptools 58.0.4. Packaging metadata therefore uses a minimal PEP 517 build declaration plus `setup.cfg`, while runtime and acceptance remain dependency-free through `PYTHONPATH=src`.
+
+## First paper-to-code pilot: OmniH2O
+
+- Primary paper: `OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning`, arXiv:2406.08858v1, 25 pages.
+- Full-paper pass covered the main method/experiments and Appendices A-M. Decisive evidence includes the teacher-student system diagram, simulation Table 1, real-robot Table 2, reward Table 15, domain-randomization Table 16, and motion-distribution Figure 9.
+- Central mechanism: retarget/augment human motion → train a privileged RL imitation teacher → roll out a sparse-input student → label visited student states with teacher actions → optimize the student with DAgger action imitation → deploy using head/hand goals plus proprioceptive/action history.
+- Narrow supported conclusion: on the reported Unitree H1 configuration, 25-step history without explicit global linear velocity performed better in the 20-sequence standing-motion real-world comparison than the tested VIO/MLP/GRU velocity-input variants.
+- Important limits: real-world quantitative evaluation is restricted to 20 standing motions; broader manipulation, disturbance, and terrain claims are mainly qualitative demonstrations; the authors' public repository says it is tuned for their showcased hardware; no independent replication was found in this pilot.
+- Official code was inspected only for mapping. Commit `750f1fa052641f0fde43669d50cb4e407dabe6c8` exposes `LeggedRobot.load_expert/step`, `OnPolicyRunner.learn`, `PPO._optimize_kin`, and `H1TeleopCfg.domain_rand/control` as concrete links between the paper and implementation.
+- The official code is CC BY-NC 4.0 with inherited dependency licenses. This project stores links and original analysis only; it vendors no code, commands, configs, weights, motion data, or paper full text.

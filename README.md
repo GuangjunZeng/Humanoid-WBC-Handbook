@@ -27,7 +27,7 @@ python3 -m venv .venv
 python3 -m pip install -e .
 wbc-handbook validate --data-dir data
 wbc-handbook build-index --data-dir data --index var/handbook.sqlite
-wbc-handbook query "Why does a tracking policy produce NaNs?" --index var/handbook.sqlite
+wbc-handbook query "全身遥操作需要全局线速度吗？" --index var/handbook.sqlite
 ```
 
 Without installing:
@@ -49,13 +49,15 @@ The importer performs no network access. Review the resulting JSON and add claim
 | Path | Purpose |
 |---|---|
 | `src/wbc_handbook/` | Original models, validation, import, index, answer, and CLI code |
-| `data/` | Canonical human-reviewed source and claim JSON |
+| `data/` | Canonical human-reviewed source and claim JSON; starts with one OmniH2O content pilot |
 | `docs/` | Architecture, safety, source policy, clean-room record, and workflows |
 | `templates/` | Authoring templates, including full-paper interpretation |
 | `tests/` | Offline deterministic acceptance tests |
 | `var/` | Ignored generated indexes and test artifacts |
 
 Start with [architecture](docs/architecture.md), [data contract](docs/data-contract.md), [source gate](docs/source-feasibility/README.md), [safety policy](docs/safety.md), and [clean-room study](docs/clean-room-study.md).
+
+The first end-to-end content example is the [OmniH2O paper-to-code interpretation](content/papers/omnih2o-2406.08858v1.md). It intentionally keeps the conclusion narrower than the paper's broad demonstrations.
 
 ## Scope boundary
 

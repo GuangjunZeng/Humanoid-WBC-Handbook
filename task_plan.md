@@ -22,6 +22,7 @@ Create an original, open-source-ready engineering handbook and retrieval project
 - [complete] 5. Add tests, fixtures, documentation, examples, and offline-safe developer tooling
 - [complete] 6. Run functional, quality, licensing, security, and clean-room acceptance checks
 - [complete] 7. Establish the Desktop repository as the sole writable project root and verify its copied history
+- [complete] 8. Curate and validate the first real paper-to-code Engineering Claim as an end-to-end content pilot
 
 ## Stage commit policy
 1. `chore: establish project plan and source validation gate`
@@ -49,6 +50,8 @@ Create an original, open-source-ready engineering handbook and retrieval project
 | `git add .` could not create `.git/index.lock` under the managed filesystem sandbox | 1 | Re-ran the same repository-scoped staging command with approved Desktop-project write access; no other path was touched |
 | First offline test run could not create ignored artifacts under the Desktop project's `var/` directory because the managed sandbox mounted the copied project read-only | 1 | Keep tests project-local and non-deleting; rerun with approved write access limited to the sole writable project root |
 | Legacy `setuptools check` warned that public project URL and maintainer email are absent | 1 | Do not invent contact/remote metadata because no cloud repository is authorized; record both as explicit pre-publication checklist items. Package name/version checks still pass |
+| GitHub code search for the OmniH2O repository returned one internal error and otherwise no indexed matches | 1 | Used public repository navigation plus exact, commit-pinned file fetches; no repository clone or copied code was added |
+| First content patch could not create two missing parent directories | 1 | Created only `content/papers` and `data/claims` inside the sole writable project root, then reapplied the file patch |
 
 ## Serial platform order
 1. Xiaohongshu — `skipped_optional`, authenticated browser bridge unavailable; manual import only

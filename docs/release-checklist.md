@@ -19,6 +19,6 @@ The codebase can be developed and committed locally without a cloud repository. 
 
 - Source gate: `CONDITIONAL GO` with all gated social platforms optional.
 - Runtime: Python standard library only.
-- Canonical data: intentionally empty; no fabricated engineering advice.
+- Canonical data: two versioned sources and one reviewed OmniH2O pilot claim; no fabricated demo advice.
 - Offline regression suite: 10 tests passing on Python 3.9.6.
 - Remote operations: none; no cloud repository has been created or pushed.

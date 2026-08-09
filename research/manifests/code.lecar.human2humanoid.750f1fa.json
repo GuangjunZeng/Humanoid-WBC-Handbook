@@ -1,0 +1,19 @@
+{
+  "source_id": "code.lecar.human2humanoid.750f1fa",
+  "kind": "source_code",
+  "title": "LeCAR-Lab/human2humanoid official OmniH2O implementation",
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/tree/750f1fa052641f0fde43669d50cb4e407dabe6c8",
+  "captured_at": "2026-08-10T02:18:56+08:00",
+  "published_at": "2025-02-21T06:58:45+00:00",
+  "version": "750f1fa052641f0fde43669d50cb4e407dabe6c8",
+  "summary": "The official repository maps OmniH2O's teacher action labeling, DAgger loss, history buffering, sparse teleoperation configuration, and H1 domain randomization to public implementation symbols. It is inspected as evidence and is not vendored.",
+  "access_mode": "public_api",
+  "authors": ["LeCAR-Lab contributors"],
+  "publisher": "LeCAR-Lab",
+  "license": "CC BY-NC 4.0 for the project, with inherited dependency licenses; see repository notices",
+  "metadata": {
+    "repository": "LeCAR-Lab/human2humanoid",
+    "commit": "750f1fa052641f0fde43669d50cb4e407dabe6c8",
+    "redistribution": "No code, configuration, weights, motions, or datasets are copied into this handbook."
+  }
+}

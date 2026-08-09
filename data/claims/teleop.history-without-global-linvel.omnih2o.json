@@ -1,0 +1,57 @@
+{
+  "applicability": {
+    "assumptions": [
+      "The policy receives reliable joint position, joint velocity, base angular velocity, projected gravity, and previous actions.",
+      "The motion goal is a sparse three-point head-and-hands kinematic target.",
+      "Training uses a privileged teacher and DAgger-style action supervision in simulation."
+    ],
+    "controllers": [
+      "OmniH2O 19-DoF motion-tracking policy",
+      "teacher-student DAgger distillation"
+    ],
+    "environments": [
+      "retargeted and augmented AMASS motions",
+      "reported 20-sequence real-robot standing-motion evaluation"
+    ],
+    "robots": [
+      "Unitree H1 research platform in the OmniH2O setup"
+    ],
+    "simulators": [
+      "Isaac Gym / PhysX in the official implementation"
+    ]
+  },
+  "claim_id": "teleop.history-without-global-linvel.omnih2o",
+  "confidence": 0.78,
+  "confidence_rationale": "The paper reports a controlled simulation ablation and a real-robot comparison, and the official commit exposes the corresponding history and DAgger implementation. Confidence is capped because the real-world quantitative set contains only 20 standing motions, broader demonstrations are mainly qualitative, and no independent cross-robot replication is included.",
+  "domain": "universal_tracking_teleoperation",
+  "evidence": [
+    {
+      "locator": "Section 3 (student state and policy distillation), Table 1(a,b,d), and Table 2(a,b)",
+      "note": "Supports the no-global-linear-velocity design, 25-step history, DAgger ablation, and reported real-robot comparison.",
+      "role": "support",
+      "source_id": "paper.omnih2o.2406.08858v1",
+      "strength": "primary"
+    },
+    {
+      "locator": "LeggedRobot.load_expert and LeggedRobot.step; OnPolicyRunner.learn; PPO._optimize_kin; H1TeleopCfg.domain_rand/control at commit 750f1fa",
+      "note": "Maps the paper mechanism to teacher action labeling, history buffering, DAgger optimization, and the H1-specific training configuration.",
+      "role": "support",
+      "source_id": "code.lecar.human2humanoid.750f1fa",
+      "strength": "primary"
+    }
+  ],
+  "question": "稀疏输入的人形机器人全身遥操作是否必须显式估计机身全局线速度？",
+  "review_due_at": "2027-08-10T02:18:56+08:00",
+  "reviewed_at": "2026-08-10T02:18:56+08:00",
+  "safety_level": "caution",
+  "statement": "在 OmniH2O 报告的 Unitree H1、19-DoF、50 Hz 策略设置中，25 步本体感知与上一动作历史配合 DAgger 教师-学生蒸馏，可以不显式输入全局线速度；它在 20 条站立动作的实机评测中优于该论文测试的 VIO、MLP 和 GRU 速度输入变体，但该结论不能直接外推到其他机器人、传感器或动态动作。",
+  "status": "reviewed",
+  "tags": [
+    "OmniH2O",
+    "全身遥操作",
+    "global linear velocity",
+    "history",
+    "DAgger",
+    "Unitree H1"
+  ]
+}

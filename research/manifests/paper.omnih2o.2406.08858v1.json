@@ -1,0 +1,29 @@
+{
+  "source_id": "paper.omnih2o.2406.08858v1",
+  "kind": "paper",
+  "title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+  "canonical_url": "https://arxiv.org/abs/2406.08858v1",
+  "captured_at": "2026-08-10T02:18:56+08:00",
+  "published_at": "2024-06-13T06:44:46+00:00",
+  "version": "arXiv:2406.08858v1",
+  "summary": "OmniH2O uses a kinematic-pose interface, a privileged RL teacher, DAgger distillation, sparse head/hand goals, and proprioceptive/action history to deploy whole-body teleoperation on a Unitree H1; the paper also reports a six-task teleoperation dataset and autonomy demonstrations.",
+  "access_mode": "public_web",
+  "authors": [
+    "Tairan He",
+    "Zhengyi Luo",
+    "Xialin He",
+    "Wenli Xiao",
+    "Chong Zhang",
+    "Weinan Zhang",
+    "Kris Kitani",
+    "Changliu Liu",
+    "Guanya Shi"
+  ],
+  "publisher": "arXiv",
+  "metadata": {
+    "arxiv_id": "2406.08858",
+    "pages_read": 25,
+    "full_paper_reviewed": true,
+    "license_note": "Link and original summary only; verify the arXiv item license before redistributing any source text."
+  }
+}
