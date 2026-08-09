@@ -1,0 +1,26 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Ilija Radosavovic",
+    "Sarthak Kamat",
+    "Trevor Darrell",
+    "Jitendra Malik"
+  ],
+  "canonical_url": "https://humanoid-challenging-terrain.github.io/",
+  "captured_at": "2026-08-10T11:00:00+08:00",
+  "content_sha256": "3c40bb02f167507d4a32e3259ce42dd5b69f3b31e8cd354842fdb600411b58a1",
+  "excerpt": null,
+  "kind": "project_page",
+  "license": null,
+  "metadata": {
+    "code_status": "no_public_code_found",
+    "search_boundary": "Paper links, official project-page links, and exact-title/author repository discovery were checked; third-party implementations were excluded."
+  },
+  "published_at": null,
+  "publisher": "UC Berkeley",
+  "source_id": "project.ht2.official.2026-08-10",
+  "summary": "The author-linked project page provides the paper and demonstrations but no uniquely resolvable public code repository or software license at capture time.",
+  "title": "Learning Humanoid Locomotion over Challenging Terrain official project page",
+  "version": "accessed-2026-08-10"
+}
