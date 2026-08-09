@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-10T00:00:00+08:00",
+  "scope": "A bounded seed corpus, not an exhaustive bibliography of humanoid WBC.",
+  "completion_rule": "A paper is complete only when its full-paper brief, version-pinned paper source, public-code source or explicit no-code finding, at least one bounded candidate claim, and corpus QA all exist.",
+  "papers": [
+    {
+      "paper_id": "arxiv:2510.02252v1",
+      "slug": "retargeting-matters-2510.02252v1",
+      "title": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking",
+      "primary_domain": "training_data_retargeting",
+      "coverage_role": "retargeting_quality_and_feasibility",
+      "status": "pending",
+      "brief_path": "content/papers/retargeting-matters-2510.02252v1.md"
+    },
+    {
+      "paper_id": "arxiv:2602.06643v2",
+      "slug": "humi-2602.06643v2",
+      "title": "Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations",
+      "primary_domain": "training_data_retargeting",
+      "coverage_role": "robot_free_demonstration_construction",
+      "status": "pending",
+      "brief_path": "content/papers/humi-2602.06643v2.md"
+    },
+    {
+      "paper_id": "arxiv:2406.08858v1",
+      "slug": "omnih2o-2406.08858v1",
+      "title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+      "primary_domain": "universal_tracking_teleoperation",
+      "coverage_role": "sparse_whole_body_teleoperation",
+      "status": "complete",
+      "brief_path": "content/papers/omnih2o-2406.08858v1.md"
+    },
+    {
+      "paper_id": "arxiv:2410.21229v2",
+      "slug": "hover-2410.21229v2",
+      "title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
+      "primary_domain": "universal_tracking_teleoperation",
+      "coverage_role": "multi_mode_whole_body_control",
+      "status": "pending",
+      "brief_path": "content/papers/hover-2410.21229v2.md"
+    },
+    {
+      "paper_id": "arxiv:2404.05695v2",
+      "slug": "humanoid-gym-2404.05695v2",
+      "title": "Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer",
+      "primary_domain": "locomotion_terrain",
+      "coverage_role": "open_locomotion_engineering_baseline",
+      "status": "pending",
+      "brief_path": "content/papers/humanoid-gym-2404.05695v2.md"
+    },
+    {
+      "paper_id": "arxiv:2410.03654v1",
+      "slug": "challenging-terrain-2410.03654v1",
+      "title": "Learning Humanoid Locomotion over Challenging Terrain",
+      "primary_domain": "locomotion_terrain",
+      "coverage_role": "blind_transformer_terrain_locomotion",
+      "status": "pending",
+      "brief_path": "content/papers/challenging-terrain-2410.03654v1.md"
+    },
+    {
+      "paper_id": "arxiv:2505.06776v2",
+      "slug": "falcon-2505.06776v2",
+      "title": "FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation",
+      "primary_domain": "loco_manipulation_wbc",
+      "coverage_role": "force_adaptive_loco_manipulation",
+      "status": "pending",
+      "brief_path": "content/papers/falcon-2505.06776v2.md"
+    },
+    {
+      "paper_id": "arxiv:2507.06905v2",
+      "slug": "ulc-2507.06905v2",
+      "title": "ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation",
+      "primary_domain": "loco_manipulation_wbc",
+      "coverage_role": "unified_loco_manipulation_policy",
+      "status": "pending",
+      "brief_path": "content/papers/ulc-2507.06905v2.md"
+    },
+    {
+      "paper_id": "arxiv:2502.01143v3",
+      "slug": "asap-2502.01143v3",
+      "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
+      "primary_domain": "sports",
+      "coverage_role": "agile_skill_sim_to_real_alignment",
+      "status": "pending",
+      "brief_path": "content/papers/asap-2502.01143v3.md"
+    },
+    {
+      "paper_id": "arxiv:2511.11218v3",
+      "slug": "humanoid-badminton-2511.11218v3",
+      "title": "Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning",
+      "primary_domain": "sports",
+      "coverage_role": "task_specific_dynamic_sport",
+      "status": "pending",
+      "brief_path": "content/papers/humanoid-badminton-2511.11218v3.md"
+    },
+    {
+      "paper_id": "arxiv:2508.08241v4",
+      "slug": "beyondmimic-2508.08241v4",
+      "title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion",
+      "primary_domain": "motion_generation",
+      "coverage_role": "cost_guided_motion_composition",
+      "status": "pending",
+      "brief_path": "content/papers/beyondmimic-2508.08241v4.md"
+    },
+    {
+      "paper_id": "arxiv:2602.07439v1",
+      "slug": "textop-2602.07439v1",
+      "title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
+      "primary_domain": "motion_generation",
+      "coverage_role": "streaming_text_conditioned_motion",
+      "status": "pending",
+      "brief_path": "content/papers/textop-2602.07439v1.md"
+    },
+    {
+      "paper_id": "arxiv:2502.08378v2",
+      "slug": "host-2502.08378v2",
+      "title": "Learning Humanoid Standing-up Control across Diverse Postures",
+      "primary_domain": "recovery_safety_force",
+      "coverage_role": "posture_adaptive_standing_up",
+      "status": "pending",
+      "brief_path": "content/papers/host-2502.08378v2.md"
+    },
+    {
+      "paper_id": "arxiv:2410.08655v3",
+      "slug": "frasa-2410.08655v3",
+      "title": "FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots",
+      "primary_domain": "recovery_safety_force",
+      "coverage_role": "fall_recovery_and_stand_up",
+      "status": "pending",
+      "brief_path": "content/papers/frasa-2410.08655v3.md"
+    }
+  ]
+}
