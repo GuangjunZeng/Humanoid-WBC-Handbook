@@ -17,10 +17,10 @@ Create an original, open-source-ready engineering handbook and retrieval project
 - [complete] 0. Establish isolated planning, inspect the provided DOCX, and inventory requirements
 - [complete] 1. Validate target social/research platforms one at a time with reproducible probes and record a conditional-go gate
 - [complete] 2. Analyze VLA-Handbook at the behavior and information-workflow level; record originality boundaries
-- [in_progress] 3. Define product architecture, source policy, schemas, threat model, and open-source governance
-- [pending] 4. Implement the original ingestion, normalization, retrieval, citation, and handbook workflows
-- [pending] 5. Add tests, fixtures, documentation, examples, and offline-safe developer tooling
-- [pending] 6. Run functional, quality, licensing, security, and clean-room acceptance checks
+- [complete] 3. Define product architecture, source policy, schemas, threat model, and open-source governance
+- [complete] 4. Implement the original ingestion, normalization, retrieval, citation, and handbook workflows
+- [complete] 5. Add tests, fixtures, documentation, examples, and offline-safe developer tooling
+- [complete] 6. Run functional, quality, licensing, security, and clean-room acceptance checks
 - [complete] 7. Establish the Desktop repository as the sole writable project root and verify its copied history
 
 ## Stage commit policy
@@ -47,6 +47,8 @@ Create an original, open-source-ready engineering handbook and retrieval project
 | Xiaohongshu official agreement page timed out during dynamic browser rendering | 1 | Did not retry the same path; relied on the successful official robots.txt fetch and kept agreement review as a non-blocking legal follow-up |
 | Reopening the Xiaohongshu handoff page produced a navigation timeout; the existing explore tab then timed out during DOM inspection | 1 | Diagnosed browser-session isolation: the user is signed in to Chrome, but the selected profile lacks the ChatGPT extension and native messaging bridge |
 | `git add .` could not create `.git/index.lock` under the managed filesystem sandbox | 1 | Re-ran the same repository-scoped staging command with approved Desktop-project write access; no other path was touched |
+| First offline test run could not create ignored artifacts under the Desktop project's `var/` directory because the managed sandbox mounted the copied project read-only | 1 | Keep tests project-local and non-deleting; rerun with approved write access limited to the sole writable project root |
+| Legacy `setuptools check` warned that public project URL and maintainer email are absent | 1 | Do not invent contact/remote metadata because no cloud repository is authorized; record both as explicit pre-publication checklist items. Package name/version checks still pass |
 
 ## Serial platform order
 1. Xiaohongshu — `skipped_optional`, authenticated browser bridge unavailable; manual import only

@@ -73,3 +73,4 @@ The deployed VLA-Handbook/Pulsar site was inspected as a public product surface,
 - Collector-specific raw inputs will normalize into a source registry before claim extraction.
 - Unavailable or session-bound community platforms must be optional adapters with a manual-import fallback; they cannot be required for the core offline test suite.
 - Claims need support/conflict/supersede relationships and separate confidence from attention.
+- The target machine provides Python 3.9.6 and setuptools 58.0.4. Packaging metadata therefore uses a minimal PEP 517 build declaration plus `setup.cfg`, while runtime and acceptance remain dependency-free through `PYTHONPATH=src`.
