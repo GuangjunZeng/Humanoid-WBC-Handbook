@@ -23,3 +23,4 @@
 - The previously handed-off Xiaohongshu tab was no longer open when checked; current status remains `PENDING_AUTHORIZED_SESSION`.
 - Verified the first-stage Git commit `33669c7` on local branch `main`; the worktree was clean before this progress update.
 - A fresh attempt to present the Xiaohongshu login page timed out, and the browser visibility handoff did not remain active. Serial validation is paused at Xiaohongshu until the user signs in manually and confirms readiness.
+- The user confirmed Xiaohongshu is already signed in under their work Chrome profile. Read-only diagnostics showed Chrome is installed and running, but that profile has no ChatGPT browser extension and no native messaging bridge. The earlier failure was session isolation, not a missing Xiaohongshu login.

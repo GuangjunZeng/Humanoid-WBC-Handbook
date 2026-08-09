@@ -1,6 +1,6 @@
 # Xiaohongshu source feasibility
 
-Status: `PENDING_AUTHORIZED_SESSION`
+Status: `PENDING_CHROME_BRIDGE`
 
 Last probed: 2026-08-10 (Asia/Shanghai)
 
@@ -10,7 +10,9 @@ Xiaohongshu can only be an optional, user-initiated evidence source. The project
 
 Anonymous web access loads the search interface but hides results behind `登录后查看搜索结果`. External search did not reliably discover relevant note URLs. The official `robots.txt` declares `User-agent: *` and `Disallow: /`.
 
-The platform passes only after a user-authorized browser session proves that a relevant result, its note body, and its comments can be read through the visible DOM. Until then it is not a usable collector.
+The user has confirmed that Xiaohongshu is signed in within their work Chrome profile. The current blocker is not Xiaohongshu authentication: the selected Chrome profile does not have the ChatGPT browser extension, and the native messaging bridge is absent. Codex therefore cannot attach to that signed-in profile and previously selected an isolated in-app browser session instead.
+
+The platform passes only after the signed-in Chrome session is connected and proves that a relevant result, its note body, and its comments can be read through the visible DOM. Until then it is not a usable collector.
 
 ## Permitted acquisition path
 
@@ -69,3 +71,5 @@ Xiaohongshu must never be required for the offline test suite, reproducible buil
 - External web search: no dependable relevant note discovery for the tested humanoid/WBC queries.
 - Official `https://www.xiaohongshu.com/robots.txt`: generic automated crawling disallowed.
 - Chrome/external browser control: unavailable in the current environment.
+- Chrome diagnostics: Chrome is installed, running, and the system default browser; the selected profile lacks the ChatGPT browser extension and native messaging bridge, so its Xiaohongshu cookies are not accessible to the authorized browser-control surface.
+- Canonical test entry point: `https://www.xiaohongshu.com/explore` (without trailing Chinese punctuation).
