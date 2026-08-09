@@ -1,0 +1,30 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Qiayuan Liao",
+    "Takara E. Truong",
+    "Xiaoyu Huang",
+    "Yuman Gao",
+    "Guy Tevet",
+    "Koushil Sreenath",
+    "C. Karen Liu"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2508.08241v4",
+  "captured_at": "2026-08-10T14:00:00+08:00",
+  "content_sha256": "95ff9429045ccecebce1a906876d41e5b00b3f3a21c7a43ddc81e2be05851e7e",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2508.08241",
+    "full_paper_reviewed": true,
+    "pages_read": 34
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.beyondmimic.2508.08241v4",
+  "summary": "BeyondMimic combines a compact motion-agnostic tracker with state-latent diffusion and test-time differentiable-cost guidance for skill composition on a physical humanoid.",
+  "title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion",
+  "version": "arXiv:2508.08241v4"
+}

@@ -100,7 +100,7 @@
       "title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion",
       "primary_domain": "motion_generation",
       "coverage_role": "cost_guided_motion_composition",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/beyondmimic-2508.08241v4.md"
     },
     {
@@ -109,7 +109,7 @@
       "title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
       "primary_domain": "motion_generation",
       "coverage_role": "streaming_text_conditioned_motion",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/textop-2602.07439v1.md"
     },
     {

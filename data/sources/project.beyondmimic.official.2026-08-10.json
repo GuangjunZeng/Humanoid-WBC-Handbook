@@ -1,0 +1,29 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Qiayuan Liao",
+    "Takara E. Truong",
+    "Xiaoyu Huang",
+    "Yuman Gao",
+    "Guy Tevet",
+    "Koushil Sreenath",
+    "C. Karen Liu"
+  ],
+  "canonical_url": "https://beyondmimic.github.io/",
+  "captured_at": "2026-08-10T14:00:00+08:00",
+  "content_sha256": "65083d2001df53837e7554d64c37de560d72196b88ebcad98ff50e7bdf3507ee",
+  "excerpt": null,
+  "kind": "project_page",
+  "license": null,
+  "metadata": {
+    "code_status": "advertised_unresolved",
+    "search_boundary": "Official page and exact-title/author GitHub discovery checked; downstream adoptions and third-party implementations excluded."
+  },
+  "published_at": null,
+  "publisher": "UC Berkeley / Stanford University",
+  "source_id": "project.beyondmimic.official.2026-08-10",
+  "summary": "The author-linked page provides paper descriptions and demonstrations and calls the tracker open source, but exposes no uniquely resolvable official repository, commit, or software license at capture time.",
+  "title": "BeyondMimic official project page",
+  "version": "accessed-2026-08-10"
+}

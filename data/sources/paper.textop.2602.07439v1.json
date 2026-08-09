@@ -1,0 +1,30 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Weiji Xie",
+    "Jiakun Zheng",
+    "Jinrui Han",
+    "Jiyuan Shi",
+    "Weinan Zhang",
+    "Chenjia Bai",
+    "Xuelong Li"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2602.07439v1",
+  "captured_at": "2026-08-10T14:00:00+08:00",
+  "content_sha256": "d4588de217ce2614b672a90b5a343a26e1325af6c8ae731949b60c497d42ae57",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2602.07439",
+    "full_paper_reviewed": true,
+    "pages_read": 20
+  },
+  "published_at": "2026-02-07T08:42:11+00:00",
+  "publisher": "arXiv",
+  "source_id": "paper.textop.2602.07439v1",
+  "summary": "TextOp autoregressively generates short robot-skeleton motion blocks from streaming CLIP text and recent motion, then executes them with a 50 Hz universal G1 tracker.",
+  "title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
+  "version": "arXiv:2602.07439v1"
+}
