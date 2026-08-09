@@ -1,0 +1,13 @@
+{
+  "source_id": "official.example.controller-guide",
+  "kind": "official_doc",
+  "title": "Example controller documentation record",
+  "canonical_url": "https://example.org/controller-guide",
+  "captured_at": "2026-08-10T12:00:00+08:00",
+  "summary": "Synthetic import example used to demonstrate the source contract; it is not engineering evidence.",
+  "access_mode": "manual_import",
+  "authors": ["Example Author"],
+  "publisher": "Example Publisher",
+  "license": "Example only",
+  "metadata": {"synthetic": true}
+}

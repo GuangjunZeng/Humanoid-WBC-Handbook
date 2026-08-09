@@ -1,0 +1,43 @@
+{
+  "paper_source_id": "paper.example.2026",
+  "problem": "",
+  "prior_gap": "",
+  "contribution": "",
+  "mechanism": {
+    "input": "",
+    "processing": [],
+    "output": "",
+    "why_it_should_help": ""
+  },
+  "decisive_formulas": [],
+  "figures_and_tables": [
+    {"locator": "Figure/Table", "observation": "", "interpretation": ""},
+    {"locator": "Figure/Table", "observation": "", "interpretation": ""},
+    {"locator": "Figure/Table", "observation": "", "interpretation": ""}
+  ],
+  "strongest_experiment": {
+    "locator": "",
+    "baseline": "",
+    "metric": "",
+    "conditions": "",
+    "result": "",
+    "why_persuasive": ""
+  },
+  "paper_code_map": [
+    {"paper_component": "", "repository_url": "", "file": "", "symbol": ""},
+    {"paper_component": "", "repository_url": "", "file": "", "symbol": ""}
+  ],
+  "reported_setup": {
+    "robots": [],
+    "simulators": [],
+    "sensors": [],
+    "control_rate": "unknown",
+    "action_space": "unknown",
+    "training_data": "unknown",
+    "compute": "unknown"
+  },
+  "author_limitations": [],
+  "engineering_judgment": [],
+  "safety_and_deployment": [],
+  "candidate_claim_ids": []
+}
