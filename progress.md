@@ -57,3 +57,4 @@
 - Completed Domain 1 content: two original full-paper briefs, four normalized sources, and two bounded reviewed Engineering Claims. Validation now reports 6 sources, 3 claims, and zero issues.
 - Created the Domain 1 local commit `094c83b`. Resumed five partial arXiv downloads in place; four are now complete and extracted, while HOVER and badminton continue downloading.
 - Completed HOVER's full-paper interpretation and commit-pinned official-code mapping. Added two normalized sources and one bounded claim; the Universal tracking & teleoperation domain is now 2/2 complete.
+- Completed both Locomotion & terrain papers: Humanoid-Gym with commit-pinned code mapping, and HT-2 with an explicit no-public-code finding. Added four sources and two bounded claims; corpus progress is 6/14.

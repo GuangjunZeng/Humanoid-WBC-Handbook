@@ -46,7 +46,7 @@
       "title": "Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer",
       "primary_domain": "locomotion_terrain",
       "coverage_role": "open_locomotion_engineering_baseline",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/humanoid-gym-2404.05695v2.md"
     },
     {
@@ -55,7 +55,7 @@
       "title": "Learning Humanoid Locomotion over Challenging Terrain",
       "primary_domain": "locomotion_terrain",
       "coverage_role": "blind_transformer_terrain_locomotion",
-      "status": "pending",
+      "status": "complete",
       "brief_path": "content/papers/challenging-terrain-2410.03654v1.md"
     },
     {

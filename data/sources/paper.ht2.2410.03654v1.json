@@ -1,0 +1,27 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [
+    "Ilija Radosavovic",
+    "Sarthak Kamat",
+    "Trevor Darrell",
+    "Jitendra Malik"
+  ],
+  "canonical_url": "https://arxiv.org/abs/2410.03654v1",
+  "captured_at": "2026-08-10T11:00:00+08:00",
+  "content_sha256": "edc7352e46eec84994db429643a5a6076bac91814e3f8b2c2e713bfec0233c88",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2410.03654",
+    "full_paper_reviewed": true,
+    "pages_read": 42
+  },
+  "published_at": "2024-10-04T17:59:02+00:00",
+  "publisher": "arXiv",
+  "source_id": "paper.ht2.2410.03654v1",
+  "summary": "HT-2 pretrains a history Transformer on flat-ground trajectories with masked missing actions, then fine-tunes it with PPO on procedural terrain for blind Digit locomotion.",
+  "title": "Learning Humanoid Locomotion over Challenging Terrain",
+  "version": "arXiv:2410.03654v1"
+}

@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "RobotEra contributors"
+  ],
+  "canonical_url": "https://github.com/roboterax/humanoid-gym/tree/ae46e201c85a2b17e7f2cea59a441dae7ea88a8f",
+  "captured_at": "2026-08-10T11:00:00+08:00",
+  "content_sha256": "edb33f5463ab449f95ea26d12c602a3be55dfec2ed6a3424dc724605067a97a9",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "BSD-3-Clause with inherited notices",
+  "metadata": {
+    "commit": "ae46e201c85a2b17e7f2cea59a441dae7ea88a8f",
+    "redistribution": "No code, assets, configurations, or weights are copied.",
+    "repository": "roboterax/humanoid-gym"
+  },
+  "published_at": "2024-11-01T03:24:05+00:00",
+  "publisher": "RobotEra",
+  "source_id": "code.roboterax.humanoid-gym.ae46e20",
+  "summary": "Official BSD-3-Clause implementation exposing the XBot-L observation stacks, policy/PD decimation, rewards, domain randomization and contact termination. Inspected only, not vendored.",
+  "title": "roboterax/humanoid-gym official implementation",
+  "version": "ae46e201c85a2b17e7f2cea59a441dae7ea88a8f"
+}
