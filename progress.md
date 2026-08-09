@@ -21,3 +21,5 @@
 - Xiaohongshu external-search probes did not reliably discover note URLs. Official robots.txt disallows generic automated crawling across the site; the implementation boundary is now constrained to visible authorized browser reading and manual import.
 - Added `docs/source-feasibility/xiaohongshu.md` with the permitted acquisition flow, explicit prohibitions, normalized-field boundary, fallback, and a login-session acceptance test.
 - The previously handed-off Xiaohongshu tab was no longer open when checked; current status remains `PENDING_AUTHORIZED_SESSION`.
+- Verified the first-stage Git commit `33669c7` on local branch `main`; the worktree was clean before this progress update.
+- A fresh attempt to present the Xiaohongshu login page timed out, and the browser visibility handoff did not remain active. Serial validation is paused at Xiaohongshu until the user signs in manually and confirms readiness.

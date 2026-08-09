@@ -43,6 +43,7 @@ Create an original, open-source-ready engineering handbook and retrieval project
 | GitHub issue search probe used an unsupported compound query/repository combination and returned HTTP 422 | 1 | Stop the batch after the user's serial-validation instruction; retry GitHub alone later with a simple query and verified repository identifier |
 | First attempt to hand off the Xiaohongshu login page timed out during navigation | 1 | Read browser recovery guidance, created a fresh tab, showed it, and preserved it for user sign-in |
 | Xiaohongshu official agreement page timed out during dynamic browser rendering | 1 | Did not retry the same path; relied on the successful official robots.txt fetch and kept agreement review as a non-blocking legal follow-up |
+| Reopening the Xiaohongshu handoff page produced a navigation timeout; the existing explore tab then timed out during DOM inspection | 1 | Stopped browser retries to avoid an unstable loop; require the user to sign in manually, then resume the visible-session acceptance test |
 
 ## Serial platform order
 1. Xiaohongshu — `in_progress`, waiting for user-authorized sign-in
