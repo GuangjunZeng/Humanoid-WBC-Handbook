@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2404.05695v2",
+  "source_pdf": "https://arxiv.org/pdf/2404.05695v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2404.05695v2",
+      "pdf_page": 2,
+      "source_locator": "Figure 2",
+      "caption_zh": "Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。",
+      "sha256": "34b224b9a395ca8ddbcae1f6f4d53cd3274dacba4f2d679be1fbdac344937ef6"
+    },
+    {
+      "asset": "figure-3-rewards.jpg",
+      "source_url": "https://arxiv.org/pdf/2404.05695v2",
+      "pdf_page": 3,
+      "source_locator": "Figure 3",
+      "caption_zh": "人形步态周期、奖励组成与域随机化设计。",
+      "sha256": "4b641278e4c5f070065d7c8c5936725b7401005d77d651e81fbe193111283106"
+    },
+    {
+      "asset": "table-4-parameters.jpg",
+      "source_url": "https://arxiv.org/pdf/2404.05695v2",
+      "pdf_page": 6,
+      "source_locator": "Table IV",
+      "caption_zh": "附录中的训练、控制和部署参数表，用于界定复现范围。",
+      "sha256": "eb10f3bf97be11f8a1d9acf63c167c450a6da566ebe4f07e4784537d5aaca029"
+    }
+  ]
+}

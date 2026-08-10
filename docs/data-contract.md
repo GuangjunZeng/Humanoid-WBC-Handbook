@@ -13,6 +13,49 @@ Required fields:
 
 Optional fields include authors, publication/version timestamps, publisher, license, a short excerpt, attention metadata, and arbitrary source-specific metadata. Attention is never used as evidence strength.
 
+### Social capture input
+
+Platform discovery precedes capture and has three non-canonical candidate formats:
+
+- X API candidates: post ID/text, canonical status URL, author, conversation/reply
+  references, media, metrics and all matching WBC scopes. Raw candidates stay in
+  ignored `var/`; `X_BEARER_TOKEN` is never serialized.
+- Zhihu API candidates: content ID/type, title, bounded `ContentText` summary,
+  author/metrics and canonical answer/article/question URL. They explicitly record
+  `full_text_available=false`; `ZHIHU_ACCESS_SECRET` is never serialized.
+- Xiaohongshu review candidates: canonical note URL, query/scope, optional search
+  title/snippet, discovery source and human review status. They always record
+  `content_collected=false` until separate permitted material is manually supplied.
+
+Discovery candidates are not `SourceRecord` evidence and cannot be indexed as
+engineering guidance. Human/AI analysis produces the capture below.
+
+`import-social-captures` accepts reviewed analysis output with `platform`, engineering
+`scope_id`, optional seven-domain hints, exact `query`, stable post URL, capture
+time, title, original summary, WBC relevance reason, optional short excerpt,
+public author display, visible attention counters, original media summaries, and a
+small selected-comment set. Xiaohongshu/Zhihu/X tracking and access parameters are
+removed during normalization. The resulting source has `kind=community`,
+`access_mode=public_api`, `manual_import`, or `authorized_visible_browser`, and
+`metadata.review_status=candidate`.
+
+An experience capture also contains structured `engineering_details`: problem,
+environment, symptom, diagnostics, suspected cause, attempted changes, effective
+fixes, outcomes, limits, and safety notes. Unknown elements remain empty; they are
+never inferred merely to complete the form.
+
+Every `engineering_qa` card requires `question_zh`, `answer_status`,
+`source_locator`, and an answer (or an explicit unresolved marker). Normalization
+validates the stable `source_url` and injects
+`verification_status=community_candidate`.
+Therefore every rendered problem and candidate answer has a clickable original
+post citation. X answers may cite the exact reply URL instead of the thread root.
+A card without an original URL is invalid output.
+
+Raw API/manual captures belong under ignored `var/`; only normalized metadata,
+original summaries, short necessary excerpts, and stable citations belong in
+`data/sources/`.
+
 ## EngineeringClaim
 
 Required fields:

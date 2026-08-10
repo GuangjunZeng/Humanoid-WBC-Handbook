@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2410.21229v2",
+  "source_pdf": "https://arxiv.org/pdf/2410.21229v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-2-command-masks.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.21229v2",
+      "pdf_page": 2,
+      "source_locator": "Figure 2",
+      "caption_zh": "统一命令向量、控制模式掩码与教师-学生训练框架。",
+      "sha256": "11b1e07fa64ef8788ac0f4a3f0bf44f0e934edce9cc30e27f676cf18eae2e17e"
+    },
+    {
+      "asset": "figure-4-table-3-4.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.21229v2",
+      "pdf_page": 5,
+      "source_locator": "Figure 4 / Table III-IV",
+      "caption_zh": "多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。",
+      "sha256": "ae3ff4014c547b0fcfbbe32d6b5080be0f2b25a1d8b75cbfe0f98a7b6c383053"
+    },
+    {
+      "asset": "table-5-switching.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.21229v2",
+      "pdf_page": 6,
+      "source_locator": "Table V",
+      "caption_zh": "历史长度、掩码策略与运行时模式切换相关实验。",
+      "sha256": "ef536afc0a1803695b7291782133921e02cc58e5b7f389b95081bf6801f8c59d"
+    }
+  ]
+}

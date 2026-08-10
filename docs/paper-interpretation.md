@@ -1,21 +1,25 @@
-# Single-paper interpretation workflow
+# 单篇论文深度解读流程
 
-This workflow reuses only the single-paper reading method selected from the local `paper-daily` skill. Its Scholar Inbox, scheduling, Feishu, messaging, state, and deduplication workflows are not part of this project.
+本流程只复用本地 `paper-daily` 中的“单篇论文分析”方法。Scholar Inbox、定时任务、飞书、消息、推送、订阅状态和日报功能都不属于本项目。
 
-## Required reading pass
+## 阅读与核验
 
-1. Read the complete paper, including appendices relevant to implementation; do not rely on the abstract.
-2. State the problem, why existing methods are insufficient, and the claimed contribution.
-3. Trace the central mechanism as input → processing → output → reason it should help.
-4. Explain decisive formulas and inspect at least three useful figures/tables.
-5. Identify the most persuasive experiment, its baseline, metric, conditions, and whether the evidence supports the claim.
-6. Find public code when available and map at least two paper components to specific files and functions/classes.
-7. Separate author-stated limitations from independent engineering judgment.
-8. Record robot, simulator, sensors, control rate, action space, training data, compute, and deployment assumptions when reported.
-9. For hardware-facing results, document safety conditions, missing safeguards, and sim-to-real uncertainty.
+1. 下载并阅读锁定版本的完整 PDF，包括对实现、消融、参数和限制有用的附录；不以摘要或项目页代替全文。
+2. 说清工程痛点、先前方法为什么不足，以及论文实际声称的贡献；不把后来仓库能力倒写成论文贡献。
+3. 用“输入 → 处理 → 输出 → 为什么可能有效”追踪主机制，解释决定性公式而不堆砌符号。
+4. 找出 3–5 张最能支持分析的原论文图/表：优先系统图、机制消融、最强实验、失败例和与代码接口有关的表。
+5. 对每张图说明“看什么”、“它支持哪个结论”和“不能支持什么”；不把图当装饰，不把最佳轨迹当平均表现。
+6. 选出最有说服力的实验，写清基线、自变量、指标、分母、环境和结论边界；优先保留负面结果和失败模式。
+7. 有公开代码时，只使用官方仓库并固定 commit，将至少两个论文组件映射到具体文件、函数或类；无公开代码时明确写“未公开/无法核验”，不用第三方实现填空。
+8. 分开“作者明确局限”与“独立工程判断”。记录机器人、模拟器、传感器、控制频率、动作空间、数据、计算和部署假设中已报告与未报告的部分。
+9. 涉及实机时，明确安全条件、缺失的保护、sim-to-real 不确定性与 ODD；论文参数不得被表述为其他机器人可直接下发的安全限值。
 
-## Output standard
+## 写作标准
 
-A paper brief should read as a technical story: engineering pain, key idea, mechanism, evidence, implementation map, applicability, failure modes, and actionable—but bounded—takeaways. Every quantitative statement needs a section/figure/table locator. Unknown information stays explicitly unknown.
+- 正文以中文为主，关键术语首次出现使用“中文（English）”；不使用大段英文转述。
+- 每篇至少 3000 个汉字、15 个正文段落、6 组中英术语、3 张来自锁定 PDF 的关键图，并保留图的页码、来源 URL 和完整性哈希。
+- 结构至少包含：一句话总结、术语导航、工程痛点、核心洞察、方法主线、关键图解、最强实验、论文—代码/实现状态、局限、有边界结论和“复现与验收清单”。
+- 量化陈述附带 Figure/Table/Equation 定位；不确定信息保持未知，不从 README 或视频补写论文未报告的分母。
+- 运行 `python3 scripts/check_paper_quality.py`，只有全部质量门通过才能把 `analysis_status` 改为 `deep_read`。
 
-The completed brief is evidence input; it does not become a reviewed Engineering Claim automatically.
+完整解读只是证据输入，不会自动成为已评审 `EngineeringClaim`。

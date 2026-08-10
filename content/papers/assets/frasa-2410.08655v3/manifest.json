@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2410.08655v3",
+  "source_pdf": "https://arxiv.org/pdf/2410.08655v3",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-state-action.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.08655v3",
+      "pdf_page": 3,
+      "source_locator": "Figure 2 / Equation 1-4",
+      "caption_zh": "左右对称五自由度状态、增量动作与简洁奖励的定义。",
+      "sha256": "4931657af0cd83bbc46dabcc89ca5b45ccc941c217ef1e8be00050c8afa701d0"
+    },
+    {
+      "asset": "figure-4-training-table-2.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.08655v3",
+      "pdf_page": 4,
+      "source_locator": "Figure 4 / Table II",
+      "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。",
+      "sha256": "6ec1b437594670e9d53750d5bf158f7b9b04401b970691820bbb1b7e7f4de15e"
+    },
+    {
+      "asset": "table-3-4-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.08655v3",
+      "pdf_page": 6,
+      "source_locator": "Table III-IV",
+      "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。",
+      "sha256": "4d70a17f4d738ac1c21de8db3d0e020a36e89c8aa621fe384771d8682812659d"
+    }
+  ]
+}

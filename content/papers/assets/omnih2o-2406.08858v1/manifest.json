@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2406.08858v1",
+  "source_pdf": "https://arxiv.org/pdf/2406.08858v1",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-system.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.08858v1",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "从人体动作、特权教师到头手稀疏输入学生的全链路。",
+      "sha256": "73dc03b32d7fc2f8ecd1481b955aa45e6f5ad7f38e1454ee0f51e741324be6e0"
+    },
+    {
+      "asset": "table-1-2-evaluation.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.08858v1",
+      "pdf_page": 6,
+      "source_locator": "Table 1-2",
+      "caption_zh": "仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。",
+      "sha256": "0da374482f9a2ac013f61021c3c7f68564657aea8c1d63469534eb83026b1ed1"
+    },
+    {
+      "asset": "figure-9-motion-distribution.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.08858v1",
+      "pdf_page": 22,
+      "source_locator": "Figure 9",
+      "caption_zh": "固定下肢动作分布对稳定上肢任务的影响。",
+      "sha256": "191772d8f4fd816e3dc580e73f503f4bfd6f9c7a082748bf73e485dd9117c1dd"
+    }
+  ]
+}

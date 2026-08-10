@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2511.11218v3",
+  "source_pdf": "https://arxiv.org/pdf/2511.11218v3",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-training.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.11218v3",
+      "pdf_page": 4,
+      "source_locator": "Figure 2",
+      "caption_zh": "足步、挥拍和羽毛球任务精调的三阶段强化学习。",
+      "sha256": "75c27caaa3ab94f378e15f696e9840921c29a8b4815273b2a8c2b6ca42759bad"
+    },
+    {
+      "asset": "figure-3-4-control.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.11218v3",
+      "pdf_page": 7,
+      "source_locator": "Figure 3-4",
+      "caption_zh": "迎球足步、挥拍时序与预测目标接口。",
+      "sha256": "005399b9807e3f7a246c0cf0b8107b6a3bb9c75a439de36148c4910998ba882c"
+    },
+    {
+      "asset": "table-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.11218v3",
+      "pdf_page": 11,
+      "source_locator": "Table V",
+      "caption_zh": "46 次真机试验中目标预测与无预测策略的回球对照。",
+      "sha256": "3d09461ab46575d77616c1c6c2db9d0593b2ec5e4fe6183eb193132ce94c7bfe"
+    }
+  ]
+}

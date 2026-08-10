@@ -12,18 +12,18 @@
   ],
   "canonical_url": "https://beyondmimic.github.io/",
   "captured_at": "2026-08-10T14:00:00+08:00",
-  "content_sha256": "65083d2001df53837e7554d64c37de560d72196b88ebcad98ff50e7bdf3507ee",
+  "content_sha256": "0193f283acee4bf217be5763acce79e2c9a83b230dbe202ee89e54f714c5fbf2",
   "excerpt": null,
   "kind": "project_page",
   "license": null,
   "metadata": {
-    "code_status": "advertised_unresolved",
-    "search_boundary": "Official page and exact-title/author GitHub discovery checked; downstream adoptions and third-party implementations excluded."
+    "code_status": "official_tracker_verified_diffusion_not_published",
+    "search_boundary": "Official page and author-organization repository checked; the repository is scoped to motion tracking, while latent diffusion, CVAE, and guidance code are not represented as public."
   },
   "published_at": null,
   "publisher": "UC Berkeley / Stanford University",
   "source_id": "project.beyondmimic.official.2026-08-10",
-  "summary": "The author-linked page provides paper descriptions and demonstrations and calls the tracker open source, but exposes no uniquely resolvable official repository, commit, or software license at capture time.",
+  "summary": "The author-linked project identifies the official whole_body_tracking repository for the motion-tracking layer. That MIT-licensed repository does not establish that the latent diffusion, CVAE, or test-time guidance implementation is public.",
   "title": "BeyondMimic official project page",
   "version": "accessed-2026-08-10"
 }

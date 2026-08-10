@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2502.01143v3",
+  "source_pdf": "https://arxiv.org/pdf/2502.01143v3",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.01143v3",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。",
+      "sha256": "c6651ae8338f9fcfb47449decc77bd0e54d3b7e8bcc6c384b3c2b79fa9b0378e"
+    },
+    {
+      "asset": "figure-4-table-3.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.01143v3",
+      "pdf_page": 6,
+      "source_locator": "Figure 4-5 / Table III",
+      "caption_zh": "Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。",
+      "sha256": "5ab510ad2c7579f6c05130008923acaaa2796761772b3ecbc13b5bd7e84f97b6"
+    },
+    {
+      "asset": "table-5-real-world.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.01143v3",
+      "pdf_page": 9,
+      "source_locator": "Table V",
+      "caption_zh": "kick 与 OOD Silencer 两个真实动作的对齐前后误差。",
+      "sha256": "0ad7da0d6b721e80298fd17924c044f8a03893261c2153abe3dabac1f1b1af34"
+    }
+  ]
+}

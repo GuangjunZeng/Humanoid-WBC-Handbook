@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "note": "Pages are 1-based PDF pages in the pinned arXiv version. Assets are rendered locally from the ignored PDF cache.",
+  "papers": [
+    {
+      "slug": "retargeting-matters-2510.02252v1",
+      "paper_id": "arxiv:2510.02252v1",
+      "pdf": "var/papers/2510.02252v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2510.02252v1",
+      "figures": [
+        {"file": "figure-2-pipeline.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。"},
+        {"file": "table-1-2-tracking.jpg", "page": 6, "locator": "Table I-II", "caption_zh": "21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。"},
+        {"file": "figure-3-table-3-artifacts.jpg", "page": 7, "locator": "Figure 3 / Table III", "caption_zh": "穿地、自交和腰部突跳伪影，以及起始帧敏感性。"}
+      ]
+    },
+    {
+      "slug": "humi-2602.06643v2",
+      "paper_id": "arxiv:2602.06643v2",
+      "pdf": "var/papers/2602.06643v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2602.06643v2",
+      "figures": [
+        {"file": "figure-2-interface.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。"},
+        {"file": "figure-4-5-chunk-drift.jpg", "page": 5, "locator": "Figure 4-5", "caption_zh": "动作块边界不连续与盲部位开环漂移的问题定位。"},
+        {"file": "figure-6-ablation.jpg", "page": 6, "locator": "Figure 6", "caption_zh": "人在环预览、变速回放和块锚定方式的任务消融。"}
+      ]
+    },
+    {
+      "slug": "omnih2o-2406.08858v1",
+      "paper_id": "arxiv:2406.08858v1",
+      "pdf": "var/papers/2406.08858v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2406.08858v1",
+      "figures": [
+        {"file": "figure-2-system.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "从人体动作、特权教师到头手稀疏输入学生的全链路。"},
+        {"file": "table-1-2-evaluation.jpg", "page": 6, "locator": "Table 1-2", "caption_zh": "仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。"},
+        {"file": "figure-9-motion-distribution.jpg", "page": 22, "locator": "Figure 9", "caption_zh": "固定下肢动作分布对稳定上肢任务的影响。"}
+      ]
+    },
+    {
+      "slug": "hover-2410.21229v2",
+      "paper_id": "arxiv:2410.21229v2",
+      "pdf": "var/papers/2410.21229v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2410.21229v2",
+      "figures": [
+        {"file": "figure-1-2-command-masks.jpg", "page": 2, "locator": "Figure 2", "caption_zh": "统一命令向量、控制模式掩码与教师-学生训练框架。"},
+        {"file": "figure-4-table-3-4.jpg", "page": 5, "locator": "Figure 4 / Table III-IV", "caption_zh": "多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。"},
+        {"file": "table-5-switching.jpg", "page": 6, "locator": "Table V", "caption_zh": "历史长度、掩码策略与运行时模式切换相关实验。"}
+      ]
+    },
+    {
+      "slug": "humanoid-gym-2404.05695v2",
+      "paper_id": "arxiv:2404.05695v2",
+      "pdf": "var/papers/2404.05695v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2404.05695v2",
+      "figures": [
+        {"file": "figure-2-pipeline.jpg", "page": 2, "locator": "Figure 2", "caption_zh": "Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。"},
+        {"file": "figure-3-rewards.jpg", "page": 3, "locator": "Figure 3", "caption_zh": "人形步态周期、奖励组成与域随机化设计。"},
+        {"file": "table-4-parameters.jpg", "page": 6, "locator": "Table IV", "caption_zh": "附录中的训练、控制和部署参数表，用于界定复现范围。"}
+      ]
+    },
+    {
+      "slug": "challenging-terrain-2410.03654v1",
+      "paper_id": "arxiv:2410.03654v1",
+      "pdf": "var/papers/2410.03654v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2410.03654v1",
+      "figures": [
+        {"file": "figure-8-pretrain-finetune.jpg", "page": 20, "locator": "Figure 8", "caption_zh": "平地序列预训练与复杂地形 PPO 微调的两阶段结构。"},
+        {"file": "figure-9-sample-efficiency.jpg", "page": 26, "locator": "Figure 9", "caption_zh": "预训练初始化和从零训练在交互预算与最终性能上的对照。"},
+        {"file": "figure-11-gait.jpg", "page": 28, "locator": "Figure 11", "caption_zh": "预训练保留对称步态，从零策略出现拖腿的定性对照。"}
+      ]
+    },
+    {
+      "slug": "falcon-2505.06776v2",
+      "paper_id": "arxiv:2505.06776v2",
+      "pdf": "var/papers/2505.06776v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2505.06776v2",
+      "figures": [
+        {"file": "figure-2-dual-agent.jpg", "page": 5, "locator": "Figure 2", "caption_zh": "上下身双 agent 共享历史、独立奖励与末端受力课程。"},
+        {"file": "table-1-2-force-curriculum.jpg", "page": 7, "locator": "Table 1-2", "caption_zh": "双策略结构和力矩可行外力采样的分离消融。"},
+        {"file": "table-4-hardware.jpg", "page": 8, "locator": "Table 4 / Figure 1", "caption_zh": "G1 载荷行走的定量误差与多平台受力任务展示。"}
+      ]
+    },
+    {
+      "slug": "ulc-2507.06905v2",
+      "paper_id": "arxiv:2507.06905v2",
+      "pdf": "var/papers/2507.06905v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2507.06905v2",
+      "figures": [
+        {"file": "figure-2-unified-policy.jpg", "page": 5, "locator": "Figure 2", "caption_zh": "单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。"},
+        {"file": "table-3-4-figure-3.jpg", "page": 7, "locator": "Table III-IV / Figure 3", "caption_zh": "统一策略的跟踪精度、工作空间与真机任务。"},
+        {"file": "table-5-ablation.jpg", "page": 8, "locator": "Table V", "caption_zh": "顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。"}
+      ]
+    },
+    {
+      "slug": "asap-2502.01143v3",
+      "paper_id": "arxiv:2502.01143v3",
+      "pdf": "var/papers/2502.01143v3.pdf",
+      "source_url": "https://arxiv.org/pdf/2502.01143v3",
+      "figures": [
+        {"file": "figure-2-pipeline.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。"},
+        {"file": "figure-4-table-3.jpg", "page": 6, "locator": "Figure 4-5 / Table III", "caption_zh": "Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。"},
+        {"file": "table-5-real-world.jpg", "page": 9, "locator": "Table V", "caption_zh": "kick 与 OOD Silencer 两个真实动作的对齐前后误差。"}
+      ]
+    },
+    {
+      "slug": "humanoid-badminton-2511.11218v3",
+      "paper_id": "arxiv:2511.11218v3",
+      "pdf": "var/papers/2511.11218v3.pdf",
+      "source_url": "https://arxiv.org/pdf/2511.11218v3",
+      "figures": [
+        {"file": "figure-2-training.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "足步、挥拍和羽毛球任务精调的三阶段强化学习。"},
+        {"file": "figure-3-4-control.jpg", "page": 7, "locator": "Figure 3-4", "caption_zh": "迎球足步、挥拍时序与预测目标接口。"},
+        {"file": "table-5-hardware.jpg", "page": 11, "locator": "Table V", "caption_zh": "46 次真机试验中目标预测与无预测策略的回球对照。"}
+      ]
+    },
+    {
+      "slug": "beyondmimic-2508.08241v4",
+      "paper_id": "arxiv:2508.08241v4",
+      "pdf": "var/papers/2508.08241v4.pdf",
+      "source_url": "https://arxiv.org/pdf/2508.08241v4",
+      "figures": [
+        {"file": "figure-2-hardware-tracking.jpg", "page": 25, "locator": "Figure 2", "caption_zh": "高动态运动跟踪在 G1 实机上的动作范围与控制结构。"},
+        {"file": "figure-5-guidance.jpg", "page": 28, "locator": "Figure 5-6", "caption_zh": "速度、waypoint、关键帧与 SDF 避障代价的测试时组合。"},
+        {"file": "figure-8-ablation.jpg", "page": 31, "locator": "Figure 8A-D", "caption_zh": "旋转表示、历史、人为延迟和自适应采样的关键消融。"}
+      ]
+    },
+    {
+      "slug": "textop-2602.07439v1",
+      "paper_id": "arxiv:2602.07439v1",
+      "pdf": "var/papers/2602.07439v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2602.07439v1",
+      "figures": [
+        {"file": "figure-2-streaming.jpg", "page": 3, "locator": "Figure 2-3", "caption_zh": "文本流、自回归机器人动作块与低层跟踪器的时序。"},
+        {"file": "table-1-2-hardware.jpg", "page": 7, "locator": "Table I-II", "caption_zh": "30 秒真机流式指令成功次数与计算/人感响应延迟。"},
+        {"file": "table-3-4-representation.jpg", "page": 8, "locator": "Table III-IV", "caption_zh": "机器人骨架生成表示和混合数据 tracker 的分布对照。"}
+      ]
+    },
+    {
+      "slug": "host-2502.08378v2",
+      "paper_id": "arxiv:2502.08378v2",
+      "pdf": "var/papers/2502.08378v2.pdf",
+      "source_url": "https://arxiv.org/pdf/2502.08378v2",
+      "figures": [
+        {"file": "figure-2-training.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "多 critic、分阶段奖励、探索拉力和动作幅度课程。"},
+        {"file": "table-2-3-ablation.jpg", "page": 6, "locator": "Table II-III", "caption_zh": "奖励/随机化设置与起身训练组件消融。"},
+        {"file": "table-4-figure-7-9.jpg", "page": 8, "locator": "Table IV / Figure 7 / Figure 9", "caption_zh": "真机重复起身、跨地面定性结果与动作平滑性对照。"}
+      ]
+    },
+    {
+      "slug": "frasa-2410.08655v3",
+      "paper_id": "arxiv:2410.08655v3",
+      "pdf": "var/papers/2410.08655v3.pdf",
+      "source_url": "https://arxiv.org/pdf/2410.08655v3",
+      "figures": [
+        {"file": "figure-2-state-action.jpg", "page": 3, "locator": "Figure 2 / Equation 1-4", "caption_zh": "左右对称五自由度状态、增量动作与简洁奖励的定义。"},
+        {"file": "figure-4-training-table-2.jpg", "page": 4, "locator": "Figure 4 / Table II", "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。"},
+        {"file": "table-3-4-hardware.jpg", "page": 6, "locator": "Table III-IV", "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。"}
+      ]
+    }
+  ]
+}

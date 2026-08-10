@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2505.06776v2",
+  "source_pdf": "https://arxiv.org/pdf/2505.06776v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-dual-agent.jpg",
+      "source_url": "https://arxiv.org/pdf/2505.06776v2",
+      "pdf_page": 5,
+      "source_locator": "Figure 2",
+      "caption_zh": "上下身双 agent 共享历史、独立奖励与末端受力课程。",
+      "sha256": "92051b890bf2126de487dbbab5b5b23dfe59e3f3f90b7325e7c84934df07413d"
+    },
+    {
+      "asset": "table-1-2-force-curriculum.jpg",
+      "source_url": "https://arxiv.org/pdf/2505.06776v2",
+      "pdf_page": 7,
+      "source_locator": "Table 1-2",
+      "caption_zh": "双策略结构和力矩可行外力采样的分离消融。",
+      "sha256": "fbaade9663f438bbb2b53f65c4ed734baf13e674d1b8d3e01e2555bcadf47ecf"
+    },
+    {
+      "asset": "table-4-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2505.06776v2",
+      "pdf_page": 8,
+      "source_locator": "Table 4 / Figure 1",
+      "caption_zh": "G1 载荷行走的定量误差与多平台受力任务展示。",
+      "sha256": "e8bd16ec3dc03c819eb3134fc489e1f1fa12a272389d85e3777d9cf68d3adf37"
+    }
+  ]
+}

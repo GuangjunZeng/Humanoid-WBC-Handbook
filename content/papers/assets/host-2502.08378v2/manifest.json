@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2502.08378v2",
+  "source_pdf": "https://arxiv.org/pdf/2502.08378v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-training.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.08378v2",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "多 critic、分阶段奖励、探索拉力和动作幅度课程。",
+      "sha256": "0b0d0604ddb1f6b228afa7bb45ca1db9beda7fca47764ce9903dd6a9155d2b63"
+    },
+    {
+      "asset": "table-2-3-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.08378v2",
+      "pdf_page": 6,
+      "source_locator": "Table II-III",
+      "caption_zh": "奖励/随机化设置与起身训练组件消融。",
+      "sha256": "aa8d42b2988238b384ed4afd1e75e62cdbe1fea22e3befc2a17e47eefb37898f"
+    },
+    {
+      "asset": "table-4-figure-7-9.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.08378v2",
+      "pdf_page": 8,
+      "source_locator": "Table IV / Figure 7 / Figure 9",
+      "caption_zh": "真机重复起身、跨地面定性结果与动作平滑性对照。",
+      "sha256": "e12aea746a8c42b999e1cba72e062433e02e50442fc3bf70e0bb4d7108d9a6d1"
+    }
+  ]
+}

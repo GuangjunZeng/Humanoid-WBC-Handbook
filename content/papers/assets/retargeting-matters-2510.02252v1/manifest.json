@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2510.02252v1",
+  "source_pdf": "https://arxiv.org/pdf/2510.02252v1",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2510.02252v1",
+      "pdf_page": 4,
+      "source_locator": "Figure 2",
+      "caption_zh": "GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。",
+      "sha256": "1a7ff7cd6c4a79ad1a0fb1d404011077852a254c07117c96fd2341680675e49e"
+    },
+    {
+      "asset": "table-1-2-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2510.02252v1",
+      "pdf_page": 6,
+      "source_locator": "Table I-II",
+      "caption_zh": "21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。",
+      "sha256": "578a893afd43195e812b3a3f4aad0a34d7b794e207b5f64f3b7b42128cfdb707"
+    },
+    {
+      "asset": "figure-3-table-3-artifacts.jpg",
+      "source_url": "https://arxiv.org/pdf/2510.02252v1",
+      "pdf_page": 7,
+      "source_locator": "Figure 3 / Table III",
+      "caption_zh": "穿地、自交和腰部突跳伪影，以及起始帧敏感性。",
+      "sha256": "4256a21d150203f8b3fcd608f4d21dab2dbc6a42f55e64fa706ed8b060684834"
+    }
+  ]
+}

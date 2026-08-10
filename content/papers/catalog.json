@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-10T00:00:00+08:00",
+  "purpose": "Visible coverage catalog for classic, open-source, and current humanoid WBC papers. deep_read means the repository has a complete audited interpretation; queued means collected but not yet promoted.",
+  "status_values": ["deep_read", "queued"],
+  "code_status_values": ["verified_official", "announced", "not_public", "unknown"],
+  "domains": {
+    "training_data_retargeting": {
+      "title_zh": "训练数据与动作重定向",
+      "required_roles": ["field_anchor", "open_source", "robot_data_quality"],
+      "discovery_query": "humanoid AND (motion retargeting OR motion dataset)",
+      "keywords": ["humanoid", "retargeting", "motion", "dataset", "physical"]
+    },
+    "universal_tracking_teleoperation": {
+      "title_zh": "通用跟踪与全身遥操",
+      "required_roles": ["field_anchor", "open_source", "sparse_command", "multi_mode"],
+      "discovery_query": "humanoid AND (whole-body tracking OR teleoperation)",
+      "keywords": ["humanoid", "whole-body", "tracking", "teleoperation", "imitation"]
+    },
+    "locomotion_terrain": {
+      "title_zh": "行走与复杂地形",
+      "required_roles": ["classical_control", "learning_anchor", "open_source", "terrain"],
+      "discovery_query": "humanoid AND (locomotion OR terrain)",
+      "keywords": ["humanoid", "locomotion", "terrain", "sim-to-real", "walking"]
+    },
+    "loco_manipulation_wbc": {
+      "title_zh": "移动操作与末端 WBC",
+      "required_roles": ["classical_control", "optimization", "open_source", "learning"],
+      "discovery_query": "humanoid AND (loco-manipulation OR whole-body control)",
+      "keywords": ["humanoid", "loco-manipulation", "whole-body", "end-effector", "control"]
+    },
+    "sports": {
+      "title_zh": "体育与高动态技能",
+      "required_roles": ["field_anchor", "open_source", "sim_to_real", "task_interaction"],
+      "discovery_query": "humanoid AND (sports OR agile skill)",
+      "keywords": ["humanoid", "sports", "agile", "skill", "interaction", "sim-to-real"]
+    },
+    "motion_generation": {
+      "title_zh": "动作生成与可命令行为",
+      "required_roles": ["field_anchor", "latent_skill", "open_source", "robot_deployment"],
+      "discovery_query": "humanoid AND (motion generation OR motion diffusion OR motion prior)",
+      "keywords": ["humanoid", "motion", "generation", "diffusion", "latent", "control"]
+    },
+    "recovery_safety_force": {
+      "title_zh": "起身恢复、跌倒与受力安全",
+      "required_roles": ["recovery", "protective_fall", "open_source", "hardware_evidence"],
+      "discovery_query": "humanoid AND (fall recovery OR getting up OR protective fall)",
+      "keywords": ["humanoid", "fall", "recovery", "getting-up", "protective", "safety"]
+    }
+  },
+  "papers": [
+    {
+      "paper_id": "arxiv:1904.03278",
+      "title": "AMASS: Archive of Motion Capture as Surface Shapes",
+      "year": 2019,
+      "topics": ["training_data_retargeting"],
+      "coverage_roles": ["field_anchor", "open_source"],
+      "paper_url": "https://arxiv.org/abs/1904.03278",
+      "code": {"status": "verified_official", "url": "https://github.com/nghorbani/amass"},
+      "analysis_status": "queued",
+      "why_zh": "将多个人体动作库统一到 SMPL/SMPL-H 表示，是今日大规模人形跟踪的数据起点。"
+    },
+    {
+      "paper_id": "arxiv:1804.02717",
+      "title": "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills",
+      "year": 2018,
+      "topics": ["training_data_retargeting", "sports", "motion_generation"],
+      "coverage_roles": ["field_anchor", "open_source"],
+      "paper_url": "https://arxiv.org/abs/1804.02717",
+      "code": {"status": "verified_official", "url": "https://github.com/xbpeng/DeepMimic"},
+      "analysis_status": "queued",
+      "why_zh": "参考动作跟踪与任务目标联合训练的经典起点，对后续高动态动作学习影响深远。"
+    },
+    {
+      "paper_id": "arxiv:2305.06456",
+      "title": "Perpetual Humanoid Control for Real-time Simulated Avatars",
+      "year": 2023,
+      "topics": ["training_data_retargeting", "motion_generation", "recovery_safety_force"],
+      "coverage_roles": ["field_anchor", "open_source", "recovery"],
+      "paper_url": "https://arxiv.org/abs/2305.06456",
+      "code": {"status": "verified_official", "url": "https://github.com/ZhengyiLuo/PHC"},
+      "analysis_status": "queued",
+      "why_zh": "用渐进容量分配扩展到万级动作，并把失败状态恢复纳入同一物理控制器。"
+    },
+    {
+      "paper_id": "arxiv:2510.02252v1",
+      "title": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking",
+      "year": 2025,
+      "topics": ["training_data_retargeting"],
+      "coverage_roles": ["robot_data_quality", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2510.02252v1",
+      "code": {"status": "verified_official", "url": "https://github.com/YanjieZe/GMR"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/retargeting-matters-2510.02252v1.md",
+      "why_zh": "用下游跟踪成功率直接检验重定向伪影，并提供通用开源实现。"
+    },
+    {
+      "paper_id": "arxiv:2602.06643v2",
+      "title": "Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations",
+      "year": 2026,
+      "topics": ["training_data_retargeting", "universal_tracking_teleoperation"],
+      "coverage_roles": ["robot_data_quality", "sparse_command"],
+      "paper_url": "https://arxiv.org/abs/2602.06643v2",
+      "code": {"status": "announced", "url": "https://humanoid-manipulation-interface.github.io/"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/humi-2602.06643v2.md",
+      "why_zh": "代表无机器人示教、人在环可行性反馈与分层全身跟踪的数据路线。"
+    },
+    {
+      "paper_id": "arxiv:2510.26236",
+      "title": "PHUMA: Physically-Grounded Humanoid Locomotion Dataset",
+      "year": 2025,
+      "topics": ["training_data_retargeting", "locomotion_terrain"],
+      "coverage_roles": ["robot_data_quality", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2510.26236",
+      "code": {"status": "verified_official", "url": "https://github.com/DAVIAN-Robotics/PHUMA"},
+      "analysis_status": "queued",
+      "why_zh": "把大规模人类视频动作转换为带关节、接触和脚滑约束的可跟踪人形数据。"
+    },
+    {
+      "paper_id": "arxiv:2403.04436",
+      "title": "Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
+      "year": 2024,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["field_anchor", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2403.04436",
+      "code": {"status": "verified_official", "url": "https://github.com/LeCAR-Lab/human2humanoid"},
+      "analysis_status": "queued",
+      "why_zh": "早期真实全尺寸人形学习式实时全身遥操锚点，建立 sim-to-data 筛选管线。"
+    },
+    {
+      "paper_id": "arxiv:2406.08858v1",
+      "title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+      "year": 2024,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["sparse_command", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2406.08858v1",
+      "code": {"status": "verified_official", "url": "https://github.com/LeCAR-Lab/human2humanoid"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/omnih2o-2406.08858v1.md",
+      "why_zh": "用头手稀疏命令、历史观测和教师蒸馏实现全身遥操与任务学习。"
+    },
+    {
+      "paper_id": "arxiv:2406.10454",
+      "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
+      "year": 2024,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["field_anchor", "open_source", "sparse_command"],
+      "paper_url": "https://arxiv.org/abs/2406.10454",
+      "code": {"status": "verified_official", "url": "https://github.com/MarkFzp/humanplus"},
+      "analysis_status": "queued",
+      "why_zh": "把真人影子模仿、全身数据采集与自主视觉模仿连成完整系统。"
+    },
+    {
+      "paper_id": "arxiv:2410.21229v2",
+      "title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
+      "year": 2024,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["multi_mode", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2410.21229v2",
+      "code": {"status": "verified_official", "url": "https://github.com/NVlabs/HOVER"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/hover-2410.21229v2.md",
+      "why_zh": "用统一命令向量、模式掩码与稀疏掩码训练一个多模式全身控制器。"
+    },
+    {
+      "paper_id": "arxiv:2412.13196",
+      "title": "ExBody2: Advanced Expressive Humanoid Whole-Body Control",
+      "year": 2024,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["multi_mode", "field_anchor"],
+      "paper_url": "https://arxiv.org/abs/2412.13196",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "将关键点跟踪与根速度控制解耦，并在两种真实人形平台上验证表达性动作。"
+    },
+    {
+      "paper_id": "arxiv:2505.02833",
+      "title": "TWIST: Teleoperated Whole-Body Imitation System",
+      "year": 2025,
+      "topics": ["universal_tracking_teleoperation"],
+      "coverage_roles": ["sparse_command", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2505.02833",
+      "code": {"status": "verified_official", "url": "https://github.com/YanjieZe/TWIST"},
+      "analysis_status": "queued",
+      "why_zh": "以 RL+BC、特权未来帧和真实 MoCap 提高单一网络的响应性全身遥操。"
+    },
+    {
+      "paper_id": "arxiv:2511.02832",
+      "title": "TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System",
+      "year": 2025,
+      "topics": ["universal_tracking_teleoperation", "training_data_retargeting"],
+      "coverage_roles": ["sparse_command", "open_source", "robot_data_quality"],
+      "paper_url": "https://arxiv.org/abs/2511.02832",
+      "code": {"status": "verified_official", "url": "https://github.com/amazon-far/TWIST2"},
+      "analysis_status": "queued",
+      "why_zh": "用便携 VR 和低成本机器人颈部取代昂贵 MoCap，面向可规模化数据采集。"
+    },
+    {
+      "paper_id": "arxiv:2511.07820",
+      "title": "SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control",
+      "year": 2025,
+      "topics": ["universal_tracking_teleoperation", "motion_generation"],
+      "coverage_roles": ["multi_mode", "open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2511.07820",
+      "code": {"status": "verified_official", "url": "https://github.com/NVlabs/GR00T-WholeBodyControl"},
+      "analysis_status": "queued",
+      "why_zh": "系统扩展模型、数据和计算，用统一 token 接口连接遥操、视频与 VLA。"
+    },
+    {
+      "paper_id": "doi:10.1109/ICRA.2003.1241826",
+      "title": "Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point",
+      "year": 2003,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["classical_control", "field_anchor"],
+      "paper_url": "https://doi.org/10.1109/ICRA.2003.1241826",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "ZMP 预览控制的经典工作，是理解现代学习步态与模型控制分工的必要基线。"
+    },
+    {
+      "paper_id": "arxiv:2010.01909",
+      "title": "Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition",
+      "year": 2020,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["learning_anchor", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2010.01909",
+      "code": {"status": "verified_official", "url": "https://github.com/osudrl/apex"},
+      "analysis_status": "queued",
+      "why_zh": "在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。"
+    },
+    {
+      "paper_id": "arxiv:2402.19469",
+      "title": "Humanoid Locomotion as Next Token Prediction",
+      "year": 2024,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["learning_anchor", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2402.19469",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "把真实 Digit 行走建模为下一 token 预测，代表离线序列模型进入人形运动控制。"
+    },
+    {
+      "paper_id": "arxiv:2404.05695v2",
+      "title": "Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer",
+      "year": 2024,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2404.05695v2",
+      "code": {"status": "verified_official", "url": "https://github.com/roboterax/humanoid-gym"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/humanoid-gym-2404.05695v2.md",
+      "why_zh": "开源 Isaac Gym 训练、MuJoCo sim-to-sim 和双尺寸真机部署的工程基线。"
+    },
+    {
+      "paper_id": "arxiv:2410.03654v1",
+      "title": "Learning Humanoid Locomotion over Challenging Terrain",
+      "year": 2024,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["terrain", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2410.03654v1",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/challenging-terrain-2410.03654v1.md",
+      "why_zh": "用平地序列预训练 Transformer 再 PPO 微调，验证盲走 Digit 的复杂地形样本效率。"
+    },
+    {
+      "paper_id": "arxiv:2506.15132",
+      "title": "Booster Gym: An End-to-End Reinforcement Learning Framework for Humanoid Robot Locomotion",
+      "year": 2025,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2506.15132",
+      "code": {"status": "verified_official", "url": "https://github.com/BoosterRobotics/booster_gym"},
+      "analysis_status": "queued",
+      "why_zh": "从训练、域随机化到 Booster T1 部署的端到端开源人形行走框架。"
+    },
+    {
+      "paper_id": "arxiv:2512.01996",
+      "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "year": 2025,
+      "topics": ["locomotion_terrain"],
+      "coverage_roles": ["open_source", "learning_anchor", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2512.01996",
+      "code": {"status": "verified_official", "url": "https://github.com/younggyoseo/FastTD3"},
+      "analysis_status": "queued",
+      "why_zh": "用大规模并行离策略 RL 将 G1/T1 实机行走训练缩短到分钟级。"
+    },
+    {
+      "paper_id": "pdf:sentis-khatib-2006-wbc",
+      "title": "A Whole-Body Control Framework for Humanoids",
+      "year": 2006,
+      "topics": ["loco_manipulation_wbc"],
+      "coverage_roles": ["classical_control", "field_anchor"],
+      "paper_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "层级操作空间全身控制的经典文献，定义了多任务优先级与动力学一致的基本语言。"
+    },
+    {
+      "paper_id": "hal:hal-01136936",
+      "title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+      "year": 2016,
+      "topics": ["loco_manipulation_wbc"],
+      "coverage_roles": ["optimization", "open_source", "classical_control"],
+      "paper_url": "https://hal.science/hal-01136936",
+      "code": {"status": "verified_official", "url": "https://github.com/stack-of-tasks/tsid"},
+      "analysis_status": "queued",
+      "why_zh": "TSID 的工程实现锚点，说明高减速比、无关节力矩传感时如何落地任务空间逆动力学。"
+    },
+    {
+      "paper_id": "arxiv:2503.04613",
+      "title": "Whole-Body Model-Predictive Control of Legged Robots with MuJoCo",
+      "year": 2025,
+      "topics": ["loco_manipulation_wbc", "locomotion_terrain"],
+      "coverage_roles": ["optimization", "open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2503.04613",
+      "code": {"status": "verified_official", "url": "https://johnzhang3.github.io/mujoco_ilqr/"},
+      "analysis_status": "queued",
+      "why_zh": "用 MuJoCo 动力学和有限差分 iLQR 给出容易复现的真实全身 MPC 基线。"
+    },
+    {
+      "paper_id": "arxiv:2502.13013",
+      "title": "HOMIE: Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit",
+      "year": 2025,
+      "topics": ["loco_manipulation_wbc", "universal_tracking_teleoperation"],
+      "coverage_roles": ["learning", "open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2502.13013",
+      "code": {"status": "verified_official", "url": "https://github.com/InternRobotics/OpenHomie"},
+      "analysis_status": "queued",
+      "why_zh": "同构外骨骼驾驶舱与移动操作策略联合设计，并完整开源硬件和训练资源。"
+    },
+    {
+      "paper_id": "arxiv:2505.06776v2",
+      "title": "FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation",
+      "year": 2025,
+      "topics": ["loco_manipulation_wbc", "recovery_safety_force"],
+      "coverage_roles": ["learning", "open_source", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2505.06776v2",
+      "code": {"status": "verified_official", "url": "https://github.com/LeCAR-Lab/FALCON"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/falcon-2505.06776v2.md",
+      "why_zh": "用双策略分解与力矩可行外力课程学习受力移动操作。"
+    },
+    {
+      "paper_id": "arxiv:2507.06905v2",
+      "title": "ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation",
+      "year": 2025,
+      "topics": ["loco_manipulation_wbc"],
+      "coverage_roles": ["learning", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2507.06905v2",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/ulc-2507.06905v2.md",
+      "why_zh": "用顺序技能、残差手臂动作和延迟/载荷随机化训练单一细粒度策略。"
+    },
+    {
+      "paper_id": "arxiv:2304.13653",
+      "title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning",
+      "year": 2023,
+      "topics": ["sports", "recovery_safety_force"],
+      "coverage_roles": ["field_anchor", "sim_to_real", "recovery"],
+      "paper_url": "https://arxiv.org/abs/2304.13653",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "小型人形真实 1v1 足球的代表性工作，统一了行走、踢球、策略与快速起身。"
+    },
+    {
+      "paper_id": "arxiv:2502.01143v3",
+      "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
+      "year": 2025,
+      "topics": ["sports"],
+      "coverage_roles": ["sim_to_real", "open_source", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2502.01143v3",
+      "code": {"status": "verified_official", "url": "https://github.com/LeCAR-Lab/ASAP"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/asap-2502.01143v3.md",
+      "why_zh": "用实机轨迹学习 delta action 对齐训练动力学，并公开报告硬件损坏代价。"
+    },
+    {
+      "paper_id": "arxiv:2506.12851",
+      "title": "KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills",
+      "year": 2025,
+      "topics": ["sports", "motion_generation"],
+      "coverage_roles": ["open_source", "sim_to_real", "task_interaction"],
+      "paper_url": "https://arxiv.org/abs/2506.12851",
+      "code": {"status": "verified_official", "url": "https://github.com/TeleHuman/PBHC"},
+      "analysis_status": "queued",
+      "why_zh": "面向武术类高动态动作的多阶段运动处理、自适应跟踪与真机开源基线。"
+    },
+    {
+      "paper_id": "arxiv:2511.11218v3",
+      "title": "Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning",
+      "year": 2025,
+      "topics": ["sports"],
+      "coverage_roles": ["task_interaction", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2511.11218v3",
+      "code": {"status": "not_public", "url": ""},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/humanoid-badminton-2511.11218v3.md",
+      "why_zh": "用足步、挥拍和任务精调三阶段学习时序敏感的真实羽毛球击打。"
+    },
+    {
+      "paper_id": "arxiv:2602.08370",
+      "title": "Learning Human-Like Badminton Skills for Humanoid Robots",
+      "year": 2026,
+      "topics": ["sports"],
+      "coverage_roles": ["task_interaction", "sim_to_real"],
+      "paper_url": "https://arxiv.org/abs/2602.08370",
+      "code": {"status": "unknown", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "用从模仿到交互的渐进训练和流形扩展学习多种拟人击球技能。"
+    },
+    {
+      "paper_id": "arxiv:2602.05310",
+      "title": "Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework",
+      "year": 2026,
+      "topics": ["sports"],
+      "coverage_roles": ["task_interaction", "sim_to_real"],
+      "paper_url": "https://arxiv.org/abs/2602.05310",
+      "code": {"status": "unknown", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "用动作技能、感知动作融合和物理迁移三阶段学习 Unitree G1 足球。"
+    },
+    {
+      "paper_id": "arxiv:2104.02180",
+      "title": "AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control",
+      "year": 2021,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["field_anchor", "open_source", "latent_skill"],
+      "paper_url": "https://arxiv.org/abs/2104.02180",
+      "code": {"status": "verified_official", "url": "https://github.com/isaac-sim/IsaacGymEnvs"},
+      "analysis_status": "queued",
+      "why_zh": "用对抗运动先验取代繁重的逐项风格奖励，是后续动作先验控制的关键基线。"
+    },
+    {
+      "paper_id": "arxiv:2205.01906",
+      "title": "ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters",
+      "year": 2022,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["latent_skill", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2205.01906",
+      "code": {"status": "verified_official", "url": "https://github.com/nv-tlabs/ASE"},
+      "analysis_status": "queued",
+      "why_zh": "将大规模动作数据压入可重用技能嵌入，为下游分层任务提供动作基元。"
+    },
+    {
+      "paper_id": "arxiv:2305.02195",
+      "title": "CALM: Conditional Adversarial Latent Models for Directable Virtual Characters",
+      "year": 2023,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["latent_skill", "open_source"],
+      "paper_url": "https://arxiv.org/abs/2305.02195",
+      "code": {"status": "verified_official", "url": "https://github.com/NVlabs/ProtoMotions"},
+      "analysis_status": "queued",
+      "why_zh": "联合学习控制策略和动作编码器，使潜空间同时支持重建、风格和高层任务控制。"
+    },
+    {
+      "paper_id": "openreview:OrOd8PxOO2",
+      "title": "Universal Humanoid Motion Representations for Physics-Based Control",
+      "year": 2024,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["latent_skill", "field_anchor"],
+      "paper_url": "https://openreview.net/forum?id=OrOd8PxOO2",
+      "code": {"status": "verified_official", "url": "https://github.com/ZhengyiLuo/PHC"},
+      "analysis_status": "queued",
+      "why_zh": "PULSE 将大规模通用跟踪器蒸馏为带本体条件先验的通用运动表示。"
+    },
+    {
+      "paper_id": "arxiv:2409.14393",
+      "title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
+      "year": 2024,
+      "topics": ["motion_generation", "universal_tracking_teleoperation"],
+      "coverage_roles": ["latent_skill", "open_source", "multi_mode"],
+      "paper_url": "https://arxiv.org/abs/2409.14393",
+      "code": {"status": "verified_official", "url": "https://github.com/NVlabs/ProtoMotions"},
+      "analysis_status": "queued",
+      "why_zh": "把关键帧、文本、场景和稀疏目标统一为掩码动作补全问题。"
+    },
+    {
+      "paper_id": "arxiv:2508.08241v4",
+      "title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion",
+      "year": 2025,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["latent_skill", "open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2508.08241v4",
+      "code": {"status": "verified_official", "url": "https://github.com/HybridRobotics/whole_body_tracking"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/beyondmimic-2508.08241v4.md",
+      "why_zh": "用状态潜变量扩散与可微测试时代价将跟踪技能组合为新任务。"
+    },
+    {
+      "paper_id": "arxiv:2602.07439v1",
+      "title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
+      "year": 2026,
+      "topics": ["motion_generation"],
+      "coverage_roles": ["open_source", "robot_deployment"],
+      "paper_url": "https://arxiv.org/abs/2602.07439v1",
+      "code": {"status": "verified_official", "url": "https://github.com/TeleHuman/TextOp"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/textop-2602.07439v1.md",
+      "why_zh": "用流式文本、自回归短动作块和独立跟踪器实现可随时改写的真机运动。"
+    },
+    {
+      "paper_id": "arxiv:2502.12152",
+      "title": "Learning Getting-Up Policies for Real-World Humanoid Robots",
+      "year": 2025,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["recovery", "open_source", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2502.12152",
+      "code": {"status": "verified_official", "url": "https://github.com/RunpeiDong/HumanUP"},
+      "analysis_status": "queued",
+      "why_zh": "HumanUP 先放开约束发现起身轨迹，再细化为平滑、低速、可迁移的真机策略。"
+    },
+    {
+      "paper_id": "arxiv:2502.08378v2",
+      "title": "Learning Humanoid Standing-up Control across Diverse Postures",
+      "year": 2025,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["recovery", "open_source", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2502.08378v2",
+      "code": {"status": "verified_official", "url": "https://github.com/OpenRobotLab/HoST"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/host-2502.08378v2.md",
+      "why_zh": "从多姿态无示范探索起身，以多 critic、探索课程和平滑约束实现 G1 迁移。"
+    },
+    {
+      "paper_id": "arxiv:2410.08655v3",
+      "title": "FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots",
+      "year": 2024,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["recovery", "open_source", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2410.08655v3",
+      "code": {"status": "verified_official", "url": "https://github.com/Rhoban/frasa"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/frasa-2410.08655v3.md",
+      "why_zh": "在小型真实人形上用统一策略处理抗扰、倒地恢复和快速起身。"
+    },
+    {
+      "paper_id": "arxiv:2512.01336",
+      "title": "Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning",
+      "year": 2025,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["protective_fall", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2512.01336",
+      "code": {"status": "unknown", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "直接以冲击伤害为目标学习适合刚性人形结构的自保护跌倒行为。"
+    },
+    {
+      "paper_id": "arxiv:2511.18509",
+      "title": "SafeFall: Learning Protective Control for Humanoid Robots",
+      "year": 2025,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["protective_fall", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2511.18509",
+      "code": {"status": "unknown", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "用跌倒预测器触发伤害缓解策略，显式保护头、手等脆弱部件。"
+    },
+    {
+      "paper_id": "arxiv:2511.07407",
+      "title": "Unified Humanoid Fall-Safety Policy from a Few Demonstrations",
+      "year": 2025,
+      "topics": ["recovery_safety_force"],
+      "coverage_roles": ["protective_fall", "recovery", "hardware_evidence"],
+      "paper_url": "https://arxiv.org/abs/2511.07407",
+      "code": {"status": "unknown", "url": ""},
+      "analysis_status": "queued",
+      "why_zh": "将防倒、冲击缓解和起身恢复放入一个少示范统一策略。"
+    }
+  ]
+}

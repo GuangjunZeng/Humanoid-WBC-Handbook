@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2602.07439v1",
+  "source_pdf": "https://arxiv.org/pdf/2602.07439v1",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-streaming.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.07439v1",
+      "pdf_page": 3,
+      "source_locator": "Figure 2-3",
+      "caption_zh": "文本流、自回归机器人动作块与低层跟踪器的时序。",
+      "sha256": "a7a5c59a82f56ee297db205a0f1c80a2ae44743e0af2a5b77b42abbfa312f5a6"
+    },
+    {
+      "asset": "table-1-2-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.07439v1",
+      "pdf_page": 7,
+      "source_locator": "Table I-II",
+      "caption_zh": "30 秒真机流式指令成功次数与计算/人感响应延迟。",
+      "sha256": "71192d8ce15c7dc1c41ded3293f94ee0f710e862e32aa9cefd3835c8367694b2"
+    },
+    {
+      "asset": "table-3-4-representation.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.07439v1",
+      "pdf_page": 8,
+      "source_locator": "Table III-IV",
+      "caption_zh": "机器人骨架生成表示和混合数据 tracker 的分布对照。",
+      "sha256": "c1bb14c1574e0d5849733bd72ee8533d61f1b3fbacb3f0749898a1e55366c718"
+    }
+  ]
+}

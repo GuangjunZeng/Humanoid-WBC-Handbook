@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2410.03654v1",
+  "source_pdf": "https://arxiv.org/pdf/2410.03654v1",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-8-pretrain-finetune.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.03654v1",
+      "pdf_page": 20,
+      "source_locator": "Figure 8",
+      "caption_zh": "平地序列预训练与复杂地形 PPO 微调的两阶段结构。",
+      "sha256": "6d1364cf97b7fbbd7703f580bed404fd0f8e761fc27cfbdb1485a2738422c43e"
+    },
+    {
+      "asset": "figure-9-sample-efficiency.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.03654v1",
+      "pdf_page": 26,
+      "source_locator": "Figure 9",
+      "caption_zh": "预训练初始化和从零训练在交互预算与最终性能上的对照。",
+      "sha256": "3c6b7eef7d8f7565196115da255670d318eddb783ea5db9fc8424c79ee3fc779"
+    },
+    {
+      "asset": "figure-11-gait.jpg",
+      "source_url": "https://arxiv.org/pdf/2410.03654v1",
+      "pdf_page": 28,
+      "source_locator": "Figure 11",
+      "caption_zh": "预训练保留对称步态，从零策略出现拖腿的定性对照。",
+      "sha256": "a5f66f705f789b6e726ce428cfd43215c72b79befc37a735b1b8cf686e718bf2"
+    }
+  ]
+}

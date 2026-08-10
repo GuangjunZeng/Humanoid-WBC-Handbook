@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "run_id": "social-example",
+  "captures": [
+    {
+      "platform": "xiaohongshu",
+      "scope_id": "tracking_and_teleoperation",
+      "domain_hints": [
+        "universal_tracking_teleoperation"
+      ],
+      "query": "G1 全身遥操 延迟 抖动",
+      "retrieval_url": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567?xsec_token=example",
+      "canonical_url": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567",
+      "captured_at": "2026-08-10T12:00:00+08:00",
+      "title": "合成示例：G1 遥操调试记录",
+      "author_display": "Synthetic Example",
+      "published_display": "页面显示时间（示例）",
+      "summary": "合成数据，用于演示人工复核后导入记录的字段；不是工程证据。",
+      "wbc_relevance_reason": "合成示例涉及人形机器人全身遥操的时延与抖动问题。",
+      "excerpt": "合成短摘录。",
+      "components": [
+        "teleoperation pipeline",
+        "whole-body tracker"
+      ],
+      "robot_platforms": [
+        "Unitree G1 (synthetic example)"
+      ],
+      "engineering_details": {
+        "problem_statements": ["遥操动作出现抖动。"],
+        "environments": ["合成测试环境。"],
+        "symptoms": ["手臂指令有可见高频抖动。"],
+        "diagnostics": ["比较指令时间戳与控制循环时间戳。"],
+        "suspected_causes": ["合成示例中的时序不对齐。"],
+        "attempts": ["合成示例：对指令做时间对齐。"],
+        "effective_fixes": ["合成示例：统一时间基后抖动下降。"],
+        "outcomes": ["合成结果，不得作为实机建议。"],
+        "limits": ["未在真实机器人上验证。"],
+        "safety_notes": []
+      },
+      "engineering_qa": [
+        {
+          "question_zh": "全身遥操指令出现高频抖动时应先检查什么？",
+          "answer_zh": "原帖候选解答建议先核对指令、观测和控制循环的时间戳；该结论是合成示例，尚未独立验证。",
+          "answer_status": "partial",
+          "source_locator": "合成正文第 2 段",
+          "applicability": "仅用于展示数据契约。"
+        }
+      ],
+      "attention": {
+        "likes": "1.4万",
+        "comments": "123"
+      },
+      "media_summaries": [
+        "图 1（合成说明）：展示遥操界面与机器人状态。"
+      ],
+      "selected_comments": [
+        {
+          "author_display": "Synthetic Commenter",
+          "text": "合成评论，只用于测试字段映射。",
+          "published_display": "页面显示时间（示例）",
+          "likes": "10+"
+        }
+      ],
+      "access_mode": "manual_import",
+      "collector_note": "synthetic=true"
+    },
+    {
+      "platform": "x",
+      "scope_id": "optimization_ik_qp_mpc",
+      "domain_hints": ["loco_manipulation_wbc"],
+      "query": "humanoid WBC QP infeasible",
+      "retrieval_url": "https://x.com/synthetic/status/100",
+      "canonical_url": "https://x.com/synthetic/status/100",
+      "captured_at": "2026-08-10T12:00:00+08:00",
+      "author_display": "@synthetic",
+      "published_at": "2026-08-10T04:00:00Z",
+      "summary": "合成 X API 候选经人工复核后的中文摘要；不是工程证据。",
+      "wbc_relevance_reason": "合成示例涉及 WBC QP 不可行排查。",
+      "components": ["whole-body QP"],
+      "robot_platforms": ["synthetic humanoid"],
+      "engineering_details": {
+        "problem_statements": ["WBC QP 求解不可行。"],
+        "environments": ["合成测试环境。"],
+        "symptoms": ["求解器返回 infeasible。"],
+        "diagnostics": ["检查接触约束和权重尺度。"],
+        "suspected_causes": [],
+        "attempts": [],
+        "effective_fixes": [],
+        "outcomes": [],
+        "limits": ["未验证。"],
+        "safety_notes": []
+      },
+      "engineering_qa": [
+        {
+          "question_zh": "WBC QP 不可行时先检查什么？",
+          "answer_zh": "合成作者回复建议先检查接触约束和权重尺度。",
+          "answer_status": "partial",
+          "source_locator": "合成作者回复",
+          "source_url": "https://x.com/synthetic/status/101"
+        }
+      ],
+      "attention": {"likes": "1.2K"},
+      "access_mode": "public_api",
+      "collector_note": "synthetic=true"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2507.06905v2",
+  "source_pdf": "https://arxiv.org/pdf/2507.06905v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-unified-policy.jpg",
+      "source_url": "https://arxiv.org/pdf/2507.06905v2",
+      "pdf_page": 5,
+      "source_locator": "Figure 2",
+      "caption_zh": "单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。",
+      "sha256": "1c91cea1da312c3f73fcd13c6f0cb3bfe6b366d03bbefb67e02fe4ae815f1cc0"
+    },
+    {
+      "asset": "table-3-4-figure-3.jpg",
+      "source_url": "https://arxiv.org/pdf/2507.06905v2",
+      "pdf_page": 7,
+      "source_locator": "Table III-IV / Figure 3",
+      "caption_zh": "统一策略的跟踪精度、工作空间与真机任务。",
+      "sha256": "57c53dd02ad9c5d9bdd72a6dc0c3e0daffe1cb59739adba166cae45f78c3d505"
+    },
+    {
+      "asset": "table-5-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2507.06905v2",
+      "pdf_page": 8,
+      "source_locator": "Table V",
+      "caption_zh": "顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。",
+      "sha256": "533d7a3229def1370ff070f96e9f11840545afa967e4d8ba7b004b35cfee6204"
+    }
+  ]
+}

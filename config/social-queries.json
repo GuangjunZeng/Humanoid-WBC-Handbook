@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "platforms": [
+    "xiaohongshu",
+    "zhihu",
+    "x"
+  ],
+  "collection_modes": {
+    "xiaohongshu": "manual_review_queue",
+    "zhihu": "official_api_discovery",
+    "x": "official_api"
+  },
+  "limits": {
+    "max_results_per_query": 3,
+    "max_comments_per_post": 8,
+    "max_tasks_per_batch": 10
+  },
+  "scopes": [
+    {
+      "scope_id": "open_ended_wbc_field_notes",
+      "label_zh": "开放式 WBC 工程经验",
+      "domain_hints": ["training_data_retargeting", "universal_tracking_teleoperation", "locomotion_terrain", "loco_manipulation_wbc", "sports", "motion_generation", "recovery_safety_force"],
+      "queries": ["humanoid WBC 调试 踩坑 复现", "人形机器人 全身控制 工程问题 解决"]
+    },
+    {
+      "scope_id": "environment_setup_dependencies",
+      "label_zh": "安装、依赖与版本兼容",
+      "domain_hints": [],
+      "queries": ["Isaac Lab humanoid 安装 依赖 版本 报错", "人形机器人 WBC 环境配置 CUDA PyTorch 踩坑"]
+    },
+    {
+      "scope_id": "simulation_toolchain",
+      "label_zh": "仿真器与工具链",
+      "domain_hints": ["locomotion_terrain", "loco_manipulation_wbc", "recovery_safety_force"],
+      "queries": ["Isaac Gym Isaac Lab MuJoCo humanoid 仿真 差异 问题", "人形机器人 URDF MJCF 关节 接触 配置错误"]
+    },
+    {
+      "scope_id": "training_instability",
+      "label_zh": "训练不稳定与崩溃",
+      "domain_hints": ["locomotion_terrain", "loco_manipulation_wbc", "sports", "motion_generation", "recovery_safety_force"],
+      "queries": ["humanoid RL NaN reward collapse 排查", "人形机器人 训练 不收敛 摔倒 奖励函数"]
+    },
+    {
+      "scope_id": "reward_curriculum_randomization",
+      "label_zh": "奖励、课程与随机化",
+      "domain_hints": ["locomotion_terrain", "loco_manipulation_wbc", "sports", "recovery_safety_force"],
+      "queries": ["humanoid reward tuning curriculum domain randomization 经验", "G1 训练 奖励权重 观测量 动作平滑 调参"]
+    },
+    {
+      "scope_id": "compute_performance_memory",
+      "label_zh": "性能、显存与并行仿真",
+      "domain_hints": [],
+      "queries": ["Isaac Lab humanoid OOM 显存 FPS 优化", "人形机器人 并行训练 GPU 利用率 慢"]
+    },
+    {
+      "scope_id": "retargeting_and_dataset",
+      "label_zh": "动作重定向与数据质量",
+      "domain_hints": ["training_data_retargeting", "motion_generation"],
+      "queries": ["G1 动作重定向 穿模 脚滑 关节限位", "AMASS humanoid retargeting 坐标系 尺度 帧率 问题"]
+    },
+    {
+      "scope_id": "tracking_and_teleoperation",
+      "label_zh": "跟踪与遥操",
+      "domain_hints": ["universal_tracking_teleoperation", "motion_generation"],
+      "queries": ["G1 全身遥操 延迟 抖动 丢帧", "humanoid motion tracking 实机 漂移 不稳定"]
+    },
+    {
+      "scope_id": "state_estimation_calibration",
+      "label_zh": "状态估计、标定与时间同步",
+      "domain_hints": ["universal_tracking_teleoperation", "locomotion_terrain", "recovery_safety_force"],
+      "queries": ["humanoid IMU state estimation 漂移 标定 时间同步", "G1 基座位姿 线速度估计 噪声 问题"]
+    },
+    {
+      "scope_id": "communication_and_realtime",
+      "label_zh": "通信、时延与实时性",
+      "domain_hints": ["universal_tracking_teleoperation", "locomotion_terrain", "loco_manipulation_wbc"],
+      "queries": ["Unitree G1 SDK DDS 丢包 延迟 控制频率", "humanoid control loop jitter realtime 调试"]
+    },
+    {
+      "scope_id": "sim_to_sim_and_sim_to_real",
+      "label_zh": "sim-to-sim 与 sim-to-real",
+      "domain_hints": ["locomotion_terrain", "loco_manipulation_wbc", "sports", "recovery_safety_force"],
+      "queries": ["G1 sim2real 仿真实机差距 摩擦 电机", "Isaac Lab MuJoCo sim2sim humanoid 迁移失败"]
+    },
+    {
+      "scope_id": "locomotion_contact_terrain",
+      "label_zh": "足式运动、接触与地形",
+      "domain_hints": ["locomotion_terrain", "sports", "recovery_safety_force"],
+      "queries": ["G1 走路 脚滑 抬脚 接触 调参", "humanoid uneven terrain contact force 摔倒 排查"]
+    },
+    {
+      "scope_id": "optimization_ik_qp_mpc",
+      "label_zh": "IK/QP/MPC/WBC 优化问题",
+      "domain_hints": ["training_data_retargeting", "loco_manipulation_wbc", "recovery_safety_force"],
+      "queries": ["humanoid WBC QP infeasible 约束 权重 调试", "人形机器人 IK MPC 数值不稳定 奇异位形"]
+    },
+    {
+      "scope_id": "force_control_manipulation",
+      "label_zh": "力控、接触操作与载荷",
+      "domain_hints": ["loco_manipulation_wbc", "recovery_safety_force"],
+      "queries": ["G1 力控 接触 抓取 震荡 调参", "humanoid loco manipulation payload torque limit 问题"]
+    },
+    {
+      "scope_id": "hardware_actuator_thermal",
+      "label_zh": "电机、减速器、温升与磨损",
+      "domain_hints": ["locomotion_terrain", "loco_manipulation_wbc", "sports", "recovery_safety_force"],
+      "queries": ["Unitree G1 电机过热 力矩限制 故障", "人形机器人 减速器 回差 摩擦 实机调试"]
+    },
+    {
+      "scope_id": "deployment_firmware_sdk",
+      "label_zh": "部署、固件与 SDK",
+      "domain_hints": [],
+      "queries": ["Unitree G1 firmware SDK 版本 部署 兼容", "humanoid policy deployment ONNX TensorRT control frequency 问题"]
+    },
+    {
+      "scope_id": "safety_fall_recovery",
+      "label_zh": "安全、跌倒、冲击与起身",
+      "domain_hints": ["recovery_safety_force", "locomotion_terrain", "sports"],
+      "queries": ["G1 摔倒 起身 急停 实机 经验", "人形机器人 跌倒保护 冲击 硬件损坏"]
+    },
+    {
+      "scope_id": "sensing_and_perception",
+      "label_zh": "传感器与感知接口",
+      "domain_hints": ["universal_tracking_teleoperation", "loco_manipulation_wbc", "locomotion_terrain"],
+      "queries": ["humanoid camera depth lidar latency calibration 问题", "G1 视觉感知 坐标变换 时间戳 对齐"]
+    },
+    {
+      "scope_id": "reproducibility_and_debugging",
+      "label_zh": "复现、日志、评估与调试方法",
+      "domain_hints": [],
+      "queries": ["humanoid open source reproduce failed config seed checkpoint", "人形机器人 调试 日志 指标 录像 故障定位"]
+    },
+    {
+      "scope_id": "mechanical_payload_integration",
+      "label_zh": "机械集成、负载与配重",
+      "domain_hints": ["loco_manipulation_wbc", "locomotion_terrain", "recovery_safety_force"],
+      "queries": ["G1 加装夹爪 负载 重心 控制问题", "humanoid payload mass inertia identification balance 调试"]
+    }
+  ]
+}

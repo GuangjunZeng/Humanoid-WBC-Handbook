@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2508.08241v4",
+  "source_pdf": "https://arxiv.org/pdf/2508.08241v4",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-hardware-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2508.08241v4",
+      "pdf_page": 25,
+      "source_locator": "Figure 2",
+      "caption_zh": "高动态运动跟踪在 G1 实机上的动作范围与控制结构。",
+      "sha256": "a0a528a9adfc62f76f0b38a564b9dd8d1864133b19d8ecd5bcd36fd147bd3fa8"
+    },
+    {
+      "asset": "figure-5-guidance.jpg",
+      "source_url": "https://arxiv.org/pdf/2508.08241v4",
+      "pdf_page": 28,
+      "source_locator": "Figure 5-6",
+      "caption_zh": "速度、waypoint、关键帧与 SDF 避障代价的测试时组合。",
+      "sha256": "02e27f8570b32576f0ccf6d252fdfc88e773ac80346bb3a0b10ba796219c942c"
+    },
+    {
+      "asset": "figure-8-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2508.08241v4",
+      "pdf_page": 31,
+      "source_locator": "Figure 8A-D",
+      "caption_zh": "旋转表示、历史、人为延迟和自适应采样的关键消融。",
+      "sha256": "5fc44db3c51e9ad65aae6ab678345d867d7e10e3e4ae15d3409c155f48ecb0f6"
+    }
+  ]
+}

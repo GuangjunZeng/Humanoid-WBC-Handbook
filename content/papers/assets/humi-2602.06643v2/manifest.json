@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2602.06643v2",
+  "source_pdf": "https://arxiv.org/pdf/2602.06643v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-interface.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.06643v2",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。",
+      "sha256": "e226e852f5e8278a7a533a88d2ef378f9413413c443dd4c751420ae53e67509d"
+    },
+    {
+      "asset": "figure-4-5-chunk-drift.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.06643v2",
+      "pdf_page": 5,
+      "source_locator": "Figure 4-5",
+      "caption_zh": "动作块边界不连续与盲部位开环漂移的问题定位。",
+      "sha256": "1800988dda7782654ad232c108af3d95ebb8eefb36b25c7f8fd85a4fda8a1148"
+    },
+    {
+      "asset": "figure-6-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2602.06643v2",
+      "pdf_page": 6,
+      "source_locator": "Figure 6",
+      "caption_zh": "人在环预览、变速回放和块锚定方式的任务消融。",
+      "sha256": "b9e5688421ca8e424202ed2bffad33920feb89a10b6376da94b23a2b94f1bfec"
+    }
+  ]
+}
