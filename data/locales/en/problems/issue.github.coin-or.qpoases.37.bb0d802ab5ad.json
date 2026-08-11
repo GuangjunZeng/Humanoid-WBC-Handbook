@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.coin-or.qpoases.37.bb0d802ab5ad",
+  "schema_version": 1,
+  "source_fingerprint": "0d7e592f9babb4158ec26d022706eacc69e9001e91a1ff0f8134fb381c662709",
+  "translations": {
+    "answer": "Verify the storage order of the constraint matrix `A` in the `A` matrix. The maintainer notes that the C++ interface expects row-major, while MATLAB/Simulink uses column-major. When `A` is implicitly transposed, it results in a different QP, often infeasible. Symmetric `H` may mask layout errors. Simulink must stack `A` as a vector according to the interface. Only after confirming the actual input matrix is consistent can the comparison of solver options and numerical settings proceed.",
+    "applicability": "Directly corresponds to the qpOASES 3.1.0 interface records; other versions should be verified against the target interface documentation and actual memory data.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Original records directly state the interface layout discrepancy and Simulink's requirement for `A` vectorization.",
+    "details.diagnostics.0": "Print the `A` matrix in row-major order and compare it with the MATLAB matrix; Simulink also checks the vector stacking order.",
+    "details.effective_fixes.0": "Construct `A` correctly in C++ (row-major) and stack the constraint matrix in the correct order in Simulink according to the interface.",
+    "details.environments.0": "Support record for qpOASES 3.1.0; C++ interface, MATLAB, and Simulink.",
+    "details.limits.0": "Even if the actual input matrix is element-wise consistent, further checks on bounds, scaling, options, and precision must be performed; do not attribute all interface discrepancies to layout.",
+    "details.outcomes.0": "Recorded as fixed, but no user-independent replication data was provided.",
+    "details.problem_statements.0": "What should be checked first when the same QP yields different results in qpOASES C++ and MATLAB/Simulink, or when C++ reports infeasible, respectively?",
+    "details.safety_notes.0": "Save a set of golden QP matrices for comparison against all interface inputs, ensuring consistent primal/dual/status comparisons to avoid silent solution of different problems.",
+    "details.suspected_causes.0": "Typical cause recorded by the maintainer is a mismatch between C++'s row-major and MATLAB/Simulink's column-major for the constraint matrix, leading to implicit transposition.",
+    "details.symptoms.0": "Different results between C++ and MATLAB/Simulink; implicit transposition of `A` often results in infeasibility.",
+    "source.locator": "qpOASES #37 maintainer support record text and resolution 589978265",
+    "source.title": "qpOASES C++ and MATLAB/Simulink results differ; first check the storage order of `A`",
+    "terms.0": "Row-major (行主序)",
+    "terms.1": "Column-major (列主序)",
+    "terms.2": "Constraint matrix (约束矩阵)",
+    "terms.3": "Infeasible quadratic program (不可行二次规划)",
+    "title": "When the same QP yields different results in qpOASES C++ and MATLAB/Simulink, or when C++ reports infeasible, what should be checked first?"
+  }
+}

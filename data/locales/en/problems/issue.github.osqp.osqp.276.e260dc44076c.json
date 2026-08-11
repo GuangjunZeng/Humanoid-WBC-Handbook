@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.276.e260dc44076c",
+  "schema_version": 1,
+  "source_fingerprint": "6e0ae13391bc77409c95b934f77214fd62e948fa9332c2ed51eef699ebff9b08",
+  "translations": {
+    "answer": "Cannot. The maintainer used default setup for individual data and solved it in 75 iterations; the author later disclosed that `eps_abs/eps_rel` was set to `1e-8` online. The maintainer suggested using about `1e-4` relative tolerance for ADMM, and the author confirmed it is helpful, but also noted that the condition number of `P` is very large. The original post did not verify warm-start contamination or provide a corrected worst-case execution time, so it can only be considered as a confirmed mitigation. The original post did not validate warm-start contamination, and there is no correction for the worst-case delay, so it can only be considered as a confirmed mitigation.",
+    "applicability": "Applicable to the original post with strict tolerance and ill-conditioned `P`; other periodic peaks require saving the specific QP and solver state.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but there is a lack of formal data cross-validation or independent replication.",
+    "details.attempts.0": "Relaxed relative tolerance to about `1e-4`; scaled the problem to handle the large condition number of `P`.",
+    "details.diagnostics.0": "Recorded each cycle QP, warm-start state, tolerance, and `cond(P)`; first re-verify with default settings, then gradually restore the online configuration.",
+    "details.effective_fixes.0": "The author confirmed both fixes, but no new state distribution or worst-case execution time was published, so it is registered as an internal mitigation.",
+    "details.environments.0": "2020 OSQP MATLAB with generated MEX; actual settings were `eps_abs=eps_rel=1e-8`, `adaptive_rho_interval=25`, `max_iter=20000`.",
+    "details.limits.0": "The initial guess about bad warm start was not confirmed by the author; there is no precise peak rate after the curve or real-time guarantee.",
+    "details.outcomes.0": "The author replied 'does help', and noted that the condition number of `P` is still large; Issue was subsequently closed.",
+    "details.problem_statements.0": "OSQP occasionally encounters status 2/-2 in loops and fills up iterations; the original thread eventually verified which processing was used.",
+    "details.safety_notes.0": "Must set solver deadline and fallback; tolerance should be defined with allowed constraint residuals before optimization speed.",
+    "details.suspected_causes.0": "The maintainer ultimately attributed the strict `1e-8` tolerance as the main cause; the author confirmed the large condition number of `P` and the need for scaling.",
+    "details.symptoms.0": "Some cycles run with significantly increased iterations and return to maximum; re-estimating a single data point yields 75 iterations.",
+    "media_summaries.0": "The original post's two figures only show the loop execution time peak and the occurrence of status 2/-2; the graph lacks sufficient axis information and is not used to infer the root cause.",
+    "source.locator": "OSQP #276 configuration 719565150; maintainer suggests 721814742; author confirms 725366350",
+    "source.title": "OSQP periodic max-iteration check for tight tolerance and Hessian condition number",
+    "terms.0": "Maximum iterations (最大迭代)",
+    "terms.1": "Warm start (热启动)",
+    "terms.2": "Problem scaling (问题缩放)",
+    "terms.3": "Worst-case execution time (WCET) (最坏执行时间)",
+    "title": "Can one directly attribute the occasional full 20000 iterations in OSQP loops to warm start?"
+  }
+}

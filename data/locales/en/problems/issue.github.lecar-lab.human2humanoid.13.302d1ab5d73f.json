@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.13.302d1ab5d73f",
+  "schema_version": 1,
+  "source_fingerprint": "fc479297f2ac9a31103bb1ff2aa4d70a543a85ed6f4421a550202b6343624d55",
+  "translations": {
+    "answer": "The project author does not need to provide explanations. Real-time deployment directly uses the global keypoint positions from the visual system output, as the strategy tracks sparse inputs (sparse inputs), not full-body motions (whole-body motions). The offline SMPL→H1 gradient retargeting is part of the training data preparation. The original thread did not publicly disclose the specific matrix transformation from RGB/HybrIK coordinates to Isaac Gym/robot world coordinates, so coordinate calibration still needs to be verified separately.",
+    "applicability": "Applies to the sparse tracking deployment design for human2humanoid/OmniH2O; the coordinate transformation and specific input format are not publicly disclosed in the original thread.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The original author asked how to obtain processed AMASS-like joint data in real-time; the project author clarified that the deployment does not require a full-body reference.",
+    "details.diagnostics.0": "Distinguish between the offline whole-body motion tracking and the online sparse keypoint tracking, which are not the same input path.",
+    "details.diagnostics.1": "Confirm that the real-time strategy consumes specific global keypoint positions, not the default reconstruction of full AMASS/SMPL motion.",
+    "details.effective_fixes.0": "Follow the project author's instructions, using global keypoint positions from Vision Pro or RGB+HybrIK as direct input to the real-time deployment, without repeating full-body motion retargeting in the real-time loop.",
+    "details.environments.0": "Human2humanoid/OmniH2O deployment context; Apple Vision Pro or RGB camera + HybrIK; original post did not provide software commit, frequency, or camera calibration parameters.",
+    "details.limits.0": "The thread did not answer the question about the specific matrix transformation, scale, origin, or time synchronization from RGB/HybrIK to Isaac Gym/robot world coordinates.",
+    "details.limits.1": "No public information on real-time deployment code, input tensor layout, or delay measurement, so it cannot be used to solely verify the real-time system.",
+    "details.outcomes.0": "The questioner replied that they now understand the difference between sparse input and whole-body retargeting.",
+    "details.problem_statements.0": "Is it necessary to repeat the offline gradient retargeting of SMPL human data in real-time deployment in order to become a robot reference?",
+    "details.safety_notes.0": "Before real-time deployment, coordinate system, scale, timestamp, outlier keypoint filtering, and speed/position limits still need to be verified separately.",
+    "details.suspected_causes.0": "The offline SMPL→H1 retargeting process used for full-body training is mistakenly considered a mandatory step in the real-time sparse input deployment.",
+    "details.symptoms.0": "The user sees the training data preprocessing converting SMPL motion via gradient descent into H1 reference, thus not knowing how the real-time visual input meets the same interface.",
+    "source.locator": "human2humanoid #13: Author comment 2426760408/2426762777 given sensing path, 2426906228/2426908658 confirmed direct keypoint and sparse-input reason",
+    "source.title": "OmniH2O Real-time Sparse Remote Operation Directly Uses Human Keypoint Positions, No Need for Offline Whole-Body Motion Retargeting",
+    "terms.0": "Sparse inputs (稀疏输入)",
+    "terms.1": "Global keypoint positions (全局关键点位置)",
+    "terms.2": "Motion retargeting (动作重定向)",
+    "terms.3": "Coordinate calibration (坐标标定)",
+    "title": "OmniH2O Uses RGB+HybrIK or Vision Pro for Real-time Remote Operation, Does It Need to Convert Each Frame of SMPL Data via Gradient Descent into H1 Reference?"
+  }
+}

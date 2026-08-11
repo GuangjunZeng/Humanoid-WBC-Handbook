@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6a3c1cf9000000000702e2c6.7ac5fa2ce85a",
+  "schema_version": 1,
+  "source_fingerprint": "dd7af1bc4f3be4c522b14b6de31c5f848159fa5769c134848d66eae75fc40237",
+  "translations": {
+    "answer": "Record the arm posture, continuous joint torque and temperature at the hip and ankle/foot joints; the comment suggests placing the arms behind the waist to reduce static load, but no A/B data is available. Validation before application should include temperature guarding and small posture scans.",
+    "applicability": "Single-comment experience, robot version and controller unknown.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The comment suggests balancing the center of mass by placing the arms behind the waist during static conditions.",
+    "details.diagnostics.0": "Cross-verified by the text, visible comments, and media descriptions; not independently validated by papers, source code, or official documentation.",
+    "details.environments.0": "G1 Whole-Body Teleoperation in long-duration standing scenarios.",
+    "details.limits.0": "Single-comment experience, robot version and controller unknown.",
+    "details.outcomes.0": "No temperature curve or retesting duration available.",
+    "details.problem_statements.0": "The G1 Whole-Body Teleoperation experiences excessive heat in foot joints during long-standing scenarios.",
+    "details.safety_notes.0": "Community candidate is for hypothesis formation; when involving real machines, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "The comment suggests that changing the arm posture shifts the center of mass, increasing the continuous joint torque on the foot joints.",
+    "details.symptoms.0": "Foot joint overheating during long-standing scenarios; arm/leg load may restrict teleoperation tasks.",
+    "media_summaries.0": "Three media positions display full-size human/teleoperation scenarios, but no COM, joint torque, or temperature heat maps are available; the posture-heat-load relationship is derived from the comment.",
+    "source.locator": "Comment \"Long-standing stationary... foot joint overheating\"",
+    "source.title": "G1 Whole-Body Teleoperation Long-Duration Standing: Arm Posture and Foot Joint Thermal Load",
+    "terms.0": "Joint Torque (关节力矩)",
+    "terms.1": "Whole-Body Teleoperation (全身遥操作)",
+    "terms.2": "Center of Mass (CoM) (质心)",
+    "terms.3": "Payload (有效载荷)",
+    "terms.4": "Thermal Drift (热漂移)",
+    "title": "G1 Whole-Body Teleoperation Long-Duration Standing: What Can Be Checked at the Posture Level?"
+  }
+}

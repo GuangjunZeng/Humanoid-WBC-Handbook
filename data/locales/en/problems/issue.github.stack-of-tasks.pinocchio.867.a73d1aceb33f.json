@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.867.a73d1aceb33f",
+  "schema_version": 1,
+  "source_fingerprint": "5c5a0d610bd5a2f72f23f711ec26dc7da34c431044841285435cddc64f9c38a2",
+  "translations": {
+    "answer": "Confirm the target is the nv×nv matrix obtained from the space wrench λ contraction, not the full dJ/dq. The original thread indicates that the external-force term in RNEA includes J^Tλ, so the derivative d(J^Tλ)/dq can be directly calculated using RNEA analytical derivatives. The original author of Valkyrie nv=32 confirmed this method and reported that the derivative call is approximately 0.035 ms; these times are only representative of the old environment and should not be extrapolated.",
+    "applicability": "Applies to the specific contraction of d(J^Tλ)/dq in contact QP; original post is for Valkyrie nv=32 and 2019 API. The current signature must be verified against the target Pinocchio version.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "The author first used RBDL finite difference and discussed the full tensor API and nv time-variation calls.",
+    "details.attempts.1": "Subsequently, the RNEA derivatives for zero gravity, zero velocity/acceleration, and external force terms were used for dJ^T/dq·λ.",
+    "details.diagnostics.0": "First, write the real expression as J(q+dq)^T λ and confirm that the target is d(J^T λ)/dq, not the full dJ/dq.",
+    "details.diagnostics.1": "Distinguish between the Hessian-vector product of the tensor's last dimension and the nv×nv result from the original post along the space wrench dimension.",
+    "details.effective_fixes.0": "If the target is indeed d(J^T λ)/dq, use the RNEA analytical derivatives with external forces directly, rather than first constructing the full frame Hessian.",
+    "details.environments.0": "2019 Pinocchio/RBDL comparison; Valkyrie humanoid, nv=32; author only mentioned standard laptop, no CPU or precise Pinocchio version provided.",
+    "details.limits.0": "0.500/0.060/0.035 ms is a single author, old version, and unspecified CPU thread record; cannot be used as a current hardware benchmark.",
+    "details.limits.1": "Maintainer estimates a standard laptop could reach 0.015 ms, but the author did not verify this value, and it is not included as a result here.",
+    "details.limits.2": "If optimization truly requires the full dJ/dq, use the Pinocchio 4 frame kinematic Hessian interface instead of this contraction.",
+    "details.outcomes.0": "The author explicitly confirmed that RNEA derivatives can obtain the required Hessian-wrench product and reported the native Valkyrie comparison time sequence.",
+    "details.problem_statements.0": "How to avoid explicitly constructing the 6×nv×nv full kinematic Hessian during linearization of the contact QP using J(q+dq)^T λ?",
+    "details.safety_notes.0": "Compare the analytical contraction with finite difference in random q and λ directions before incorporating it into real-time contact QP.",
+    "details.suspected_causes.0": "Explicit construction of the full Hessian would calculate unnecessary elements for the optimizer; RNEA external force term already includes J^T λ, so its analytical derivative can directly provide the required contraction.",
+    "details.symptoms.0": "The full Hessian from finite difference impedes about 1 ms of computational budget; the actual target is to contract the first dimension of the Hessian and the contact wrench λ to obtain an nv×nv matrix.",
+    "source.locator": "Pinocchio #867: Comment 526278645 explains the contraction and RNEA relationship; Comment 530373296 confirms its applicability and provides a comparison; Comment 530407733 adds the raw call sequence.",
+    "source.title": "Pinocchio RNEA derivatives can avoid constructing the full Hessian during linearization of J(q+dq)^T λ in contact QP.",
+    "terms.0": "Recursive Newton-Euler Algorithm derivatives (RNEA derivatives) (递归牛顿-欧拉算法导数)",
+    "terms.1": "External force (外部力)",
+    "terms.2": "Tensor contraction (张量收缩)",
+    "terms.3": "Finite difference (有限差分)",
+    "title": "How to avoid explicitly constructing the 6×nv×nv frame Hessian during linearization of J(q+dq)^T λ in contact QP?"
+  }
+}

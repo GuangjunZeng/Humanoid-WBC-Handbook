@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.2758.c1e97a1be95f",
+  "schema_version": 1,
+  "source_fingerprint": "7f07f5fe5ef6f3bfadfdca06c322e750c4e024f2c6bd79ab0afac6aa0e6a3218",
+  "translations": {
+    "answer": "Use the version containing merge commit PR #2760. The fix calculates deactivation interfaces and activation interfaces before mode switch. If the interface is still claimed by another controller or repeated in the current activation list, the system returns an ERROR and does not proceed with erroneous mode switch cleanup. The initial version of PR #2760 failed, but the revised version was tested by the original author and approved. The hardware prepare_switch still needs to validate mutual exclusion mode, but no longer holds controller_manager resource ownership.",
+    "applicability": "Applies to controller_manager in environments with merge commit PR #2760/merge commit f8903b3. The distribution package must be verified.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise independent repro of the issue.",
+    "details.attempts.0": "The original author temporarily explicitly rejected conflicting interfaces in hardware prepare_switch.",
+    "details.attempts.1": "PR #2760 adds interface claim checks, early return on failure, and controller conflict testing. The initial version failed, and the revised version was tested by the original author and approved.",
+    "details.diagnostics.0": "A strict test where two controllers claim the same command interface during switch.",
+    "details.diagnostics.1": "Confirmed that conflict is returned during non-realtime activation check, not after hardware perform_command_mode_switch fails.",
+    "details.diagnostics.2": "After failure, assert that the original active controller and hardware mode flag remain unchanged.",
+    "details.effective_fixes.0": "Use the merged PR #2760: consider deactivation and activation interfaces before mode switch. If the interface is already occupied or repeated in the current activation list, return an ERROR and do not proceed with mode switch cleanup.",
+    "details.environments.0": "The ros2_control regression is after PR #2669; the author's log shows UR5e position/velocity modes; the issue date is 2025-10; precise ROS 2 distribution not provided.",
+    "details.limits.0": "Verify if the target distribution includes merge commit f8903b3.",
+    "details.limits.1": "The fix addresses command interface resource conflicts, and does not replace the hardware's own position/velocity validation.",
+    "details.outcomes.0": "The original author confirmed the regression was fixed on the revised PR; two maintainers approved, and the PR was merged.",
+    "details.problem_statements.0": "Why does the system stop the original control mode after two controllers activate the same command interface?",
+    "details.safety_notes.0": "Mode switch regression tests must verify that the old controller remains active and the hardware mode flag remains unchanged in the failure case, and must be validated in real-world settings with low-speed, emergency stop, and isolation zone use.",
+    "details.suspected_causes.0": "The controller_manager did not detect future command-interface conflicts in the simultaneous activation list, and the failure cleanup path executed interface stop again.",
+    "details.symptoms.0": "After the second position controller activates, perform_command_mode_switch receives a stop command for position interfaces; the hardware position_control_active is cleared, and the velocity controller may be erroneously allowed.",
+    "source.locator": "ros2_control #2758 maintained by 3462221412; PR #2760 revised by 3479240549; merge commit f8903b3",
+    "source.title": "ros2_control: Simultaneously activating controllers that occupy the same command interface should fail before mode switch.",
+    "terms.0": "Command interface (命令接口)",
+    "terms.1": "Resource conflict (资源冲突)",
+    "terms.2": "Command mode switch (命令模式切换)",
+    "terms.3": "Fail early (提前失败)",
+    "title": "How can we avoid erroneous cleanup of the active control mode when two controllers activate the same command interface during a mode switch?"
+  }
+}

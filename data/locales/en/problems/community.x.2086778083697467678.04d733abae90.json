@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086778083697467678.04d733abae90",
+  "schema_version": 1,
+  "source_fingerprint": "3cc52d8a4a4e6eb7205e6c3345b1795edb2d60f8f99afbadf63e47d7199cafed",
+  "translations": {
+    "answer": "This post provides only simulation/real-time side-by-side video and approximately 10 mm obstacle clearance results, which can be used for demonstration but are insufficient for acceptance. At least, the model version, control frequency, contact/error pose estimation, repeat success rate, and failure samples should be recorded; these supplementary items are not included in the original post's solution.",
+    "applicability": "Applicable to finite acceptance for legged robots across Isaac Lab, MuJoCo, and real-time systems.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Deploy Isaac Lab strategy on real robot and synchronize visual comparison in MuJoCo.",
+    "details.diagnostics.0": "Compare simulation and real-time video side-by-side, but no error curves or state logs are provided.",
+    "details.environments.0": "Isaac Lab training; MuJoCo real-time display; four-legged real robot.",
+    "details.limits.0": "Not human-like; no success rate, dynamics parameters, control frequency, or cross-simulator error.",
+    "details.outcomes.0": "Video claims to clear approximately 10 mm step.",
+    "details.problem_statements.0": "How can we confirm that Isaac Lab training results remain effective in real robot after MuJoCo validation?",
+    "details.safety_notes.0": "Real robot obstacle clearance should be limited, and foot contact/pose errors should be recorded.",
+    "details.symptoms.0": "Original post does not report failures; only shows approximately 10 mm step as passed.",
+    "media_summaries.0": "Screenshot shows a side-by-side video of left simulation four-legged and right real-step scene; confirms comparison form, but no state curves, control parameters, or repeat count are visible.",
+    "source.locator": "Main text of the post and side-by-side video",
+    "source.title": "Four-Legged Case Study: Isaac Lab Training, MuJoCo Validation, and Sim2Real in Real Robot",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.2": "Simulation-to-Simulation (Sim2Sim) (仿真到仿真)",
+    "terms.3": "Dynamics (动力学)",
+    "title": "What Evidence is Sufficient to Demonstrate Sim2Real Success?"
+  }
+}

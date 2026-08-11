@@ -6,4 +6,3 @@ build/
 dist/
 var/
 .DS_Store
-site/search-index.json

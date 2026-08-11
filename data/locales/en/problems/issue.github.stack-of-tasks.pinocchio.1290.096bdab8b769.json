@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1290.096bdab8b769",
+  "schema_version": 1,
+  "source_fingerprint": "642ca6d51ae35128f210ceb403c6cfbefe570c7b71c794511f84b0fd1c011a47",
+  "translations": {
+    "answer": "Not. The original thread explicitly stated that not all features are available. Pinocchio v3.5.0 only lists the mimic parameter (default false) for buildModel, and forward kinematics, Jacobians/frames, ccrba, RNEA, CRBA, and reachable workspace mimic support. Engineering practice should pass mimic=True and verify algorithm by version release; continuous mimic URDF parsing requires v3.8.0/#2756.",
+    "applicability": "Applies to WBC models using Pinocchio 3.x/4.x for mimic joints; specifics remain to be verified with target version release and regression testing.",
+    "credibility.rationale": "Issue closed, environment clear, and no conflict. Formal documentation or independent reproducibility is present.",
+    "details.attempts.0": "Maintainer and users discussed whether to remove actuator DOF from final user state, and expectations for FK/FD/ID constraints.",
+    "details.attempts.1": "Maintainer merged PR #2441 in 2025.",
+    "details.diagnostics.0": "Verify URDF parser switch, mimic/mimicked list in model, and whether target algorithm is listed in corresponding version release.",
+    "details.effective_fixes.0": "Use buildModel(..., mimic=True) in Pinocchio 3.5.0 or later to parse mimic fields, and only list FK, Jacobian, ccrba, RNEA, CRBA, and reachable workspace in v3.5.0 release.",
+    "details.environments.0": "Originates from 2020 legacy versions; closed with Pinocchio 3.5.0 and PR #2441.",
+    "details.limits.0": "Original thread explicitly stated not all Pinocchio features are available for mimic; algorithms not listed in v3.5.0 release cannot be inferred as supported.",
+    "details.limits.1": "Continuous mimic URDF parsing requires v3.8.0/#2756, not just general support declaration from v3.5.0.",
+    "details.outcomes.0": "Maintainer stated in 2025-03-03 that issue closed and issue resolved; v3.5.0 release lists parsing API, supported algorithms, and new model data field.",
+    "details.problem_statements.0": "What WBC algorithms are explicitly supported from which Pinocchio version onwards?",
+    "details.safety_notes.0": "Before real-world WBC, verify each algorithm for mimic constraint regression and ensure state/force vector dimensions do not treat actuator DOF as independent executors.",
+    "details.suspected_causes.0": "Historical versions did not provide complete delivery of mimic joint data structure, parser entry, and algorithm coverage; maintainer also warned that not all features are available.",
+    "details.symptoms.0": "Users cannot confirm whether forward dynamics, FK, IK/Jacobian, etc., automatically comply with referent-mimic constraints.",
+    "source.locator": "Pinocchio #1290 maintainer version boundary and #2441 closure; v3.5.0 release algorithm list; v3.8.0 continuous mimic supplement.",
+    "source.title": "Pinocchio mimic joint support requires version and algorithm verification.",
+    "terms.0": "Actuator DOF (mimic joint) (从动关节)",
+    "terms.1": "Referent DOF (referent joint) (参考关节)",
+    "terms.2": "Inverse Dynamics (RNEA) (逆动力学)",
+    "terms.3": "Composite Rigid Body Algorithm (CRBA) (复合刚体算法)",
+    "terms.4": "Centroidal Composite Rigid Body Algorithm (ccrba) (质心刚体算法)",
+    "title": "Can all WBC kinematics and dynamics algorithms be assumed supported after mimic joint parsing in Pinocchio?"
+  }
+}

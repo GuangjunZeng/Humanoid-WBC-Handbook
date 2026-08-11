@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086724387261055463.2fde5c5df691",
+  "schema_version": 1,
+  "source_fingerprint": "016fc3176764c8eaf2fe1432b760b1e98345015c8d6f9df66542874242dac777",
+  "translations": {
+    "answer": "The response has not confirmed. The responder points out that friction, mass, debris, and ground softness may still disrupt migration; and that the scan cadence needs to be designed for continuous field changes. Therefore, scan fidelity cannot replace physical parameter validation and runtime change detection.",
+    "applicability": "Applicable to field reconstruction schemes that claim to require no real-time micro-tuning.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The solution has not closed or there is conflicting information; only a problem is formed at this point.",
+    "details.attempts.0": "Generate a Gaussian Splat and collision mesh using a 360° scan, and train an RGB strategy in the same scene.",
+    "details.diagnostics.0": "Verify that the visual reconstruction and collision mesh come from the same field and scale; record friction, mass, ground softness, and field changes.",
+    "details.effective_fixes.0": "The original post's candidate solution was field reconstruction plus a same-source collision mesh, combined with domain randomization and a large visual encoder.",
+    "details.environments.0": "Real-world office 360° scan; Gaussian Splat scale; same-source collision mesh; Isaac Sim/Lab; RGB-only navigation strategy.",
+    "details.limits.0": "No information on the robot, task success rate, randomization parameters, failure cases, or independent reproducibility; the response points out that debris, ground softness, and re-scan cadence are still boundaries.",
+    "details.outcomes.0": "The author claims that no real-time micro-tuning is needed for deployment, and that field adaptation can be done in days instead of months; the original post does not include quantitative validation.",
+    "details.problem_statements.0": "An RGB strategy in general-purpose random geometry and no-texture simulation is difficult to generalize to real-world deployment settings.",
+    "details.safety_notes.0": "Before deploying on real-world fields, validate the collision mesh, depth occlusion, glass doors, and ground compliance in low-speed, limited-force, and collision-avoidance conditions.",
+    "details.suspected_causes.0": "Inconsistent visual appearance and physical collision geometry; domain randomization does not cover debris, friction, mass, or ground softness; field changes make the previous scan outdated.",
+    "details.symptoms.0": "General dummy scenarios teach structure only, and cannot cover real materials, lighting, or semantics; real-time collision with a real robot could cause hardware damage and long reinitializations.",
+    "media_summaries.0": "The visible screenshot shows the first half of the original post, confirming that it compares a general-purpose random, no-texture scenario with a real-world office reconstruction; the screenshot lacks logs, physical parameters, or success rate curves, so it cannot validate the 'zero real-time micro-tuning' conclusion.",
+    "source.locator": "@TabDuoBao and @Robo_Reliance's visible response",
+    "source.title": "Training an RGB humanoid robot strategy in real-world deployment settings",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.2": "Domain Randomization (DR) (域随机化)",
+    "title": "Can field scanning alone ensure zero real-time micro-tuning in sim-to-real?"
+  }
+}

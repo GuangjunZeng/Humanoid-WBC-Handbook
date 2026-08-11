@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.1574.51ed62c2082f",
+  "schema_version": 1,
+  "source_fingerprint": "a893b0e967a95f0cc0cae66b4e9491180efd2c830500cf5b2dd81cc8f7c690a8",
+  "translations": {
+    "answer": "The author observed jitter in the real-time control loop after configuring real-time group limits and attempting to adjust process and child process priorities. A/B testing confirmed the jitter was caused by I2C IMU read, and the issue was resolved by isolating the I/O from the real-time path. The problem was not fixed by using a low-latency kernel alone. The effective fix was to isolate the I/O and observe stable behavior after removal or isolation. The credibility is limited as there is no formal cross-verification or independent replication available.",
+    "applicability": "Raspberry Pi 5, 250 Hz, low-latency kernel, and real-time path directly reads I2C IMU.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "Configure real-time group limits; use chrt to adjust process and child process priorities; disable I2C IMU read; maintainers suggest printing time variables.",
+    "details.diagnostics.0": "Remove or isolate I2C IMU read and observe control loop jitter resolution.",
+    "details.diagnostics.1": "Do not use the same phenomenon to qualitatively determine the period parameter; print current_time, previous_time, and measured_period in the ros2_control node at the same location.",
+    "details.effective_fixes.0": "Remove/isolate the I2C IMU read to resolve the jitter observed by the author.",
+    "details.environments.0": "Raspberry Pi 5; controller_manager 250 Hz; low-latency kernel; real-time group limits configured afterward; not precise version of ROS 2/ros2_control used.",
+    "details.limits.0": "No mention of using asynchronous I/O, independent thread, or specific driver fix; only confirmed stability after disabling the I2C IMU read.",
+    "details.limits.1": "Cannot directly extrapolate low-latency kernel results to all hardware and RT kernels.",
+    "details.outcomes.0": "I2C-related jitter confirmed by the author via A/B testing; update period parameter issue not closed-loop.",
+    "details.problem_statements.0": "How should I2C read and the update period parameter be diagnosed when the ros2_control 250 Hz control loop exhibits large jitter?",
+    "details.safety_notes.0": "Avoid unbounded blocking I/O in real-time control threads; monitor worst-case execution time and deadline miss.",
+    "details.suspected_causes.0": "The author confirmed the large jitter comes from the I2C IMU read; the period parameter issue remains undiagnosed.",
+    "details.symptoms.0": "Actual time difference fluctuates between ~1.1-6.9 ms; the update() period parameter does not match the author's offline time difference.",
+    "source.locator": "ros2_control #1574 comment 2183981102",
+    "source.title": "ros2_control control loop jitter and update period anomaly must be separated and diagnosed",
+    "terms.0": "Control-loop jitter (控制循环抖动)",
+    "terms.1": "Low-latency kernel (低延迟内核)",
+    "terms.2": "Real-time scheduling priority (实时调度优先级)",
+    "terms.3": "Blocking I/O (阻塞式 I/O)",
+    "title": "After increasing process priority, ros2_control still exhibits large jitter; what is the specific source confirmed by the real-time thread?"
+  }
+}

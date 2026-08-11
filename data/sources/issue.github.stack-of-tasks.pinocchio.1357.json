@@ -1,0 +1,139 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "mayataka"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "455ec019230098347e7ec979ca195fb32020a18a880d2a2eafb4c5d6add2c856",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和 2 条评论；与既有 #1137 合并到同一 problem_id，没有另造近似重复问题。",
+    "components": [
+      "Pinocchio",
+      "JointModelFreeFlyer",
+      "SE(3) placement",
+      "generalized velocity",
+      "Featherstone convention"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者对照两个旧 Issue 后直接向维护者核对 convention。"
+      ],
+      "diagnostics": [
+        "把 placement 的 translation 表达和 generalized velocity 的 twist 表达分开核对。",
+        "对接其他模拟器时分别检查 base linear velocity、angular velocity 的原点和坐标轴。"
+      ],
+      "effective_fixes": [
+        "按维护者说明，将 Pinocchio 浮动基广义速度解释为 joint local frame；需要 base 原点、world 轴表达时，用当前旋转 R 旋转线速度和角速度向量。"
+      ],
+      "environments": [
+        "Pinocchio 浮动基/FreeFlyer 约定；原帖未给版本和机器人 URDF。"
+      ],
+      "limits": [
+        "线程没有讨论 spatial velocity 的平移作用点变换，也没有给具体版本 API；只覆盖其明确回答的旋转表达转换。"
+      ],
+      "outcomes": [
+        "原作者回复已完全理解。"
+      ],
+      "problem_statements": [
+        "Pinocchio 浮动基 q 的 translation 在 world 表达时，v 的线速度和角速度究竟在哪个参考系？"
+      ],
+      "safety_notes": [
+        "实机状态接口上线前用已知姿态/速度样例核对轴向、单位和符号，避免速度 frame 错配直接进入控制器。"
+      ],
+      "suspected_causes": [
+        "把 t 在 world/parent frame 表达误解为整个 generalized velocity 也在 world frame 表达。"
+      ],
+      "symptoms": [
+        "使用者对 #1122 与 #1137 的示例产生冲突理解，无法确定模拟器间控制器应怎样转换浮动基速度。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不是。维护者说明 placement 的 t 在 antecedent/world frame 表达，但 generalized velocity 遵循 Featherstone 约定，在 joint local frame 表达。若需要以 base 为原点、坐标轴与 world 对齐的表示，可用当前 R 分别旋转线速度和角速度。该结论与既有 #1137 相同，作为同一工程问题的第二个独立原线程聚合。",
+        "applicability": "适用于 Pinocchio 浮动基广义速度的原帖约定；其他模拟器的 twist 原点和 frame 需单独确认。",
+        "bilingual_terms": [
+          "广义速度（generalized velocity）",
+          "局部关节坐标系（joint local frame）",
+          "世界坐标系（world frame）",
+          "浮动基（floating base）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [
+              "issue.github.stack-of-tasks.pinocchio.1137"
+            ],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_freeflyer_velocity_frame_1137",
+        "problem_title_zh": "Pinocchio 浮动基配置与速度的坐标系约定",
+        "question_zh": "Pinocchio 浮动基 placement 的 translation 在 world 表达时，generalized velocity 的线速度和角速度也在 world frame 吗？",
+        "source_locator": "Pinocchio #1357：维护者评论 743988547 给出 placement/velocity frame 约定；原作者 743989277 确认理解",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743988547",
+        "verification_refs": [
+          {
+            "locator": "维护者明确区分 world-frame translation 与 joint-local generalized velocity",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743988547"
+          },
+          {
+            "locator": "原作者回复已完全理解",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743989277"
+          },
+          {
+            "locator": "既有独立原线程同样由维护者确认 FreeFlyer q/v frame 约定",
+            "relation": "issue",
+            "source_id": "issue.github.stack-of-tasks.pinocchio.1137"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1357",
+    "query": "Pinocchio floating base generalized velocity local frame world rotation Featherstone",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用浮动基机器人（原帖未限定型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者说明 placement translation 在 world，而 generalized velocity 在 joint local frame。"
+      },
+      {
+        "text": "原作者确认已完全理解。"
+      }
+    ],
+    "wbc_relevance_reason": "sim-to-sim 和 WBC 状态接口常同时处理 world 位姿与 body-frame twist；把 q 的平移表达误套给 v 会造成速度旋转、控制误差和估计器接口不一致。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1357",
+  "summary": "Pinocchio #1357 专门核对浮动基广义速度参考系。维护者说明 placement 采用 (t,R)∈SE(3)，其中 t 在 antecedent/world frame 表达；广义速度遵循 Featherstone 约定，在 joint local frame 表达。若要得到以 base 为原点、轴与 world 对齐的线速度和角速度，只旋转两个三维向量即可。原作者回复已完全理解。该线程与既有 #1137 是同一问题的独立原帖，因此复用同一 problem_id 聚合展示。",
+  "title": "Pinocchio 浮动基位姿平移在 world 表达而广义速度在 joint local frame 表达",
+  "version": null
+}

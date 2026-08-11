@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "markosvec"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/205",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "content_sha256": "c4092ad9cee534c1576d48fe75d2e53188f5eba608d199dd3a813f2b999688eb",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 9 条评论；只采用维护者实测与作者确认，不采用未验证的早期猜测。",
+    "components": [
+      "OSQP MATLAB",
+      "OSQP codegen",
+      "adaptive rho",
+      "MEX"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "关闭 adaptive rho 时，两 solver 都在 1225 iterations 结束且残差一致；随后使用固定更新间隔。"
+      ],
+      "diagnostics": [
+        "先让两条路径使用同一固定 `adaptive_rho_interval`，比较 primal/dual residual 和迭代数；同时核对 generated workspace 的 `max_iter`。"
+      ],
+      "effective_fixes": [
+        "把 `adaptive_rho_interval` 设置为非零固定值，例如线程中验证的 25；不要用墙钟触发做可复现对照。"
+      ],
+      "environments": [
+        "2019 OSQP MATLAB/codegen；作者提供原始数据、2–3 维简化 QP 和导出代码；未固定 release。"
+      ],
+      "limits": [
+        "25 不是所有 QP 的最优 interval；该卡只确认固定 interval 消除了两路径触发差异。"
+      ],
+      "outcomes": [
+        "原作者确认 `adaptive_rho_interval=25` 对原始与简化问题均有效。"
+      ],
+      "problem_statements": [
+        "为什么 OSQP MATLAB 与同一问题生成的 MEX solver 迭代数和收敛状态不同？"
+      ],
+      "safety_notes": [
+        "生成代码部署前应固定全部 solver settings，并对最坏迭代数和返回码做硬实时验收。"
+      ],
+      "suspected_causes": [
+        "维护者实测确认默认 time-based rho update 在两条路径的触发点不同。"
+      ],
+      "symptoms": [
+        "MATLAB 约 350 iterations 解出；codegen 在 1000 达上限，解误差虽约 `1e-6`。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "线程中的对照表明，默认 time-based adaptive `rho` 会因两条执行路径的墙钟时间不同而在不同迭代触发。关闭 adaptive rho 后，两者均在 1225 iterations 结束且残差一致；改用固定 `adaptive_rho_interval=25` 后，作者确认原始和简化问题都恢复一致。工程上应固定更新间隔并同步 generated workspace 的 `max_iter`，而不是把 25 当成所有 QP 的最优参数。",
+        "applicability": "适用于 OSQP MATLAB/codegen 的自适应 rho 跨路径复现；其他接口需核对更新策略。",
+        "bilingual_terms": [
+          "自适应罚参数（adaptive rho）",
+          "固定更新间隔（fixed update interval）",
+          "代码生成（code generation）",
+          "原始/对偶残差（primal/dual residuals）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_codegen_adaptive_rho_interval_205",
+        "problem_title_zh": "固定 OSQP codegen 的 adaptive-rho 更新间隔",
+        "question_zh": "OSQP MATLAB 与生成的 MEX solver 对同一 QP 迭代行为不同，怎样排除 time-based `rho` 更新差异？",
+        "source_locator": "OSQP #205 维护者 A/B 533609939；作者确认 534015433",
+        "source_url": "https://github.com/osqp/osqp/issues/205#issuecomment-534015433",
+        "verification_refs": [
+          {
+            "locator": "维护者禁用 adaptive rho 后实测两条路径 1225 iterations、残差一致",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/osqp/osqp/issues/205#issuecomment-533609939"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.205",
+    "query": "OSQP codegen mex adaptive rho interval time based inconsistent iterations",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "embedded code-generated WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "作者确认固定 `adaptive_rho_interval=25` 同时解决原始和简化问题。"
+      }
+    ],
+    "wbc_relevance_reason": "嵌入式 WBC 常从桌面接口生成 C solver；依赖墙钟时间触发的 `rho` 更新会破坏跨路径可复现的迭代预算。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.205",
+  "summary": "OSQP #205 比较 MATLAB `prob.solve()` 与 codegen `emosqp('solve')`：同一小 QP 中两者解误差约 `1e-6`，但 MATLAB 350 iterations 收敛，生成 solver 到 1000 仍达上限。维护者定位两条路径的 time-based adaptive rho update 触发点不同；关闭 adaptive rho 时两者均 1225 iterations 且 primal/dual residual 完全一致。改用非零固定 `adaptive_rho_interval`（建议 25 或 50）后，作者确认原始和简化问题都解决。",
+  "title": "OSQP MATLAB 与 codegen 对照应固定 adaptive_rho_interval",
+  "version": null
+}

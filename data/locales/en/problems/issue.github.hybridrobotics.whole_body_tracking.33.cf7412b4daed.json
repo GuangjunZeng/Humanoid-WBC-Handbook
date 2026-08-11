@@ -1,0 +1,25 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.33.cf7412b4daed",
+  "schema_version": 1,
+  "source_fingerprint": "dbe3e87e838b851c8b55f6cac2d3e2cdc4350d570932b33e85301d34a0116a2d",
+  "translations": {
+    "answer": "The thread provides two tentative clues: one user reported that adjusting the reward weight reduced the issue but it remained sporadic; another user suggested clipping the strategy's sigma in the training code. The original post did not prove that the reward weight caused a negative standard deviation or that the trained model's quality improved after clipping, so both are only valid as starting points for reimplementation.",
+    "applicability": "Applicable to training that encounters the same RSL-RL Normal scale/std anomaly; version and strategy parameters must be recorded separately.",
+    "credibility.rationale": "The answer has not been closed or there is conflicting information; the issue is only forming a problem statement; no reproducible record has been formed yet.",
+    "details.attempts.0": "A user modified the reward weight and the issue was reduced but still occurred.",
+    "details.attempts.1": "Another user suggested clipping the strategy's sigma in the training code.",
+    "details.diagnostics.0": "The error is located in actor_critic.py's distribution.sample.",
+    "details.environments.0": "whole_body_tracking; Isaac Lab Python 3.10 environment; RSL-RL PPO; specific commit not mentioned.",
+    "details.limits.0": "No maintainer responded, reimplementation configuration, patch, or final closure; cannot assert that the reward weight is the root cause.",
+    "details.outcomes.0": "The user who modified the reward weight explicitly stated the issue remained; the sigma clipping suggestion has no subsequent validation.",
+    "details.problem_statements.0": "After about 10,000 iterations of PPO training, the Normal distribution's scale/std became negative and the system crashed.",
+    "details.symptoms.0": "RuntimeError: normal expects all elements of std >= 0.0.",
+    "source.locator": "Issue #33 main stack; issuecomment-3471368600 and issuecomment-3471370672",
+    "source.title": "PPO Training in RSL-RL: Normal Distribution Standard Deviation Becomes Negative",
+    "terms.0": "Standard deviation (标准差)",
+    "terms.1": "Policy distribution (策略分布)",
+    "terms.2": "Numerical clipping (数值裁剪)",
+    "title": "What Reproducible Clue Was Given by the Original Thread When the Normal Distribution Standard Deviation Was Less Than Zero in RSL-RL PPO?"
+  }
+}

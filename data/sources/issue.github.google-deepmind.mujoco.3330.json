@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "G-Yong"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3330",
+  "captured_at": "2026-08-11T21:30:00+08:00",
+  "content_sha256": "54a76fa815a2ff0633affd51aa8a84fe9c6a9995ef14c63f7328062b6847ad1d",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 7 条评论；未查看视频或用截图推断，只采用原作者文字结果。",
+    "components": [
+      "MuJoCo",
+      "rigid flex",
+      "flexcomp",
+      "concave collision",
+      "arena memory",
+      "findEdges"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "使用 rigid=true 的 flexcomp 和 contact 配置。",
+        "把 size nconmax 提高到 30000。"
+      ],
+      "diagnostics": [
+        "先用简化 mesh 验证 rigid flex 的凹碰撞。",
+        "记录 ncon、arena memory、FPS，并单独测试静态穿透。",
+        "增大 nconmax 后区分内存警告是否消失，以及 findEdges 错误是否仍独立存在。"
+      ],
+      "effective_fixes": [
+        "简单模型中 rigid flex 实现了作者需要的凹碰撞。"
+      ],
+      "environments": [
+        "2026-06 的 MuJoCo Issue；Windows simulate.exe 被评论提及；精确 MuJoCo 版本、CPU/GPU 和 mesh 规模未给。"
+      ],
+      "limits": [
+        "rigid flex 不是该复杂焊接场景的完整替代方案。",
+        "线程没有维护者给出的 findEdges 修复或可用版本。",
+        "视频和截图未用于本卡结论，所有结果来自作者文字。"
+      ],
+      "outcomes": [
+        "提高 nconmax 只消除了 arena memory full 警告，没有消除 findEdges 错误和进程退出；复杂场景性能仍不足，作者继续依赖 Coal。"
+      ],
+      "problem_statements": [
+        "MuJoCo 如何尝试非凸/凹几何碰撞，rigid flex 在复杂模型中有哪些已观察边界？"
+      ],
+      "safety_notes": [
+        "将非凸碰撞用于运动规划前，应把穿透、接触数上限、实时因子和进程异常纳入自动回归，避免仿真崩溃中断安全检查。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "普通 convex hull 对空腔误报碰撞；简单 rigid flex 可用。",
+        "复杂 rigid flex 降至 40 FPS 或 5 FPS；穿透静态地面时 ncon=22287、arena memory full，随后 findEdges: no tree found 并退出。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原作者确认 rigid=true 的 flexcomp 在简单模型中确实能产生凹碰撞；但复杂模型性能降到 40 FPS/5 FPS，穿透静态物体时出现大量接触、arena memory full 和 findEdges 错误。把 nconmax 提高到 30000 只消除了内存警告，findEdges 错误和 simulate.exe 退出仍存在。因此 rigid flex 可作为简化模型方案，但帖子没有证明它能替代复杂焊接工件的 Coal 集成。",
+        "applicability": "适用于评估复杂 mesh 的 rigid flex 凹碰撞；精确版本和模型规模未知，必须在目标模型复测。",
+        "bilingual_terms": [
+          "刚性柔性体（rigid flex）",
+          "凹碰撞（concave collision）",
+          "接触竞技场内存（contact arena memory）",
+          "静态穿透（static penetration）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.mujoco_rigid_flex_concave_limits_3330",
+        "problem_title_zh": "MuJoCo rigid flex 凹碰撞的适用范围",
+        "question_zh": "MuJoCo 的 rigid flex 能否替代复杂凹几何碰撞方案，增加 nconmax 能否解决崩溃？",
+        "source_locator": "MuJoCo #3330 rigid flex 建议 4688939402；作者简单成功 4690882257；复杂限制 4704015555、4714020235、4714129335",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/3330#issuecomment-4714020235",
+        "verification_refs": [
+          {
+            "locator": "作者给出复杂模型的接触数、错误文本和性能结果",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/3330#issuecomment-4704015555"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.3330",
+    "query": "MuJoCo concave collision rigid flex complex mesh findEdges no tree arena memory",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "robot welding simulation with complex workpiece"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "作者确认简单 rigid flex 可用，但提高 nconmax 后 findEdges 错误仍导致退出。"
+      }
+    ],
+    "wbc_relevance_reason": "复杂环境中的非凸接触会影响碰撞约束、规划和仿真性能；rigid flex 的可用范围必须与接触爆炸和穿透异常一起记录。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.3330",
+  "summary": "MuJoCo #3330 的作者需要焊接工件的非凸碰撞，维护者建议 rigid flex。作者给出 rigid=true 的 flexcomp XML，并确认简单模型确实可用；但复杂模型降到 40 FPS/5 FPS，穿透地面时出现 ncon=22287、arena memory full 和 findEdges: no tree found。增大 nconmax 后内存警告消失，但 findEdges 错误和 simulate.exe 退出仍在，作者最终仍需 Coal。",
+  "title": "MuJoCo rigid flex 可做凹碰撞，但复杂穿透场景有性能与崩溃边界",
+  "version": null
+}

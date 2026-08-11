@@ -1,0 +1,144 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "scastro-bdai"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683",
+  "captured_at": "2026-08-11T11:15:00+08:00",
+  "content_sha256": "1ab87b729124f244818461c9d9e79a26a0b75a0c8b986085b9899a7c2abdf985",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取原 Issue、3 条评论、PR #2684 元数据与 files patch；没有把最初的版本回归猜测保留为根因。",
+    "components": [
+      "Pinocchio 3.5.0",
+      "computeFrameJacobian",
+      "Eigen::MatrixXd",
+      "frame Jacobian"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者把问题写成版本回归并对照 Python/C++ 后，重新检查输出尺寸，定位到 3 行预分配。"
+      ],
+      "diagnostics": [
+        "在调用前打印输出矩阵形状，确认是 6×model.nv，而不是只含线速度的 3×model.nv。",
+        "将输出矩阵预置为 6×nv 的零矩阵，再比较 Python/C++ 和版本差异；不要先把问题归因于参考系或算法回归。"
+      ],
+      "effective_fixes": [
+        "始终传入已清零的 6×model.nv 输出矩阵。",
+        "PR #2684 在 frame/joint Jacobian 路径加入 J.rows()==6 与 J.cols()==model.nv 的参数检查，使错误尺寸不再静默通过。"
+      ],
+      "environments": [
+        "Ubuntu 22.04；Pinocchio 3.4.0 与 3.5.0 对照；C++ Eigen 动态矩阵；原帖提供 URDF 与 Python 复现仓库。"
+      ],
+      "limits": [
+        "该根因只解释输出矩阵尺寸错误；若 6×nv 仍异常，仍需继续核对 frame id、配置 q 和 reference frame。",
+        "原帖没有给出把 C++ 矩阵改成 6×nv 后的新数值截图，但作者已明确定位，维护者补丁直接检查同一条件。"
+      ],
+      "outcomes": [
+        "维护者确认 6×nv 是所有 frame/joint Jacobian 的契约；PR #2684 于 2025-05-26 合并，Issue 以 completed 关闭。"
+      ],
+      "problem_statements": [
+        "Pinocchio C++ 升级后 computeFrameJacobian 变成全零，而相同模型的 Python 结果正常时，应先检查什么？"
+      ],
+      "safety_notes": [
+        "将 Jacobian 维度作为控制启动前断言，避免错误任务空间约束进入实机 QP。"
+      ],
+      "suspected_causes": [
+        "调用方传入了 3×nv 矩阵；3.4.0 曾隐式 resize，3.5.0 不再这样做，非零角速度行因此没有被写入。"
+      ],
+      "symptoms": [
+        "C++ 3.5.0 输出全零，3.4.0 与 Python 输出在最后两行存在非零项。",
+        "调用结束后的 Jacobian 仍只有 3 行，而 frame Jacobian 的空间维度应为 6。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先检查调用方输出矩阵。Frame Jacobian 同时包含线速度与角速度，契约是 6×model.nv；原作者只传了 3×nv，非零项恰在第 5、6 行，而 3.5.0 不再替调用方 resize。应在调用前创建并清零 6×nv 矩阵。已合并的 PR #2684 又为 frame/joint Jacobian 增加 6 行和 nv 列的参数检查。",
+        "applicability": "直接覆盖 Ubuntu 22.04、Pinocchio 3.4/3.5 C++ 调用；其他版本也应遵守 6×nv 的 frame/joint Jacobian 输出契约。",
+        "bilingual_terms": [
+          "帧雅可比矩阵（frame Jacobian）",
+          "空间速度（spatial velocity）",
+          "输出矩阵尺寸（output matrix shape）",
+          "参数检查（argument-size check）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_frame_jacobian_output_shape_2683",
+        "problem_title_zh": "Pinocchio frame Jacobian 输出矩阵少三行导致结果看似全零",
+        "question_zh": "Pinocchio 3.5 的 C++ computeFrameJacobian 返回全零、但 Python 与 3.4.0 有非零结果时，原线程确认的首要检查和修复是什么？",
+        "source_locator": "Pinocchio #2683：作者评论 2905781523 定位 3×nv；维护者评论 2906540315 确认 6×nv；PR #2684 合并提交 8af6014",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683#issuecomment-2905781523",
+        "verification_refs": [
+          {
+            "locator": "Python/C++、3.4/3.5 对照，frame、q、输出矩阵与系统环境",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683"
+          },
+          {
+            "locator": "维护者确认所有 frame/joint Jacobian 均须由调用方提供 6×nv 矩阵",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683#issuecomment-2906540315"
+          },
+          {
+            "locator": "2025-05-26 合并；对 J/dJ 增加 6 行与 model.nv 列检查",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/2684"
+          },
+          {
+            "locator": "PR #2684 merge commit：frames.hxx 与 jacobian.hxx 参数尺寸检查",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/commit/8af6014f6143022f4645e49fbefce2eb0418a225"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2683",
+    "query": "Pinocchio 3.5 computeFrameJacobian zero matrix 3 x nv 6 x nv",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖双臂模型；right_fr3_link2 frame"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "原作者确认传入的是 3×nv；3.5.0 不再自动 resize，预期非零项位于被截掉的第 5、6 行。"
+      },
+      {
+        "text": "维护者明确 frame/joint Jacobian 为 6×nv，并以 PR #2684 补上调用参数检查。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的任务空间控制、IK 与 QP 经常直接消费 6D frame Jacobian；输出矩阵少三行会把角速度部分静默截掉，并可能表现为全零或错误约束。"
+  },
+  "published_at": "2025-05-23T20:36:46Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2683",
+  "summary": "Pinocchio #2683 报告 C++ 从 3.4.0 升到 3.5.0 后 frame Jacobian 变为全零，而 Python 对照仍正常。原作者随后定位到调用方只分配了 3×nv 输出矩阵：非零角速度分量位于第 5、6 行，3.5.0 不再替调用方 resize。维护者明确 frame/joint Jacobian 必须是 6×nv，并通过已合并 PR #2684 增加行列尺寸检查。",
+  "title": "Pinocchio 3.5 的 computeFrameJacobian 不再替调用方修正 3×nv 输出矩阵",
+  "version": null
+}

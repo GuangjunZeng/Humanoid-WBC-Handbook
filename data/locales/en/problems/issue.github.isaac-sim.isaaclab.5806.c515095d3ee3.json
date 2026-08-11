@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.5806.c515095d3ee3",
+  "schema_version": 1,
+  "source_fingerprint": "a1fe0ffbcc5e400dc4dd6759d5728441b277918a33592735cb12cb7e785e7952",
+  "translations": {
+    "answer": "Cannot directly determine. Both independent reviewers confirmed that writing to the simulator-bound buffer would result in the configuration stiffness/damping being redirected to the actuator-data buffer, and a proposed patch was suggested; however, the stock Go2 system shows `mjw_model.nu == 0`, all joints in EFFORT mode, thus nonzero gains on the asset do not correspond to MJWarp actuators, and this cannot explain the approximately 0.118 rad rest-pose difference. Only USD-authored nonzero drive gains would cause the joints to be imported into position/velocity mode, and the solver would actually create an actuator during the old write, which could result in a double controller. The current patch has not been merged.",
+    "applicability": "Applies to explicit actuator initialization in Isaac Lab 3.0.0/Newton 0.5.9; other versions must retrace the binding and solver mode.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Original author and an independent reviewer proposed rewriting the two kernel outputs to `_actuator_stiffness/_actuator_damping`; the independent reviewer additionally logged PhysX/Newton parsed model, mode, and `nu`.",
+    "details.diagnostics.0": "Simultaneously check the write order, `data.joint_stiffness`, USD-authored drive gains, `JointTargetMode`, and `mjw_model.nu`, and do not only examine the gain buffer.",
+    "details.effective_fixes.0": "The current fix has not been merged. During diagnosis, split the asset into authored-zero and authored-nonzero drive gains, and check `nu`/target mode; the two lines of buffer redirect are still proposed patch, and a regression test on both categories of assets must be performed before adoption.",
+    "details.environments.0": "Isaac Lab 3.0.0 a4a7602f, isaaclab_newton 0.5.9, Newton 1.0.0, warp 1.12.0, mujoco-warp 3.5.0.2; independent measurement on driver 570.211.01/CUDA 12.8; original post on Ubuntu 24.04, Isaac Sim 6.0.",
+    "details.limits.0": "Issue remains open, no technical conclusion or merged PR is available; the USD drive gains on the original asset have not been verified in the response.",
+    "details.limits.1": "The independent repository and original JSON dumps are external engineering records; this round did not expand the numbers not posted on the thread into formal conclusions.",
+    "details.outcomes.0": "The independent response confirmed the write order and proposed redirect; the stock Go2 system shows gains as inert, thus invalidating the use of this bug to explain the rest-pose difference.",
+    "details.problem_statements.0": "Whether nonzero `joint_target_ke/kd` in Newton explicit actuator necessarily indicates internal PD and explicit torque are both active?",
+    "details.safety_notes.0": "Backend should limit effort, record mode/targets/actual torque, and separately verify hardware drivers do not add position loops before deployment on real hardware.",
+    "details.suspected_causes.0": "The write order does indeed cause the explicit actuator's configuration gains to be redirected to the simulator-bound buffer; however, whether it produces control action depends on the import mode and whether MJWarp actually creates an actuator.",
+    "details.suspected_causes.1": "The independent response suggests the remaining rest-pose difference on the stock Go2 is more likely a solver/contact difference, but this is only a judgment and not confirmed by the maintainers.",
+    "details.symptoms.0": "Under the same stock Go2 cfg, `data.joint_stiffness` is Newton 25.0 and PhysX 0.0; the rest-pose difference is approximately 0.118 rad during zero-action hold.",
+    "source.locator": "IsaacLab #5806 original source code link and proposed patch; independent confirmation/Go2 measurement 4871459996",
+    "source.title": "Newton explicit actuator gains not necessarily equal to double controller activation",
+    "terms.0": "Explicit actuator (显式执行器)",
+    "terms.1": "Target mode (目标模式)",
+    "terms.2": "Zero-copy binding (零拷贝绑定)",
+    "terms.3": "Rest pose (静止姿态)",
+    "title": "When `joint_target_ke/kd` is nonzero in Newton explicit actuator, can one directly determine that the rest-pose difference comes from internal PD and explicit torque addition?"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "claim",
+  "problem_id": "recovery-safety.symmetric-fall-recovery.frasa",
+  "schema_version": 1,
+  "source_fingerprint": "57c57f0c43e49bf1735f37338b0c8dd4e2a03457339784a496f431a9cd6013c6",
+  "translations": {
+    "answer": "In the symmetric sagittal plane setup of Sigmaban, the FRASA uses a five-degree-of-freedom CrossQ/SAC strategy to unify prone/supine stand-up and sagittal pendulum disturbance recovery, and it is faster than KFB in repeated real-robot trials; this conclusion does not cover side, asymmetric, large robots, or long-term mechanical fatigue, and manual screening of high-stress strategies is still required before deployment.",
+    "applicability.assumptions.0": "The target robot has validated left-right symmetry for the controlled joints.",
+    "applicability.assumptions.1": "Actuator delays, gains, force bounds, friction and thermal behavior are re-identified for the deployment robot.",
+    "applicability.controllers.0": "FRASA CrossQ/SAC policy",
+    "applicability.controllers.1": "key-frame baseline",
+    "applicability.environments.0": "prone and supine stand-up",
+    "applicability.environments.1": "sagittal pendulum disturbances",
+    "applicability.robots.0": "Sigmaban",
+    "applicability.simulators.0": "MuJoCo",
+    "confidence_rationale": "Repeated real-robot stand-up and pendulum comparisons plus public environment code support the narrow result. Confidence is capped by one small robot, sagittal symmetry, manual candidate selection and unreported long-term mechanical loads.",
+    "evidence.0.locator": "Equations 1-4, Tables I-IV and Figures 2, 4-6",
+    "evidence.0.note": "Defines the symmetric end-to-end policy and reports repeated real stand-up and pendulum recovery comparisons.",
+    "evidence.0.title": "FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots",
+    "evidence.1.locator": "StandupEnv.apply_control, get_observation, step, apply_randomization and randomize_fall at 78457df",
+    "evidence.1.note": "Maps the five-DoF interface, incremental control, termination, dynamics randomization and fallen-state initialization to official code.",
+    "evidence.1.title": "Rhoban/frasa official implementation",
+    "safety.command_limits": "Identify robot-specific joint position/speed, actuator torque/current/temperature, impact and control-rate envelopes; the paper's 4-7.3 J impacts are test conditions, not ratings.",
+    "safety.emergency_stop": "Verify an independent emergency stop and safe torque-off response before supported or disturbance testing.",
+    "safety.protective_controls": "Use a tether or padded capture where compatible, an exclusion zone, a repeatable low-energy disturbance rig, thermal/current monitoring and post-trial mechanical inspection.",
+    "safety.robot_specific_warning": "Evidence is specific to the 70 cm, 7.5 kg Sigmaban and symmetric sagittal control; larger robots, lateral falls and asymmetrical contacts require a new design review.",
+    "safety.staged_deployment": "Validate terminations and self-collision in simulation, then supported low-speed prone/supine motions, low-energy disturbances, and only then bounded unsupported trials; do not perform online exploration on unprotected hardware.",
+    "terms.0": "Actuator (执行器)",
+    "title": "Can a lightweight strategy unify fall recovery and stand-up in humanoid robots?"
+  }
+}

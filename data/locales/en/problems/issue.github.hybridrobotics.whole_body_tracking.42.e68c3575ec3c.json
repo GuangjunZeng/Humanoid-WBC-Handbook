@@ -1,0 +1,24 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.42.e68c3575ec3c",
+  "schema_version": 1,
+  "source_fingerprint": "710a94852a33d807c59f9699c7e9cb6b354bddb4db088474150576d1fdeb5d8d",
+  "translations": {
+    "answer": "The original questioner reported that the combination can run after bypassing the Torch version problem; however, another user encountered a 'KeyError: obs_groups' on Ubuntu 22.04/RTX 5070 on the same Sim/Lab major version and could not run the project. Therefore, it is not a universal solution, but a snapshot of an environment with a counterexample.",
+    "applicability": "Only applicable to the original questioner's incomplete public environment; same-thread counterexample exists for Ubuntu 22.04/RTX 5070.",
+    "credibility.rationale": "The answer has not been closed or there is a conflict in the source; the conclusion is not fully resolved.",
+    "details.attempts.0": "Downgrade Isaac Lab; switch Isaac Sim/Lab combination; reinstall the project with official pip installation documentation and set the project PYTHONPATH; fix rsl-rl-lib 2.2.0 or 2.3.0.",
+    "details.diagnostics.0": "Record Isaac Sim, Isaac Lab, rsl-rl-lib, Python, installation method, and project submission separately; do not only record Isaac Lab major version; retest on Isaac-Ant-v0 and project task.",
+    "details.environments.0": "Original post: Isaac Sim 5.0.0, Isaac Lab package shows 0.47.1, Python 3.11; comments mention Isaac Lab 2.1.0/2.2.0/2.2.1, Isaac Sim 4.5/5.0, rsl-rl-lib 2.2.0/2.3.0, Ubuntu 22.04, RTX 5070/5070 Ti.",
+    "details.limits.0": "No maintenance response for the issue; no locked file or minimal reproducible repository; the original post's 0.47.1 and comments mentioning 2.x naming do not explain, so cannot determine a unique recommended version.",
+    "details.outcomes.0": "Different participants reported incompatible success/failure combinations on different machines; the only common conclusion is that all dependency matrices must be verified together.",
+    "details.problem_statements.0": "Tracking-Flat-G1-v0 throws KeyError: obs_groups during OnPolicyRunner initialization; should we switch to Isaac Lab/Sim or use rsl-rl library version?",
+    "details.symptoms.0": "rsl_rl/runners/on_policy_runner.py throws KeyError when accessing self.cfg['obs_groups']; some combinations fix the KeyError but then encounter missing 'rnd_state' in infos['observations'].",
+    "source.locator": "Issue #42 comment issuecomment-3460662935 and 3556476632",
+    "source.title": "Version combination experience for KeyError: obs_groups is conflicting",
+    "terms.0": "Data-dependent symbolic node (data-dependent symbolic node) (数据依赖符号节点)",
+    "terms.1": "Version combination (version combination) (版本组合)",
+    "terms.2": "Compatibility (compatibility) (兼容性)",
+    "title": "Should we use Isaac Sim 4.5 and Isaac Lab 2.1.0 as a universal solution for KeyError: obs_groups?"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "claim",
+  "problem_id": "motion-generation.test-time-cost-guidance.beyondmimic",
+  "schema_version": 1,
+  "source_fingerprint": "5264071288f68645709ba78d34c483f8f62c795b39712a185b35fa849f7bfc7a",
+  "translations": {
+    "answer": "In the skill distribution and short-time domain settings of BeyondMimic, future states and latent actions are jointly generated and integrated with waypoint, speed, keyframe, or SDF cost gradient during diffusion denoising. This allows the combination of existing skills without retraining the policy. A horizon of 0.64 seconds, guidance weights, state estimation, and transition transient limits are used to act as long-range planning or safe obstacle avoidance in the environment.",
+    "applicability.assumptions.0": "A reliable tracker and state estimator provide the reported state/latent interface.",
+    "applicability.assumptions.1": "Downstream objectives are differentiable over the short predicted trajectory.",
+    "applicability.controllers.0": "BeyondMimic motion tracker",
+    "applicability.controllers.1": "state-latent guided diffusion",
+    "applicability.environments.0": "LAFAN1 and diverse motion tracking",
+    "applicability.environments.1": "reported waypoint/joystick/inpainting/obstacle tasks",
+    "applicability.robots.0": "reported physical humanoid platform",
+    "applicability.simulators.0": "training simulator and MuJoCo sim-to-sim",
+    "confidence_rationale": "A strong latent ablation and extensive real demonstrations support the design, but task experiments are mostly qualitative, the public repository covers only the motion-tracking layer rather than latent diffusion/guidance, and several tasks depend on MoCap.",
+    "evidence.0.locator": "Figures 5-8 and Materials and Methods state-latent diffusion/guidance equations",
+    "evidence.0.note": "Supports short-horizon state-action generation, cost composition and key representation/sampling/latency ablations.",
+    "evidence.0.title": "BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion",
+    "evidence.1.locator": "Official project page and linked motion-tracking repository, accessed 2026-08-10",
+    "evidence.1.note": "Confirms project identity and the boundary between the published tracker code and the unverified diffusion/guidance implementation.",
+    "evidence.1.title": "BeyondMimic official project page",
+    "terms.0": "Simulation-to-Simulation (Sim2Sim) (仿真到仿真)",
+    "terms.1": "State Estimation (状态估计)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Motion Tracking (动作跟踪)",
+    "terms.4": "Center of Mass (CoM) (质心)",
+    "title": "Can we combine existing full-body skills during inference without retraining the policy for each downstream task?"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1941592838388290457.2e2e8ec1ff40",
+  "schema_version": 1,
+  "source_fingerprint": "814f48f29c421334e4f4d6b601322f60e10d260337656e333c7ae44c8e635507",
+  "translations": {
+    "answer": "Verify Domain ID, Topic name, IDL data type, and QoS in the post. Check if the versions of the Cyclone DDS core C library, C++/Python bindings, and unitree_sdk2 are consistent. The example uses 0.10.2, but the current project should not blindly follow the version; the current SDK version should be used as the reference.",
+    "applicability": "The version example may be outdated; it must be cross-verified against the current Unitree SDK and Cyclone DDS official documentation.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "List the library relationships at each level, fix the version, and install the SDK in the C core library, C++/Python bindings, and SDK layers.",
+    "details.diagnostics.0": "Cross-verified in the main text, comments, and media descriptions; not independently verified outside the paper/source code/official documentation.",
+    "details.environments.0": "Linux; Cyclone DDS C/C++/Python; unitree_sdk2(_python); example version 0.10.2.",
+    "details.limits.0": "Version examples may be outdated; must refer to the current Unitree SDK and Cyclone DDS official documentation.",
+    "details.outcomes.0": "Main text provides the build directory and tools; no end-to-end delay or packet loss measurement.",
+    "details.problem_statements.0": "Unitree SDK2 nodes are all running, but they are not able to discover each other; which alignment steps should be taken first?",
+    "details.safety_notes.0": "Community candidates are only for forming hypothesis checks; when involving real devices, limit speed, limit force, isolate personnel, and retain logs.",
+    "details.suspected_causes.0": "Any inconsistency in Domain/Topic/IDL/QoS, or mixed use of core C library with bound version.",
+    "details.symptoms.0": "Issues with discovery failure, type or ABI compatibility when combining across languages/ROS2/Unitree SDK.",
+    "media_summaries.0": "The visible structure diagram maps Domain, Topic, IDL, and QoS to DDS communication contracts; it is a conceptual relationship diagram, not a delay or packet loss measurement.",
+    "source.locator": "Text 'DDS definition/library relationship/install'",
+    "source.title": "Cyclone DDS and Unitree SDK2 Version, Domain, Topic, IDL, QoS Alignment Checklist",
+    "terms.0": "Robot Operating System 2 (ROS 2) (机器人操作系统 2)",
+    "terms.1": "Data Distribution Service (DDS) (数据分发服务)",
+    "terms.2": "Quality of Service (QoS) (服务质量)",
+    "terms.3": "Software Development Kit (SDK) (软件开发工具包)",
+    "terms.4": "End-to-End Latency (端到端时延)",
+    "title": "Unitree SDK2 Nodes Are Running But Not Discovering Each Other; Which Alignment Terms Should Be Checked?"
+  }
+}

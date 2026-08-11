@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zacharyyamaoka"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2113",
+  "captured_at": "2026-08-11T15:38:00+08:00",
+  "content_sha256": "96638f8075f6c1c92b65bbe44394dd2ccba3a52ab05c0560ef69b975f0bc970a",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 2 条评论；截图只展示 Foxglove 结果，结论来自作者文字复测和官方源码。",
+    "components": [
+      "ros2_control",
+      "hardware interface",
+      "get_logger",
+      "rosout"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "升级到 Jazzy，并把宏参数改为组件 `get_logger()`。"
+      ],
+      "diagnostics": [
+        "确认 distro 是否提供 hardware component child logger，并比较 standalone logger 与组件 `get_logger()` 的 rosout 行为。"
+      ],
+      "effective_fixes": [
+        "在 Jazzy hardware component 内使用 `RCLCPP_INFO(get_logger(), ...)`。"
+      ],
+      "environments": [
+        "原始环境 ROS 2 Iron；作者升级到 Jazzy 后验证；自定义 Moteus hardware interface；Foxglove。"
+      ],
+      "limits": [
+        "该接口边界从 Jazzy 起成立，Iron 不应直接假定可用；线程没有给 backport。",
+        "实时 `read/write` 高频路径中的日志仍可能破坏时序，本卡只回答 logger 归属。"
+      ],
+      "outcomes": [
+        "原作者明确确认日志随后能在 Foxglove 中显示；官方 ros2_control demo 源码给出同一用法。"
+      ],
+      "problem_statements": [
+        "为什么 hardware interface 日志只显示在终端、没有进入 `/rosout`，Jazzy 应使用哪个 logger？"
+      ],
+      "safety_notes": [
+        "故障日志应限频，并把实时状态采样与非实时发布分离；不要在高频 WBC 循环用日志代替 watchdog。"
+      ],
+      "suspected_causes": [
+        "Iron 中使用的独立 logger 没有关联到 ControllerManager node 的 rosout publisher；Jazzy 提供 child logger。"
+      ],
+      "symptoms": [
+        "`RCLCPP_INFO(rclcpp::get_logger(\"hardware_interface\"), ...)` 在终端可见，但 `/rosout`/Foxglove 不显示。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "从 Jazzy 起，hardware component 提供继承自 ControllerManager 的 child logger。原作者升级 Jazzy 后把 `rclcpp::get_logger(\"hardware_interface\")` 改为组件的 `get_logger()`，并确认 Foxglove 能看到日志；维护者链接的官方 demo 也使用该写法。该结论不包含 Iron backport，也不代表可以在实时 read/write 循环高频打印。",
+        "applicability": "适用于 ROS 2 Jazzy 及含同一 hardware child logger API 的版本。",
+        "bilingual_terms": [
+          "子日志器（child logger）",
+          "硬件组件（hardware component）",
+          "日志聚合（log aggregation）",
+          "实时日志限频（realtime log throttling）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_hardware_child_logger_2113",
+        "problem_title_zh": "让 Jazzy hardware interface 日志进入 rosout",
+        "question_zh": "ROS 2 Jazzy 的 hardware interface 怎样记录能被 `/rosout` 和 Foxglove 接收的日志？",
+        "source_locator": "ros2_control #2113 维护者版本说明 2735617665；作者复测 2764284744；官方 demo rrbot.cpp",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2113#issuecomment-2764284744",
+        "verification_refs": [
+          {
+            "locator": "维护者直接链接的 Jazzy-era 官方 hardware demo 使用 get_logger()",
+            "relation": "source_code",
+            "source_url": "https://github.com/ros-controls/ros2_control_demos/blob/5bef8b48d66b5e673bf8ef63affa94f1049963ee/example_1/hardware/rrbot.cpp#L45"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2113",
+    "query": "ros2_control hardware interface rosout get_logger Jazzy Foxglove",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROS 2 Jazzy hardware component",
+      "Foxglove observability"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "维护者给出 Jazzy child logger 边界；原作者升级并确认 Foxglove 可见。"
+      }
+    ],
+    "wbc_relevance_reason": "硬件接口初始化和故障日志是 WBC 部署诊断链的一部分；logger 归属错误会让远程观测工具遗漏关键信息，但高频控制循环仍不能随意日志刷屏。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2113",
+  "summary": "ros2_control #2113 的 Iron 用户用 `rclcpp::get_logger(\"hardware_interface\")` 时日志只出现在终端，不进入 `/rosout`/Foxglove。维护者说明从 Jazzy 起 hardware component 有 ControllerManager 的 child logger，并链接官方 demo 的 `get_logger()` 用法。原作者升级 Jazzy、改为 `RCLCPP_INFO(get_logger(), ...)` 后确认 Foxglove 可以看到日志。",
+  "title": "Jazzy 硬件组件应使用继承自 ControllerManager 的 get_logger",
+  "version": null
+}

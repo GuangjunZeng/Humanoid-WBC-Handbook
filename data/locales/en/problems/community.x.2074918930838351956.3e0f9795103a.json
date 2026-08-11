@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2074918930838351956.3e0f9795103a",
+  "schema_version": 1,
+  "source_fingerprint": "2ae94ea3206b947c395ef672375410e6c6100ddd05ede684d29a844f2543bf73",
+  "translations": {
+    "answer": "The case uses a task-specific simulator: RGB real2sim mapping, running 256 parallel environments on a single RTX 4090, with H=5 MPPI, for real-time refinement of the base strategy trajectory. The author states that the general simulator does not meet the speed/stability combination, but the benchmark needs further verification.",
+    "applicability": "Applicable to toolchain trade-offs for high-throughput sampling-based MPC, not direct human-like conclusions.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Construct a custom simulator and use MPPI to refine the trajectory.",
+    "details.diagnostics.0": "Compare rollout throughput, dynamics stability, and reasoning success rate.",
+    "details.effective_fixes.0": "The candidate solution is a task-specific simulator + RGB real2sim + 256 parallel MPPI.",
+    "details.environments.0": "Single RTX 4090; 256 parallel environments; H=5; RGB state estimation.",
+    "details.limits.0": "Not WBC/robotic task; parameters cannot be directly transferred.",
+    "details.outcomes.0": "The author claims to improve reasoning success rate, but the number of threads is unknown.",
+    "details.problem_statements.0": "The base strategy requires closed-loop refinement during reasoning, but the general simulator cannot meet the real-time rollout budget.",
+    "details.safety_notes.0": "The real2sim estimated error must enter the MPC safety constraint and fail backtracking.",
+    "details.suspected_causes.0": "The deformation dynamics and large-scale closed-loop rollout computational demands conflict.",
+    "details.symptoms.0": "The current simulator cannot simultaneously provide the required speed and stable, deformable dynamics.",
+    "media_summaries.0": "Screenshot and video frame show the deformed fabric task and method key points; no rollout delay or success rate curve is present.",
+    "source.locator": "Author 1/3 and 2/3 threads",
+    "source.title": "RGB real2sim + 256 parallel rollout's reasoning time MPPI refinement",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Model Predictive Control (MPC) (模型预测控制)",
+    "terms.2": "State Estimation (状态估计)",
+    "terms.3": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.4": "Dynamics (动力学)",
+    "title": "What do we do when sampling MPC for reasoning requires large rollout, but the general simulator cannot meet the real-time budget?"
+  }
+}

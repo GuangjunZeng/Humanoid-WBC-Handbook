@@ -1,0 +1,127 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "twkang43"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3505",
+  "captured_at": "2026-08-11T21:24:00+08:00",
+  "content_sha256": "a515ac4674952e8968b5be98dbaca2d12241706b9d769d28832557217800aad7",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 9 条评论；未使用训练曲线图片作结论，结论来自明确文字复测和团队回复。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim 5.0/5.1",
+      "RGB camera",
+      "rendering pipeline",
+      "PyTorch deterministic algorithms",
+      "FXAA"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "升级 Isaac Sim 5.0/IsaacLab 新提交。",
+        "开启 torch.use_deterministic_algorithms、禁用 cudnn benchmark、启用 cudnn deterministic、设置 PYTHONHASHSEED 与 CUBLAS_WORKSPACE_CONFIG。",
+        "分别尝试 antialiasing OFF 与 FXAA。"
+      ],
+      "diagnostics": [
+        "先用同任务的 state observation 与 RGB observation 做 A/B 对照。",
+        "分别验证 PyTorch/cuDNN 确定性、CUBLAS/PYTHONHASHSEED 与渲染 anti-aliasing，而不是把它们混成一个开关。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "初始：Isaac Sim 4.5、IsaacLab commit f20d74c、Ubuntu 22.04、RTX A6000、CUDA 12.9、driver 575.64.03。",
+        "复测：Isaac Sim 5.0.0、IsaacLab commit 90dda53；另有用户报告 Sim 5.1。"
+      ],
+      "limits": [
+        "该结论针对帖子测试的 Isaac Cartpole RGB 任务和 4.5/5.0/5.1 时期管线，不能外推未来简化 RTX 模式或 Newton tiled camera。",
+        "训练曲线图片未用于判定；卡片只采用多位用户和团队的文字结果。"
+      ],
+      "outcomes": [
+        "上述尝试在帖子所列环境中都没有恢复视觉训练的可复现性；团队未给当前管线的修复。"
+      ],
+      "problem_statements": [
+        "为什么视觉任务固定 seed 后仍不可复现，常见 deterministic 设置是否足够？"
+      ],
+      "safety_notes": [
+        "视觉策略回归应保存 camera observation 校验样本和多 seed 分布，不要把单次训练差异直接归因于算法改动。"
+      ],
+      "suspected_causes": [
+        "IsaacLab 团队成员说明当前 rendering pipeline 具有随机性，不能保证 rendered outputs 确定。"
+      ],
+      "symptoms": [
+        "同 seed 的 state-based 任务训练曲线一致，而 RGB 与 RGB-ResNet18 任务多次运行明显分叉。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "在该线程的 Isaac Sim 5.0/5.1 测试中，强制 PyTorch/cuDNN deterministic、设置 PYTHONHASHSEED/CUBLAS_WORKSPACE_CONFIG，以及 antialiasing OFF 或 FXAA 都没有恢复 RGB 任务可复现性。IsaacLab 团队成员随后明确说明当前 rendering pipeline 本质上具有随机性，暂时没有保证 rendered outputs 确定性的好方法。因此这些设置仍可排除其他随机源，但不能当作当前视觉管线的充分修复；评测应改为多次运行的分布和 camera observation 回归。",
+        "applicability": "适用于帖子覆盖的 Isaac Sim 4.5、5.0、5.1 视觉训练管线；未来渲染模式需重新测试。",
+        "bilingual_terms": [
+          "可复现性（reproducibility）",
+          "确定性算法（deterministic algorithms）",
+          "随机渲染管线（stochastic rendering pipeline）",
+          "抗锯齿（anti-aliasing, AA/FXAA）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reproducibility_and_debugging.isaaclab_vision_render_stochastic_3505",
+        "problem_title_zh": "Isaac Lab 视觉训练的渲染非确定性边界",
+        "question_zh": "Isaac Lab 视觉任务固定 seed 仍不可复现时，强制 PyTorch deterministic 或关闭抗锯齿能解决吗？",
+        "source_locator": "IsaacLab #3505 作者复测 3315924447/3326940823，双人 AA 复测 3330102174/3331426534，团队结论 3862666319",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3505#issuecomment-3862666319",
+        "verification_refs": [
+          {
+            "locator": "团队成员说明当前渲染管线随机，暂不能保证 rendered outputs 确定",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3505#issuecomment-3862666319"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3505",
+    "query": "Isaac Lab vision training fixed seed nondeterministic rendering FXAA deterministic algorithms",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Isaac Cartpole RGB reference tasks"
+    ],
+    "schema_version": 2,
+    "scope_id": "reproducibility_and_debugging",
+    "selected_comments": [
+      {
+        "text": "作者和另一用户分别报告 deterministic 设置与 AA OFF/FXAA 均未解决；团队确认当前渲染输出不能保证确定。"
+      }
+    ],
+    "wbc_relevance_reason": "视觉策略训练和视觉辅助 WBC 若无法重现 camera observations，固定随机种子也不能保证训练曲线一致，影响回归与算法比较。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3505",
+  "summary": "IsaacLab #3505 用五次相同 seed 对照发现 state-based Cartpole 可复现，而 RGB 与 RGB-ResNet18 训练曲线分叉。作者升级到 Isaac Sim 5.0/IsaacLab commit 90dda53 后仍复现；强制 PyTorch/cuDNN deterministic、设置 PYTHONHASHSEED 与 CUBLAS_WORKSPACE_CONFIG 也未消除。另一位用户和作者分别试过 AA OFF/FXAA，仍非确定；第三位用户报告 Sim 5.1 仍存在。团队最终说明当前 rendering pipeline 本质上是 stochastic，暂时没有保证 rendered outputs 确定性的好方法。",
+  "title": "Isaac Lab 视觉训练固定 seed 仍可能受随机渲染管线影响",
+  "version": null
+}

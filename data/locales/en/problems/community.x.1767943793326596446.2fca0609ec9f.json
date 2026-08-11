@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.1767943793326596446.2fca0609ec9f",
+  "schema_version": 1,
+  "source_fingerprint": "0dcdbdb4f0fe62e153004350133db347c7fa3cc8360796aa8d30ef697a0912a3",
+  "translations": {
+    "answer": "The proposed expressions are: task-space acceleration error minimization in the constraint, inclusion of whole-body dynamics in the constraints, and joint torque calculation via constrained QP. This can serve as an engineering entry point to understand task-space inverse dynamics, but it is merely a speculation for Figure 01 and not an official architecture description.",
+    "applicability": "This is applicable for controller design that maps redundant task-space targets to satisfy whole-body dynamics constraints.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "There is engineering record for environment, processing steps, and results, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The discussion proposes QP-based task-space inverse dynamics as a possible structure.",
+    "details.diagnostics.0": "Distinguish between the setpoint output of the learning strategy and the actual low-level tracker; check for task-space acceleration target, whole-body dynamics constraints, and direct joint torque output.",
+    "details.environments.0": "Figure 01 two-arm operation public demonstration; learning strategy at ~200 Hz; discussion assumes a higher frequency low-level control loop.",
+    "details.limits.0": "The core structure uses 'I'd guess' tone; it cannot be written as Figure 01 confirmed architecture.",
+    "details.outcomes.0": "A feasible QP formulation is formed, but it has not been confirmed by Figure team, and there is no control log or source code.",
+    "details.problem_statements.0": "After the learning strategy provides wrist/hand setpoints, what should the low-level system use: PID or direct QP-based joint torque calculation?",
+    "details.safety_notes.0": "Direct torque control must verify dynamics, contact constraints, torque/velocity limits, and control cycle; cannot speculate based on social media platforms and directly implement on real machines.",
+    "details.suspected_causes.0": "The 200 Hz learning model may not be sufficient to replace 1 kHz rapid constraint control; redundant task-space commands require dynamics and constraint resolution.",
+    "details.symptoms.0": "No specific fault reported; discussion focuses on whether the 200 Hz strategy is sufficient for direct low-level torque control.",
+    "source.locator": "@huaijiangzhu reply and subsequent QP explanation",
+    "source.title": "Technical discussion on low-level WBC, QP, and direct joint torque output for Figure 01",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Quadratic Programming (QP) (二次规划)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "terms.3": "Joint Torque (关节力矩)",
+    "terms.4": "Contact Constraint (接触约束)",
+    "terms.5": "Dynamics (动力学)",
+    "title": "How does QP-based WBC calculate joint torque after the learning strategy provides task-space setpoints?"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.8.d06bac091f4a",
+  "schema_version": 1,
+  "source_fingerprint": "c2c3081e6b927ea8cf2cd70d92a7b0ed73a537ecaf1ed82d29f59114b6f43e1f",
+  "translations": {
+    "answer": "The original thread requested alignment between the VR and ZED coordinate systems. The project contributor confirmed there is an offset between them, which must be resolved before real-time teleoperation. The post does not provide calibration algorithms or transformation matrices, so specific calculation steps cannot be inferred from the replies.",
+    "applicability": "This applies to human2humanoid remote operation scenarios that use both VR targets and ZED VIO world coordinates.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Estimate the root position using ZED Mini VIO.",
+    "details.attempts.1": "Align the VR and ZED coordinate systems before real-time teleoperation.",
+    "details.diagnostics.0": "Check hardware_code/zed_odometry.py; verify VR and ZED coordinate system offset.",
+    "details.effective_fixes.0": "The project contributor uses ZED Mini VIO and explicitly aligns the VR-ZED offset.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; ZED Mini VIO; real-time teleoperation with VR.",
+    "details.limits.0": "No specific calculation or calibration accuracy for VIO drift, delay, root_rot/root_vel provided.",
+    "details.outcomes.0": "The project contributor confirmed the deployment twice.",
+    "details.problem_statements.0": "How to obtain the real-time root position when no external MoCap is available?",
+    "details.problem_statements.1": "How to integrate VR targets with ZED VIO when using different coordinate systems during real-time teleoperation?",
+    "details.suspected_causes.0": "There is an unaligned offset between VR and ZED origins/coordinates.",
+    "details.symptoms.0": "The deployment code requires root_pos/root_rot/root_vel, but the robot's body observation does not provide a global root position directly.",
+    "media_summaries.0": "Issue text screenshot points out the 'p^real' field required by the strategy; specific solution comes from the text reply and code link.",
+    "source.locator": "Issue #8, contributor reply issuecomment-2426752129",
+    "source.title": "Human2Humanoid Real-Time Teleoperation: VR and ZED VIO Coordinate System Alignment",
+    "terms.0": "Coordinate system alignment (frame alignment) (坐标系对齐)",
+    "terms.1": "Extrinsic offset (外参偏移)",
+    "terms.2": "Real-time teleoperation (real-time teleoperation) (实时遥操作)",
+    "title": "Human2Humanoid Real-Time Teleoperation: VR and ZED VIO Coordinate System Alignment"
+  }
+}

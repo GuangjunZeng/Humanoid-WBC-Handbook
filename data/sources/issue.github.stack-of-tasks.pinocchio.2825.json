@@ -1,0 +1,143 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "christophfroehlich"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825",
+  "captured_at": "2026-08-11T11:20:00+08:00",
+  "content_sha256": "1896eb8dd63b1971791151a8ead1c9c42d268ff69a2fed1508ec435620938c34",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "只使用原帖数值输出、维护者 Variant 4 和作者确认；没有把示例扩展到线程未覆盖的闭链模型。",
+    "components": [
+      "Pinocchio Model::addJoint",
+      "Model::addFrame",
+      "appendBodyToJoint",
+      "fixed joint",
+      "jointPlacements"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者分别用 addFrame 与 appendBodyToJoint 构造 q_dummy，两种写法都在 addJoint 阶段漏掉 fixed-link placement。"
+      ],
+      "diagnostics": [
+        "分别打印 Model::jointPlacements、Model::inertias、frame placement 与 data.oMi，不要用 link/frame 列表直接推断 joint tree。",
+        "用 getBodyId 取得承载 fixed link 的 frame，检查其 placement 是否需要乘入新 joint 的静态 placement。"
+      ],
+      "effective_fixes": [
+        "读取 link_2 body frame，并把 link2_frame.placement * dummy_placement 作为 addJoint 的 joint placement。",
+        "随后把 dummy body frame 以 Identity 挂到新 joint 并附加 inertia；若不需要 frame，可直接 appendBodyToJoint。"
+      ],
+      "environments": [
+        "Ubuntu Jammy；Pinocchio devel commit 7b4ae02283203f37320c70e1098204d177f07ae9；Python 最小复现；FreeFlyer 根关节。"
+      ],
+      "limits": [
+        "示例覆盖 fixed-link 折叠和单个新 PZ joint；更复杂的多分支、闭链或 frame 语义仍需逐级核对。",
+        "作者确认理解与示例，但线程没有贴出其完整估计器的回归结果。"
+      ],
+      "outcomes": [
+        "维护者提供可运行的 Variant 4 和结构解释；原作者回复已理解且解释符合预期，Issue 以 completed 关闭。"
+      ],
+      "problem_statements": [
+        "从 URDF 子模型程序化追加关节和惯量后，为什么 data.oMi 的新关节 origin 为零、CoM 却出现偏移？"
+      ],
+      "safety_notes": [
+        "模型拼接后应对总质量、CoM、关键 frame placement 和重力力矩做回归，再用于实机控制。"
+      ],
+      "suspected_causes": [
+        "URDF fixed links 不成为独立 joint；其惯量合并到父 joint，变换用于计算后续 jointPlacements。原程序把新 joint 直接挂到 parent joint 的 Identity placement，漏掉 link_2 frame transform。"
+      ],
+      "symptoms": [
+        "URDF 直接解析得到 urdf_joint2 origin=[1.5,0.1,0.3]、CoM=[0,0,0]；程序化 q_dummy 得到 origin=[0,0,0]、CoM=[0.5,0.1,0.3]。",
+        "继续追加关节时，前序 fixed-link 的位置偏移持续缺失。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "Fixed link 的 frame 不属于 joint kinematic chain；其惯量会合并到承载 joint，变换则折叠进后续 joint placement。程序化追加时，先取目标 body frame，再用 frame.placement * 新关节局部 placement 作为 addJoint 的静态变换；随后用 Identity 把 body frame 挂到新 joint 并附加惯量，或直接 appendBodyToJoint。原作者确认维护者的示例与解释解决了问题。",
+        "applicability": "适用于 Pinocchio 程序化组合包含 fixed links 的 URDF 子模型；原帖环境为 Jammy 与 devel commit 7b4ae02。",
+        "bilingual_terms": [
+          "关节静态位姿（joint placement）",
+          "固定连杆（fixed link）",
+          "运动学树（kinematic chain）",
+          "空间惯量（spatial inertia）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_fixed_frame_add_joint_2825",
+        "problem_title_zh": "Pinocchio 程序化追加关节时漏乘 fixed-link frame placement",
+        "question_zh": "Pinocchio 从 URDF 子模型追加 joint/body 后，新关节 origin 为零且 CoM 偏移，原线程给出的正确模型语义和构造方式是什么？",
+        "source_locator": "Pinocchio #2825：维护者评论 3641336177 给出 Variant 4，评论 3641830698 解释 fixed frame/joint/inertia 语义，作者评论 3643534486 确认",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3641830698",
+        "verification_refs": [
+          {
+            "locator": "URDF/程序化三种构造对照、质量/CoM/origin 输出与完整最小脚本",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825"
+          },
+          {
+            "locator": "维护者给出 frame placement 乘入 addJoint 的完整 Variant 4",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3641336177"
+          },
+          {
+            "locator": "原作者确认已理解且详细解释解决疑惑",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3643534486"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2825",
+    "query": "Pinocchio addJoint addFrame fixed link placement inertia origin",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖最小 URDF 子模型；未绑定具体机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者给出 link2_frame.placement * dummy_placement 传给 addJoint 的完整最小示例。"
+      },
+      {
+        "text": "维护者解释 fixed links 的 frame 不在 joint tree，惯量和 placement 会分别折叠到承载 joint 与子 joint。"
+      },
+      {
+        "text": "原作者确认解释清楚并解决疑惑。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的模型降阶、子模型估计器和在线模型拼接依赖正确的 joint placement 与 inertia；把 fixed-link frame 错当成 joint 会让质心、动力学和末端位置一起偏移。"
+  },
+  "published_at": "2025-12-10T09:59:35Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2825",
+  "summary": "Pinocchio #2825 对照 URDF 模型和程序化 addJoint/addFrame 后，发现新关节 origin 为零且 CoM 偏移。维护者解释：fixed link 的 frame 不属于 joint kinematic chain，其变换已折叠到子 joint placement，惯量也合并到承载 joint。程序化添加时应读取目标 body frame 的 placement，与新关节局部 placement 相乘后传给 addJoint；新 body frame 相对该 joint 设为 Identity 并附加惯量，或用 appendBodyToJoint。作者确认解释与示例解决了疑惑。",
+  "title": "Pinocchio 程序化 addJoint 时不能把固定 link frame 当成运动学树 joint",
+  "version": null
+}

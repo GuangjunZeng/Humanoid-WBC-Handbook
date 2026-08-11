@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1779.b45269514e5e",
+  "schema_version": 1,
+  "source_fingerprint": "b576a4f8a749ce59af754c2752faa222c3c78bf0dcad82cc8eac1c862e0bcd95",
+  "translations": {
+    "answer": "getFrameJacobian(..., LOCAL) considers the frame relative to the parent joint and expresses the Jacobian in the end-effector frame. The wrench is not transformed if it is already in the same LOCAL frame; if it follows the specific convention mentioned in the original response, it is expressed at the world origin and aligned with the world coordinate system, and can be transformed to the end-effector LOCAL frame using data.oMf[frame_id].actInv(wrench). The original author confirms that this answer is sufficient. For different application points or other libraries, the convention must be rechecked, and this line of code cannot be considered a universal formula.",
+    "applicability": "Applies to the end-effector LOCAL Jacobian in Pinocchio Python, and the original response explicitly describes the wrench at the world origin and world-aligned. Verification is required for different application points and API versions.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The original author attempted to use the MATLAB Robotics System Toolbox example for frame transformation but failed.",
+    "details.attempts.1": "The maintainer clarified the frame placement/Jacobian semantics, and provided handling for two cases: wrench in the LOCAL frame or at the world origin and world-aligned.",
+    "details.diagnostics.0": "Confirmed the reference frame of getFrameJacobian, and explicitly recorded the coordinate system and application point of the wrench.",
+    "details.diagnostics.1": "Do not repeat the frame-to-parent bias; the LOCAL Jacobian already incorporates the frame placement into the calculation.",
+    "details.effective_fixes.0": "The wrench is not transformed if it is already expressed in the end-effector LOCAL frame; if it follows the original thread's specific convention, it is at the world origin and world-aligned, and can be transformed to the end-effector LOCAL frame using data.oMf[frame_id].actInv(wrench).",
+    "details.environments.0": "Kinova Jaco, Pinocchio Python; original post did not provide OS, Pinocchio version, URDF commit, or control period.",
+    "details.limits.0": "This thread only covers the wrench expression and application point that the maintainer explicitly described; other application points, sensor coordinate systems, or libraries' wrench action/dual-action conventions cannot be directly copied.",
+    "details.limits.1": "The thread does not publish corrected trajectories, force/momentum curves, or real-world stability results.",
+    "details.limits.2": "The explanation's transformation should be rechecked against the Force/SE3 API of the target Pinocchio version.",
+    "details.outcomes.0": "The original author confirmed that the explanation is sufficient and agreed to close the issue.",
+    "details.problem_statements.0": "When using the Pinocchio LOCAL end-effector Jacobian for impedance control, how should the wrench align with the Jacobian in the world coordinate system?",
+    "details.safety_notes.0": "Before enabling impedance or external force control in real-world applications, use a small static wrench to check joint torque signs, frame, and limits; configure emergency stop. An incorrect frame can be directly reversed in the expected force direction.",
+    "details.suspected_causes.0": "The original implementation combined the LOCAL Jacobian with a wrench that was not explicitly expressed, and the coordinate system and convention were not aligned.",
+    "details.symptoms.0": "The arm moves, but the direction or behavior does not match the robot's documentation; the original author suspects the force/wrench is in the wrong frame.",
+    "source.locator": "Pinocchio #1779 comment 1290530047 explanation of LOCAL Jacobian; comment 1290556806 gives the wrench transformation; comment 1290559993 confirms the original author",
+    "source.title": "Pinocchio's end-effector Jacobian using LOCAL reference frame: how does the original thread handle the coordinate expression of the wrench?",
+    "terms.0": "Impedance control (impedance control) (阻抗控制)",
+    "terms.1": "Force wrench (wrench) (力旋量)",
+    "terms.2": "End effector (end effector) (末端执行器)",
+    "terms.3": "Local frame (local frame) (局部坐标系)",
+    "terms.4": "Jacobian-transpose mapping (Jacobian-transpose mapping) (雅可比转置映射)",
+    "title": "Pinocchio's end-effector Jacobian using LOCAL reference frame: how does the original thread handle the coordinate expression of the wrench?"
+  }
+}

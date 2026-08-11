@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2057507896129380581.af6711157ea8",
+  "schema_version": 1,
+  "source_fingerprint": "d0f517bed6430614eba1ac78c7d9b6c10a00df2381481964aa2e0b61a87fd979",
+  "translations": {
+    "answer": "The thread provides a design→simulation→data collection→system identification→policy training→real deployment process, and publishes hardware/CAD, runtime/calibration, sim, identification, and motion training libraries together. Whether it can be directly reproduced depends on version and safety testing validation.",
+    "applicability": "Applicable to the minimum reproducible list for open-source humanoid robots.",
+    "collection.stop_reason": "No growth after visible scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal data cross-validation or independent reproduction is missing.",
+    "details.attempts.0": "Released full stack and provided blog/code.",
+    "details.diagnostics.0": "Checked CAD, runtime, calibration, simulation, identification, and training for version binding.",
+    "details.effective_fixes.0": "Candidate mechanism is closed-loop versioned full stack, not isolated models.",
+    "details.environments.0": "Approximately $2,500 3D-printed humanoid; open-source soft hardware stack.",
+    "details.limits.0": "Not verified actual BOM, build time, and control performance.",
+    "details.outcomes.0": "The post claims it can be built, disassembled, repaired, simulated, and trained on real machine.",
+    "details.problem_statements.0": "Low-cost humanoid projects often only open-source one layer, making it difficult to form a reproducible closed loop.",
+    "details.safety_notes.0": "Low-cost/3D-printed structures still require load, fatigue, limit, and emergency stop validation.",
+    "details.suspected_causes.0": "Missing any layer would transfer system integration cost to the reproducer.",
+    "details.symptoms.0": "The post did not report specific faults.",
+    "media_summaries.0": "Screenshots show the LeRobot Humanoid paper/project cover and full-stack list, but no build error, control frequency, or real machine performance.",
+    "source.locator": "Root post and author's closed-loop reply",
+    "source.title": "LeRobot Humanoid Full-Stack Closed-Loop: From Design to Real Machine Deployment",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.2": "Payload (有效载荷)",
+    "terms.3": "System Identification (系统辨识)",
+    "terms.4": "Emergency Stop (E-Stop) (安全急停)",
+    "title": "Open-source humanoid projects need to form a reproducible closed loop; LeRobot Humanoid lists which stages?"
+  }
+}

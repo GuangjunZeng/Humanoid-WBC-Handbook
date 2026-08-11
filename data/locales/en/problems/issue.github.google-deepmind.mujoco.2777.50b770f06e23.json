@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.2777.50b770f06e23",
+  "schema_version": 1,
+  "source_fingerprint": "6dcaa4998ab07e5b8fcf136a38400cd238e29bc757dda38656a41d2a830e7f0e",
+  "translations": {
+    "answer": "Confirm that the mesh has contype/conaffinity equal to 0, and that collisions are only specified via contact/pair. If so, use the MuJoCo version containing commit 3434f5d. This commit is parsed during compilation, marking the mesh as needing a convex hull and adding it to the ConvexHullForPairCollisionMeshes regression test. The original author did not report a retest after upgrade, but the maintenance team's diagnosis, the author's model confirmation, and the official source code fix and test form a complete evidence chain.",
+    "applicability": "Applies to MuJoCo/MJX 3.3.4 and versions lacking the commit, and meshes that only participate in collisions via contact/pair.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and consistent, and there is an exact reference to formal documentation or independent reproducibility.",
+    "details.attempts.0": "The maintainer aligned the issue with the original model's contact pair; the author confirmed the original model indeed had a pair.",
+    "details.diagnostics.0": "Check that the mesh has contype/conaffinity both equal to 0, but only participates in collisions via contact/pair.",
+    "details.diagnostics.1": "Check that the installed version includes commit 3434f5d or that the corresponding fix is listed in the changelog.",
+    "details.effective_fixes.0": "Use a version of MuJoCo containing commit 3434f5d9c774bf56d3cf4dd26d0beca8d9c509f1; this fix compiles pairs before convex-hull checks and marks the mesh as needing a hull.",
+    "details.environments.0": "MuJoCo/MJX 3.3.4; Python API; Ubuntu 24.04; the original model uses contact/pair to specify meshes with contype=0, conaffinity=0 for collision participation.",
+    "details.limits.0": "The maintainer pointed out that the minimal reproduction reported by the original poster does not match the actual bug; this must be verified before applying the fix.",
+    "details.limits.1": "The fix cannot be applied to all cases of mesh.py convex errors.",
+    "details.outcomes.0": "The fix is added to a dedicated pair-collision mesh regression test and written to the changelog; the original author did not report a retest after upgrade.",
+    "details.problem_statements.0": "How should MJX put_model handle meshes that participate in collisions only via contact pair?",
+    "details.safety_notes.0": "After upgrade, regression tests should be performed on the number of contact points, normal vectors, and friction behavior, and should not be evaluated solely on whether put_model does not throw an error.",
+    "details.suspected_causes.0": "The official submission states: meshes that only participate in collisions via contact pair are not marked for convex hull calculation.",
+    "details.symptoms.0": "mjx.put_model throws a mesh.py convex error; the mesh_graphadr is -1; the mesh does not throw an error when replaced with a box.",
+    "source.locator": "MuJoCo #2777 maintenance diagnosis 3133421618, author model confirmation 3134769229; commit 3434f5d",
+    "source.title": "MJX put_model encounters a convex hull error when handling meshes that only participate in collisions via contact pair",
+    "terms.0": "Contact pair (接触对)",
+    "terms.1": "Convex hull (凸包)",
+    "terms.2": "Mesh graph address (网格图地址)",
+    "terms.3": "Regression test (回归测试)",
+    "title": "How should MuJoCo 3.3.4 fix the convex hull error when handling meshes that only participate in collisions via contact pair?"
+  }
+}

@@ -34,11 +34,13 @@ jobs:
       - name: Check generated problem pages
         run: >-
           PYTHONPATH=src python3 -m wbc_handbook render-problems
-          --data-dir data --output-dir content/problems --check
+          --data-dir data --translations-dir data/locales/en/problems
+          --output-dir content/problems --check
       - name: Build static bilingual search index
         run: >-
           PYTHONPATH=src python3 -m wbc_handbook build-web-index
-          --data-dir data --problems-dir content/problems
+          --data-dir data --translations-dir data/locales/en/problems
+          --problems-dir content/problems
           --output site/search-index.json
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

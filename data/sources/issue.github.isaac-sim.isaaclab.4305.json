@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "DreaverZhao"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4305",
+  "captured_at": "2026-08-11T22:30:00+08:00",
+  "content_sha256": "12c0e5fdff5de0d202c34d4821252e76d6074550800af1383201c57eb45f8038",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 2 条评论和合并 PR #4306 的补丁、审阅与元数据；结论不依赖图片。",
+    "components": [
+      "Isaac Lab",
+      "IMU sensor",
+      "numerical differentiation",
+      "reset buffer"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PR #4306 在 IMU reset 中增加两行，按 env_ids 清零前一帧线速度和角速度缓存。"
+      ],
+      "diagnostics": [
+        "检查 IMU 数值微分的历史速度缓存是否与环境、传感器一起按 env_ids 清零。"
+      ],
+      "effective_fixes": [
+        "升级到包含 PR #4306、merge commit 85d85bd 的版本，或等价地在 IMU reset 中同步清零两个历史速度缓存。"
+      ],
+      "environments": [
+        "IsaacLab commit 244483ee、Isaac Sim 5.1.0、Ubuntu 22.04、RTX 4060Ti 16G、CUDA 12.9、driver 580.95.05；Quadcopter Direct、1 env、IMU update_period=0.005。"
+      ],
+      "limits": [
+        "这里只核验 Isaac Lab 该版本的 IMU 实现，不把首帧结果外推为所有真实 IMU 驱动的重置语义。"
+      ],
+      "outcomes": [
+        "PR 已合并；原作者确认修复后 reset 首帧 `lin_acc_b` 为重力、`ang_acc_b` 为零。"
+      ],
+      "problem_statements": [
+        "环境和 IMU reset 后第一帧 `lin_acc_b` 为什么出现不合理尖峰？"
+      ],
+      "safety_notes": [
+        "如果首帧 IMU 参与真机保护或状态估计，应在目标驱动上额外核对 reset、时间戳与滤波器状态。"
+      ],
+      "suspected_causes": [
+        "原帖与合并补丁共同确认：`reset()` 清了输出加速度，却没有清 `_prev_lin_vel_w` 和 `_prev_ang_vel_w`，首帧微分仍使用 reset 前速度。"
+      ],
+      "symptoms": [
+        "两次示例中，reset 前加速度为几十量级，reset 后首帧 z 分量分别约 325.6 和 262.9，下一帧恢复正常量级。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程的最小复现、源码定位与合并 PR #4306 一致：IMU 用相邻速度做数值微分（numerical differentiation），旧 `reset()` 只清输出，没有清前一帧线速度与角速度缓存，因而首帧拿 reset 前速度参与微分。修复是在 `imu.py` 的 `reset(env_ids)` 中同时把 `_prev_lin_vel_w[env_ids]` 和 `_prev_ang_vel_w[env_ids]` 置零。原作者确认修复后首帧 `lin_acc_b` 为重力、`ang_acc_b` 为零。",
+        "applicability": "适用于包含同一历史缓存实现的 Isaac Lab IMU；其他版本或真实传感器需核对自身 reset 语义。",
+        "bilingual_terms": [
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "数值微分（numerical differentiation）",
+          "历史缓存（history buffer）",
+          "环境重置（environment reset）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.sensing_and_perception.isaaclab_imu_reset_history_4305",
+        "problem_title_zh": "Isaac Lab 重置 IMU 历史缓存",
+        "question_zh": "Isaac Lab 环境 reset 后，IMU 首帧线加速度为什么会出现巨大尖峰？",
+        "source_locator": "IsaacLab #4305 原帖复现与作者确认 3911771595；合并 PR #4306",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4305#issuecomment-3911771595",
+        "verification_refs": [
+          {
+            "locator": "已合并 PR 85d85bd：reset 同步清零 `_prev_lin_vel_w` 与 `_prev_ang_vel_w`",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/4306"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4305",
+    "query": "Isaac Lab IMU lin_acc_b reset stale previous velocity first sample spike",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "quadcopter simulation",
+      "generic articulated robots with IMU observations"
+    ],
+    "schema_version": 2,
+    "scope_id": "sensing_and_perception",
+    "selected_comments": [
+      {
+        "text": "原作者确认 #4306 通过重置 IMU 内部历史缓存解决，修复后首帧线加速度为重力、角加速度为零。"
+      }
+    ],
+    "wbc_relevance_reason": "学习型 WBC 若把 IMU 加速度作为 observation，episode reset 后的伪尖峰会污染首帧状态、奖励和故障判定。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4305",
+  "summary": "IsaacLab #4305 在 commit 244483ee、Isaac Sim 5.1.0、Ubuntu 22.04 的单环境 Quadcopter Direct 任务中复现：重置传感器后的第一帧 `lin_acc_b` 会从正常的几十突增到 z 方向约 263 或 326。原作者定位到 `reset()` 没有清空前一帧线速度和角速度缓存；合并 PR #4306 在 IMU reset 中清零 `_prev_lin_vel_w` 与 `_prev_ang_vel_w`。作者随后确认，修复后重置首帧的线加速度为重力、角加速度为零。",
+  "title": "Isaac Lab 环境重置后 IMU 首帧加速度尖峰",
+  "version": null
+}

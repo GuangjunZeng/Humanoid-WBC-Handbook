@@ -1,0 +1,143 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zengweishuai"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17",
+  "captured_at": "2026-08-11T12:15:00+08:00",
+  "content_sha256": "171d41dcb5e88c5102e64ae15afa14b1b8834d7341666921796b9d44cfe93efd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取全部 5 条评论、奖励图和 GIF 首帧，并核对固定 commit 的 curriculum 代码；没有把 100000 iterations 写成通用收敛门槛。",
+    "components": [
+      "human2humanoid",
+      "OmniH2O",
+      "privileged policy",
+      "penalty curriculum",
+      "Weights & Biases"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者因总奖励在 1M-1.5M 区间后下降，选了 25000/26500 checkpoint。",
+        "项目作者建议继续到 100000 iterations、采用默认 reward/curriculum，并查看 penalty coefficient。"
+      ],
+      "diagnostics": [
+        "同时绘制 penalty coefficient/penalty scale、average episode length 与分项奖励，不只看加权后的 mean reward。",
+        "确认是否保持项目默认 reward/curriculum，并比较更后期 checkpoint 的实际跟踪和步态。"
+      ],
+      "effective_fixes": [
+        "不要仅按 mean reward 峰值挑选；结合 curriculum coefficient、episode length 和实际 rollout 判断收敛，并按原线程建议用默认设置继续训练。"
+      ],
+      "environments": [
+        "human2humanoid privileged policy checkpoint 25000/26500，distilled policy checkpoint 18000；默认训练配置语境；原帖未给 commit、GPU 或随机种子。"
+      ],
+      "limits": [
+        "100000 iterations 是线程中的排查建议，不是所有任务的固定收敛步数。",
+        "原作者没有明确说明是继续训练、恢复默认配置还是其他修改解决问题，因此不能把单一动作写成已验证唯一修复。",
+        "GIF 只核验了首个可见帧，不能从单帧证明完整的单腿时序落后。"
+      ],
+      "outcomes": [
+        "原作者在项目作者解释后回复问题已解决；没有公布最终 checkpoint、曲线或具体改动。"
+      ],
+      "problem_statements": [
+        "训练曲线 mean reward 在约 1.5M steps 后下降且步态出现单腿落后时，是否应直接回退到奖励峰值 checkpoint？"
+      ],
+      "safety_notes": [
+        "进入实机前应对多个 checkpoint 做独立 rollout、跌倒率和关节/力矩约束检查，不以训练总奖励单指标选型。"
+      ],
+      "suspected_causes": [
+        "项目作者判断 penalty curriculum 会按 episode length 自动改变负奖励系数；reward 尺度变化后，早期 reward 峰值不等于策略已充分收敛。"
+      ],
+      "symptoms": [
+        "原作者文字描述前进时一条腿跟随 reference、另一条腿落后。",
+        "奖励图显示 mean reward 从负值快速升至约 100，在约 1.2M steps 附近达到更高区间，1.5M 后总体下降并在训练末期约为 50。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目作者说明 OmniH2O 的 penalty curriculum 会根据 episode length 自动增减负奖励系数，因此 mean reward 的尺度会随训练改变，峰值 checkpoint 不一定已收敛。应保持默认 reward/curriculum，继续训练，并在 W&B 同时画 penalty coefficient、episode length、分项奖励和 rollout。线程建议尝试 100000 iterations，但原作者没有披露最终具体修复，所以该数值不能当成通用阈值。",
+        "applicability": "适用于启用 human2humanoid/OmniH2O penalty curriculum 的 privileged-policy 训练；其他 reward 定义需核对自身系数更新逻辑。",
+        "bilingual_terms": [
+          "惩罚课程（penalty curriculum）",
+          "平均回合长度（average episode length）",
+          "特权策略（privileged policy）",
+          "训练检查点（training checkpoint）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.h2h_penalty_curriculum_checkpoint_17",
+        "problem_title_zh": "penalty curriculum 改变奖励尺度时不能按 mean reward 峰值选 checkpoint",
+        "question_zh": "human2humanoid 训练中 mean reward 在约 1.5M steps 后下降并伴随异常步态，原线程建议如何判断是未收敛还是训练退化？",
+        "source_locator": "human2humanoid #17：作者评论 2455393534 建议默认配置/100000 iterations；2472060877 解释 penalty curriculum；2478802824 原作者称已解决",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2472060877",
+        "verification_refs": [
+          {
+            "locator": "项目作者说明 penalty coefficient 按 policy episode length 自动增减，并建议绘图检查",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2472060877"
+          },
+          {
+            "locator": "原作者确认问题已解决，但没有说明最终采取的具体动作",
+            "relation": "issue",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2478802824"
+          },
+          {
+            "locator": "固定 commit：average_episode_length 更新与 penalty_scale 按上下阈值增减并 clip",
+            "relation": "source_code",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/blob/fb7ed5f85c4426f7c52cc3f82e43ee4de215bee9/legged_gym/legged_gym/envs/base/legged_robot.py#L2289-L2307"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "奖励曲线已核验：mean reward 从约 -100 快速升至约 100，约 1.2M steps 附近进入约 120 的高点，1.5M 后总体下降并震荡，末端约 50；图中没有 penalty coefficient 或 episode length，因此不能单靠该图判定退化。GIF 的首个可见帧显示机器人深蹲、双腿明显弯曲/交叠并叠加稀疏目标点，但本轮未读取完整动画时序，不据此证明哪条腿持续落后。"
+    ],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.17",
+    "query": "human2humanoid gait one leg lag reward decline penalty curriculum checkpoint convergence",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1（原帖仿真步态）"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "项目作者指出 penalty curriculum 会按 episode length 自动改变负奖励系数，所选 checkpoint 可能未收敛。"
+      },
+      {
+        "text": "原作者随后只确认问题解决，没有公开最终 checkpoint 或具体修改。"
+      }
+    ],
+    "wbc_relevance_reason": "模仿学习控制器的总奖励会随 curriculum 权重变化，直接按 reward 峰值挑 checkpoint 可能把课程变难误判成性能退化，并带来异常步态。"
+  },
+  "published_at": "2024-11-04T02:18:27Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.17",
+  "summary": "human2humanoid #17 报告 privileged policy 在 checkpoint 25000/26500 附近出现一条腿跟随、另一条腿落后的异常步态，并因 mean reward 在约 1.5M steps 后下降而提前选 checkpoint。项目作者说明 OmniH2O 会根据 policy episode length 自动增减 negative-reward coefficient，所选策略可能尚未收敛；建议使用默认 reward/curriculum、继续训练（线程建议 100000 iterations）并在 W&B 画 penalty coefficient。原作者随后回复问题已解决，但没有说明最终采用了哪项修改。",
+  "title": "human2humanoid 平均奖励下降可能来自 penalty curriculum，不能据此提前选 checkpoint",
+  "version": null
+}

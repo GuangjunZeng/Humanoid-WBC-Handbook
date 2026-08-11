@@ -1,0 +1,31 @@
+{
+  "kind": "claim",
+  "problem_id": "retargeting.artifacts-affect-tracking.gmr",
+  "schema_version": 1,
+  "source_fingerprint": "e8c7734a07fa39609165a35bc486418202b84f01eec8ba842c5a4c200f78efb1",
+  "translations": {
+    "answer": "In the GMR paper, the ground penetration, self-collision, and joint jumps in specific actions significantly reduce the policy success rate or increase tracking errors in the Unitree G1, 21 LAFAN1 action sequences and unified BeyondMimic training setup. The GMR approach with root translation uniform scaling, local/non-uniform scaling of the body, and two-stage IK outperforms the open-source re-targeting of PHC/ProtoMotions, but this conclusion has not been verified for other robots, object interactions, or real-world randomized trials.",
+    "applicability.assumptions.0": "Human motion is converted into a robot joint/reference trajectory before tracker training.",
+    "applicability.assumptions.1": "The downstream policy is trained with the same BeyondMimic setup so retargeting is the principal varied factor.",
+    "applicability.assumptions.2": "Reference motions do not require sustained object or environment interaction.",
+    "applicability.controllers.0": "BeyondMimic single-trajectory motion trackers",
+    "applicability.controllers.1": "GMR differential-IK retargeting",
+    "applicability.environments.0": "21 selected LAFAN1 sequences",
+    "applicability.environments.1": "noise/model/latency perturbations used by the paper",
+    "applicability.robots.0": "Unitree G1 in the paper evaluation",
+    "applicability.simulators.0": "IsaacSim",
+    "applicability.simulators.1": "ROS/MuJoCo sim2sim",
+    "confidence_rationale": "The paper isolates retargeting across a shared tracker and reports per-motion failures, large repeated-trial evaluations, tracking errors, and identifiable artifacts. The official commit exposes the scaling and two-stage IK implementation. Confidence is capped because the study uses one robot, one motion dataset, no object interactions, and no randomized real-robot comparison.",
+    "evidence.0.locator": "Equations 2-6, Figure 2, Table I, Table II, Figure 3, and Table III",
+    "evidence.0.note": "Connects scaling and two-stage IK design to downstream success/error and identifies penetration, self-intersection, joint jumps, and start-frame sensitivity.",
+    "evidence.0.title": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking",
+    "evidence.1.locator": "GeneralMotionRetargeting.scale_human_data/retarget and bvh_lafan1_to_g1.json at bb1bbe4",
+    "evidence.1.note": "Maps local/root scaling, the two IK task stages, stopping conditions, and G1/LAFAN1 weights to public implementation symbols.",
+    "evidence.1.title": "YanjieZe/GMR official implementation",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Simulation-to-Simulation (Sim2Sim) (仿真到仿真)",
+    "terms.2": "Motion Retargeting (动作重定向)",
+    "terms.3": "End-to-End Latency (端到端时延)",
+    "title": "Does Penetration, Self-Collision, and Joint Jumps in Human Motion Retargeting Affect the Downstream Whole-Body Tracking Strategy?"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "junhyeokahn"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1395",
+  "captured_at": "2026-08-11T16:30:00+08:00",
+  "content_sha256": "4be357aa70d7734a6ab3d0d825f3b9301376ad1cb3652e018f7a950b0af119de",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 7 条评论；不依赖原帖示意图形成结论，也没有采纳后续用户未经项目方确认的自答公式。",
+    "components": [
+      "Pinocchio",
+      "forwardKinematics",
+      "getFrameClassicalAcceleration",
+      "getFrameJacobianTimeVariation",
+      "task-space acceleration control"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议 forwardKinematics(model,data,q,v,0*v) 后直接获取 acceleration drift，并指向 TSID 的同类控制器。",
+        "原作者确认 getFrameClassicalAcceleration 可直接得到其所需的 classical Jdot*qdot。"
+      ],
+      "diagnostics": [
+        "先确认控制器实际需要完整 Jdot 还是只需要乘积 Jdot*qdot。",
+        "将 qddot 置零运行 forward kinematics，使 frame classical acceleration 对应速度产生的漂移项。"
+      ],
+      "effective_fixes": [
+        "当只需乘积项时，以零 qddot 调用 forwardKinematics，再使用 getFrameClassicalAcceleration 读取 frame 的 classical acceleration drift，避免显式构造 Jdot。"
+      ],
+      "environments": [
+        "2021 年 Pinocchio API、两自由度机械臂示例；原帖未给版本、OS 或完整代码。"
+      ],
+      "limits": [
+        "线程没有给完整函数调用顺序、reference frame 参数或数值输出；目标版本应以最小测试核对。",
+        "这一捷径只直接回答 Jdot*qdot，不提供完整 Jdot 矩阵；确实需要矩阵本身时仍需使用相应 API/推导。",
+        "后续用户自行写出的 classical dJ 公式没有维护者确认，没有纳入答案。"
+      ],
+      "outcomes": [
+        "原作者确认理解并采用这一思路；维护者确认该方式简单且高效。"
+      ],
+      "problem_statements": [
+        "加速度级任务控制只需要 classical Jdot*qdot 时，是否必须显式计算经典 Jacobian 时间导数？"
+      ],
+      "safety_notes": [
+        "把漂移补偿用于实机前，应以数值差分或已知轨迹验证符号、frame 和量纲；错误偏置会直接改变期望关节加速度。"
+      ],
+      "suspected_causes": [
+        "问题来自把 spatial Jacobian derivative 与 classical point acceleration 控制公式混用。"
+      ],
+      "symptoms": [
+        "getFrameJacobianTimeVariation 返回 spatial acceleration 相关量，而控制器公式 qddot_des=pinv(J)(ac_des-Jdot*qdot) 需要 classical acceleration drift。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者建议先用 forwardKinematics(model,data,q,v,0*v) 把广义加速度置零，再通过 getFrameClassicalAcceleration 直接读取 frame 的经典加速度漂移；原作者确认这就是其公式中所需的 classical Jdot*qdot。它只返回乘积/漂移项，不等于提供完整 Jdot 矩阵。后续用户自写的矩阵公式没有项目方确认，不应混入这一已闭环经验。",
+        "applicability": "适用于加速度级任务控制只需要 frame classical Jdot*qdot 漂移项的场景；需要完整 Jdot 或其他 frame 时需单独处理。",
+        "bilingual_terms": [
+          "经典点加速度（classical point acceleration）",
+          "空间加速度（spatial acceleration）",
+          "雅可比时间导数（Jacobian time derivative）",
+          "加速度漂移项（acceleration drift term）",
+          "任务空间控制（task-space control）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [
+              "issue.github.stack-of-tasks.pinocchio.2141"
+            ],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_classical_spatial_jacobian_time_derivative_2141",
+        "problem_title_zh": "Pinocchio 的空间与经典点加速度需要不同的 Jacobian 时间导数",
+        "question_zh": "任务空间控制只需要 classical Jdot*qdot 时，原线程怎样避免显式构造 Jdot？",
+        "source_locator": "Pinocchio #1395 评论 779978792 说明零 qddot 后读取 acceleration drift；评论 779991630 原作者确认 getFrameClassicalAcceleration；评论 780094814 维护者确认",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1395#issuecomment-779991630",
+        "verification_refs": [
+          {
+            "locator": "独立原线程给出 spatial/classical Jdot 的显式关系和完整断言脚本；本卡聚合为同一稳定问题",
+            "relation": "issue",
+            "source_id": "issue.github.stack-of-tasks.pinocchio.2141"
+          },
+          {
+            "locator": "维护者确认直接获取漂移项的方式简单且高效",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1395#issuecomment-780094814"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1395",
+    "query": "Pinocchio classical acceleration Jdot qdot forwardKinematics zero acceleration getFrameClassicalAcceleration",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "two-DoF manipulator example"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者说明 qddot=0 的 forward kinematics 可直接提供控制器所需的 acceleration drift。"
+      },
+      {
+        "text": "原作者确认 getFrameClassicalAcceleration 可取得 classical Jdot*qdot。"
+      },
+      {
+        "text": "后续用户的手工矩阵公式没有维护者确认，未纳入答案。"
+      }
+    ],
+    "wbc_relevance_reason": "加速度级任务控制和逆动力学 WBC 通常只使用 Jdot*qdot 偏置项；直接取经典加速度漂移可避免显式构造易混淆 frame/定义的 Jdot。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1395",
+  "summary": "Pinocchio #1395 询问 getFrameJacobianTimeVariation 是否返回 spatial Jacobian derivative，以及任务空间加速度控制怎样获得 classical Jdot。维护者说明经典与空间线加速度满足 ac=as+omega×v；若控制器只需要 Jdot*qdot，无需显式形成 Jdot，可调用 forwardKinematics(model,data,q,v,0*v) 后读取 acceleration drift。原作者确认可以用 getFrameClassicalAcceleration 直接取得 classical Jdot*qdot，并表示理解；维护者确认这一方式简单且高效。后续另一用户给出的手工 dJ 公式只有自答，没有项目方确认，本卡不采用该公式。",
+  "title": "任务空间控制只需要 Jdot*qdot 时可直接读取经典加速度漂移项",
+  "version": null
+}

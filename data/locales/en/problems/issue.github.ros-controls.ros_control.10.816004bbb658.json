@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros_control.10.816004bbb658",
+  "schema_version": 1,
+  "source_fingerprint": "62b6428fd99aa36bc89e6428c8e5065f93ae477048c025691a7675a2a9ba6b61",
+  "translations": {
+    "answer": "The original author found the `clear()` function in the `please_switch_` real-time branch and moved it to the non-realtime path. The maintainer confirmed that the `clear()` calls have been moved to the non-realtime path. There is no proof that a `clear()` call must be heap-allocated, and no commit was provided, so the reusability principle is to audit and isolate container lifecycle operations in the real-time path, rather than mechanically flagging all same-name calls as faults.",
+    "applicability": "Applies to old ros_control switch implementation and similar real-time container lifecycle audits.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "Move the `clear()` function in the switch list to the non-realtime switch preparation phase.",
+    "details.diagnostics.0": "Check container cleanup, destruction, and potential memory management operations in the real-time update path.",
+    "details.effective_fixes.0": "The maintainer confirmed that the default branch has moved `clear()` to the non-realtime path.",
+    "details.environments.0": "2012 ros_control `ControlManager.update`; specific branch and release version not provided.",
+    "details.limits.0": "No commit, test, or first fix release; cannot treat all `clear()` calls as necessarily heap-allocated.",
+    "details.outcomes.0": "The maintainer explicitly confirmed the fix is complete; no jitter or allocation count comparison provided.",
+    "details.problem_statements.0": "Why shouldn't the `clear()` function in the real-time `update()` branch be executed during controller switching?",
+    "details.safety_notes.0": "Static review and runtime allocation/system call detection should be done on real-time WBC paths to avoid relying solely on API names.",
+    "details.suspected_causes.0": "The original thread considered the `clear()` function in the real-time branch as an operation that should not be retained.",
+    "details.symptoms.0": "Code review found `please_switch_` branch clearing an STL vector, and the original author questioned real-time safety.",
+    "source.locator": "ros_control #10 original code review; maintainer reply 13155600",
+    "source.title": "Controller switching list's `clear()` operation should be moved out of the real-time branch",
+    "terms.0": "Realtime path (实时路径)",
+    "terms.1": "Controller switching (控制器切换)",
+    "terms.2": "Dynamic allocation (动态分配)",
+    "terms.3": "Container clearing (容器清理)",
+    "title": "Why did the old ros_control switch implementation move STL vector `clear()` out of the `update()` real-time branch?"
+  }
+}

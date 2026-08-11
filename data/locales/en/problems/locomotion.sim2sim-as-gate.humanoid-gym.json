@@ -1,0 +1,31 @@
+{
+  "kind": "claim",
+  "problem_id": "locomotion.sim2sim-as-gate.humanoid-gym",
+  "schema_version": 1,
+  "source_fingerprint": "539d68b2cfd7fbacbca5427aa6ef5432fcb3d92b1b82e0470dcf680a787af207",
+  "translations": {
+    "answer": "Humanoid-Gym demonstrated a closed-loop engineering system that first uses a simulator calibrated against real actuator responses to perform cross-engine validation, followed by zero-shot deployment to two XBot sizes. This validation is suitable as a pre-fault screening layer, but the evidence is insufficient to consider cross-engine validation as a real-world safe or successful guarantee.",
+    "applicability.assumptions.0": "A second simulator can be calibrated against real actuator responses.",
+    "applicability.assumptions.1": "The policy interface and robot model are represented consistently across engines.",
+    "applicability.controllers.0": "privileged PPO locomotion policy",
+    "applicability.environments.0": "Isaac Gym training",
+    "applicability.environments.1": "calibrated MuJoCo replay",
+    "applicability.environments.2": "reported flat/uneven real tests",
+    "applicability.robots.0": "RobotEra XBot-S and XBot-L",
+    "applicability.simulators.0": "Isaac Gym",
+    "applicability.simulators.1": "MuJoCo",
+    "confidence_rationale": "The method and two-hardware deployment are documented and the official code is public, but the paper lacks quantitative success/failure statistics and only gives qualitative calibration curves.",
+    "evidence.0.locator": "Figure 2-4, Table I, Appendix Table II-IV",
+    "evidence.0.note": "Defines the train/check/deploy pipeline, interfaces and calibration evidence.",
+    "evidence.0.title": "Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer",
+    "evidence.1.locator": "XBotLCfg.env/control/sim/domain_rand/rewards and LeggedRobot.step at ae46e20",
+    "evidence.1.note": "Maps observation history, decimation, randomization and reward design to the official implementation.",
+    "evidence.1.title": "roboterax/humanoid-gym official implementation",
+    "terms.0": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.1": "Simulation-to-Simulation (Sim2Sim) (仿真到仿真)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Actuator (执行器)",
+    "terms.4": "Center of Mass (CoM) (质心)",
+    "title": "Is Cross-Engine Validation Worthwhile Between Simulation Training and Real-World Deployment?"
+  }
+}

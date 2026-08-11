@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086786107040035150.03267d41aa73",
+  "schema_version": 1,
+  "source_fingerprint": "11b48990c9edb7162650f8650c5b0cdcb8d29259e853dd72f72ffef9fb3feb45",
+  "translations": {
+    "answer": "The video shows continuous pose transition and center of mass (CoM) movement, but the commentary suggests the action may have been choreographed and rehearsed; no external disturbances, failure counts, state/contact curves, or controller information were provided, so only qualitative observations can be formed, and robust recovery cannot be proven.",
+    "applicability": "Applicable to the strength of evidence for human-like demonstration video reviews.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The explanation has not closed or there is a conflict; only problem clues are formed.",
+    "details.attempts.0": "A qualitative observation was made using a dance video.",
+    "details.diagnostics.0": "Focus on hip recovery and transitions between poses.",
+    "details.environments.0": "Live dance demonstration; continuous arm/leg movements.",
+    "details.limits.0": "Cannot infer algorithm robustness or communication real-time from the video.",
+    "details.outcomes.0": "The demonstration maintains balance, but it may have been choreographed and rehearsed.",
+    "details.problem_statements.0": "A single static gait metric cannot evaluate multi-poses continuous switching.",
+    "details.safety_notes.0": "The demonstration does not equal anti-disturbance validation; independent push, recovery, and failure testing is required.",
+    "details.suspected_causes.0": "Continuous center of mass (CoM) transfer imposes stronger transient requirements on balance control.",
+    "details.symptoms.0": "The original post did not report failures, only observed no visible reset.",
+    "media_summaries.0": "The screenshot is a text analysis of pose transitions, hip recovery, and continuous balance, without showing state curves or disturbance experiments.",
+    "source.locator": "Root post and @0xAxia's questioning/author's reply",
+    "source.title": "Why can't we judge human-like WBC robustness just from a dance video without errors?",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Center of Mass (CoM) (质心)",
+    "title": "Why can't we judge human-like WBC robustness just from a dance video without errors?"
+  }
+}

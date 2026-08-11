@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "hongkai-dai"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/43",
+  "captured_at": "2026-08-11T23:55:00+08:00",
+  "content_sha256": "70218bf5dddfa2e201ac380dbfa68d32d01e74198a7ce0ae8357033eecf32f86",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 2 条评论；只采用维护者指令和作者复测，不依赖附件推测。",
+    "components": [
+      "OSQP C interface",
+      "OSQP_INFTY",
+      "one-sided bound",
+      "infeasibility detection"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "将通用 `INFINITY` 替换为 `glob_opts.h` 定义的 `OSQP_INFTY`。"
+      ],
+      "diagnostics": [
+        "打印实际传入 `l/u` 的数值和类型，确认使用目标 OSQP 版本定义的无穷常量。"
+      ],
+      "effective_fixes": [
+        "在该 OSQP C 接口环境中用 `OSQP_INFTY` 表示单侧无穷 bound。"
+      ],
+      "environments": [
+        "2018 年 OSQP C 示例；原帖基于 `examples/osqp_demo.c` 修改，未给发布版本号。"
+      ],
+      "limits": [
+        "宏所在头文件和内部表示可能随 OSQP 大版本变化；应以目标版本 C API 为准，不把旧路径硬编码为永久接口。"
+      ],
+      "outcomes": [
+        "原作者明确确认 `OSQP_INFTY` 解决问题。"
+      ],
+      "problem_statements": [
+        "OSQP C 接口中一侧无穷的 bound 应如何表示，为什么通用 `INFINITY` 会让不可行检测跑到迭代上限？"
+      ],
+      "safety_notes": [
+        "上线前用一个已知不可行和一个已知可行的边界测试校验 bound 编码，避免控制循环在故障状态耗尽迭代预算。"
+      ],
+      "suspected_causes": [
+        "维护者确认 `INFINITY` 不是 OSQP 项目定义的宏，C 接口应使用 `OSQP_INFTY`。"
+      ],
+      "symptoms": [
+        "使用 `INFINITY` 时简单不可行 QP 达到迭代上限并持续增加 penalty；把上界改成有限值时能立即检测不可行。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程的直接原因是示例使用了 OSQP 项目未定义的 `INFINITY` 宏。维护者要求改用 `glob_opts.h` 中的 `OSQP_INFTY`，原作者确认替换后不可行问题可以正确处理。工程上还应打印最终传入的 `l/u`，因为不同 OSQP 大版本可能调整公开头文件或常量位置。",
+        "applicability": "直接适用于该线程的 OSQP C 接口；其他版本需核对对应 C API 常量。",
+        "bilingual_terms": [
+          "单侧边界（one-sided bound）",
+          "无穷常量（infinity constant）",
+          "不可行检测（infeasibility detection）",
+          "迭代上限（iteration limit）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_c_infinity_bound_43",
+        "problem_title_zh": "正确编码 OSQP C 接口的无穷边界",
+        "question_zh": "OSQP C 接口中给约束设置一侧无穷时，为什么不应直接使用通用 `INFINITY`？",
+        "source_locator": "OSQP #43 维护者回复 364638732；作者确认 364714680",
+        "source_url": "https://github.com/osqp/osqp/issues/43#issuecomment-364714680",
+        "verification_refs": [
+          {
+            "locator": "维护者指定 `OSQP_INFTY`；下一条评论由原作者确认",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/osqp/osqp/issues/43#issuecomment-364638732"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.43",
+    "query": "OSQP one-sided infinite bound OSQP_INFTY iteration limit infeasible",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "embedded QP-based WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者要求把未定义的 `INFINITY` 替换为 `OSQP_INFTY`；原作者确认问题解决。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/QP 常用单侧关节、接触力和松弛变量约束；错误的无穷常量会让本应快速判定的不可行问题拖到最大迭代。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.43",
+  "summary": "OSQP #43 的两变量不可行 QP 在一侧使用通用 `INFINITY` 时一直达到迭代上限；把同一约束的有限上界换回有限数后又能立刻识别不可行。维护者指出该工程代码使用了 OSQP 项目未定义的 `INFINITY` 宏，应改成 `glob_opts.h` 中的 `OSQP_INFTY`。原作者确认替换后问题解决。",
+  "title": "OSQP C 接口的一侧无穷边界必须使用 OSQP_INFTY",
+  "version": null
+}

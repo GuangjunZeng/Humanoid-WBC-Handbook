@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.158.dbd204540082",
+  "schema_version": 1,
+  "source_fingerprint": "1fe22d840b7a3ae05610d5adda076ecca1e0af4a5af6505c3f6735b88e10514a",
+  "translations": {
+    "answer": "Check if the old constructor sets qMin/qMax as +1e10/-1e10. This order results in qMin > qMax; default explicit setting of position bounds would mask the issue, but setting only velocity bounds may trigger infeasibility. The default values have been merged into PR #159, setting qMin = -1e10 and qMax = +1e10. The old version also needs to be explicitly set to the correct position bounds before use.",
+    "applicability": "Applies to TSID old versions with incorrect default values; if the caller always explicitly sets position bounds, this specific error will not directly trigger.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. It has been formally documented or independently reproducible.",
+    "details.attempts.0": "The questioner identified the constructor code; the maintainer confirmed and requested a PR.",
+    "details.diagnostics.0": "Print or check the qMin/qMax after TaskJointPosVelAccBounds is constructed; confirm if the position bounds are explicitly set before use.",
+    "details.effective_fixes.0": "Use merged PR #159, setting qMin = -1e10 and qMax = +1e10; the old version can also explicitly set the correct position bounds to avoid relying on the incorrect default values.",
+    "details.environments.0": "Old implementation of TSID TaskJointPosVelAccBounds from 2022-03; specific release version and robot model not mentioned.",
+    "details.limits.0": "No actual QP failure log was provided in the original thread; the impact is due to not covering the default position bounds.",
+    "details.outcomes.0": "PR #159 was merged on 2022-03-02; the maintainer later confirmed the issue was resolved with PR #159.",
+    "details.problem_statements.0": "Why might QP become infeasible when only velocity bounds are configured but the default position bounds are used?",
+    "details.safety_notes.0": "Check the actual bounds after configuration in real-world scenarios; do not rely solely on the default maximums as safety limits.",
+    "details.suspected_causes.0": "The constructor sets qMin and qMax in the wrong order, with the negative sign swapped.",
+    "details.symptoms.0": "Default qMin = +1e10, qMax = -1e10; this leads to qMin > qMax; using the default position bounds may result in infeasible constraints.",
+    "source.locator": "Issue #158, confirmed by the maintainer in issuecomment-1056957094 and resolved in issuecomment-1292023533; merged into PR #159",
+    "source.title": "TSID Old Version Default Position Bounds Are Swapped, Leading to Infeasible QP When Only Velocity Bounds Are Configured",
+    "terms.0": "Joint Position Bounds (关节位置界)",
+    "terms.1": "Velocity Bounds (速度界)",
+    "terms.2": "Infeasible Problem (不可行问题)",
+    "terms.3": "Quadratic Programming, QP (二次规划)",
+    "title": "How to Check the Default Position Bounds in TaskJointPosVelAccBounds When Only Velocity Bounds Are Configured in TSID?"
+  }
+}

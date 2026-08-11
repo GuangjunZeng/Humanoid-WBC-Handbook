@@ -1,0 +1,127 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "avikde"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/125",
+  "captured_at": "2026-08-11T23:59:00+08:00",
+  "content_sha256": "137ef4eaae07a75246d05144e97c72327ffe77b2de7988d4fb4cc42b4c097f3b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与唯一评论，并核对回复直接引用的官方文档；结论来自维护者对附件的实跑。",
+    "components": [
+      "OSQP",
+      "eps_prim_inf",
+      "eps_abs",
+      "eps_rel"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者对同一附件改为 `eps_abs=eps_rel=1e-6`。"
+      ],
+      "diagnostics": [
+        "区分 infeasibility certificate tolerance 与 solved residual termination tolerance；直接复算 `Ax-l`、`u-Ax`。"
+      ],
+      "effective_fixes": [
+        "按问题尺度调小 `eps_abs/eps_rel`，并同时评估增加的迭代与实时预算。"
+      ],
+      "environments": [
+        "OSQP 0.5.0 Python；46 variables、82 constraints；作者提供 `P/A/q/l/u` 最小数据。"
+      ],
+      "limits": [
+        "原作者没有另行复测；`1e-6` 只在该数据上被维护者验证，不是所有控制器的默认值。"
+      ],
+      "outcomes": [
+        "维护者实跑从 25 iterations 增至 125，constraint violation 降到约 `1e-12` 或更小。"
+      ],
+      "problem_statements": [
+        "为什么减小 `eps_prim_inf` 不能减少已求解 QP 的 constraint violation？"
+      ],
+      "safety_notes": [
+        "控制循环应在应用层复算约束，并把容差、最大迭代和 fallback 一起纳入时限设计。"
+      ],
+      "suspected_causes": [
+        "维护者确认参数语义混淆：`eps_prim_inf` 只用于 primal infeasibility 检查。"
+      ],
+      "symptoms": [
+        "默认 `eps_abs=1e-3, eps_rel=1e-4` 时，两个方向 constraint violation 约 `-0.00185/-0.00252`，大于 `1e-4` 控制限。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不应该。维护者说明 `eps_prim_inf` 控制 primal infeasibility certificate 检查，不控制正常 `solved` 解的残差。对作者提供的 OSQP 0.5.0 数据，把 `eps_abs`、`eps_rel` 调为 `1e-6` 后，约束违反从约 `10^-3` 降到 `10^-12` 量级，同时迭代从 25 增至 125。实际 WBC 必须按自身尺度和周期预算选择容差。",
+        "applicability": "直接适用于 OSQP 0.5.0 原帖数据；参数语义可参考，目标数值需按版本和尺度复测。",
+        "bilingual_terms": [
+          "原始不可行容差（primal infeasibility tolerance）",
+          "绝对终止容差（absolute termination tolerance）",
+          "相对终止容差（relative termination tolerance）",
+          "约束违反（constraint violation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "independent_reproduction",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_solution_vs_infeasibility_tolerance_125",
+        "problem_title_zh": "区分 OSQP 解容差与不可行证书容差",
+        "question_zh": "想减少 OSQP 已求解结果的 constraint violation，应该调 `eps_prim_inf` 吗？",
+        "source_locator": "OSQP #125 维护者参数解释、附件复跑与结果 479371495",
+        "source_url": "https://github.com/osqp/osqp/issues/125#issuecomment-479371495",
+        "verification_refs": [
+          {
+            "locator": "维护者回复直接链接的 OSQP convergence 文档",
+            "relation": "official_documentation",
+            "source_url": "https://osqp.org/docs/solver/index.html#convergence"
+          },
+          {
+            "locator": "维护者在作者附件上实跑 `eps_abs=eps_rel=1e-6` 并给出残差",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/osqp/osqp/issues/125#issuecomment-479371495"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.125",
+    "query": "OSQP eps_prim_inf constraint violation eps_abs eps_rel control small 1e-4",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "small-magnitude control QPs"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者：`eps_prim_inf` 是不可行证书容差；正常解精度应调 `eps_abs/eps_rel`。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 控制量可能在 `1e-4` 等小尺度；混淆不可行证书容差和终止残差会让约束违反远大于真实控制上限。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.125",
+  "summary": "OSQP #125 的控制问题输入上限约 `1e-4`，解却违反 constraints 约 `1.85e-3/2.52e-3`。作者尝试减小 `eps_prim_inf` 无效。维护者说明它是 primal infeasibility certificate 的容差，不控制已求得解的 optimality/feasibility residual；应调整 `eps_abs`、`eps_rel`。维护者在作者附件上把两者设为 `1e-6`，125 iterations 后 constraint violation 降到约 `1.42e-14/2.82e-12`，并链接官方 convergence/infeasibility 文档。",
+  "title": "OSQP 约束精度不能用 eps_prim_inf 调节",
+  "version": null
+}

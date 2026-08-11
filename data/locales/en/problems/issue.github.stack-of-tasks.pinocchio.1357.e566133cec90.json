@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1357.e566133cec90",
+  "schema_version": 1,
+  "source_fingerprint": "e418d7df386212a4fb9c18c5b5698dc3ec2cb3509089a5e335fa918f292d0f25",
+  "translations": {
+    "answer": "Not. The maintainer explains the 't' in the antecedent/world frame, but the generalized velocity follows Featherstone's convention in the joint local frame. If the base is to be the origin and the coordinate system aligned with the world, the linear and angular velocities should be rotated using the current rotation matrix R. This conclusion is consistent with Issue #1137, as a separate independent original thread in the same engineering problem.",
+    "applicability": "Applicable to the original post convention for Pinocchio floating base generalized velocity; other simulators require separate verification of the origin and frame for base linear and angular velocities.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "The author directly verified the convention with the maintainer after referring to two old issues.",
+    "details.diagnostics.0": "The translation of 't' and the generalized velocity's twist expression were verified separately.",
+    "details.diagnostics.1": "Verification of the origin and coordinate system for base linear and angular velocities was conducted when integrating with other simulators.",
+    "details.effective_fixes.0": "Following the maintainer's instruction, the Pinocchio floating base generalized velocity is interpreted in the joint local frame; for base origin and world frame expressions, the linear and angular velocity vectors are rotated using the current rotation matrix R.",
+    "details.environments.0": "Pinocchio floating base / FreeFlyer convention; original post does not provide version or URDF.",
+    "details.limits.0": "No discussion on the translation of spatial velocity's translational effect, and no specific version API provided; only covers the rotation expression explicitly addressed.",
+    "details.outcomes.0": "The original author's response was fully understood.",
+    "details.problem_statements.0": "When expressing the translation of the Pinocchio floating base in the world frame, what reference frame does the linear and angular velocity belong to?",
+    "details.safety_notes.0": "Before real-world state interface is deployed, known pose/velocity samples are used to verify the axial direction, unit, and sign, preventing direct controller input from mismatched velocity frames.",
+    "details.suspected_causes.0": "Misunderstanding that 't' in the world/parent frame expression implies the entire generalized velocity is in the world frame.",
+    "details.symptoms.0": "Users have conflicting interpretations of #1122 and #1137, unable to determine how to convert floating base velocity between simulators.",
+    "source.locator": "Pinocchio #1357: Maintainer comment 743988547 provides placement/velocity frame convention; original author 743989277 confirms understanding.",
+    "source.title": "Pinocchio Floating Base Translation in World Frame, Generalized Velocity in Joint Local Frame",
+    "terms.0": "Generalized velocity (广义速度)",
+    "terms.1": "Joint local frame (局部关节坐标系)",
+    "terms.2": "World frame (世界坐标系)",
+    "terms.3": "Floating base (浮动基)",
+    "title": "When Expressing Pinocchio Floating Base Translation in the World Frame, Does the Generalized Velocity Also Exist in the World Frame?"
+  }
+}

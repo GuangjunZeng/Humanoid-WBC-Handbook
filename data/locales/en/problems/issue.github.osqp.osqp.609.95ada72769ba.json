@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.609.95ada72769ba",
+  "schema_version": 1,
+  "source_fingerprint": "8a01caf89ca3febbf85f39019bf66913ceda2c3027550eb3d91706bc2ff30a83",
+  "translations": {
+    "answer": "Only as conditional post-processing. Project members note that OSQP evaluates residual using `eps_abs + eps_rel·max(||Ax||, ||z||)`; when problem scale is thousands, small negative values may still satisfy the relative criterion; the number of negative elements is not a termination criterion. Clamping independent `x ≥ 0` components is intuitive, but if the same variable is involved in general `Ax ≤ b`, clamping may introduce new violations. The original author reduced the tolerance to `1e-7`, and polishing failed; a value of `-1e-4` remains, so full constraint recalculations must be performed after post-processing.",
+    "applicability": "Applicable to OSQP 0.6.3 with large-scale linear constraints; strict safety thresholds must be determined based on WBC units and coupling relationships.",
+    "credibility.rationale": "Engineering records exist for environment, processing steps, and results, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Tighten `eps_abs/eps_rel`, enable polishing, compare with quadprog, and inquire about clamping negative values.",
+    "details.diagnostics.0": "Recompute infinity-norm residual and `||Ax||/||z||` instead of counting negative elements; recheck all `l ≤ Ax ≤ u` after clamping.",
+    "details.effective_fixes.0": "No solver-side fix to ensure strict non-negativity; clamp independent `x ≥ 0` components, but must revalidate other general linear constraints and their impact on the objective.",
+    "details.environments.0": "OSQP 0.6.3, OSQP-Eigen C++; 721 variables, 2370 constraints, 470615 nonzeros.",
+    "details.limits.0": "Negative element count cannot be used as a solver criterion; cannot assume constraints are satisfied after clamping.",
+    "details.outcomes.0": "Author reduced tolerance to `1e-7`, but negative values still exist; polishing failed; threads end with explanation and clamping boundaries.",
+    "details.problem_statements.0": "Why does OSQP return small negative values when non-negativity constraints are tightened? Can negative values be directly clamped?",
+    "details.safety_notes.0": "Hardware critical quantities like normal contact forces should be limited and rechecked at the output layer; non-validated limits trigger degradation rather than continuing execution.",
+    "details.suspected_causes.0": "Project members explain using a convergence equation from a paper, which may not account for large-scale `Ax` amplifying relative residuals.",
+    "details.symptoms.0": "At `eps_abs=eps_rel=1e-5`, a component reaches `-0.0131`; at `1e-7`, about 100 negative elements, with minimum `-1e-4`; polishing fails.",
+    "source.locator": "OSQP #609 convergence explanation 1979012199; clamping boundary 1980361325; author's tight tolerance result 1980277232",
+    "source.title": "OSQP: Small Negative Values in Explicit `x ≥ 0` Constraints Are Determined by Relative Residual Scale",
+    "terms.0": "Non-negativity constraint (非负约束)",
+    "terms.1": "Relative residual (相对残差)",
+    "terms.2": "Infinity norm (无穷范数)",
+    "terms.3": "Post-solve clamping (后处理截断)",
+    "title": "Is Direct Clamping of All Negative Values in Explicit `x ≥ 0` Constraints Safe?"
+  }
+}

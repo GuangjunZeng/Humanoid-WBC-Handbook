@@ -1,0 +1,135 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "min-dai"
+  ],
+  "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/108",
+  "captured_at": "2026-08-11T22:26:00+08:00",
+  "content_sha256": "4752dc2a9a4cc713785c50891e085e5888a2d7d18fcaf7e52cb2d96db9deebb0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 4 条评论；只提炼可核对的冲突与诊断入口，没有补写 constraint 实现答案。",
+    "components": [
+      "OCS2",
+      "SQP",
+      "IPM",
+      "HPIPM",
+      "hard inequality constraint",
+      "relaxed barrier"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区用户逐行查了 SqpSolver.cpp 和 HpipmInterface.cpp 的 equality path。",
+        "有人建议调 relaxed-barrier delta/mu，但随后承认前述 inequality 解释可能错误。"
+      ],
+      "diagnostics": [
+        "在目标 commit 追踪 constraint collection、linearization、SqpSolver 到 HpipmInterface 的具体数组，并打印每阶段维度。",
+        "构造单状态/单输入最小问题，同时记录原始 constraint value、linear approximation、QP bounds 与 solver residual。",
+        "把 state-only、state-input、equality、inequality 四类约束分开测试。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "原帖未给 OCS2 commit、solver config、机器人模型、操作系统或最小复现。",
+        "评论源码链接锚定 commit 164c26b 的 SqpSolver/HpipmInterface。"
+      ],
+      "limits": [
+        "不能把 delta/mu 调参写成已验证解法。",
+        "不能从 thread 确认 inequality 根本没有传给 HPIPM；需要绑定目标 commit 做 source trace。",
+        "帖子缺少最小复现和版本，适用性未知。"
+      ],
+      "outcomes": [
+        "没有原作者复测、维护者确认或已合并修复；2025-03 仍有用户询问同类问题。"
+      ],
+      "problem_statements": [
+        "OCS2 hard input inequality constraint 被忽略时，约束究竟走 relaxed barrier 还是 HPIPM？"
+      ],
+      "safety_notes": [
+        "在 constraint path 未闭环前，不应依赖该约束保护真实机器人；必须增加独立 runtime monitor、command clamp 和安全停机。"
+      ],
+      "suspected_causes": [
+        "评论对 hard inequality 是否使用 relaxed barrier、是否传入 HPIPM 的解释互相矛盾；没有证据足以确定根因。"
+      ],
+      "symptoms": [
+        "hard input inequality constraints 未满足；equality 只有 linear portion 满足。",
+        "constraint violation 时 MPC 继续运行且不报告 infeasible。",
+        "另一用户把 stateinputConstraint 放入 inequalityConstraintPtr 后也报告无变化。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "没有。线程中的解释互相冲突：一条回复称 SQP 用 relaxed barrier，后续源码讨论又认为 hard constraints 可能进入 HPIPM，原回复者随后承认只确认了 equality path、没有找到 inequality path。也没有维护者、版本化最小复现或原作者复测。当前能可靠保留的只有排查方法：在目标 commit 分开测试 state/state-input 与 equality/inequality，逐层打印 constraint value、linearization、QP bounds 和 HPIPM residual；delta/mu 调参不能当作已验证答案。",
+        "applicability": "仅作为 OCS2 SQP/IPM constraint-path 排查入口；因缺少版本和最小复现，不能直接外推。",
+        "bilingual_terms": [
+          "硬不等式约束（hard inequality constraint）",
+          "松弛障碍函数（relaxed barrier function）",
+          "内点法（interior-point method, IPM）",
+          "约束残差（constraint residual）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_unknown",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索；尚未形成可核对的复现记录；适用环境未知。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.ocs2_hard_inequality_path_108",
+        "problem_title_zh": "OCS2 hard inequality constraint 的实际求解路径",
+        "question_zh": "OCS2 hard input inequality constraint 看似被忽略时，帖子是否给出了已确认修复？",
+        "source_locator": "OCS2 #108 社区解释 2346304811、反向源码观察 2413803782、修正 2414510557、同类复现 2721087622",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2414510557",
+        "verification_refs": [
+          {
+            "locator": "首条回复称 inequality 使用 relaxed barrier、无 hard guarantee",
+            "relation": "conflict",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2346304811"
+          },
+          {
+            "locator": "后续用户按源码提出 hard constraints 进入 HPIPM 的相反解释",
+            "relation": "conflict",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2413803782"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "leggedrobotics.ocs2.108",
+    "query": "OCS2 hard input inequality constraints ignored SQP HPIPM relaxed barrier conflict",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "unspecified OCS2 MPC system"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "社区对 relaxed barrier 与 HPIPM 路径给出相互矛盾解释，且没有维护者闭环，明确保留 conflicting。"
+      }
+    ],
+    "wbc_relevance_reason": "接触、摩擦锥、关节和输入 hard constraints 是 WBC/MPC 安全边界；若 constraint path 与预期不同，求解器继续输出可能造成越界控制。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.leggedrobotics.ocs2.108",
+  "summary": "OCS2 #108 报告默认 SQP/IPM 下 hard input inequality constraints 被忽略，改 equality 后也只有线性部分满足，MPC 在 violation 时仍继续运行且不报 infeasible。第一位回复者称 SQP inequality 用 relaxed barrier、因此无硬保证；随后另一位读源码认为 hard constraints 直接进入 HPIPM，第一位回复者又修正说自己只找到 equality 进入 HPIPM、没有找到 inequality 路径。第三位用户也报告 inequalityConstraintPtr 没有效果。线程没有维护者回复、最小复现、版本或最终解法，必须保留为 conflicting。",
+  "title": "OCS2 hard inequality constraint 路径的社区解释相互冲突",
+  "version": null
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.165.eb55a3fb565c",
+  "schema_version": 1,
+  "source_fingerprint": "6f5095c4d75a2efe0550d67ada6545a29a26f978adabec3e0715964cc8d6114e",
+  "translations": {
+    "answer": "The original thread cannot support this conclusion. The author successfully implemented the fully-actuated loop, but setting other passive joints to zero torque limit caused abnormal motion. The maintainer noted that TSID cannot declare any passive joints other than the floating base; it is recommended to save passive-joint information in `RobotWrapper` and select the corresponding M, h, J rows in `InverseDynamicsFormulation` to include torque=0 dynamics equality. A less elegant alternative is to implement `TaskActuationEquality`. These are just clear implementation directions, and the thread has not merged code or results, so #218 cannot be considered as a standalone fix for the pantograph.",
+    "applicability": "Applies to TSID models with internal passive joints other than the floating base; if a new interface exists in the target version, it must be rechecked.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The author implemented and validated the TwoFrames contact; the maintainer suggests recording passive joints in `RobotWrapper` and selecting the corresponding M, h, J rows in `InverseDynamicsFormulation` to construct the torque-zero equality.",
+    "details.diagnostics.0": "Distinguish between the loop-closure constraint and the actuation/passive-joint selector; verify if the contact can maintain relative frame displacement, and separately check the torque=0 equality for the passive rows.",
+    "details.effective_fixes.0": "The rigid closed chain uses the merged PR #218 path `ContactTwoFramePositions`/`TaskTwoFramesEquality`.",
+    "details.effective_fixes.1": "The formulation for arbitrary passive joints was not implemented in the original thread; do not treat the zero torque-limit hack or #218 as a complete solution for the pantograph.",
+    "details.environments.0": "TSID devel/master from 2022-2024; the author tested TwoFrames contact on fully-actuated humanoid wrists and Talos gripper demo; no fixed release.",
+    "details.limits.0": "#218 demo proves a specific closed chain contact, not a general solution for any passive joint in the pantograph; a user encountered a segfault in PAL REEM-C TwoFramesEquality after the demo.",
+    "details.limits.1": "A high-stiffness numerical integration of spring-damper is recommended from the maintainer's design discussion; no additional independent code was generated.",
+    "details.outcomes.0": "PR #218 merged on 2024-02-02; the maintainer replicated the minimal code for covariant return and accepted the PR.",
+    "details.outcomes.1": "The passive-joint selector/equality scheme is not associated with any implementation or replication.",
+    "details.problem_statements.0": "In TSID, should a rigid two-link closed chain be modeled as a task or a contact?",
+    "details.problem_statements.1": "After a closed chain is implemented, how should arbitrary passive joints be expressed?",
+    "details.safety_notes.0": "A closed chain with passive joints can produce false constraints or non-executable torques; check constraint residual, actuation selector, joint torque, and internal force of the closed chain before real machine testing.",
+    "details.suspected_causes.0": "The original TSID formulation only considered the floating base as an unactuated part, and could not declare any internal passive joints.",
+    "details.symptoms.0": "TwoFrames contact works in fully-actuated closed loop; setting pantograph passive joints to torque-limit=0 causes weird movements.",
+    "source.locator": "TSID #165 author's failure boundary 1181695831, maintainer's formulation suggestion 1184238644",
+    "source.title": "TSID two-frame closed chain contact merged but arbitrary passive joints still need separate handling",
+    "terms.0": "Passive joint (被动关节)",
+    "terms.1": "Actuation selector matrix (驱动选择矩阵)",
+    "terms.2": "Inverse-dynamics equality (逆动力学等式)",
+    "terms.3": "Zero-torque constraint (零力矩约束)",
+    "title": "Can TSID's TwoFrames contact be completed with passive joint zero torque limit for pantograph leg modeling?"
+  }
+}

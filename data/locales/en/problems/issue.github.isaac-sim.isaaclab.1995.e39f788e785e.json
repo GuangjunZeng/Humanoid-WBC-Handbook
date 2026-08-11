@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1995.e39f788e785e",
+  "schema_version": 1,
+  "source_fingerprint": "babd23f933c32a603d65df9f7e6f5f5252e0f461dce0d4535e45701c59927b7f",
+  "translations": {
+    "answer": "This is not equivalent to the physics engine not solving ground contact. The project contributor explicitly stated that the restriction is on the static collider contact retrieval/filter API; static collisions still participate in the physics solution. The original version's workaround was to build a large, thin ground surface using RigidObjectCfg + thin CuboidCfg and set kinematic_enabled=True. The original author provided a working configuration, but the thread did not verify that the static filtering restriction has disappeared in subsequent versions, so the upgrade still requires testing.",
+    "applicability": "Directly applicable to Isaac Sim 4.5.0, Isaac Lab 2.0.0 GPU filtered contact and standard static ground collider; other versions need verification against current PhysX support.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The project contributor suggests adding RigidBodyAPI to the ground prim and enabling the kinematic property.",
+    "details.attempts.1": "The original author used SceneCfg's RigidObjectCfg/CuboidCfg to create a large, thin ground surface, setting RigidBodyPropertiesCfg(kinematic_enabled=True), collision_props, and friction material.",
+    "details.diagnostics.0": "Distinguish between physics contact solution and contact retrieval/filter API: the maintainer explicitly stated that the static collider's physics collision is still normal, and the restricted is the filtered contact retrieval.",
+    "details.diagnostics.1": "Check if the target prim only has a static collider and no RigidBodyAPI; if using a workaround, confirm that the kinematic body covers all environment areas.",
+    "details.effective_fixes.0": "In the original version, when a filtered contact is needed, replace the standard GroundPlane/static collider with a kinematic rigid body covering the working area; the original author explicitly reported that the RigidObjectCfg configuration is usable.",
+    "details.environments.0": "Isaac Sim 4.5.0; Isaac Lab 2.0.0; GPU pipeline; /World/ground is a standard static collider.",
+    "details.limits.0": "This workaround changes the prim type; TerrainImporterCfg, RayCaster's mesh_prim_paths, and multi-environment paths need to be verified separately, and cannot be directly copied.",
+    "details.limits.1": "Subsequent participants reported prim path and ray-caster mesh errors, but that is not the confirmed fix for the original filtered-contact restriction; this card does not use those comments as a general conclusion.",
+    "details.outcomes.0": "The original author published the working configuration; Issue was closed after the comment, but the thread did not provide an engine version fix or confirm that the standard static collider filtering is supported.",
+    "details.problem_statements.0": "ContactSensorCfg reports GPU contact filter not supported and an empty matrix after setting filter_prim_paths_expr on /World/ground; does this mean the ground contact is not being solved by the physics engine?",
+    "details.safety_notes.0": "Do not rely solely on the filtered matrix being zero to determine that the robot is off the ground; use the unfiltered net contact, pose/height, and termination logic for cross-checking.",
+    "details.suspected_causes.0": "At the time, the PhysX GPU contact retrieval API did not support filtering static colliders that are not rigid bodies.",
+    "details.symptoms.0": "Console warning: GPU contact filter for collider '/World/ground' is not supported.",
+    "details.symptoms.1": "Cannot retrieve filtered contact data for the static ground after setting filter_prim_paths_expr; normal contact is still usable without the filter.",
+    "source.locator": "Isaac Lab #1995 comment 2708680265/2711098361's maintainer's restriction note, comment 2877887219's original author's RigidObjectCfg configuration",
+    "source.title": "Isaac Lab GPU contact filter cannot filter standard static ground collider",
+    "terms.0": "Filtered contact (过滤接触)",
+    "terms.1": "Static collider (静态碰撞体)",
+    "terms.2": "Kinematic rigid body (运动学刚体)",
+    "terms.3": "Contact retrieval API (接触检索接口)",
+    "terms.4": "Rigid Body API (RigidBodyAPI) (刚体接口)",
+    "title": "Isaac Lab's ContactSensorCfg reports GPU contact filter not supported and no filtered data after setting filter_prim_paths_expr on /World/ground; how does the original thread explain and workarounds?"
+  }
+}

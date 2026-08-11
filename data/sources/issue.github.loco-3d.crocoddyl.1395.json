@@ -1,0 +1,152 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "pran-d"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1395",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "03d790102e70d16f1e84744173d594e3a14070eeaee93377c42b8a3b4d2779da",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、3 条评论、关联 PR #1396、PR #1403 的元数据和完整 patch；没有声称原作者在合并后复跑成功。",
+    "components": [
+      "Crocoddyl",
+      "whole_body_manipulation.ipynb",
+      "TALOS",
+      "ResidualModelState",
+      "ActivationModelQuadraticBarrier"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者尝试移除 contacts，问题仍存在。",
+        "原作者把 TALOS 换成 Panda 后求解正常，并在 Crocoddyl 3.0.1/2.2.0 间交叉复现。",
+        "协作者使用 PR #1396 提供的 Jupyter 入口复现了错误行为。"
+      ],
+      "diagnostics": [
+        "先用同一虚拟环境替换机器人模型，区分通用求解器故障与特定多体状态维度/边界故障。",
+        "逐项移除或检查 cost；原作者把 NaN 定位到 xBounds 中 ActivationBounds 与 ResidualModelState 的组合。",
+        "核对 StateMultibody 的 nq、nv、状态切空间维度以及 residual 期望维度，不要仅按 nq+nv 猜测。"
+      ],
+      "effective_fixes": [
+        "采用已合入 PR #1403 的 notebook，或把 xBounds residual 从 ResidualModelState(state, 0*x0, actuation.nu) 改为 ResidualModelState(state, actuation.nu)。"
+      ],
+      "environments": [
+        "Ubuntu 24.04.2、Python 3.12.3、Crocoddyl 3.0.1；原作者降级到 Crocoddyl 2.2.0 后仍复现；未给 example_robot_data 版本。"
+      ],
+      "limits": [
+        "原作者没有在合并后再次留言确认运行结果；闭环依据是协作者复现、维护者指向修复、PR 明确关联并合入以及 Issue 关闭。",
+        "PR #1403 还修改了 contact stabilization、notebook 结构和 README；本卡只把原作者已定位且补丁直接改动的 xBounds residual 作为该 NaN 的线程内修复。",
+        "不能从该线程推导任意 StateMultibody 的通用边界切片公式。"
+      ],
+      "outcomes": [
+        "PR #1403 明确声明修复 #1395，于 2025-06-04 合入 loco-3d/crocoddyl:devel；Issue 状态为 completed。"
+      ],
+      "problem_statements": [
+        "原样运行 TALOS whole-body manipulation notebook 时 cost 为 NaN、求解器在 iteration 0 退出，怎样修正状态边界代价构造？"
+      ],
+      "safety_notes": [
+        "在把优化结果用于实机前，先把初始 cost、residual 维度和有限值检查作为启动门槛；NaN 状态下不得下发控制量。"
+      ],
+      "suspected_causes": [
+        "原线程把直接原因定位到状态边界惩罚中 ResidualModelState(state, 0*x0, actuation.nu) 的参考状态构造；维护者修复补丁移除了该错误参考参数。"
+      ],
+      "symptoms": [
+        "whole_body_manipulation.ipynb 不改动运行时 cost 显示 NaN，solver 在第 0 次迭代退出。",
+        "移除 differential model 的 contacts 后问题仍在；相同环境和 cost formulation 换 Panda 模型可以求解并到达目标。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者把 NaN 定位到 xBounds 代价中的 ResidualModelState(state, 0*x0, actuation.nu)。维护者的 PR #1403 把它改为 ResidualModelState(state, actuation.nu)，PR 正文明确写明修复 #1395，随后合入 devel 并关闭 Issue。应优先使用包含该 PR 的 notebook；线程没有给出原作者合并后复跑日志，因此不能扩展为所有 Crocoddyl NaN 的通用结论。",
+        "applicability": "适用于旧版 whole_body_manipulation.ipynb 的 TALOS 状态边界代价构造；目标安装必须确认是否已包含 PR #1403。",
+        "bilingual_terms": [
+          "状态边界惩罚（state limits penalization）",
+          "残差模型（residual model）",
+          "二次障碍激活（quadratic barrier activation）",
+          "全身操作（whole-body manipulation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.crocoddyl_talos_state_bounds_nan_1395",
+        "problem_title_zh": "Crocoddyl TALOS 状态边界代价在初始求解时产生 NaN",
+        "question_zh": "Crocoddyl 的 TALOS whole_body_manipulation notebook 原样运行就出现 NaN cost、solver 在 iteration 0 退出时，原线程对应的修复是什么？",
+        "source_locator": "Crocoddyl #1395：协作者评论 2922474130 复现；原作者评论 2931328830 定位 xBounds；维护者评论 2936325526 指向 PR #1403；合并提交 8e3c143",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2936325526",
+        "verification_refs": [
+          {
+            "locator": "项目协作者说明使用 #1396 可以复现该错误行为",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2922474130"
+          },
+          {
+            "locator": "原作者给出 xBounds 代码并把 NaN 定位到状态边界代价",
+            "relation": "issue",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2931328830"
+          },
+          {
+            "locator": "PR 正文明确 Fixes #1395，2025-06-04 合入 devel",
+            "relation": "pull_request",
+            "source_url": "https://github.com/loco-3d/crocoddyl/pull/1403"
+          },
+          {
+            "locator": "固定提交把 xBounds 的 ResidualModelState(state, 0*x0, ...) 改为不传错误参考状态的构造",
+            "relation": "source_code",
+            "source_url": "https://github.com/loco-3d/crocoddyl/commit/d2ab9a5510094fb52c5f8212fbbb25d749f56d66"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.1395",
+    "query": "Crocoddyl TALOS whole_body_manipulation NaN cost state bounds ResidualModelState",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "TALOS（故障模型）",
+      "Panda（原帖对照模型）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "协作者说明可以用 #1396 复现该错误行为。"
+      },
+      {
+        "text": "原作者把 NaN 定位到状态边界惩罚代码，并列出 bounds/residual 维度疑问。"
+      },
+      {
+        "text": "维护者确认修复将在 PR #1403 中提供；该 PR 后续已合入。"
+      }
+    ],
+    "wbc_relevance_reason": "多接触全身最优控制的状态边界代价若维度或参考状态构造错误，会在求解开始前直接产生 NaN；这是人形 whole-body manipulation notebook 的可复现初始化故障。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.1395",
+  "summary": "Crocoddyl #1395 报告原样运行 whole_body_manipulation.ipynb 时，TALOS 模型的 cost 为 NaN、求解器在第 0 次迭代退出；同一环境换成 Panda 可正常求解，Crocoddyl 3.0.1 和 2.2.0 都复现。协作者使用 #1396 提供的 Jupyter 环境复现了错误行为；原作者把 NaN 定位到状态边界惩罚中带 0*x0 的 ResidualModelState 构造。维护者随后提交 PR #1403，补丁把该处改为 ResidualModelState(state, actuation.nu)，PR 明确声明修复 #1395 并已合入 devel。",
+  "title": "Crocoddyl TALOS whole-body manipulation 的状态边界代价导致 NaN",
+  "version": null
+}

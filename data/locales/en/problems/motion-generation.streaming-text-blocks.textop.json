@@ -1,0 +1,26 @@
+{
+  "kind": "claim",
+  "problem_id": "motion-generation.streaming-text-blocks.textop",
+  "schema_version": 1,
+  "source_fingerprint": "f492a18b812cbd42814861bec1cfa0cf730fe9972a2b92f3c9bc8223f25f3766",
+  "translations": {
+    "answer": "TextOp uses the current text and recent robot motion to generate short motion blocks on G1, which are executed by an independent 50 Hz tracker, allowing text to be updated without interrupting the controller; the paper reports input to visible response at ~0.73 seconds and 30-second real machine trial denominators, but the system does not perceive the environment and cannot treat open text as safe and executable commands.",
+    "applicability.assumptions.0": "Commands fall near the BABEL/text training vocabulary and describe kinematically supported behaviors.",
+    "applicability.assumptions.1": "An external workstation and a robust G1 motion tracker are available.",
+    "applicability.controllers.0": "TextOp RobotMDAR",
+    "applicability.controllers.1": "universal motion tracker",
+    "applicability.environments.0": "BABEL offline evaluation",
+    "applicability.environments.1": "30-second real command streams",
+    "applicability.robots.0": "29-DoF Unitree G1",
+    "applicability.simulators.0": "Isaac Lab / MuJoCo in the official stack",
+    "confidence_rationale": "Real 30-second trials have explicit denominators and latency measurements, offline representation/tracker ablations are extensive, and official code maps the streaming mechanism. Confidence is capped by small real samples, environment blindness and repository version caveats.",
+    "evidence.0.locator": "Figures 2-5 and Tables I-V",
+    "evidence.0.note": "Supports streaming architecture, real success denominators, latency and generator/tracker ablations.",
+    "evidence.0.title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
+    "evidence.1.locator": "ClassifierFreeWrapper, generate_next_motion, DenoiserTransformer and MotionDAR._gen_motion/_update_text_embedding at ef6555f",
+    "evidence.1.note": "Maps text/history-conditioned autoregressive block generation to official code.",
+    "evidence.1.title": "TeleHuman/TextOp official implementation",
+    "terms.0": "Center of Mass (CoM) (质心)",
+    "title": "How to allow text commands to be modified during robot motion rather than pre-generating entire trajectories?"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.3505.00e26ae154cd",
+  "schema_version": 1,
+  "source_fingerprint": "1b288f393c414b08b17eaab9832e769e102da24b4b6192add247dee58a05f314",
+  "translations": {
+    "answer": "In the Isaac Sim 5.0/5.1 test, forcing PyTorch/cuDNN deterministic, setting PYTHONHASHSEED/CUBLAS_WORKSPACE_CONFIG, and disabling antialiasing (OFF) or using FXAA did not restore reproducibility for RGB tasks. The IsaacLab team then explicitly stated that the current rendering pipeline is inherently stochastic and there is no formal method to ensure deterministic rendered outputs. Therefore, these settings can be ruled out as other stochastic sources, but they cannot be considered a sufficient fix for the current visual pipeline; evaluation should be based on multiple runs and camera observation regression.",
+    "applicability": "Applies to the Isaac Sim 4.5, 5.0, and 5.1 visual training pipeline; future rendering modes need retesting.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Upgrade Isaac Sim 5.0/IsaacLab new submission.",
+    "details.attempts.1": "Enable torch.use_deterministic_algorithms, disable cudnn benchmark, enable cudnn deterministic, set PYTHONHASHSEED and CUBLAS_WORKSPACE_CONFIG.",
+    "details.attempts.2": "Attempt antialiasing OFF and FXAA separately.",
+    "details.diagnostics.0": "First, perform A/B comparison using the same task state observation and RGB observation.",
+    "details.diagnostics.1": "Verify PyTorch/cuDNN determinism, CUBLAS/PYTHONHASHSEED, and rendering anti-aliasing separately, rather than treating them as a single switch.",
+    "details.environments.0": "Initial: Isaac Sim 4.5, IsaacLab commit f20d74c, Ubuntu 22.04, RTX A6000, CUDA 12.9, driver 575.64.03.",
+    "details.environments.1": "Re-test: Isaac Sim 5.0.0, IsaacLab commit 90dda53; user report of Sim 5.1.",
+    "details.limits.0": "This conclusion is specific to the Isaac Cartpole RGB task and the 4.5/5.0/5.1 pipeline mentioned in the post; cannot extrapolate to future simplified RTX mode or Newton tiled camera.",
+    "details.limits.1": "The training curve image is not used for evaluation; the card only uses multiple user and team textual results.",
+    "details.outcomes.0": "All attempts in the listed environments failed to restore visual training reproducibility; the team has not provided a fix for the current pipeline.",
+    "details.problem_statements.0": "Why does visual task reproducibility still fail after fixing the seed? Are deterministic settings sufficient?",
+    "details.safety_notes.0": "Visual strategy regression should save camera observation validation samples and multiple seed distributions; do not attribute single-training differences to algorithm changes.",
+    "details.suspected_causes.0": "The IsaacLab team members stated that the current rendering pipeline is stochastic and cannot guarantee deterministic rendered outputs.",
+    "details.symptoms.0": "State-based tasks with the same seed show consistent training curves, but RGB and RGB-ResNet18 tasks show significant variation across multiple runs.",
+    "source.locator": "IsaacLab #3505 author retest 3315924447/3326940823, double AA retest 3330102174/3331426534, team conclusion 3862666319",
+    "source.title": "Isaac Lab Visual Training Fixed Seed Still May Be Affected by Stochastic Rendering Pipeline",
+    "terms.0": "Reproducibility (可复现性)",
+    "terms.1": "Deterministic algorithms (确定性算法)",
+    "terms.2": "Stochastic rendering pipeline (随机渲染管线)",
+    "terms.3": "Anti-aliasing (AA/FXAA) (抗锯齿)",
+    "title": "Does forcing PyTorch deterministic or disabling anti-aliasing resolve the issue when visual tasks are fixed seed?"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.25.e1d18625c7f1",
+  "schema_version": 1,
+  "source_fingerprint": "93bb29d97240a77dbdc75162599cf7bd68f368e41ca8ceafb45ff6aba4c3c14f",
+  "translations": {
+    "answer": "The project contributor explicitly states that the inverse kinematics (IK) is 'optimized based on forward kinematics (FK):' the optimizer adjusts the joint variables, FK calculates the current joint corresponding body/joint position, and the error between these positions and the target is used to drive the optimization. Therefore, the code contains an FK model that does not equal only the forward calculation.",
+    "applicability": "Applicable to the human2humanoid redirect script; other projects should verify if they use the same form. The applicability of other projects is not determined.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner posted a script screenshot; the project contributor explained the implementation form.",
+    "details.diagnostics.0": "Distinguish between the forward kinematics (FK) used for pose error calculation and the inverse kinematics (IK) used for solving joint variables.",
+    "details.effective_fixes.0": "Understand the script as an optimized inverse kinematics (IK) based on Forward Kinematics (FK).",
+    "details.environments.0": "LeCAR-Lab/human2humanoid；grad_fit_h1_shape.py；Unitree H1.",
+    "details.limits.0": "No details provided for the objective function, constraints, or optimizer; further details need to be consulted with the corresponding code.",
+    "details.outcomes.0": "The issue will be closed after the contributor's response.",
+    "details.problem_statements.0": "Is the script redirecting to FK, and does this contradict the IK description in the paper?",
+    "details.suspected_causes.0": "Treating FK error calculation in optimal IK as a pure FK process.",
+    "details.symptoms.0": "Code review only saw the FK model, no explicit closed-form IK call.",
+    "media_summaries.0": "Post screenshot is only for pointing out the FK model in the script; conclusion is from contributor's text reply, not based on the screenshot.",
+    "source.locator": "Issue #25, contributor's reply to issuecomment-2518575224",
+    "source.title": "Human2Humanoid code seems to be FK, but paper claims it is IK",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Forward Kinematics (FK) (前向运动学)",
+    "terms.2": "Optimization-Based Retargeting (优化式重定向)",
+    "title": "Why Forward Kinematics (FK) Can Still Be Called Inverse Kinematics (IK) Before Script Calls"
+  }
+}

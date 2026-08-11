@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6a27d9b40000000021021bdb.6dfe53fa53fe",
+  "schema_version": 1,
+  "source_fingerprint": "c0c47a5ab5e18c8f5fc591be2abbf6d376df58781493b635a57981f5e7abc2b6",
+  "translations": {
+    "answer": "Check the first three layers: whether the CPU is full within the process, whether the image point cloud is occupying the control channel, and whether DDS discovery can reach across VLANs. Verify via packet capture, topic statistics, and end-to-end delay; do not accept '90%' as a fact without retesting.",
+    "applicability": "‘90%’ is a promotional figure without verification; actual implementation depends on DDS and network equipment.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "The problem has not been closed or there is conflicting information; only a problem clue is formed currently.",
+    "details.attempts.0": "Suggest enabling shared memory/zero-copy, isolation, or prioritizing traffic; configure cross-VLAN discovery.",
+    "details.diagnostics.0": "Cross-verify the text, visible comments, and media description; these have not been independently verified in the paper, source code, or official documentation.",
+    "details.environments.0": "ROS2 industrial networking; image and point cloud data shared with control commands; multiple VLANs.",
+    "details.limits.0": "‘90%’ is a promotional figure without verification; actual implementation depends on DDS and network equipment.",
+    "details.outcomes.0": "The post does not provide data on packet loss rate or end-to-end delay after implementation.",
+    "details.problem_statements.0": "ROS2 control chain is dropping packets; QoS is set but still ineffective; what should be checked next?",
+    "details.safety_notes.0": "Community candidates are only for forming diagnostic hypotheses; when involving real devices, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "User-space repeated copying consumes CPU; no topic or network priority; cross-VLAN discovery not configured.",
+    "details.symptoms.0": "QoS adjustment for three days still results in packet loss, delay, or disconnection.",
+    "media_summaries.0": "Three information graphs summarize shared memory/zero-copy, topic priority, and cross-VLAN discovery; no packet capture, packet loss rate, or end-to-end delay curves are visible.",
+    "source.locator": "Root post three-item list",
+    "source.title": "ROS 2 Packet Loss Isn't Just About QoS: Copy, Priority, and Cross-VLAN Discovery",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Robot Operating System 2 (ROS 2) (机器人操作系统 2)",
+    "terms.2": "Data Distribution Service (DDS) (数据分发服务)",
+    "terms.3": "Quality of Service (QoS) (服务质量)",
+    "terms.4": "End-to-End Latency (端到端时延)",
+    "terms.5": "Shared Memory (共享内存)",
+    "title": "ROS2 Control Chain Drops Packets, QoS Set Still Ineffective; What's Next?"
+  }
+}

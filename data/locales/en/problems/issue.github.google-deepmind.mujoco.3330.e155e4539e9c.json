@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.3330.e155e4539e9c",
+  "schema_version": 1,
+  "source_fingerprint": "03128e0eeca63b7f14526fc3bb1729dcc5f1c9f8456cde85caf690716f268f56",
+  "translations": {
+    "answer": "The original author confirmed that rigid=true and flexcomp in simple models can generate concave collisions; however, in complex models, performance drops to 40 FPS/5 FPS, with numerous contacts, arena memory full, and findEdges errors. Increasing nconmax to 30000 eliminates the memory warning and findEdges error, but the simulate.exe still exits. Therefore, rigid flex can be used as a simplified model solution, but the post does not prove it can replace complex welded parts in Coal integration.",
+    "applicability": "Applicable for evaluating concave collisions in complex meshes; exact version and model scale are unknown and must be verified in the target model.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Using rigid=true and flexcomp with contact configuration.",
+    "details.attempts.1": "Increasing nconmax to 30000.",
+    "details.diagnostics.0": "First validate concave collisions with a simplified mesh.",
+    "details.diagnostics.1": "Record ncon, arena memory, and FPS, and test static penetration separately.",
+    "details.diagnostics.2": "After increasing nconmax, distinguish whether memory warnings disappear and whether findEdges errors persist.",
+    "details.effective_fixes.0": "Simple models with rigid flex achieve the required concave collisions.",
+    "details.environments.0": "2026-06 MuJoCo Issue; Windows simulate.exe mentioned in comment; exact MuJoCo version, CPU/GPU, and mesh scale not provided.",
+    "details.limits.0": "Rigid flex is not a complete replacement for the complex welded scenario.",
+    "details.limits.1": "No maintainer provided a fix for findEdges or a usable version.",
+    "details.limits.2": "Video and screenshots not used in this card's conclusion; all results from author's text.",
+    "details.outcomes.0": "Increasing nconmax eliminates arena memory full warning but does not eliminate findEdges errors or process exit; complex scenario performance remains insufficient, and the author continues to rely on Coal.",
+    "details.problem_statements.0": "How does MuJoCo attempt non-convex/concave geometric collisions? What are the observed boundaries in complex models with rigid flex?",
+    "details.safety_notes.0": "Before using non-convex collisions in motion planning, include penetration, contact count limits, real-time factor, and process anomalies in automatic regression to prevent simulation crash during safety checks.",
+    "details.symptoms.0": "Convex hull misreports collisions in voids; simple rigid flex is usable.",
+    "details.symptoms.1": "Complex rigid flex drops to 40 FPS or 5 FPS; static penetration causes ncon=22287, arena memory full, followed by findEdges: no tree found and simulate.exe exit.",
+    "source.locator": "MuJoCo #3330 rigid flex suggestion 4688939402; author's simple success 4690882257; complex limits 4704015555, 4714020235, 4714129335",
+    "source.title": "MuJoCo rigid flex can handle concave collisions, but complex penetration scenarios have performance and crash boundaries.",
+    "terms.0": "Rigid Flex (rigid and flexible body) (刚性柔性体)",
+    "terms.1": "Concave Collision (凹碰撞)",
+    "terms.2": "Contact Arena Memory (接触竞技场内存)",
+    "terms.3": "Static Penetration (静态穿透)",
+    "title": "Can MuJoCo's Rigid Flex Replace Complex Concave Geometric Collision Scenarios? Can Increasing nconmax Resolve the Crash?"
+  }
+}

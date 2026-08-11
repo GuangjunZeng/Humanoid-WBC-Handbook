@@ -1,0 +1,129 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "JonasFano"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2635",
+  "captured_at": "2026-08-11T22:16:00+08:00",
+  "content_sha256": "7270368d45b5f14c7ac67313871819f8c8647c2b78f465e9c9a62d81f9796596",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 2 条评论和合并 PR #2022 的相关 diff；未补写原作者未报告的升级结果。",
+    "components": [
+      "Isaac Lab",
+      "Stable-Baselines3",
+      "VecNormalize",
+      "train.py",
+      "play.py",
+      "observation normalization"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖给出任何 SB3 环境都可执行的 normalize_input/normalize_value 复现步骤与建议代码。",
+        "PR #2022 同时修改 train.py 与 play.py 的保存/加载路径。"
+      ],
+      "diagnostics": [
+        "检查 run directory 是否有 model_vecnormalize.pkl。",
+        "检查 play 是否从目标 checkpoint 同目录加载 stats，并把 training 与 reward normalization 关闭。",
+        "检查 play 使用的是训练时保存的 agent.yaml，而不是当前默认配置。"
+      ],
+      "effective_fixes": [
+        "使用包含 PR #2022 / merge commit ad14a67 的版本；训练结束保存 model_vecnormalize.pkl，评测从 checkpoint 对应目录加载并设置 training=False、norm_reward=False。"
+      ],
+      "environments": [
+        "IsaacLab commit 9f1aa4c、Isaac Sim 4.5.0、Ubuntu 22.04.5、RTX 3500 Ada Laptop 12GB、CUDA 12.1、driver 535.230.02。"
+      ],
+      "limits": [
+        "文件名与路径绑定该 PR 的 Isaac Lab 脚本；自定义 runner 需核对自己的 checkpoint layout。",
+        "没有作者升级复测，闭环主要来自合并源码修复与维护者确认。"
+      ],
+      "outcomes": [
+        "SB3 维护者明确回复问题应由 PR #2022 修复，Issue 随后关闭；原作者未贴升级后的性能数值。"
+      ],
+      "problem_statements": [
+        "SB3 训练启用 VecNormalize 后，为什么 play 表现下降并重新累计统计？"
+      ],
+      "safety_notes": [
+        "部署前应把 policy、VecNormalize stats、agent config 和代码 commit 作为同一不可拆分 artifact 校验。"
+      ],
+      "suspected_causes": [
+        "训练统计未持久化，评测端重新初始化并更新均值/方差。"
+      ],
+      "symptoms": [
+        "train.py 不保存 normalization statistics；play.py 用 fresh VecNormalize 且继续 training。",
+        "evaluation normalization distribution 与训练期不一致，策略表现下降。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "使用包含 PR #2022 的版本：train.py 在 run directory 保存 model_vecnormalize.pkl；play.py 从所选 checkpoint 的目录加载该文件，并设置 training=False、norm_reward=False，同时读取训练时保存的 params/agent.yaml。若自定义脚本没有这些步骤，就必须把 normalization stats 与 policy checkpoint 一起保存和加载；仅加载 policy 权重不足以复现训练期输入分布。",
+        "applicability": "适用于启用 normalize_input 或 normalize_value 的 Isaac Lab SB3 工作流；自定义目录结构需调整路径。",
+        "bilingual_terms": [
+          "向量归一化（vector normalization, VecNormalize）",
+          "运行统计（running statistics）",
+          "评测模式（evaluation mode）",
+          "检查点（checkpoint）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.reproducibility_and_debugging.sb3_vecnormalize_checkpoint_2635",
+        "problem_title_zh": "SB3 评测复用训练期 VecNormalize 统计",
+        "question_zh": "Isaac Lab 的 SB3 play.py 怎样避免重新学习 VecNormalize 统计？",
+        "source_locator": "IsaacLab #2635 完整复现；SB3 维护者确认 3004477599；PR #2022",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2635#issuecomment-3004477599",
+        "verification_refs": [
+          {
+            "locator": "合并 PR ad14a67 保存/加载 model_vecnormalize.pkl，并在 play 关闭 stats 更新与 reward normalization",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/2022"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2635",
+    "query": "Isaac Lab SB3 VecNormalize save load stats play training false norm_reward",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Franka lift example",
+      "generic SB3 Isaac Lab tasks"
+    ],
+    "schema_version": 2,
+    "scope_id": "reproducibility_and_debugging",
+    "selected_comments": [
+      {
+        "text": "原帖完整描述 train/play 错配；SB3 维护者指向合并 PR #2022 的精确修复。"
+      }
+    ],
+    "wbc_relevance_reason": "学习型控制器离线评测和实机前回放必须复用训练归一化统计；重建统计会改变策略输入尺度并伪造性能退化。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2635",
+  "summary": "IsaacLab #2635 在 commit 9f1aa4c/Isaac Sim 4.5 上指出：SB3 train.py 应用 VecNormalize 却不保存统计，play.py 又创建 fresh VecNormalize 并继续 training，导致评测输入分布与训练不一致、策略表现下降。SB3 维护者 araffin 指向已合并 PR #2022；该 PR 在训练结束保存 model_vecnormalize.pkl，play 根据 checkpoint 路径加载、设置 training=False 与 norm_reward=False，并优先加载训练时保存的 params/agent.yaml。",
+  "title": "SB3 play 必须加载训练期 VecNormalize 统计而不是重新学习",
+  "version": null
+}

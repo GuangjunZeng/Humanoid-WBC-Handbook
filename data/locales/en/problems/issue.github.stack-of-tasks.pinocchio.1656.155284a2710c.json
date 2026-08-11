@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1656.155284a2710c",
+  "schema_version": 1,
+  "source_fingerprint": "2bd66b44738041ea511e3a0233b81dd091322cb73ed60a65f718e14dbb4801b8",
+  "translations": {
+    "answer": "The original author defined the output as a=[base-frame linear acceleration, base-frame angular acceleration, joint accelerations], and the maintainer confirmed it is correct. Therefore, cannot directly take the first six dimensions of aba as world-frame base acceleration. The thread did not provide a local-to-world acceleration transformation, and did not clarify the difference between classical and spatial acceleration. When these quantities are involved, they must be verified against the target API definition.",
+    "applicability": "Applies to the original post Pinocchio floating-base aba() output explanation; cannot extrapolate to unmentioned classical acceleration interface.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "The author listed a=[local base linear acceleration, local base angular acceleration, joint accelerations], and the maintainer confirmed it.",
+    "details.diagnostics.0": "Interpreted aba as a generalized acceleration in the generalized space of the base local frame, and verified the root joint local coordinate convention.",
+    "details.effective_fixes.0": "Interpreted the first six dimensions of aba as base local frame generalized acceleration; explicit world-frame transformation is required when world-frame quantities are needed.",
+    "details.environments.0": "2022 Pinocchio floating-base dynamics; specific version and robot not mentioned.",
+    "details.limits.0": "The thread did not provide a local-to-world acceleration transformation, and did not discuss the difference between spatial acceleration, classical acceleration, and d(v)/dt.",
+    "details.limits.1": "Specific root joint type and software version not mentioned.",
+    "details.outcomes.0": "The maintainer confirmed the local coordinate interpretation of the first six dimensions of aba is correct.",
+    "details.problem_statements.0": "What coordinate system should the first six dimensions of aba() be interpreted in when returning floating base generalized acceleration?",
+    "details.suspected_causes.0": "Misinterpretation of generalized acceleration as a world-frame second-order position derivative.",
+    "details.symptoms.0": "The user is aware of the floating base linear velocity components in the local joint frame, but is uncertain whether the acceleration is expressed in the same way.",
+    "source.locator": "Issue #1656, problem definition and maintainer confirmation issuecomment-1134709342",
+    "source.title": "Pinocchio ABA returns floating base generalized acceleration in local joint frame?",
+    "terms.0": "Joint body algorithm (ABA) (关节体算法)",
+    "terms.1": "Generalized acceleration (广义加速度)",
+    "terms.2": "Local joint frame (局部关节坐标系)",
+    "terms.3": "Spatial acceleration (空间加速度)",
+    "title": "In what coordinate system should the first six dimensions of Pinocchio's aba() be interpreted when returning floating base generalized acceleration?"
+  }
+}

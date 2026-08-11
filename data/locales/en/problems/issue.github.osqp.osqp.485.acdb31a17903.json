@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.485.acdb31a17903",
+  "schema_version": 1,
+  "source_fingerprint": "8cdc611e2289d8b08119bca1b065226f94341fbaac76580597c70ff8f09d9ca9",
+  "translations": {
+    "answer": "Currently cannot treat it as a general fix. #485's mathematical objection points out that a positive epsilon check may accept `lhs=0`'s certificate, two users reported singleton case, second user fixed by local symbol change; but no complete MRE or maintainer confirmation. Directly revert the negative sign may re-introduce the 'small gap' problem that was formally fixed. Both QP types should be included in the same regression set, and `conflicting` should be maintained until maintainer or official patch is available.",
+    "applicability": "Only as a problem clue for singleton/degenerate feasible domain; any local symbol modification must simultaneously regression #255's infeasible MRE.",
+    "credibility.rationale": "Solution not closed or there is a conflict; source conclusion has unresolved conflict; only forming a problem clue.",
+    "details.attempts.0": "One author wishes to submit PR but awaits maintainer explanation; second user fixed by local symbol change.",
+    "details.diagnostics.0": "Strict mathematical conditions for certificate validation, returning `v`, known singleton point, and different epsilon signs A/B.",
+    "details.effective_fixes.0": "No merged fix; local symbol change is user A/B, and may re-introduce #255's non-detection.",
+    "details.environments.0": "Issue fixed to commit `5dab81d` in `src/auxil.c`; second user fixed to commit `e5f1e50`; no complete QP MRE.",
+    "details.limits.0": "Missing public complete MRE, target release, and maintainer conclusion; cannot recommend direct revert of PR #256.",
+    "details.outcomes.0": "Issue open, no maintainer response; #255 and #485 form mutual boundary conflict.",
+    "details.problem_statements.0": "Will the positive epsilon certificate check correctly classify a singleton feasible problem as primal infeasible?",
+    "details.safety_notes.0": "WBC solver regression set must include both singleton feasible and very small interval infeasible QP; any type failure should block upgrade.",
+    "details.suspected_causes.0": "Author thinks `lhs < +eps·||v||` allows lhs to be zero, possibly relaxing the certificate; maintainer has not confirmed.",
+    "details.symptoms.0": "Two users reported singleton feasible region being classified as primal infeasible; second user said that changing epsilon sign found a solution.",
+    "source.locator": "OSQP #485 original mathematical objection; second user A/B 2533462232; unresolved status 2537174191",
+    "source.title": "OSQP's positive epsilon infeasibility judgment still has public controversy in singleton feasible case",
+    "terms.0": "Single-point feasible region (单点可行域)",
+    "terms.1": "Infeasibility certificate (不可行证书)",
+    "terms.2": "False positive (假阳性)",
+    "terms.3": "Regression test suite (回归测试集)",
+    "title": "Can we directly revert the epsilon sign in PR #256 when OSQP judges a singleton feasible QP as primal infeasible?"
+  }
+}

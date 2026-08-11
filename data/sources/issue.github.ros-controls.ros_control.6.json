@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "advaitjain"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros_control/issues/6",
+  "captured_at": "2026-08-11T15:30:00+08:00",
+  "content_sha256": "aeebd54661ab6a16527379557afa6b514c9e1528b295c17dab26b11ce58d3dcb",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 3 条评论；未把无定位的关闭/Fixed 回复扩写成具体修复。",
+    "components": [
+      "ros_control",
+      "RTAI",
+      "ros::Time::now",
+      "hard realtime syscall"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "使用 RTAI scheduler 统计检测系统调用，并用代码二分式注释缩小范围。"
+      ],
+      "diagnostics": [
+        "在 RTAI 实时线程中运行控制程序，同时执行 `watch cat /proc/rtai/scheduler`；若计数变化，再逐段注释、重编译和复跑以定位来源。"
+      ],
+      "effective_fixes": [
+        "原线程没有公开可定位的代码修复，只记录维护者随后回复 `Fixed`。"
+      ],
+      "environments": [
+        "2012 年 ROS 1 ros_control；带 RTAI 的用户态硬实时线程；具体发行版和提交未给出。"
+      ],
+      "limits": [
+        "方法依赖旧 RTAI 接口，不能直接替代 PREEMPT_RT、Xenomai 或现代 tracing 工具；也没有对应的修复 commit。"
+      ],
+      "outcomes": [
+        "该方法让原作者定位到 `ros::Time::now()`；没有发布修复后的时延数据。"
+      ],
+      "problem_statements": [
+        "怎样确认 ros_control 实时循环中是否发生系统调用，并缩小到具体调用点？"
+      ],
+      "safety_notes": [
+        "在真机 WBC 上应先离线或在安全工装中检查系统调用和 hard-to-soft transition，避免诊断输出本身扰动实时循环。"
+      ],
+      "suspected_causes": [
+        "原作者直接确认触发点是当时实现中的 `ros::Time::now()`；线程没有进一步解释内部调用链。"
+      ],
+      "symptoms": [
+        "`ros::Time::now()` 被原作者定位为会产生系统调用，意味着实时线程可能发生 hard-to-soft transition。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该线程使用 RTAI 的 `/proc/rtai/scheduler` 观察实时线程是否发生系统调用，再通过逐段注释、重编译和复跑缩小调用点；原作者据此定位到当时的 `ros::Time::now()`。维护者只写了 `Fixed`，没有补丁或版本，因此这是一条旧 RTAI 环境的诊断经验，不能据此断言当前 ROS 版本仍有同一缺陷或已经在哪个版本修复。",
+        "applicability": "适用于旧 ROS 1 + RTAI 硬实时排查；其他实时内核应换用对应 tracing/latency 工具。",
+        "bilingual_terms": [
+          "硬实时（hard realtime）",
+          "系统调用（system call）",
+          "软模式切换（hard-to-soft transition）",
+          "调度统计（scheduler statistics）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros_control_rtai_syscall_diagnostic_6",
+        "problem_title_zh": "定位 ros_control 硬实时线程中的系统调用",
+        "question_zh": "ros_control 硬实时线程出现 hard-to-soft transition 时，怎样确认并定位系统调用来源？",
+        "source_locator": "ros_control #6 排查方法 10748158；维护者无定位的 Fixed 回复 10784634",
+        "source_url": "https://github.com/ros-controls/ros_control/issues/6#issuecomment-10748158",
+        "verification_refs": [
+          {
+            "locator": "维护者只确认项目侧已处理，但没有给出补丁定位",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros_control/issues/6#issuecomment-10784634"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros_control.6",
+    "query": "ros_control RTAI realtime syscall ros::Time::now diagnostic",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROS 1 hard-realtime robot control loop"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "原作者给出 RTAI scheduler 观察与逐段注释法；维护者随后仅回复 Fixed。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 控制循环的意外系统调用会触发 hard-to-soft transition，破坏周期抖动和最坏时延预算；先定位调用点比盲目更换内核参数更可复用。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros_control.6",
+  "summary": "ros_control #6 的使用者发现 `ros::Time::now()` 会在硬实时线程中触发系统调用。原线程给出的 RTAI 排查法是在实时线程运行程序，同时观察 `/proc/rtai/scheduler`，再通过逐段注释、重编译和复跑缩小来源。维护者最后只写了 `Fixed`，没有给出补丁、提交或发布版本，因此本卡只确认诊断方法和当时的触发点，不声称当前 ROS 时间接口仍有同一问题。",
+  "title": "用 RTAI 调度统计定位 ros_control 实时线程中的系统调用",
+  "version": null
+}

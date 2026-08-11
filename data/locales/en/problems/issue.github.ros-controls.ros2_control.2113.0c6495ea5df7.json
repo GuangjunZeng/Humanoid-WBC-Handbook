@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.2113.0c6495ea5df7",
+  "schema_version": 1,
+  "source_fingerprint": "47cc93bb1fbf3221da9d97648fadebf16d205f1f6456c9c74bbf57769e895f81",
+  "translations": {
+    "answer": "From Jazzy, hardware component provides a child logger inherited from ControllerManager. The original author upgraded Jazzy and changed `rclcpp::get_logger(\"hardware_interface\")` to the component's `get_logger()`, and confirmed that Foxglove can see the log; the official demo linked to the maintainer also uses this notation. This conclusion does not include Iron backport, and does not represent a real-time read/write loop high-frequency log print.",
+    "applicability": "Applies to ROS 2 Jazzy and versions with the same hardware child logger API.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. It has formal documentation or precise independent reproducibility.",
+    "details.attempts.0": "Upgraded to Jazzy and changed the macro parameter to the component's `get_logger()`.",
+    "details.diagnostics.0": "Confirmed that the distro provides a hardware component child logger, and compared the behavior of standalone logger and the component's `get_logger()` in rosout.",
+    "details.effective_fixes.0": "Use `RCLCPP_INFO(get_logger(), ...)` within the Jazzy hardware component.",
+    "details.environments.0": "Original environment: ROS 2 Iron; author verified after upgrading to Jazzy; custom Moteus hardware interface; Foxglove.",
+    "details.limits.0": "The interface boundary was established from Jazzy onward; Iron should not assume availability; no thread given backport.",
+    "details.limits.1": "Logs in real-time `read/write` high-frequency paths may still disrupt timing, and this card only responds to logger ownership.",
+    "details.outcomes.0": "Original author confirmed the log is visible in Foxglove after the upgrade; the official ros2_control demo source code uses the same notation.",
+    "details.problem_statements.0": "Why does the hardware interface log only appear in the terminal and not in `/rosout`? What logger should Jazzy use?",
+    "details.safety_notes.0": "Fault logs should be throttled and separated from real-time state sampling; do not use logs in high-frequency WBC loops to replace watchdogs.",
+    "details.suspected_causes.0": "The independent logger used in Iron is not associated with the ControllerManager node's rosout publisher; Jazzy provides a child logger.",
+    "details.symptoms.0": "`RCLCPP_INFO(rclcpp::get_logger(\"hardware_interface\"), ...)` is visible in the terminal, but not in `/rosout`/Foxglove.",
+    "source.locator": "ros2_control #2113 maintainer version note 2735617665; author recheck 2764284744; official demo rrbot.cpp",
+    "source.title": "Jazzy hardware component should use get_logger inherited from ControllerManager",
+    "terms.0": "Child logger (子日志器)",
+    "terms.1": "Hardware component (硬件组件)",
+    "terms.2": "Log aggregation (日志聚合)",
+    "terms.3": "Realtime log throttling (实时日志限频)",
+    "title": "How should hardware interface logs be recorded in ROS 2 Jazzy to be received by `/rosout` and Foxglove?"
+  }
+}

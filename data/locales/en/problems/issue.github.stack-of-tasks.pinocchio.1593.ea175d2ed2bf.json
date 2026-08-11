@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1593.ea175d2ed2bf",
+  "schema_version": 1,
+  "source_fingerprint": "ca6bc9b7835c6d2a2d92d0f3e363170196ec37640e4ba68cf3c27aec526e5867",
+  "translations": {
+    "answer": "No. The original author made this judgment in their self-analysis, but subsequent contributors only addressed the generation and normalization of quaternions, without confirming the selection of velocity vectors or providing the corrected numerical results. Therefore, this statement can only be considered as a pending reproducibility clue and cannot be used as a general rule for the Pinocchio Jacobian API.",
+    "applicability": "Only records the unverified judgment in this thread; actual verification should be done according to the specific matrix column definitions of the Joint/Frame Jacobian APIs.",
+    "credibility.rationale": "The solution has not closed or there is a conflict; the current state is only forming a problem clue; no reproducible record has been formed yet.",
+    "details.attempts.0": "The author supplemented the URDF and analyzed random quaternions and velocity vectors; the project members provided two handling methods for quaternions.",
+    "details.diagnostics.0": "First, verify the validity of the FreeFlyer quaternions in the configuration; use the Pinocchio random configuration generator or explicitly normalize; then separately verify the input velocity definition of the Jacobian.",
+    "details.effective_fixes.0": "Use `pinocchio.randomConfiguration(model, lowerLimits, upperLimits)` to generate a configuration that satisfies the model manifold, or call `normalize` on the random quaternions.",
+    "details.environments.0": "Pinocchio CasADi; JointModelFreeFlyer; the user provides an external URDF; 100 random configurations/velocity pairs; specific Pinocchio version not mentioned.",
+    "details.limits.0": "Cannot treat the unconfirmed local velocity selection as a general rule for the Pinocchio API; the specific Jacobian semantics still need to be verified against the target function documentation and minimal reproduction.",
+    "details.outcomes.0": "The project members stated that the author has resolved the issue and confirmed the direction of quaternion handling; the thread did not provide a corrected numerical comparison, nor confirm the conclusion of `v_j`.",
+    "details.problem_statements.0": "What input issue should be ruled out first when the Jacobian API results are inconsistent under a floating base configuration?",
+    "details.problem_statements.1": "Has the original author confirmed that only local joint velocities should be used instead of general velocities?",
+    "details.suspected_causes.0": "The original author believed that the random quaternions were causing the incorrect SE3; the project members confirmed and provided a valid configuration generator. The second judgment regarding only using `v_j` was not addressed.",
+    "details.symptoms.0": "The results of `getFrameJacobian`, `computeFrameJacobian`, `getJointJacobian`, and `computeJointJacobian` multiplied by velocity are inconsistent with the original expectation.",
+    "source.locator": "Issue #1593, original author's unconfirmed second analysis comment issuecomment-1019748618",
+    "source.title": "Randomly generated, unnormalized floating base quaternions cause Pinocchio Jacobian/SE3 comparison distortion",
+    "terms.0": "joint Jacobian (关节雅可比)",
+    "terms.1": "generalized velocity (广义速度)",
+    "terms.2": "joint velocity (关节速度)",
+    "terms.3": "local coordinate system (局部坐标系)",
+    "title": "Does this thread prove that the speed calculation in getJointJacobian should only use local joint velocities `v_j`, and not general velocities?"
+  }
+}

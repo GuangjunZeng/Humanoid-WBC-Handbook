@@ -1,0 +1,168 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Pansamic"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/386",
+  "captured_at": "2026-08-11T21:20:00+08:00",
+  "content_sha256": "890c51155e42851e5088dc8e38544ba04aecdf06c932fa6da627a86500b0f4b0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 7 条评论；结论不依赖图片。因顺序修正与 actuator 替换没有分离复测，保留两个 partial 经验，不推断唯一根因。",
+    "components": [
+      "Isaac Lab/Orbit",
+      "legged-gym",
+      "Unitree GO1",
+      "joint ordering",
+      "actuator net",
+      "PD actuator"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者给出打印 joint order 的代码并说明 BFS/DFS 与 height-scan 排列差异。",
+        "作者把 actuator net 换为 PD model 后重新训练。"
+      ],
+      "diagnostics": [
+        "在训练环境打印 asset.joint_names 或 asset_cfg.joint_names，并与实机 SDK、legged-gym 和部署端 observation/action 数组逐项对齐。",
+        "若使用高度扫描，另外核对 Isaac Sim/Orbit 的 XY 与旧管线的 YX 排列。",
+        "把关节顺序修正与 actuator model 替换分开做 A/B 复测，避免把两个变化混成一个根因。"
+      ],
+      "effective_fixes": [
+        "作者特定环境中，改用 PD model 重新训练后，真实 GO1 不再踢动、抖动到功率保护，并可在零速度命令下站立。"
+      ],
+      "environments": [
+        "2024-04 的 Orbit/Isaac Lab unitree-go1-flat policy；真实 Unitree GO1；ONNX Runtime C++；原帖未给精确提交、SDK 或固件版本。"
+      ],
+      "limits": [
+        "不能由该线程断言所有 GO1 actuator net 都有问题。",
+        "没有给出 PD stiffness/damping、动作限幅、策略提交或实机 SDK 版本。",
+        "height-scan 只是一项维护者提示，原作者没有报告它是否参与该策略。"
+      ],
+      "outcomes": [
+        "实机症状消失；但 joint order 修正和 actuator model 替换没有单独消融，唯一根因未闭环。"
+      ],
+      "problem_statements": [
+        "Unitree GO1 策略上机后突然踢腿、抖动并进入功率保护时，应先核对哪些接口？"
+      ],
+      "safety_notes": [
+        "涉及实机突然踢腿和功率保护；重新上机必须使用吊架/保护绳、低增益、动作与力矩限幅、急停和人员隔离。"
+      ],
+      "suspected_causes": [
+        "作者确认 legged-gym 与 Orbit 的 motor order 实际不同。",
+        "作者怀疑 GO1 actuator net，但线程没有证明它是唯一根因。"
+      ],
+      "symptoms": [
+        "零 velocity_commands 下，真实 GO1 腿部突然踢动、抖动并进入 power protection。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖给出的可核对步骤是：在训练环境打印 asset.joint_names 或 asset_cfg.joint_names，再与 legged-gym、实机 SDK 和部署端数组逐项对齐；Isaac Gym/legged-gym 与 Isaac Sim/Orbit 还可能有 DFS/BFS 顺序差异，若策略包含 height scan，还要核对 XY/YX 排列。作者最终确认 legged-gym 与 Orbit 的 motor order 实际不同，但没有单独报告只修正顺序后的实机结果，因此这是一条必须执行的接口检查，而不是已隔离的唯一修复。",
+        "applicability": "适用于 legged-gym/Isaac Gym 策略向 Isaac Sim/Orbit 或真实 GO1 迁移；具体顺序必须以目标版本打印结果为准。",
+        "bilingual_terms": [
+          "关节顺序（joint ordering）",
+          "深度/广度优先遍历（depth-first/breadth-first parsing, DFS/BFS）",
+          "高度扫描（height scan）",
+          "观测—动作映射（observation-action mapping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.go1_policy_joint_order_386",
+        "problem_title_zh": "GO1 策略部署的关节与扫描顺序对齐",
+        "question_zh": "GO1 策略在仿真正常、实机异常时，怎样核对 observation/action 的关节顺序？",
+        "source_locator": "IsaacLab #386 评论 2082831221、2092587921 与作者确认 2094062434",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434",
+        "verification_refs": [
+          {
+            "locator": "维护者给出打印实际 joint order 的代码并提示 Isaac Sim 与 Isaac Gym 顺序不同",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2082831221"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "作者把 GO1 actuator net 换成 PD model 并重新训练后，报告真实 GO1 不再突然踢腿、抖动到功率保护，并能在 velocity_commands 全零时站立。这是作者环境中的有效 workaround；由于同一线程还发现 motor order 不一致，且没有消融实验，不能把 actuator net 写成已证实的唯一根因，也不能直接复用未公开的 PD 参数。",
+        "applicability": "只适用于该作者的 Orbit/GO1 策略链；PD 增益、限幅、SDK 与模型版本缺失，其他机器人必须重新训练和低风险复测。",
+        "bilingual_terms": [
+          "执行器网络（actuator network）",
+          "比例—微分模型（proportional-derivative model, PD model）",
+          "功率保护（power protection）",
+          "消融实验（ablation test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.go1_actuator_pd_retrain_386",
+        "problem_title_zh": "GO1 actuator net 替换为 PD 后的作者实机结果",
+        "question_zh": "GO1 使用 actuator net 训练的策略上机踢腿并触发功率保护时，原作者验证过什么 workaround？",
+        "source_locator": "IsaacLab #386 作者实机复测评论 2094062434",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434",
+        "verification_refs": [
+          {
+            "locator": "作者说明替换为 PD、重新训练后的真实 GO1 结果，同时使用 suspect 而非已证明措辞",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.386",
+    "query": "Isaac Lab Unitree GO1 real robot kicks shakes power protection joint order actuator net PD",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree GO1 real robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "text": "维护者要求打印并逐项核对关节顺序；作者随后确认 legged-gym 与 Orbit 的 motor order 不同，并报告 PD 重训后的实机结果。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/强化学习策略的 observation-action 索引和执行器模型一旦与实机不一致，会直接把错误目标送入关节并触发硬件保护。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.386",
+  "summary": "IsaacLab #386 的作者把 unitree-go1-flat 策略部署到真实 GO1 后出现腿部突然踢动、抖动并进入功率保护。讨论先要求打印实际 joint order，并指出 Isaac Gym/legged-gym 与 Isaac Sim/Orbit 的 DFS/BFS 顺序以及 height-scan XY/YX 差异。作者随后确认 legged-gym 与 Orbit 的 motor order 实际不同；又怀疑 GO1 actuator net，改成 PD、重新训练后，实机不再踢动到功率保护并能在零速度命令下站立。线程没有分别隔离两项改动，因此不能断言唯一根因。",
+  "title": "Unitree GO1 策略上机前要同时核对关节顺序与 actuator 模型",
+  "version": null
+}

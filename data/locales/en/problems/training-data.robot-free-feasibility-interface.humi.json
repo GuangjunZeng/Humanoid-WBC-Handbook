@@ -1,0 +1,29 @@
+{
+  "kind": "claim",
+  "problem_id": "training-data.robot-free-feasibility-interface.humi",
+  "schema_version": 1,
+  "source_fingerprint": "19504184ffb4e9335728614b9c1320ac145cb705aa64ccd42bc63061da726a55",
+  "translations": {
+    "answer": "In the custom-gripper Unitree G1 of HuMI, and during the tasks being measured, only recording the hands is insufficient to stabilize the squat, kneel, and movement operations. Collecting hand/hip/foot trajectories and using the target robot's real-time IK preview for demonstration, combined with a high-level visuomotor interface designed for tracking error, significantly outperforms the ablations in the paper that remove preview or specify the whole-body. However, this result depends on external VIVE, skilled operators, and task-specific low-level strategies.",
+    "applicability.assumptions.0": "Robot-free demonstrations include synchronized wrist imagery and tracked hand/pelvis/foot poses.",
+    "applicability.assumptions.1": "A target-robot IK preview is available during collection.",
+    "applicability.assumptions.2": "A hierarchical high-level visuomotor policy and low-level whole-body tracker execute the demonstrations.",
+    "applicability.controllers.0": "HuMI 5 Hz Diffusion Policy",
+    "applicability.controllers.1": "HuMI 50 Hz teacher-student whole-body tracker",
+    "applicability.environments.0": "the five reported real-world tasks",
+    "applicability.environments.1": "seven training scenes and four unseen evaluation scenes for squat-and-pick",
+    "applicability.robots.0": "custom-gripper Unitree G1 in HuMI",
+    "applicability.simulators.0": "paper-reported simulation training environment; exact public code/config unverified",
+    "confidence_rationale": "The paper includes real-robot task results and targeted interface ablations with large effect sizes, and the official project page corroborates the system identity and demonstrations. Confidence is capped by one robot, small 10-20 trial ablations, experienced operators, custom hardware/external tracking, and an unverified public code repository.",
+    "evidence.0.locator": "Figures 2-7, Sections II-IV and VI, Appendix B-F, and Appendix Tables I-III",
+    "evidence.0.note": "Supports human-in-loop IK adaptation, whole-body keypoints, chunk-reference and relative-keypoint interfaces, collection throughput, task success, and deployment rates.",
+    "evidence.0.title": "Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations",
+    "evidence.1.locator": "Official project page capability and portable-data-collection sections captured 2026-08-10",
+    "evidence.1.note": "Confirms the authors' public project identity and demonstrations; advertised Code/Dataset links remain unverified and are not used as code evidence.",
+    "evidence.1.title": "HuMI official project page",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "title": "Humanoid Whole-Body Operation Demonstration with No Robot Participation: Is Just Recording the Hand Sufficient?"
+  }
+}

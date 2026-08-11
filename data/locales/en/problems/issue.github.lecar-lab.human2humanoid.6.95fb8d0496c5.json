@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.6.95fb8d0496c5",
+  "schema_version": 1,
+  "source_fingerprint": "70d7eba4b6b34999917e8f75c4780c337481928a1baf3c9d4e8871f1f9ee76f0",
+  "translations": {
+    "answer": "The original project author's process is: first complete the entire AMASS target robot re-targeting; train a privileged teacher without domain randomization and penalty reward; evaluate each action step by step, and if any step's reference motion distance exceeds 0.5 m, filter the entire motion. The author confirms that the publicly available amass_phc_filtered.pkl is the result of this process. Other robots must re-validate the distance definition and threshold.",
+    "applicability": "Directly applicable to H2O original training data cleaning; when transferring to other robots or distance metrics, re-calibration is required.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner asked whether to directly train the teacher and use the teacher's output to obtain amass_phc_filtered.pkl; the project author confirmed this direction.",
+    "details.diagnostics.0": "Ensure all AMASS motions are completed with the target robot re-targeting, then use a teacher without domain randomization or penalty reward for step-by-step rollout.",
+    "details.diagnostics.1": "Calculate the project-defined reference motion distance step-by-step and record the first action exceeding 0.5 m.",
+    "details.effective_fixes.0": "Evaluate all actions using a privileged teacher without domain randomization or penalty reward; if any step's reference motion distance exceeds 0.5 m, remove the entire motion.",
+    "details.environments.0": "H2O/human2humanoid data cleaning process; complete AMASS retargeting; privileged teacher; original post did not provide a commit, training steps, and distance definition code.",
+    "details.limits.0": "0.5 m is a project criterion provided by the H2O thread; it cannot be used directly for different robots, distance definitions, or action scales without verification.",
+    "details.limits.1": "The thread did not provide information on the distance encompassed by the body, aggregation method, teacher training budget, and failure rate.",
+    "details.outcomes.0": "The project author confirmed that the publicly available amass_phc_filtered.pkl is the result of the above data processing.",
+    "details.problem_statements.0": "After completing AMASS→robot re-targeting, how should the privileged teacher be trained and actions filtered according to the original H2O project method?",
+    "details.safety_notes.0": "For new robots, retain the filtered actions and failure trajectories for audit, and re-define the threshold to avoid masking falls, torque, or contact failures solely based on a single distance.",
+    "details.suspected_causes.0": "Completing the geometric re-targeting of actions does not guarantee the target robot's dynamics are trackable; a privileged teacher is needed for feasibility testing.",
+    "details.symptoms.0": "Only the re-targeted action files are available, making it impossible to distinguish between trackable and untrackable reference motions in the target robot.",
+    "source.locator": "human2humanoid #6: project author comment 2417970533 provides the full process and >0.5m condition; 2418826815 confirms the publicly available filtered file.",
+    "source.title": "H2O data cleaning using a non-randomized privileged teacher, filtering actions exceeding 0.5m per frame.",
+    "terms.0": "privileged teacher policy (特权教师策略)",
+    "terms.1": "domain randomization (领域随机化)",
+    "terms.2": "motion feasibility filtering (动作可行性筛选)",
+    "terms.3": "reference motion distance (参考动作距离)",
+    "title": "How should the privileged teacher be trained, and under what conditions are actions filtered during the reimplementation of H2O's AMASS data cleaning?"
+  }
+}

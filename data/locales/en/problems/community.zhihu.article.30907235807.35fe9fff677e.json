@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.30907235807.35fe9fff677e",
+  "schema_version": 1,
+  "source_fingerprint": "f015cdf5c114c22e40233a8dbf21f4d6427ab1c9da96e49cc81759c428f5534b",
+  "translations": {
+    "answer": "Check the time offset and rotation extrinsic parameters of the foot IMU and joint encoders, and verify that the calibration actions provide sufficient triaxial excitation. The candidate approach for A2I-Calib is to minimize the condition number of the foot end angular velocity covariance and actively execute the calibration trajectory; the effect should be verified independently in the paper/code.",
+    "applicability": "Not applicable to humanoid platforms; the article is a paper interpretation, and conclusions should be cross-verified against the original paper and code.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Optimize the condition number of the foot end angular velocity covariance, generate sine/cosine basis function trajectories, and use RL controllers to stabilize and actively execute the calibration trajectory.",
+    "details.diagnostics.0": "Cross-verify the text, visible comments, and media descriptions; the result is not independently verified in the paper/source/code.",
+    "details.environments.0": "Multi-IMU leg-based robot; foot IMU + joint encoders; simulation and real-world four-legged system.",
+    "details.limits.0": "Not applicable to humanoid platforms; the article is a paper interpretation, and conclusions should be cross-verified against the original paper and code.",
+    "details.outcomes.0": "The post claims improved simulation and real-world calibration error, and better IMU estimation, but specific numbers should be verified in the paper.",
+    "details.problem_statements.0": "After integrating the foot IMU, the IMU estimation drifts, and what else should be checked besides the filter parameters?",
+    "details.safety_notes.0": "The community candidate is only for forming a diagnostic hypothesis; when involving real machines, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "IMU/encoder time offset, incorrect rotation extrinsic parameters, insufficient regular gait excitation, and noise amplification.",
+    "details.symptoms.0": "Foot IMU constraint inconsistency causes severe IMU estimation drift.",
+    "media_summaries.0": "Eight figure positions correspond to A2I-Calib system, foot end motion and experiments; the readable structure of the text is condition number optimization trajectory → RL execution → CCA calibration, and specific numerical values should be verified in the original paper per figure.",
+    "source.locator": "Text 'Problem Statement/IMU calibration noise sensitivity/System Overview' in the original paper.",
+    "source.title": "Active calibration strategy for IMU integration leads to IMU estimation drift in four-legged robots",
+    "terms.0": "Reinforcement Learning (RL) (强化学习)",
+    "terms.1": "State Estimation (状态估计)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Canonical Correlation Analysis (CCA) (典型相关分析)",
+    "terms.4": "Timestamp Synchronization (时间戳同步)",
+    "title": "After integrating the foot IMU, the IMU estimation drifts; what else should be checked besides the filter parameters?"
+  }
+}

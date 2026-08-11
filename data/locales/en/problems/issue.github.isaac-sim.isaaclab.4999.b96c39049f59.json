@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4999.b96c39049f59",
+  "schema_version": 1,
+  "source_fingerprint": "d7c50da84ce805862491e11272bd316cfac524a08a39c2a6bcde0fbe0bca86ac",
+  "translations": {
+    "answer": "The author found that the Jacobian path has been using self._jacobi_joint_idx for floating base offset by 6, but _compute_dynamic_quantities() still uses self._joint_ids to extract the generalized mass matrix and gravity terms. The author unified both in the original commit f4aa17f, and the reported R1 Pro no longer shakes, with torque returning to ~-16 to 4 N·m, and inertial decoupling and gravity compensation running. This is only a local validation; the project has not confirmed, and other versions must verify the index semantics.",
+    "applicability": "Only directly applicable to the Galaxea R1 Pro floating base OSC experiment in the original Isaac Lab commit f4aa17f/Isaac Sim 5.10; other robots and versions must verify the generalized index layout.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author replaced the mass matrix and gravity index from self._joint_ids to self._jacobi_joint_idx in local testing.",
+    "details.diagnostics.0": "Comparison between self._jacobi_joint_idx in __init__ for Jacobian and self._joint_ids in _compute_dynamic_quantities() for generalized mass matrix and gravity.",
+    "details.diagnostics.1": "Check if floating base joint indices need to cross the first 6 generalized velocity dimensions and compare before/after correction.",
+    "details.effective_fixes.0": "Local testing in the original commit f4aa17f: use self._jacobi_joint_idx in _compute_dynamic_quantities() to index both dimensions of generalized mass matrices and gravity compensation forces.",
+    "details.environments.0": "Isaac Lab commit f4aa17f87e2e5db5484f0b5974918573e8918ce2; Isaac Sim 5.10; Ubuntu 22.04; RTX 3090; CUDA 12.8; driver 570.211; Galaxea R1 Pro left arm.",
+    "details.limits.0": "This conclusion is a single robot local modification by the issue author; the project only said the team will review, without confirming the root cause or fix.",
+    "details.limits.1": "The issue page explicitly states no related branch/PR; closed status cannot replace a merge patch or regression test.",
+    "details.limits.2": "The original post lacks independent replication, automation testing, real-world results, or official release; other floating base articulations must verify their own index layout.",
+    "details.outcomes.0": "The author reported that R1 Pro stabilizes after local modification, with torque no longer exploding, and inertial_dynamics_decoupling=True and gravity_compensation=True are available.",
+    "details.problem_statements.0": "Why does the Isaac Lab floating base OperationalSpaceControllerAction output hundreds to thousands of N·m of abnormal torque?",
+    "details.safety_notes.0": "The original post's abnormal torque was hundreds to about 1500 N·m; software torque clamping, driver limit, low gain, and emergency stop must be used before real-world transfer.",
+    "details.suspected_causes.0": "The author identified the issue as _compute_dynamic_quantities() using unadjusted self._joint_ids to extract mass matrix and gravity vector, thus misassigning dynamics terms to the arm joints.",
+    "details.symptoms.0": "The robot shakes violently; the author lists actual torques reaching ±600–1500 N·m, while corrected sequences are ~-15.9 to 3.76 N·m.",
+    "source.locator": "Isaac Lab #4999 text in the original commit f4aa17f, including pre/post correction torque and index comparison; project comment on issuecomment-4081678102 only says it will be reviewed.",
+    "source.title": "Isaac Lab Floating Base OSC Read Incorrect Dynamics Index Causes Torque Explosion #4999",
+    "terms.0": "Operational Space Control (OSC) (操作空间控制)",
+    "terms.1": "Floating base (浮动基)",
+    "terms.2": "Generalized mass matrix (广义质量矩阵)",
+    "terms.3": "Gravity compensation (重力补偿)",
+    "terms.4": "Inertial dynamics decoupling (惯性动力学解耦)",
+    "title": "How did the author locate and locally fix the issue in Isaac Lab Floating Base OSC torque explosion #4999?"
+  }
+}

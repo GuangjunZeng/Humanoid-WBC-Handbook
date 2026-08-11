@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "RobertWilbrandt"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2089",
+  "captured_at": "2026-08-11T18:24:00+08:00",
+  "content_sha256": "d8c613a80728eb99284a3b0a520e09dbcc178bcdf25996c3b3717fd12a64a012",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 10 条评论与 PR #2091 的正文、评论、review、测试和 merge commit；结论使用文本中的数值与代码修复，不依赖截图判断。",
+    "components": [
+      "ros2_control",
+      "ResourceManager",
+      "rw_rate",
+      "UR16e",
+      "KUKA KR50"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "0.98 和 0.97 阈值只减少跳过；作者改为比较本周期执行与下周期执行的时间误差。",
+        "先 mock、多频率测试，再在 UR16e+KR50 真机测试。"
+      ],
+      "diagnostics": [
+        "记录 read/write 周期分布，不只看平均频率。",
+        "比较降低固定阈值与基于 timing error 的调度。",
+        "覆盖 100/150/250/333 Hz 与 controller_manager 500/1000 Hz。"
+      ],
+      "effective_fixes": [
+        "采用已合并 PR #2091 的 rw_rate timing-error 选择逻辑。"
+      ],
+      "environments": [
+        "Ubuntu 24.04.1 LTS；ROS 2 Jazzy；ros2_control 源码构建；UR16e 500 Hz、KUKA KR50 250 Hz；另有 mock 测试。"
+      ],
+      "limits": [
+        "150 Hz 相对 500/1000 Hz 不能整除时，线程数据显示实际频率会量化到 166.66 或 142.87 Hz；不能承诺任意目标频率精确命中。",
+        "作者认为剩余极少跳过可能与无 RT/low-latency kernel 的测试环境有关，但这是其判断，不是独立结论。"
+      ],
+      "outcomes": [
+        "真机 trace 中 read/write 跳过均低于 0.01%；PR #2091 获维护者审核、测试覆盖并合并。"
+      ],
+      "problem_statements": [
+        "controller_manager 500 Hz 下，rw_rate=250 的硬件为何会偶尔隔 3 个周期才 read/write，怎样修复？"
+      ],
+      "safety_notes": [
+        "多硬件系统升级调度算法后，应在禁动力或低速模式下检查每个接口的周期分布和 missed cycles。"
+      ],
+      "suspected_causes": [
+        "原逻辑只检查调用是否过频；快接口执行抖动会让慢接口落到 0.99 阈值下并额外跳过一个周期。"
+      ],
+      "symptoms": [
+        "慢硬件期望约 4 ms 调用，实际频繁跳到约 6 ms，表现为运动 stutter。",
+        "约 500 秒 trace 中 write 超过 5 ms 的比例 20.5%，read 为 0.74%。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "PR #2091 不再只用固定 0.99 阈值判断是否过频，而是比较现在执行与再跳一个 controller-manager 周期后执行，哪一种对目标 rw_rate 的时间误差更小。作者在多组频率、mock 组件和 UR16e+KR50 真机上测试；真机 read/write 跳过均降到 0.01% 以下。该 PR 已合并。不可整除频率仍会量化，需按目标组合验收。",
+        "applicability": "ROS 2 Jazzy、ros2_control 多硬件组件且 rw_rate 低于 controller_manager update_rate 的场景。",
+        "bilingual_terms": [
+          "读写频率（read/write rate, rw_rate）",
+          "控制管理器更新率（controller-manager update rate）",
+          "周期抖动（periodicity jitter）",
+          "跳过周期（skipped cycle）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_rw_rate_skipped_cycles_2089",
+        "problem_title_zh": "ros2_control 多硬件 rw_rate 抖动导致额外跳周期",
+        "question_zh": "多硬件异频 read/write 因抖动额外跳周期时，什么修复经过了 mock、真机和合并 PR 验证？",
+        "source_locator": "ros2_control #2089 评论 2695374172、2698322050；PR #2091；merge commit bfbedd2c1c7487f3c6d424c58a0b6d1c79e161c9",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2089#issuecomment-2698322050",
+        "verification_refs": [
+          {
+            "locator": "合并 PR，含真实硬件结果、单元测试和 merge commit bfbedd2",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros2_control/pull/2091"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2089",
+    "query": "ros2_control rw_rate multiple hardware skipped cycles jitter real robot",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "UR16e + KUKA KR50 multi-arm system",
+      "mock hardware components"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "作者先量化固定阈值只能缓解，再验证 timing-error 逻辑。"
+      },
+      {
+        "text": "维护者要求扩展频率测试，作者完成 mock 与真机验证后提交并合并 PR。"
+      }
+    ],
+    "wbc_relevance_reason": "异频硬件读取/写入调度影响状态新鲜度和命令平滑性，是多执行器、多总线 WBC 的实时基础设施问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2089",
+  "summary": "ros2_control #2089 的系统含 UR16e 500 Hz 和 KUKA KR50 250 Hz，慢接口用 rw_rate=250 后频繁隔 3 个周期才调用，机器人抖动。作者测试把固定 0.99 阈值降到 0.98/0.97 只能缓解；比较当前执行与再跳一周期的频率误差后，mock 测试跳过率降到约 0.01%，随后在 UR16e+KR50 真机确认。PR #2091 加入测试并合并，merge commit 为 bfbedd2。",
+  "title": "ros2_control 多硬件 rw_rate 应按当前执行与跳过后的时间误差择近",
+  "version": null
+}

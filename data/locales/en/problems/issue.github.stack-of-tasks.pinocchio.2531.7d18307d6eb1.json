@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2531.7d18307d6eb1",
+  "schema_version": 1,
+  "source_fingerprint": "1b225437c97d2aa04c507d28ce80fce70f38a27369edc2d49417be631c1648a7",
+  "translations": {
+    "answer": "Check the order of the quaternion components for the floating base. The original author identified that MuJoCo uses wxyz, while Pinocchio uses xyzw; passing the qpos directly to Pinocchio would result in an incorrect initial configuration and an apparent anomaly in the center of mass velocity direction. The order of the quaternion components should be rearranged according to the target API, and visual verification or known motion direction should be used to confirm the result. The original post did not confirm that all other state components can be directly copied without modification.",
+    "applicability": "Applicable to the conversion of quaternions between MuJoCo's floating base qpos and Pinocchio's configuration; the entire q/v mapping for a specific model still needs to be verified individually.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The questioner provided the minimal script and model, and used Meshcat to visualize the same configuration.",
+    "details.diagnostics.0": "Before verifying the centerOfMass algorithm, the order of the floating base qpos and quaternion components should be checked for both libraries; a visual check of the pose should be used to confirm the result.",
+    "details.effective_fixes.0": "The MuJoCo floating base configuration should be rearranged according to the target API's xyzw order before passing it to Pinocchio; the rest of the q/v layout should also be verified.",
+    "details.environments.0": "The original post mentions Pinocchio 2.6.20 and IOS (as stated in the original); the minimal reproduction uses Python 3.8, MuJoCo, NumPy, glfw, and conda-forge Pinocchio.",
+    "details.limits.0": "The original post only confirmed the order of the quaternion components; it did not explain the mapping of all MuJoCo qvel and Pinocchio tangent vectors, so the entire state array cannot be considered universally compatible.",
+    "details.outcomes.0": "The original author explicitly replied that the issue was found and the issue was closed; the thread did not provide screenshots of the rearranged values.",
+    "details.problem_statements.0": "Why is the center-of-mass velocity Z-component negative in Pinocchio when the robot is rising in MuJoCo?",
+    "details.suspected_causes.0": "MuJoCo uses wxyz, while Pinocchio uses xyzw; the original code directly uses the qpos without rearranging the quaternions.",
+    "details.symptoms.0": "In MuJoCo, qvel[2] is positive; in Pinocchio, data.vcom[0][2] is negative; the original pose is passed to Meshcat, and the robot's pose becomes abnormal.",
+    "media_summaries.0": "The original author mentioned that using a wxyz configuration for Meshcat visualization results in an obviously incorrect robot pose; the card does not extract additional angles or values from the image.",
+    "source.locator": "Issue #2531, original author's self-identification and closure of the thread comment issue-2564969179",
+    "source.title": "The difference in quaternion component order between MuJoCo and Pinocchio causes an apparent contradiction in the center-of-mass velocity direction.",
+    "terms.0": "Center-of-mass velocity (质心速度)",
+    "terms.1": "Quaternion (四元数)",
+    "terms.2": "Component ordering (分量顺序)",
+    "terms.3": "Floating base (浮动基)",
+    "title": "What should be checked first when the center-of-mass velocity direction is abnormal after transferring MuJoCo state to Pinocchio?"
+  }
+}

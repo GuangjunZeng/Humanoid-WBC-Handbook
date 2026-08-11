@@ -1,6 +1,6 @@
 # 状态估计、标定与时间同步：技术待整理
 
-> `scope_id`: `state_estimation_calibration`；共 36 条，未做用户可见截断。
+> `scope_id`: `state_estimation_calibration`；共 35 条，未做用户可见截断。
 
 ## 1. Support Needed: Implementing RL Policy for Omni-directional Ridgeback_Kuka Mobile Manipulator in Isaac Sim
 
@@ -138,15 +138,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 18. [Bug Report] lin_acc_b from IMU sensor is wrong when reset the environment
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4305](https://github.com/isaac-sim/IsaacLab/issues/4305)
-- 查询来源：IMU
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 19. [Proposal] Anyone tried adding an IMU Sensor?
+## 18. [Proposal] Anyone tried adding an IMU Sensor?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/440](https://github.com/isaac-sim/IsaacLab/issues/440)
@@ -154,7 +146,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 20. [Bug Report] IMU: Inconsistent IMU Linear Velocity Between Headless Mode and GUI Mode
+## 19. [Bug Report] IMU: Inconsistent IMU Linear Velocity Between Headless Mode and GUI Mode
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4573](https://github.com/isaac-sim/IsaacLab/issues/4573)
@@ -162,7 +154,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 21. [Proposal] Isaac Lab needs the concept of a true SENSOR class
+## 20. [Proposal] Isaac Lab needs the concept of a true SENSOR class
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/464](https://github.com/isaac-sim/IsaacLab/issues/464)
@@ -170,7 +162,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 22. Isaac don't open I have RTX 5090 laptop
+## 21. Isaac don't open I have RTX 5090 laptop
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4961](https://github.com/isaac-sim/IsaacLab/issues/4961)
@@ -178,7 +170,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 23. [Bug Report] Multiple `wp.to_torch` wrappers are missing
+## 22. [Bug Report] Multiple `wp.to_torch` wrappers are missing
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5057](https://github.com/isaac-sim/IsaacLab/issues/5057)
@@ -186,7 +178,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 24. [Proposal] Extend FrameTransformer to report relative velocity and acceleration
+## 23. [Proposal] Extend FrameTransformer to report relative velocity and acceleration
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5173](https://github.com/isaac-sim/IsaacLab/issues/5173)
@@ -194,7 +186,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 25. [OVPHYSX] Finalize integration
+## 24. [OVPHYSX] Finalize integration
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5315](https://github.com/isaac-sim/IsaacLab/issues/5315)
@@ -202,7 +194,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 26. [OVPHYSX] IMU sensor
+## 25. [OVPHYSX] IMU sensor
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5318](https://github.com/isaac-sim/IsaacLab/issues/5318)
@@ -210,7 +202,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 27. [OVPHYSX] PVA sensor
+## 26. [OVPHYSX] PVA sensor
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5319](https://github.com/isaac-sim/IsaacLab/issues/5319)
@@ -218,7 +210,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 28. [OVPHYSX] Test infrastructure
+## 27. [OVPHYSX] Test infrastructure
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5328](https://github.com/isaac-sim/IsaacLab/issues/5328)
@@ -226,7 +218,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 29. [Question] Will more sensors be supported in the future?
+## 28. [Question] Will more sensors be supported in the future?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/656](https://github.com/isaac-sim/IsaacLab/issues/656)
@@ -234,7 +226,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 30. [Bug Report] SIGSEGV on pause→play with Raycast + IMU sensors on same articulation
+## 29. [Bug Report] SIGSEGV on pause→play with Raycast + IMU sensors on same articulation
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6734](https://github.com/isaac-sim/IsaacLab/issues/6734)
@@ -242,7 +234,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 31. [Question] Will ROS affect the overall program performance? Especially when subscribing a topic
+## 30. [Question] Will ROS affect the overall program performance? Especially when subscribing a topic
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/675](https://github.com/isaac-sim/IsaacLab/issues/675)
@@ -250,7 +242,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 32. [Question] Device error when using Physics Based IMU Sensor in Isaac Lab
+## 31. [Question] Device error when using Physics Based IMU Sensor in Isaac Lab
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/682](https://github.com/isaac-sim/IsaacLab/issues/682)
@@ -258,7 +250,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 33. [Bug Report] Acceleration and Linear velocities of `Physx` off for small masses and with contact solver
+## 32. [Bug Report] Acceleration and Linear velocities of `Physx` off for small masses and with contact solver
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/819](https://github.com/isaac-sim/IsaacLab/issues/819)
@@ -266,7 +258,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 34. how to sim2real?
+## 33. how to sim2real?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/roboterax/humanoid-gym/issues/31](https://github.com/roboterax/humanoid-gym/issues/31)
@@ -274,7 +266,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 35. 如何部署到自己的机器人
+## 34. 如何部署到自己的机器人
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/roboterax/humanoid-gym/issues/66](https://github.com/roboterax/humanoid-gym/issues/66)
@@ -282,7 +274,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 36. IMU 姿态解算
+## 35. IMU 姿态解算
 
 - 平台：`xiaohongshu`
 - 原链接：[https://www.xiaohongshu.com/explore/691c467f000000000d03fc38](https://www.xiaohongshu.com/explore/691c467f000000000d03fc38)

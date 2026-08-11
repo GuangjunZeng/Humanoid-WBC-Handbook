@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "KyleM73"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2369",
+  "captured_at": "2026-08-11T18:14:00+08:00",
+  "content_sha256": "55c5a8576d7aba63bc96dfdb2f14794990747f139bdb8db2b4af332c2deef4b0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 4 条评论与固定提交源码；未采用评论中未逐项核验的通用调参数字。",
+    "components": [
+      "Isaac Lab",
+      "PhysX joint drive",
+      "ImplicitActuator",
+      "explicit actuator",
+      "URDF importer"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "讨论者定位固定源码行；团队给出 joint drive 和 actuator 的角色总结。"
+      ],
+      "diagnostics": [
+        "在目标版本 articulation 初始化路径中检查 implicit 与 explicit 分支实际写入模拟器的 stiffness/damping。"
+      ],
+      "effective_fixes": [
+        "implicit actuator 由配置的 actuator gains 写入 PhysX；explicit actuator 将 PhysX joint stiffness/damping 置零，避免与显式力矩计算干扰。"
+      ],
+      "environments": [
+        "IsaacLab 源码固定提交 3b6d615f9aff7435fdafaa75a0d59365500a428c；Issue 未给 Isaac Sim 精确版本。"
+      ],
+      "limits": [
+        "本卡只确认固定提交的运行路径，不外推所有历史/未来版本。",
+        "原评论还讨论 None 默认值和调参建议；本卡没有把未逐行核对的附加建议并入结论。"
+      ],
+      "outcomes": [
+        "固定提交的源码与团队总结一致，明确了两类 actuator 的增益写入路径。"
+      ],
+      "problem_statements": [
+        "Isaac Lab 中 joint drive 的 PD 增益与 implicit/explicit actuator 配置怎样交互？"
+      ],
+      "safety_notes": [
+        "部署前记录实际写入 simulator 的 stiffness、damping 和 effort limits，避免双重 PD 或意外零增益。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "URDF importer 和 actuator 配置都出现 stiffness/damping，调用者不确定是否叠加、覆盖或忽略。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "在固定提交 3b6d615 的 articulation.py 中，ImplicitActuator 分支把 actuator stiffness/damping 写入模拟器；其他显式 actuator 分支把模拟器 joint stiffness/damping 写为 0，显式 actuator 自己处理增益和力矩。原帖团队总结与该源码一致。调试时应查看目标版本的同一初始化路径，而不是假定 URDF joint_drive 和 actuator gains 会同时生效。",
+        "applicability": "精确适用于 IsaacLab 提交 3b6d615 的 articulation 初始化路径；其他版本需对照源码。",
+        "bilingual_terms": [
+          "关节驱动（joint drive）",
+          "隐式执行器（implicit actuator）",
+          "显式执行器（explicit actuator）",
+          "刚度/阻尼增益（stiffness/damping gains）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.dynamics_mass_inertia_actuation.isaaclab_joint_drive_actuator_gain_path_2369",
+        "problem_title_zh": "Isaac Lab joint drive 与 actuator 增益的覆盖关系",
+        "question_zh": "Isaac Lab 的 implicit/explicit actuator 会怎样处理 PhysX joint drive 的 stiffness 和 damping？",
+        "source_locator": "IsaacLab #2369 评论 2912221637 定位源码；评论 2941414534 给出团队总结；固定提交 articulation.py 1360-1390 行",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2369#issuecomment-2941414534",
+        "verification_refs": [
+          {
+            "locator": "ImplicitActuator 写入 gains；explicit 分支将 simulator stiffness/damping 置零",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/blob/3b6d615f9aff7435fdafaa75a0d59365500a428c/source/isaaclab/isaaclab/assets/articulation/articulation.py#L1371"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2369",
+    "query": "Isaac Lab implicit explicit actuator joint drive gains URDF importer",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "URDF/USD articulated robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "dynamics_mass_inertia_actuation",
+    "selected_comments": [
+      {
+        "text": "讨论者先定位源码，团队随后确认 implicit 写入 PhysX gains、explicit 清零 PhysX gains 的路径。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 和学习策略常在位置目标、速度目标与显式力矩之间切换；若两套 PD 同时生效或错误清零，会改变闭环刚度与仿真到实机行为。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2369",
+  "summary": "IsaacLab #2369 追问 URDF importer 的 joint_drive 与 actuator stiffness/damping 是否会重复生效。讨论者定位到 articulation.py，团队随后总结：implicit actuator 把 actuator gains 写入 PhysX joint gains；explicit actuator 把 PhysX stiffness/damping 清零，由显式 actuator 自己计算力矩。固定提交 3b6d615 的源码与这一部分结论一致。",
+  "title": "Isaac Lab 隐式与显式 actuator 对 PhysX joint drive 增益的处理不同",
+  "version": null
+}

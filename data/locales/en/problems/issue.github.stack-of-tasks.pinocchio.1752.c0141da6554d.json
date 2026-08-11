@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1752.c0141da6554d",
+  "schema_version": 1,
+  "source_fingerprint": "aafe909a6e2f632d84dce842cf7cb44efd05deab194cafd444ae17ceb7e0eac1",
+  "translations": {
+    "answer": "The two inputs to 'pin.difference' must be valid configurations on the manifold. The original thread had 'FreeFlyer.upperPositionLimit' that simultaneously placed max-float in both translation and quaternion, with the rotation part not being a valid unit quaternion, leading to NaN. The maintainer also noted that rotation limits on FreeFlyer are typically not meaningful. Re-running the thread shows that retaining large translation but setting rotation to [0,0,0,1] yields the expected translation difference. This approach only confirms input validity, not obtaining a general-purpose runtime-limit API.",
+    "applicability": "Reproduces Pinocchio 2.6.4's FreeFlyer/rotational joints; other versions and joint models still need verification against the configuration manifold.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is missing.",
+    "details.attempts.0": "Maintainer suggests distinguishing between unbounded joints and valid input; discussers separately tested full 1e20 FreeFlyer and large translation with unit quaternion.",
+    "details.diagnostics.0": "Check if the two vectors passed to 'pin.difference' are valid configurations on the joint manifold; independently verify the unit norm of FreeFlyer rotation quaternions; do not treat max-float as a default runtime limit automatically.",
+    "details.effective_fixes.0": "Ensure the rotation part passed to 'pin.difference' is a valid manifold element; thread example uses large translation with [0,0,0,1] to obtain [1e20,1e20,1e20,0,0,0].",
+    "details.environments.0": "Pinocchio 2.6.4; Python minimal example; JointModelFreeFlyer, JointModelRZ, and JointModelRUBZ comparison.",
+    "details.limits.0": "Thread does not support using 1e20 as a general safety limit; no unified runtime-limit API for all joints; input extremes may still cause numerical issues.",
+    "details.outcomes.0": "Original author states the initial 'pin.difference' API issue was resolved by PR #1753; maintainer confirms using appropriate neutral boundary for unbounded joints in Pinocchio, but mapping runtime limits to the slice space remains a future issue.",
+    "details.problem_statements.0": "Why does 'model.upperPositionLimit' directly passed to 'pin.difference' cause NaN in FreeFlyer? What input boundaries should IK/WBC follow?",
+    "details.safety_notes.0": "Real-world IK/WBC limits must come from explicit hardware/URDF constraints; do not treat library default max-float as a safe boundary.",
+    "details.suspected_causes.0": "The 'pin.difference' is defined on Lie group configurations; FreeFlyer's max-float rotation component is not a valid quaternion, and default bounds may come from internal placeholder calculations, leading to non-constant outputs.",
+    "details.symptoms.0": "FreeFlyer neutral to upperPositionLimit difference returns 6 NaNs; different joint types show varying default bounds.",
+    "source.locator": "Issue #1752, maintainer boundary explanation issuecomment-1259556298/1259557411; valid FreeFlyer comparison issuecomment-1263723540",
+    "source.title": "Pinocchio difference only defined for valid manifold configurations, not default limits",
+    "terms.0": "Manifold difference (流形差分)",
+    "terms.1": "Lie group (李群)",
+    "terms.2": "Free-floating joint (自由浮动关节)",
+    "terms.3": "Joint limits (关节限位)",
+    "title": "How to distinguish between invalid manifold input and real joint limits when 'pin.difference' returns NaN on FreeFlyer's default position limit?"
+  }
+}

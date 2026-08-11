@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.663.28ca920f3794",
+  "schema_version": 1,
+  "source_fingerprint": "c96bb519627938b0f79f0b413b94618df68955ca36e21e8bdc7917250984dde1",
+  "translations": {
+    "answer": "The original poster's historical rules state that paths operated via USD use degrees, and other paths to the physics engine use radians. Since the Issue remains open and only expressed the intent to unify in radians, it cannot be treated as the current version's uniform rule. Actual configuration must track whether the field ends up in USD or the physics/tensor API, and verify against the target version's source code. The details are as follows:",
+    "applicability": "Applies to the explanation of 2024 IsaacLab/Isaac Sim historical unit boundaries; current version must recheck.",
+    "credibility.rationale": "No reproducible records have been formed; applicable environment is unknown.",
+    "details.attempts.0": "The maintainer proposes that the future should be unified in radians.",
+    "details.diagnostics.0": "Track the final path through USD authoring or the physics/tensor API; verify each field against the target version's source code and documentation, without guessing units.",
+    "details.environments.0": "2024-07 IsaacLab migration and actuator document; specific release/commit not mentioned; Issue currently remains open.",
+    "details.limits.0": "This is an open thread from 2024; cannot assume all interfaces remain in the same convention, nor can the damping/stiffness units be simplified to only angle unit differences.",
+    "details.outcomes.0": "The unit boundary was explained by the contributor, but no unified version or field migration table has been provided.",
+    "details.problem_statements.0": "What units are used for joint angles, velocities, damping, and stiffness in IsaacLab/Isaac Sim?",
+    "details.safety_notes.0": "Before using gains or velocity limits in real machines, verify via small joint commands and field unit checks against the source code to avoid errors of 57.3 times.",
+    "details.suspected_causes.0": "The contributor explains that USD uses degrees, and the physics engine uses radians for historical boundaries.",
+    "details.symptoms.0": "Different documents suggest degrees and radians, and there is no field-by-field unit explanation in the interface.",
+    "source.locator": "Issue #663, contributor reply to issuecomment-2255516442",
+    "source.title": "IsaacLab old interface angle units are not consistent between USD operations and physics engine paths",
+    "terms.0": "Degree (degrees) (角度制)",
+    "terms.1": "Radian (radians) (弧度制)",
+    "terms.2": "USD scene description (美元场景描述)",
+    "terms.3": "Physics engine (物理引擎)",
+    "title": "When there is a conflict between degree/radian documentation in joint executors of IsaacLab, which unit should be used?"
+  }
+}

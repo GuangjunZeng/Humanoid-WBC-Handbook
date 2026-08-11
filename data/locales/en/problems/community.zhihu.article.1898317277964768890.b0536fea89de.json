@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1898317277964768890.b0536fea89de",
+  "schema_version": 1,
+  "source_fingerprint": "b370c234106b98c93475a123e043b5693eb3e8e8215e361434c94388ce56b306",
+  "translations": {
+    "answer": "When the average production rate is below 250 Hz, the queue becomes full; if the full queue is interpreted as no target, zero value, or sudden retention, the joint targets are discontinuous. A more reliable approach is to resample at the target timestamp, interpolate within a bounded delay, and use last safe values, speed limits, or damping degradation for underload, while monitoring underrun.",
+    "applicability": "Applies to remote operation chains where the upper sampling rate is lower than the lower control rate.",
+    "collection.stop_reason": "nested_replies_collapsed",
+    "credibility.rationale": "The rationale has not closed or there are unresolved conflicts; the source conclusions lack resolution; no reproducible record has been formed.",
+    "details.attempts.0": "Divide each 20 ms command into 5 parts for 4 ms execution.",
+    "details.attempts.1": "Discard 1/5 of the packets to reduce queue growth.",
+    "details.attempts.2": "Plan to switch the Python middle layer to C++.",
+    "details.diagnostics.0": "Record the upper production timestamp, lower consumption timestamp, queue depth, packet loss count, and target continuity continuity.",
+    "details.environments.0": "Upper remote operation: 50 Hz/20 ms; lower C++ execution: 250 Hz/4 ms; ROS topic; maximum queue: 5000, cumulative queue after 10 packets: executed.",
+    "details.limits.0": "Raises questions about the factual basis of the article; no public timestamp curve, packet loss rate, or final rewrite result has been provided.",
+    "details.outcomes.0": "First scheme still causes queue overflow; second scheme reduces delay but causes underload jitter; final C++ rewrite direction is not publicly available or reproducible.",
+    "details.problem_statements.0": "How can 50 Hz upper commands be stably sent to the 250 Hz lower execution loop?",
+    "details.problem_statements.1": "Why do queue overflow and queue underflow both manifest as robot jitter?",
+    "details.safety_notes.0": "Limit joint speed, position increments, and torque before real machine testing; during queue anomalies, maintain last safe target or enter damping mode; do not directly convert missing frames into abrupt changes.",
+    "details.suspected_causes.0": "Inconsistent clock/scheduling between Python and C++.",
+    "details.suspected_causes.1": "Fixed five-part interpolation does not handle network jitter and production/consumption offset.",
+    "details.symptoms.0": "Discard new packets after queue overflow, leading to long delays and sudden large oscillations.",
+    "details.symptoms.1": "Delay reduces after discarding 1/5 packets, but the queue becomes full and continues to jitter.",
+    "media_summaries.0": "The Mermaid diagram in the text explains the structure of upper asynchronous write to the queue and lower strict periodic read from the queue; the diagram is conceptual and not real-time sequence evidence.",
+    "source.locator": "After discarding 1/5 packets, the queue is full and exhibits jitter.",
+    "source.title": "Queue Overflow and Underload Jitter in 50 Hz Remote Operation to 250 Hz Execution Layer",
+    "terms.0": "Queue underrun (buffer underrun) (队列欠载)",
+    "terms.1": "Timestamp resampling (时间戳重采样)",
+    "terms.2": "Safe hold (安全保持)",
+    "title": "Why does fixing some packets to reduce remote operation delay lead to continuous jitter?"
+  }
+}

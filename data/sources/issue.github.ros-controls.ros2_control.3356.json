@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "techjoec"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3356",
+  "captured_at": "2026-08-11T15:39:00+08:00",
+  "content_sha256": "4a1e1744654d21c899ff21f76bf88cbd85b4cda5e2e4b7e8a934fa1ffcceb053",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与唯一 1 条评论；不把作者建议的 subscriber gate 写成已实现修复。",
+    "components": [
+      "ros2_control",
+      "pal_statistics",
+      "introspection publisher",
+      "controller_manager"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "SingleThreadedExecutor、停用 controllers、DDS 调优均无变化；`#if 0` 禁用两个 registry 和 async publish sites 后热线程消失。"
+      ],
+      "diagnostics": [
+        "检查 topic subscription count、`ps -T`、线程调度类/CPU/wchan；分别切换 executor、controllers、RMW，再用 overlay 禁用 registry/publish sites 做 A/B。"
+      ],
+      "effective_fixes": [
+        "作者的本地 workaround 会彻底关闭 introspection/statistics topics，不具备上游合入质量；建议的 subscriber-count gate 尚未实现。"
+      ],
+      "environments": [
+        "ROS 2 Jazzy，ros2_control 4.44.0-1noble；Ubuntu Noble 6.8；Docker x86_64；CycloneDDS 与 Fast DDS；master 2026-05-27 也复现。"
+      ],
+      "limits": [
+        "只有原作者复现，Issue 无维护者技术回复或合并 PR；具体 CPU 百分比不能外推到其他主机。",
+        "禁用 registry 会失去观测能力，subscriber gate 仍只是作者建议。"
+      ],
+      "outcomes": [
+        "overlay A/B 后 `ros2_control_node` 从约 13% 降到约 1%，容器总 CPU 从约 22% 降到约 9%。"
+      ],
+      "problem_statements": [
+        "为什么 controller_manager 在两个 statistics/introspection topic 都零订阅者时仍有约 13% 单核空闲开销？"
+      ],
+      "safety_notes": [
+        "真机若临时关闭 introspection，必须保留独立 watchdog、故障状态和关键安全遥测；CPU 优化不能以丢失安全观测为代价。"
+      ],
+      "suspected_causes": [
+        "作者的行为 A/B 将开销定位到两个 pal_statistics registry worker 的每周期唤醒/交接路径；没有维护者确认更细的内部根因。"
+      ],
+      "symptoms": [
+        "两个普通优先级 worker 各约 5–7% CPU、约 2000 context switches/s；RT update thread 约 0.1%。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原作者依次排除 executor、controller、RT update thread 和 RMW，再在 overlay 中禁用两个 registry 的初始化、worker 启动与每周期 async publish；两个热线程消失，进程 CPU 约从 13% 降到 1%。这证明了该环境中的开销定位，但没有维护者确认或上游修复。作者 patch 会完全删除观测 topic，不能当作生产修复；subscriber-count gate 也仍只是建议。",
+        "applicability": "适用于该 Jazzy/master + Docker/SBC 类环境的诊断；数值与补丁不可直接外推。",
+        "bilingual_terms": [
+          "空闲开销（idle overhead）",
+          "上下文切换（context switch）",
+          "内省发布器（introspection publisher）",
+          "订阅者门控（subscriber-count gating）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_pal_statistics_idle_cpu_3356",
+        "problem_title_zh": "定位 controller_manager 零订阅者时的 statistics 空闲开销",
+        "question_zh": "controller_manager 零 statistics/introspection 订阅者时仍占用明显 CPU，应怎样确认开销来自 pal_statistics worker？",
+        "source_locator": "ros2_control #3356 完整 reproducer、线程排除和 overlay A/B；唯一评论为 stale bot",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/3356",
+        "verification_refs": [
+          {
+            "locator": "原帖固定 Jazzy/master 行号并给出完整 overlay A/B patch；尚无项目方确认",
+            "relation": "source_code",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/3356"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.3356",
+    "query": "ros2_control pal_statistics zero subscribers idle CPU introspection workers",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Orange Pi Zero 3 target",
+      "small-arm ros2_control deployment"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "原帖给出逐项排除、线程指标和 overlay A/B；唯一后续评论只是 stale bot。"
+      }
+    ],
+    "wbc_relevance_reason": "SBC 上的 WBC、状态估计和通信会竞争有限 CPU；无订阅观测线程若每周期唤醒，会压缩实时控制余量。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.3356",
+  "summary": "ros2_control #3356 在 Jazzy 4.44.0 和 2026-05-27 master 上报告：两个 pal_statistics publisher worker 即使零订阅者也各占约 6–7% 单核，合计约 13%，并随 `update_rate` 增长。作者排除了 executor、active controllers、RT update thread 和 RMW，随后在 overlay 中同时禁用 registry 初始化、worker 启动和每周期 async publish，进程由约 13% 降到约 1%。Issue 没有维护者回复或合并修复；36 行 patch 会完全移除 introspection/statistics topic，只能作为定位实验。",
+  "title": "零订阅者时 pal_statistics worker 仍可能消耗小型主机 CPU",
+  "version": null
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.376.ca4f24fa0553",
+  "schema_version": 1,
+  "source_fingerprint": "caa960ed6ff33c8ab9653e1c8ad53caafdf5f5356bee24106e980e6bafb18aed",
+  "translations": {
+    "answer": "Cannot. The maintainer explains that the `P/A` after setup and update must have the same sparsity pattern; value-only updates cannot create new nonzeros from a full-zero structure. MATLAB threads also require that `Ax = nonzeros(A)` be in column-major order and `Px = nonzeros(triu(P))` only transmits the symmetric `P` upper triangular. The maintainer provides full working code, and the author confirms the issue is their own update method.",
+    "applicability": "Directly applicable to OSQP 0.6.2 MATLAB update; other interfaces should verify if they support indexed pattern update.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Setup uses the target `P/A` structure and zero `q/l/u`; update passes `nonzeros(triu(P))` and `nonzeros(A)`.",
+    "details.diagnostics.0": "Compare the CSC sparsity pattern, number of nonzeros, and order between setup and update; check if `P` is only transmitting the upper triangular.",
+    "details.effective_fixes.0": "The fix covers all run modes after a fixed sparsity pattern; if the pattern is to change, re-setup the solver.",
+    "details.environments.0": "OSQP 0.6.2 MATLAB; 258 variables, 258 constraints.",
+    "details.limits.0": "This thread only covers the MATLAB 0.6.2 update API; other languages' indexed update capabilities require reading the target version's interface.",
+    "details.outcomes.0": "The maintainer's code works as expected; the original author confirms it's their error.",
+    "details.problem_statements.0": "Why does using a zero `P/A` setup and then updating with the full matrix result in a different outcome compared to a direct setup?",
+    "details.safety_notes.0": "Assert the nonzero pattern hash before switching contact modes; it's safer to re-setup when the pattern is not covered, rather than continuing with the old structure.",
+    "details.suspected_causes.0": "The maintainer confirms that the update only replaces existing nonzeros; a full-zero setup does not establish the structure for subsequent `P/A`.",
+    "details.symptoms.0": "A direct setup results in `solved` at 275 iterations; an update after a zero matrix fails at 25 iterations with a dual infeasible error.",
+    "source.locator": "OSQP #376 maintainer format 998756951, working code 998793473; author confirms 998794367",
+    "source.title": "OSQP update can only modify existing nonzeros in the sparse structure",
+    "terms.0": "Sparse structure (sparsity pattern) (稀疏结构)",
+    "terms.1": "Compressed Sparse Column (CSC) (压缩稀疏列)",
+    "terms.2": "Upper triangular (上三角)",
+    "terms.3": "Value-only update (数值更新)",
+    "title": "Can OSQP first use a full-zero sparse matrix setup, then write any new `P/A` nonzeros via `update`?"
+  }
+}

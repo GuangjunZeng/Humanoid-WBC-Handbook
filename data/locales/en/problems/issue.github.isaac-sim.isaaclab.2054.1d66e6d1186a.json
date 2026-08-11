@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2054.1d66e6d1186a",
+  "schema_version": 1,
+  "source_fingerprint": "d84c761222dc22fccaeffe71e843f4d21794ad20a602d1a945c02df300412593",
+  "translations": {
+    "answer": "Use the version containing PR #2098 and verify the actuator cfg, USD drive max_effort, asset.data.joint_effort_limits, and PhysX actual values. This PR corrects the implicit/explicit judgment: when an implicit actuator does not explicitly set a limit, it inherits the USD joint drive max_effort; the default of 1e9 is reserved for explicit actuators only in simulation. Even after upgrading, the USD values should be explicitly audited, and the inheritance behavior should not be considered as a real-world safe configuration.",
+    "applicability": "Applies to the migration of implicit/explicit actuator limit settings in Isaac Lab between the 2025-03 fix and prior; individual USDs and cfgs still need to be verified per asset.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. It has been formally documented or independently reproducible with precise references.",
+    "details.attempts.0": "The author commented on the limits in official G1 and Legged Lab G1 configurations and reproduced the results.",
+    "details.attempts.1": "The maintainers modified the default judgment and expanded the limit unit testing.",
+    "details.diagnostics.0": "Simultaneously check the actuator cfg's effort_limit/effort_limit_sim, USD drive max_effort, asset.data.joint_effort_limits, and PhysX actual limits.",
+    "details.diagnostics.1": "Distinguish the default behavior of implicit and explicit actuators.",
+    "details.effective_fixes.0": "Upgrade to the version containing PR #2098 / merge commit d7da02d; when an implicit actuator does not configure a limit, it inherits the USD max_effort; the solver effort default for explicit actuators remains 1e9.",
+    "details.environments.0": "Isaac Sim 4.5, Ubuntu 22.04, RTX 4090D, CUDA 12.4, driver 550.144.03, IsaacLab latest (2025-03).",
+    "details.environments.1": "The reproduction task includes Isaac-Velocity-Flat-G1-v0 and Legged Lab g1_flat.",
+    "details.limits.0": "The recommendation is to remove all limits; USD max_effort for different assets still needs to be audited.",
+    "details.limits.1": "The original screenshot did not participate in the conclusion; the conclusion comes from text reproduction, source code diff, and testing.",
+    "details.outcomes.0": "Issue is closed with PR #2098; testing covers the implicit actuator using USD limit, the default 1e9 for explicit actuators, and the separation of actuator/simulation limits.",
+    "details.problem_statements.0": "Why does joint_effort_limits become 1e9 when the implicit actuator does not fill an effort limit?",
+    "details.safety_notes.0": "Real-world WBC should not treat the simulation 1e9 default as a hardware allowed torque; explicit settings should be explicitly configured and validated before deployment.",
+    "details.suspected_causes.0": "The source code of PR #2098 explains the default logic error: the ActuatorBase class property is incorrectly used to determine implicit/explicit, leading the implicit actuator to enter the explicit actuator's 1e9 branch.",
+    "details.symptoms.0": "USD asset displays the correct max force, but asset.data.joint_effort_limits is 1e9.",
+    "media_summaries.0": "The original 699×259 screenshot from the post was already read in the previous iteration: in Isaac Sim's property panel, Drive > Angular shows Type=force, Max Force=88.0, Target Position=0.0, Target Velocity=0.0, Damping=0.0, Stiffness=0.0; the 1e9 comes from the text, not the screenshot.",
+    "source.locator": "IsaacLab #2054 reproduction 2721483228, maintainer fix 2737536308; PR #2098",
+    "source.title": "Isaac Lab ImplicitActuator previously incorrectly reverted to 1e9 when effort_limit_sim was not configured.",
+    "terms.0": "ImplicitActuator (隐式执行器)",
+    "terms.1": "Effort limit (力矩上限)",
+    "terms.2": "Simulation solver limit (仿真求解器上限)",
+    "terms.3": "USD joint drive (关节 USD 驱动)",
+    "title": "How to prevent joint_effort_limits from becoming 1e9 when the implicit actuator does not set effort_limit_sim?"
+  }
+}

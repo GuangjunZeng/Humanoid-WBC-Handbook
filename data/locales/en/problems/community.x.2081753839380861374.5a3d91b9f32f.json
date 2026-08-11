@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2081753839380861374.5a3d91b9f32f",
+  "schema_version": 1,
+  "source_fingerprint": "2db06d89c028aab9c9ce6e14fa371c4d888bf482359bf3882f8f45d5a6ce9114",
+  "translations": {
+    "answer": "The original candidate scheme is to use mjlab, which preserves the Isaac Lab-style API while providing native MuJoCo, less dependency, viewer/debugger, domain randomization, RGB-D, terrain, and multi-GPU support. The post lacks version compatibility and benchmark data; validation before migration is still required.",
+    "applicability": "This is applicable for evaluating human-like RL simulation toolchains and cannot be considered as a lossless replacement for existing Isaac Lab projects.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "There is engineering record for environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Select mjlab as a lightweight candidate.",
+    "details.diagnostics.0": "Compare API compatibility, dependency count, viewer/debugger, sensor/terrain functionality.",
+    "details.environments.0": "mjlab; MuJoCo Warp; Isaac Lab-style API; GPU training.",
+    "details.limits.0": "No installation logs, version matrix, performance benchmark, and project migration result.",
+    "details.outcomes.0": "The post lists support for human-like locomotion, manipulation, imitation, RL, Sim2Real, and multi-GPU.",
+    "details.problem_statements.0": "The team wishes to retain the Isaac Lab workflow while reducing the installation and runtime burden of Isaac Sim.",
+    "details.safety_notes.0": "After switching simulators, the contact, joint, actuator, and sensor models must be revalidated in real-world testing.",
+    "details.suspected_causes.0": "Isaac Sim stack is heavier, but the post does not quantify the dependency cost.",
+    "details.symptoms.0": "The post lacks specific installation error messages.",
+    "media_summaries.0": "Screenshot is a functional list, including MuJoCo Warp, Isaac Lab-style API, minimal dependencies, etc. No installation commands, error logs, or speed comparison graphs are present.",
+    "source.locator": "Root post function list",
+    "source.title": "Candidate toolchain to reduce Isaac Sim dependencies while preserving Isaac Lab-style API",
+    "terms.0": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.1": "Domain Randomization (DR) (域随机化)",
+    "terms.2": "Graphics Processing Unit (GPU) (图形处理器)",
+    "terms.3": "Application Programming Interface (API) (应用程序接口)",
+    "terms.4": "Actuator (执行器)",
+    "terms.5": "Center of Mass (CoM) (质心)",
+    "title": "What does mjlab provide when preserving Isaac Lab-style API while reducing Isaac Sim dependencies?"
+  }
+}

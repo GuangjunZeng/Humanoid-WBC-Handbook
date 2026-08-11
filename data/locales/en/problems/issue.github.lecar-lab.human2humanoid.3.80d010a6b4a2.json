@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.3.80d010a6b4a2",
+  "schema_version": 1,
+  "source_fingerprint": "8b4c6699f799743f6976d783541ed7f09390d1c4766f7a7828be97074c4f83f5",
+  "translations": {
+    "answer": "Compare h1_joint_pick with h1_joint_names_augment. The original version used ankle_pitch/ankle_roll names for left_ankle_link, leading to failure in the index. The maintainer updated the table to include left_ankle_link/right_ankle_link in 19 entries, fixing the issue. Updates to H1 are applicable, but custom robots must adjust joint names, rotation axes, and DOF ordering. Only add a string to mask dimension inconsistency if the table is consistent.",
+    "applicability": "Directly applicable to scripts prior to 0c6fd6f; custom robots should use consistency checks.",
+    "credibility.rationale": "The issue has been resolved, the environment is clear, and there is no conflict. The fix is documented and reproducible.",
+    "details.attempts.0": "The maintainer recommended using the retargeted .pkl from the repository before applying the patch.",
+    "details.diagnostics.0": "Verify that left_ankle_link/right_ankle_link exist in the H1 joint name list.",
+    "details.effective_fixes.0": "Use a commit after 0c6fd6f; this commit updates the H1 joint name list to include left_ankle_link/right_ankle_link.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; original retargeting script from 2024-10-04; patch 0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd.",
+    "details.limits.0": "The patch also modifies legacy retargeting code; custom robots must build their own mapping.",
+    "details.outcomes.0": "The collaborator confirmed the patch was applied and the issue closed. The source code diff precisely modified the joint name list in the error-prone section.",
+    "details.problem_statements.0": "Why does grad_fit_h1_shape.py throw ValueError: 'left_ankle_link' is not in list when running?\"",
+    "details.suspected_causes.0": "The old script used names like left_ankle_pitch_link/left_ankle_roll_link, while the keypoint selection used left_ankle_link, leading to mismatch.",
+    "details.symptoms.0": "An error occurs when constructing h1_joint_pick_idx in grad_fit_h1_shape.py at line 65: 'left_ankle_link' is not in list.",
+    "source.locator": "Issue #3; collaborator's comment on issuecomment-2516366430; commit 0c6fd6f's grad_fit_h1_shape.py diff.",
+    "source.title": "Inconsistent H1 joint name list in old grad_fit_h1_shape.py",
+    "terms.0": "Joint-name mapping (关节名映射)",
+    "terms.1": "Motion retargeting (动作重定向)",
+    "terms.2": "Keypoint index (关键点索引)",
+    "terms.3": "DOF ordering (自由度顺序)",
+    "title": "How to locate and use the fixed version of grad_fit_h1_shape.py for 'left_ankle_link' not in list?"
+  }
+}

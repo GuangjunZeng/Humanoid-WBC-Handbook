@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2085776135443693614.1f2f3b1847de",
+  "schema_version": 1,
+  "source_fingerprint": "92c039dfa559eaca696780448a6f6a8f4f8f82395e19b04e8e7cff5899c7bc24",
+  "translations": {
+    "answer": "The candidate value is directly providing pressure/contact feedback to help identify uneven ground, slipping, and changes in support; however, the post does not explain how state estimation or WBC is entered, and there is no comparative data, so the effectiveness remains to be verified.",
+    "applicability": "Suitable for humanoid platforms with insufficient bottom-contact observation.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal data cross-validation or independent replication is missing.",
+    "details.attempts.0": "Integrating multi-dimensional tactile sensors at the bottom.",
+    "details.diagnostics.0": "Comparing contact identification, slipping, and posture error with and without tactile feedback.",
+    "details.environments.0": "T800; multi-dimensional tactile sensors at the bottom; uneven ground.",
+    "details.limits.0": "No sensor parameters, fusion algorithm, or real-machine validation.",
+    "details.outcomes.0": "The post only states that it can improve balance and terrain perception, without quantification.",
+    "details.problem_statements.0": "When only visual and proprioceptive state are used, the robot struggles to perceive changes in bottom contact.",
+    "details.safety_notes.0": "New tactile feedback should not replace torque limits and contact failure protection.",
+    "details.suspected_causes.0": "Lack of direct bottom pressure/contact feedback.",
+    "details.symptoms.0": "The original post does not show specific falls or misjudgments.",
+    "media_summaries.0": "Screenshot/video frame shows T800 performing dynamic actions in low light, but the bottom sensor structure and readings are not identifiable.",
+    "source.locator": "Main text of the original post",
+    "source.title": "Using multi-dimensional bottom tactile feedback to supplement uneven ground contact feedback",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "State Estimation (状态估计)",
+    "terms.2": "Joint Torque (关节力矩)",
+    "terms.3": "Contact Constraint (接触约束)",
+    "title": "What information could the bottom multi-dimensional tactile feedback supplement in human-robot Whole-Body Control (WBC)?"
+  }
+}

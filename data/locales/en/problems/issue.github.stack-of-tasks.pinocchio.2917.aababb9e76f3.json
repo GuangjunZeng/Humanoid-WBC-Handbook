@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2917.aababb9e76f3",
+  "schema_version": 1,
+  "source_fingerprint": "9242933c0df1e5b933d3996c4a953b7825a64eb4d312058a11aaf2f2f0c4d081",
+  "translations": {
+    "answer": "Do not continue to adjust include order. The original author used ament_target_dependencies(test pinocchio ...) without inheriting Boost compilation definitions from the Pinocchio target; changing to find_package(pinocchio REQUIRED) and using target_link_libraries(test pinocchio::pinocchio) restored compilation. The maintainer confirmed that imported targets automatically propagate four Boost MPL/Fusion upper bound definitions and deemed this the correct solution.",
+    "applicability": "Directly applicable to Ubuntu 24.04, ROS 2 Jazzy, Pinocchio 4.0.0, Boost 1.83 ament/CMake projects; other environments must verify compilation definitions are similarly missing.",
+    "credibility.rationale": "Environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Author modified the dependency section to find_package(pinocchio REQUIRED) and target_link_libraries(test pinocchio::pinocchio), removing old manual Eigen include/ament dependency writing.",
+    "details.diagnostics.0": "Check if CMake actually links the pinocchio::pinocchio target, not just passing the package name to ament_target_dependencies or manually adding include paths.",
+    "details.diagnostics.1": "If CMake target is not usable, the maintainer's diagnostic clues involve verifying BOOST_FUSION_INVOKE_MAX_ARITY=12, BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS, BOOST_MPL_LIMIT_LIST_SIZE=30, and BOOST_MPL_LIMIT_VECTOR_SIZE=30.",
+    "details.effective_fixes.0": "Link pinocchio::pinocchio on the target to automatically propagate required Boost compilation definitions; the original poster reported successful compilation after the change.",
+    "details.environments.0": "Ubuntu 24.04; ROS 2 Jazzy; installed via rosdep/apt on ros-jazzy-pinocchio; Pinocchio 4.0.0; Boost 1.83; colcon, ament_cmake.",
+    "details.limits.0": "This record directly covers ROS Jazzy, Pinocchio 4.0.0, and Boost 1.83; other distributions' Boost templates still need comparison.",
+    "details.limits.1": "The maintainer provided a manual -D definition as a fallback when CMake target is not usable, but the original thread validated the imported target approach.",
+    "details.outcomes.0": "The author confirmed the target_link_libraries approach is usable; the maintainer stated imported targets automatically propagate the above definitions and confirmed this is the correct solution; Issue closed.",
+    "details.problem_statements.0": "How to distinguish between Pinocchio code errors and CMake target usage errors when ROS Jazzy includes Pinocchio 4.0 header files?",
+    "details.safety_notes.0": "Control software builds should propagate Pinocchio target compilation definitions as auditable dependencies to prevent inconsistent builds from manual include/define assembly.",
+    "details.suspected_causes.0": "The author's old CMakeLists used ament_target_dependencies(test pinocchio urdfdom_headers), not linking imported targets as per Pinocchio project standards, so the target did not inherit required Boost compilation definitions.",
+    "details.symptoms.0": "Compilation of a minimal include program results in boost::detail::variant::make_variant_list receiving 25 template parameters, while preprocessed boost::mpl::list provides only 20 parameter positions.",
+    "details.symptoms.1": "Adjusting include order, adding pinocchio/fwd.hpp, or trying other Pinocchio header files does not resolve the error.",
+    "source.locator": "Pinocchio #2917: Maintainer comment 4866469692 reports missing definition; author comment 4867110493 reports imported target fix; maintainer comment 4867266136 confirms.",
+    "source.title": "ROS Jazzy Engineering Fails to Link pinocchio::pinocchio When Including Pinocchio 4.0 Header, Results in Boost Variant Template Parameter Compilation Error",
+    "terms.0": "Imported target (导入目标)",
+    "terms.1": "Compile definition (编译定义)",
+    "terms.2": "Template arity limit (模板参数上限)",
+    "terms.3": "Meta-Programming Library (MPL) (元编程库)",
+    "title": "ROS 2 Jazzy Engineering Fails to Link pinocchio::pinocchio When Including Pinocchio 4.0 Header, Results in Boost Variant Template Parameter Compilation Error"
+  }
+}

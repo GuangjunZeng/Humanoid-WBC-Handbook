@@ -1,0 +1,134 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lxl-2404"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/6885",
+  "captured_at": "2026-08-11T11:30:00+08:00",
+  "content_sha256": "7db1009b5776db7d4ea2a0df062ff7aded7fb3c8b228e131875798fa8917505b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "只使用原帖四配置对照、数值结果和维护者唯一回复；未把关闭状态误写成 GPU 已修复。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim 5.0",
+      "PhysxSurfaceVelocityAPI",
+      "GPU tensor pipeline",
+      "kinematic rigid body"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖同时测试新 PhysxSurfaceVelocityAPI 与官方 ConveyorBeltDemo 使用的 legacy velocity attribute，二者在 GPU tensor pipeline 下表现相同。",
+        "关闭 surface velocity 后普通接触恢复。"
+      ],
+      "diagnostics": [
+        "用同一场景做 CPU/GPU、timeline/tensor pipeline 四格对照，并只切换 surfaceVelocityEnabled，隔离 collider 与 surface velocity 功能。",
+        "记录物体 z、水平速度和是否落到 ground，避免仅凭 viewport 判断。"
+      ],
+      "effective_fixes": [
+        "需要原生 surface velocity contact 时改用 CPU pipeline。",
+        "原帖记录的 GPU 变通是静态 collider 配合每步事件直接覆盖接触物体的水平 root velocity；它只是行为近似，不是 PhysX 接触解。"
+      ],
+      "environments": [
+        "Isaac Sim 5.0；omni.physx 107.3.26；Ubuntu 22.04.5；RTX 4090；CUDA 13.0；driver 580.173.02；device=cpu/cuda:0 对照。"
+      ],
+      "limits": [
+        "原帖 System Info 中 Isaac Lab commit/version 字段未填写，只明确 Isaac Sim/PhysX、OS、GPU、CUDA 与 driver。",
+        "直接写 root velocity 会绕开真实摩擦/冲量响应，不能用于验证接触力或控制稳定性。",
+        "线程没有给出 GPU 支持恢复的版本或补丁。"
+      ],
+      "outcomes": [
+        "维护者称该行为符合当前支持边界并要求使用 CPU；Issue 以 completed 关闭，但 GPU 原生 surface velocity 仍没有实现。"
+      ],
+      "problem_statements": [
+        "Isaac Lab GPU tensor pipeline 中启用 PhysX surface velocity 后物体穿过传送带，是否是 collider 或摩擦配置错误？"
+      ],
+      "safety_notes": [
+        "不要把 GPU 下穿透现象用于调参或训练接触策略；先切 CPU 验证接触功能边界，并把行为近似与物理接触实验分开。"
+      ],
+      "suspected_causes": [
+        "项目维护者确认 GPU 当前不支持该 surface-velocity 行为；不是原帖 collider 本身失效。"
+      ],
+      "symptoms": [
+        "CPU tensor pipeline 中方块停在约 z=0.30 并以皮带速度移动；GPU tensor pipeline 中方块穿过皮带，落到 ground z≈0.0375，水平速度为零。",
+        "没有 warning/error；只关闭 surfaceVelocityEnabled 就恢复同一 collider 的普通 GPU 接触。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目维护者明确说明 GPU 当前不支持该 surface-velocity 行为，应使用 CPU。原帖通过四种管线对照和单独关闭 surfaceVelocityEnabled 证明普通 collider 仍能接触，触发条件是 GPU tensor pipeline 加 surface velocity。若必须留在 GPU，原帖只记录了静态 collider 后逐步改写物体水平 root velocity 的近似方案；它不等价于原生接触，不能拿来验证摩擦或接触力。",
+        "applicability": "直接覆盖 Isaac Sim 5.0/PhysX 107.3.26 的 GPU tensor pipeline；Isaac Lab 精确 commit 未填，后续版本需复测。",
+        "bilingual_terms": [
+          "表面速度（surface velocity）",
+          "张量管线（tensor pipeline）",
+          "运动学刚体（kinematic rigid body）",
+          "接触穿透（contact tunneling）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.isaaclab_gpu_surface_velocity_6885",
+        "problem_title_zh": "Isaac Lab GPU tensor pipeline 启用 surface velocity 后接触消失",
+        "question_zh": "Isaac Lab 中同一运动学传送带在 CPU 正常、GPU tensor pipeline 启用 PhysX surface velocity 后物体穿透，原线程确认的支持边界和处理办法是什么？",
+        "source_locator": "Isaac Lab #6885：正文四配置对照与最小脚本；维护者评论 5196164192 确认 GPU 不支持并要求使用 CPU",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/6885#issuecomment-5196164192",
+        "verification_refs": [
+          {
+            "locator": "CPU/GPU 与 timeline/tensor 四格结果、最小脚本、数值位置和关闭 API 对照",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/6885"
+          },
+          {
+            "locator": "项目维护者确认 GPU 当前不支持，应使用 CPU",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/6885#issuecomment-5196164192"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.6885",
+    "query": "Isaac Lab GPU tensor pipeline PhysX surface velocity conveyor contacts fall through",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖最小 conveyor + dynamic cube 场景；未绑定机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "维护者确认 GPU 当前不支持 surface velocity contact，并建议改用 CPU。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/RL 中的移动地面、传送带和切向接触训练依赖稳定接触；GPU 管线下静默丢失接触会被误判为摩擦、碰撞层或控制器错误。"
+  },
+  "published_at": "2026-08-04T06:09:57Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.6885",
+  "summary": "Isaac Lab #6885 用同一最小场景对照 CPU/GPU 与 timeline/tensor pipeline：只有 GPU + Isaac Lab tensor pipeline + surface velocity 时，动态方块穿过运动学传送带；关闭 surfaceVelocityEnabled 立即恢复普通接触。项目维护者明确回复 GPU 当前不支持该行为，应使用 CPU。原帖的 GPU 变通是静态 collider 加逐步覆盖物体水平根速度，但这不等价于原生 surface-velocity contact。",
+  "title": "Isaac Lab GPU tensor pipeline 当前不支持 PhysX surface velocity 接触",
+  "version": null
+}

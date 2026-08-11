@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.leggedrobotics.ocs2.34.20c4b47085be",
+  "schema_version": 1,
+  "source_fingerprint": "d95959b6b1a4effd091b162d66ddc131b6c5c63f5f5a16a4720ad35b94ecc431",
+  "translations": {
+    "answer": "Maintainers recommend separating development and performance configurations: `checkNumericalStability=true` performs expensive eigenvalue checks, which are used during development to validate numerical assumptions. For performance runs, set this to false; also enable `displayInfo` or `displayShortSummary` to examine average stepsize, LQ approximation, and phase timing. The original authors reported that MPC can run and observed explosion in equality SSE/rollout merit/cost for low-frequency cases; adjusting input cost reduced the time of the most expensive backward pass. No final timing or general cost gains were observed, so this is a profiling step, not a 39-DoF real-time guarantee.",
+    "applicability": "Applicable to the development and performance phases of large OCS2 DDP/MPC systems; field names and statistics should be verified against the target version.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The author adjusted the input cost and used solver printouts to observe SSE, rollout merit/cost, and backward-pass time.",
+    "details.diagnostics.0": "During performance runs, the expensive eigenvalue checks are disabled; `displayInfo`/`displayShortSummary` is enabled to examine adaptive integrator average stepsize and solver phase timing.",
+    "details.diagnostics.1": "If the backward pass is slowest, check problem dimension and Riccati stiffness; if the LQ approximation is slowest, benchmark costs, constraints, and dynamics separately.",
+    "details.effective_fixes.0": "Set `checkNumericalStability=false` as the performance measurement configuration, not deleting the development check; use phase timing after, and perform point optimization on input cost/constraints/dynamics.",
+    "details.environments.0": "Centauro 39 actuated DoFs, continuous DDP, SRBD and centroidal variants, 4 feet contacts; OCS2 2022 code, not fixed commit.",
+    "details.limits.0": "The maintainer mentioned another 48-state/24-input system is below 10 ms, but this is only an empirical estimate and not a guarantee for Centauro.",
+    "details.limits.1": "Low-frequency gait, dummy slowdown ratio, and target node crash issues are not fully closed, so this card does not provide answers for them.",
+    "details.limits.2": "Thread video is not used to infer motion quality; only the author's text confirms it.",
+    "details.outcomes.0": "The author reported that MPC can run in robot-in-place scenarios, and adjusting input cost helps reduce backward-pass time; no final milliseconds were given.",
+    "details.problem_statements.0": "When large DoF OCS2 MPC solvers are slow, what should be closed first and how should the bottleneck be localized?",
+    "details.safety_notes.0": "Disabling numerical checks is only for performance runs that have been validated during development; offline Hessian/derivative, constraint residual, and deadline monitor checks should still be performed before going online.",
+    "details.suspected_causes.0": "Development numerical-stability checks cause extra eigenvalue calculations; increased stiffness, cost gains, and constraint satisfaction also increase steps or backward-pass time.",
+    "details.symptoms.0": "The initial interface shows about 2-3 seconds for solving and warns that the solution time window is shorter than MPC delay.",
+    "details.symptoms.1": "In low MPC frequency static gait, equality constraints SSE, rollout merit, and rollout cost explode; backward pass is the slowest.",
+    "source.locator": "OCS2 #34 maintainer performance suggestion 1083359506, segment locator 1088544950; author result 1119497280",
+    "source.title": "OCS2 large system MPC: first close development numerical checks and segment profiling",
+    "terms.0": "Numerical-stability check (数值稳定性检查)",
+    "terms.1": "Eigenvalue check (特征值检查)",
+    "terms.2": "Backward pass (反向传播阶段)",
+    "terms.3": "Linear-Quadratic approximation (线性二次近似)",
+    "title": "How to avoid mixing numerical check overheads and real solver bottleneck in large DoF OCS2 MPCs?"
+  }
+}

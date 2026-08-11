@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.1959169753173409880.79aba4dd6ee9",
+  "schema_version": 1,
+  "source_fingerprint": "ba57ea2d32e43c5d67c25f217d6a30ff866a344337eb63c9622ef3635412f89e",
+  "translations": {
+    "answer": "The candidate scheme for Robot-Trains-Robot involves domain randomization in simulation to learn physics latent variables, freezing most of the strategy upon real machine deployment, and optimizing only one latent variable; while the force-sensing teacher arm is responsible for protection, curriculum, perturbation, failure detection, and reset.",
+    "applicability": "Applicable to real machines with external support/teacher device.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Teacher arm follows, gradually reduces, synchronized treadmill, shaping reward, and automatic reset.",
+    "details.diagnostics.0": "Comparing compliant scheduling, fixed-arm baseline, and different assistance/perturbation phases.",
+    "details.effective_fixes.0": "Only optimize one physics latent variable, and the teacher arm schedules and protects.",
+    "details.environments.0": "Simulation pre-training; force-sensing teacher arm; walking and swing-up.",
+    "details.limits.0": "This is a paper interpretation; hardware boundaries and statistical results must be verified against the original text.",
+    "details.outcomes.0": "The post states that compliant scheduling is better than fixed arm; no specific numerical values are given.",
+    "details.problem_statements.0": "Online adaptation to real machines requires significant human protection, and exploration risks are high.",
+    "details.safety_notes.0": "Online learning requires independent force/pose limits, failure detection, and physical support.",
+    "details.suspected_causes.0": "Dynamics bias and difficulty jump in real machines cause unstable online exploration.",
+    "details.symptoms.0": "Learning is weak or risky when the teacher arm is fixed or not scheduled.",
+    "media_summaries.0": "Screenshot shows text explanation of the teacher arm, force sensing, shaping reward, and automatic reset; no hardware control diagram or safety thresholds are present.",
+    "source.locator": "Root post method and walking/swing-up paragraph",
+    "source.title": "Robot-Trains-Robot: Reduce Online Adaptation Risk by Using a Physics Teacher",
+    "terms.0": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.1": "Domain Randomization (DR) (域随机化)",
+    "terms.2": "Curriculum Learning (课程学习)",
+    "terms.3": "Application Programming Interface (API) (应用程序接口)",
+    "terms.4": "Center of Mass (CoM) (质心)",
+    "terms.5": "Dynamics (动力学)",
+    "title": "How to Limit Online Adaptation of Humanoid Real Machines to a Safer, Low-Dimensional Search Space?"
+  }
+}

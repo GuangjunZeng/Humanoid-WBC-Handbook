@@ -1,0 +1,146 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "costashatz"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1290",
+  "captured_at": "2026-08-11T05:22:00+08:00",
+  "content_sha256": "6ee55605fe3f0deff47f4b7aabcfb9cd8d7dd83e6b6bb2d66fdcc1b9fef5b339",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对原 Issue 的完整公开讨论摘要、#2441 闭环和 v3.5.0/v3.8.0 官方 release；将已声明支持的算法与未声明功能严格分开。",
+    "components": [
+      "Pinocchio",
+      "mimic joint",
+      "forward kinematics",
+      "Jacobian",
+      "RNEA",
+      "CRBA",
+      "ccrba"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者和用户在原线程讨论是否从最终用户状态向量中移除从动自由度，以及 FK/FD/ID 对约束的预期语义。",
+        "维护者在 2025 年指向并合并 PR #2441。"
+      ],
+      "diagnostics": [
+        "分别核对 URDF parser 开关、模型中的 mimicking/mimicked 列表，以及目标算法是否出现在对应版本 release 支持清单。"
+      ],
+      "effective_fixes": [
+        "在 Pinocchio 3.5.0 或后续版本使用 buildModel(..., mimic=True) 解析 URDF mimic 字段，并只把 v3.5.0 release 明列的 FK、Jacobian/frame、ccrba、RNEA、CRBA、reachable workspace 视为该版本已声明支持。"
+      ],
+      "environments": [
+        "讨论起于 2020 年旧版本；最终闭环对应 Pinocchio 3.5.0 与 PR #2441。"
+      ],
+      "limits": [
+        "原线程在 #2441 合并前明确提醒并非所有 Pinocchio 功能都可用于 mimic；未列入 v3.5.0 release 的算法不能由该线程推断为已支持。",
+        "continuous 类型 mimic 的 URDF 解析还需要 v3.8.0 的 #2756，不能只依据 v3.5.0 的通用支持声明。"
+      ],
+      "outcomes": [
+        "维护者在 2025-03-03 说明由 #2441 解决并关闭 Issue；v3.5.0 release 列出解析 API、支持算法和新增模型数据字段。"
+      ],
+      "problem_statements": [
+        "Pinocchio 加载了 mimic joint 后，哪些 WBC 常用算法在什么版本开始有明确支持？"
+      ],
+      "safety_notes": [
+        "进入实机 WBC 前，应对使用到的每个算法做 mimic 约束回归测试，并验证状态/力矩向量维度没有把从动关节当成独立执行器。"
+      ],
+      "suspected_causes": [
+        "历史版本对 mimic joint 的数据结构、解析入口和算法覆盖并非一次性完整交付；维护者也在合并前提醒并非所有功能可用。"
+      ],
+      "symptoms": [
+        "用户无法确认 forward dynamics、FK、IK/Jacobian 等算法是否会自动遵守 referent-mimic 约束。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不能。原线程在 PR #2441 合并前明确提醒并非所有功能可用。Pinocchio v3.5.0 官方发布只明确列出：buildModel 的 mimic 参数（默认 false），以及 forward kinematics、Jacobians/frames、ccrba、RNEA、CRBA、reachable workspace 的 mimic 支持。工程上应传 mimic=True，并按目标版本 release 逐项核对所用算法；continuous mimic 的 URDF 解析还要到 v3.8.0/#2756。",
+        "applicability": "适用于用 Pinocchio 3.x/4.x 构建带 mimic joint 的 WBC 模型；具体算法仍以目标版本 release 与回归测试为准。",
+        "bilingual_terms": [
+          "从动关节（mimic joint）",
+          "参考关节（referent joint）",
+          "逆动力学（inverse dynamics, RNEA）",
+          "复合刚体算法（Composite Rigid Body Algorithm, CRBA）",
+          "质心刚体算法（centroidal composite rigid body algorithm, ccrba）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_mimic_algorithm_support_boundary_1290",
+        "problem_title_zh": "Pinocchio mimic joint 的版本与算法支持边界",
+        "question_zh": "Pinocchio 中模型能够解析 mimic joint 后，是否可以直接假设所有 WBC 运动学和动力学算法都支持？",
+        "source_locator": "Pinocchio #1290 的维护者版本边界与 #2441 闭环；v3.5.0 release 的算法清单；v3.8.0 continuous mimic 补充",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1290",
+        "verification_refs": [
+          {
+            "locator": "2025-02-25 维护者说明 #2441 即将合并且并非所有功能可用；2025-03-03 说明由 #2441 解决",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1290"
+          },
+          {
+            "locator": "原线程用于闭环 mimic 支持的 PR #2441",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/2441"
+          },
+          {
+            "locator": "v3.5.0 release 中的 mimic parser 参数与 FK/Jacobian/ccrba/RNEA/CRBA/reachable workspace 支持清单",
+            "relation": "official_documentation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.5.0"
+          },
+          {
+            "locator": "continuous URDF mimic 解析由 #2756 在 v3.8.0 补充",
+            "relation": "official_documentation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.8.0"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1290",
+    "query": "Pinocchio mimic joint support URDF forward kinematics Jacobian RNEA CRBA version",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "带 mimic joint 的通用 URDF 机器人；原帖未指定型号"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者在 #2441 合并前明确提醒并非所有 Pinocchio 功能都可用于 mimic joint。"
+      },
+      {
+        "text": "维护者随后说明该问题已由 #2441 解决并关闭原 Issue。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 会同时使用运动学、Jacobian、质心量和逆动力学；仅看到模型能加载 mimic joint，不等于当前版本的所有控制算法都支持它。"
+  },
+  "published_at": "2020-09-09T00:00:00Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1290",
+  "summary": "Pinocchio #1290 从 2020 年持续追踪 mimic joint 的配置、速度、加速度与动力学语义。维护者在 2025-02-25 指向 PR #2441，并明确当时不是所有功能都可用；2025-03-03 说明已由 #2441 解决并关闭。官方 v3.5.0 release 给出精确边界：URDF buildModel 新增 mimic 参数（默认 false），并为 forward kinematics、Jacobians/frames、ccrba、RNEA、CRBA 和 reachable workspace 添加 mimic 支持。",
+  "title": "Pinocchio mimic joint 支持需要按版本和算法核对",
+  "version": null
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4599.66edece3ca51",
+  "schema_version": 1,
+  "source_fingerprint": "44c815dc448164c6b10d849567429b3046afbaad4df060fb30ea37b556c264ff",
+  "translations": {
+    "answer": "Cannot. The original maintainer requested alignment of the drive, but subsequent analysis, based on results from approximately two thousand steps prior, suggested it was not a simple drive issue. The current approach should prioritize checking the host drive, the course/condition triggers in the vicinity of this step, and custom terrain representation, while preserving the PVD log. The original post has not yet provided a final root cause.",
+    "applicability": "Applicable to training that involves a rich variety of cross-machine contact; cannot be generalized to all Isaac Lab training that is not reproducible.",
+    "credibility.rationale": "The solution has not closed or shown conflict; the issue is still forming a problem trace.",
+    "details.attempts.0": "The author compared the default plane, built-in terrain, and custom USD, and recorded the PVD from the first 100 iterations.",
+    "details.diagnostics.0": "Aligned the host drive, compared random seed distributions, and checked for course/condition triggers in the vicinity of approximately two thousand steps; the PVD log was preserved.",
+    "details.environments.0": "Isaac Lab 2.1, Isaac Sim 4.5, RTX 4090, whole_body_tracking, custom USD terrain.",
+    "details.limits.0": "This issue cannot prove that the drive version or custom terrain is the root cause; it can only indicate variables to be checked.",
+    "details.outcomes.0": "The maintainer is still investigating; no final fix has been verified.",
+    "details.problem_statements.0": "The same code, container, and GPU model produced qualitatively different human training results on two machines.",
+    "details.safety_notes.0": "Do not rely on a single training curve to assess deployment reliability; compare multiple statistical measures and final task metrics.",
+    "details.suspected_causes.0": "Custom terrain representation may alter contact modeling or contact resolution, but the root cause has not been confirmed.",
+    "details.symptoms.0": "Local training can learn the mimic, but the cloud robot cannot stand; the default plane and built-in terrain generator do not trigger.",
+    "media_summaries.0": "The training curve comparison for this issue is used to show the divergence after two thousand steps; the current round did not perform pixel-wise coordinate reading, and the time point judgment comes from the maintainer's textual analysis of the divergence in the vicinity of two thousand steps.",
+    "source.locator": "Latest maintainer's investigation reply @RandomOakForest",
+    "source.title": "Training on the same RTX 4090 and custom USD terrain in the container is not reproducible.",
+    "terms.0": "Training Non-Determinism (训练非确定性)",
+    "terms.1": "Whole-Body Control (WBC) (全身控制)",
+    "terms.2": "Physics Visual Debugger (PVD) (物理可视化调试器)",
+    "title": "When custom USD terrain causes severe divergence in human training results on two identical GPUs, can we directly attribute it to the drive?"
+  }
+}

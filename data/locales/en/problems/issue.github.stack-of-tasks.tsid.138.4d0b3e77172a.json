@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.138.4d0b3e77172a",
+  "schema_version": 1,
+  "source_fingerprint": "2e0c75bd5acb0d2f3780540717445d1ceb5636daa94e0c75ede674e549999f69",
+  "translations": {
+    "answer": "Not. The project collaborators explicitly state that these 6 lines are used to enforce floating-base dynamics, not to fix the base position. The remaining joint dynamics are not added in the same manner because this formulation does not treat joint torques as optimization variables. This explanation depends on the current decision variable design and cannot be generalized to a fixed template for all WBC QP.",
+    "applicability": "Applies to the original post 2021 TSID InverseDynamicsFormulationAccForce and its variable design that does not explicitly optimize joint torques.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The project collaborators rechecked the code and confirmed the second point is a bug, submitting a fix.",
+    "details.diagnostics.0": "Distinguish between floating-base dynamics rows and base pose task.",
+    "details.diagnostics.1": "Compare motionPriorityLevel and addRigidContact internal m_eq count condition.",
+    "details.effective_fixes.0": "Commit 5a6b452 only executes m_eq += motionConstr.rows() when motionPriorityLevel == 0.",
+    "details.environments.0": "2021 TSID devel; Issue references commit 0969328's inverse-dynamics-formulation-acc-force.cpp; fix commit is 5a6b452.",
+    "details.limits.0": "No thread provides a version number, and no numerical control result is shown that triggers the bug.",
+    "details.limits.1": "The first 6 rows explain this inverse-dynamics formulation's variable selection, not all WBC QP should fix these 6 rows.",
+    "details.outcomes.0": "The maintainer confirmed the bug is fixed in devel; the official patch and Issue description match exactly.",
+    "details.problem_statements.0": "Why does InverseDynamicsFormulationAccForce add 6 hard equality constraints at initialization?",
+    "details.problem_statements.1": "Why does the Contact6D motion task, as a penalty, still add to m_eq?",
+    "details.suspected_causes.0": "The first 6 rows are not driven by floating-base dynamics; joint torques are not decision variables, so the remaining joint dynamics do not need to be added to the same constraint class.",
+    "details.suspected_causes.1": "Old code added motionConstr.rows() without checking motionPriorityLevel.",
+    "details.symptoms.0": "Users mistakenly thought the first 6 equalities are for fixing base position.",
+    "details.symptoms.1": "The soft-priority Contact6D motion task does not enter the hard equality level but is still counted in m_eq.",
+    "source.locator": "Issue #138, project collaborators explain issuecomment-887863758",
+    "source.title": "TSID's m_eq six floating-base dynamics and soft contact count defect",
+    "terms.0": "Floating-base dynamics (浮动基动力学)",
+    "terms.1": "Hard equality constraint (硬等式约束)",
+    "terms.2": "Joint torque (关节力矩)",
+    "terms.3": "Decision variable (决策变量)",
+    "title": "Why does InverseDynamicsFormulationAccForce initialize with 6 hard equality constraints, and are they fixing the base position?"
+  }
+}

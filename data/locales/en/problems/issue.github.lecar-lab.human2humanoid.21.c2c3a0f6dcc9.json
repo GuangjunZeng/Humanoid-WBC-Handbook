@@ -1,0 +1,23 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.21.c2c3a0f6dcc9",
+  "schema_version": 1,
+  "source_fingerprint": "2c2978e2ed1ca7fd74d3cfba7958a07532f242a030d2bd1236aba72556f6c8ad",
+  "translations": {
+    "answer": "The project contributor confirmed only one project fact: the distillation phase did not add noise, and stated that the deployment was effective. The post did not explain why this is feasible, nor compare it with a noise-added configuration, so it can only be reused as a record for Human2Humanoid implementation and cannot be concluded that other robots do not need noise randomness.",
+    "applicability": "Limited to the distillation and deployment process described in this project report; missing version and sensor environment information.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication are missing.",
+    "details.attempts.0": "The author team completed the deployment with a distillation configuration without observation noise.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; distillation phase; specific commit and sensor configuration not mentioned.",
+    "details.limits.0": "No quantified results, control experiments, version, or applicable sensor range; cannot be generalized as 'no noise' in general.",
+    "details.outcomes.0": "The project contributor stated that the configuration runs well in their deployment.",
+    "details.problem_statements.0": "Why hasn't the Human2Humanoid strategy distilled model included observation noise?",
+    "details.symptoms.0": "Code reviewers found that the distilled observation was not explicitly noised.",
+    "source.locator": "Issue #21, contributor replied to issuecomment-2518578080",
+    "source.title": "Human2Humanoid Distillation Phase Missing Observation Noise",
+    "terms.0": "Policy Distillation (策略蒸馏)",
+    "terms.1": "Observation Noise (观测噪声)",
+    "terms.2": "Domain Randomization (域随机化)",
+    "title": "Human2Humanoid Should Observation Noise Be Added in Policy Distillation Phase?"
+  }
+}

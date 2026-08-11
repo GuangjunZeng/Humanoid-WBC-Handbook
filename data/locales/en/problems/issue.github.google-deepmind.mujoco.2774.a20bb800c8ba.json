@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.2774.a20bb800c8ba",
+  "schema_version": 1,
+  "source_fingerprint": "e736d374ba17692f9c2e9d6259b3e060b9b79e8f6eff3dff333b12f03fc8368c",
+  "translations": {
+    "answer": "Currently not possible. The detailed minimal example in the thread corrected the initial understanding of the return value of `normalize_with_norm` and demonstrated that a fallback could generate non-orthogonal frames, with evidence of differences concentrated in pyramidal friction; however, the maintainers have merely re-opened the issue and stated that they will check, but the root cause or merge of the fix has not been confirmed. The comparison of frozen-state, contact frame, cone type, and `qacc_warmstart=0` should be used for reproduction, but the replacement of the author's proposed `math.orthogonals` with a general effective fix cannot be done.",
+    "applicability": "Only directly applicable to commit 6882095 and the original post's minimal plane-capsule frozen-state configuration; other versions and contact geometry require reproduction.",
+    "credibility.rationale": "The answer has not been closed or there are unresolved conflicts in the source conclusions.",
+    "details.attempts.0": "The author proposed using `math.orthogonals(n)[0]` under a small tolerance and reported that the selection was replaced, but no maintainers have reviewed or merged the patch.",
+    "details.diagnostics.0": "The frozen state of the same scenario, clearing the warmstart, and comparing the common-world Jacobian, contact frame, friction cone type, and constraint force with `qacc` should be done; do not only compare the contact point position.",
+    "details.effective_fixes.0": "No formal fix is available for registration; this replacement should be treated as a pending experimental validation and should not be directly upgraded to production or used as a baseline for training.",
+    "details.environments.0": "Tracking fixed to MuJoCo commit 6882095; one plane, one free capsule, one explicit contact pair; CPU double and jitted MJX float64, same frozen state, fresh data, `qacc_warmstart=0`.",
+    "details.limits.0": "Data is from a minimal frozen-state example; not yet verified for all plane-capsule postures, cone types, and MuJoCo versions.",
+    "details.outcomes.0": "Issue re-opened by maintainers; no further conclusions from the thread at the time of data collection.",
+    "details.problem_statements.0": "Whether the `b_norm < 0.5` fallback for MJX plane-capsule leads to non-orthogonal tangent basis vectors and amplifies CPU-MJX dynamics differences?",
+    "details.safety_notes.0": "If the Whole-Body Control (WBC) relies on friction direction or contact force thresholds, regression testing on the CPU/MJX contact frame and cone configuration should be performed in the target version.",
+    "details.suspected_causes.0": "The fallback was attributed to the reuse of `math.orthogonals` for axis selection, but no subsequent projection or normalization has been performed. The root cause has not been formally confirmed by the maintainers.",
+    "details.symptoms.0": "The fallback was triggered when `b_norm=0.4407495` was encountered. Given `n=[0.3, 0.4, 0.8660254]`, the selection was `b=[0, 1, 0]`, resulting in `n·b=0.4`.",
+    "details.symptoms.1": "The Jacobian for the common-world point differs by approximately $5.82 \times 10^{-18}$, but the active contact tangents are different. There is a significant difference in force under pyramidal friction compared to `qacc`, with `condim=1` and isotropic elliptic consistent.",
+    "source.locator": "MuJoCo #2774 Detailed correction and sim-to-real experiment 5082490175; maintainers re-opened 5104526098",
+    "source.title": "The numerical difference in the tangential base of MJX plane-capsule fallback still needs verification by the maintainer",
+    "terms.0": "Contact Frame (Contact Coordinate System) (接触坐标系)",
+    "terms.1": "Orthonormal Basis (正交归一基)",
+    "terms.2": "Pyramidal Friction Cone (金字塔摩擦锥)",
+    "terms.3": "Warm-Start Preheating Acceleration (预热加速度)",
+    "title": "Should `b_norm < 0.5` fallback be considered as confirmed root cause and directly replaced when there is inconsistency in force or `qacc` during contact between MJX and MuJoCo CPU on plane-capsule?"
+  }
+}

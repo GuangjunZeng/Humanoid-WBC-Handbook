@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.255.83cc0453f840",
+  "schema_version": 1,
+  "source_fingerprint": "3ad7dff9292a020784573bb66e42ff4e448ecab98b6a0022bbfea4c50e29e06a",
+  "translations": {
+    "answer": "Issue #255 and merge PR #256 change the negative epsilon in the old certificate criterion to positive epsilon, using a separate `OSQP_DIVISION_TOL` to determine if the certificate vector is non-zero; the documentation is aligned with the final paper. This change was officially integrated into `develop-0.x`. Due to later #485 reporting a positive epsilon in the singleton feasible region, this experience only confirms the historical merge with the original MRE, and does not prove that the criterion covers all degenerate boundary cases.",
+    "applicability": "Directly corresponds to the 2020 `develop-0.x` fix; subsequent versions and singleton feasible cases must be validated together with #485.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. There is formal documentation or precise reference to an independent reproducibility.",
+    "details.attempts.0": "PR #256 replaces the primal/dual conditions with a positive epsilon and uses `OSQP_DIVISION_TOL` to handle zero norm; the documentation is synchronized.",
+    "details.diagnostics.0": "The code, final paper Section 3.4, and current certificate inequality are compared; the degenerate and singleton feasible region regression sets are preserved.",
+    "details.effective_fixes.0": "The historical upgrade to `develop-0.x` containing the merge commit `fad7cf2` fixes the old non-detection; this does not prove that all degenerate boundaries are correct.",
+    "details.environments.0": "2020 `develop-0.x` branch; Issue provides a scalar MRE from CVXPY, PR provides a direct OSQP Python MRE.",
+    "details.limits.0": "PR did not include a dedicated test file in the visible diff; #485 later reported a positive epsilon in the singleton feasible region, so this issue must retain the conflict.",
+    "details.outcomes.0": "PR was approved and merged; the author/maintainer provided a minimal example that failed before the fix.",
+    "details.problem_statements.0": "Why might the old OSQP not detect a simple infeasible QP? What was merged into `develop-0.x`?",
+    "details.safety_notes.0": "After upgrading the solver, test explicitly infeasible, ordinary feasible, and singleton/deg feasible QP cases.",
+    "details.suspected_causes.0": "The maintainer confirmed that the old code had a negativity test written as a negative epsilon, and used `eps_*_inf` to itself determine the certificate vector non-zero.",
+    "details.symptoms.0": "For any `eps_prim_inf`, an infeasible scalar problem can be constructed with an interval equal to that epsilon, making the old condition unable to produce a certificate.",
+    "source.locator": "OSQP #255: maintainer confirms 639451057/639472858; merged PR #256",
+    "source.title": "The old OSQP infeasibility certificate fix has been merged but later raised boundary concerns.",
+    "terms.0": "Infeasibility certificate (不可行证书)",
+    "terms.1": "Primal infeasibility tolerance (原始不可行容差)",
+    "terms.2": "Strict inequality (严格不等式)",
+    "terms.3": "Degenerate feasible region (退化可行域)",
+    "title": "What fix was merged into the project when it failed to identify problems like `x ≤ 0, x ≥ 1e-4`?"
+  }
+}

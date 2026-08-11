@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2177.6ae001825c69",
+  "schema_version": 1,
+  "source_fingerprint": "ba368803cc530190b09ecec90a58ca8094c79ed9a4d50cf41ce80050a4883040",
+  "translations": {
+    "answer": "The original author confirmed, based on multiple configuration tests and contributions from project contributors, that the floating-base velocity expression in the WORLD frame for a composite root joint involving JointModelTranslation and JointModelSphericalZYX. This conclusion cannot be applied to FreeFlyer, as FreeFlyer's LOCAL velocity convention belongs to a different joint model. The thread lacks complete extended scripts and numerical outputs, so the upgraded version should be retested.",
+    "applicability": "Applies to JointModelComposite where JointModelTranslation is sequentially added with JointModelSphericalZYX; other root joints need individual verification.",
+    "credibility.rationale": "There is engineering record for environment, processing steps, and results, but formal cross-validation or independent retesting is missing.",
+    "details.attempts.0": "The original author tested multiple configurations and checked the Jacobian base block.",
+    "details.attempts.1": "Project contributors provided an official floating-base velocity viewer; the original author extended it and reported the test conclusion.",
+    "details.diagnostics.0": "Do not automatically apply FreeFlyer's LOCAL velocity convention to other composite root joints.",
+    "details.diagnostics.1": "Extend the official floating-base velocity viewer to the target root joint and observe world/local velocity arrows or Jacobian blocks under different base orientations.",
+    "details.effective_fixes.0": "Explain the state and Jacobian using the WORLD-frame velocity convention for JointModelTranslation+JointModelSphericalZYX, and do not reuse FreeFlyer's LOCAL-frame assumptions.",
+    "details.environments.0": "Pinocchio C++ (with custom URDF), JointModelComposite (Translation+SphericalZYX); the thread references commit 080720a's official Python viewer, and no release version or OS is provided.",
+    "details.limits.0": "The thread did not include the extended script, configuration vector, or numerical output; different Pinocchio versions should re-run the viewer and numerical comparison.",
+    "details.limits.1": "The conclusion is specific to JointModelTranslation+JointModelSphericalZYX and does not extrapolate to any other JointModelComposite.",
+    "details.limits.2": "FreeFlyer's LOCAL convention is still a different joint model's semantics; they cannot be mutually covered.",
+    "details.outcomes.0": "The original author confirmed that the floating-base velocity is in the WORLD frame for the composite root joint.",
+    "details.problem_statements.0": "When using Translation+SphericalZYX instead of FreeFlyer as the root joint in Pinocchio, what frame does the generalized base velocity belong to?",
+    "details.safety_notes.0": "Before sending base velocity to real-world WBC, perform frame unit testing on a rotating base; incorrect frames can contaminate velocity feedback, momentum, and contact constraints.",
+    "details.suspected_causes.0": "Different root joint models define different generalized velocity parameterizations; the original author's test confirmed that Translation+SphericalZYX uses WORLD-frame base velocity.",
+    "details.symptoms.0": "When obtaining the end-effector Jacobian in the LOCAL_WORLD_ALIGNED frame, the top-left 3×3 block of the base linear velocity is always the identity matrix for random configurations.",
+    "source.locator": "Pinocchio #2177 comment 2007410825 linked PR #2143; comment 2008762724 by original author provides test conclusion.",
+    "source.title": "Generalized base velocity expressed in the WORLD frame for Composite Root Joint using JointModelTranslation+JointModelSphericalZYX",
+    "terms.0": "Generalized velocity (广义速度)",
+    "terms.1": "Composite root joint (复合根关节)",
+    "terms.2": "World frame (世界坐标系)",
+    "terms.3": "Local frame (局部坐标系)",
+    "terms.4": "Local-world-aligned frame (局部原点世界对齐坐标系)",
+    "title": "In Pinocchio, when using JointModelTranslation+JointModelSphericalZYX as a composite root joint, what frame does the generalized base velocity belong to?"
+  }
+}

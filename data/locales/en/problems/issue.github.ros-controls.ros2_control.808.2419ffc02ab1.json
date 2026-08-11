@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.808.2419ffc02ab1",
+  "schema_version": 1,
+  "source_fingerprint": "cdffe6a5920a361c4855fb458f3b5cc5be528845f851ef504ce1bbbeeb7deb64",
+  "translations": {
+    "answer": "Remove print statements from real-time loops and segment delays into read/controller update/write. The author identified the joint_trajectory_controller issue, finding that apt packages had an even 2000–3000 us, while the source code from master had less than 500 us. Robot jitter was significantly reduced. The maintainer confirmed the recent improvement was not synced to Humble. Since the post did not provide the master commit, the actual use case should fix the source code and re-run worst-case delay testing, not directly following the master.",
+    "applicability": "Applicable to the controller version difference in ROS 2 Humble/PREEMPT_RT. Current release requires re-validation.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author compared the joint_trajectory_controller from apt with the source code from master.",
+    "details.diagnostics.0": "Avoid using std::cout/print as the only measurement method in each real-time loop; instead, use low-disturbance trace with pre-allocated buffer.",
+    "details.diagnostics.1": "Measure separately for read, controller update, and write, and record specific controller and configuration.",
+    "details.diagnostics.2": "Compare the release binary with a fixed source code submission, not just the master.",
+    "details.effective_fixes.0": "After using the source code joint_trajectory_controller, the measured execution time dropped from 2000–3000 us to less than 500 us, and robot jitter was significantly reduced.",
+    "details.environments.0": "Ubuntu 22.04; ROS 2 Humble; Linux 5.15.55-rt48 PREEMPT_RT; FIFO priority 90; 1 ms loop; joint_trajectory_controller, hand controller, joint_state_broadcaster.",
+    "details.limits.0": "The master is a moving target; actual commit must be recorded. The 500 us cannot be considered as a guarantee for all hardware.",
+    "details.limits.1": "The print statements within the loop itself introduce disturbance; the original thread numbers are only for reference in this environment.",
+    "details.outcomes.0": "The maintainer confirmed the improvement was not synced to Humble and closed the issue; no precise patch or long-term statistics available.",
+    "details.problem_statements.0": "How to verify whether the delay is due to measurement overhead or controller version when ros2_control 1 ms loop has occasional milliseconds delay?",
+    "details.safety_notes.0": "Real-time controller upgrades must be validated under target load with period distribution, worst-case delay, and deadline miss regression before connecting high-power actuators.",
+    "details.suspected_causes.0": "The maintainer confirmed the recent performance improvement was not synced to Humble; the thread did not provide a specific commit.",
+    "details.symptoms.0": "measured_period was occasionally 2–6 ms; the author localized the delay to the joint_trajectory_controller within controller_manager update.",
+    "source.locator": "ros2_control #808 measurement warning 1242789008, author compared 1248844616/1248848453, maintainer confirmed 1264354371",
+    "source.title": "ROS 2 Humble control loop jitter: distinguish print overhead from release backport",
+    "terms.0": "Control-loop jitter (控制循环抖动)",
+    "terms.1": "Preemptive real-time kernel (抢占实时内核)",
+    "terms.2": "Worst-case execution time (WCET) (最坏执行时间)",
+    "terms.3": "Release backport (发行版回移)",
+    "title": "ROS 2 Humble 1 ms ros2_control loop has 2–3 ms controller update delay; what validation was done?"
+  }
+}

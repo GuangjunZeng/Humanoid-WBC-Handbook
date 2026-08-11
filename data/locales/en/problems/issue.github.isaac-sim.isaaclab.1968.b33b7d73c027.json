@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1968.b33b7d73c027",
+  "schema_version": 1,
+  "source_fingerprint": "886db18a54e628661c82725220346ca7f11f0d329659b824ce53a88cecfbcd09",
+  "translations": {
+    "answer": "The original poster explicitly states that the ContactSensor always returns contact forces in the world frame. To obtain the local frame, one must first obtain the relative pose of the target body in the world frame from body_state_w, ContactSensor.track_pose, or the FrameTransformer, and then rotate the force vector using the isaaclab.utils.math module. The FrameTransformer itself only provides the pose transformation, and does not directly convert forces. The original thread does not provide complete formulas and retests, and has not answered the coordinate system of get_measured_joint_forces, so the implementation must use known direction loads to validate the rotation direction and sign.",
+    "applicability": "Applies to the IsaacLab ContactSensor world frame field in this thread; specific math function names and quaternion conventions must be verified against the target version.",
+    "credibility.rationale": "No reproducible retest records have been formed.",
+    "details.attempts.0": "The maintainer suggests using math utilities; the relative pose can be obtained from the FrameTransformer, body_state_w, or track_pose.",
+    "details.diagnostics.0": "Confirmed that the field name suffix _w indicates the world frame; the sensor's relative pose in the world frame must be obtained, and then the force vector is rotated.",
+    "details.environments.0": "Isaac Lab ContactSensor; Shadow Hand fingertip; specific version not mentioned.",
+    "details.limits.0": "The original post does not provide complete quaternions, active/passive rotation conventions, or retests; the coordinate system of get_measured_joint_forces is not answered.",
+    "details.outcomes.0": "The world frame output and available pose source have been confirmed by the contributor; the precise transformation code and joint force coordinate system issue is not closed in the original thread.",
+    "details.problem_statements.0": "How to convert the net_forces_w/force_matrix_w to the fingertip local frame, and what coordinate system does get_measured_joint_forces belong to?",
+    "details.safety_notes.0": "Force control must be validated with known direction loads before use.",
+    "details.symptoms.0": "The API only directly provides world frame contact forces; the user needs to express the forces in the fingertip local frame.",
+    "source.locator": "Issue #1968, contributor replies to issuecomment-2692423150",
+    "source.title": "ContactSensor outputs always in world frame, local forces need to be rotated using the body pose.",
+    "terms.0": "World coordinate system (world frame) (世界坐标系)",
+    "terms.1": "Body coordinate system (body frame) (刚体坐标系)",
+    "terms.2": "Contact force (contact force) (接触力)",
+    "terms.3": "Coordinate transformer (FrameTransformer) (坐标变换器)",
+    "title": "How to convert IsaacLab ContactSensor world frame contact forces to fingertip or body local frame?"
+  }
+}

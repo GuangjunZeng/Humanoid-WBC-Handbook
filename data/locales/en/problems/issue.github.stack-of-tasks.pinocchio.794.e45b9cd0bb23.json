@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.794.e45b9cd0bb23",
+  "schema_version": 1,
+  "source_fingerprint": "7664495278ef54d1552c268134eae1bb8edfffb8eeda3c827662e002c4ec93c4",
+  "translations": {
+    "answer": "This is the expected design. The project contributor explicitly states that continuous joints use SO(2) complex representation, i.e., cos(theta) and sin(theta), so the configuration dimension nq is 2; joint velocity remains a single theta_dot, so nv is 1. It follows the same idea as spherical joints using quaternions for configuration but a smaller tangent space dimension. The state and index should be constructed using the model's provided nq and nv.",
+    "applicability": "Applies to the Pinocchio model of continuous joints from URDFs; revolute joints still use a single angular configuration.",
+    "credibility.rationale": "Engineering records exist for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner changed 'continuous' to 'revolute' for comparison; the project contributor explains the two configurations and the common single velocity dimension.",
+    "details.diagnostics.0": "Check model.nq, model.nv, and joint model type; do not directly infer the configuration vector length from a fixed number of joints in URDFs.",
+    "details.effective_fixes.0": "This is not a bug to fix; construct the configuration and velocity according to the joint model's nq/nv, and represent continuous angles as valid cos(theta) and sin(theta).",
+    "details.environments.0": "Minimum C++/URDF example; Pinocchio 2019 thread; specific release version not stated.",
+    "details.limits.0": "Original thread only explained the representation; does not provide how to map upper/lower bounds to the tangent space; limit issues should be handled separately.",
+    "details.outcomes.0": "The questioner confirmed understanding; the maintainer is preparing to update the documentation with this information.",
+    "details.problem_statements.0": "Why does a URDF continuous joint cause model.nq to increase by 2, while a revolute joint only increases by 1?",
+    "details.suspected_causes.0": "Pinocchio uses SO(2) representation (cos(theta), sin(theta)) for continuous joints, rather than storing a single theta.",
+    "details.symptoms.0": "A single continuous joint results in model.nq == 2, causing the test to fail as expected for nq == 1.",
+    "source.locator": "Issue #794, project contributor replies to issuecomment-490049010 and issuecomment-490050573",
+    "source.title": "Pinocchio uses cosθ, sinθ for continuous joints, hence nq=2, nv=1",
+    "terms.0": "Continuous joint (连续关节)",
+    "terms.1": "Configuration space (配置空间)",
+    "terms.2": "Tangent space (切空间)",
+    "terms.3": "Two-dimensional special orthogonal group, SO2 (二维特殊正交群)",
+    "title": "Why does Pinocchio report nq=2, nv=1 for a continuous joint, and how should configuration and velocity be understood?"
+  }
+}

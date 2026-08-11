@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2074911470471856133.d544d25811c2",
+  "schema_version": 1,
+  "source_fingerprint": "ec4ab39361a5d5bca4c326f612fbdcfdb75a50bd8f5f62c3b808fb7e68183859",
+  "translations": {
+    "answer": "Static IK only indicates that a certain posture may have a joint solution, but does not necessarily satisfy task conditions and dynamic reachability. This post constructs a dynamic reachability map by sampling 20 million trajectories and postures per arm, and verifies it with an IK solver; however, there is no real-world result, so it is only a candidate method.",
+    "applicability": "Suitable for selecting operational targets in two-arm or full-body manipulation.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Construct a dynamic reachability graph based on task conditions.",
+    "details.diagnostics.0": "Verify the sampled reachability graph using an IK solver.",
+    "details.effective_fixes.0": "Filter candidate targets before planning using the reachability graph, as the post suggests.",
+    "details.environments.0": "Humanoid two-arm operation framework; 20 million trajectories and postures per arm sampled.",
+    "details.limits.0": "Lack of sampling range, IK error, dynamic constraints, and hardware results.",
+    "details.outcomes.0": "Completed open-source implementation, but no real-world success rate.",
+    "details.problem_statements.0": "The operational target may be kinematically reachable but dynamically unexecutable.",
+    "details.safety_notes.0": "Reachability graph cannot replace collision, torque, velocity, and self-collision checks.",
+    "details.suspected_causes.0": "Only considering static IK does not cover task conditions and dynamic reachability.",
+    "details.symptoms.0": "The post does not provide failure case examples.",
+    "media_summaries.0": "The screenshot video frame includes scene point clouds and humanoid models, showing a colored reachable region; no legend, error threshold, or collision information is present.",
+    "source.locator": "Main post text",
+    "source.title": "Using 20 million trajectories and postures per arm to construct task condition dynamic reachability graph",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Joint Torque (关节力矩)",
+    "terms.2": "Solver (求解器)",
+    "title": "Why is static IK not sufficient in whole-body manipulation?"
+  }
+}

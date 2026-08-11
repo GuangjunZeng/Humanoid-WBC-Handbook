@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2053.d7c38d5dca7a",
+  "schema_version": 1,
+  "source_fingerprint": "3c415f1e42f719dc05f43dd2605ce9823899d6272c9579a033e04f99d2dbb9c7",
+  "translations": {
+    "answer": "The author used Translation+SphericalZYX with JointModelComposite, complete URDF, and fixed q/v to reproduce the inconsistency; the maintainer confirmed the issue was due to incomplete support of JointModelComposite at the time and stated the plan to fix it. No fixes were applied to the PR, version, or retest, and the issue remains open. Therefore, the current state can only be considered as a confirmed limitation and diagnostic entry for the preview environment, and it cannot be claimed that upgrading or replacing interfaces has resolved the issue.",
+    "applicability": "Strictly limited to the original post Ubuntu 22.04 x86-64, pinocchio3-preview, and the provided JointModelComposite; other versions require re-running the same consistency check.",
+    "credibility.rationale": "The solution has not closed or there is a conflict.",
+    "details.attempts.0": "The author provided a runnable minimal code and complete model; the maintainer acknowledged the support gap and stated they will attempt to fix it.",
+    "details.diagnostics.0": "The code was run with the minimal URDF and fixed q/v, and the computeCoriolisMatrix, nonLinearEffects, and computeGeneralizedGravity were called in sequence, with each component compared.",
+    "details.environments.0": "Ubuntu 22.04 Intel x86-64; pinocchio3-preview; the author provided complete Python code, URDF, and output.",
+    "details.limits.0": "The issue remained open as of the check, and no link to the fix PR/commit, fix version, or regression test was provided.",
+    "details.limits.1": "Cannot infer that the current stable version still has the same issue, and using other root joints cannot be considered as a verified fix.",
+    "details.outcomes.0": "The root cause was attributed to the incomplete support of JointModelComposite, but no fix was applied.",
+    "details.problem_statements.0": "Why does C(q,v)v + g(q) not match nonLinearEffects when using Translation+SphericalZYX with JointModelComposite?",
+    "details.suspected_causes.0": "The maintainer confirmed that the issue was not fully supported by JointModelComposite at the time.",
+    "details.symptoms.0": "Multiple components of data.nle and data.C@v_home + data.g showed visible differences under the same q and v.",
+    "source.locator": "Issue #2053, complete reproduction see text; maintainer's reason confirmed in issuecomment-1713511072",
+    "source.title": "Inconsistency between C(q,v)v + g(q) and nonLinearEffects in pinocchio3-preview with JointModelComposite",
+    "terms.0": "Composite joint model (复合关节模型)",
+    "terms.1": "Coriolis matrix (科里奥利矩阵)",
+    "terms.2": "Generalized gravity (广义重力)",
+    "terms.3": "Nonlinear effects, NLE (非线性效应)",
+    "title": "Inconsistency between C(q,v)v + g(q) and nonLinearEffects in pinocchio3-preview with JointModelComposite; what did the original thread confirm?"
+  }
+}

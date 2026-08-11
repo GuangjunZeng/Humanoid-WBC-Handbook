@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086677871960236291.1dc652d1dcde",
+  "schema_version": 1,
+  "source_fingerprint": "f604658d2d85c8e92527d50738a52eaaeac81f4c833e9723316af78a06a5fb07",
+  "translations": {
+    "answer": "The thread shows a progress of approximately 90.3% for ω-0, while full success is approximately 81.8%. The model may have progressed the task but has not met the success criteria. Both should be reported and classified as failures, rather than focusing solely on the initial success rate.",
+    "applicability": "Applicable to whole-body multi-task/long-term sequential humanoid strategy evaluation.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The model simultaneously generates whole-body actions and predicts visual latent variables.",
+    "details.diagnostics.0": "Progress, full success, task item classification, and failure type are all reported.",
+    "details.environments.0": "40+ hours; 24 tasks; 4,827 segments; 11 real-world evaluations.",
+    "details.limits.0": "Numerical values must be verified against Paper Table 2; the post does not provide control layer failure classification.",
+    "details.outcomes.0": "Root post reports 81.8% real-world success; reply states ψ-0 at 44.5% and progress at 90.3%.",
+    "details.problem_statements.0": "A single overall success rate for a whole-body multi-task model can obscure partial completion.",
+    "details.safety_notes.0": "Overall success rate cannot substitute for torque, collision, and fall safety assessments.",
+    "details.suspected_causes.0": "The model can progress the task but does not meet the final criteria.",
+    "details.symptoms.0": "Progress at 90.3% is higher than full success at 81.8%, indicating an incomplete final segment.",
+    "media_summaries.0": "Screenshots clearly show 40+ hours, 24 tasks, 4,827 segments, and 81.8% text metrics; no Table 2 or failure distribution is present.",
+    "source.locator": "Root post and @ManpreetBola's reply to Table 2",
+    "source.title": "ω-0 Whole-Body Multi-Task Strategy: Progress and Full Success Must Be Separated",
+    "terms.0": "Joint Torque (关节力矩)",
+    "terms.1": "Center of Mass (CoM) (质心)",
+    "title": "Why Should Progress and Full Success Be Separated When Evaluating a Unified Whole-Body Policy?"
+  }
+}

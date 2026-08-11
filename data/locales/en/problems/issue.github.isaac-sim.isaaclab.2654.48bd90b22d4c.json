@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2654.48bd90b22d4c",
+  "schema_version": 1,
+  "source_fingerprint": "5195b1f890a89d537527dbb6a33c3402a92b703eaee97933357979feca65eb3c",
+  "translations": {
+    "answer": "As per the IsaacLab team, falling when no motion is detected is an expected behavior, and G1_CFG is not an automatic standing controller. A locomotion policy or other closed-loop balance control must be integrated; the team recommends starting from the H1 humanoid policy deployment template. The original thread did not provide a complete strategy for G1, so adaptation and verification remain to be done by the user.",
+    "applicability": "Applies to scenarios where only G1 articulation/asset configurations are loaded and no balance strategy is implemented; specific versions and strategy implementations need to be verified separately.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author attempted to reproduce the scenario using the tutorial and bipeds.py; the team recommends integrating the strategy into the H1 humanoid policy deployment template.",
+    "details.diagnostics.0": "Distinguish between asset/joint configuration definitions that only specify the dynamics model, and whether the scenario actually runs a locomotion or balance policy.",
+    "details.effective_fixes.0": "Integrate a locomotion policy or other closed-loop balance controller for G1, rather than just loading G1_CFG.",
+    "details.environments.0": "Isaac Lab's G1_CFG, create_scene.py, and bipeds.py; the original post did not provide precise version numbers for Isaac Lab/Isaac Sim.",
+    "details.limits.0": "The thread did not provide a strategy, training configuration, or standing verification result that can be directly used for G1; the H1 template is only a starting point.",
+    "details.outcomes.0": "The team confirmed this behavior is expected twice, and it is not considered a model bug to be fixed currently.",
+    "details.problem_statements.0": "Why does the robot tilt forward when only G1 articulation/asset configurations are loaded? Is this a model bug?",
+    "details.safety_notes.0": "When testing standing strategies in real machines, use a harness, limit torque, and emergency stop; do not directly deploy the simulation asset just because it can be loaded in simulation.",
+    "details.suspected_causes.0": "The team indicated that falling without motion or balance strategy is an expected behavior.",
+    "details.symptoms.0": "G1 cannot maintain standing in the scenario, and all three Unitree robots in bipeds.py also fall forward.",
+    "source.locator": "IsaacLab #2654 comment 2963360700 and 2967145219",
+    "source.title": "Unitree G1 only loads articulation configurations and will tilt forward without automatic standing balance.",
+    "terms.0": "Motion policy (locomotion policy) (运动策略)",
+    "terms.1": "Balance controller (balance controller) (平衡控制器)",
+    "terms.2": "Articulation configuration (articulation configuration) (关节体配置)",
+    "terms.3": "Passive falling (被动倒落)",
+    "title": "Unitree G1 loads only articulation configurations and tilts forward, should we modify the model or add control strategy?"
+  }
+}

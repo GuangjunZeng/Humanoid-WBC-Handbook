@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2369.f575fd098fbe",
+  "schema_version": 1,
+  "source_fingerprint": "cc6f0876b192874fa1b99305147aa8c47184af09420f0b5db07969caea06b560",
+  "translations": {
+    "answer": "In the fixed submission 3b6d615 of articulation.py, the ImplicitActuator branch writes actuator stiffness/damping to the simulator; other explicit actuator branches write the simulator joint stiffness/damping to 0, and the explicit actuator handles gain and torque independently. The original post team notes that this is consistent with the source code. Debugging should check the same initialization path in the target version, not assuming both URDF joint_drive and actuator gains will activate simultaneously.",
+    "applicability": "Precisely applicable to the IsaacLab submission 3b6d615; other versions must be verified against the source code.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and consistent, and there is formal documentation or independent reproducibility with exact references.",
+    "details.attempts.0": "The discussion locates the fixed source code line; the team provides a summary of the role of joint drive and actuator gains.",
+    "details.diagnostics.0": "Check in the target version articulation initialization path whether implicit and explicit branches write stiffness/damping to the simulator.",
+    "details.effective_fixes.0": "Implicit actuator writes to PhysX via the configured actuator gains; explicit actuator sets PhysX joint stiffness/damping to 0 to avoid interference with explicit torque calculation.",
+    "details.environments.0": "IsaacLab source code fixed submission 3b6d615f9aff7435fdafaa75a0d59365500a428c; Issue not providing exact Isaac Sim version.",
+    "details.limits.0": "This card only confirms the fixed submission's execution path; it does not extrapolate to all historical or future versions.",
+    "details.limits.1": "The original comment also discusses the default None value and tuning suggestions; this card does not incorporate these unverified additional suggestions.",
+    "details.outcomes.0": "The fixed submission's source code is consistent with the team's summary, clarifying the gain writing paths for both implicit and explicit actuators.",
+    "details.problem_statements.0": "How do the joint drive PD gains interact with implicit/explicit actuator configurations in Isaac Lab?",
+    "details.safety_notes.0": "Record the actual written simulator stiffness, damping, and effort limits before deployment to avoid double PD gains or unexpected zero gains.",
+    "details.symptoms.0": "The URDF importer and actuator configuration both report stiffness/damping; the caller is unsure if they are added, overwritten, or ignored.",
+    "source.locator": "IsaacLab #2369 comment 2912221637 locates the source code; comment 2941414534 provides the team's summary; fixed submission articulation.py lines 1360-1390",
+    "source.title": "Isaac Lab's implicit/explicit actuator handling of PhysX joint drive stiffness and damping differs",
+    "terms.0": "Joint drive (关节驱动)",
+    "terms.1": "Implicit actuator (隐式执行器)",
+    "terms.2": "Explicit actuator (显式执行器)",
+    "terms.3": "Stiffness/damping gains (刚度/阻尼增益)",
+    "title": "How does Isaac Lab's implicit/explicit actuator handle PhysX joint drive stiffness and damping?"
+  }
+}

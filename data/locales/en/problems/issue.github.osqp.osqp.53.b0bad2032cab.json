@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.53.b0bad2032cab",
+  "schema_version": 1,
+  "source_fingerprint": "d017e3389693e639aaa8122b4f0c62a88c6018b4d5b25b59b2c4e4628a4d5697",
+  "translations": {
+    "answer": "Cannot. The maintainer tested `cond(P) ≈ 9.86 × 10^6` on the author's data and noted that the heuristic scaling of OSQP may not fully resolve ill-conditioned problems. The default tolerance of first-order methods is more lenient than that of the reference solver. The experiments in threads were tightened to `eps_abs/eps_rel = 1e-9`, and `max_iter` was increased as needed. Since the author did not report the final result, this is a data-supported diagnostic, not a general parameter answer.",
+    "applicability": "Directly applicable to OSQP 0.3.0 and the original poster's ill-conditioned QP; other issues should be re-evaluated with respect to condition number and real-time budget.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The maintainer provided a complete code with `eps_abs=1e-9` and `eps_rel=1e-9`, and noted that `max_iter` might need to be increased.",
+    "details.diagnostics.0": "First calculate the condition number and scale of the Hessian and constraints, then compare the absolute and relative termination tolerances of each solver, rather than just comparing status.",
+    "details.effective_fixes.0": "No author-confirmed final fix; tight tolerances and pre-scaling are only validation steps on the target data.",
+    "details.environments.0": "macOS High Sierra 10.13.3, Python 3.6, OSQP 0.3.0; the author provided simplified data and notebook.",
+    "details.limits.0": "The original post did not report new iteration counts, error, or cycle random failure disappearance; cannot write `1e-9` as a general WBC configuration.",
+    "details.outcomes.0": "The maintainer obtained a more accurate result in the attached file; Issue was closed after a month with no follow-up.",
+    "details.problem_statements.0": "When OSQP and CVXOPT produce significantly different solutions and objective values for the same QP, what should be checked first?",
+    "details.safety_notes.0": "True machine control should set both solver time limits and residual thresholds; do not unbound iterations to achieve cross-solver numerical consistency.",
+    "details.suspected_causes.0": "The maintainer calculated `cond(P) = 9,860,981.74` from the attached file, suggesting that the ill-conditioned scale and OSQP's default relatively loose tolerance are both contributing to the discrepancy.",
+    "details.symptoms.0": "Significantly different solutions and objective values from OSQP, CVXOPT, and CVXPY-ECOS; initially described as a non-deterministic failure in the cycle.",
+    "source.locator": "OSQP #53 maintainer's diagnostic and full code 375153096",
+    "source.title": "OSQP and CVXOPT Solution Discrepancy: Quantify Condition Number and Termination Tolerance",
+    "terms.0": "Condition number (条件数)",
+    "terms.1": "Internal scaling (内部缩放)",
+    "terms.2": "Absolute tolerance (绝对容差)",
+    "terms.3": "Relative tolerance (相对容差)",
+    "title": "Can One Solely Attribute the Solution Discrepancy Between OSQP and CVXOPT to Solver Implementation Errors?"
+  }
+}

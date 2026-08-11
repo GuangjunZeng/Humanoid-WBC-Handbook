@@ -35,6 +35,47 @@ body {
     linear-gradient(180deg, #ffffff 0%, var(--background) 72%);
 }
 
+.language-switcher {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 3;
+  display: inline-flex;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid rgba(185, 201, 216, 0.88);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(35, 65, 91, 0.07);
+  backdrop-filter: blur(12px);
+}
+
+.language-switcher button {
+  min-width: 48px;
+  height: 34px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  transition: color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+}
+
+.language-switcher button[aria-pressed="true"] {
+  background: #315f86;
+  box-shadow: 0 2px 8px rgba(49, 95, 134, 0.2);
+  color: #ffffff;
+}
+
+.language-switcher button:focus-visible {
+  outline: 3px solid rgba(49, 95, 134, 0.22);
+  outline-offset: 2px;
+}
+
 .kinematics-background {
   position: fixed;
   inset: 0;
@@ -261,6 +302,17 @@ mark {
 }
 
 @media (max-width: 640px) {
+  .language-switcher {
+    top: 14px;
+    right: 16px;
+  }
+
+  .language-switcher button {
+    min-width: 44px;
+    height: 32px;
+    padding: 0 9px;
+  }
+
   .page-shell {
     width: min(100% - 32px, 880px);
   }

@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "EntangledQuantum"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2807",
+  "captured_at": "2026-08-11T21:22:00+08:00",
+  "content_sha256": "72fcb5fe542138396443dc1878d4cd40c096c85c304568f1c6e23f599b097bff",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 7 条评论；没有用视频判断结果，也没有把超大 effort limit 写成实机建议。",
+    "components": [
+      "Isaac Lab",
+      "Franka Panda",
+      "JointVelocityAction",
+      "ImplicitActuator",
+      "stiffness",
+      "damping",
+      "effort limit"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区用户在旧版本中使用 stiffness=0、damping=50、effort_limit=1e9、JointVelocityAction scale=1，并建议必要时限制 joint velocity。"
+      ],
+      "diagnostics": [
+        "先记录 Isaac Lab/Isaac Sim 与 robot asset 精确版本，避免跨版本直接复制 actuator 配置。",
+        "检查 velocity action 下 implicit actuator 的 stiffness、damping、effort limit 和 joint velocity limit。"
+      ],
+      "effective_fixes": [
+        "该用户报告用上述配置完成 PPO reach 训练并可直接发送速度命令。"
+      ],
+      "environments": [
+        "问题环境：Isaac Lab 2.1.0 commit 3d6f55b、Isaac Sim 4.5.0、Ubuntu 24.04.2、NVIDIA A10。",
+        "workaround 环境：IsaacLab 1.4.1、IsaacSim 4.2.0、PPO reach task；硬件细节未给。"
+      ],
+      "limits": [
+        "effort_limit=1e9 是仿真配置，不是实机安全参数。",
+        "旧版本的配置不能视为 Isaac Lab 2.1/Isaac Sim 4.5 或 5.0 的通用答案。",
+        "视频未用于本卡结论，结果只采用评论中的文字报告。"
+      ],
+      "outcomes": [
+        "社区用户环境中得到可用结果；原作者的 2.1.0/4.5.0 环境没有复测闭环。"
+      ],
+      "problem_statements": [
+        "Franka 在 gravity enabled 下使用 JointVelocityAction 不稳定时，有哪些已报告的版本化配置？"
+      ],
+      "safety_notes": [
+        "禁止把 1e9 effort limit 迁移到实机；实机应使用厂家力矩/速度限制、急停和逐级增益测试。"
+      ],
+      "suspected_causes": [
+        "原帖作者认为 position target 与重力补偿/增益设置共同导致异常；线程没有维护者确认这一因果。"
+      ],
+      "symptoms": [
+        "零或非零速度命令下，Franka 关节不稳定且不能按期望跟踪速度。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "一位用户在 IsaacLab 1.4.1、IsaacSim 4.2.0 的 PPO reach 任务中使用 stiffness=0、damping=50、effort_limit=1e9，并把 JointVelocityAction 设为 scale=1、use_default_offset=True；他报告可以直接发送速度命令，并建议过快时限制 joint velocity。原作者的 2.1.0/4.5.0 环境没有复测这套配置，维护者也未确认它是框架通用解法；尤其 1e9 仅可视为仿真 workaround，绝不能用于实机限幅。",
+        "applicability": "精确对应 IsaacLab 1.4.1/IsaacSim 4.2.0 的仿真 PPO reach；其他版本和实机必须重新验证。",
+        "bilingual_terms": [
+          "关节速度动作（joint velocity action）",
+          "隐式执行器（implicit actuator）",
+          "重力补偿（gravity compensation）",
+          "力矩上限（effort limit）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal.franka_joint_velocity_action_2807",
+        "problem_title_zh": "Franka JointVelocityAction 的版本化增益配置",
+        "question_zh": "Franka 的 JointVelocityAction 在重力开启时不稳定，帖子中哪套配置实际报告过结果？",
+        "source_locator": "IsaacLab #2807 社区结果 3018405585 与精确配置 3026762388",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2807#issuecomment-3026762388",
+        "verification_refs": [
+          {
+            "locator": "同一用户用文字报告 PPO reach 的速度命令控制结果；本卡不依赖视频",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2807#issuecomment-3018405585"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2807",
+    "query": "Isaac Lab Franka JointVelocityAction gravity stiffness damping velocity control",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Franka Panda in simulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal",
+    "selected_comments": [
+      {
+        "text": "社区用户给出 IsaacLab 1.4.1/IsaacSim 4.2.0 的完整参数和结果；原作者未在 2.1.0/4.5.0 复测。"
+      }
+    ],
+    "wbc_relevance_reason": "速度动作最终经过隐式执行器与重力负载，增益和限幅配置会改变关节跟踪稳定性，也可能影响学习控制或 WBC 的底层接口。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2807",
+  "summary": "IsaacLab #2807 报告 2.1.0/Isaac Sim 4.5 下 Franka JointVelocityAction 在重力开启时不稳定。另一位用户给出其在 IsaacLab 1.4.1/Isaac Sim 4.2.0 的 PPO reach 训练配置：stiffness=0、damping=50、effort_limit=1e9、scale=1，并建议限制关节速度；他用文字报告能直接发送速度命令。原作者没有复测这套旧版本配置，维护者只建议转到 Isaac Sim 5.0。",
+  "title": "Franka JointVelocityAction 的可用配置依赖 Isaac Lab 版本与执行器参数",
+  "version": null
+}

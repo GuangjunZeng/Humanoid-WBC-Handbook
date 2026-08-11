@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "forrestlaine"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/485",
+  "captured_at": "2026-08-12T00:06:00+08:00",
+  "content_sha256": "7f285ed4584cb77e3e308e1138251c8a3ed4d11e1d2596c6ba904b3f60bc9cdf",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 3 条评论，并与 #255/PR #256 交叉；没有把用户本地改动写成正式修复。",
+    "components": [
+      "OSQP",
+      "singleton feasible region",
+      "primal infeasibility certificate",
+      "epsilon sign"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "一位作者愿提交 PR 但等待维护者解释；第二位用户本地改符号后报告可求得 singleton 解。"
+      ],
+      "diagnostics": [
+        "对退化 QP 同时验证 certificate 的严格数学条件、返回 `v`、已知 singleton 点和不同 epsilon 符号的 A/B。"
+      ],
+      "effective_fixes": [
+        "没有已合并修复；本地改符号只是用户 A/B，且可能重新引入 #255 的 non-detection。"
+      ],
+      "environments": [
+        "Issue 固定到 commit `5dab81d` 的 `src/auxil.c`；第二用户固定到 commit `e5f1e50`；未给完整 QP MRE。"
+      ],
+      "limits": [
+        "缺少公开完整 MRE、目标 release 和维护者结论；不能建议直接 revert PR #256。"
+      ],
+      "outcomes": [
+        "截至采集时 Issue open、无人维护者答复；#255 与 #485 形成双向边界冲突。"
+      ],
+      "problem_statements": [
+        "PR #256 的正 epsilon certificate check 是否会把 singleton feasible problem 错判为 primal infeasible？"
+      ],
+      "safety_notes": [
+        "WBC solver 回归集必须同时包含 singleton feasible 与间隔很小的 infeasible QP；任一类型失败都应阻止升级。"
+      ],
+      "suspected_causes": [
+        "作者认为 `lhs < +eps·||v||` 允许 lhs 为零，可能放宽到错误 certificate；维护者未确认。"
+      ],
+      "symptoms": [
+        "两位用户报告 singleton feasible region 被判 primal infeasible；第二位称改 epsilon 符号后找到解。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "目前不能把它当作通用修复。#485 的数学质疑指出正 epsilon check 可能接受 `lhs=0` 的 certificate，两位用户报告 singleton case，第二位本地改符号后成功；但没有完整公开 MRE或维护者确认。直接改回负号又可能重新引入 #255 已正式修复的“小间隔不可行问题无法终止”。应把两类 QP 放进同一回归集，并在维护者/正式补丁出现前保持 `conflicting`。",
+        "applicability": "仅作为 singleton/退化可行域的问题线索；任何本地符号修改都必须同时回归 #255 的 infeasible MRE。",
+        "bilingual_terms": [
+          "单点可行域（singleton feasible region）",
+          "不可行证书（infeasibility certificate）",
+          "假阳性（false positive）",
+          "回归测试集（regression test suite）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_infeasibility_epsilon_sign_255_485",
+        "problem_title_zh": "审计 OSQP 不可行证书 epsilon 符号的双向边界",
+        "question_zh": "遇到 singleton feasible QP 被 OSQP 判为 primal infeasible 时，能否直接把 PR #256 的 epsilon 符号改回去？",
+        "source_locator": "OSQP #485 原始数学质疑；第二用户 A/B 2533462232；未解决状态 2537174191",
+        "source_url": "https://github.com/osqp/osqp/issues/485#issuecomment-2537174191",
+        "verification_refs": [
+          {
+            "locator": "PR #256 的正式正 epsilon 修复与本帖建议的反向符号直接冲突",
+            "relation": "conflict",
+            "source_url": "https://github.com/osqp/osqp/pull/256"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.485",
+    "query": "OSQP singleton feasible false primal infeasible epsilon sign issue 485",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "equality- and contact-constrained WBC QPs"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "第二位用户报告本地改符号后能找到 singleton 解；原作者确认维护者一直未回应。"
+      }
+    ],
+    "wbc_relevance_reason": "刚性接触或等式约束可能把可行域压成单点；把这种退化可行问题误判为不可行会错误触发 WBC fallback。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.485",
+  "summary": "OSQP #485 质疑 PR #256 把 certificate negativity check 写成 `lhs < +eps·||v||`：当 `lhs=0` 且 `||v||>0` 时也满足该近似条件，但不代表严格的 `<0`。作者报告只有 feasible region 为 singleton 时，OSQP 会给错误的 primal infeasible certificate，并表示愿写 PR；2024 年第二位用户说在固定 commit 的同一行把 `eps_prim_inf` 符号改回后能找到 singleton 解。维护者截至采集时没有回应，Issue 仍 open。",
+  "title": "OSQP 正 epsilon 不可行判据在 singleton feasible case 上仍有公开争议",
+  "version": null
+}

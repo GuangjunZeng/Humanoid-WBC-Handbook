@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1395.3b12d119a61c",
+  "schema_version": 1,
+  "source_fingerprint": "a179fc901d6d7a50bfdc93ba3055d241bcc9b584da5e7de41ba5e60c1a17a1be",
+  "translations": {
+    "answer": "Maintainers recommend using forwardKinematics(model, data, q, v, 0*v) to zero out the generalized acceleration, then directly read the frame's classical acceleration drift using getFrameClassicalAcceleration(); the original author confirmed this is the classical Jdot*qdot required in the formula. It only returns the product/drift term, not the full Jdot matrix. Subsequent users' matrix formulas without official confirmation should not be included in this closed-loop experience.",
+    "applicability": "Applies to scenarios where only the product/drift term of classical Jdot*qdot is needed; full Jdot or other frames must be handled separately.",
+    "credibility.rationale": "There is engineering record for environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Maintainers recommend calling forwardKinematics(model, data, q, v, 0*v) and then directly obtaining the acceleration drift from getFrameClassicalAcceleration(), pointing to the corresponding controller in TSID.",
+    "details.attempts.1": "The original author confirmed that getFrameClassicalAcceleration() can directly provide the required classical Jdot*qdot.",
+    "details.diagnostics.0": "First confirm whether the controller needs full Jdot or just the product term of Jdot*qdot.",
+    "details.diagnostics.1": "Zero out qddot and run forward kinematics to make the frame's classical acceleration correspond to the velocity drift term.",
+    "details.effective_fixes.0": "When only the product term is needed, call forwardKinematics with zero qddot and use getFrameClassicalAcceleration() to read the frame's classical acceleration drift, avoiding explicit construction of Jdot.",
+    "details.environments.0": "2021 Pinocchio API, two-degree-of-freedom arm example; original post lacks version, OS, or complete code.",
+    "details.limits.0": "No thread provides full function call order, reference frame parameter, or numerical output; the target version should be verified with the smallest test case.",
+    "details.limits.1": "This shortcut only answers Jdot*qdot, not the full Jdot matrix; if full Jdot is needed, use the corresponding API or derivation.",
+    "details.limits.2": "Users' own classical dJ formulas without maintainer confirmation are not included in the answer.",
+    "details.outcomes.0": "The original author confirmed understanding and adoption of this approach; maintainers confirm it is simple and efficient.",
+    "details.problem_statements.0": "When only the product term of classical Jdot*qdot is needed, is explicit calculation of the classical Jacobian time derivative necessary?",
+    "details.safety_notes.0": "Before applying drift compensation to real systems, validate the sign, frame, and units via numerical differentiation or known trajectory; incorrect bias will directly alter the expected joint acceleration.",
+    "details.suspected_causes.0": "The issue arises from mixing spatial Jacobian derivative with classical point acceleration control formulas.",
+    "details.symptoms.0": "getFrameJacobianTimeVariation returns spatial acceleration-related quantities, but the controller formula qddot_des = pinv(J)(ac_des - Jdot*qdot) requires the classical acceleration drift.",
+    "source.locator": "Pinocchio #1395 comment 779978792 explains zeroing qddot and reading the acceleration drift; comment 779991630 confirms getFrameClassicalAcceleration(); comment 780094814 confirms maintainers.",
+    "source.title": "When task-space control only needs Jdot*qdot, how can the original thread avoid explicitly constructing Jdot?",
+    "terms.0": "Classical point acceleration (经典点加速度)",
+    "terms.1": "Spatial acceleration (空间加速度)",
+    "terms.2": "Jacobian time derivative (雅可比时间导数)",
+    "terms.3": "Acceleration drift term (加速度漂移项)",
+    "terms.4": "Task-space control (任务空间控制)",
+    "title": "When task-space control only needs classical Jdot*qdot, how can the original thread avoid explicitly constructing Jdot?"
+  }
+}

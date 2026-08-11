@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4580.6ebb9009b630",
+  "schema_version": 1,
+  "source_fingerprint": "ce6cdee7734bddb15da5f05840e51b30e20f0b05dd2801e0deebcfa8e58b3f1a",
+  "translations": {
+    "answer": "The original author explained that force is projected from the world frame to the local frame during reset, and cached vectors are applied with `is_global=False` at each step. The body frame change does not reproject, leading to world direction drift or flipping. This issue path has been positively acknowledged by maintainers. #4604 attempts a mixed representation, but it remains open, and maintainers point out that it may disrupt the semantics of permanent local forces during body rotation. The author also acknowledges this, so it cannot be considered a verified fix. The current solution is to test the minimal test with a 180° rotation of the body, and then wait or implement a fix that preserves both global and local frame semantics.",
+    "applicability": "Applies to v2.3.2 composable wrench permanent composer; other versions require running global/local two-rotation invariance tests.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author submitted PR #4604, attempting to use a mixed representation based on the world orientation and link origin; maintainers later pointed out that permanent local force tracking may still be incorrect.",
+    "details.diagnostics.0": "The trace includes tracking of world-to-local projection during reset, `composed_forces_b` caching, and subsequent application of `is_global=False`.",
+    "details.effective_fixes.0": "No merged and accepted fix is available; #4604 cannot be considered as a complete solution.",
+    "details.environments.0": "IsaacLab v2.3.2, commit 37ddf626871758333d6ed89cf64ad702aef127d0, Ubuntu 24.04, RTX 5090, CUDA 13.0, driver 580.126.09; original Isaac Sim version field in the post is placeholder text and not considered as exact 5.0.",
+    "details.limits.0": "The Isaac Sim version mentioned in the issue is a template placeholder and cannot be considered as exact 5.0.",
+    "details.limits.1": "No final workaround has been published; to restore v2.3.1 semantics, a rotation test of the body should be performed in the target version.",
+    "details.outcomes.0": "The maintainers acknowledged the detailed replication and plan to fix it; #4604 remains open, and the author replied 'you're right' to the maintainers' concern.",
+    "details.problem_statements.0": "Why does the permanent force change world direction after body rotation?",
+    "details.safety_notes.0": "Before using external forces on real machines or for safety evaluations, record the force expression, application point, and each step's actual world wrench to prevent direction flipping.",
+    "details.suspected_causes.0": "The permanent world force is only projected to the local frame during reset, and the old local vector is applied to the continuously changing new body frame.",
+    "details.symptoms.0": "The world direction of `[0,0,-10]` force changes to the opposite direction after the body rotates 180° around the x-axis; this only affects the permanent wrench composer.",
+    "source.locator": "IsaacLab #4580 detailed call trace 3871986934, maintainers' response 3889639271; open PR #4604's unresolved review",
+    "source.title": "Isaac Lab v2.3.2: Permanent World-Frame Force Changes with Body Rotation?",
+    "terms.0": "Permanent force (永久外力)",
+    "terms.1": "World frame (世界坐标系)",
+    "terms.2": "Body frame (机体坐标系)",
+    "terms.3": "Mixed representation (混合表示)",
+    "title": "How Should Permanent World-Frame Forces Be Located and Can PR #4604 Be Used in Isaac Lab v2.3.2?"
+  }
+}

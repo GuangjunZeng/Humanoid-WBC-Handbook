@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.coin-or.qpoases.48.f6179ae98316",
+  "schema_version": 1,
+  "source_fingerprint": "8cfc0dba4e2a4a07c4b8851a6b8f308a4d9738e143dbf30618f188dd9d9c636a",
+  "translations": {
+    "answer": "Cannot. The maintainer explains that a sporadic zero step is typically indicative of redundant constraints making the working-set iteration unable to proceed, and is not a standalone fault conclusion. If the final result is still infeasible, the original post provides a diagnostic sequence: verify the QP feasibility; relax bounds/constraints slightly in an offline copy that does not affect safety to check for round-off; and verify the row-major layout of matrix A. The author has not reported which step was effective, so this is a diagnostic list, not a confirmed fix.",
+    "applicability": "Applicable to initial diagnosis of qpOASES 3.2.0 logs; root cause must be reproduced using QP data.",
+    "credibility.rationale": "No reproducible record has been formed.",
+    "details.attempts.0": "The maintainer provides three diagnostic steps; the author will attempt to proceed, but no results or QP data have been published.",
+    "details.diagnostics.0": "First, independently verify QP feasibility; then slightly relax variable bounds and constraints to exclude round-off; finally, verify the row-major layout of matrix A.",
+    "details.effective_fixes.0": "No effective fix has been confirmed by the original author; relaxing bounds and reordering the matrix can only be done after confirming the specific issue.",
+    "details.environments.0": "Support record for qpOASES 3.2.0; original post did not provide QP data or system environment.",
+    "details.limits.0": "No minimal reproduction, parameter scale, or author results; cannot infer the true root cause from log sequence.",
+    "details.outcomes.0": "The record was later marked as fixed, but the thread lacks technical closure, so this card remains partial.",
+    "details.problem_statements.0": "When `Stepsize is 0` is printed and then QP infeasibility is reported, what does the zero stepsize itself indicate?",
+    "details.safety_notes.0": "Do not unconditionally relax safety constraints in real-time control; only test in offline copies or under controlled limits if it's a numerical diagnosis.",
+    "details.suspected_causes.0": "The maintainer notes that sporadic zero steps are often related to redundant constraints and linear independence of the working set; however, this thread has not localized the specific unique root cause of the infeasibility.",
+    "details.symptoms.0": "First, print a zero stepsize warning, followed by premature homotopy termination or infeasibility.",
+    "source.locator": "qpOASES #48 maintainer's diagnostic reply 589978627; author only stated they would attempt 589978633",
+    "source.title": "qpOASES zero stepsize is not a standalone fault conclusion",
+    "terms.0": "Step size (步长)",
+    "terms.1": "Homotopy path (同伦路径)",
+    "terms.2": "Working set (工作集)",
+    "terms.3": "Round-off error (舍入误差)",
+    "title": "Is the zero stepsize a root cause when qpOASES prints `Stepsize is 0` and then reports infeasibility?"
+  }
+}

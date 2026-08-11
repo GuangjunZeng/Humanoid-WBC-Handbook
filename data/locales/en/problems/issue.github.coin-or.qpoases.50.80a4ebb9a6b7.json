@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.coin-or.qpoases.50.80a4ebb9a6b7",
+  "schema_version": 1,
+  "source_fingerprint": "2201f4db665579fb78e3d2ac804fa1456c89fa42fd4f8a279fc33e7dda33e08a",
+  "translations": {
+    "answer": "Follow the already-recovered workflow for the supported qpOASES_e version, save the actual QP of the failed cycle, rather than only checking the aggregated status of ACADO. The maintainer used `qpOASES_writeIntoFileM` to export a 300×300 Hessian in the acadoWorkspace.H, and after a stand-alone qpOASES_e replay, QP 42/43 was normal, but QP 44 had an non-positive definite Hessian and was abnormal, leading to Cholesky failure; the issue was then passed back to ACADO for side-specific analysis. This result only proves the instance, and does not represent all internal errors caused by a non-positive definite Hessian.",
+    "applicability": "Directly applicable to the ACADO/qpOASES codegen instance; the method can be transferred, but each failure cycle's root cause must be independently replayed.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and precise references or independent replication have been provided.",
+    "details.attempts.0": "Enable Levenberg-Marquardt regularization; switch to qpOASES_e 3.1.1; provide ACADO export code and data.",
+    "details.diagnostics.0": "Use `qpOASES_writeIntoFileM(acadoWorkspace.H, 300, 300, ...)` to export per-cycle Hessian and QP data, and then replay in stand-alone qpOASES_e.",
+    "details.effective_fixes.0": "The thread does not provide the final fix from the ACADO side; the effective approach is to save the actual QP of the failed cycle, replay in stand-alone, and pass the abnormal Hessian to the upstream generator for localization.",
+    "details.environments.0": "ACADO code generation; initially used qpOASES 1.3, then switched to qpOASES_e 3.1.1; QP scale is 300×300.",
+    "details.limits.0": "The root cause only corresponds to the QP 44 provided by the author; other Cholesky failures may still come from different non-positive definite, numerical scale, or data damage.",
+    "details.outcomes.0": "The maintainer independently replayed QP 42/43/44, confirming the failure follows QP 44 data, and qpOASES recorded as 'wontFix' and suggested contacting ACADO.",
+    "details.problem_statements.0": "How to determine whether the error is due to the solver or the upstream QP construction in ACADO when the qpOASES reports an internal/Cholesky error?",
+    "details.safety_notes.0": "Do not rely solely on increasing the LM regularization on a real machine in production; first save the failed cycle and offline check the positive definiteness and construction chain.",
+    "details.suspected_causes.0": "The maintainer replicated the data: QP 44 Hessian is non-positive definite and visually abnormal, leading to Cholesky failure; the judgment is more likely to be an issue with the ACADO construction.",
+    "details.symptoms.0": "The old version shows error 31 (Cholesky decomposition failure); after switching to the new version, ACADO returns -1 or -2.",
+    "source.locator": "qpOASES #50 maintainer's reproduction and QP 42/43/44 diagnosis 589978804",
+    "source.title": "ACADO embedded qpOASES Cholesky failure requires exporting the specific QP Hessian",
+    "terms.0": "Cholesky decomposition (乔列斯基分解)",
+    "terms.1": "Hessian matrix (海森矩阵)",
+    "terms.2": "non-positive-definite (非正定)",
+    "terms.3": "stand-alone replay (独立重放)",
+    "title": "How to locate whether the Cholesky/internal error in ACADO codegen is due to the solver or upstream QP construction anomaly?"
+  }
+}

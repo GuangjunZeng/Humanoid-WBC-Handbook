@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086755806356082799.2504de39ca91",
+  "schema_version": 1,
+  "source_fingerprint": "683cf27dcfa26157519ecd424a557dd3e1c1621ae023bbf3f57bb5be98085427",
+  "translations": {
+    "answer": "Cannot. The response indicates that the physical G1 bottleneck may be in contact dynamics and actuators, rather than frame rate in the generation frame; validation of retargeting, control period, joint limits, and real-time stability is required. At the time, the integrated robot version was not released, so the conclusion is unresolved.",
+    "applicability": "Applies to migration from animation/simulation generator to real humanoid control stack.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The answer has not closed-loop or there is conflict; it is only forming problem clues.",
+    "details.attempts.0": "The replying party requested to wait for robot integration and perform real-time retargeting validation.",
+    "details.diagnostics.0": "Separate inference latency, contact dynamics, actuator bandwidth and retargeting success rate.",
+    "details.environments.0": "MotionBricks simulation demonstration; physical G1 is still under integration.",
+    "details.limits.0": "This is a critical reply, not an experimental report.",
+    "details.outcomes.0": "No real-time reproduction results have been achieved as of this reply.",
+    "details.problem_statements.0": "The simulation/rationale performance numbers are mistakenly considered as the control performance of G1.",
+    "details.safety_notes.0": "Actions must be checked for joint limits, velocity/force/torque, contact stability, and fall protection before deployment.",
+    "details.suspected_causes.0": "The real bottleneck is in contact and actuators, not rendering/frame rate.",
+    "details.symptoms.0": "No real-time results, reproducibility is still in progress.",
+    "source.locator": "Specific reply to MotionBricks demonstration",
+    "source.title": "15k FPS/2 ms Reasoning Equals Action Usable on G1?",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Frames Per Second (FPS) (每秒帧数)",
+    "terms.2": "Actuator (执行器)",
+    "terms.3": "Joint Torque (关节力矩)",
+    "terms.4": "Contact Constraint (接触约束)",
+    "terms.5": "Motion Retargeting (动作重定向)",
+    "title": "15k FPS, 2 ms Reasoning Can It Prove Actions Usable on G1?"
+  }
+}

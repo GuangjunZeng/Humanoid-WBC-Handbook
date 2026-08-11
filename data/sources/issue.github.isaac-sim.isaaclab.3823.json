@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "onurulusoy7"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3823",
+  "captured_at": "2026-08-11T22:32:00+08:00",
+  "content_sha256": "3636a383b0d95b8e70ee57aee35531d6050ceb51e405dec801da5cd492a8696d",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取原帖与唯一回复；原帖 ASCII diagram 只是被纠正的用户假设，不作为已验证结构图。",
+    "components": [
+      "Isaac Lab",
+      "explicit actuator",
+      "implicit actuator",
+      "PhysX PD",
+      "decimation"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者直接按源码调用路径逐项回答显式与隐式两类 actuator。"
+      ],
+      "diagnostics": [
+        "沿 `Articulation.write_data_to_sim()`、`_apply_actuator_model()` 和内部 PhysX PD gains 的写入路径检查调用频率。"
+      ],
+      "effective_fixes": [
+        "建模时把 target 通常按 control frequency 更新、explicit compute 按每次 sim-step write 调用执行、implicit PhysX PD 按每 sim step 重算三件事分开。"
+      ],
+      "environments": [
+        "原帖给出示例：policy 100 Hz、simulation 500 Hz、decimation 5；没有固定 Isaac Lab commit。"
+      ],
+      "limits": [
+        "回复使用当时 `main` 的源码链接，未固定 commit；自定义环境若不是每个 sim step 调 `write_data_to_sim`，必须按实际调用链核对。"
+      ],
+      "outcomes": [
+        "维护者确认用户图中的显式力矩恒定假设不正确；隐式 PD 每 sim step 重算的理解正确。"
+      ],
+      "problem_statements": [
+        "显式 actuator 是否只在每个 policy step 计算一次力矩并跨 decimation 保持？",
+        "隐式 PhysX PD 是否每个 sim step 重算力矩？"
+      ],
+      "safety_notes": [
+        "真机驱动器内部电流环、速度环和 Isaac Lab actuator 不是同一层级，不能直接用此频率关系替代硬件环路说明。"
+      ],
+      "suspected_causes": [
+        "问题来自把 target update frequency 与 actuator effort compute frequency 混为一谈。"
+      ],
+      "symptoms": [
+        "用户原先把显式路径画成同一力矩在 5 个 sim steps 内保持。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者明确说明：显式执行器（explicit actuator）的 effort 随每次 simulation step 调用 `write_data_to_sim()` 而重新计算；通常保持到下个控制周期的是 actuator target，而不是必然保持同一 effort。隐式执行器（implicit actuator）的 PhysX 内部 PD 也会在每个 sim step 用当前关节状态重算；显式路径会把 PhysX 内部 PD gains 设为零，使显式计算的 effort 作为 pass-through 写入模拟器。",
+        "applicability": "适用于该回复所对应的 Isaac Lab 调用链；需以目标版本和自定义 step loop 的真实 `write_data_to_sim` 调用频率复核。",
+        "bilingual_terms": [
+          "显式执行器（explicit actuator）",
+          "隐式执行器（implicit actuator）",
+          "控制降采样（decimation）",
+          "比例微分控制（Proportional-Derivative control, PD）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.isaaclab_actuator_update_rate_3823",
+        "problem_title_zh": "区分 Isaac Lab target 与 effort 更新频率",
+        "question_zh": "Isaac Lab 的显式执行器在 decimation 内会保持同一力矩，还是每个 simulation step 重算？",
+        "source_locator": "IsaacLab #3823 维护者回复 3446108549",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3823#issuecomment-3446108549",
+        "verification_refs": [
+          {
+            "locator": "维护者直接说明 explicit/implicit 两条更新路径",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3823#issuecomment-3446108549"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3823",
+    "query": "Isaac Lab explicit implicit actuator torque update every sim step decimation",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "generic Isaac Lab articulated robots"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "维护者：explicit compute 随每个 `write_data_to_sim` 调用执行；implicit PhysX PD 每个 sim step 重算，explicit 路径将内部 PD gains 清零。"
+      }
+    ],
+    "wbc_relevance_reason": "控制频率、物理步频和 actuator update rate 的误解会改变离散闭环、延迟模型以及 policy-to-torque 的验证方法。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3823",
+  "summary": "IsaacLab #3823 询问显式执行器是否只在 policy step 计算一次力矩并在 decimation 内保持。维护者明确否定：显式 actuator 的 `compute()` 随每次 simulation step 的 `write_data_to_sim` 调用执行，目标通常只在 control frequency 更新；隐式 actuator 的 PhysX PD 同样每个 sim step 按当前关节状态重算。显式路径会把内部 PhysX PD gains 设为零，因此 Isaac Lab 计算的 effort 只是传入模拟器。",
+  "title": "Isaac Lab 显式与隐式执行器在 decimation 内的更新语义",
+  "version": null
+}

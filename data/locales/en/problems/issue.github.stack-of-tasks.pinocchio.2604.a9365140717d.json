@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2604.a9365140717d",
+  "schema_version": 1,
+  "source_fingerprint": "d46924b0e171783423591558e2dc72497493f8da7bfa2bf1391dcd459d4613f7",
+  "translations": {
+    "answer": "Check the semantics of the algorithm and Python overload. The original post refers to forward dynamics without contact/constraint, which should use aba(model, data, q, v, tau). ForwardDynamics is overloaded for constrained dynamics and requires constraint_jacobian and constraint_drift. The original author's five-parameter call matched another overload, leading q to be interpreted as a tau of nv length, causing the error 'got nq=15'. The original author confirmed the fix after modification.",
+    "applicability": "Applicable to Pinocchio FreeFlyer forward dynamics without contact/constraint; constrained dynamics must use the corresponding constrained API.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The maintainer required a complete URDF, and another project member reviewed the model and API overload.",
+    "details.diagnostics.0": "Use help(pinocchio.forwardDynamics) to check the parameter list of the Python overload.",
+    "details.diagnostics.1": "First determine whether the issue is due to unconstrained forward dynamics or constrained dynamics with constraint_jacobian/constraint_drift.",
+    "details.effective_fixes.0": "Use pin.aba(model, data, q, v, tau) for unconstrained scenarios; provide constraint_jacobian and constraint_drift only when constrained dynamics are required.",
+    "details.environments.0": "Pinocchio Python; iris.urdf; JointModelFreeFlyer; model.nq=15, model.nv=10; no contacts.",
+    "details.limits.0": "This conclusion is limited to the original post's unconstrained scenario; constrained inputs cannot be discarded when there are closed chains, rigid contacts, or other constraints.",
+    "details.limits.1": "The original post did not provide Pinocchio version and final acceleration values, only confirming the API selection to resolve the size mismatch.",
+    "details.outcomes.0": "The original author confirmed the issue was resolved.",
+    "details.problem_statements.0": "tau has been created with model.nv, but pin.forwardDynamics still reports 'expected 10, got 15', and the error points to tau.size?",
+    "details.safety_notes.0": "Before real-time control, confirm the dynamics model, external forces, and contact/constraint definitions with the executor; do not rely solely on function success as proof of dynamics correctness.",
+    "details.suspected_causes.0": "The five-parameter call matched another overload of constrained forwardDynamics, leading q to be interpreted as a tau of nv length, hence the error 'got nq=15'.",
+    "details.symptoms.0": "Calling pin.forwardDynamics(model, data, q, v, tau) raises ValueError: wrong argument size: expected 10, got 15, despite tau's length being 10.",
+    "source.locator": "Pinocchio #2604: Contributor comment 2694376878 explains aba vs forwardDynamics overload; original author 2696551706 confirms resolution",
+    "source.title": "Pinocchio FreeFlyer model: tau length equals model.nv; forwardDynamics still reports q's nq size error — what should be checked?",
+    "terms.0": "Joint Space Inertia Algorithm (Articulated-Body Algorithm, ABA) (关节空间惯量算法)",
+    "terms.1": "Forward Dynamics (前向动力学)",
+    "terms.2": "Constrained Dynamics (约束动力学)",
+    "terms.3": "Function Overload (函数重载)",
+    "title": "Pinocchio FreeFlyer model: tau length equals model.nv; forwardDynamics still reports q's nq size error — what should be checked?"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.2155.107b5e89e179",
+  "schema_version": 1,
+  "source_fingerprint": "591de3c69c15915f07d1ac93e5d7f160dffcc7048c31f42637a07e46f25ec1d4",
+  "translations": {
+    "answer": "According to the final decision of the MuJoCo maintainer on this thread, the current scheme should not be built on the assumption that the MJX will soon supplement this functionality: this capability is not planned to be included in MJX. The maintainer explicitly pointed to the `ray` in MuJoCo Warp, which has official API documentation containing `height` fields. Engineering-wise, it should be re-evaluated as a candidate backend, but the original post did not prove that the two backends are fully equivalent in performance, numerical values, or interface.",
+    "applicability": "Applicable to projects needing hfield ray casting, and currently choosing between MJX and MuJoCo Warp. Specific versions and migration costs need to be verified separately.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. It has been formally documented or independently reproducible with precise reference.",
+    "details.attempts.0": "The original post proposed moving the CPU `mj_rayHfield` to MJX; subsequent contributors asked if it could be implemented.",
+    "details.diagnostics.0": "First confirm the target backend is MJX or MuJoCo Warp, then verify that the required `geom` type is supported in the API of that backend.",
+    "details.effective_fixes.0": "If the requirement is hfield ray casting, evaluate MuJoCo Warp `ray` according to the maintainer's direction; it is noted that threads did not claim MJX and MuJoCo Warp can be freely interchanged without cost.",
+    "details.environments.0": "The original request concerns MJX's `mjx.ray` and hfield geometry; it is noted that the MuJoCo version was not fixed.",
+    "details.limits.0": "This conclusion only addresses the project's public plan and backend capability selection, and does not compare performance, numerical consistency, or full migration cost between the two backends.",
+    "details.outcomes.0": "The maintainer explicitly stated that MJX does not plan to implement this function, and the issue was closed; the official MuJoCo Warp `ray` documentation lists height fields.",
+    "details.problem_statements.0": "Can MJX's `mjx.ray` be used for ray casting on hfield terrain?",
+    "details.safety_notes.0": "Verify the range, occlusion, coordinate system, and delay of the terrain sensing input before using it in the real-world Whole-Body Control (WBC).",
+    "details.suspected_causes.0": "This is a confirmed functional boundary by the maintainer, not an operational fault already identified.",
+    "details.symptoms.0": "`mjx.ray` could not generate required ray results for hfield locomotion terrain due to the absence of `hfield geom` implementation.",
+    "source.locator": "MuJoCo #2155 maintainer's final reply 4707886038",
+    "source.title": "MJX does not plan to supplement hfield ray, project points to MuJoCo Warp",
+    "terms.0": "Height Field (hfield) (高度场)",
+    "terms.1": "Ray Casting (射线检测)",
+    "terms.2": "Rangefinder (测距传感器)",
+    "terms.3": "Compute Backend (计算后端)",
+    "title": "When performing ray casting on a height field (hfield), should we wait for MJX to support `mjx.ray`?"
+  }
+}

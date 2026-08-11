@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.424.508ccbf45483",
+  "schema_version": 1,
+  "source_fingerprint": "2307e2f6aa683f29ab2f77483d65a9514765bba46b64f2fe7fd47190a5b59ef4",
+  "translations": {
+    "answer": "The matrix and CUDA demo in this thread were excluded; the original author found that `l/u` transitioned from double to float caused NaN/Inf, and Inf cast also led to NaN output in cuOSQP. Fixing the application to full float resolved the original issue. Therefore, it is recommended to check all `P/q/A/l/u` in the target dtype, especially the finite/inf encoding in bounds, before entering osqp_setup. The thread does not resolve differences between CPU/GPU and iteration speed, and full float cannot be considered as a complete performance fix.",
+    "applicability": "Applies to cuOSQP single-precision data path and MPC with infinite bounds; other GPU backends should verify their own type.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Compare `P/A`, set `P=0`, run 2×2/demo, check GPU configuration; finally, switch to full float data path.",
+    "details.diagnostics.0": "Compare element-wise `P/q/A/l/u` values, finite state, and inf encoding between CPU/GPU in the final dtype; do not only compare the source double data.",
+    "details.effective_fixes.0": "Construct bounds using the target float type before entering cuOSQP, and explicitly check `isfinite`/allowed inf representation.",
+    "details.environments.0": "cuOSQP/OSQP C interface, CUDA 11.6, Visual Studio; MPC target 100 Hz; no release version.",
+    "details.limits.0": "Cannot attribute all GPU NaN to bounds cast; residual performance and solution difference from CPU/GPU are not closed.",
+    "details.outcomes.0": "The author confirmed that full float modification resolved the original NaN; however, CPU/GPU solution difference and cuOSQP iteration speed still need to be investigated.",
+    "details.problem_statements.0": "What should be checked after replacing CPU OSQP with cuOSQP in the first iteration?",
+    "details.safety_notes.0": "Perform finite check on all QP fields before real machine deployment; GPU solver returning NaN must reject control input and enter safe fallback.",
+    "details.suspected_causes.0": "The original author confirmed that the double→float conversion of `l/u` caused NaN/Inf and triggered NaN output.",
+    "details.symptoms.0": "CPU OSQP is normal, but cuOSQP returns NaN in the first iteration; official CUDA PCG demo is normal in the same application.",
+    "media_summaries.0": "The original post screenshot only shows cuOSQP returning NaN in the first iteration; the root cause is identified in subsequent text review of `l/u`, not from the screenshot.",
+    "source.locator": "OSQP #424 Author's final root cause and fix 1153368937",
+    "source.title": "cuOSQP First Iteration NaN: Check Final Float `l/u` Conversion",
+    "terms.0": "Single precision (单精度)",
+    "terms.1": "Type cast (类型转换)",
+    "terms.2": "Not a Number (NaN) (非数值)",
+    "terms.3": "Linear system zero pivot (线性系统零主元)",
+    "title": "Why Should We Check Final Float `l/u` Conversion in cuOSQP Rather Than Just `P/A` When CPU OSQP Is Normal but First Iteration Returns NaN?"
+  }
+}

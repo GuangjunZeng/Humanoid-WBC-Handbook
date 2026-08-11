@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros_control.6.5993660ab7b0",
+  "schema_version": 1,
+  "source_fingerprint": "535868fa9698a2a729ca998667a7b00ed58ddc4e14c7cd1224cce058e540b046",
+  "translations": {
+    "answer": "The thread uses the `/proc/rtai/scheduler` file in RTAI to observe if a system call occurs in the real-time thread, and then narrows down the source by commenting out sections, recompiling, and re-running. The original author identified the issue at `ros::Time::now()`. The maintainer only marked it as 'Fixed' without a patch or version, so this is an old RTAI environment diagnostic and cannot be used to assert that the current ROS version still has the same defect or has been fixed in which version.",
+    "applicability": "Applicable to old ROS 1 + RTAI real-time diagnosis; other real-time kernels should use corresponding tracing/latency tools.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "Use RTAI scheduler statistics to detect system calls, and use code commenting to narrow down the scope.",
+    "details.diagnostics.0": "Run the control program in an RTAI real-time thread while executing `watch cat /proc/rtai/scheduler`; if the count changes, comment out sections, recompile, and re-run to locate the source.",
+    "details.effective_fixes.0": "The original thread had no public, locatable code to fix; only a 'Fixed' note from the maintainer was recorded.",
+    "details.environments.0": "ROS 1 ros_control in 2012; user-space real-time thread with RTAI; specific distribution and submission not provided.",
+    "details.limits.0": "The method relies on old RTAI interfaces and cannot directly replace PREEMPT_RT, Xenomai, or modern tracing tools; no corresponding fix commit exists.",
+    "details.outcomes.0": "The method allowed the original author to locate `ros::Time::now()`; no delayed data was published after the fix.",
+    "details.problem_statements.0": "How to confirm if a system call occurs in the real-time loop of ros_control and narrow it down to a specific call site?",
+    "details.safety_notes.0": "In real machine WBC, offline checks or safety equipment should be performed before checking system calls and hard-to-soft transitions to avoid disturbing the real-time loop.",
+    "details.suspected_causes.0": "The original author directly confirmed the trigger point as `ros::Time::now()`; the thread did not provide further explanation of internal call chains.",
+    "details.symptoms.0": "`ros::Time::now()` was identified by the original author as producing a system call, implying a hard-to-soft transition in the real-time thread.",
+    "source.locator": "ros_control #6 investigation method 10748158; maintainer's 'Fixed' reply 10784634",
+    "source.title": "Using RTAI Scheduler Statistics to Locate System Calls in ros_control Real-Time Threads",
+    "terms.0": "Hard real-time (硬实时)",
+    "terms.1": "System call (系统调用)",
+    "terms.2": "Soft-to-hard transition (软模式切换)",
+    "terms.3": "Scheduler statistics (调度统计)",
+    "title": "How to Confirm and Locate the Source of a System Call in ros_control Real-Time Threads When Hard-to-Soft Transition Occurs?"
+  }
+}

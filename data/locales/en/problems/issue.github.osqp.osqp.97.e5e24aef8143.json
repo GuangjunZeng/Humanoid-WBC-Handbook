@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.97.e5e24aef8143",
+  "schema_version": 1,
+  "source_fingerprint": "8c81e5b75d4f7f81d59ab85fda5a7113d5682f4dcc7fcec917823b890e0dc801",
+  "translations": {
+    "answer": "Cannot. Project members explicitly state that ADMM does not guarantee reaching a strict feasible point in finite steps; OSQP terminates only based on residual tolerance. Polishing success is based on an estimated active set and produces a high-precision solution, but does not guarantee success. The original authors reduced the primal/dual residual to approximately `5e-10` and considered it sufficient, but polishing still failed. In engineering practice, one should recompute constraint residuals according to application-specific constraints and set an upper safety threshold, rather than equating `solved` to zero residuals.",
+    "applicability": "Applicable to finite-step interpretation of ADMM/OSQP; residual tolerance thresholds must be specified according to WBC constraints.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Author excessively tightened tolerance, reduced `rho`, set `max_iter=1e7` and `polish_refine_iter=1e7`; maintainers noted the latter settings are unreasonable.",
+    "details.diagnostics.0": "Simultaneously observe primal/dual residual, polishing status, iteration count, and active-set stability; do not only read `solved`.",
+    "details.effective_fixes.0": "No strict finite-step guarantee; set a traceable primal/dual residual threshold according to target error, use its high-precision solution when polishing succeeds, and retain the original solution and execute upper safety strategies when polishing fails.",
+    "details.environments.0": "Author final test: 209 variables, 288 constraints, partial equality, `P=0` in LP; no OSQP release version provided.",
+    "details.limits.0": "Cannot derive all WBC safety thresholds from the LP's `5e-10`; no thread provides a unified replacement for the active-set method.",
+    "details.outcomes.0": "Author final primal/dual residual ~`5e-10`; considered sufficient and closed the issue; polishing still failed.",
+    "details.problem_statements.0": "Can OSQP or ADMM guarantee strict primal feasibility in finite steps? What to do when polishing fails?",
+    "details.safety_notes.0": "For hardware-critical constraints, recompute `l ≤ Ax ≤ u` outside the solver and apply limit/grading, do not treat `solved` as zero residual.",
+    "details.suspected_causes.0": "Project members state that ADMM's feasibility residual only approaches zero in the limit; polishing failure indicates the active set estimation was unsuccessful or the problem is infeasible.",
+    "details.symptoms.0": "Normal solving always has non-zero primal residual; polishing fails consistently on the author's problem.",
+    "source.locator": "OSQP #97 finite-step answer 427692913; author final result 427903194",
+    "source.title": "OSQP/ADMM Finite Steps Do Not Guarantee Strict Primal Feasibility",
+    "terms.0": "Primal feasibility (原始可行性)",
+    "terms.1": "Alternating Direction Method of Multipliers (ADMM) (交替方向乘子法)",
+    "terms.2": "Solution polishing (解抛光)",
+    "terms.3": "Active set (活动集)",
+    "title": "Can OSQP Return `solved` After Which It Can Be Assumed All Hard Constraints Are Satisfied in Finite Steps?"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zzhou387"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/979",
+  "captured_at": "2026-08-11T22:22:00+08:00",
+  "content_sha256": "6703348dce6b6eb187af27d5112a8d0363d189f790c64f3a9bad6ec0ab4d5829",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 12 条评论；图片只用于原帖背景，结论取自作者文字复测与维护者解释。",
+    "components": [
+      "Crocoddyl",
+      "A1",
+      "aerial phase",
+      "angular momentum",
+      "Euler integrator",
+      "RK4",
+      "DDP"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者从 Euler 切换到 RK4，同时保持 JMinvJt_damping=0。"
+      ],
+      "diagnostics": [
+        "先确认 aerial phase contact forces 为零且没有 contact model。",
+        "记录 JMinvJt_damping 与 integrator；在相同 cost/contact 配置下做 Euler/RK4 A/B。"
+      ],
+      "effective_fixes": [
+        "作者特定轨迹中改用 RK4 后 angular momentum 漂移大幅改善，并报告飞行相保持恒定。"
+      ],
+      "environments": [
+        "Crocoddyl A1 jumping/backflipping optimization；aerial phase 无 contact model、contact forces 已确认始终为零。",
+        "原 timestep 0.005，尝试 0.001；JMinvJt_damping 一直为 0；未给 commit/OS。"
+      ],
+      "limits": [
+        "没有 commit、机器人参数、RK4 timestep 或数值误差阈值，不能外推为所有飞行相只需换 RK4。",
+        "作者贴出的曲线图未用于本卡判断；结果采用其文字复测。",
+        "若换积分器仍漂移，还需继续检查 contact leakage、model/inertia 和 cost formulation。"
+      ],
+      "outcomes": [
+        "作者确认问题在其案例中解决；维护者解释 advanced integrator 可降低 drift。"
+      ],
+      "problem_statements": [
+        "空中相无接触力但 angular momentum 漂移时，应先检查优化 formulation 还是 integration scheme？"
+      ],
+      "safety_notes": [
+        "跳跃轨迹上机前应独立检查动量、接触切换、峰值力矩和落地冲击，不以优化器收敛替代物理一致性验收。"
+      ],
+      "suspected_causes": [
+        "两位维护者把漂移归因于 numerical integrator 注入能量，而不是所链接的 Pinocchio issue。"
+      ],
+      "symptoms": [
+        "飞行相 angular momentum 不恒定，腿部摆动时更明显。",
+        "仅减小 Euler timestep 没有充分改善。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "帖子先排除了 contact force，并确认 JMinvJt_damping=0；单纯把 timestep 从 0.005 降到 0.001 改善有限。按维护者建议把 Euler 换为 RK4 后，作者报告 angular momentum 在 aerial phase 保持恒定。维护者将原因归为 numerical integrator 引入的 drift/energy injection。该结果适合作为同配置 A/B 诊断，不代表所有动量漂移都由积分器造成。",
+        "applicability": "适用于 Crocoddyl 飞行相 trajectory optimization 中 contact 已排除且 Euler 积分产生明显漂移的案例。",
+        "bilingual_terms": [
+          "角动量（angular momentum, AM）",
+          "飞行相（aerial phase）",
+          "数值积分器（numerical integrator）",
+          "辛格式（symplectic scheme）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.crocoddyl_aerial_momentum_integrator_979",
+        "problem_title_zh": "Crocoddyl 飞行相动量的积分器漂移",
+        "question_zh": "Crocoddyl 飞行相 contact force 为零但 angular momentum 漂移时，帖子中哪项改动有效？",
+        "source_locator": "Crocoddyl #979 维护者建议 887311851、作者复测 888126517、维护者解释 888133549/888232475",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/979#issuecomment-888126517",
+        "verification_refs": [
+          {
+            "locator": "Crocoddyl 维护者确认 numerical integrators 会注入能量，并说明 Euler/RK4 的设计约束",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/979#issuecomment-888232475"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.979",
+    "query": "Crocoddyl aerial angular momentum drift Euler RK4 symplectic integrator",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree A1 trajectory optimization"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者建议 RK4+damping 0；作者同配置复测报告 AM 恒定；两位维护者将漂移解释为积分误差。"
+      }
+    ],
+    "wbc_relevance_reason": "跳跃、翻转等飞行相轨迹优化依赖动量守恒；积分器误差可伪装成接触或动力学建模错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.979",
+  "summary": "Crocoddyl #979 在 A1 jumping/backflipping 轨迹中发现 aerial phase 无接触力却 angular momentum 不恒定；把 timestep 从 0.005 降到 0.001 改善有限。维护者询问 JMinvJt_damping 和 integrator，建议 damping=0 时测试 RK4。作者确认 damping 一直为 0，Euler 改 RK4 后漂移大幅改善并文字报告 aerial angular momentum 恒定；Pinocchio/Crocoddyl 维护者将现象归因于低质量积分器引入的 numerical drift/energy injection，并说明其 Euler/RK4 为保持 DDP Markov structure 的 symplectic schemes。",
+  "title": "Crocoddyl 空中相角动量漂移可先对比 Euler 与 RK4 积分器",
+  "version": null
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.2089.2ae99fb2e3a4",
+  "schema_version": 1,
+  "source_fingerprint": "f1c5e60bb022a1747fc0003856ce301d405640beabdda5668cad83a94576cda9",
+  "translations": {
+    "answer": "PR #2091 no longer only uses a fixed 0.99 threshold to determine if a frequency is too frequent, but compares the timing error of execution in the current cycle versus the next cycle after a controller-manager period. The author tested this across multiple frequencies, mock components, and UR16e+KR50 real machines; read/write skips were reduced to below 0.01%. This PR has been merged. Divisional frequencies still need to be quantized, and acceptance must be based on the target combination.",
+    "applicability": "ROS 2 Jazzy, ros2_control multi-hardware components where rw_rate is below controller-manager update rate.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise independent replication.",
+    "details.attempts.0": "The 0.98 and 0.97 thresholds were reduced to only reduce skips; the author now compares the timing error of execution in the current cycle versus the next cycle.",
+    "details.attempts.1": "Initial mock and multi-frequency testing, followed by testing on UR16e+KR50 real machine.",
+    "details.diagnostics.0": "Record read/write cycle distribution, not just average frequency.",
+    "details.diagnostics.1": "Compare reduction of fixed thresholds with timing-error-based scheduling.",
+    "details.diagnostics.2": "Cover 100/150/250/333 Hz and controller-manager 500/1000 Hz.",
+    "details.effective_fixes.0": "Use the rw_rate timing-error selection logic from merged PR #2091.",
+    "details.environments.0": "Ubuntu 24.04.1 LTS; ROS 2 Jazzy; ros2_control source build; UR16e 500 Hz, KUKA KR50 250 Hz; additional mock testing.",
+    "details.limits.0": "At 150 Hz relative to 500/1000 Hz, the thread display shows actual frequency quantized to 166.66 or 142.87 Hz; cannot promise exact hit for any target frequency.",
+    "details.limits.1": "The author believes the remaining few skips may be related to the RT/low-latency kernel test environment, but this is their judgment, not an independent conclusion.",
+    "details.outcomes.0": "Real machine trace shows read/write skips below 0.01%; PR #2091 has been reviewed, tested and merged.",
+    "details.problem_statements.0": "Why does hardware with rw_rate=250 on controller-manager 500 Hz occasionally skip every three cycles? How to fix it?",
+    "details.safety_notes.0": "After multi-hardware system upgrade, check each interface's cycle distribution and missed cycles in power-off or low-speed mode.",
+    "details.suspected_causes.0": "Original logic only checked if a call was too frequent; fast interfaces can cause slow interfaces to fall below 0.99 threshold and skip one cycle.",
+    "details.symptoms.0": "Slow hardware expects ~4 ms call, but frequently jumps to ~6 ms, causing motion stutter.",
+    "details.symptoms.1": "In a 500-second trace, write over 5 ms is 20.5%, and read is 0.74%.",
+    "source.locator": "ros2_control #2089 comments 2695374172, 2698322050; PR #2091; merge commit bfbedd2c1c7487f3c6d424c58a0b6d1c79e161c9",
+    "source.title": "ros2_control multi-hardware rw_rate should be based on current execution and skipped cycle timing error",
+    "terms.0": "Read/write rate (rw_rate) (读写频率)",
+    "terms.1": "Controller-manager update rate (控制管理器更新率)",
+    "terms.2": "Periodicity jitter (周期抖动)",
+    "terms.3": "Skipped cycle (跳过周期)",
+    "title": "What fix was validated through mock, real machine and merged PR testing for multi-hardware, asynchronous read/write due to jitter?"
+  }
+}

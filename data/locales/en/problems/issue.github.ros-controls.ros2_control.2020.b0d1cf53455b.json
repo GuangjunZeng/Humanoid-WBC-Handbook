@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.2020.b0d1cf53455b",
+  "schema_version": 1,
+  "source_fingerprint": "97bf2773ea972760ba3270cd89456f02856f12151a41aa4412f3497c19a00bd4",
+  "translations": {
+    "answer": "The original author changed memlock to 'unlimited', which removed the warning; the second user tested increasing to 1024000, which caused a std::bad_alloc, and then changed to 'unlimited'. Project members confirmed 'unlimited' is valid and set 'lock_memory=false' as a fallback when explicitly rejecting memory locking. Engineering practice should verify the peak process memory and page faults, not copy old values of 102400 or any arbitrary tenfold value.",
+    "applicability": "Applies to Humble/Jazzy controller_manager memory locking; verify limits/PAM/container configurations separately.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "Original author changed soft/hard memlock to unlimited; second user tried 1024000, which caused bad_alloc, and then changed to unlimited.",
+    "details.diagnostics.0": "Compare current shell/process memlock limit, controller_manager `lock_memory` parameter, and actual virtual memory needs; do not only look at the start-up moment.",
+    "details.effective_fixes.0": "Two participants used unlimited; project members confirmed it is valid. If explicitly accepting no memory locking, set `lock_memory` to false.",
+    "details.environments.0": "Original post: Ubuntu, ROS 2 Humble, RPi 4, custom RT kernel; replication: Ubuntu 24.04 Jazzy + PREEMPT_RT, ur_robot_driver.",
+    "details.limits.0": "`lock_memory=false` will relinquish the memory locking guarantee, not equivalent to real-time repair.",
+    "details.limits.1": "Threads do not provide minimum audit bytes for different robots, DDS, and controller combinations; unlimited is still constrained by system and deployment strategy.",
+    "details.outcomes.0": "Original author's unlimited caused the warning to disappear; second user confirmed fixed tenfold value was insufficient, and project members confirmed the environment is valid with unlimited.",
+    "details.problem_statements.0": "Why does setting `memlock 102400` still fail to lock controller_manager memory?",
+    "details.safety_notes.0": "Check page faults, RSS, OOM, and cycle jitter on real machines before deployment; do not use arbitrary fixed multiples for capacity verification.",
+    "details.suspected_causes.0": "Fixed 102400 bytes is insufficient to cover the memory locked by controller_manager; tenfold fixed value is insufficient for another environment.",
+    "details.symptoms.0": "102400 limit reports 'Unable to lock the memory'; 1024000 starts but the replication encounters 'std::bad_alloc'.",
+    "source.locator": "ros2_control #2020 original post A/B; second user bad_alloc 2660327112; project confirmation 2660331588",
+    "source.title": "controller_manager memory locking cannot be used with small fixed memlock upper limits",
+    "terms.0": "Memory locking (内存锁定)",
+    "terms.1": "Memory lock limit (锁定上限)",
+    "terms.2": "Page fault (缺页异常)",
+    "terms.3": "Memory allocation failure (内存分配失败)",
+    "title": "When controller_manager memory locking fails despite old documentation, how should it be handled?"
+  }
+}

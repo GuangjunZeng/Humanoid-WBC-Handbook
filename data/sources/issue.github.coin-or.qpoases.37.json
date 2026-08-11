@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ferreau（Trac 迁移记录）"
+  ],
+  "canonical_url": "https://github.com/coin-or/qpOASES/issues/37",
+  "captured_at": "2026-08-11T23:45:00+08:00",
+  "content_sha256": "189605f73906664294741e05e0046f284dcaae537c67148d3a7c424434ec777a",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取迁移 Issue 与唯一 resolution 评论；没有把 closed/fixed 标签当作用户复测，结论不依赖图片。",
+    "components": [
+      "qpOASES",
+      "C++ interface",
+      "Matlab",
+      "Simulink"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原记录直接给出接口布局差异和 Simulink 的 `A` 向量化要求。"
+      ],
+      "diagnostics": [
+        "逐元素打印 C++ 实际接收的 `A`，按 row-major 还原并与 Matlab 中的矩阵比较；Simulink 同时检查向量堆叠顺序。"
+      ],
+      "effective_fixes": [
+        "按 C++ row-major 正确构造 `A`；在 Simulink 侧按接口规定的顺序堆叠约束矩阵。"
+      ],
+      "environments": [
+        "qpOASES 3.1.0 的迁移支持记录；C++、Matlab 与 Simulink 接口。"
+      ],
+      "limits": [
+        "若实际传入矩阵逐元素一致，仍需继续检查 bounds、scaling、options 和精度；不能把所有接口差异都归因于布局。"
+      ],
+      "outcomes": [
+        "记录被标记 fixed，但没有附用户的独立复测数据。"
+      ],
+      "problem_statements": [
+        "同一 QP 在 qpOASES C++ 与 Matlab/Simulink 中结果不同或仅 C++ 报 infeasible，先查什么？"
+      ],
+      "safety_notes": [
+        "部署前保存一组黄金 QP，逐元素比较各接口输入与 primal/dual/status，避免静默求解了不同问题。"
+      ],
+      "suspected_causes": [
+        "维护者记录的典型原因是 C++ row-major 与 Matlab/Simulink column-major 不匹配，导致 constraint matrix 被隐式转置。"
+      ],
+      "symptoms": [
+        "C++ 与 Matlab/Simulink 结果不同；隐式转置 `A` 时常表现为不可行。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先逐元素检查 constraint matrix `A` 的存储顺序。维护者说明 C++ 接口期望行主序（row-major），而 Matlab/Simulink 内部采用列主序（column-major）；`A` 被隐式转置时，求解器拿到的是另一个 QP，常表现为不可行。对称 `H` 可能掩盖布局错误。Simulink 还要按接口要求把 `A` 堆叠为向量。只有确认实际传入矩阵一致后，才继续比较求解选项与数值设置。",
+        "applicability": "直接对应 qpOASES 3.1.0 接口记录；其他版本应以目标接口文档和实际内存数据复核。",
+        "bilingual_terms": [
+          "行主序（row-major）",
+          "列主序（column-major）",
+          "约束矩阵（constraint matrix）",
+          "不可行二次规划（infeasible quadratic program）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.qpoases_matrix_layout_37",
+        "problem_title_zh": "校验 qpOASES 跨接口的约束矩阵布局",
+        "question_zh": "同一 QP 在 qpOASES C++ 和 Matlab/Simulink 中结果不同，甚至 C++ 报 infeasible 时，应先检查什么？",
+        "source_locator": "qpOASES #37 维护者支持记录正文与 resolution 589978265",
+        "source_url": "https://github.com/coin-or/qpOASES/issues/37",
+        "verification_refs": [
+          {
+            "locator": "维护者在迁移后的 Issue 正文记录 row-major/column-major 边界",
+            "relation": "issue",
+            "source_url": "https://github.com/coin-or/qpOASES/issues/37"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "coin-or.qpoases.37",
+    "query": "qpOASES C++ Matlab Simulink different results row major column major constraint matrix",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "QP-based WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者记录：C++ 期望 row-major；Matlab/Simulink 内部为 column-major，`A` 隐式转置会形成不同 QP。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/QP 在 C++ 部署和 Matlab 原型间迁移时，矩阵布局错误会伪装成约束不可行或求解器差异。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.coin-or.qpoases.37",
+  "summary": "qpOASES #37 的维护者支持记录明确：各接口应与 C++ 版本一致；若结果不同，常见原因是数据传递方式。C++ 期望 `H`、`A` 使用 row-major，而 Matlab/Simulink 内部使用 column-major。对称 Hessian 不易暴露此问题，但 constraint matrix `A` 被隐式转置常让实际求解的 QP 变成 infeasible；Simulink 还要求把 `A` 堆叠成向量。",
+  "title": "qpOASES C++ 与 Matlab/Simulink 结果不一致先查 A 的存储顺序",
+  "version": null
+}

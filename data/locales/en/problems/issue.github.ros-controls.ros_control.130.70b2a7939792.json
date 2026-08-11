@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros_control.130.70b2a7939792",
+  "schema_version": 1,
+  "source_fingerprint": "0bcfbc255e50d002b16c039e3012f2fe2c045e85fb33a7d0e3c2b1a8f25f22c3",
+  "translations": {
+    "answer": "The original thread's minimum structure was created in the RTT `configureHook()` to establish a hardware interface with the `ControllerManager`, and executed in the periodic `updateHook()` in the order `robot->read()`, `controllerMgr->update(time, period)`, and `robot->write()`. This pattern was later formalized as `rtt_ros_control_example` and used by another participant to implement `hal_ros_control`. It illustrates thread organization but does not provide real-time guarantees for modern ROS 2 or specific hardware.",
+    "applicability": "Applies to the old ROS 1 ros_control + RTT/HAL external real-time scheduler architecture.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "In the RTT `configureHook()`, a hardware interface is created with the ControllerManager; in the `updateHook()`, `read → update → write` is executed.",
+    "details.attempts.1": "A separate `CallbackQueue` is established for each component, operated by a non-realtime thread, and data is passed via a `RealtimeBuffer`.",
+    "details.diagnostics.0": "Each step (`configure`, `read`, `update`, `write`, `callback`) is explicitly marked with the thread it belongs to, and shared data is checked for real-time safety exchange.",
+    "details.effective_fixes.0": "The periodic scheduling is delegated to RTT/HAL real-time executors, and ROS API callbacks are isolated on non-realtime threads.",
+    "details.environments.0": "ROS 1 ros_control; PREEMPT_RT/Xenomai discussion; Orocos RTT example; threads from 2013–2018.",
+    "details.limits.0": "The example is from old ROS 1/RTT; `ros::Time::now()` has an old real-time safety issue in the same repository, so it cannot be directly copied from the time source.",
+    "details.limits.1": "No unified WCET, jitter, or kernel comparison is available.",
+    "details.outcomes.0": "The thread participants publish the minimum `rtt_ros_control_example`; another user explicitly states these discussions helped them develop `hal_ros_control`.",
+    "details.problem_statements.0": "How can one run the ros_control read-compute-write cycle with an external real-time scheduler?",
+    "details.problem_statements.1": "How can one handle ROS callbacks and runtime parameters without blocking the real-time cycle?",
+    "details.safety_notes.0": "Real-time WBC must pass boundary checks and atomic/reliable real-time safety exchange; non-realtime callbacks should not hold regular mutexes on real-time threads.",
+    "details.suspected_causes.0": "Non-realtime callbacks and real-time cycle share a regular mutex, or real-time thread triggers changes and system calls, leading to priority inversion and unpredictable delays.",
+    "details.symptoms.0": "Mixing ROS callbacks, services, and control cycles in a single execution model leaves scheduling priority, mutexes, and system call boundaries unclear.",
+    "source.locator": "ros_control #130 minimum cycle 52055471; subsequent examples 54360309; HAL use feedback 407977464",
+    "source.title": "Separate ros_control's hardware read/write and ControllerManager into an Orocos RTT real-time cycle",
+    "terms.0": "Read-compute-write loop (读算写循环)",
+    "terms.1": "Realtime executor (实时执行器)",
+    "terms.2": "Update hook (周期钩子)",
+    "terms.3": "Hardware interface (硬件接口)",
+    "title": "How to separate ros_control's hardware read/write and ControllerManager into an Orocos RTT real-time cycle"
+  }
+}

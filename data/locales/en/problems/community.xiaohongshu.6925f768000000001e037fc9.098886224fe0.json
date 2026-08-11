@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6925f768000000001e037fc9.098886224fe0",
+  "schema_version": 1,
+  "source_fingerprint": "7ff4522e6faefb78f0278b048183f74a9fba58d3ae3b1f210861c64deb87365e",
+  "translations": {
+    "answer": "The structure described in this post uses a lightweight predictor to determine if a fall is unrecoverable, followed by a dedicated RL strategy, rather than continuous interference in normal control. The warnings and damage reduction numbers listed in the post have not been independently verified and cannot be directly used as threshold values; verification of false positives, false negatives, and takeover delay is required.",
+    "applicability": "This is a community paper abstract; numbers, 'first', and arXiv 2511.18509v1 must be verified against the original paper.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "There is engineering record for environment, processing steps and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "GRU predicts an unavoidable fall, triggering RL strategy to disperse impact and protect critical components.",
+    "details.diagnostics.0": "Cross-verified across the main text, visible comments, and media; not independently verified against the paper/source/code/official documentation.",
+    "details.environments.0": "Unitree G1; IMU and joint encoders; multidirectional motion and tripping scenarios.",
+    "details.limits.0": "This is a community paper abstract; numbers, 'first', and arXiv 2511.18509v1 must be verified against the original paper.",
+    "details.outcomes.0": "The post lists 410 ms, <0.1%, 68.3%/78.4%/99.3% etc.",
+    "details.problem_statements.0": "When should safe fall control take over normal WBC?",
+    "details.safety_notes.0": "Safety strategies must be verified in simulation, hanging, and soft padding environments in sequence before activation, validating false triggers and takeover timing.",
+    "details.suspected_causes.0": "The normal controller continues to execute after loss of recoverability, missing dedicated protection takeover.",
+    "details.symptoms.0": "Unrecoverable falls cause peak impact, torque, and vulnerable component collisions.",
+    "media_summaries.0": "11 media sources used to summarize SafeFall prediction and protection actions/experiments; the 410 ms and damage reduction percentages listed in the post must be verified against the original paper's charts, and cannot be relied upon solely from social media images.",
+    "source.locator": "Root post SafeFall mechanism and effect section",
+    "source.title": "SafeFall: Community paper abstract of SafeFall prediction and protection action of G1 unrecoverable fall",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Reinforcement Learning (RL) (强化学习)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Joint Torque (关节力矩)",
+    "terms.4": "End-to-End Latency (端到端时延)",
+    "terms.5": "Gated Recurrent Unit (GRU) (门控循环单元)",
+    "title": "When should safe fall control take over normal WBC?"
+  }
+}

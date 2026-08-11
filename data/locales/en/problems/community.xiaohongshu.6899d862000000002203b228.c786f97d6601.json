@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6899d862000000002203b228.c786f97d6601",
+  "schema_version": 1,
+  "source_fingerprint": "b5f4331bc09871534d4913995dfc68cf02bff5c523088ec8ba7bbf7a7177499f",
+  "translations": {
+    "answer": "Do not only look at num_envs: record the number of simulation steps per second, policy update time, VRAM, GPU utilization, and cross-GPU synchronization time, and ensure that the batch/mini-batch ratio is comparable. The community notes that 4090 shows saturation after one thousand environments, but the configuration of Horovod is still unresolved.",
+    "applicability": "Hardware and batch/mini-batch configuration are missing, so one thousand environments cannot be used as a general value.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "The solution has not been closed or there is a conflict; the current state is only forming a problem clue.",
+    "details.attempts.0": "The community suggests starting with increasing num_envs based on VRAM and reviewing 'Learning to Walk in Minutes'.",
+    "details.diagnostics.0": "Cross-verified by the text, visible comments, and media summaries; not independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "Legged Gym/Isaac Gym; the commentor mentions an RTX 4090; num_envs 4096→10000+.",
+    "details.limits.0": "Hardware and batch/mini-batch configuration are missing, so one thousand environments cannot be used as a general value.",
+    "details.outcomes.0": "A single comment states that 4090 can handle over one thousand environments but no gain is observed; the multi-GPU issue is not resolved.",
+    "details.problem_statements.0": "If more environments are added to Legged Gym or Horovod does not speed up with multi-GPU, what should be measured?",
+    "details.safety_notes.0": "The community candidate is only for forming a diagnostic hypothesis; when involving real hardware, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "May be limited by VRAM, sampling/optimization ratio, synchronization communication, and task statistics efficiency, but the original post did not test these.",
+    "details.symptoms.0": "Horovod does not show any change after being opened; increasing num_envs leads to saturation of gains.",
+    "media_summaries.0": "Three media summaries do not show readable GPU profiler, VRAM, or throughput curves; therefore, the claim of one thousand environments is kept as a pending verification from community experience.",
+    "source.locator": "Root post and comments regarding 4090/one thousand environments",
+    "source.title": "Why does the num_envs in Legged Gym and multi-GPU not show gains?",
+    "terms.0": "Graphics Processing Unit (GPU) (图形处理器)",
+    "terms.1": "Massively Parallel Simulation (大规模并行仿真)",
+    "title": "Should we measure what to do when more environments are added to Legged Gym or Horovod does not speed up with multi-GPU?"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lrjcool（Trac 迁移记录）"
+  ],
+  "canonical_url": "https://github.com/coin-or/qpOASES/issues/83",
+  "captured_at": "2026-08-11T23:49:00+08:00",
+  "content_sha256": "4abe1c37360565ad6c502fabf04e02569a65025324324ea9e3edba4518cc5c71",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取迁移 Issue 与全部 5 条评论；区分最初未复现报告与后续可复现的 nWSR 循环问题，结论不依赖图片。",
+    "components": [
+      "qpOASES",
+      "hotstart",
+      "nWSR",
+      "working-set recalculation"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "把 `nWSR` 定义或重新赋值放到每次 `hotstart` 的循环体内。"
+      ],
+      "diagnostics": [
+        "在每次调用前后打印 `nWSR`，确认调用是否把它改写；同时检查错误发生后 solver 状态。"
+      ],
+      "effective_fixes": [
+        "每个控制周期在调用 `hotstart` 前重新设置期望的最大 `nWSR`；不要把上次输出值直接作为下次预算。"
+      ],
+      "environments": [
+        "原帖 qpOASES 3.2.1；后续复现 Ubuntu 16.04、qpOASES 3.2.1、Bazel 0.18.1。"
+      ],
+      "limits": [
+        "最初的第二次调用问题在 trunk 上不可复现；明确闭环的是“多次循环复用 nWSR”这一后续场景。"
+      ],
+      "outcomes": [
+        "另一用户给出 workaround，维护者补充了参数语义和为何会单调减少；原始 Issue 仍 open。"
+      ],
+      "problem_statements": [
+        "为什么 qpOASES `hotstart` 在循环几次后突然耗尽 working-set recalculations，后续调用全部失败？"
+      ],
+      "safety_notes": [
+        "实时循环还应检查每次返回码；一旦 previous QP 未 solved，不要继续把旧控制量当成新有效解。"
+      ],
+      "suspected_causes": [
+        "维护者确认 `nWSR` 是 input/output parameter，外层只初始化一次会使下一次调用继承较小的剩余值。"
+      ],
+      "symptoms": [
+        "前两三个 QP 正常，随后出现 maximum number of working set recalculations；再后续提示 previous QP is not solved。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者说明 `nWSR` 不是只读上限，而是输入/输出参数：调用后它会带回实际或剩余的 working-set change 信息。若只在 for-loop 外初始化一次，后续调用继承的允许次数会单调减少，最终触发上限错误，并导致下一次提示 previous QP not solved。应在每次 `hotstart` 前重新赋值期望预算，并逐次检查返回码。该结论对应后续多次循环复现，不等于最初“第二次调用即失败”的报告已被完整复现。",
+        "applicability": "适用于 qpOASES 3.2.1 中把 `nWSR` 复用于连续 hotstart 的循环；其他 API 版本需核对参数语义。",
+        "bilingual_terms": [
+          "热启动（hot start）",
+          "输入输出参数（input/output parameter）",
+          "工作集重计算（working-set recalculation）",
+          "迭代预算（iteration budget）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.qpoases_hotstart_nwsr_reset_83",
+        "problem_title_zh": "每次 qpOASES hotstart 前重置 nWSR 预算",
+        "question_zh": "qpOASES 在循环 hotstart 几次后报 working-set recalculations 用尽，为什么要每次重置 `nWSR`？",
+        "source_locator": "qpOASES #83 维护者最终解释 762053495",
+        "source_url": "https://github.com/coin-or/qpOASES/issues/83#issuecomment-762053495",
+        "verification_refs": [
+          {
+            "locator": "维护者明确 `nWSR` 为 input/output 并要求每次 hotstart 前重置",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/coin-or/qpOASES/issues/83#issuecomment-762053495"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "coin-or.qpoases.83",
+    "query": "qpOASES hotstart loop nWSR input output reset every call maximum working set recalculations",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "real-time MPC and QP control loops"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者：`nWSR` 同时是输入和输出；若不在每次 hotstart 前重置，允许的 working-set changes 会单调减少。"
+      }
+    ],
+    "wbc_relevance_reason": "在线 WBC/MPC 通常每控制周期 hotstart；复用被修改的 `nWSR` 会制造随时间出现的求解失败，并让后续周期连锁报错。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.coin-or.qpoases.83",
+  "summary": "qpOASES #83 最初报告 static `QProblem` 在循环第二次 hotstart 时 infeasible；维护者在 Ubuntu 16.04 的 trunk 上不能复现该最小例。后续用户把 `hotstart` 再循环 5 次，第三个 QP 后出现 `Maximum number of working set recalculations`，随后所有调用提示 previous QP not solved。维护者最终解释 `nWSR` 同时是输入与输出参数；若在 for-loop 外只初始化一次，允许的 working-set changes 会单调减少，必须在每次 `hotstart` 前重置。",
+  "title": "qpOASES hotstart 循环中必须每次重置 nWSR",
+  "version": null
+}

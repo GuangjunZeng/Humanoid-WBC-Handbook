@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4366.cde1f892d885",
+  "schema_version": 1,
+  "source_fingerprint": "3a22537ab90ea8100dedc6f7989f8135e616dbc183e8d2110e600206ef1e405c",
+  "translations": {
+    "answer": "This thread cannot support such a general conclusion. The original author compared `0.001/10` anomaly and `0.005/4` normal in their G1 configuration and reported a compliance of 3e5/3e2 effective; however, it was later clarified that compliance adjustments are no longer recommended. Another user encountered the robot lifting and NaN at `0.005/4`, leading to a restriction of the extrapolation range for the dt workaround. Currently, only reproducibility and avoidance clues are available, with no root cause or formal fix identified; the target asset, contact model, solver settings, dt/decimation, contact force, and joint acceleration should be synchronized and re-evaluated after recording.",
+    "applicability": "Only as a diagnostic entry for contact values near G1/H1 on RobotLab 2.3/Isaac Sim 5.1. Not a general stable parameter table.",
+    "credibility.rationale": "The solution is not closed-loop or there are conflicting conclusions; the source conclusions have unresolved conflicts; only problem clues have been formed.",
+    "details.attempts.0": "Original author attempted `compliant_contact_stiffness=3e5`、`compliant_contact_damping=3e2` and later withdrew the recommendation.",
+    "details.attempts.1": "Original author provides a small reimplementation of the `rewards.py`/`flat_env_cfg.py` workflow.",
+    "details.diagnostics.0": "Verify separation of training and play using dt/decimation; record latest contact forces, joint acceleration, and abnormal env_ids.",
+    "details.effective_fixes.0": "No universal fix without thread closure; dt=0.005 is a workaround negated by another environment as a universal answer.",
+    "details.environments.0": "Original Post: RobotLab 2.3, Isaac Sim 5.1.0, Ubuntu 22.04, 4090D, CUDA 12.8, driver 570; Unitree G1.",
+    "details.environments.1": "Subsequent small reproduction using RobotLab 2.3.0's Unitree H1 flat task, 32 environments.",
+    "details.limits.0": "The card only uses the values and conclusions explicitly reported by the author in the text, and does not include any additional data derived from pixels.",
+    "details.limits.1": "Not using contact/acceleration reward only avoids training terms from triggering, but does not prove that underlying contact peaks have disappeared.",
+    "details.outcomes.0": "Issue remains open; no root cause identified, no associated fix PR, and compliance workaround recommended by original author has been withdrawn.",
+    "details.problem_statements.0": "Can fixed dt or compliance parameters stabilize the foot contact force and joint acceleration?",
+    "details.safety_notes.0": "Any configuration that shows lift-off, NaN, or scale factor anomalies should not be directly migrated to the real machine; instead, isolate it via single-environment, bounded, anomaly termination, and solver telemetry.",
+    "details.suspected_causes.0": "The original thread lacks verification of the root cause; small dt is merely a related condition in the original author's environment and not a proven sufficient reason.",
+    "details.symptoms.0": "The original author reported contact force of 1.3k～10kN at dt=0.001/decimation=10, and `joint_acc_l2` explosion; another user still observed the robot flying and triggering NaN at dt=0.005/decimation=4.",
+    "source.locator": "IsaacLab #4366 Original author withdrawal compliance recommendation 4554291445; Small reimplementation 4670800756; 0.005/4 Counterexample 4817539554",
+    "source.title": "RobotLab Foot Contact Force Spike Still Exists",
+    "terms.0": "Simulation Timestep (仿真时间步)",
+    "terms.1": "Control Decimation (控制降采样)",
+    "terms.2": "Compliant Contact (柔顺接触)",
+    "terms.3": "Contact-force spike (接触力尖峰)",
+    "title": "RobotLab: When sim.dt is changed back to 0.005 or adjust compliance, is this a reliable fix for contact force and joint acceleration explosions?"
+  }
+}

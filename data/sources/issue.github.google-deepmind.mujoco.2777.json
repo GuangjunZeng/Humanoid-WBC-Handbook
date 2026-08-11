@@ -1,0 +1,125 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "VincentFEI"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2777",
+  "captured_at": "2026-08-11T21:26:00+08:00",
+  "content_sha256": "6a950b1657ea01ca0a57f7647d13a19434dc96b1925abf92d2b46c486fdbd03e",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 4 条评论和直接修复提交的完整 diff；截图不参与结论。",
+    "components": [
+      "MuJoCo 3.3.4",
+      "MJX",
+      "mjx.put_model",
+      "contact pair",
+      "convex hull",
+      "mesh_graphadr"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者把问题与原模型的 contact pair 对齐；作者确认原模型确有 pair。"
+      ],
+      "diagnostics": [
+        "检查异常 mesh 是否 contype/conaffinity 都为 0，却只在 contact/pair 中参与碰撞。",
+        "检查安装版本是否包含提交 3434f5d 或 changelog 中对应修复。"
+      ],
+      "effective_fixes": [
+        "使用包含 MuJoCo 提交 3434f5d9c774bf56d3cf4dd26d0beca8d9c509f1 的版本；该修复会在 convex-hull 检查前编译 pairs，并把 pair 中 mesh 标记为需要 hull。"
+      ],
+      "environments": [
+        "MuJoCo/MJX 3.3.4；Python API；Ubuntu 24.04；原模型通过 contact/pair 让 contype=0、conaffinity=0 的 mesh 参与碰撞。"
+      ],
+      "limits": [
+        "原帖最小复现被维护者指出与真实 bug 不一致；适用前必须确认真实模型确有 contact pair。",
+        "不能把该修复外推到所有 mesh.py convex 错误。"
+      ],
+      "outcomes": [
+        "修复提交加入专门的 pair-collision mesh 回归测试并写入 changelog；原作者未在评论中报告升级后复测。"
+      ],
+      "problem_statements": [
+        "MJX put_model 在 mesh_graphadr=-1、mesh.py convex 报错且模型使用 contact pair 时怎样处理？"
+      ],
+      "safety_notes": [
+        "升级后应对脚底接触数量、法向和摩擦行为做回归，不能只以 put_model 不报错作为动力学验收。"
+      ],
+      "suspected_causes": [
+        "正式提交说明：只通过 contact pair 碰撞的 mesh 没有被标记计算 convex hull。"
+      ],
+      "symptoms": [
+        "mjx.put_model 报 mesh.py convex 错误；相关 mesh_graphadr 为 -1；把 mesh 替换为 box 后不报错。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先确认该 mesh 的 contype/conaffinity 为 0、碰撞只由 contact/pair 指定；若符合，使用包含提交 3434f5d 的 MuJoCo 版本。该提交在编译期先解析 pairs，把 pair 中的 mesh 标记为需要 convex hull，并加入 ConvexHullForPairCollisionMeshes 回归测试。原作者未报告升级复测，但维护者诊断、作者模型确认、正式源码修复和测试形成了完整证据链。",
+        "applicability": "适用于 MuJoCo/MJX 3.3.4 及缺少该提交的版本，并且 mesh 仅通过 contact pair 参与碰撞。",
+        "bilingual_terms": [
+          "接触对（contact pair）",
+          "凸包（convex hull）",
+          "网格图地址（mesh_graphadr）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.simulation_toolchain.mjx_contact_pair_mesh_hull_2777",
+        "problem_title_zh": "MJX contact pair mesh 的凸包缺失修复",
+        "question_zh": "MuJoCo 3.3.4 中只通过 contact pair 碰撞的 mesh 导致 mjx.put_model convex 报错，应怎样修复？",
+        "source_locator": "MuJoCo #2777 维护者诊断 3133421618、作者模型确认 3134769229；commit 3434f5d",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2777#issuecomment-3133421618",
+        "verification_refs": [
+          {
+            "locator": "正式提交修改 user_model.cc、加入 pair mesh convex-hull 回归测试并更新 changelog",
+            "relation": "source_code",
+            "source_url": "https://github.com/google-deepmind/mujoco/commit/3434f5d9c774bf56d3cf4dd26d0beca8d9c509f1"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2777",
+    "query": "MuJoCo MJX put_model mesh_graphadr -1 contact pair convex hull fix",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "legged robot model with mesh foot contact"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者把错误定位到 contact pair；作者确认真实模型使用 pair；正式提交补充实现与测试。"
+      }
+    ],
+    "wbc_relevance_reason": "MJX 批量仿真常用于腿式机器人训练；脚部 mesh 若只通过显式 contact pair 碰撞，缺失凸包会在模型上传设备阶段阻断训练。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2777",
+  "summary": "MuJoCo #2777 在 MuJoCo/MJX 3.3.4 调用 mjx.put_model 时，mesh_graphadr 全为 -1 并在 mesh.py convex 报错。维护者询问原模型是否用 contact pair；作者确认 mesh geom 的 contype/conaffinity 为 0，并通过 contact/pair 与 floor 碰撞。提交 3434f5d 在编译期先解析 pairs，把 pair 中 mesh 标记为需要 convex hull，并新增 ConvexHullForPairCollisionMeshes 回归测试和 changelog。",
+  "title": "MJX put_model 遇到仅通过 contact pair 碰撞的 mesh 时需要凸包修复",
+  "version": null
+}

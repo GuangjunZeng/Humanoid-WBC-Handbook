@@ -1,0 +1,133 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "danielcostanzi18"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/247",
+  "captured_at": "2026-08-11T12:25:00+08:00",
+  "content_sha256": "20187a2adfc1e38447327818e898aaf14cd6ead214911970213b3d78764e3965",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取全部 3 条评论并核对 fork commit 的两文件 patch；没有暗示该修复已进入 TSID 上游。",
+    "components": [
+      "TSID",
+      "TaskContactForceEquality",
+      "Boost.Python",
+      "Contact6d",
+      "ContactBase"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者最初只暴露接受 ContactBase& 的构造函数，实例化失败。",
+        "随后为 Contact6d、ContactPoint、ContactTwoFramePositions 分别增加 bp::init overload。"
+      ],
+      "diagnostics": [
+        "检查 binding visitor 是否只暴露 ContactBase& constructor，而没有为具体 Contact6d child class 添加 bp::init overload。",
+        "对照 TSID 其他 binding 中为每个可能 child class 实现独立方法/构造函数的模式。"
+      ],
+      "effective_fixes": [
+        "在 TaskContactForceEqualityPythonVisitor 中为每个支持的 ContactBase 子类显式添加 constructor overload，并包含相应 contact headers。"
+      ],
+      "environments": [
+        "TSID 用户 fork；Python binding；UR5 force-task 示例；原帖未给 TSID/Python/Boost 版本和操作系统。"
+      ],
+      "limits": [
+        "修改只存在用户 fork，线程没有上游 PR 合并、发布版本或完整 working force-control example。",
+        "环境版本未提供，其他 TSID/Boost.Python 版本必须重新编译验证。"
+      ],
+      "outcomes": [
+        "原作者确认修改后可传 Contact6d 实例化 task；fork commit eb03d05 的 patch 与该说明一致。"
+      ],
+      "problem_statements": [
+        "Python 中 Contact6d 明明继承 ContactBase，为什么 TaskContactForceEquality 构造函数仍报 C++ signature mismatch？"
+      ],
+      "safety_notes": [
+        "binding 成功只证明对象可构造，不证明 force task 的 reference、约束维度、接触稳定性或实机力限幅正确。"
+      ],
+      "suspected_causes": [
+        "项目维护者指出 Python binding 没有在该构造函数位置自动识别 Contact6d→ContactBase 继承转换。"
+      ],
+      "symptoms": [
+        "TaskContactForceEquality(name, RobotWrapper, dt, Contact6d) 报 ArgumentError，C++ signature 只显示 ContactBase&。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "项目维护者指出该 Boost.Python binding 不会自动完成所需的 child-to-base 识别，应像其他 TSID bindings 一样，为每个支持的 ContactBase 子类显式暴露 constructor overload。原作者为 Contact6d、ContactPoint 和 ContactTwoFramePositions 增加 bp::init 后确认可实例化；该修改只在用户 fork commit eb03d05，尚无上游发布。",
+        "applicability": "适用于原帖 TSID Python binding fork；因版本和上游合并状态未知，目标构建需实际验证。",
+        "bilingual_terms": [
+          "语言绑定（Python binding）",
+          "构造函数重载（constructor overload）",
+          "子类到基类转换（child-to-base conversion）",
+          "接触力等式任务（contact-force equality task）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.tsid_contact_force_binding_child_overload_247",
+        "problem_title_zh": "TSID ContactForce Python binding 缺少 Contact6d 子类构造 overload",
+        "question_zh": "TSID Python 中 Contact6d 无法传给期待 ContactBase& 的 TaskContactForceEquality 构造函数时，原线程确认的 binding 修复是什么？",
+        "source_locator": "TSID #247：维护者评论 2568242300 解释子类 overload；作者评论 2575770028 确认可实例化；fork commit eb03d05 包含三类构造函数 patch",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/247#issuecomment-2575770028",
+        "verification_refs": [
+          {
+            "locator": "维护者解释需为 ContactBase 的每个 possible child class 实现独立 constructor",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/247#issuecomment-2568242300"
+          },
+          {
+            "locator": "用户 fork：增加 Contact6d、ContactPoint、ContactTwoFramePositions bp::init overload 与 headers",
+            "relation": "source_code",
+            "source_url": "https://github.com/danielcostanzi18/tsid/commit/eb03d0528b401c4d511d30ffe4f13c21fa3faece"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.247",
+    "query": "TSID TaskContactForceEquality Python Contact6d ContactBase binding constructor overload",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖 UR5 force-task 示例；通用 manipulator"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "维护者指出 binding 需为每个 ContactBase child class 定义独立构造函数。"
+      },
+      {
+        "text": "原作者按此修改后确认 Contact6d 可以实例化 TaskContactForceEquality。"
+      }
+    ],
+    "wbc_relevance_reason": "末端接触力等式任务是 manipulation WBC/TSID 的常用组件；binding 层继承转换失败会阻断 Python 原型，并容易被误判为 Contact6d 对象本身错误。"
+  },
+  "published_at": "2024-12-20T13:43:07Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.247",
+  "summary": "TSID #247 中，用户自行暴露 TaskContactForceEquality Python binding 后，传 Contact6d 仍无法匹配期待 ContactBase& 的 C++ 构造函数。项目维护者解释 Boost.Python 路径不会在此处自动把 Contact6d 识别为 ContactBase，需要为每个可能的 child class 定义独立 constructor overload。原作者按此修改，在 fork commit eb03d05 中加入 Contact6d、ContactPoint 和 ContactTwoFramePositions overload，并确认能够实例化 task；但没有上游合并 PR 或版本。",
+  "title": "TSID Python binding 需为 Contact6d 等 ContactBase 子类显式暴露构造函数",
+  "version": null
+}

@@ -1,0 +1,127 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "yschulz"
+  ],
+  "canonical_url": "https://github.com/gazebosim/gz-sim/issues/2223",
+  "captured_at": "2026-08-11T23:44:00+08:00",
+  "content_sha256": "f09fe258c6eb9951c086d60781663bc08f45c20d3b269bd4421f41eefe7e71ef",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 9 条评论；同时保留成功 workaround 与后续反例，未把维护者提出的三个设计方向写成已实施修复，结论不依赖图片。",
+    "components": [
+      "Gazebo Harmonic",
+      "Contact system",
+      "UserCommands",
+      "EachNew"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者把 SDF 中 `UserCommands` 放在 `Contact` 前，原始场景不再复现；维护者解释这使实体先创建。",
+        "后续用户已经使用 `Physics, UserCommands, SceneBroadcaster, Contact...` 的顺序，仿真启动后再生成模型仍失败。"
+      ],
+      "diagnostics": [
+        "记录 `UserCommands::PreUpdate` 与 `Contact::PreUpdate` 的实际执行顺序，并检查 `EachNew` 是否在实体创建后才运行。"
+      ],
+      "effective_fixes": [
+        "当前没有对所有动态生成场景都被确认的修复；插件顺序只能作为局部 workaround 试验，并必须检查 topic 和 contact data。"
+      ],
+      "environments": [
+        "原帖标注 Ubuntu 22.04、Gazebo Harmonic；后续 Unitree 与 Gazebo Classic 迁移用户报告同类问题。"
+      ],
+      "limits": [
+        "不同 Gazebo 版本、system priority 配置和生成时刻可能改变结果；不能仅凭 SDF 标签顺序断言已修复。"
+      ],
+      "outcomes": [
+        "原作者场景得到缓解，但后续环境出现反例；维护者提出 Update/PostUpdate/ECM 方向，Issue 截至采集时仍 open。"
+      ],
+      "problem_statements": [
+        "为什么静态加载模型时 contact sensor topic 存在，服务动态生成同一模型时却缺失？"
+      ],
+      "safety_notes": [
+        "接触 topic 是保护或状态切换输入时，应在每次 spawn 后设置显式存活与数据新鲜度检查。"
+      ],
+      "suspected_causes": [
+        "维护者复现并说明：服务生成走 `UserCommands::PreUpdate`；若 `Contact::PreUpdate` 的 `EachNew` 先执行，本轮看不到新实体。"
+      ],
+      "symptoms": [
+        "world 文件加载模型时有 contact topic；空 world 启动后经 `/world/test_world/create` 生成时没有。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "不能当作通用修复。维护者确认执行顺序是关键机制：`UserCommands` 在 `PreUpdate` 创建实体，`Contact` 的 `EachNew` 必须在之后运行。原作者通过调换插件顺序解决了自己的场景；但后续用户给出相同顺序，仿真启动后再 spawn 仍失败。当前应把顺序调整当作待验证 workaround，同时逐次检查 topic、组件创建和数据新鲜度；线程没有最终修复。",
+        "applicability": "原 workaround 在原作者环境有效；对 Harmonic 及仿真启动后任意时刻 spawn 的模型必须逐环境验证。",
+        "bilingual_terms": [
+          "动态生成（dynamic spawn）",
+          "接触传感器（contact sensor）",
+          "更新前阶段（PreUpdate）",
+          "系统执行顺序（system execution order）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.sensing_and_perception.gazebo_dynamic_contact_spawn_order_2223",
+        "problem_title_zh": "验证 Gazebo 动态生成后的 contact sensor 注册",
+        "question_zh": "把 `UserCommands` 插件写在 `Contact` 前面，能否通用解决动态 spawn 后 contact topic 缺失？",
+        "source_locator": "Gazebo #2223 原作者 workaround 1845594063、维护者机制说明 1850611180、后续反例 2821527232",
+        "source_url": "https://github.com/gazebosim/gz-sim/issues/2223#issuecomment-2821527232",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 UserCommands::PreUpdate 必须先于 Contact::PreUpdate",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/gazebosim/gz-sim/issues/2223#issuecomment-1850611180"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "gazebosim.gz-sim.2223",
+    "query": "Gazebo Harmonic contact sensor dynamic spawn UserCommands Contact PreUpdate EachNew order",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree simulation",
+      "dynamically spawned robot models"
+    ],
+    "schema_version": 2,
+    "scope_id": "sensing_and_perception",
+    "selected_comments": [
+      {
+        "text": "原作者：把 `UserCommands` 放在 `Contact` 前后问题消失。"
+      },
+      {
+        "text": "后续用户：同样顺序下，仿真启动后动态生成模型仍没有 contact sensor。"
+      }
+    ],
+    "wbc_relevance_reason": "足端接触 topic 缺失会直接让接触估计、奖励、状态机和 WBC 安全逻辑失去输入；一个只对部分环境有效的插件顺序 workaround 不能被当作通用修复。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.gazebosim.gz-sim.2223",
+  "summary": "Gazebo #2223 复现：模型随 world 文件加载时 contact topic 存在，经 `/world/test_world/create` 动态生成时 topic 缺失。维护者解释 `UserCommands` 与 `Contact` 都在 `PreUpdate`，而 `Contact` 使用 `EachNew`，因此执行顺序影响是否看到新实体。原作者把 `UserCommands` 插件放到 `Contact` 之前后问题消失；但 2025 年另一位用户给出同样顺序，仍无法让仿真启动后动态生成的模型工作。Issue 保持 open。",
+  "title": "Gazebo 动态生成模型的 Contact sensor 插件顺序 workaround 并不通用",
+  "version": null
+}

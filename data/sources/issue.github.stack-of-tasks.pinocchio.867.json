@@ -1,0 +1,140 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Leph"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/867",
+  "captured_at": "2026-08-11T11:35:00+08:00",
+  "content_sha256": "c451c46a288ba90f6d9375129c069c8c1039b33f0b368b4c745dbf95a26ace36",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取原帖全部 25 条评论；仅保留作者实际确认的 0.500/0.060/0.035 ms，未把维护者估计的 0.015 ms 写成结果。",
+    "components": [
+      "Pinocchio RNEA derivatives",
+      "contact QP",
+      "kinematic Hessian",
+      "external wrench",
+      "Valkyrie"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者先用 RBDL 有限差分，并讨论过完整 tensor API 与 nv 次 time-variation 调用。",
+        "随后把零重力、零速度/加速度和外力项的 RNEA 导数用于 dJ^T/dq·λ。"
+      ],
+      "diagnostics": [
+        "先把优化中的真实表达式写成 J(q+dq)^T λ，确认需要的是 d(J^T λ)/dq，而非完整 dJ/dq。",
+        "区分张量最后一维的 Hessian-vector product 与原帖沿空间 wrench 维度收缩的 nv×nv 结果。"
+      ],
+      "effective_fixes": [
+        "若目标确实是 d(J^T λ)/dq，使用带 external forces 的 RNEA analytical derivatives 直接计算，而不是先构造完整 frame Hessian。"
+      ],
+      "environments": [
+        "2019 年 Pinocchio/RBDL 对照；Valkyrie humanoid，nv=32；作者仅说明标准 laptop，未给 CPU 与精确 Pinocchio 版本。"
+      ],
+      "limits": [
+        "0.500/0.060/0.035 ms 是单一作者、旧版本和未注明 CPU 的线程记录，不能作为当前硬件通用 benchmark。",
+        "维护者推测标准 laptop 可到 0.015 ms，但作者没有验证该数值，本卡不把它作为结果。",
+        "若优化确实需要完整 dJ/dq，应改用 Pinocchio 4 的 frame kinematic Hessian 接口，而不是此 contraction。"
+      ],
+      "outcomes": [
+        "作者明确确认 RNEA derivatives 能取得所需 Hessian-wrench product，并报告其本机 Valkyrie 对照时序。"
+      ],
+      "problem_statements": [
+        "接触动力学 QP 线性化 J(q+dq)^T λ 时，如何避免显式构造 6×nv×nv 的完整 kinematic Hessian？"
+      ],
+      "safety_notes": [
+        "把解析 contraction 与有限差分在随机 q、λ 上做方向导数对照后，再放入实时接触 QP。"
+      ],
+      "suspected_causes": [
+        "直接构造完整 Hessian 计算了优化器不会使用的大量元素；RNEA 外力项已经包含 J^T λ，其解析导数可直接给出所需收缩。"
+      ],
+      "symptoms": [
+        "有限差分完整 Hessian 阻碍约 1 ms 的计算预算；实际目标是对 Hessian 第一维与 contact wrench λ 收缩后得到 nv×nv 矩阵。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先确认目标是沿空间 wrench λ 收缩后的 nv×nv 矩阵，而不是完整 dJ/dq。原线程指出，RNEA 的 external-force 项包含 J^Tλ，因此可用 RNEA analytical derivatives 直接求 d(J^Tλ)/dq。Valkyrie nv=32 的原作者确认该方法可用，并报告原始 derivative 调用约 0.035 ms；这些时序只代表其旧环境，不应外推。",
+        "applicability": "适用于接触 QP 中 d(J^Tλ)/dq 这一特定 contraction；原帖为 Valkyrie nv=32 和 2019 年 API，当前签名需按目标 Pinocchio 版本核对。",
+        "bilingual_terms": [
+          "递归牛顿-欧拉算法导数（Recursive Newton-Euler Algorithm derivatives, RNEA derivatives）",
+          "外部力（external force）",
+          "张量收缩（tensor contraction）",
+          "有限差分（finite difference）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_contact_hessian_wrench_rnea_867",
+        "problem_title_zh": "接触 QP 用 RNEA derivatives 直接计算 Hessian-wrench contraction",
+        "question_zh": "线性化 J(q+dq)^T λ 时只需要 d(J^Tλ)/dq，如何避免显式构造完整 6×nv×nv frame Hessian？",
+        "source_locator": "Pinocchio #867：评论 526278645 写出 contraction 与 RNEA 关系；评论 530373296 确认可用并给出对照；评论 530407733 补充 raw 调用时序",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530373296",
+        "verification_refs": [
+          {
+            "locator": "作者写出 M(i,j)=Σk H(k,i,j)λ(k)，并识别 RNEA derivatives 路径",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-526278645"
+          },
+          {
+            "locator": "作者确认带 external forces 的 RNEA derivative 可取得所需 product，并报告对照时序",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530373296"
+          },
+          {
+            "locator": "作者说明 0.060 ms 含 Pinocchio/RBDL 转换，raw RNEA derivatives 约 0.035 ms",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530407733"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.867",
+    "query": "Pinocchio contact QP Hessian wrench product RNEA derivatives dJ dq lambda",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Valkyrie humanoid；nv=32"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "作者写明接触线性化需要的是沿 λ 收缩后的 nv×nv 矩阵，而不是完整 Hessian。"
+      },
+      {
+        "text": "作者确认 RNEA derivatives 可直接得到该 product，并给出其 Valkyrie 环境的有限差分/解析对照。"
+      }
+    ],
+    "wbc_relevance_reason": "接触 WBC/QP 线性化常需要 Jacobian 导数与接触 wrench 的收缩，而不是完整三阶张量；直接求 contraction 可减少重复有限差分和临时张量开销。"
+  },
+  "published_at": "2019-08-29T08:14:59Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.867",
+  "summary": "Pinocchio #867 最初询问 6×nv×nv kinematic Hessian。针对接触方程 J(q+dq)^T λ 的线性化，作者澄清实际需要 M(i,j)=Σk H(k,i,j)λ(k)，维护者指出可用带外力的 RNEA 导数直接取得这一 contraction。作者随后确认该方法可用：Valkyrie nv=32 上，其记录的 RBDL 有限差分为 0.500 ms，Pinocchio 路径含格式转换为 0.060 ms，原始 RNEA derivatives 调用约 0.035 ms。",
+  "title": "接触 QP 只需要 dJᵀ/dq·λ 时可用 Pinocchio RNEA derivatives 避免构造完整 Hessian",
+  "version": null
+}

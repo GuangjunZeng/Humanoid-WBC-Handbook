@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4305.ad605796715c",
+  "schema_version": 1,
+  "source_fingerprint": "07d50bf9b9ea7117a0eb28593078396c3c0e78cbd3becc67f67943335bd2dde6",
+  "translations": {
+    "answer": "The minimum reproducibility, source code localization, and merge PR #4306 are consistent: IMU uses adjacent velocity for numerical differentiation, and the old `reset()` only clears output, not the previous frame linear and angular velocity buffers, leading to the first frame using reset before velocity for differentiation. The fix is to zero `_prev_lin_vel_w[env_ids]` and `_prev_ang_vel_w[env_ids]` in `imu.py`'s `reset(env_ids)` function. The original author confirmed that after the fix, the first frame `lin_acc_b` is gravity and `ang_acc_b` is zero.",
+    "applicability": "Applies to Isaac Lab IMUs with the same historical cache implementation; other versions or real sensors require verification of their own reset semantics.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and it has been formally documented or precisely referenced through independent reproduction.",
+    "details.attempts.0": "PR #4306 adds two lines in the `reset(env_ids)` function of `imu.py` to zero the previous frame linear and angular velocity buffers.",
+    "details.diagnostics.0": "Check if the IMU's numerical differentiation history buffer is cleared by the environment and sensor together using `env_ids`.",
+    "details.effective_fixes.0": "Upgrade to a version containing PR #4306 and merge commit 85d85bd, or synchronize the zeroing of two historical velocity buffers in the `reset(env_ids)` function of the IMU.",
+    "details.environments.0": "IsaacLab commit 244483ee, Isaac Sim 5.1.0, Ubuntu 22.04, RTX 4060Ti 16G, CUDA 12.9, driver 580.95.05; Quadcopter Direct, 1 env, IMU update_period=0.005.",
+    "details.limits.0": "Only verifies the IMU implementation in this version of Isaac Lab; does not extrapolate the first frame result to all real IMUs driving reset semantics.",
+    "details.outcomes.0": "PR has been merged; the original author confirmed that after the fix, the first frame `lin_acc_b` is gravity and `ang_acc_b` is zero.",
+    "details.problem_statements.0": "Why does the first frame `lin_acc_b` appear to have a large peak after environment and IMU reset?",
+    "details.safety_notes.0": "If the first frame IMU is involved in real-world protection or state estimation, an extra verification should be done on the target drive, including the reset, timestamp, and filter state.",
+    "details.suspected_causes.0": "The original post and merge patch confirm that `reset()` clears output acceleration, but not the previous frame linear and angular velocity buffers, leading to the first frame still using the reset before velocity.",
+    "details.symptoms.0": "In two examples, the acceleration before reset is in the tens of order of magnitude, and after reset, the first frame z-component is approximately 325.6 and 262.9, respectively, and the next frame returns to normal scale.",
+    "source.locator": "IsaacLab #4305 original post and author confirmation 3911771595; merged PR #4306",
+    "source.title": "Isaac Lab Environment Reset After IMU Acceleration Peak",
+    "terms.0": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.1": "Numerical Differentiation (数值微分)",
+    "terms.2": "History Buffer (历史缓存)",
+    "terms.3": "Environment Reset (环境重置)",
+    "title": "Why Does the First Frame Linear Acceleration Peak in IMU After Environment Reset?"
+  }
+}

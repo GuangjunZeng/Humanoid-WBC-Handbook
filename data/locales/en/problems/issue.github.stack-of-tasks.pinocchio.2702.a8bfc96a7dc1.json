@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2702.a8bfc96a7dc1",
+  "schema_version": 1,
+  "source_fingerprint": "24e46cb35ce548c2a41039610d9382d520135068deea81a1bb46cdba7c3c7af6",
+  "translations": {
+    "answer": "The complete reproduction of the original post indicates that the derivative of q with respect to the LOCAL_WORLD_ALIGNED frame in Pinocchio 3.3.0 is inconsistent with CppAD, but the derivative of v is consistent. The LOCAL/WORLD comparison is normal. The project maintainer noted that the issue has been fixed in Pinocchio 4. Therefore, the original post should be verified using the same integrate+CppAD approach, and then retested on the target Pinocchio 4 build. It is not acceptable to merely adjust the reference frame for numerical consistency unless the task definition allows it.",
+    "applicability": "The issue has been explicitly reproduced on Ubuntu 22.04, Pinocchio 3.3.0, Go2 FreeFlyer; the fix in Pinocchio 4 still needs to be verified in the target build.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is lacking.",
+    "details.attempts.0": "The original author used integrate in CppAD to handle manifold configurations and compared the results across three reference frames.",
+    "details.diagnostics.0": "The derivatives of q and v were compared; the CppAD path was first satisfied via integrate; and LOCAL, WORLD, and LOCAL_WORLD_ALIGNED were tested separately.",
+    "details.effective_fixes.0": "The maintainer indicated that the LOCAL_WORLD_ALIGNED derivative has been fixed in Pinocchio 4; however, no precise commit or upgrade was provided for verification.",
+    "details.environments.0": "Ubuntu 22.04; Pinocchio 3.3.0; Go2 URDF; JointModelFreeFlyer; CppAD; the original post's complete C++ reproduction.",
+    "details.limits.0": "It is not possible to automatically consider any Pinocchio 4 build as verified without precise commits or upgrades. The use of LOCAL/WORLD should be restricted to task semantics that allow it, and reference frame definitions should not be altered solely for numerical consistency.",
+    "details.outcomes.0": "The maintainer confirmed the issue was known and provided the fix boundary for Pinocchio 4; the original author did not report retesting on Pinocchio 4.",
+    "details.problem_statements.0": "Why is the joint velocity derivative with respect to the LOCAL_WORLD_ALIGNED frame inconsistent in Pinocchio 3.3.0 compared to CppAD?",
+    "details.suspected_causes.0": "The project maintainer indicated that the velocity, integrate, and difference definitions correspond to LOCAL; other reference frames would add additional corrections, and the original automatic differentiation system cannot be used out-of-the-box for these corrections.",
+    "details.symptoms.0": "The partial derivative of v with respect to q (v_partial_dq) is inconsistent with CppAD's joint velocity derivative (djoint_vel_dq); the partial derivative of v with respect to v (v_partial_dv) is consistent; and using WORLD or LOCAL results in the author's observation being correct.",
+    "source.locator": "Issue #2702, project maintainer explanation of issuecomment-2973723866; maintainer version note for issuecomment-2992232477",
+    "source.title": "Inconsistency in the LOCAL_WORLD_ALIGNED velocity configuration derivative in Pinocchio 3.3.0 compared to CppAD",
+    "terms.0": "Local World Aligned frame (LOCAL_WORLD_ALIGNED) (局部世界对齐坐标系)",
+    "terms.1": "Analytical derivative (解析导数)",
+    "terms.2": "Automatic differentiation (AD) (自动微分)",
+    "terms.3": "Configuration manifold (配置流形)",
+    "title": "How to identify the version and reference frame boundary in Pinocchio 3.3.0 when the LOCAL_WORLD_ALIGNED velocity configuration derivative is inconsistent with CppAD?"
+  }
+}

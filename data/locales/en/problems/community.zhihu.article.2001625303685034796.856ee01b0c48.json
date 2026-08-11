@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.2001625303685034796.856ee01b0c48",
+  "schema_version": 1,
+  "source_fingerprint": "2ffa770436e2986484e83638c4e985d57a8fe78d50944718f9620c0f3c492a99",
+  "translations": {
+    "answer": "Compare mass, COM, and inertia (including off-diagonal terms) in SolidWorks quality assessment, verify joint axes/coordinate systems, effort (Nm) and velocity (rad/s); simplify collision geometry without altering visual or inertial data. The list does not include tolerance; define it based on platform measurement precision.",
+    "applicability": "Personal experience; closed-chain structure still needs to be constrained in the target simulation environment.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal data cross-validation or independent replication is missing.",
+    "details.attempts.0": "Manually fill inertial fields, verify total mass, joint coordinate systems and limits, simplify collision geometry, and visualize using MuJoCo/RViz.",
+    "details.diagnostics.0": "Cross-verified by text, visible comments, and media; not independently validated by paper, source code, or official documentation.",
+    "details.environments.0": "SolidWorks assembly → URDF → MuJoCo/Isaac Sim; RViz/VS Code checks.",
+    "details.limits.0": "Personal experience; closed-chain structure still needs to be constrained in the target simulation environment.",
+    "details.outcomes.0": "Form a post-export acceptance list; no quantitative error threshold defined.",
+    "details.problem_statements.0": "CAD to URDF simulation is functional, but the strategy deviates in real machine; which mechanical quantities should be verified first?",
+    "details.safety_notes.0": "Community candidates are only for hypothesis formation; when involving real machines, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "Inaccurate export of mass, center of mass, and inertia (including off-diagonal terms), incorrect inertia term signs, excessive mesh faces or overly detailed collision geometry.",
+    "details.symptoms.0": "Strategy deviates in real machine, simulation loading failure or slowdown, incorrect joint direction or limits.",
+    "media_summaries.0": "No visible media found; mass, inertia, and collision experience are fully verified from text, but no claim of seeing images.",
+    "source.locator": "Text A/B/C check items",
+    "source.title": "Quality, Inertia, and Coordinate System Verification for SolidWorks → URDF After CAD Conversion",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Unified Robot Description Format (URDF) (统一机器人描述格式)",
+    "terms.2": "Joint Torque (关节力矩)",
+    "terms.3": "Center of Mass (CoM) (质心)",
+    "title": "CAD to URDF Simulation is Functional, but Strategy Deviates in Real Machine; Verify Which Mechanical Quantities First?"
+  }
+}

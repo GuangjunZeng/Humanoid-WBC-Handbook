@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "gacamilo"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/424",
+  "captured_at": "2026-08-12T00:04:00+08:00",
+  "content_sha256": "f8da72846080c60f19263d1a3ffbdf4739b3a7ce5d56099aaa94247db589efcd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 8 条评论与原图；区分已解决 NaN 和仍未解决的性能/解差异。",
+    "components": [
+      "cuOSQP",
+      "CUDA",
+      "double-to-float cast",
+      "bounds"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "对比 `P/A`、令 `P=0`、运行 2×2/demo、检查 GPU 配置；最后改成全 float 数据路径。"
+      ],
+      "diagnostics": [
+        "逐元素比较 CPU/GPU 的 `P/q/A/l/u` 在最终 dtype 中的值、finite 状态和无穷编码；不要只比较源 double 数据。"
+      ],
+      "effective_fixes": [
+        "在进入 cuOSQP 前使用目标 float 类型构造 bounds，并显式检查 `isfinite`/允许的无穷表示。"
+      ],
+      "environments": [
+        "cuOSQP/OSQP C interface，CUDA 11.6，Visual Studio；MPC 目标 100 Hz；未给 release。"
+      ],
+      "limits": [
+        "不能把所有 GPU NaN 都归因于 bounds cast；原帖剩余性能与解差异没有闭环。"
+      ],
+      "outcomes": [
+        "作者确认全 float 修改解决原始 NaN；但 CPU/GPU 解不同与 cuOSQP 数千迭代仍待继续排查。"
+      ],
+      "problem_statements": [
+        "cuOSQP 替换 CPU OSQP 后首迭代即 NaN，矩阵和 CUDA demo 正常时还应检查什么？"
+      ],
+      "safety_notes": [
+        "真机前对每周期 QP 全字段做 finite 检查；GPU solver 返回 NaN 时必须拒绝控制量并进入安全 fallback。"
+      ],
+      "suspected_causes": [
+        "原作者最终确认 `l/u` 的 double→float 转换产生 NaN/Inf，并触发 NaN 输出。"
+      ],
+      "symptoms": [
+        "CPU OSQP 正常，cuOSQP 从第一迭代 objective/solution 即 NaN；官方 CUDA PCG demo 在同一应用中正常。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程中矩阵和 CUDA demo 最终都被排除；原作者发现 `l/u` 从 double 转成 float 后含 NaN/Inf，Inf cast 也会让 cuOSQP 输出 NaN。把应用改成全 float 后原始问题解决。因此应在 `osqp_setup` 前检查目标 dtype 中全部 `P/q/A/l/u`，尤其 bounds 的 finite/无穷编码。线程没有解决后续 CPU/GPU 解差异和迭代慢，不能把全 float 当成完整性能修复。",
+        "applicability": "适用于 cuOSQP 单精度数据路径和含无穷 bounds 的 MPC；其他 GPU backend 需核对自身类型。",
+        "bilingual_terms": [
+          "单精度（single precision）",
+          "类型转换（type cast）",
+          "非数值（Not a Number, NaN）",
+          "线性系统零主元（zero pivot）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.cuosqp_float_bound_cast_nan_424",
+        "problem_title_zh": "校验 cuOSQP 单精度边界转换",
+        "question_zh": "CPU OSQP 正常而 cuOSQP 首迭代就 NaN 时，为什么要检查最终 float `l/u` 而不只看 `P/A`？",
+        "source_locator": "OSQP #424 作者最终根因与修复 1153368937",
+        "source_url": "https://github.com/osqp/osqp/issues/424#issuecomment-1153368937",
+        "verification_refs": [
+          {
+            "locator": "项目成员给出 C 接口矩阵/首迭代线性求解的诊断边界；作者最终定位 bounds",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/osqp/osqp/issues/424#issuecomment-1148438546"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖截图只显示 cuOSQP 首迭代出现 NaN；根因来自后续文字复查 `l/u`，未从截图推断。"
+    ],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.424",
+    "query": "cuOSQP NaN double float Inf bounds cast MPC GPU",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "GPU-accelerated MPC and WBC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "作者最终确认 `l/u` double→float 转换引入 NaN/Inf；全 float 解决原始 NaN。"
+      }
+    ],
+    "wbc_relevance_reason": "GPU QP 后端通常使用单精度；WBC bounds 中的无穷或大数在 dtype 转换时损坏，会让控制在首迭代直接失效。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.424",
+  "summary": "OSQP #424 中 CPU OSQP 能解同一 MPC，cuOSQP 第一迭代就输出 NaN。项目成员最初建议核对 C 接口 `P` 上三角、`P/A` nonzero counts 和 zero-pivot，但作者逐步确认矩阵与 CUDA demo 正常。最终作者定位到 `l/u`：从 `double` 转成 `float` 后包含 NaN/Inf；即使原向量没有 NaN，Inf cast 也会让 solver 输出 NaN。把应用改为全 float 后原始 NaN 问题解决。后续 cuOSQP 解差异和迭代慢未在该线程解决。",
+  "title": "cuOSQP 首迭代 NaN 要检查 l/u 的 double→float Inf 转换",
+  "version": null
+}

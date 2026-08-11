@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.leggedrobotics.ocs2.106.570ce73049dd",
+  "schema_version": 1,
+  "source_fingerprint": "3206b548b663e53e319f500220bd5e9196be55e6f88c0236e4e174aa4a02d255",
+  "translations": {
+    "answer": "Confirm whether the constraint is written as an equality only dependent on state; community suggests rewriting it as a state-input equality and avoiding hard-penalizing residual errors. When gradient calculations are large, evaluate the analytical derivative of Pinocchio.",
+    "applicability": "Applicable to OCS2 full-body NMPC using q and ν as state and SQP solver; other solvers need to re-verify constraint support.",
+    "credibility.rationale": "Engineering records exist for environment, processing steps and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Original author tried constraint observer and penalty methods, but slipping still exists.",
+    "details.diagnostics.0": "Distinguish between pure-state equality constraints and state-input equality constraints, then verify SQP solver support range.",
+    "details.effective_fixes.0": "Community suggests changing the constraint to the acceleration layer's end, making it a state-input equality constraint.",
+    "details.environments.0": "OCS2, Pinocchio, full-body NMPC, state is q and ν, input is ground reaction force and joint torque.",
+    "details.limits.0": "Conclusion is based on community practice; response also states the judgment on OCS2 SQP capability is based on previous version, should re-check current version.",
+    "details.outcomes.0": "Response provides direction for re-implementation, but original author did not post final experimental results in the Issue.",
+    "details.problem_statements.0": "Support foot zero velocity constraint is violated during standing and small running.",
+    "details.safety_notes.0": "Before real machine testing, check foot end constraint residuals and friction margin to avoid bringing simulation slippage into hardware.",
+    "details.suspected_causes.0": "Writing the foot zero velocity as a pure-state equality constraint, but the solver path cannot directly handle it.",
+    "details.symptoms.0": "Support foot continues to slip, some runs directly crash.",
+    "media_summaries.0": "Issue includes screenshot of foot end constraint observer and slippage video; this round only confirms the phenomenon based on the author's text description, and specific numerical values have not been pixel-by-pixel verified.",
+    "source.locator": "Community technical response @FenglongSong",
+    "source.title": "OCS2 Full-Body NMPC: Support Foot Zero Velocity Constraint Continuously Violated",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Nonlinear Model Predictive Control (NMPC) (非线性模型预测控制)",
+    "terms.2": "Sequential Quadratic Programming (SQP) (顺序二次规划)",
+    "terms.3": "Contact Constraint (接触约束)",
+    "title": "When Support Foot Zero Velocity Constraint Continuously Violates in OCS2 Full-Body NMPC, What Should Be Changed First?"
+  }
+}

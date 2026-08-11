@@ -1,0 +1,125 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GJBoth"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2774",
+  "captured_at": "2026-08-11T23:42:00+08:00",
+  "content_sha256": "832b89d22337d3df012c7307d1a89de7ccd858fe758173f5f3e042d2b98cf835",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 4 条评论和评论内直接链接的固定 commit 源码；保留早期解释与后续纠正的冲突，结论不依赖图片。",
+    "components": [
+      "MJX",
+      "plane-capsule collision",
+      "contact frame",
+      "pyramidal friction"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者提出在很小容差下使用 `math.orthogonals(n)[0]`，并报告替换选择后 parity 恢复；尚无维护者审核或合并补丁。"
+      ],
+      "diagnostics": [
+        "冻结同一状态、清空 warmstart，分别比较 common-world Jacobian、contact frame、friction cone 类型、constraint force 与 `qacc`；不要只比较接触点位置。"
+      ],
+      "effective_fixes": [
+        "当前没有可登记的正式修复；只能把该替换作为待验证实验，不应直接升级生产或训练基线。"
+      ],
+      "environments": [
+        "详细跟进固定到 MuJoCo commit 6882095；一个 plane、一个 free capsule、一个显式 contact pair；CPU double 与 jitted MJX float64，同一 frozen state、fresh data、`qacc_warmstart=0`。"
+      ],
+      "limits": [
+        "现有数据来自一个最小 frozen-state 例子；尚未证明对所有 plane-capsule 姿态、cone 类型和 MuJoCo 版本都成立。"
+      ],
+      "outcomes": [
+        "Issue 从关闭状态重新打开；维护者表示会检查，线程截至采集时没有进一步结论。"
+      ],
+      "problem_statements": [
+        "MJX plane-capsule 的 `b_norm < 0.5` fallback 是否会生成非正交切向基，并放大 CPU-MJX 动力学差异？"
+      ],
+      "safety_notes": [
+        "若 WBC 依赖摩擦方向或接触力阈值，应在目标版本对 CPU/MJX 接触 frame 和 cone 配置做回归测试。"
+      ],
+      "suspected_causes": [
+        "跟进作者指出 fallback 复用了 `math.orthogonals` 的轴选择，但缺少后续投影和重新归一化；维护者尚未正式确认该根因。"
+      ],
+      "symptoms": [
+        "跟进报告 `b_norm=0.4407495` 时 fallback 触发；给定 `n=[0.3,0.4,0.8660254]` 会选 `b=[0,1,0]`，从而 `n·b=0.4`。",
+        "同一 common-world point Jacobian 约差 `5.82e-18`，但 active contact tangent 不同；pyramidal friction 下 force 与 `qacc` 差异明显，`condim=1` 和 isotropic elliptic 基本一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "目前不能。线程中的详细最小例子确实纠正了早期对 `normalize_with_norm` 返回值的理解，并展示了 fallback 可能生成非正交 frame、且差异集中在 pyramidal friction 的证据；但维护者只是重新打开 Issue 并表示将检查，尚未确认根因或合并修复。可把 frozen-state、contact frame、cone type 和 `qacc_warmstart=0` 的对比流程用于复现，不能把作者提议的 `math.orthogonals` 替换写成通用有效修复。",
+        "applicability": "仅直接适用于 commit 6882095 和原帖最小 plane-capsule frozen-state 配置；其他版本与接触几何需复现。",
+        "bilingual_terms": [
+          "接触坐标系（contact frame）",
+          "正交归一基（orthonormal basis）",
+          "金字塔摩擦锥（pyramidal friction cone）",
+          "预热加速度（qacc warm-start）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.mjx_plane_capsule_tangent_fallback_2774",
+        "problem_title_zh": "核对 MJX plane-capsule fallback 的接触切向基",
+        "question_zh": "看到 MJX 与 MuJoCo CPU 在 plane-capsule 接触下的 force 或 `qacc` 不一致时，是否可以把 `b_norm < 0.5` fallback 认定为已确认根因并直接替换？",
+        "source_locator": "MuJoCo #2774 详细纠正与复现实验 5082490175；维护者重新打开 5104526098",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2774#issuecomment-5082490175",
+        "verification_refs": [
+          {
+            "locator": "维护者重新打开 Issue，表示将进一步检查；不是技术确认",
+            "relation": "conflict",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2774#issuecomment-5104526098"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2774",
+    "query": "MJX plane capsule b_norm fallback non orthonormal contact frame pyramidal friction qacc parity",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "capsule-contact locomotion models"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "早期维护者认为检查的是归一化向量长度；后续逐行纠正为归一化前范数，并给出 frozen-state parity 数据。"
+      },
+      {
+        "text": "维护者重新打开 Issue 并表示会检查，但尚未确认或合并修复。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 常依赖接触切向基、摩擦锥和仿真生成的接触力；后端间切向 frame 差异可能污染接触任务、奖励和 sim-to-sim 对比。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2774",
+  "summary": "MuJoCo #2774 最初把 `b_norm < 0.5` 描述为偏激进的数值安全阈值，维护者曾认为它检查归一化后向量并关闭。2026 年详细跟进纠正：`normalize_with_norm` 的第二返回值是归一化前范数；在 commit 6882095 的手算例中，fallback 可产生非正交 contact frame，并在同一冻结状态下观察到 pyramidal friction 的接触力与 `qacc` 差异，而 `condim=1` 和 isotropic elliptic 基本一致。维护者已重新打开并表示会检查，但尚无确认或合并修复。",
+  "title": "MJX plane-capsule 切向基 fallback 的数值差异仍待维护者确认",
+  "version": null
+}

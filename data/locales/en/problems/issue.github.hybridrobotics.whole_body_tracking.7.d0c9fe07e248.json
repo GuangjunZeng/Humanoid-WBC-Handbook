@@ -1,0 +1,24 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.7.d0c9fe07e248",
+  "schema_version": 1,
+  "source_fingerprint": "0420824a7c17784272981b12ec4d0739e5270c80648b41eb55d54d3f4972fb2a",
+  "translations": {
+    "answer": "The original poster indicated that the implementation allows any rigid body to be set as the anchor body, and the deployment process will handle the selected reference body. Therefore, the torso not equal to the pelvis is not a bug. The post does not specify the exact transformation applied, nor does it address the issue of different IMU precision during transfer. The model still needs to verify the coordinate transformation in the code.",
+    "applicability": "Applies to the anchor_body mechanism in HybridRobotics/whole_body_tracking; cannot be directly extrapolated to other state estimation implementations.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The maintainer explained that the deployment chain will handle the selected anchor body.",
+    "details.diagnostics.0": "Verify the anchor body, USD root link, and deployment observation reference frame.",
+    "details.environments.0": "HybridRobotics/whole_body_tracking; Unitree G1; USD root=pelvis; anchor_body=torso.",
+    "details.limits.0": "The post does not explain why the torso is selected, nor does it address the difference in IMU precision between torso and pelvis.",
+    "details.outcomes.0": "The maintainer confirmed that the anchor body can be any body, and this setting is not a bug.",
+    "details.problem_statements.0": "Is using the torso as the anchor body when the USD root link is pelvis and the IMU is also near pelvis likely to cause an offset?",
+    "details.symptoms.0": "The questioner expects that different torso/pelvis reference frames might cause an offset; no actual failure is reported.",
+    "source.locator": "Issue #7, maintainer's reply to issuecomment-3197873848 and subsequent unanswered follow-up.",
+    "source.title": "Deployment of torso and pelvis in G1",
+    "terms.0": "Anchor body (锚定刚体)",
+    "terms.1": "Root link (根链接)",
+    "terms.2": "Inertial Measurement Unit (惯性测量单元)",
+    "title": "Must the anchor body in Whole Body Tracking be equal to the USD root link or the main IMU link?"
+  }
+}

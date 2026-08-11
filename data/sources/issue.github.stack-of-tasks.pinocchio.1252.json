@@ -1,0 +1,187 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "rshum19"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252",
+  "captured_at": "2026-08-11T16:30:00+08:00",
+  "content_sha256": "a2f98da646b66a6959f63c3af14e555d87d5495222e73f749a6870786719f5a3",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 14 条评论；把函数 frame 定义和基座建模拆为两张卡，未补写线程没有给出的向量排列或数值等价结论。",
+    "components": [
+      "Pinocchio",
+      "computeCentroidalMomentum",
+      "computeCentroidalMomentumTimeVariation",
+      "JointModelPlanar",
+      "centroidal dynamics"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者直接确认函数定义、表达 frame 和时间导数接口。",
+        "原作者以固定机械臂、cart-pendulum 和 JointModelPlanar 移动基座逐步澄清基座建模。"
+      ],
+      "diagnostics": [
+        "记录质心动量 frame 的原点和轴向：原点在 CoM，轴与 world 对齐。",
+        "检查模型中的 base 是否具有实际广义坐标；不要把“没有 FreeFlyer”自动等同为固定基。",
+        "区分静止固定 base 的惯量与通过 planar/prismatic 自由度运动的 base 惯量。"
+      ],
+      "effective_fixes": [
+        "需要移动基座对系统动量的贡献时，在 URDF/根关节模型中显式建模相应自由度；线程确认 JointModelPlanar 是移动平面基座的可用建模入口。"
+      ],
+      "environments": [
+        "2020–2022 年 Pinocchio C++ API；原帖未给具体版本、机器人 URDF 或数值测试。"
+      ],
+      "limits": [
+        "线程没有给线/角动量向量元素顺序、单位或数值例子；这些应从目标版本 API 文档与测试核对。",
+        "维护者对 URDF 中移动关节与 buildModel(..., JointModelPlanar()) 的最后回复很简短，本卡不把它扩写成任意模型都数值等价。",
+        "本线程不讨论外力、接触切换或质心动量矩阵导数。"
+      ],
+      "outcomes": [
+        "原作者确认 computeCentroidalMomentum 的定义回答了解其问题，并在基座建模讨论后再次表示理解。"
+      ],
+      "problem_statements": [
+        "computeCentroidalMomentum 返回的线/角动量表达在哪个 frame，怎样获得其时间导数？",
+        "固定 base、prismatic cart 和 planar mobile base 的惯量分别怎样进入 centroidal dynamics？"
+      ],
+      "safety_notes": [
+        "动量控制用于实机前，应以独立动量/力矩平衡检查 frame、单位和基座自由度，避免错误约束导致大接触力。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "调用者不确定 computeCentroidalMomentum 是否对应 Orin、Goswami、Lee 2013 所述的人形质心动量。",
+        "调用者进一步不确定没有显式 JointModelFreeFlyer 时，cart-pendulum 或固定机械臂的 base 惯量是否被计入。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者确认，该函数计算刚体树的总质心动量，表达 frame 的原点位于系统质心，坐标轴与 world frame 对齐；后续追问确认线动量也采用相同约定。需要时间导数时调用 computeCentroidalMomentumTimeVariation。原线程没有给向量元素顺序或数值例子，因此实现时仍要核对目标版本文档。",
+        "applicability": "适用于 Pinocchio computeCentroidalMomentum 与 computeCentroidalMomentumTimeVariation 的 frame 解释；输出排列和单位仍以目标版本为准。",
+        "bilingual_terms": [
+          "质心动量（centroidal momentum）",
+          "线动量（linear momentum）",
+          "角动量（angular momentum）",
+          "质心坐标系（center-of-mass frame）",
+          "世界对齐坐标轴（world-aligned axes）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_centroidal_momentum_frame_1252",
+        "problem_title_zh": "Pinocchio 质心动量的 CoM 原点与 world-aligned 轴约定",
+        "question_zh": "Pinocchio computeCentroidalMomentum 返回的线动量和角动量表达在哪个坐标系，怎样获得时间导数？",
+        "source_locator": "Pinocchio #1252 评论 650976642 确认定义、frame 与时间导数接口；评论 651815897 原作者确认；评论 1051564222 确认线动量同样适用",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-650976642",
+        "verification_refs": [
+          {
+            "locator": "原作者确认函数定义回答了其问题",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-651815897"
+          },
+          {
+            "locator": "维护者确认线动量与角动量使用同一表达 frame 约定",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-1051564222"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者说明，真正固定的机械臂 base 不运动，其 base 惯量不会作为运动基座贡献进入 centroidal dynamics；若机械臂放在由 JointModelPlanar 表达的移动基座上，基座惯量会贡献。由 prismatic cart 与 revolute pendulum 建模的系统也不是传统固定基，而是自由度较少的移动/浮动基系统。线程确认了建模分类，但没有给数值等价测试。",
+        "applicability": "适用于以固定、prismatic/planar 或 FreeFlyer 根关节构造 Pinocchio 模型时解释基座对质心动力学的贡献。",
+        "bilingual_terms": [
+          "固定基座（fixed base）",
+          "移动基座（mobile base）",
+          "平面关节（planar joint）",
+          "欠驱动系统（underactuated system）",
+          "基座惯量（base inertia）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_centroidal_base_mobility_modeling_1252",
+        "problem_title_zh": "Pinocchio 质心动力学是否包含基座惯量取决于基座是否被建模为可动自由度",
+        "question_zh": "固定机械臂、cart-pendulum 和 planar mobile base 中，基座惯量怎样进入 Pinocchio centroidal dynamics？",
+        "source_locator": "Pinocchio #1252 评论 716349153 解释固定 base；评论 716646794 澄清 cart-pendulum；评论 716667472 解释 planar mobile base 的惯量贡献；评论 716704766 确认建模方向",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716667472",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者澄清 prismatic cart + pendulum 不是固定基，而是自由度较少的移动/浮动基",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716646794"
+          },
+          {
+            "locator": "原作者在建模讨论后确认理解",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716707958"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1252",
+    "query": "Pinocchio computeCentroidalMomentum frame CoM world aligned fixed base planar joint",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "rigid-body tree",
+      "fixed-base robotic arm",
+      "cart-pendulum",
+      "mobile-base robotic arm"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者确认质心动量 frame 位于 CoM 且轴与 world 对齐，线动量也相同。"
+      },
+      {
+        "text": "固定机械臂 base 不动时不会作为运动基座贡献；planar mobile base 的惯量会贡献。"
+      },
+      {
+        "text": "cart-pendulum 虽没有 FreeFlyer，仍是自由度较少的移动/浮动基系统。"
+      }
+    ],
+    "wbc_relevance_reason": "质心动量和其导数是人形动量 WBC、轨迹优化与接触规划的核心量；frame 约定或基座自由度建模错误会直接改变动量约束。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1252",
+  "summary": "Pinocchio #1252 确认 computeCentroidalMomentum 计算刚体树总质心动量，其表达 frame 位于系统质心且坐标轴与 world frame 对齐；线动量和角动量均采用该约定，时间导数可用 computeCentroidalMomentumTimeVariation。后续讨论澄清固定机械臂的静止 base 惯量不会进入运动产生的 centroidal dynamics；将机械臂放在由 planar joint 表达的移动基座上时，基座惯量会贡献。仅由 prismatic cart 和 revolute pendulum 构成的系统不是传统固定基，而是自由度较少的移动/浮动基系统。原作者对两组回答均表示理解。",
+  "title": "Pinocchio 质心动量的表达坐标系与基座建模边界",
+  "version": null
+}

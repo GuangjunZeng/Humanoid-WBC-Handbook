@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1232.18fc1877ef34",
+  "schema_version": 1,
+  "source_fingerprint": "b374bf5e6776e3345f299ff790ce810a4823964b8497d0a9d189a9163961bd55",
+  "translations": {
+    "answer": "Use `pinocchio.buildReducedModel` with a specified namespace, and obtain the joint ID via `model.getJointId`. The `reference_configuration` is used to compute the locked joint pose. Only call `model` when only kinematic model is needed; when displaying, pass `visual_model` and receive the reduced model and `visual_model` as outputs. The original poster confirmed the namespace correction and shared a working Python snippet, but the reference vector was not independently verified within the thread.",
+    "applicability": "Applies to the Python binding and RobotWrapper floating base model; the function signature should be verified locally.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The maintainer posted the Python docstring; the user rewrote the Python code based on the official C++ example and corrected the namespace and joint ID.",
+    "details.diagnostics.0": "Confirmed the function in `pinocchio` namespace; used `existJointName` and `getJointId` to obtain the joint ID; the reference configuration must be used to compute the locked joint pose; when displaying, check if `visual_model` is synchronized with the reduced model.",
+    "details.effective_fixes.0": "Call `pin.buildReducededModel(model, joint_ids, reference_configuration)`; when displaying, use the overloaded version with `geometry_model` and return both `model` and `geometry_model`.",
+    "details.environments.0": "robotpkg-py36-pinocchio; Python 3.6 path; RH5 floating base URDF; `RobotWrapper.BuildFromURDF`.",
+    "details.limits.0": "The user's snippet used all 7 reference configurations as 0; the thread did not discuss the validity of the quaternion or provide test output; do not treat the entire segment as a general template.",
+    "details.outcomes.0": "The user confirmed the namespace correction and shared a working Python snippet; two maintainers suggested contributing the example to the official documentation.",
+    "details.problem_statements.0": "How to lock a specified joint in a given configuration in Pinocchio Python, while synchronizing the geometry model when needed?",
+    "details.suspected_causes.0": "Not using `pinocchio.buildReducedModel` namespace; confusion between `Frame ID` and `Joint ID`; not distinguishing between reducing only the kinematic model and reducing both the kinematic and geometry models.",
+    "details.symptoms.0": "Calling `buildReducedModel` directly results in a `NameError`; early drafts used `getFrameId` to collect the locked joints, and the reference configuration and geometry model overload were unclear.",
+    "source.locator": "Issue #1232, maintainer API explanation issuecomment-639461045, namespace explanation issuecomment-640721560, user working snippet issuecomment-641755486",
+    "source.title": "Pinocchio Python: Lock a specified joint in a reference configuration and synchronize the geometry model when needed?",
+    "terms.0": "reduced model (缩减模型)",
+    "terms.1": "reference configuration (参考配置)",
+    "terms.2": "joint index (关节索引)",
+    "terms.3": "GeometryModel (几何模型)",
+    "title": "How to lock a specified joint in a reference configuration in Pinocchio Python and synchronize the geometry model when needed?"
+  }
+}

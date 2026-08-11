@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1032.b077549ef1bf",
+  "schema_version": 1,
+  "source_fingerprint": "3f67520f795f7b027e34a2d0c2b119cc56ea1bd007b04d75ef8398999a2086f9",
+  "translations": {
+    "answer": "The Jacobian returned by PhysX for floating base articulation contains 6 root-pose DOFs before the joint_ids. Using joint_ids directly shifts all columns left by 6. The fix for this version is to add 6 to the index in the floating base branch. When upgrading, the offset should be calculated based on the current API's DOF layout, and verification should be done via finite difference. The fix has been verified and merged into Isaac Sim 4.0.0, with the issue closed.",
+    "applicability": "Isaac Sim 4.0.0 / Isaac Lab; other versions require checking Jacobian tensor contract.",
+    "credibility.rationale": "The issue has been resolved, the environment is clear and there is no conflict. The fix is documented and has been independently verified.",
+    "details.attempts.0": "Add 6 to the joint_ids when indexing in the floating base branch.",
+    "details.diagnostics.0": "Verify the last column of the PhysX Jacobian to ensure the first 6 columns correspond to root-pose DOFs, not actuator joints.",
+    "details.effective_fixes.0": "PR #1033 modifies the index and merges into isaac-sim/IsaacLab main.",
+    "details.environments.0": "Isaac Sim 4.0.0; Isaac Lab commit 9ab6b48; floating-base articulation.",
+    "details.limits.0": "Applies to this API/version layout; upgrade should check the current tensor contract, not hardcode +6.",
+    "details.outcomes.0": "The code maintainer approved the fix, commit d282255 merged on 2024-09-25, Issue closed.",
+    "details.problem_statements.0": "Fixed base IK works normally, but differential IK on floating base is incorrect. How to check Jacobian index?",
+    "details.safety_notes.0": "Validate Jacobian direction and column mapping with finite difference or visualization before deploying to real hardware.",
+    "details.suspected_causes.0": "The joint_ids of the fixed base are directly used in the floating base Jacobian, missing 6 root-pose DOF offset.",
+    "details.symptoms.0": "DifferentialInverseKinematicsAction fails on the floating base system.",
+    "source.locator": "Issue #1032 describes; merged PR #1033 description/commit d282255",
+    "source.title": "Isaac Lab Floating Base Differential IK Jacobian Joint Index Offset",
+    "terms.0": "Floating base (浮动基)",
+    "terms.1": "Jacobian matrix (雅可比矩阵)",
+    "terms.2": "Root-pose DOFs (根位姿自由度)",
+    "title": "Why does joint_ids misalign with the Jacobian in floating base differential IK?"
+  }
+}

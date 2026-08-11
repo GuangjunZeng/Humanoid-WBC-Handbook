@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ctampier"
+  ],
+  "canonical_url": "https://github.com/gazebosim/gz-sim/issues/880",
+  "captured_at": "2026-08-11T15:41:00+08:00",
+  "content_sha256": "a9638063289db9c4706490bdc07e43a5f5d9a7897c637688bca1f056635f86c0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 4 条评论；GIF 只用于原帖描述症状，本卡不依赖图像推断摩擦根因。",
+    "components": [
+      "Gazebo Fortress",
+      "DART 6.9.2",
+      "skid steer",
+      "friction"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "线程建议切换 Bionic、从源码构建 Gazebo DART fork 与 Ignition，或使用 dartsim PPA。"
+      ],
+      "diagnostics": [
+        "记录 `libdart` 精确版本，并用相同 world/command 对比 Bionic Gazebo fork、Focal system DART 或 PPA build。"
+      ],
+      "effective_fixes": [
+        "没有原作者复测；三种路径只能标为维护者给出的 workaround 候选。"
+      ],
+      "environments": [
+        "Ubuntu 20.04 Focal Docker；Ignition Gazebo Fortress binary；系统 DART 6.9.2-2build4；官方 `skid_steer_mecanum.sdf`。"
+      ],
+      "limits": [
+        "未给固定 fork commit、PPA 包版本或转向误差指标；Issue 仍开放。",
+        "该结论不适用于 Bullet、ODE 或当前 Gazebo/DART 版本。"
+      ],
+      "outcomes": [
+        "环境和 DART 版本被确认，未报告 workaround 后的轨迹。"
+      ],
+      "problem_statements": [
+        "为什么 Gazebo Fortress 的 skid-steer 示例在 Ubuntu Focal/DART 上几乎不能按角速度转向？"
+      ],
+      "safety_notes": [
+        "sim-to-real 前应固定 physics engine/package digest，并用横向/角向速度、接触力和滑移率做回归，不能只看 world 文件相同。"
+      ],
+      "suspected_causes": [
+        "维护者将差异归到 Focal 系统 DART 的摩擦支持；Bionic 使用 Gazebo 自有 fork，支持更好。"
+      ],
+      "symptoms": [
+        "命令 linear x=0.5、angular z=0.5 时，机器人多数时间直行，偶尔突然转 90°，而不是近似圆周运动。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该线程首先核对 `libdart`，原作者环境为 6.9.2-2build4。维护者认为 Focal 系统 DART 的摩擦支持与 Bionic 所用 Gazebo DART fork 不同，并建议用 Bionic、在 Focal 从源码构建该 fork 与 Ignition，或使用 dartsim PPA做版本 A/B。原作者没有公布任何 workaround 结果，所以它是明确的版本诊断入口，不是已验证修复。",
+        "applicability": "直接适用于 Focal + Fortress binary + DART 6.9.2-2build4；其他版本需重新 A/B。",
+        "bilingual_terms": [
+          "摩擦模型（friction model）",
+          "侧滑转向（skid steering）",
+          "物理后端（physics backend）",
+          "版本固定（version pinning）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.gz_sim_focal_dart_friction_880",
+        "problem_title_zh": "识别 Gazebo/DART 版本造成的 skid-steer 摩擦差异",
+        "question_zh": "Gazebo Fortress 的 skid-steer 示例在 Ubuntu Focal 上主要直行、偶发 90° 转向时，应先核对什么？",
+        "source_locator": "gz-sim #880 版本确认 868260846；维护者诊断/源码方案 867964701/868823079；PPA 方案 1101662759",
+        "source_url": "https://github.com/gazebosim/gz-sim/issues/880#issuecomment-868823079",
+        "verification_refs": [
+          {
+            "locator": "维护者明确关联 Focal DART 版本与 Bionic fork 摩擦支持差异",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/gazebosim/gz-sim/issues/880#issuecomment-867964701"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "gazebosim.gz-sim.880",
+    "query": "Gazebo Fortress DART friction Ubuntu Focal skid steer workaround",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "skid-steer/mecanum mobile robot",
+      "Gazebo contact simulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "维护者先要求确认 libdart 版本，再给出 Bionic、源码 fork 和 PPA 三条版本路径；作者未回报结果。"
+      }
+    ],
+    "wbc_relevance_reason": "足式/轮式接触控制对切向摩擦模型高度敏感；同一 Gazebo world 在不同 distro/DART build 上可能出现完全不同的转向和滑移。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.gazebosim.gz-sim.880",
+  "summary": "gz-sim #880 在 Ubuntu 20.04 Docker、Ignition Fortress binary 和 DART 6.9.2-2build4 上复现：官方 skid-steer mecanum 示例在同时给线速度/角速度时主要直行，偶尔 90° 转向。维护者认为这是 Focal 系统 DART 与 Bionic 所用 Gazebo DART fork 的摩擦支持差异，并给出三条 workaround：Ubuntu Bionic、在 Focal 编译 Gazebo 的 DART fork 和整套 Ignition、或使用 dartsim PPA。原作者没有反馈任何路径的结果。",
+  "title": "Ubuntu Focal 的系统 DART 版本会改变 Gazebo skid-steer 摩擦表现",
+  "version": null
+}

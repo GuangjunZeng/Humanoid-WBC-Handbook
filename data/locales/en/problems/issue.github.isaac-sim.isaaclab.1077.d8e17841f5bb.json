@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1077.d8e17841f5bb",
+  "schema_version": 1,
+  "source_fingerprint": "8f6a75cecaf5a3e8dba5b079ee6c452806b5b014e791e5c33c8aa2d1d6baf460",
+  "translations": {
+    "answer": "Isaac Lab contributors recommend first troubleshooting by calibrating the robot simulation and verifying the used actuator models. Once the model is deemed reliable, domain randomization can be used to expand the training distribution, improving robustness to joint position errors. This is only a diagnostic step and not a verified fix.",
+    "applicability": "Applicable for initial screening of action-state deviation caused by custom assets/actuator models; specific ALOHA issues remain unaddressed.",
+    "credibility.rationale": "The answer has not been closed or there is conflict; the issue is still under investigation; no reproducible reproduction has been completed; key images have not been analyzed.",
+    "details.attempts.0": "The questioner used implicit actuators, action rate, and joint velocity penalties; a plan was made for real-world interpolation.",
+    "details.attempts.1": "The contributors recommend checking the Ideal PD/actuator model and expanding the training domain.",
+    "details.diagnostics.0": "The contributors recommend first confirming the robot tuning status and actuator model, and then considering noise and domain randomization.",
+    "details.environments.0": "Custom ALOHA URDF to USD; custom switch furniture environment; implicit actuator; angular units are in rad.",
+    "details.limits.0": "No specific setting for decimation/dt was provided; no explanation of the unique cause of the ALOHA qpos deviation was given.",
+    "details.outcomes.0": "Issue has been moved to Discussion; no final fix or comparison result has been provided.",
+    "details.problem_statements.0": "The absolute joint angle action is not fully followed by qpos in Isaac Lab, while the real robot can follow it.",
+    "details.suspected_causes.0": "The thread only proposed actuator model and simulation calibration direction, without confirming the specific root cause.",
+    "details.symptoms.0": "Simulation qpos does not match the action; single-step action variation can exceed 1 rad; real robot can follow after interpolation.",
+    "media_summaries.0": "The Issue graph shows the difference between action and qpos, but no pixel-level numerical reading has been completed, so the image-related conclusions remain unverified.",
+    "source.locator": "Issue #1077, contributor reply in issuecomment-2389655396; moved to Discussion",
+    "source.title": "Isaac Lab Action and qpos Inconsistency - Sim-to-Real Investigation Entry",
+    "terms.0": "Joint position (qpos) (关节位置)",
+    "terms.1": "Actuator model (执行器模型)",
+    "terms.2": "Domain randomization (域随机化)",
+    "title": "What Should Be Checked First in the Original Thread When Action and qpos Are Not Consistent in Isaac Lab?"
+  }
+}

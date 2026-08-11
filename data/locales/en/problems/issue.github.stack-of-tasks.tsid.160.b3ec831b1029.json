@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.160.b3ec831b1029",
+  "schema_version": 1,
+  "source_fingerprint": "9671e253063721d340f79c121a8db9b0e47d590fd07c9dcab4b7360d8ff91bb0",
+  "translations": {
+    "answer": "Cannot continue using q.tail(na) to subtract element-wise from the reference. The implementation of PR #161 has been merged first, distinguishing between the joint configuration dimension nq_actuated and the actuator velocity dimension na. A neutral configuration is used to construct an augmented reference including the root, with the joint reference written at the end. The function pinocchio::difference(model, ref_augmented, q) is then called, and the final na elements of the velocity space error are extracted. This PR also includes a pose convergence test with a model containing spherical joints.",
+    "applicability": "Applicable to systems with spherical or continuous joints where nq != nv, and using the implementation of PR #161 in the TSID. The nq_actuated assumption must be rechecked for custom root joints.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. The reference is formally documented and has independent reproducibility with exact citation.",
+    "details.attempts.0": "The discussion first clarifies that the pose reference should not include a floating base. The maintainers suggest constructing an augmented reference with a floating base configuration, performing a complete model difference, and then extracting the joint portion. The ball joints or continuous joints should use the Pinocchio manifold difference instead of element-wise subtraction.",
+    "details.diagnostics.0": "Compare model.nq, model.nv, robot.na with joint type; check whether the pose reference is in configuration space or velocity space; use Pinocchio manifold difference for ball joints or continuous joints instead of element-wise subtraction.",
+    "details.effective_fixes.0": "Use merged PR #161: RobotWrapper explicitly saves nq_actuated/is_fixed_base; use neutral configuration to construct augmented reference, write joint reference in the tail; compute pinocchio::difference(model, ref_augmented, q) and take the last na velocity space error.",
+    "details.environments.0": "TSID old submission b0d6bff; problem covers revolute unbounded joint and spherical joint; PR #161's test model includes spherical joint, fixed base test shows nq != nv.",
+    "details.limits.0": "PR treats nq_actuated for floating base as nq-7; custom root joint or other configuration should still verify this assumption and target TSID version.",
+    "details.outcomes.0": "PR #161 merged on 2022-04-11; patch adds 7-DoF model with spherical joint, requiring error monotonic decrease and reach 1e-8 in up to 1000 pose tasks; original author then closed Issue via PR merged.",
+    "details.problem_statements.0": "Why can't TaskJointPosture on robots with nq != nv use q.tail(na) and element-wise subtraction to calculate pose error?",
+    "details.suspected_causes.0": "The old implementation assumed that all joints except the root joint satisfy nq = nv, and used the joint configuration clipping length and executor velocity dimension na in a mixed manner.",
+    "details.symptoms.0": "The configuration vector has an incorrect dimension when clipped according to na, and the difference(q1, q2) of the manifold configuration is not equal to q2 - q1, leading to incorrect calculation of the pose task error.",
+    "source.locator": "Issue #160 - Complete discussion; closed comment issuecomment-1231751666; merged PR #161 and commit 4caf44f",
+    "source.title": "TSID Pose Task Must Use Manifold Difference Calculation When nq ≠ nv",
+    "terms.0": "Configuration Manifold (Configuration Manifold) (配置流形)",
+    "terms.1": "Manifold Difference (流形差分)",
+    "terms.2": "Joint Posture Task (关节姿态任务)",
+    "terms.3": "Floating Base (浮动基)",
+    "title": "How to Correctly Compute Joint Configuration Error on Humanoid Robots with Non-Identical Manifold Dimensions (nq ≠ nv) or Continuous Joints?"
+  }
+}

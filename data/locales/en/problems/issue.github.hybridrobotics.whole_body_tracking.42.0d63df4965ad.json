@@ -1,0 +1,24 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.42.0d63df4965ad",
+  "schema_version": 1,
+  "source_fingerprint": "87a1cc4e9390c304759c70b74d1a5a01af009911199039e57f720bd8c26f4c26",
+  "translations": {
+    "answer": "A user successfully downgraded from Isaac Lab 2.2.1 to 2.2.0 and confirmed it on a 5070 Ti, but the original questioner still encountered a KeyError when using the same major version. Another user reported that Lab 2.2.1 and Isaac Sim 5.0 are now operational. Therefore, this combination is a candidate, and it must be verified alongside rsl-rl-lib, installation methods, project submission, and actual tasks.",
+    "applicability": "Only applicable to the Isaac Sim/Lab combinations listed in the comments; the conclusion is subject to same-thread counterexamples.",
+    "credibility.rationale": "The answer has not been closed or there is a conflict in the source; the conclusion is not fully resolved.",
+    "details.attempts.0": "Downgrade Isaac Lab; switch Isaac Sim/Lab combination; reinstall using official pip documentation and set project PYTHONPATH; fix rsl-rl-lib to 2.2.0 or 2.3.0.",
+    "details.diagnostics.0": "Record Isaac Sim, Isaac Lab, rsl-rl-lib, Python, installation method, and project submission; do not just record the major version of Isaac Lab; retest on Isaac-Ant-v0 and project task.",
+    "details.environments.0": "Original post: Isaac Sim 5.0.0, Isaac Lab version 0.47.1, Python 3.11; comments involve Isaac Lab 2.1.0/2.2.0/2.2.1, Isaac Sim 4.5/5.0, rsl-rl-lib 2.2.0/2.3.0, Ubuntu 22.04, RTX 5070/5070 Ti.",
+    "details.limits.0": "No maintenance response for the issue; no locked file or minimal reproducible repository; the 0.47.1 from the original post and the 2.x naming in the comments are not explained, so the conclusion cannot be used to recommend a single version.",
+    "details.outcomes.0": "Different participants reported incompatible success/failure combinations on different machines; the only common conclusion is that the entire dependency matrix must be verified together.",
+    "details.problem_statements.0": "Tracking-Flat-G1-v0 throws KeyError: obs_groups during OnPolicyRunner initialization; should we switch to Isaac Lab/Sim or update rsl-rl?",
+    "details.symptoms.0": "rsl_rl/runners/on_policy_runner.py throws KeyError when accessing self.cfg['obs_groups']; some combinations fix the KeyError but then the infos['observations'] missing rnd_state.",
+    "source.locator": "Issue #42 comments: issuecomment-3456264137, 3460662935, 3467978265, 3556476632",
+    "source.title": "Version combination experience for obs_groups KeyError is conflicting",
+    "terms.0": "Observation groups (观测组)",
+    "terms.1": "Dependency matrix (依赖矩阵)",
+    "terms.2": "Version downgrade (版本回退)",
+    "title": "Can we stabilize the obs_groups KeyError by downgrading Isaac Lab 2.2.1 to 2.2.0 while retaining Isaac Sim 5.0?"
+  }
+}

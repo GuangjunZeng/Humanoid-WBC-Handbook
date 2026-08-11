@@ -1,0 +1,117 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "hojae-io"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1759",
+  "captured_at": "2026-08-11T18:10:00+08:00",
+  "content_sha256": "d7a0bae2bef1019e19a56cc475f406b46e1cd2fff8917dceb0b193c290c1f475",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 1 条评论；帖子没有图片或关联修复。",
+    "components": [
+      "Isaac Lab",
+      "Jacobian",
+      "Jdot",
+      "task-space acceleration"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "团队成员检查后回复，当时没有该能力，需要手工实现。"
+      ],
+      "diagnostics": [
+        "先确认所用 Isaac Lab/Isaac Sim 版本是否新增 Jdot API；原线程只覆盖 2025-01 时点。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "2025-01 的 IsaacLab Issue；原帖未给 Isaac Lab、Isaac Sim、GPU 或机器人版本。"
+      ],
+      "limits": [
+        "不能从该线程推导应使用有限差分、解析递推还是自动微分；也不能断言当前最新版仍没有该接口。"
+      ],
+      "outcomes": [
+        "能力边界得到回答，但手工实现方案、数值稳定性和验收方法均未给出。"
+      ],
+      "problem_statements": [
+        "Isaac Lab 是否提供 Jacobian 时间导数 Jdot，若没有应怎样处理？"
+      ],
+      "safety_notes": [
+        "若用数值差分估计 Jdot 或 Jdot*qdot，应在目标控制频率下检查噪声放大和最坏时延。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "实现 v=Jqdot 的时间微分关系时需要 Jdot，但调用者找不到现成接口。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "按 IsaacLab 团队在 2025-02 的原帖回复，当时没有现成 Jdot 能力，需要手工实现。线程没有给出实现细节或复测，因此这是一条版本相关的能力线索：先在目标版本 API 中重新确认，再自行选择并验证解析或数值实现，不能把帖子补写成某一种算法建议。",
+        "applicability": "适用于核对 2025 年初 Isaac Lab 的 Jdot API 能力；当前版本和具体实现仍需复核。",
+        "bilingual_terms": [
+          "雅可比时间导数（Jacobian time derivative, Jdot）",
+          "任务空间加速度（task-space acceleration）",
+          "手工实现（manual implementation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.isaaclab_jdot_api_1759",
+        "problem_title_zh": "Isaac Lab 的 Jacobian 时间导数 Jdot 能力边界",
+        "question_zh": "Isaac Lab 是否能直接读取 Jacobian 时间导数（Jacobian time derivative, Jdot）？",
+        "source_locator": "IsaacLab #1759 唯一评论 2628472796",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1759#issuecomment-2628472796",
+        "verification_refs": [
+          {
+            "locator": "团队回复当时没有现成 Jdot 能力，需要手工实现",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1759#issuecomment-2628472796"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1759",
+    "query": "Isaac Lab Jacobian time derivative Jdot whole body control",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "未指定机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "团队回复当时没有 Jdot 接口，需要手工实现；未给实现方案。"
+      }
+    ],
+    "wbc_relevance_reason": "任务空间加速度、操作空间控制和全身控制约束常需要 Jdot*qdot；把库中不存在的接口当成已有能力会阻塞控制器实现。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1759",
+  "summary": "IsaacLab #1759 询问在对 v=Jqdot 求时间导数时如何取得 Jacobian 时间导数 Jdot。团队回复称当时看起来没有该能力，需要手工实现；线程没有继续给出差分方法、解析实现、版本边界或验证结果。",
+  "title": "Isaac Lab 没有直接给出 Jacobian 时间导数 Jdot 的接口",
+  "version": null
+}

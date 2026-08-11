@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.8.05aacbf97b0c",
+  "schema_version": 1,
+  "source_fingerprint": "a8d0f7934db23f0d02107ff4cc4923063d94472fd093f60c82d4969fd9b7860d",
+  "translations": {
+    "answer": "The project contributor explicitly states the use of ZED Mini's visual-inertial odometry (VIO) to estimate the real root position, and points to the file hardware_code/zed_odometry.py in the repository. The post does not explain the complete generation of fields such as drift, delay, and root_rot/root_vel, which should be verified via script. The fix has been verified and is considered credible.",
+    "applicability": "This applies to the ZED Mini hardware deployment chain in human2humanoid.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and free of conflicts, and there is formal documentation or independent reproducible exact reference.",
+    "details.attempts.0": "Use ZED Mini VIO to estimate the root position.",
+    "details.attempts.1": "Align VR with ZED before real-time remote operation.",
+    "details.diagnostics.0": "Check hardware_code/zed_odometry.py; check the offset between VR and ZED coordinate systems.",
+    "details.effective_fixes.0": "The project contributor uses ZED Mini VIO and explicitly aligns VR with ZED.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; ZED Mini VIO; Real-time remote operation with VR.",
+    "details.limits.0": "The original post does not provide specific calculation methods for drift, delay, root_rot/root_vel, or the calibration accuracy of VIO.",
+    "details.outcomes.0": "The project contributor confirmed the deployment twice.",
+    "details.problem_statements.0": "How is the real root position obtained when no external MoCap is available?",
+    "details.problem_statements.1": "How does VR integrate with ZED VIO when using different coordinate systems?",
+    "details.suspected_causes.0": "There is an unaligned offset between VR and ZED origins/coordinates.",
+    "details.symptoms.0": "The deployment code requires root_pos/root_rot/root_vel, but the robot's body observation does not provide a global root position directly.",
+    "media_summaries.0": "The issue text screenshot points to the 'p^real' field required by the strategy; the specific solution is from the text reply and code link.",
+    "source.locator": "Issue #8, contributor's comment on issuecomment-2417965415",
+    "source.title": "Human2Humanoid without external MoCap: Real-time root position and VR alignment",
+    "terms.0": "Visual-inertial odometry (VIO) (视觉—惯性里程计)",
+    "terms.1": "Root position (根位置)",
+    "terms.2": "Motion capture (MoCap) (动作捕捉)",
+    "title": "Human2Humanoid without external motion capture (MoCap): Where does the real root position come from?"
+  }
+}

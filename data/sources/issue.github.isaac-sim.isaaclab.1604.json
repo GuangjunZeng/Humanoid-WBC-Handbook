@@ -1,0 +1,139 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "sdfzz"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1604",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "7d70f650eb06ca6e49617dc0d1dcfe338607b7100e1f983d9e4e88778fae2887",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、2 条评论和被引用 PR #1416；明确标注该 PR 未合并且不是直接 actuator-gain 修复。",
+    "components": [
+      "Isaac Lab",
+      "randomize_actuator_gains",
+      "ImplicitActuator",
+      "default_joint_stiffness",
+      "Unitree G1"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者用有/无 EventTerm 多次对照，并阅读 events.py 定位到先加载 default_joint_stiffness 的代码。",
+        "项目贡献者认可 default values 与 randomization 应分离，并指向类似设计提案。"
+      ],
+      "diagnostics": [
+        "比较 event 执行前后的 actuator.stiffness/damping、asset.data.default_joint_stiffness/damping 与资产配置值。",
+        "不要把 distribution=(0,0)、operation=add 自动视为对当前 actuator gains 的 no-op。"
+      ],
+      "effective_fixes": [
+        "线程只形成设计建议：将 default 值恢复与 randomization 分开；没有合并修复、可定位正式提交或修复后训练结果，不能写成已验证方案。"
+      ],
+      "environments": [
+        "Isaac Lab manager_based locomotion/velocity/config/g1/flat_env_cfg.py；startup EventTerm；joint_names=.*；原帖未给 commit、GPU、seed。"
+      ],
+      "limits": [
+        "线程没有随机种子和完整训练曲线，16.69/-10.49 只是在指定 iteration 的对照记录。",
+        "PR #1416 讨论 reset joint state 的类似设计，并非 actuator gain randomization 的直接合并修复。"
+      ],
+      "outcomes": [
+        "Issue 保持 open；项目贡献者认可问题方向，但原作者没有发布最终改法或结果。"
+      ],
+      "problem_statements": [
+        "为什么 actuator gain randomization 使用 add (0,0) 仍显著改变 G1 训练结果？"
+      ],
+      "safety_notes": [
+        "实机前必须核对随机化后的 stiffness/damping 是否落在执行器和低层控制器允许范围，不能仅依据训练 reward。"
+      ],
+      "suspected_causes": [
+        "原帖引用的 events.py 先从 default_joint_stiffness 重建 stiffness，再调用 randomize；因此零增量保持的是 default 基线，不一定是 asset 当前 actuator 配置。"
+      ],
+      "symptoms": [
+        "相同 iteration 243，启用 add-zero randomization 的 mean reward 约 -10.49，未启用时约 16.69；作者称多次运行均出现差异。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原作者引用的实现会先把 asset.data.default_joint_stiffness 写入 actuator.stiffness，再施加随机操作；所以 add zero 保持的是 default 基线，不一定保持资产当前 actuator gains。作者用有/无事件多次复现 reward 差异，项目贡献者也认可应分离 default values 与 randomization。不过线程没有合并修复或修复后训练结果，因此当前只能把它作为配置审计结论：逐项比较 event 前后 stiffness/damping，不能宣称已有通用修复。",
+        "applicability": "适用于原帖所用 Isaac Lab randomize_actuator_gains 实现；目标版本代码可能变化，必须核对实际 events.py。",
+        "bilingual_terms": [
+          "执行器增益随机化（actuator gain randomization）",
+          "默认关节刚度（default joint stiffness）",
+          "隐式执行器（ImplicitActuator）",
+          "零增量操作（zero-add operation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.isaaclab_gain_randomization_default_reset_1604",
+        "problem_title_zh": "Isaac Lab actuator gain randomization 的零增量不是当前增益 no-op",
+        "question_zh": "Isaac Lab 中 randomize_actuator_gains 使用 add 和 (0,0) 为什么仍可能改变 Unitree G1 训练？",
+        "source_locator": "IsaacLab #1604：作者评论 2563243878 引用 events.py 的 default overwrite；贡献者评论 2565844406 认可分离设计",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2563243878",
+        "verification_refs": [
+          {
+            "locator": "原作者引用 events.py，指出 randomize 前先恢复 default_joint_stiffness",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2563243878"
+          },
+          {
+            "locator": "项目贡献者认可将 default values 与 randomizations 分离的方向",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2565844406"
+          },
+          {
+            "locator": "贡献者所指的类似 reset/default 分离提案；该 PR 未合并且不是 actuator gain 直接修复",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1416"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1604",
+    "query": "Isaac Lab Unitree G1 randomize_actuator_gains add zero resets default stiffness reward",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "原作者发现函数在随机操作前先加载 default_joint_stiffness。"
+      },
+      {
+        "text": "项目贡献者认可应把 default values 与 randomization 分离，但未提供直接合并修复。"
+      }
+    ],
+    "wbc_relevance_reason": "执行器刚度/阻尼随机化是 sim-to-real 常用手段；若 no-op 配置先重置基线增益，训练对照会失去可比性，并可能被误判为随机化本身的效果。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1604",
+  "summary": "IsaacLab #1604 在 Unitree G1 flat locomotion 中加入 randomize_actuator_gains，stiffness/damping 分布均为 (0,0)、operation=add，但 iteration 243 的 mean reward 从未启用时约 16.69 变为 -10.49，且作者多次复现。作者检查 events.py 后指出函数先把 asset.data.default_joint_stiffness 写入 actuator.stiffness，再执行随机操作，因此 add zero 并非保持当前 asset actuator gains。项目贡献者认可应把 default values 与 randomizations 分开，并指向类似设计 PR #1416；但 Issue 仍未给合并修复或作者修复后曲线。",
+  "title": "Isaac Lab actuator gain randomization 加零仍会先恢复 default_joint_stiffness",
+  "version": null
+}

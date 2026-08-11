@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2519.33a9314d00aa",
+  "schema_version": 1,
+  "source_fingerprint": "351128ab1d30f5540f838abbc537be64d5f5fb81d10b7dbbec4ba87bc6422522",
+  "translations": {
+    "answer": "No. The 2026 comment calculates the Frame Jacobian, flattens it, and computes ca.jacobian(J_flat, q) @ qdot, then reorders it as 6×nv. This is only the method the commenter shared. No comparison with simulation results, Pinocchio fixed version, or other reference frames is provided, and no maintainer has confirmed it, so it can only be considered as a pending experimental scheme.",
+    "applicability": "Only applicable in scenarios where Pinocchio CasADi model is used and J(q), qdot, and reference frame are explicitly defined; the method has not been cross-validated in the original thread.",
+    "credibility.rationale": "No reproducible record has been formed.",
+    "details.attempts.0": "Maintainer suggests using JointModelFreeFlyer; original author adds two rotational joints for minimal reproduction; another user provides an alternative function for CasADi jacobian(J, q) @ qdot.",
+    "details.diagnostics.0": "Identifies root joint model as possibly not fully supported JointModelComposite; compares minimal model, analytical expectation, or automatic differentiation cross-checks for Jdot and Jdot*qdot.",
+    "details.environments.0": "Original model uses JointModelComposite(Translation + SphericalZYX) with LOCAL_WORLD_ALIGNED; minimal reproduction uses two rotational joints; 2026 comment uses Pinocchio CasADi interface, version not specified.",
+    "details.limits.0": "Cannot consider closed state as fixed; cannot treat unverified CasADi code as equivalent to all Pinocchio reference frames.",
+    "details.outcomes.0": "Issue closed on 2024-12-19 without original author confirming FreeFlyer resolved the issue; 2026 CasADi solution has no thread retesting or maintainer confirmation.",
+    "details.problem_statements.0": "getFrameJacobianTimeVariation*qdot and getFrameAcceleration's dJdq mismatch implies that Composite Joint, FreeFlyer, and direct automatic differentiation paths each prove something different.",
+    "details.suspected_causes.0": "Maintainer only explicitly states that JointModelComposite may be the original problem's root cause and not fully supported; reason for fixed base minimal reproduction is not answered.",
+    "details.symptoms.0": "Original model has two different dJdq results; after switching to minimal rotational joint model, original author still reports dJ deviation from expected values.",
+    "media_summaries.0": "Original author's minimal reproduction includes screenshot output, but this card only uses text, code, and handwritten expected values, not reconstructing matrix values from screenshots.",
+    "source.locator": "Issue #2519, community solution issuecomment-5217419143",
+    "source.title": "Pinocchio Composite Joint down dJdq/Jdot inconsistency still requires retesting",
+    "terms.0": "Automatic differentiation (AD) (自动微分)",
+    "terms.1": "Jacobian time variation (雅可比时间变化率)",
+    "terms.2": "CasADi (卡萨迪)",
+    "terms.3": "LOCAL (局部坐标系)",
+    "title": "Does direct CasADi differentiation of J(q) multiplied by qdot, already validated in original thread, constitute a reliable Jdot scheme?"
+  }
+}

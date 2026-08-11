@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.2472.3a901d376e87",
+  "schema_version": 1,
+  "source_fingerprint": "140d8ea0de262ab71e8666f40c141a9ef132f5301a8db8a48cfbba4e4156d9f6",
+  "translations": {
+    "answer": "Maintainers first confirmed the issue was resolved by switching to Euler or RK4 after verifying the phenomenon disappeared. The official submission recorded the root cause as degenerate body inverse weights in the constraints. Commit 1cda1e7 added mutual backtracking for degenerate translation/rotation weights and included a continuous 1000-step regression test. Versions not including this commit can use Euler/RK4 as a workaround for the post-confirmation route.",
+    "applicability": "Affected implicit/implicitfast constraint combinations starting from MuJoCo 3.3.0; confirm installation includes the fix commit.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. The problem has been formally documented or independently reproducible with precise reference.",
+    "details.attempts.0": "The questioner tested very small time steps, pyramid friction cones, no friction, and RK4.",
+    "details.attempts.1": "The maintainer reproduced and confirmed that Euler/RK4 can bypass the implicit series issues.",
+    "details.diagnostics.0": "Comparison of the same MRE across Euler, RK4, implicit, and implicitfast.",
+    "details.diagnostics.1": "Diagnostics of timestep, friction cone, no friction, and joint damping.",
+    "details.effective_fixes.0": "Official commit 1cda1e7 uses another weight to back out when a degenerate inverse weight becomes zero and adds a regression test.",
+    "details.environments.0": "MuJoCo 3.3.0; Python/C; Linux; timestep=0.001; implicitfast; elliptic cone; minimal XML.",
+    "details.limits.0": "Temporary switch between Euler/RK4 and the official fix are not the same guarantee; users must confirm their installed version includes the commit.",
+    "details.outcomes.0": "The fix commit clearly fixes #2472; continuous 1000 steps confirm no BADQACC warning; the issue is closed.",
+    "details.problem_statements.0": "Why does the low-speed, low-force model diverge immediately upon contact, only in implicit/implicitfast?",
+    "details.suspected_causes.0": "The maintainer submitted the fix and described the root cause as degenerate body inverse weights in the constraints.",
+    "details.symptoms.0": "Contact leads to rapid increase in contact force and numerical divergence.",
+    "source.locator": "Issue #2472 comment issuecomment-2703086771; fix commit 1cda1e7",
+    "source.title": "MuJoCo implicit/implicitfast diverges rapidly after contact, what is the final localization and fix?",
+    "terms.0": "Implicit integrator (隐式积分器)",
+    "terms.1": "Degenerate inverse weights (退化逆权重)",
+    "terms.2": "Regression test (回归测试)",
+    "title": "MuJoCo diverges rapidly after contact in implicit/implicitfast, what is the final localization and fix?"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.coin-or.qpoases.83.9e3e7211d89f",
+  "schema_version": 1,
+  "source_fingerprint": "14def011ae9855499c29cca1ff67ee25cbd5d622bed224a6fb2b579b5244906a",
+  "translations": {
+    "answer": "Maintainer's note: `nWSR` is not a read-only upper limit, but an input/output parameter: after invocation, it returns actual or remaining working-set change information. If initialized once outside a for-loop, subsequent invocations inherit a monotonically decreasing allowed count, eventually triggering an upper limit error and causing a prompt for 'previous QP not solved'. Re-assign the expected budget before each `hotstart` and check return codes incrementally. This conclusion corresponds to multiple repeated cycle replays, and does not equate to the original 'second invocation fails' report being fully reproduced.",
+    "applicability": "Applies to qpOASES 3.2.1 where `nWSR` is reused in continuous hotstart cycles; other API versions require verification of parameter semantics.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "Define or reassign `nWSR` within each `hotstart` cycle.",
+    "details.diagnostics.0": "Print `nWSR` before and after each invocation, confirm if it is rewritten; check solver state after errors.",
+    "details.effective_fixes.0": "Set the maximum `nWSR` before each `hotstart` within each control cycle; do not use previous output as the next budget.",
+    "details.environments.0": "Original post: qpOASES 3.2.1; subsequent replication on Ubuntu 16.04, qpOASES 3.2.1, Bazel 0.18.1.",
+    "details.limits.0": "The second invocation issue is not reproducible in trunk; the closed loop is 'multiple cycle reuse of `nWSR`' in later scenarios.",
+    "details.outcomes.0": "Another user provides a workaround; maintainer adds parameter semantics and why the count decreases; original issue remains open.",
+    "details.problem_statements.0": "Why does qpOASES `hotstart` suddenly exhaust working-set recalculation after a few cycles, leading to failure in subsequent invocations?",
+    "details.safety_notes.0": "Real-time cycle should check return codes; do not continue using old control commands if 'previous QP not solved' is reported.",
+    "details.suspected_causes.0": "Maintainer confirms `nWSR` is an input/output parameter; external initialization once leads to lower remaining values in subsequent invocations.",
+    "details.symptoms.0": "First two to three QP's are normal, then working-set recalculation limit is reached; subsequent prompt is 'previous QP not solved'.",
+    "source.locator": "qpOASES #83 Maintainer's final explanation 762053495",
+    "source.title": "qpOASES hotstart cycle requires resetting `nWSR` each time",
+    "terms.0": "Hotstart (热启动)",
+    "terms.1": "Input/output parameter (输入输出参数)",
+    "terms.2": "Working-set recalculation (工作集重计算)",
+    "terms.3": "Iteration budget (迭代预算)",
+    "title": "Why does qpOASES report working-set recalculation exhausted after a few hotstart cycles, and why must `nWSR` be reset each time?"
+  }
+}

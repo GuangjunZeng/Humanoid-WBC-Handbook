@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.165.897c81dfa671",
+  "schema_version": 1,
+  "source_fingerprint": "f4f4a77698bafe0b85a876ad4430d485a6fc33cc537fd4cc95159e778a4dcd81",
+  "translations": {
+    "answer": "Maintainers explicitly recommend using contact between two robot links rather than high-gain task. The authors implemented `TaskTwoFramesEquality` and `ContactTwoFramePositions`, which were first reported in a fully-actuated dual-wrist closed chain. PR #218 merged the implementation, Python bindings, and Talos gripper demo. It constrains the relative position of two frames, which can be expressed in this class of loop closure; however, it does not automatically resolve any arbitrary internal passive joints.",
+    "applicability": "Applicable to rigid closed chains expressed via relative position constraints between two frames; ensure correct geometric matching for target joint types.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and consistent, and there is formal documentation or independent reproducible exact references.",
+    "details.attempts.0": "The authors implemented and validated `TwoFrames contact`; maintainers recommend recording passive joints in `RobotWrapper` and selecting corresponding M, h, J rows in `InverseDynamicsFormulation` to construct torque-zero equality.",
+    "details.diagnostics.0": "First distinguish between loop-closure constraint and actuation/passive-joint selector; validate whether the contact can maintain relative frame displacement, and separately check the torque=0 equality for passive rows.",
+    "details.effective_fixes.0": "Rigid closed chains use the merged path `ContactTwoFramePositions`/`TaskTwoFramesEquality` from PR #218.",
+    "details.effective_fixes.1": "The formulation for arbitrary passive joints has not been implemented in the original thread; do not treat the zero torque-limit hack or PR #218 as a complete solution for a pantograph.",
+    "details.environments.0": "TSID devel/master 2022-2024; the authors tested `TwoFrames contact` on fully-actuated humanoid wrists and Talos gripper demo; no fixed release available.",
+    "details.limits.0": "The #218 demo proves a specific closed chain contact, not a general solution for any passive-joint pantograph; a user encountered a segfault in PAL REEM-C TwoFramesEquality after the loop was closed.",
+    "details.limits.1": "A high-stiffness numerical integration of spring-damper from the maintainers is recommended, but no additional independent card was generated in this thread.",
+    "details.outcomes.0": "PR #218 merged on 2024-02-02; the maintainers reproduced the minimal code for covariant return and accepted the PR.",
+    "details.outcomes.1": "The passive-joint selector/equality scheme has no implementation or retesting associated with it.",
+    "details.problem_statements.0": "Should a rigid closed chain of two links be expressed as a task or a contact?",
+    "details.problem_statements.1": "How should arbitrary internal passive joints be expressed after a closed chain is implemented?",
+    "details.safety_notes.0": "A closed kinematic chain with passive joints can produce false constraints or non-executable torques; verify constraint residual, actuation selector, joint torque, and internal force after real machine testing.",
+    "details.suspected_causes.0": "The original TSID formulation only considered the floating base as an unactuated part, and could not declare any arbitrary internal passive joints.",
+    "details.symptoms.0": "TwoFrames contact works in a fully-actuated closed loop; after pretending pantograph passive joints are torque-limit=0, strange movements occur.",
+    "source.locator": "TSID #165 maintainers' contact recommendation 1178973756, author's simulation 1181695831; merged PR #218",
+    "source.title": "TSID two-frame closed chain contact has been merged but arbitrary passive joints still need to be handled separately",
+    "terms.0": "Closed kinematic chain (闭合运动链)",
+    "terms.1": "Two-frame contact (两坐标系接触)",
+    "terms.2": "Relative placement (相对位姿)",
+    "terms.3": "Fully actuated (全驱动)",
+    "title": "In TSID, when two robot links form a rigid closed chain, should a high-gain task be used or a contact?"
+  }
+}

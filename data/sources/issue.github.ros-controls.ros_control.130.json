@@ -1,0 +1,162 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "davetcoleman"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros_control/issues/130",
+  "captured_at": "2026-08-11T15:33:00+08:00",
+  "content_sha256": "ad51ed5e17dd6520c6e1a3fdd3fa2a0c8c61b2b054172d22e475737215699da6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 12 条评论；没有把旧 RTT 示例外推为现代 ROS 2 的现成模板。",
+    "components": [
+      "ros_control",
+      "Orocos RTT",
+      "CallbackQueue",
+      "RealtimeBuffer"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "在 RTT `configureHook()` 构造 hardware interface 与 ControllerManager；在 `updateHook()` 执行 `read → update → write`。",
+        "为每个组件建立独立 `CallbackQueue`，由非实时线程 spin，并用 `RealtimeBuffer` 交接数据。"
+      ],
+      "diagnostics": [
+        "明确标注 configure/read/update/write/callback 各自所在线程，并检查共享数据是否经过实时安全交换结构。"
+      ],
+      "effective_fixes": [
+        "把周期调度交给 RTT/HAL 等实时执行器，同时把 ROS API 回调隔离在非实时线程。"
+      ],
+      "environments": [
+        "ROS 1 ros_control；PREEMPT_RT/Xenomai 讨论；Orocos RTT 示例；2013–2018 年线程。"
+      ],
+      "limits": [
+        "示例属于旧 ROS 1/RTT；`ros::Time::now()` 在同仓库另有旧实时安全问题，不能直接照抄时间源。",
+        "线程没有给统一的 WCET、jitter 或不同内核对照。"
+      ],
+      "outcomes": [
+        "线程参与者发布最小 `rtt_ros_control_example`；另一位用户明确称这些讨论帮助其开发 `hal_ros_control`。"
+      ],
+      "problem_statements": [
+        "怎样用外部实时调度器运行 ros_control 的 read-update-write 循环？",
+        "怎样处理 ROS callbacks 和运行时参数而不让非实时线程阻塞实时循环？"
+      ],
+      "safety_notes": [
+        "真机 WBC 运行时参数必须经过边界检查和原子/实时安全交接；非实时 callback 不应持有实时线程所需的普通互斥锁。"
+      ],
+      "suspected_causes": [
+        "非实时 callback 与实时循环共享普通锁，或在实时线程触发设置变更和系统调用，会产生优先级反转与不可预测时延。"
+      ],
+      "symptoms": [
+        "直接把 ROS callbacks、services 和控制周期混在同一执行模型中，会留下调度优先级、互斥锁和系统调用边界不明确的问题。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原线程的最小结构是在 RTT `configureHook()` 中创建 hardware interface 与 `ControllerManager`，在周期 `updateHook()` 中依次执行 `robot->read()`、`controllerMgr->update(time, period)`、`robot->write()`。该模式后来被整理为 `rtt_ros_control_example`，并被另一位参与者用于实现 `hal_ros_control`。它说明的是线程组织方式，不提供现代 ROS 2 或特定硬件的实时保证。",
+        "applicability": "适用于旧 ROS 1 ros_control + RTT/HAL 外部实时调度器架构。",
+        "bilingual_terms": [
+          "读算写循环（read-compute-write loop）",
+          "实时执行器（realtime executor）",
+          "周期钩子（update hook）",
+          "硬件接口（hardware interface）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros_control_external_rt_read_update_write_130",
+        "problem_title_zh": "用外部实时执行器驱动 ros_control 周期循环",
+        "question_zh": "怎样把 ros_control 的硬件读写和 ControllerManager 放进 Orocos RTT 实时循环？",
+        "source_locator": "ros_control #130 最小循环 52055471；后续例子 54360309；HAL 使用反馈 407977464",
+        "source_url": "https://github.com/ros-controls/ros_control/issues/130#issuecomment-52055471",
+        "verification_refs": [
+          {
+            "locator": "后续参与者说明讨论与示例帮助其实现 hal_ros_control",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros_control/issues/130#issuecomment-407977464"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "线程建议每个组件使用自己的 `CallbackQueue`，让 `AsyncSpinner` 在非实时线程处理该组件的 ROS API；实时与非实时线程之间用 `realtime_tools::RealtimeBuffer` 等实时安全结构交接数据。回复同时明确两条边界：设置变更不能让实时线程触发系统调用，非实时线程也不应锁住实时线程需要的共享资源。",
+        "applicability": "适用于 ROS 1 ros_control 的 callback/控制周期隔离；具体无锁结构需按版本核对。",
+        "bilingual_terms": [
+          "回调队列（callback queue）",
+          "异步轮询器（async spinner）",
+          "实时缓冲区（realtime buffer）",
+          "优先级反转（priority inversion）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros_control_callback_queue_rt_buffer_130",
+        "problem_title_zh": "隔离 ROS 回调与实时控制线程的数据交接",
+        "question_zh": "ROS callbacks、services 和运行时设置怎样与 ros_control 实时循环交接而不造成优先级反转？",
+        "source_locator": "ros_control #130 callback/RealtimeBuffer 回复 52195810",
+        "source_url": "https://github.com/ros-controls/ros_control/issues/130#issuecomment-52195810",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者给出 per-component CallbackQueue、非实时 spinner 与 RealtimeBuffer 边界",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros_control/issues/130#issuecomment-52195810"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros_control.130",
+    "query": "ros_control Orocos RTT realtime loop CallbackQueue RealtimeBuffer",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROS 1 PREEMPT_RT/Xenomai robot controller"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "线程把 RTT 周期循环、非实时 ROS callback 和 RealtimeBuffer 数据交接分层说明，并有后续实现反馈。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 常把高频 read-compute-write 与参数、service、telemetry 回调并存；线程所有权和数据交接不清会造成系统调用、锁竞争和优先级反转。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros_control.130",
+  "summary": "ros_control #130 给出两层实时架构经验：在 Orocos RTT 的 `configureHook()` 创建 hardware interface 和 `ControllerManager`，在 `updateHook()` 执行 `read → update → write`；ROS callback 则使用每组件独立 `CallbackQueue` 在非实时线程 spin，通过 `RealtimeBuffer` 与实时循环交换数据，并避免非实时线程锁住实时线程共享资源。后续参与者基于讨论发布了 `rtt_ros_control_example`，另一位用户称该讨论帮助其实现 `hal_ros_control`。",
+  "title": "把 ros_control 的周期循环与 ROS 回调线程明确分离",
+  "version": null
+}

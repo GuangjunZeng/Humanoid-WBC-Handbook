@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.138.498fd08ac6da",
+  "schema_version": 1,
+  "source_fingerprint": "3a5eba373ef618e8b1b3b7110ce69d5f80c7088b3bb156ca690486272524b7c8",
+  "translations": {
+    "answer": "This is a confirmed code defect. The project collaborator initially noted that the softening was to penalty, and that the equality count should not be increased. It has been confirmed that the fix has been resolved in the 'devel' branch. The official commit 5a6b452 modifies the unconditional m_eq += motionConstr.rows() to only add when motionPriorityLevel == 0, thus preventing the soft priority contact motion task from being counted in the hard equality count. The thread does not provide a formal release version containing this commit. The details are as follows: the thread does not provide a formal release version, and the first six lines are applicable to the inverse-dynamics formulation but are not equal to all WBC QP's should be fixed to six lines.",
+    "applicability": "Applicable to the TSID InverseDynamicsFormulationAccForce::addRigidContact count logic prior to commit 5a6b452; the specific release must be verified by checking the commit inclusion relationship.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or exact citation of independent reproducibility.",
+    "details.attempts.0": "The project collaborator reviewed the code and confirmed that the second point was a bug, then submitted the fix.",
+    "details.diagnostics.0": "Distinguish between floating-base dynamics rows and base pose task.",
+    "details.diagnostics.1": "Compare motionPriorityLevel with the m_eq count condition in addRigidContact.",
+    "details.effective_fixes.0": "Commit 5a6b452 only executes m_eq += motionConstr.rows() when motionPriorityLevel == 0.",
+    "details.environments.0": "2021 TSID devel; Issue reference commit 0969328 in inverse-dynamics-formulation-acc-force.cpp; the fix commit is 5a6b452.",
+    "details.limits.0": "The thread does not provide a formal release version number, and no numerical control result is shown that triggered the bug.",
+    "details.limits.1": "The first six lines are applicable to the inverse-dynamics formulation variable selection, but are not equal to all WBC QP's should be fixed to six lines.",
+    "details.outcomes.0": "The maintainer confirmed the bug was fixed in the 'devel' branch; the official patch and Issue description are completely consistent.",
+    "details.problem_statements.0": "Why is the m_eq increased by 6 rows during initialization of InverseDynamicsFormulationAccForce?",
+    "details.problem_statements.1": "Why does the Contact6D motion task, as a penalty, still increase m_eq?",
+    "details.suspected_causes.0": "The first six lines are for non-driven floating-base dynamics; joint torques are not decision variables, so no need to add remaining joint dynamics to the same constraint group.",
+    "details.suspected_causes.1": "The old code added motionConstr.rows() without checking motionPriorityLevel.",
+    "details.symptoms.0": "The user mistakenly thought the first six equalities were enforcing base position.",
+    "details.symptoms.1": "The soft-priority Contact6D motion task does not enter the hard equality level, yet is still counted in m_eq.",
+    "source.locator": "Issue #138, maintainer confirmed issuecomment-890048340; official fix commit 5a6b452",
+    "source.title": "TSID's m_eq six rows of floating-base dynamics and soft contact count defect",
+    "terms.0": "Soft contact motion task (软接触运动任务)",
+    "terms.1": "Penalty term (惩罚项)",
+    "terms.2": "Constraint count (约束数量)",
+    "terms.3": "Motion priority level (运动优先级)",
+    "title": "Contact6D motion task as a penalty still increases m_eq, is this design behavior or a code defect?"
+  }
+}

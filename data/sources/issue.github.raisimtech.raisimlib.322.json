@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "edward9503"
+  ],
+  "canonical_url": "https://github.com/raisimTech/raisimLib/issues/322",
+  "captured_at": "2026-08-11T15:40:00+08:00",
+  "content_sha256": "0a2b75b48ee26032fd9e40b2ac7a19da943f93a9664182878fa00f647f6cad01",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 8 条评论；两张图片只说明推墙配置和跳变曲线，根因与建议来自文字，未从图片补参数。",
+    "components": [
+      "RaiSim",
+      "contact force",
+      "ERP",
+      "OBJ collision mesh"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者已试 `dt=0.001 s` 和不同 ERP，均称没有改善。"
+      ],
+      "diagnostics": [
+        "比较 timestep、ERP、碰撞网格三角形尺度和几何切换位置；对原始与滤波 force 同时记录。"
+      ],
+      "effective_fixes": [
+        "项目作者认为时间滤波是获取平滑 force 的最佳办法，并建议较大网格三角形；原作者未复测。"
+      ],
+      "environments": [
+        "RaiSim；机械臂 Cartesian-space control；固定 OBJ wall；`dt=0.001 s`；版本未给出。"
+      ],
+      "limits": [
+        "降低摩擦是项目作者未亲自测试的建议，不能登记为有效修复。",
+        "滤波会引入相位延迟，线程没有给 cutoff、order 或 WBC 稳定性结果。"
+      ],
+      "outcomes": [
+        "没有公开最终改善数据；ERP spring/damper 只得到概念解释。"
+      ],
+      "problem_statements": [
+        "RaiSim 机械臂压向 OBJ 墙面时，接触力为何在零与目标值间跳变，哪些措施在原线程有证据？"
+      ],
+      "safety_notes": [
+        "接触力滤波用于真机控制前必须评估相位裕度、峰值保留和碰撞检测延迟；不得仅为曲线平滑而隐藏冲击。"
+      ],
+      "suspected_causes": [
+        "项目作者说明碰撞几何发生变化时会出现 spike，并建议使用较大三角形；线程没有给源码级根因或定量验证。"
+      ],
+      "symptoms": [
+        "增大推墙深度后，测得 contact force 在零与应有数值之间反复跳变；配图曲线仅用于说明症状。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原线程只支持一个有限结论：`dt=0.001 s` 和多组 ERP 对原作者没有改善；项目作者建议需要平滑输出时做时间滤波，并指出碰撞几何切换会产生 spike、网格宜采用更大三角形。降低摩擦被其明确说成未测试，作者也没有发布滤波或重建网格后的结果。因此这些只能作为排查顺序，必须在目标控制器上实际验证滤波延迟和峰值。",
+        "applicability": "适用于该 OBJ wall + Cartesian pushing 场景；没有版本和最终复测。",
+        "bilingual_terms": [
+          "接触力尖峰（contact force spike）",
+          "误差修正参数（error reduction parameter, ERP）",
+          "碰撞网格（collision mesh）",
+          "时间滤波（temporal filtering）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.contact_force_friction.raisim_mesh_contact_force_spike_322",
+        "problem_title_zh": "排查 RaiSim 网格接触力跳变",
+        "question_zh": "RaiSim 中末端压向 OBJ 墙面时 contact force 在零与目标值间跳变，应怎样处理？",
+        "source_locator": "RaiSim #322 dt/ERP 失败 1165374721；滤波/网格建议 1165990145；ERP 解释 1173562853",
+        "source_url": "https://github.com/raisimTech/raisimLib/issues/322#issuecomment-1165990145",
+        "verification_refs": [
+          {
+            "locator": "项目作者解释 ERP spring/damper 与 apparent inertia、simulation step 的关系；没有参数范围或结果",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/raisimTech/raisimLib/issues/322#issuecomment-1173562853"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "raisimtech.raisimlib.322",
+    "query": "RaiSim contact force spikes mesh triangle ERP filter wall",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Cartesian-controlled manipulator pushing a fixed wall"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "原作者明确报告 dt/ERP 无改善；项目作者把滤波和大三角形作为建议，并声明低摩擦未测试。"
+      }
+    ],
+    "wbc_relevance_reason": "接触 WBC/力控制直接使用仿真 contact force 时，碰撞面切换尖峰会污染反馈和奖励；必须区分物理瞬态、碰撞几何离散和测量后处理。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.raisimtech.raisimlib.322",
+  "summary": "RaiSim #322 的机械臂用笛卡尔控制把末端压向 OBJ 固定墙时，接触力在零和预期值之间跳变。作者使用 `dt=0.001 s` 并尝试多个 ERP 参数仍无改善。项目作者认为可调手段主要是 timestep/ERP；若需要平滑 force，应做时间滤波，并说明碰撞几何每次变化都可能产生 spike，网格最好使用更大三角形。降低摩擦被明确标注为未试过；作者没有发布最终滤波或网格修改结果。",
+  "title": "RaiSim 网格接触力跳变只能先做滤波和碰撞几何排查",
+  "version": null
+}

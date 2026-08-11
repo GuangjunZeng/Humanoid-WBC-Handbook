@@ -80,6 +80,7 @@ from .validator import has_errors, validate_repository
 from .web_search import (
     DEFAULT_BRANCH,
     DEFAULT_REPOSITORY_URL,
+    DEFAULT_TRANSLATIONS_DIR,
     WebSearchError,
     build_web_index,
     collect_web_problems,
@@ -1139,6 +1140,7 @@ def _collect_web_problems(args: argparse.Namespace):
         repository.load_claims(),
         repository_url=args.repository_url,
         branch=args.branch,
+        translations_dir=Path(args.translations_dir),
     )
 
 
@@ -1593,6 +1595,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="render or check every static engineering-problem detail page",
     )
     render_problems.add_argument("--data-dir", default="data")
+    render_problems.add_argument("--translations-dir", default=str(DEFAULT_TRANSLATIONS_DIR))
     render_problems.add_argument("--output-dir", default="content/problems")
     render_problems.add_argument(
         "--repository-url", default=DEFAULT_REPOSITORY_URL
@@ -1606,6 +1609,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="build the static Chinese/English engineering-problem search index",
     )
     web_index.add_argument("--data-dir", default="data")
+    web_index.add_argument("--translations-dir", default=str(DEFAULT_TRANSLATIONS_DIR))
     web_index.add_argument("--problems-dir", default="content/problems")
     web_index.add_argument("--output", default="site/search-index.json")
     web_index.add_argument("--repository-url", default=DEFAULT_REPOSITORY_URL)

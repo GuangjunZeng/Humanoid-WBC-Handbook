@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1294.4521f09aca40",
+  "schema_version": 1,
+  "source_fingerprint": "33a83026645502e8514b50026875368594a8dd0a386535cca982c19b6333bcd8",
+  "translations": {
+    "answer": "The collaborator's judgment is that small deviations in x/y linear acceleration and angular velocity are due to floating-point errors; the Z-axis deviation is from the gravity offset added in the implementation. The issue should be classified by magnitude and direction, and the gravity offset should be adjusted accordingly. This answer does not imply that large acceleration errors in contact scenarios are merely floating-point noise.",
+    "applicability": "Applicable to small deviation checks on static rigid bodies; large anomalies in contact, IdealPDActuator, or different versions should be diagnosed separately.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The user collected IMU data from a static block and plotted it; the maintainer classified the deviations by magnitude and axis.",
+    "details.diagnostics.0": "First, check the numerical magnitude; separate the 1e-6-level cross/angular velocity deviations from the Z-axis gravity offset; check the IMU configuration for gravity offset.",
+    "details.effective_fixes.0": "If the Z-axis deviation does not align with the task definition, adjust the IMU's gravity offset according to the target observation convention; do not blindly add complex filters to eliminate 1e-6-level floating-point errors.",
+    "details.environments.0": "IsaacLab IMU thread; the proposal context is Isaac Sim 4.2; the user mounted the IMU on a static block on the ground; the user's submission is not specified.",
+    "details.limits.0": "This conclusion only covers the static, small-scale deviation in the comment; the original proposal also noted that finite difference accelerations in contact or speed noise can produce significant noise and are dependent on sampling rate, which cannot be mixed together.",
+    "details.outcomes.0": "The collaborator provided a clear classification, but the original user did not report the results after adjusting the configuration.",
+    "details.problem_statements.0": "On a static rigid body with IsaacLab IMU, which shows small non-zero x/y linear acceleration and angular velocity, which should be distinguished from the gravity offset?",
+    "details.suspected_causes.0": "The collaborator classified the small x/y and angular velocity deviations as floating-point errors, and the Z-axis deviation as the gravity offset added in the implementation.",
+    "details.symptoms.0": "There are small deviations in x/y linear acceleration and angular velocity under static conditions, and a Z-axis offset.",
+    "media_summaries.0": "The user's comment includes a curve screenshot, but this card only uses the magnitude and reason given by the collaborator in the text; no numbers were added from the screenshot.",
+    "source.locator": "Issue #1294, collaborator reply to issuecomment-2567861220",
+    "source.title": "How to distinguish floating-point errors from gravity offset in static IMU readings?",
+    "terms.0": "Linear acceleration (线加速度)",
+    "terms.1": "Angular velocity (角速度)",
+    "terms.2": "Floating-point error (浮点误差)",
+    "terms.3": "Gravity offset (重力偏置)",
+    "title": "How to distinguish floating-point errors from gravity offset in static IMU readings?"
+  }
+}

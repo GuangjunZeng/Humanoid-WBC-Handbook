@@ -1,0 +1,136 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "sea-bass"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2753",
+  "captured_at": "2026-08-11T05:21:00+08:00",
+  "content_sha256": "db848048bb556407c6be596bd4828426fb5865d13a74bacd81a6dfa16012f404",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对 Issue 正文、关闭关联、官方 v3.8.0 release 与 CHANGELOG；没有把 Closed 状态单独当作修复证据。",
+    "components": [
+      "Pinocchio",
+      "URDF parser",
+      "mimic joint",
+      "continuous joint",
+      "Robotiq 2F-85"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者提供完整 URDF 和最小 Python 复现，并明确比较 revolute 与 continuous mimic 的结果。"
+      ],
+      "diagnostics": [
+        "按 URDF joint type 分组核对 mimic 统计，而不是只检查 mimic=True 参数是否传入。",
+        "将运行版本与官方 v3.8.0 CHANGELOG 的 continuous mimic parser 支持边界对照。"
+      ],
+      "effective_fixes": [
+        "升级到包含 PR #2756 的 Pinocchio 3.8.0 或后续版本，并继续以 mimic=True 构建模型。"
+      ],
+      "environments": [
+        "Ubuntu 24.04；Pinocchio 3.6.0 Python bindings；完整 Kinova-Robotiq URDF。"
+      ],
+      "limits": [
+        "官方 release 证明解析能力已加入，但原 Issue 页没有展示作者在 3.8.0 上重新运行后的数组输出。",
+        "该修复针对 continuous mimic 的解析；不能据此推断所有 mimic 相关动力学算法在所有版本都完整可用。"
+      ],
+      "outcomes": [
+        "Issue 页显示由 #2756 关联关闭；Pinocchio v3.8.0 官方 release 和 CHANGELOG 均列出 continuous joints 可从 URDF 解析为 mimic。"
+      ],
+      "problem_statements": [
+        "调用 buildModelFromUrdf(..., mimic=True) 后，为什么 Robotiq 的 5 个 mimic joint 只识别出 1 个？"
+      ],
+      "safety_notes": [
+        "控制夹爪前应比较 URDF 预期 mimic 数、Pinocchio 模型映射和实际驱动自由度，避免向从动关节错误下发独立命令。"
+      ],
+      "suspected_causes": [
+        "Pinocchio 3.6.0 的 URDF mimic 解析没有覆盖 continuous joint；官方 v3.8.0 变更将该能力作为 #2756 新增。"
+      ],
+      "symptoms": [
+        "model.mimicked_joints 只返回 [9]，model.mimicking_joints 只返回 [12]，而 URDF 中预期有 5 组 mimic。",
+        "唯一被识别的从动关节类型为 revolute，漏掉的四个类型均为 continuous。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖最小复现表明，唯一被识别的是 revolute mimic，四个 continuous mimic 均漏掉。Issue 由 PR #2756 关联关闭，Pinocchio v3.8.0 官方发布说明明确新增“continuous joint 可从 URDF 解析为 mimic”。因此该版本问题应升级到包含 #2756 的 3.8.0 或后续版本，并保持 buildModelFromUrdf(..., mimic=True)；升级后仍需核对实际 mimic 数量。",
+        "applicability": "直接适用于 Pinocchio 3.6.0 Python bindings 解析 continuous URDF mimic joint；其他版本仍应以发布记录和模型数组核对。",
+        "bilingual_terms": [
+          "从动关节（mimic joint）",
+          "连续关节（continuous joint）",
+          "统一机器人描述格式解析器（Unified Robot Description Format parser, URDF parser）",
+          "关节映射（joint mapping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_continuous_mimic_parse_version_2753",
+        "problem_title_zh": "Pinocchio 旧版本漏解析 continuous 类型 mimic joint",
+        "question_zh": "Pinocchio 3.6.0 已传 mimic=True，但 Robotiq 2F-85 的 5 个 mimic joint 只识别到一个，原帖和官方发布记录给出的版本结论是什么？",
+        "source_locator": "Pinocchio #2753 的完整 URDF/数组复现；关联 PR #2756；v3.8.0 release 与 CHANGELOG 的 continuous mimic 条目",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2753",
+        "verification_refs": [
+          {
+            "locator": "Ubuntu 24.04/Pinocchio 3.6.0 的完整 URDF 与 mimicked_joints/mimicking_joints 输出",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2753"
+          },
+          {
+            "locator": "Issue 页关联的关闭 PR #2756",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/2756"
+          },
+          {
+            "locator": "v3.8.0 Added：Continuous joints can now be parsed as mimic from a urdf file (#2756)",
+            "relation": "official_documentation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.8.0"
+          },
+          {
+            "locator": "3.8.0 - 2025-09-17 的 #2756 变更条目",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/blob/devel/CHANGELOG.md"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2753",
+    "query": "Pinocchio continuous URDF mimic joint only one parsed 3.6.0",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Kinova 机械臂加 Robotiq 2F-85 夹爪"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [],
+    "wbc_relevance_reason": "夹爪、手指和闭环机构经常用 URDF mimic joint 缩减控制自由度；漏解析会让模型自由度、Jacobian 和控制接口与实物机构不一致。"
+  },
+  "published_at": "2025-09-03T00:00:00Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2753",
+  "summary": "Pinocchio #2753 用 Kinova 加 Robotiq 2F-85 的完整 URDF 复现：5 个从动关节中，一个 revolute mimic 能被识别，另外四个 continuous mimic 没进入 model.mimicked_joints/mimicking_joints；环境为 Ubuntu 24.04、Pinocchio 3.6.0 Python bindings。Issue 关联并由 PR #2756 关闭，官方 v3.8.0 release 与 CHANGELOG 明确写入 continuous joints can now be parsed as mimic from a URDF file。",
+  "title": "Pinocchio 3.6.0 不会把 continuous 类型 URDF 关节全部解析为 mimic",
+  "version": null
+}

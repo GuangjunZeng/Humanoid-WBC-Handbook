@@ -1,0 +1,127 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "edward9503"
+  ],
+  "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/24",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "b95aed6954156636c3ea8cd96f123530e3a7ff08dbfc983f10fb8cf662514455",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、2 条评论、1 张 PNG 和 1 段 MP4；图片已核验，视频取帧受限并在卡中明确披露。",
+    "components": [
+      "OCS2",
+      "legged robot example",
+      "dummy simulation",
+      "zero velocity contact constraint",
+      "world-frame command"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖只报告环境、图片和视频，没有给出修改后的复测步骤。"
+      ],
+      "diagnostics": [
+        "对比目标轨迹的 world-frame 高度与内部接触/地面参考，判断是显示与世界参考漂移还是机器人动力学本身失稳。",
+        "检查长时间积分中的零速度接触约束是否累计漂移，而不是先归因于 Eigen 版本。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Ubuntu 20.04、Eigen 3.3.7、OCS2 legged robot example；可以完整 catkin build；未给 OCS2 commit。"
+      ],
+      "limits": [
+        "该线程解释了原因但没有验证可立即采用的修复，因此不能把 Issue 的 closed 状态等同于实现已修好。",
+        "静态图能看到绿色轨迹位于机器人上方；视频附件未成功取帧，本卡不对视频中的运动速度或时间作推断。"
+      ],
+      "outcomes": [
+        "贡献者说明扩展 formulation 正在加入正式世界地形概念，并计划贯穿优化、仿真和命令侧；原线程没有发布补丁或复测结果。"
+      ],
+      "problem_statements": [
+        "OCS2 legged robot 示例运行一段时间后，绿色目标身体轨迹为什么会离开地面向上漂？"
+      ],
+      "safety_notes": [
+        "长时间仿真或实机执行前，应监控接触面高度与世界参考漂移；不能只凭可视化中机器人仍在运动就认为参考一致。"
+      ],
+      "suspected_causes": [
+        "项目贡献者解释，零速度接触约束在长时间积分中会产生漂移；命令仍按 world frame 发布，但内部地面概念已经沿 z 漂移。"
+      ],
+      "symptoms": [
+        "多次让机器人向前和向后移动后，绿色 desired body trajectory 沿 z 方向上漂。",
+        "发帖人同时说明机器人运动仍显得正确、合理。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目贡献者的线程内解释是：dummy simulation 与 MPC 使用相同模型，并用零速度接触约束（zero-velocity contact constraint）维持接触；长时间积分会累计漂移。命令仍在世界坐标系（world frame）发布，但内部对地面的认知已经沿 z 方向漂移，所以绿色轨迹看起来升高。线程只提到未来加入正式 terrain notion，没有给出当时可复测的补丁。",
+        "applicability": "适用于该 OCS2 legged robot dummy simulation 的长时间积分现象；不同仿真器、接触模型或新版地形 formulation 需重新核对。",
+        "bilingual_terms": [
+          "零速度接触约束（zero-velocity contact constraint）",
+          "世界坐标系（world frame）",
+          "积分漂移（integration drift）",
+          "地形参考（terrain notion）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.simulation_toolchain.ocs2_zero_velocity_contact_z_drift_24",
+        "problem_title_zh": "OCS2 零速度接触约束长时间积分造成世界地面参考漂移",
+        "question_zh": "OCS2 legged robot 示例多次前后移动后，绿色 desired body trajectory 为什么会向上漂？",
+        "source_locator": "OCS2 #24：贡献者评论 963489354 解释零速度接触约束与 world-frame ground drift；原作者评论 963824521 致谢",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/24#issuecomment-963489354",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者解释零速度约束导致长时间漂移以及 world-frame 命令与内部地面参考失配",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/24#issuecomment-963489354"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖 PNG 已核验：RViz 中四足机器人上方有一条绿色近水平线，发帖人用黑色手绘轮廓圈出该目标轨迹；画面没有高度刻度、时间或单位，只能支持“目标轨迹明显位于机器人/地面上方”的症状。",
+      "原帖 MP4 已打开，但浏览器播放器未成功提供可核验的视频帧；本卡不据此描述运动过程，原因与限制仅来自原帖文字及贡献者回复。"
+    ],
+    "platform": "github_issue",
+    "post_id": "leggedrobotics.ocs2.24",
+    "query": "OCS2 legged robot desired body trajectory floating upwards zero velocity constraint drift",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "OCS2 legged robot example（原帖未给具体机器人型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "项目贡献者指出，长时间积分下零速度接触约束会漂移，命令的 world frame 与内部地面参考因此分离。"
+      }
+    ],
+    "wbc_relevance_reason": "MPC/WBC 轨迹与世界地形参考若在长时间积分中失配，目标轨迹可能与实际接触面分离；这会影响跟踪、接触切换与仿真判断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.leggedrobotics.ocs2.24",
+  "summary": "OCS2 #24 报告 legged robot 示例多次前后移动后，绿色 desired body trajectory 向上漂浮，而机器人运动仍看似合理。项目贡献者解释：该 dummy simulation 的物理与 MPC 模型相同，接触通过零速度约束实现，长时间积分会漂移；命令仍在 world frame 发布，但模型内部的 ground notion 已沿 z 漂移。回复只说明扩展 formulation 将加入世界地形概念，没有给出当时版本的已验证补丁。",
+  "title": "OCS2 legged robot 示例长时间积分后目标轨迹沿 z 方向漂移",
+  "version": null
+}

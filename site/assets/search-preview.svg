@@ -2,6 +2,12 @@
   <title id="title">Humanoid WBC Engineering Handbook 快速搜索</title>
   <desc id="desc">浅色背景中的全身控制工程问题搜索框预览</desc>
   <rect width="1200" height="430" rx="26" fill="#fafbfc"/>
+  <g font-family="Arial, 'Noto Sans SC', sans-serif" font-size="12" font-weight="600">
+    <rect x="1032" y="24" width="128" height="38" rx="11" fill="#fff" stroke="#bccbd8"/>
+    <rect x="1037" y="29" width="61" height="28" rx="7" fill="#315f86"/>
+    <text x="1067" y="48" text-anchor="middle" fill="#fff">中文</text>
+    <text x="1129" y="48" text-anchor="middle" fill="#6f7d8d">EN</text>
+  </g>
   <g fill="none" stroke="#6d8ca5" opacity="0.09">
     <path d="M120 64v67l-34 61-31 52m65-113 38 61 32 33m-70-94v99l-39 73m39-73 42 73"/>
     <circle cx="120" cy="48" r="16"/><circle cx="120" cy="131" r="5"/><circle cx="86" cy="192" r="5"/><circle cx="55" cy="244" r="4"/><circle cx="158" cy="192" r="5"/><circle cx="190" cy="225" r="4"/><circle cx="120" cy="230" r="6"/><circle cx="81" cy="303" r="5"/><circle cx="162" cy="303" r="5"/>

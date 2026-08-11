@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "jp-sleiman"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1473",
+  "captured_at": "2026-08-11T16:30:00+08:00",
+  "content_sha256": "6c2d413d254858aa4c1af2e2a170f72ead081255c06d3e9de1a53122527d55f6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 7 条评论、PR #1474 元数据和完整 diff；补丁结论固定到合并提交，没有猜测发布版本。",
+    "components": [
+      "Pinocchio",
+      "computeCentroidalDynamicsDerivatives",
+      "centroidal momentum",
+      "FreeFlyer",
+      "CppAD",
+      "PR #1474"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者使用 CppAD 对照，并用 q1/q2 只改变 FreeFlyer position 的直接函数值对照排查。",
+        "维护者提交 PR #1474，修改两条 centroidal derivatives 路径及有限差分单元测试。"
+      ],
+      "diagnostics": [
+        "构造仅改变 FreeFlyer position 的成对配置，先验证 centroidal momentum 本身是否保持不变。",
+        "将解析 dh_dq 与自动微分/有限差分对照，并单独检查 base translation 三列。"
+      ],
+      "effective_fixes": [
+        "使用包含 PR #1474 合并提交 d780648 的 Pinocchio，或核对目标版本是否包含等价的 centroidal derivatives 漏项修复。"
+      ],
+      "environments": [
+        "2021 年 Pinocchio computeCentroidalDynamicsDerivatives 与 CppAD 对照；原帖未给版本、OS 或模型文件，修复固定在合并 PR #1474/commit d780648。"
+      ],
+      "limits": [
+        "原作者没有在 PR 合并后发布新的 CppAD 数值矩阵；闭环依据是原作者函数值对照、维护者确认、补丁和测试。",
+        "线程没有声明第一个包含修复的正式 release；不能仅按版本号猜测。",
+        "本卡只覆盖该 FreeFlyer 平移漏项，不外推所有 centroidal derivative 差异。"
+      ],
+      "outcomes": [
+        "PR #1474 已合入；补丁同时更新 dh_dq/dhdot_dq 计算和 centroidal derivatives 有限差分测试。"
+      ],
+      "problem_statements": [
+        "只改变 FreeFlyer 世界平移而质心动量不变时，为什么旧版 dh_dq 的三列仍非零，修复在哪里？"
+      ],
+      "safety_notes": [
+        "解析导数进入接触/动量优化前，应持续保留自动微分或有限差分回归，避免旧二进制或不同关节模型再次引入梯度错误。"
+      ],
+      "suspected_causes": [
+        "维护者最终确认 q 偏导计算漏掉一项；PR #1474 在把力集合平移到 CoM 后补充与线动量和 CoM 导数相关的角动量偏导项。"
+      ],
+      "symptoms": [
+        "解析 dh_dq 对 FreeFlyer position 的三列非零，而 CppAD 结果为零。",
+        "原作者用 Pinocchio 分别计算仅 base translation 不同的 q1/q2，得到 h1 与 h2 相同。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者先验证只改变 base position 的 q1/q2 得到相同 centroidal momentum，维护者随后确认 q 偏导漏掉一项。已合入 PR #1474 在 CoM 平移后的 dh_dq 与 dhdot_dq 角动量块补上相应项，并把有限差分测试改为直接比较 hg/dhg。应确认目标 Pinocchio 包含合并提交 d780648 或等价补丁；线程没有给第一个修复 release，也没有原作者合并后的新矩阵。",
+        "applicability": "适用于旧版 computeCentroidalDynamicsDerivatives 的 FreeFlyer position 偏导；目标安装需核对是否包含 PR #1474。",
+        "bilingual_terms": [
+          "质心动量导数（centroidal momentum derivative）",
+          "自由浮动关节（FreeFlyer joint）",
+          "解析导数（analytical derivative）",
+          "自动微分（automatic differentiation, AD）",
+          "有限差分（finite difference）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_centroidal_derivative_freeflyer_translation_bug_1473",
+        "problem_title_zh": "Pinocchio 质心动量解析导数的 FreeFlyer 平移漏项",
+        "question_zh": "旧版 Pinocchio 的 dh_dq 对 FreeFlyer 世界平移非零，而函数值和 CppAD 显示应为零时，原线程确认的根因与修复是什么？",
+        "source_locator": "Pinocchio #1473 评论 886642671 给出 h1/h2 对照；评论 886658456 维护者确认漏项；PR #1474 已合入并更新实现与测试",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1473#issuecomment-886658456",
+        "verification_refs": [
+          {
+            "locator": "已合入 PR 明确 Related to #1473，并修改两条 centroidal derivatives 路径和有限差分测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/1474"
+          },
+          {
+            "locator": "PR #1474 的固定合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/commit/d78064830c8ac0859001dfd47f63169709c079cc"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1473",
+    "query": "Pinocchio centroidal momentum derivative free flyer translation nonzero missing term fix",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "floating-base rigid-body model（原帖未给机器人型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "原作者验证只改变 FreeFlyer position 时 h1 与 h2 相同。"
+      },
+      {
+        "text": "维护者确认 q 偏导漏项并承诺修复；关联 PR #1474 后续已合入。"
+      }
+    ],
+    "wbc_relevance_reason": "质心动量解析导数直接进入动量优化、SQP/DDP 与 WBC 灵敏度；FreeFlyer 平移列错误会污染梯度和收敛判断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1473",
+  "summary": "Pinocchio #1473 对比 computeCentroidalDynamicsDerivatives 的 dh_dq 与 CppAD，发现解析导数对 FreeFlyer 三个平移变量非零，而只改变 base position 的两组配置得到相同 centroidal momentum。维护者先解释输出 frame 位于 CoM 且 world-aligned，随后在原作者的 h1/h2 对照后确认找到了 q 偏导漏项。PR #1474 明确关联该 Issue，给 dh_dq/dhdot_dq 的角动量导数补上 CoM 平移相关项，并把有限差分测试改为直接比较 hg/dhg；PR 已合入，固定合并提交为 d780648。",
+  "title": "Pinocchio 质心动量对 FreeFlyer 平移的解析导数曾漏项",
+  "version": null
+}

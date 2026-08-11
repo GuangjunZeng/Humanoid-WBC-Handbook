@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.raisimtech.raisimlib.322.94c757be6463",
+  "schema_version": 1,
+  "source_fingerprint": "a91c0c01b8619a727be29661eff5febcd9c80e81c67862738c95d6ba1c29b6c8",
+  "translations": {
+    "answer": "The original thread only supports one limited conclusion: `dt=0.001 s` and multiple groups of ERP did not improve the original author's results; the project author suggests smoothing the output by performing temporal filtering, and points out that collision geometry switching can cause spikes, and that grids should use larger triangles. The reduction of friction is explicitly stated as not tested, and the author has not published results after filtering or reconstructing the grid. Therefore, these can only be used as a diagnostic order and must be verified in the target controller for filter delay and peak values.",
+    "applicability": "Applies to the OBJ wall + Cartesian pushing scenario; no version or final retest.",
+    "credibility.rationale": "No reproducible retest records have been formed.",
+    "details.attempts.0": "The original author tried `dt=0.001 s` and different ERP, and both stated no improvement.",
+    "details.diagnostics.0": "Comparison of time step, ERP, collision mesh triangle scale, and geometry switching position; recording of original and filtered force.",
+    "details.effective_fixes.0": "The project author considers temporal filtering as the best method to obtain smooth force, and suggests larger mesh triangles; the original author has not retested.",
+    "details.environments.0": "RaiSim; Cartesian-space mechanical arm control; fixed OBJ wall; `dt=0.001 s`; version not given.",
+    "details.limits.0": "Reduction of friction is not personally tested by the project author and cannot be registered as a valid fix.",
+    "details.limits.1": "Filtering introduces phase delay; the thread does not provide cutoff, order, or WBC stability results.",
+    "details.outcomes.0": "No public final improvement data; ERP spring/damper only get conceptual explanation.",
+    "details.problem_statements.0": "Why does the contact force jump between zero and the target value when the mechanical arm pushes against the OBJ wall in RaiSim? What measures are there in the original thread?",
+    "details.safety_notes.0": "Temporal filtering for contact force must be evaluated for phase margin, peak retention, and collision detection delay before being used in real machine control; it should not be used solely for curve smoothing and hiding shocks.",
+    "details.suspected_causes.0": "The project author mentions that collision geometry changes can cause spikes and suggests using larger mesh triangles; the thread does not provide source code-level root cause or quantitative validation.",
+    "details.symptoms.0": "After increasing the push depth, the measured contact force repeatedly jumps between zero and the expected value; the accompanying figure is only for illustration.",
+    "source.locator": "RaiSim #322 dt/ERP failure 1165374721; filtering/grid suggestion 1165990145; ERP explanation 1173562853",
+    "source.title": "RaiSim grid contact force jump can be addressed by first filtering and checking collision geometry",
+    "terms.0": "Contact force spike (接触力尖峰)",
+    "terms.1": "Error reduction parameter (ERP) (误差修正参数)",
+    "terms.2": "Collision mesh (碰撞网格)",
+    "terms.3": "Temporal filtering (时间滤波)",
+    "title": "Contact force jumps between zero and target value when pushing against OBJ wall in RaiSim; how to handle this?"
+  }
+}

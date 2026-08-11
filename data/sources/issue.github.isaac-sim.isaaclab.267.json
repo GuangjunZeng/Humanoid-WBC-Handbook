@@ -1,0 +1,143 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "catachiii"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/267",
+  "captured_at": "2026-08-11T09:41:00+08:00",
+  "content_sha256": "69e4792d2f0b2f59b4e385a4813070c28f8df9cd901f41c5272fea3cd1f660cd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对完整 Issue 评论链与官方 commit；没有把矩阵近零外推成 Jacobian 算法本身错误。",
+    "components": [
+      "Isaac Lab/Orbit Articulation",
+      "PhysX ArticulationView",
+      "RigidBodyView",
+      "Jacobian",
+      "link indexing"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者按维护者提供的 articulation view link_names 重新解释索引，并确认原索引把数据取错。",
+        "维护者合并 commit e3c40acf，把 Articulation.body_names 改为 PhysX articulation 顺序，并在内部处理 articulation-link 到 body-view 的重排。"
+      ],
+      "diagnostics": [
+        "分别打印 body_physx_view.prim_paths 导出的 body 名顺序和 root_physx_view.shared_metatype.link_names，确认索引来源与 Jacobian 来源一致。",
+        "ANYmal 示例中 body view 按每条腿链排列，而 articulation view 先列四个 hip、再列 thigh、shank、foot；相同整数索引对应不同 link。"
+      ],
+      "effective_fixes": [
+        "旧版本中读取 root_physx_view 数据时必须使用 root_physx_view.shared_metatype.link_names 对应的索引。",
+        "升级到包含 e3c40acf 的 Orbit 0.14.0 或后续 Isaac Lab 版本，使用统一后的 Articulation.body_names/root_physx_view 接口，不再混用已弃用的 body_physx_view。"
+      ],
+      "environments": [
+        "Isaac Lab/Orbit main；Isaac Sim 2023.1.1；Ubuntu 22.04；RTX 4090；CUDA 12.3；Unitree Go2 与 ANYmal-C。"
+      ],
+      "limits": [
+        "该修复解决的是 link 排序一致性，不代表任意 Jacobian 数值异常都由索引导致。",
+        "不同 Isaac Lab 版本的公共属性名称已有变化，排查时应以当前版本 Articulation API 为准。"
+      ],
+      "outcomes": [
+        "作者确认 index messed things up；维护者发布修复提交并说明它覆盖 Jacobian、质量矩阵等 link 数据的索引一致性，Issue completed 关闭。"
+      ],
+      "problem_statements": [
+        "四足机器人 root_physx_view.get_jacobians() 返回的足端 Jacobian 几乎全零时，如何检查读取的 link 索引是否属于同一视图？"
+      ],
+      "safety_notes": [
+        "WBC 上实机前应把每个 Jacobian 行块与 link 名做自动断言，并用有限差分或已知关节运动做方向检查，避免对错 link 下发控制。"
+      ],
+      "suspected_causes": [
+        "find_bodies 使用 rigid body view 的 body_names 返回索引，而 Jacobian 来自 PhysX articulation view；两个视图当时的 link 排序不一致。"
+      ],
+      "symptoms": [
+        "提问者以 jacobian[0, 4, 0:3, -12:] 读取自认为是 FL_foot 的条目，矩阵除一列外几乎全零。",
+        "同一读取方式在 Go2 与 ANYmal-C 上都出现。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先确认索引和数据来自同一个 PhysX 视图。原帖用 rigid body view 的 find_bodies 索引读取 root_physx_view.get_jacobians()，但当时 body view 与 articulation view 的 link 排序不同，所以整数 4 并不对应预期足端。维护者合并 e3c40acf，在 Orbit 0.14.0 中令 Articulation.body_names 遵循 PhysX articulation 顺序，并内部重排 body-view 数据。旧版本应按 root_physx_view.shared_metatype.link_names 取索引；新版本应使用统一后的 Articulation/root_physx_view 接口。",
+        "applicability": "直接适用于 Isaac Sim 2023.1.1/旧 Orbit 的 Go2 与 ANYmal-C；后续版本仍应确认当前 API 返回顺序后再复用索引。",
+        "bilingual_terms": [
+          "雅可比矩阵（Jacobian matrix）",
+          "刚体视图（Rigid Body View）",
+          "关节体视图（Articulation View）",
+          "连杆索引（link indexing）",
+          "有限差分（finite difference）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.isaaclab_jacobian_link_order_267",
+        "problem_title_zh": "Isaac Lab Jacobian 的 link 索引与 body view 排序错位",
+        "question_zh": "Isaac Lab 中四足机器人 Jacobian 形状正常但足端块几乎全零，原线程如何确认并修复 link 索引错位？",
+        "source_locator": "Isaac Lab #267 评论 1992307071 的双视图顺序对照、评论 1994213116 的作者确认、评论 2000071829 与 commit e3c40acf 的正式修复",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/267#issuecomment-2000071829",
+        "verification_refs": [
+          {
+            "locator": "Go2/ANYmal-C 的最小读取方式、近零矩阵和完整环境",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/267"
+          },
+          {
+            "locator": "维护者列出 body view 与 articulation view 的两套实际 link 顺序",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/267#issuecomment-1992307071"
+          },
+          {
+            "locator": "Orbit 0.14.0：统一 Articulation.body_names 排序并内部重排 body-view 数据",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/e3c40acf5e6433c1d88b54a6e9d45bd6d3e73152"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.267",
+    "query": "Isaac Lab quadruped PhysX articulation Jacobian body index ordering",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree Go2",
+      "ANYmal-C"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者给出 ANYmal 的 body view 与 articulation view 实际 link 排序，说明整数索引不能跨视图复用。"
+      },
+      {
+        "text": "作者确认索引是根因；维护者随后给出已合并修复提交。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC、足端 IK 与操作空间控制依赖正确的 Jacobian link 行；索引错位会生成形状正确但物理对象错误的矩阵，极易被误判为运动学公式问题。"
+  },
+  "published_at": "2024-03-07T06:40:27Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.267",
+  "summary": "Isaac Lab #267 在 Unitree Go2 与 ANYmal-C 上从 root_physx_view.get_jacobians() 读取足端 Jacobian 时得到几乎全零矩阵。维护者给出两个视图的 link 顺序对照，指出提问者用 rigid body view 的索引读取 PhysX articulation view 数据，实际取到的并不是期望足端。作者确认索引混乱是原因；维护者随后合并 commit e3c40acf，在 Orbit 0.14.0 中统一 body_names 与 PhysX articulation 排序并在内部重排需要的 body-view 数据。",
+  "title": "Isaac Lab 四足机器人 Jacobian 取错 link 的根因是 body view 与 articulation view 排序不同",
+  "version": null
+}

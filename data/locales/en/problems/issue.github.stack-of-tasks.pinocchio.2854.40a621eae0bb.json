@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2854.40a621eae0bb",
+  "schema_version": 1,
+  "source_fingerprint": "ef3b4feb6013387516cbd816c6bd9b1ebb7b9df3f61bd8a182e5dd7754318ba4",
+  "translations": {
+    "answer": "The original post used the same MJCF to identify a fixed base with 0 contact models and a FreeFlyer with 1 contact model. Another project member independently reproduced the same output in the Nix environment. The maintainer stated that the issue has been resolved in Pinocchio 4 and linked PR #2855. Therefore, upgrading Pinocchio 4 can be considered as a confirmed processing direction; however, since the original post did not post the upgraded retest or provide the 3.x patch, the upgrade still needs to perform minimal testing on the return count and actual constraints.",
+    "applicability": "Applies to Python buildModelsFromMJCF in Pinocchio 3.9.0; specific minimum version and regression behavior for Pinocchio 4 need to be verified in the target environment.",
+    "credibility.rationale": "The issue was independently reproduced by another project member, and the maintainer stated that the issue has been resolved in Pinocchio 4. The lack of post-upgrade retest and 3.x patch information means the issue is worth considering.",
+    "details.attempts.0": "The project member independently reproduced the issue using the original minimal script in the Nix environment; the maintainer confirmed the issue was resolved in Pinocchio 4.",
+    "details.diagnostics.0": "The same file was executed with no root_joint and explicit JointModelFreeFlyer loading path, and the return count of contact models was directly compared.",
+    "details.effective_fixes.0": "The maintainer explicitly stated that the issue has been resolved by upgrading to Pinocchio 4.",
+    "details.environments.0": "Ubuntu 22.04; uv/pip; Pinocchio 3.9.0; independent reproduction in Nix/nixpkgs Python Pinocchio.",
+    "details.limits.0": "The maintainer did not provide details from PR #2855, so the specific code modification cannot be described based on that; the upgrade before still needs to perform explicit assertions on the fixed base return list.",
+    "details.outcomes.0": "The original issue was marked as resolved in Pinocchio 4; there is no upgraded output, and no 3.x workaround.",
+    "details.problem_statements.0": "Why does the Pinocchio 3.9.0 buildModelsFromMJCF not return the MJCF contact model in the fixed base Python call?",
+    "details.suspected_causes.0": "The issue description points to a condition check in shortcuts.py and the absence of root_joint/root_joint_name leading to missing contact model binding paths; the maintainer did not explain the internal mechanism in the comment.",
+    "details.symptoms.0": "In the same MJCF, the fixed base returns contact models=0, and the FreeFlyer returns contact models=1.",
+    "source.locator": "Issue #2854, independent reproduction in issuecomment-3996776812; maintainer's resolution in issuecomment-4288817479",
+    "source.title": "Pinocchio 3.9 Fixed Base MJCF Python Shortcut Fails to Return Contact Models",
+    "terms.0": "Contact model (contact model) (接触模型)",
+    "terms.1": "Fixed base (fixed base) (固定基)",
+    "terms.2": "FreeFlyer (FreeFlyer) (自由浮动基)",
+    "terms.3": "Python bindings (Python bindings) (语言绑定)",
+    "title": "Pinocchio 3.9 Fixed Base MJCF Loading Results in Empty Contact Models: What Has Been Verified and How to Proceed?"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.69e33c59000000002102cdd0.047465d2cd80",
+  "schema_version": 1,
+  "source_fingerprint": "bfe390f5c77fc8e1e563eb22c66abca7c914a8e05e1dd11ebfd131b65d5c70a5",
+  "translations": {
+    "answer": "High KD will directly convert joint velocity into damping torque, which can hold the arm but may damage the anti-jerk feeling. Verify the gravity model and friction first, then reduce KD and record tau/velocity/current in the limit/secure mode; handle structural load issues separately. The post does not provide final parameters.",
+    "applicability": "Not full-sized humanoid; 'first few angles' description is ambiguous.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Author used kp=0, small kd, and gravity compensation; comments discussed bringing J4 close to J3 to reduce load.",
+    "details.diagnostics.0": "Cross-verified from the main text, visible comments, and media; not independently validated by paper, source code, or official documentation.",
+    "details.environments.0": "6-axis mechanical arm; MIT control; J2 kd=0.8, others ~0.1/0.",
+    "details.limits.0": "Not full-sized humanoid; 'first few angles' description is ambiguous.",
+    "details.outcomes.0": "No post-parameters test, no current/friction data.",
+    "details.problem_statements.0": "Gravity compensation holds the arm, but dragging is stiff; why can't KD be increased directly?",
+    "details.safety_notes.0": "Community candidate only for hypothesis formation; handle real machines with speed, force, and personnel isolation, and keep logs.",
+    "details.suspected_causes.0": "J2 kd too large, directly increasing speed damping; near-end joint load and model compensation error may force users to use high kd to dampen vibration.",
+    "details.symptoms.0": "Arm can hold, but J2/J3 damping feels strong and downward dragging is not smooth.",
+    "media_summaries.0": "No visible media found; J2 kd=0.8, others 0.1/0, with MIT parameters from text in main post and comments.",
+    "source.locator": "Root post J2 kd=0.8 and MIT parameter comment",
+    "source.title": "Gravity compensation holds arm, but dragging is stiff: KD, MIT mode, and structural load discussion",
+    "terms.0": "Proportional-Derivative Control (PD Control) (比例-微分控制)",
+    "terms.1": "Actuator (执行器)",
+    "terms.2": "Joint Torque (关节力矩)",
+    "terms.3": "Center of Mass (CoM) (质心)",
+    "terms.4": "Payload (有效载荷)",
+    "terms.5": "Gravity Compensation (重力补偿)",
+    "title": "Gravity compensation holds arm, but dragging is stiff: KD, MIT mode, and structural load discussion"
+  }
+}

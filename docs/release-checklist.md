@@ -25,11 +25,13 @@ The codebase can be developed and committed locally without a cloud repository. 
 - [ ] Confirm `reviewed + technical_pending + excluded == unique_candidates`; every exclusion has a Chinese reason and every technical pending candidate remains linked from the scope appendix.
 - [ ] Confirm GitHub historical searches are partitioned by date window, unfinished pages resume without losing the page tail, and every answer from a comment keeps its exact `#issuecomment-<id>` URL.
 - [ ] Publish as alpha until real WBC claims have domain-expert and safety review.
+- [ ] Confirm every problem has a current English translation fingerprint, both generated Markdown targets exist, and Chinese/English pages preserve identical original evidence URLs.
+- [ ] Test Chinese and English interface modes with Chinese, English, and mixed queries; verify result cards and detail links follow the interface language rather than the query language.
 
-## Current release acceptance
+## Current local acceptance
 
 - Source gate: `CONDITIONAL GO`; X defaults to bounded visible-browser extraction with paid official API opt-in, Zhihu uses official discovery plus bounded visible-browser enrichment, and Xiaohongshu uses user-authorized visible-browser extraction with a manual queue fallback.
 - Runtime: Python standard library only.
-- Canonical data: 174 versioned sources, including the 28 paper/code sources behind 14 bounded reviewed claims plus reviewed community/Issue evidence; the broader paper catalog remains a candidate/coverage layer, not reviewed guidance.
+- Deep-read canonical data: 28 versioned sources and 14 bounded reviewed claims; the broader paper catalog is a candidate/coverage layer, not reviewed guidance.
 - Offline regression suite: run `scripts/acceptance.sh` plus the paper-specific checks in `CONTRIBUTING.md`; do not hard-code the test count.
-- Remote: `git@github.com:GuangjunZeng/Humanoid-WBC-Handbook.git`; `main` is the release branch and `.github/workflows/pages.yml` validates and deploys the generated bilingual search site to GitHub Pages.
+- Remote operations: none; no cloud repository has been created or pushed.

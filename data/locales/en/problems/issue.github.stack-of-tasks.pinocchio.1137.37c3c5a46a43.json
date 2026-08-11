@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1137.37c3c5a46a43",
+  "schema_version": 1,
+  "source_fingerprint": "fa86d1162d37edb297cc3f838c44d490c13b4a1018c53a136fe1eac7c98f2f2d",
+  "translations": {
+    "answer": "Not. The maintainer confirmed that the base translation is expressed in the parent frame; since the original post's root joint is in the world frame, the base translation and quaternion in the q are global poses. The base/body frame expresses the linear and angular velocities of the generalized velocity v, and joint velocities are expressed after. The thread did not answer questions about ccrba/centroidal momentum or JointModelSphericalZYX and ABA after the initial q/v convention. Therefore, this card only covers the basic convention of FreeFlyer q/v.",
+    "applicability": "Applies to the original post Pinocchio FreeFlyer basic q/v input; other root joint, centroidal API, and simulator states need to be verified separately.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author first provides a tentative q/v order from small-scale experiments, and the maintainer confirms it.",
+    "details.diagnostics.0": "The base translation and quaternion are checked against the tangent velocity's coordinate system, without assuming they are in the world frame.",
+    "details.effective_fixes.0": "Before inputting the Pinocchio generalized velocity, the floating base linear and angular velocities are expressed in the base/body frame; the base translation remains in the parent/world frame.",
+    "details.environments.0": "2020 Pinocchio floating-base robot; user previously used RBDL; specific version and robot not mentioned.",
+    "details.limits.0": "The thread only confirms the basic expression of FreeFlyer q/v; subsequent questions about ccrba, centroidal momentum, JointModelSphericalZYX, and ABA are not answered.",
+    "details.limits.1": "No code is provided to convert from specific estimator or simulator coordinate system to the body frame.",
+    "details.outcomes.0": "The maintainer explicitly confirms the q/v convention provided by the author.",
+    "details.problem_statements.0": "What coordinate system is used to express the q and v of the Pinocchio floating base?",
+    "details.suspected_causes.0": "The configuration and generalized velocity of Pinocchio are expressed using different coordinate conventions.",
+    "details.symptoms.0": "The user is uncertain whether the base pose and base linear/angular velocities should be expressed in the world or local frame.",
+    "source.locator": "Issue #1137, maintainer confirms issuecomment-608520990; unresolved issues: issuecomment-1051994666, issuecomment-1133769283",
+    "source.title": "Pinocchio Floating Base q and v Use Different Coordinate Expressions",
+    "terms.0": "Generalized Configuration (广义配置)",
+    "terms.1": "Generalized Velocity (广义速度)",
+    "terms.2": "Parent Frame (父坐标系)",
+    "terms.3": "Body Frame (机体坐标系)",
+    "title": "When the Pinocchio Floating Base q is expressed in the World Frame, Should the First Six Dimensions of v Also Be in the World Frame?"
+  }
+}

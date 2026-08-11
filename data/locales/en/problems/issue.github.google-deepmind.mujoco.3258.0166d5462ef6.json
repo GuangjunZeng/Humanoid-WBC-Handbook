@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.3258.0166d5462ef6",
+  "schema_version": 1,
+  "source_fingerprint": "ec1aa6e289020dc7c23b4869ec8d921e0ca7ea5eef81774f9b47094397084132",
+  "translations": {
+    "answer": "The public implementation for this thread cannot be used in this manner. The original post's conversion code will fold multi-dimensional `geom_dataid` into a single line; the maintainers also explicitly state that batched `geom_dataid` is not planned to be integrated into MJX, and they note that the collision driver may need reworking under JIT static analysis. The author only mentions a local monkey patch, without publishing a patch or results, so it cannot be considered a reusable solution.",
+    "applicability": "Applies to the MJX-Warp conversion path described in this thread; further implementations in subsequent versions must be rechecked.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The author mentions a local monkey patch but does not provide public results, a patch, or replication data; therefore, it is not registered as a valid fix.",
+    "details.diagnostics.0": "Check if the shape of `geom_dataid` is folded into a single line before the Warp is applied, and record the actual world usage of each `data id`.",
+    "details.effective_fixes.0": "The thread does not contain a merged fix; the capability is currently considered unsupported, and minimal verification should be done before selecting an alternative architecture or submitting a self-contained PR.",
+    "details.environments.0": "mujoco.mjx and impl=warp; the post is based on a public implementation from 2026-05, without a published version number.",
+    "details.limits.0": "The two-dimensional field capabilities of the underlying MuJoCo Warp are not equivalent to the front-end MJX exposing these capabilities; the post also does not verify the correctness of any monkey patch.",
+    "details.outcomes.0": "Issue is closed since the functionality is not in the plan; the maintainers allow a sufficiently small and clean PR to be submitted, but no commitment to receiving it is made.",
+    "details.problem_statements.0": "Can MJX-Warp use batched `geom_dataid` to let each parallel world select a different hfield?",
+    "details.safety_notes.0": "Sampling and printing of each environment's terrain ID or geometric statistics before training is recommended to prevent domain randomization from failing silently.",
+    "details.suspected_causes.0": "The maintainers state that the MJX collision driver uses `geom_dataid` as a NumPy array during JIT static analysis; support for dynamic batched fields may require reworking.",
+    "details.symptoms.0": "Multi-dimensional `geom_dataid` is folded into a single line in `_put_model_warp`, and all worlds receive the same mapping.",
+    "source.locator": "MuJoCo #3258 Maintainer's closure notice 4741236754",
+    "source.title": "MJX-Warp cannot use batched geom_dataid to route each environment's hfield.",
+    "terms.0": "Batched geom_dataid (批量几何数据标识)",
+    "terms.1": "Per-world routing (每环境路由)",
+    "terms.2": "Just-In-Time compilation (JIT) (即时编译)",
+    "terms.3": "Terrain randomization (地形随机化)",
+    "title": "Can batched geom_dataid be assigned in MJX-Warp's parallel environment, allowing each world to use a different hfield?"
+  }
+}

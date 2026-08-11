@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.3286.71618d51d873",
+  "schema_version": 1,
+  "source_fingerprint": "efb4aa498a04e277043d5aa32e9ebe5c53c7bb05cd8dab8885506a1eebf77e3b",
+  "translations": {
+    "answer": "The issue is not with the LuGre parameter path failure, but rather with the Python factory's return modifier being inside the inner function, and the outer factory implicitly returning None. The sysid.Parameter receives None and does not call the modifier, so the candidate values do not enter the spec, and the residual remains unchanged. The fix is to return the modifier in the outer factory; the inner modifier only updates the spec. The maintainer also independently checked the spec→model→LuGre ODE path for biasprm[3]/[4].",
+    "applicability": "Precisely applicable to scenarios where the sysid parameter modifier factory returns None in MuJoCo 3.8.0; other zero-gradient issues require re-diagnosis.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The maintainer investigated Python scope and indentation, checking the falsity of the Parameter.apply_modifier path.",
+    "details.attempts.1": "The maintainer independently verified that biasprm[3] writes to the spec and is read by the LuGre ODE.",
+    "details.diagnostics.0": "Confirmed that the object passed to sysid.Parameter(modifier=...) is callable, not None.",
+    "details.diagnostics.1": "Manually altered a param before optimization, and verified that the spec, compile, and model update accordingly after the change.",
+    "details.effective_fixes.0": "Moved the return modifier to the outer factory scope; the inner modifier only updates the spec parameter.",
+    "details.environments.0": "MuJoCo 3.8.0 Python; Ubuntu 22.04 x86_64; minimal single-joint dcmotor/LuGre model.",
+    "details.limits.0": "The original author did not post the corrected optimization values in the comment; the conclusion is based on the maintainer's code diagnosis and parameter path check.",
+    "details.limits.1": "Other zero-gradient issues may still stem from scale, identifiability, or residual design, and cannot be generalized to indentation issues.",
+    "details.outcomes.0": "The maintainer marked the issue as resolved and explicitly stated no library-side modifications are needed, as it is a user code error.",
+    "details.problem_statements.0": "How to distinguish between a parameter path issue and a user code error when the sysid optimization has 0 iterations and the LuGre parameters remain unchanged?",
+    "details.safety_notes.0": "Before using identified parameters for real execution, retain boundary constraints and validate with independent trajectories; do not accept parameters solely based on optimizer exit status.",
+    "details.suspected_causes.0": "The return modifiers of two factory functions are inside the inner modifier, and the outer factory implicitly returns None.",
+    "details.symptoms.0": "Optimizer 0 iterations, finite-difference gradient is 0; the HTML report shows the initial and nominal torque as the same; the identified parameters stop at the initial value.",
+    "source.locator": "MuJoCo #3286 maintainer diagnosis and corrected code 4546762188, library conclusion 4549965819",
+    "source.title": "MuJoCo sysid zero iteration check first on whether the modifier factory truly returns a callable",
+    "terms.0": "Parameter modifier (参数修改器)",
+    "terms.1": "Factory function (工厂函数)",
+    "terms.2": "Finite-difference gradient (有限差分梯度)",
+    "terms.3": "LuGre bristle ODE (刷毛微分方程)",
+    "title": "What is the actual cause and fix for MuJoCo sysid zero iteration, zero gradient, and no parameter change in the post?"
+  }
+}

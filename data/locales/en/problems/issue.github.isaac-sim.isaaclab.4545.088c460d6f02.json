@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4545.088c460d6f02",
+  "schema_version": 1,
+  "source_fingerprint": "1b8b2b10a29bf94e8218ffeb1e3105ac6124e8d62182611f2ee086e8d98a9eb3",
+  "translations": {
+    "answer": "Treat this as field-level ablation evidence: align versions, drivers, backend, and parallel environment counts, then compare net_forces_w with its historical cache at the first fork of the observation or reward. It can narrow down the nondeterministic input, but the original post has not yet verified the root cause.",
+    "applicability": "Applicable to the reproduction diagnosis of Isaac Lab/RSL-RL training with rich contact-rich environments.",
+    "credibility.rationale": "Environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author compared the behavior of immediate contact force vs. historical cache entering the reward/observation.",
+    "details.diagnostics.0": "Switch sequentially between observation and reward fields, and identify the first field that causes a fork to localize the nondeterministic input.",
+    "details.effective_fixes.0": "No root cause fix has been implemented; field-level ablation can be used as a reproduction diagnostic.",
+    "details.environments.0": "Isaac Lab 2.3.1, Isaac Sim 5.1.0, RSL-RL, Unitree G1.",
+    "details.limits.0": "Complete agreement or disagreement is not an error proof; alignment of version, driver, backend, and environment count must be verified.",
+    "details.outcomes.0": "The maintainer provides an explanation and further troubleshooting directions, but no confirmation of the specific underlying defect has been made.",
+    "details.problem_statements.0": "Training is identical across different computers with fixed seeds, but adding the immediate contact force leads to a fork.",
+    "details.suspected_causes.0": "The path of the immediate contact force may contain nondeterministic elements related to physics solving order.",
+    "details.symptoms.0": "net_forces_w triggers a difference, but net_forces_w_history does not.",
+    "source.locator": "Maintainer explains @RandomOakForest.",
+    "source.title": "Training on Unitree G1 is identical across different computers but forks when net_forces_w is added.",
+    "terms.0": "Training Nondeterminism (训练非确定性)",
+    "terms.1": "Contact Force (接触力)",
+    "terms.2": "Reinforcement Learning (RL) (强化学习)",
+    "title": "What can be done with the phenomenon that forks only when net_forces_w is added in cross-machine training?"
+  }
+}

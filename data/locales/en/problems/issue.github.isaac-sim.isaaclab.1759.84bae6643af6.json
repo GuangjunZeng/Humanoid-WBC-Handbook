@@ -1,0 +1,25 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1759.84bae6643af6",
+  "schema_version": 1,
+  "source_fingerprint": "e503b1e1523161b65850de7d757176e0549e6064a58b0ac466c13cbae0df217d",
+  "translations": {
+    "answer": "As per the original reply from the IsaacLab team on February 2025, the Jdot capability was not available at the time and needed to be implemented manually. The thread did not provide implementation details or retesting, so this is a clue related to version capabilities: first confirm the Jdot API in the target version's API, then choose and validate the parsing or numerical implementation, and do not use the post to suggest a specific algorithm.",
+    "applicability": "Applicable for verifying the Jdot API in the Isaac Lab capabilities from the beginning of 2025; the current version and specific implementation still need rechecking.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent retesting is missing.",
+    "details.attempts.0": "The team members confirmed that the capability was not available at the time and needed to be implemented manually.",
+    "details.diagnostics.0": "First confirm whether the Isaac Lab/Isaac Sim version has added the Jdot API; the original thread only covered the 2025-01 time point.",
+    "details.environments.0": "IsaacLab Issue 2025-01; the original post did not provide versions of Isaac Lab, Isaac Sim, GPU, or robot.",
+    "details.limits.0": "Cannot infer from this thread whether to use finite difference, analytical recursion, or automatic differentiation; cannot assert that the current latest version still lacks this interface.",
+    "details.outcomes.0": "The capability boundary is addressed, but the manual implementation plan, numerical stability, and acceptance method are not provided.",
+    "details.problem_statements.0": "Does Isaac Lab provide the Jacobian time derivative Jdot? If not, how should it be handled?",
+    "details.safety_notes.0": "If using numerical differentiation to estimate Jdot or Jdot*qdot, check for noise amplification and worst-case delay at the target control frequency.",
+    "details.symptoms.0": "When implementing v = Jqdot, the time derivative relationship requires Jdot, but the caller cannot find a ready-made interface.",
+    "source.locator": "IsaacLab #1759 - Unique comment 2628472796",
+    "source.title": "Isaac Lab does not provide a direct interface for the Jacobian time derivative (Jacobian time derivative, Jdot)",
+    "terms.0": "Jacobian time derivative (Jacobian time derivative, Jdot) (雅可比时间导数)",
+    "terms.1": "Task-space acceleration (任务空间加速度)",
+    "terms.2": "Manual implementation (手工实现)",
+    "title": "Does Isaac Lab directly provide the Jacobian time derivative (Jacobian time derivative, Jdot)?"
+  }
+}

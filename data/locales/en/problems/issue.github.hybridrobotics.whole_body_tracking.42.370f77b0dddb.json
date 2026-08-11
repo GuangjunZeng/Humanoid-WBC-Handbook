@@ -1,0 +1,24 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.42.370f77b0dddb",
+  "schema_version": 1,
+  "source_fingerprint": "45eed1f6c12c9b746498e11a164759c0e0d92d1854e31572a127a6839fd974ae",
+  "translations": {
+    "answer": "User report: After upgrading to rsl-rl-lib 2.2.0, the obs_groups error disappeared, but the rnd_state missing error appeared; switching to rsl-rl-lib 2.3.0 resolved both errors. This result is from a single user, and cannot be directly compared with other comments that did not lock the rsl-rl-lib version. The rsl-rl-lib version should be treated as an independent variable for retesting.",
+    "applicability": "Commenter used Isaac Lab 2.2.0, Isaac Sim 5.0.0, Ubuntu 22.04, RTX 5070; no maintainer or second independent replication.",
+    "credibility.rationale": "Source conclusion has unresolved conflicts.",
+    "details.attempts.0": "Downgrade Isaac Lab; switch Isaac Sim/Lab combination; re-install via official pip documentation and set project PYTHONPATH; fix rsl-rl-lib 2.2.0 or 2.3.0.",
+    "details.diagnostics.0": "Record Isaac Sim, Isaac Lab, rsl-rl-lib, Python, installation method, and project submission; do not only record Isaac Lab major version; re-test on Isaac-Ant-v0 and project task.",
+    "details.environments.0": "Original post: Isaac Sim 5.0.0, Isaac Lab package shows 0.47.1, Python 3.11; comment involves Isaac Lab 2.1.0/2.2.0/2.2.1, Isaac Sim 4.5/5.0, rsl-rl-lib 2.2.0/2.3.0, Ubuntu 22.04, RTX 5070/5070 Ti.",
+    "details.limits.0": "Issue has no maintainer response, no locked file or minimal reproducible repository; original post's 0.47.1 and comment's 2.x naming also lack explanation, so cannot base a single recommendation on this.",
+    "details.outcomes.0": "Different participants reported incompatible success/failure combinations on different machines; only common conclusion is that all dependencies must be verified together.",
+    "details.problem_statements.0": "Tracking-Flat-G1-v0 throws KeyError: obs_groups during OnPolicyRunner initialization; should we switch to Isaac Lab/Sim or upgrade rsl-rl-lib version?",
+    "details.symptoms.0": "rsl_rl/runners/on_policy_runner.py throws KeyError when accessing self.cfg['obs_groups']; some combinations fix the KeyError but then reappear missing infos['observations'] rnd_state.",
+    "source.locator": "Issue #42 comment issuecomment-3779506470",
+    "source.title": "Version combination experience for obs_groups KeyError is conflicting",
+    "terms.0": "Reinforcement Learning Observation Group (rsl-rl obs_groups) (强化学习观测组)",
+    "terms.1": "Random Network Distillation State (rnd_state) (随机网络蒸馏状态)",
+    "terms.2": "Dependency Pinning (依赖固定)",
+    "title": "After obs_groups KeyError, rnd_state missing reappears, should rsl-rl-lib version be verified separately?"
+  }
+}

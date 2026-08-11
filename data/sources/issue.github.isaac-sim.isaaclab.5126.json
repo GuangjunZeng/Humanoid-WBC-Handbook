@@ -1,0 +1,130 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "dolevfr"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5126",
+  "captured_at": "2026-08-11T22:34:00+08:00",
+  "content_sha256": "3353d891be782003d46ee6d06a5bc352a2a743a3c8f1f2b0f14daf463d880711",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 2 条评论和两条已合并 PR 的正文、审阅、补丁与测试说明；层级树来自原帖文本，不依赖截图。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim 6.0 URDF converter",
+      "ContactSensor",
+      "PhysX view",
+      "OVPhysX"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PhysX PR #6378 与 OVPhysX PR #6384 均改为从解析结果为每个 body 构造独立 path expression。"
+      ],
+      "diagnostics": [
+        "比较 USD 实际 nested prim paths 与由第一个 body parent 加 leaf names 构造的 view pattern。"
+      ],
+      "effective_fixes": [
+        "升级到包含 #6378 和 #6384 的版本；不要再用共享 parent 加 flat body names 构造嵌套 URDF 的 ContactSensor patterns。"
+      ],
+      "environments": [
+        "IsaacLab develop 3.0.0、Isaac Sim 6.0.0 pip、Python 3.12、Ubuntu 24.04、Linux 6.17。"
+      ],
+      "limits": [
+        "#6378 的 PhysX list-pattern API 会产生 body-major raw row order，补丁已同步适配内部 consumers，但用户自写 raw-view 索引需单独审计；公开 `data` 仍保持 `(num_envs, num_bodies, ...)`。",
+        "#6384 的 fork PR 环境不能在合并前执行 OVPhysX wheelhouse 测试，PR 明确测试将在 upstream/nightly 执行。"
+      ],
+      "outcomes": [
+        "两条 PR 均已合并并获维护者批准；都加入嵌套 hierarchy regression coverage。"
+      ],
+      "problem_statements": [
+        "Isaac Sim 6.0 转换出的嵌套 link 为什么让 ContactSensor 的 rigid/contact view 匹配失败？"
+      ],
+      "safety_notes": [
+        "升级后应以 body_names、data shape 和已知 body world positions 做端到端校验，避免传感器能初始化却发生 body/env 索引错位。"
+      ],
+      "suspected_causes": [
+        "嵌套 bodies 不共享同一 parent，单个 parent-level alternation 无法表达每个 body 的实际路径。"
+      ],
+      "symptoms": [
+        "`create_articulation_view` 能找到全部 53 links，但 flat `create_rigid_body_view` pattern 只找到直接子级或完全失败，并报 pattern did not match。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "旧实现假定所有 body 都是同一 parent 下的 flat siblings，把 leaf names 拼成一个 alternation；Isaac Sim 6.0 的 link 是递归嵌套的，这个 pattern 无法表达实际路径。合并 #6378（PhysX）和 #6384（OVPhysX）均改为复用解析阶段返回的 per-body path expressions，一条 body 一条 pattern，并增加嵌套层级回归测试。PhysX 路径还必须同步处理 list-pattern 的 body-major raw ordering；公开 ContactSensor `data` 布局保持不变。",
+        "applicability": "适用于 Isaac Sim 6.0+ URDF importer 生成的嵌套 rigid-body hierarchy，以及相同层级结构的自定义 USD。",
+        "bilingual_terms": [
+          "刚体视图（rigid-body view）",
+          "接触传感器（ContactSensor）",
+          "逐刚体路径表达式（per-body path expression）",
+          "刚体主序（body-major ordering）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.isaaclab_nested_contact_views_5126",
+        "problem_title_zh": "为嵌套 URDF 按 body 构造 ContactSensor view",
+        "question_zh": "Isaac Sim 6.0 的嵌套 URDF 让 ContactSensor 初始化失败时，正确的 view pattern 应怎样构造？",
+        "source_locator": "IsaacLab #5126 关闭说明 5174104772；合并 PR #6378/#6384",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/5126#issuecomment-5174104772",
+        "verification_refs": [
+          {
+            "locator": "已合并 PhysX per-body patterns、raw ordering 适配与嵌套回归测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/6378"
+          },
+          {
+            "locator": "已合并 OVPhysX per-body binding patterns 与嵌套回归测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/6384"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.5126",
+    "query": "Isaac Lab 6.0 nested URDF ContactSensor rigid body view per-body patterns",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "humanoids with nested URDF links",
+      "generic multi-link robots"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者关闭说明：PhysX #6378 与 OVPhysX #6384 已按每个 body 构造 path expression，并包含 nested-hierarchy regression coverage。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 接触估计、足端奖励和碰撞监控依赖 ContactSensor；模型结构升级后 view 初始化失败会让整条训练或控制链无法启动。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.5126",
+  "summary": "IsaacLab #5126 在 develop 3.0.0、Isaac Sim 6.0.0 pip、Python 3.12、Ubuntu 24.04 中确认：新版 URDF converter 将 link 递归嵌套在 `Geometry/base_link/...`，而 ContactSensor 旧实现把叶子 body names 拼成同一父路径下的 flat pattern，导致 PhysX rigid/contact views 无法匹配。已合并 #6378（PhysX）和 #6384（OVPhysX）改为使用每个 body 自己的 path expression，并增加嵌套层级回归覆盖。",
+  "title": "Isaac Sim 6.0 嵌套 URDF 导致 ContactSensor view 初始化失败",
+  "version": null
+}

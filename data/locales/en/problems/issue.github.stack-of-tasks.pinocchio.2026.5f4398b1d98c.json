@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2026.5f4398b1d98c",
+  "schema_version": 1,
+  "source_fingerprint": "00bb204f541e17b53f502f64bac69aa9a6161757adabe3562fdef862c32700e6",
+  "translations": {
+    "answer": "The original code first executes model.createData(), then model.addFrame(frame), and uses the old data to compute the Jacobian. A project member pointed out that the Data should not be modified after model.createData() is called; the original author confirmed this was their order. The handling is to complete model modifications such as addFrame() before creating the Data; when modifying the Model later, the Data should also be rebuilt. The original author confirmed the order was incorrect.",
+    "applicability": "Applies to the original post Pinocchio 2.6.19/Python 3.10.4 and similar model structure modification processes; other versions should recheck the API semantics.",
+    "credibility.rationale": "There is engineering record of the environment, processing steps, and results, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "The project member suggested moving model.createData() after model.addFrame(frame); another contributor agreed with this diagnosis, and the original author confirmed the order was incorrect.",
+    "details.diagnostics.0": "Checking the order of model.createData() and model.addFrame(): the original example changed the Model's frame structure after Data was already created.",
+    "details.effective_fixes.0": "Complete all Model structure modifications before calling model.createData(); if the Model is modified again, re-create the corresponding Data before running Jacobian/kinematic algorithms.",
+    "details.environments.0": "Pinocchio 2.6.19 (pip); Python 3.10.4; UR5 URDF; x86_64 Linux, Intel i7-8550U.",
+    "details.limits.0": "Original thread did not provide the full running output after adjustment or regression testing.",
+    "details.limits.1": "The phenomenon and version boundary come from Pinocchio 2.6.19; do not infer that other versions behave in the same way.",
+    "details.outcomes.0": "Original author confirmed adding frames after initializing Data and accepted the correction. Issue was subsequently marked as completed.",
+    "details.problem_statements.0": "Pinocchio calls getFrameJacobian randomly causes segmentation faults, bus errors, or double free; check which object's lifetime is the issue.",
+    "details.safety_notes.0": "For real-machine WBC, prevent torque application when dynamics data structures are inconsistent; do not rely solely on process crash as a protection.",
+    "details.suspected_causes.0": "Project member confirmed that Pinocchio Data was created before Pinocchio Model.",
+    "details.symptoms.0": "Same script causes unstable segmentation faults, bus errors, corrupted double-linked list, or double free.",
+    "source.locator": "Pinocchio #2026, project member diagnosed issuecomment-1664403489, author confirmed issuecomment-1664425533",
+    "source.title": "Pinocchio Modified Model Continuously Reuse Old Data Causes Random Crashes",
+    "terms.0": "Model/Data Lifecycle (Model/Data Lifecycle) (模型数据生命周期)",
+    "terms.1": "Operational Frame (Operational Frame) (操作帧)",
+    "terms.2": "Frame Jacobian (Frame Jacobian) (帧雅可比)",
+    "terms.3": "Segmentation Fault (Segmentation Fault) (段错误)",
+    "title": "Random Segfault or Double Free When Calculating the Frame Jacobian After Adding the Frame, How to Fix the Original Thread?"
+  }
+}

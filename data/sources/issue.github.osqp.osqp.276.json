@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Ajin2305"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/276",
+  "captured_at": "2026-08-12T00:02:00+08:00",
+  "content_sha256": "b3ac8058ade89efe8ef8372381d2da2217df4264061053cfa1600368a48ea328",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 5 条评论和两张原图；因结论不依赖图中像素，根因只按文字确认整理。",
+    "components": [
+      "OSQP",
+      "maximum iterations",
+      "warm start",
+      "problem scaling"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "放宽 relative tolerance 到约 `1e-4`；缩放问题以处理 `P` 的巨大 condition number。"
+      ],
+      "diagnostics": [
+        "记录每周期 QP、warm-start state、容差和 `cond(P)`；先对单独数据用默认设置复现，再逐项恢复线上配置。"
+      ],
+      "effective_fixes": [
+        "作者确认两项都有帮助，但没有发布新状态分布或最坏运行时，因此登记为环境内缓解。"
+      ],
+      "environments": [
+        "2020 OSQP MATLAB 与生成 MEX；实际设置 `eps_abs=eps_rel=1e-8`、`adaptive_rho_interval=25`、`max_iter=20000`。"
+      ],
+      "limits": [
+        "最初关于坏 warm start 的猜测没有被作者确认；没有曲线后的精确尖峰率或实时保证。"
+      ],
+      "outcomes": [
+        "作者回复“does help”，同时说明还必须缩放 `P`；Issue 随后关闭。"
+      ],
+      "problem_statements": [
+        "OSQP 在循环中偶发 status 2/-2 并打满迭代时，原线程最终验证了哪些处理？"
+      ],
+      "safety_notes": [
+        "必须设置 solver deadline 和 fallback；容差放宽前先定义允许的约束残差，而不是只优化速度。"
+      ],
+      "suspected_causes": [
+        "维护者最终把极严 `1e-8` 容差列为主要原因；作者另确认 `P` 条件数巨大并需要缩放。"
+      ],
+      "symptoms": [
+        "部分周期运行时大幅增加并返回 maximum iterations；单独重放一个数据却 75 iterations 解出。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不能。维护者对单独数据用默认 setup 在 75 iterations 解出；作者后来披露线上把 `eps_abs/eps_rel` 设为 `1e-8`。维护者建议对 ADMM 使用约 `1e-4` relative tolerance，作者确认有帮助，并补充还必须缩放 condition number 很大的 `P`。原帖没有验证 warm-start 污染，也没有给修正后的最坏时延，因此只能采用“容差＋尺度”的已确认缓解。",
+        "applicability": "适用于原帖极严容差和病态 `P`；其他周期尖峰需保存具体 QP 与 solver state。",
+        "bilingual_terms": [
+          "最大迭代（maximum iterations）",
+          "热启动（warm start）",
+          "问题缩放（problem scaling）",
+          "最坏执行时间（worst-case execution time, WCET）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_max_iter_tolerance_scaling_276",
+        "problem_title_zh": "排查 OSQP 循环求解的迭代尖峰",
+        "question_zh": "OSQP 循环中偶发打满 20000 iterations 时，能否直接归因于 warm start？",
+        "source_locator": "OSQP #276 配置 719565150；维护者建议 721814742；作者确认 725366350",
+        "source_url": "https://github.com/osqp/osqp/issues/276#issuecomment-725366350",
+        "verification_refs": [
+          {
+            "locator": "维护者明确指出 `1e-8` 对 ADMM 极严并建议约 `1e-4`",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/osqp/osqp/issues/276#issuecomment-721814742"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖两张图只显示循环运行时间尖峰与 status 2/-2 的出现位置；图中缺少足够轴信息，未用于推断根因。"
+    ],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.276",
+    "query": "OSQP eps 1e-8 max iteration warm start condition number scaling 1e-4",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "receding-horizon WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "作者确认放宽容差有帮助，并补充还需缩放 condition number 巨大的 `P`。"
+      }
+    ],
+    "wbc_relevance_reason": "在线 WBC 中少数周期突然打满迭代会破坏控制时限；容差和问题尺度应先于笼统的 warm-start 归因。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.276",
+  "summary": "OSQP #276 报告循环求解偶尔出现 status 2/-2 和运行时尖峰。维护者对作者上传的单个数据直接 setup 后 75 iterations 解出，先考虑 warm-start 内部变量污染；作者随后补充实际设置是 `eps_abs=eps_rel=1e-8`、`adaptive_rho_interval=25`、`max_iter=20000`。维护者判断 `1e-8` 对 ADMM solver 极严，建议约 `1e-4` relative tolerance。作者确认这有帮助，并补充还对巨大 condition number 的 `P` 做了缩放。",
+  "title": "OSQP 周期性 max-iteration 先检查过紧容差和 Hessian 条件数",
+  "version": null
+}

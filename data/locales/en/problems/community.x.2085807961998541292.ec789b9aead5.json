@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2085807961998541292.ec789b9aead5",
+  "schema_version": 1,
+  "source_fingerprint": "5ec3d699c2ba6c6f7c8985b3c19b113e342c503a01b947cad77e96ba263061dc",
+  "translations": {
+    "answer": "The operable part of the original post involves replaying multi-season sensor data on the same route and synchronizing checks with LiDAR, radar, camera, and IMU. A fix is not provided. The seasonal offset should be treated as an independent test dimension and not limited to single-season calibration.",
+    "applicability": "Suitable for long-term deployment state estimation regression testing.",
+    "collection.stop_reason": "No growth after visible scroll",
+    "credibility.rationale": "The solution has not closed or there is a conflict; the current state is only forming a problem clue.",
+    "details.attempts.0": "Published multi-season sensor data and FiftyOne multi-modal replay.",
+    "details.diagnostics.0": "Used GNSS ground truth to align multi-sensor MCAP replays and cross-season comparison.",
+    "details.environments.0": "Quebec forest; 12 deployments; -19°C to 18°C; about 1 m of snow.",
+    "details.limits.0": "Not human-like; 4%/46% definition and algorithm configuration require data card.",
+    "details.outcomes.0": "Quantified seasonal offset, but no fix algorithm is provided.",
+    "details.problem_statements.0": "Same-locator positioning algorithm shows severe drift after seasonal change.",
+    "details.safety_notes.0": "Position drift should be controlled; if not, reduce autonomous speed and use independent true value/invalid detection to limit WBC navigation commands.",
+    "details.suspected_causes.0": "Snow changes road geometry and LiDAR appearance, leading to long-term scene inconsistency.",
+    "details.symptoms.0": "Drift on the same route increases from 4% to 46%.",
+    "media_summaries.0": "Screenshot repeats drift 4%→46% and sensor/temperature range, without trajectory or error definition.",
+    "source.locator": "Root post FoMo data explanation",
+    "source.title": "Seasonal change causes LiDAR-inertial SLAM drift from 4% to 46%",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "State Estimation (状态估计)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Light Detection and Ranging (LiDAR) (激光雷达)",
+    "terms.4": "Simultaneous Localization and Mapping (SLAM) (同时定位与建图)",
+    "title": "Drift of LiDAR-inertial SLAM increases from 4% to 46% after snow, how to reproduce the issue first?"
+  }
+}

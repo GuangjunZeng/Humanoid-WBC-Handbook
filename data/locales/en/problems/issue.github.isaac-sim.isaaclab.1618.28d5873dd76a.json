@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1618.28d5873dd76a",
+  "schema_version": 1,
+  "source_fingerprint": "2d0a539da2a0f660645596f2aa557cbc59435307c44aba38270bcd9697b37d42",
+  "translations": {
+    "answer": "The original thread cannot support a general answer. Maintainers reproduced the issue on ANYmal, Spot, and Unitree, noting that the ImplicitActuatorCfg configuration is no longer present. However, the original questioner continued to encounter errors; the IMU linear acceleration from finite difference was bypassed, but the maintainers explicitly warned of noise. The team could not reproduce the issue in Isaac Sim 5.0. A comparison of actuator configuration, version, and independent acceleration reference should be conducted before selecting data sources.",
+    "applicability": "Applies to scenarios using explicit IdealPD classes for actuators and reading rigid-body acceleration in IsaacLab/Isaac Sim environments; version boundaries are not closed.",
+    "credibility.rationale": "The solution has not been closed or there are unresolved conflicts in the sources.",
+    "details.attempts.0": "Switch to ImplicitActuatorCfg; use IMU finite difference linear acceleration instead; upgrade/re-test Isaac Sim 5.0.",
+    "details.diagnostics.0": "Compare actuator configuration and model; compare IdealPDActuator-derived models with ImplicitActuatorCfg; record body_acc_w and IMU finite difference linear acceleration; re-test in Isaac Sim 5.0.",
+    "details.environments.0": "Original post: ANYmal-C, dt=0.005, 2 environments, old omni.isaac.lab API; comments indicate reproduction covers Spot/Unitree; subsequent verification of Isaac Sim 5.0. Specific original submission not stated.",
+    "details.limits.0": "No thread provided final re-test by the original author for exact ImplicitActuatorCfg or Isaac Sim 5.0; cannot write any alternative as a universal fix.",
+    "details.outcomes.0": "Maintainers reproduced the original environment issue on multiple robots; ImplicitActuatorCfg is effective for the maintainers but not for the original questioner; team could not reproduce in Isaac Sim 5.0.",
+    "details.problem_statements.0": "Robot is stationary but body_acc_w is significantly non-zero; does switching to another actuator model or Isaac Sim version resolve the issue?",
+    "details.safety_notes.0": "Do not use body_acc to estimate external forces or trigger real-machine safety actions until the kinematic/finite difference kernels have been independently verified.",
+    "details.suspected_causes.0": "Collaborator observes the issue related to IdealPDActuator-derived actuators, but the original questioner's counterexample shows this explanation is not closed.",
+    "details.symptoms.0": "Base Z acceleration exceeds 5 when robot is stationary; removing joint position targets and writing causes robot to fall, with acceleration curve matching expectations.",
+    "media_summaries.0": "Original post contains abnormal and normal acceleration curves, but the maintainers have confirmed reproduction and conflict via text; this card does not extract additional numerical values from the curves.",
+    "source.locator": "Issue #1618 comment issuecomment-2573089344 to 3076020376",
+    "source.title": "Abnormal body_acc_w in controlled stationary robots is conflicting between actuator model and version",
+    "terms.0": "Rigid-body acceleration (刚体加速度)",
+    "terms.1": "ImplicitActuatorCfg (隐式执行器配置)",
+    "terms.2": "IdealPDActuator (理想比例微分执行器)",
+    "terms.3": "Finite difference (有限差分)",
+    "title": "Can we directly switch to ImplicitActuatorCfg or use IMU readings in IsaacLab when body_acc_w is clearly wrong?"
+  }
+}

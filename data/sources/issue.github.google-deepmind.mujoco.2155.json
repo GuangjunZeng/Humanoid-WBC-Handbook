@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "nico-bohlinger"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2155",
+  "captured_at": "2026-08-11T23:40:00+08:00",
+  "content_sha256": "c54e96852aeddf48e19eeb47ca464ef9970150e006f723096a5b7f664551fa74",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 4 条评论，并核对维护者直接链接的官方 API 文档；结论不依赖图片。",
+    "components": [
+      "MJX",
+      "MuJoCo Warp",
+      "ray casting",
+      "height field"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖提出把 CPU `mj_rayHfield` 移植到 MJX；后续贡献者询问是否可以实现。"
+      ],
+      "diagnostics": [
+        "先确认目标后端是 MJX 还是 MuJoCo Warp，再核对所需 geom 类型是否在该后端 `ray` API 中受支持。"
+      ],
+      "effective_fixes": [
+        "若需求是 hfield ray casting，按维护者指向评估 MuJoCo Warp `ray`；线程没有声称 MJX 与 MuJoCo Warp 可无成本互换。"
+      ],
+      "environments": [
+        "原始请求针对 MJX 的 `mjx.ray` 与 hfield geom；线程未固定 MuJoCo 版本。"
+      ],
+      "limits": [
+        "该结论只回答项目公开计划与后端能力选择，不比较两个后端的性能、数值一致性或完整迁移成本。"
+      ],
+      "outcomes": [
+        "维护者明确 MJX 不计划此功能，并把 Issue 关闭；官方 MuJoCo Warp `ray` 文档列出 height fields。"
+      ],
+      "problem_statements": [
+        "MJX 的 `mjx.ray` 能否用于 hfield 地形的射线检测？"
+      ],
+      "safety_notes": [
+        "把地形感知输入用于真机 WBC 前，还需独立验证量程、遮挡、坐标系和时延。"
+      ],
+      "suspected_causes": [
+        "这是维护者确认的功能边界，不是原帖已经定位出的运行时故障。"
+      ],
+      "symptoms": [
+        "`mjx.ray` 当时没有 hfield geom 实现，无法直接为 hfield locomotion terrain 生成所需射线结果。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按 MuJoCo 维护者在该线程的最终决定，不应把当前方案建立在 MJX 即将补齐此功能的假设上：该能力不计划加入 MJX。维护者明确指向 MuJoCo Warp 的 `ray`，其官方 API 文档包含 height fields。工程上应把它作为候选后端重新评估，但原帖没有证明两条后端在性能、数值或接口上完全等价。",
+        "applicability": "适用于需要 hfield ray casting、正在 MJX 与 MuJoCo Warp 间选型的项目；具体版本与迁移代价需另行验证。",
+        "bilingual_terms": [
+          "高度场（height field, hfield）",
+          "射线检测（ray casting）",
+          "测距传感器（rangefinder）",
+          "计算后端（compute backend）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.simulation_toolchain.mjx_hfield_ray_backend_2155",
+        "problem_title_zh": "选择支持 hfield 射线检测的 MuJoCo 后端",
+        "question_zh": "需要在高度场地形上做 ray casting 时，是否应等待 MJX 支持 `mjx.ray` 的 hfield geom？",
+        "source_locator": "MuJoCo #2155 维护者最终回复 4707886038",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2155#issuecomment-4707886038",
+        "verification_refs": [
+          {
+            "locator": "MuJoCo Warp ray API：维护者直接链接的 height-field ray casting 文档",
+            "relation": "official_documentation",
+            "source_url": "https://mujoco.readthedocs.io/en/latest/mjwarp/api.html#mujoco_warp.ray"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2155",
+    "query": "MJX hfield ray casting rangefinder locomotion terrain MuJoCo Warp",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "height-field locomotion simulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者：该功能不计划加入 MJX；hfield ray casting 请查看 MuJoCo Warp `ray`。"
+      }
+    ],
+    "wbc_relevance_reason": "足式机器人在高度场地形训练中常用射线或 rangefinder 观测；选错后端会把时间投入到项目已明确不计划支持的路径。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2155",
+  "summary": "MuJoCo #2155 请求把 `mj_rayHfield` 移植到 `mjx.ray`，用于在高度场（height field, hfield）地形中生成深度或 rangefinder 数据。维护者先说明 MuJoCo Warp 已有该能力，最终明确关闭：此功能不计划加入 MJX，并直接给出 MuJoCo Warp `ray` 的官方 API 文档。",
+  "title": "MJX 不计划补齐 hfield ray，项目指向 MuJoCo Warp",
+  "version": null
+}

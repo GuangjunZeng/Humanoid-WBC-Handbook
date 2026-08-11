@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lde-RL"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2636",
+  "captured_at": "2026-08-11T18:16:00+08:00",
+  "content_sha256": "286fbb2d3fcee250bd61dd603594d0619ed96528df28f211becb033ef05c6c3f",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 1 条评论；因回复含不确定措辞且无作者复测，保留为需要实际验证。",
+    "components": [
+      "Isaac Lab",
+      "RSL-RL",
+      "ONNX",
+      "ActionTerm",
+      "action_scale",
+      "action clipping"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "回复建议在实机侧复现 ActionTerm 后处理，并单独核对 agent 配置是否已包含 clipping。"
+      ],
+      "diagnostics": [
+        "分别列出 RSL-RL agent 配置中的处理与 Isaac Lab ActionTerm 中的 scale/clipping，不要把两层混为一层。",
+        "用同一 observation 对比训练环境中送入 actuator 前的最终 action 与 ONNX+部署后处理结果。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab + RSL-RL + ONNX sim-to-real；原帖未给软件版本、机器人或导出脚本提交。"
+      ],
+      "limits": [
+        "回复使用了 I think/might，不能视为所有版本和导出器的确定契约。",
+        "不能仅凭 ONNX 输出越界判断 scale 已应用或未应用。"
+      ],
+      "outcomes": [
+        "得到排查分层，但没有作者复测、导出图检查或目标机器人结果。"
+      ],
+      "problem_statements": [
+        "RSL-RL 导出的 ONNX 是否已经包含 Isaac Lab ActionTerm 的 action_scale 和 clipping？"
+      ],
+      "safety_notes": [
+        "首次上机前离线逐元素对齐 action，并加硬件侧限幅、急停和低增益测试。"
+      ],
+      "suspected_causes": [
+        "回复者认为 ActionTerm 后处理可能不在 ONNX 中，而 agent 配置内的 clipping 可能在导出图内。"
+      ],
+      "symptoms": [
+        "ONNX 输出超过 [-1,1]，例如 1.5 或 -2.0；部署者不确定是否还要乘 action_scale。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖回复建议把两层处理拆开核对：ActionTerm 的 scale、clipping 等后处理通常需要在实机侧复现；RSL-RL agent 配置内的 clipping 则可能已经进入导出模型。由于回复带有不确定措辞且没有复测，可靠做法不是直接照搬乘法，而是对同一 observation 比较训练环境 actuator 前的最终 action 与 ONNX 加部署后处理的逐元素结果。",
+        "applicability": "Isaac Lab + RSL-RL 的 ONNX 部署排查入口；版本、导出脚本和 ActionTerm 类型未知，必须实测。",
+        "bilingual_terms": [
+          "动作缩放（action scaling）",
+          "动作裁剪（action clipping）",
+          "动作项（ActionTerm）",
+          "模型后处理（post-processing）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.isaaclab_onnx_actionterm_postprocess_2636",
+        "problem_title_zh": "Isaac Lab ONNX 输出与 ActionTerm 后处理的边界",
+        "question_zh": "部署 RSL-RL ONNX 时，action_scale 和 clipping 应怎样核对？",
+        "source_locator": "IsaacLab #2636 唯一评论 2954156235",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2636#issuecomment-2954156235",
+        "verification_refs": [
+          {
+            "locator": "回复区分 ActionTerm 后处理与 agent 配置内处理，但没有复测",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2636#issuecomment-2954156235"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2636",
+    "query": "Isaac Lab RSL-RL ONNX action_scale clipping ActionTerm sim2real",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "real robot deployment（未指定机型）"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "text": "回复要求把 ActionTerm 的 scale/clipping 与 RSL-RL agent 内 clipping 分开核对。"
+      }
+    ],
+    "wbc_relevance_reason": "策略输出到关节目标/力矩之间的缩放和裁剪是 sim-to-real 控制链的关键接口，重复或遗漏会放大动作并触发硬件限位。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2636",
+  "summary": "IsaacLab #2636 的作者发现 RSL-RL 导出 ONNX 的输出会超过 [-1,1]，询问 action_scale 是否已包含。回复者认为 ActionTerm 的后处理通常不在 ONNX 中，实机侧应逐项复现 scale、clipping 等；但 agent 配置内的 action clipping 可能已被导出，因此要把 agent 内处理与 ActionTerm 处理分开核对。没有作者复测或源码定位。",
+  "title": "Isaac Lab 导出 ONNX 后不要假定 ActionTerm 的 scale 与 clipping 已打包",
+  "version": null
+}

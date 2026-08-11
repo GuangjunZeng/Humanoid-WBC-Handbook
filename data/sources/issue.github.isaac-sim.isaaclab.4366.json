@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "super-dashuaibi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4366",
+  "captured_at": "2026-08-11T22:40:00+08:00",
+  "content_sha256": "d0d6206933af812346ba0bbff0f922d3d4a98003ccbe9b27a198a5568c602e10",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取原帖与全部 9 条评论；图片未做额外像素推断，卡片只依赖帖子文字、代码片段和附件式复现步骤。",
+    "components": [
+      "Isaac Lab",
+      "RobotLab",
+      "ContactSensor",
+      "simulation timestep",
+      "control decimation",
+      "compliant contact"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者尝试 `compliant_contact_stiffness=3e5`、`compliant_contact_damping=3e2` 并一度称有效；后来撤回推荐。",
+        "原作者提供替换 `rewards.py`/`flat_env_cfg.py` 的小型复现流程。"
+      ],
+      "diagnostics": [
+        "把训练和 play 使用的 dt/decimation 分开核对；同时记录 latest contact forces、joint acceleration 与异常 env_ids。"
+      ],
+      "effective_fixes": [
+        "没有经线程闭环的通用修复；dt=0.005 只是原作者规避，已被另一环境反例否定为普适答案。"
+      ],
+      "environments": [
+        "原帖：RobotLab 2.3、Isaac Sim 5.1.0、Ubuntu 22.04、4090D、CUDA 12.8、driver 570；Unitree G1。",
+        "后续小复现使用 RobotLab 2.3.0 的 Unitree H1 flat task、32 envs。"
+      ],
+      "limits": [
+        "原帖和评论包含多张曲线/截图，本卡只采用作者在文字中明确报告的数值与结论，没有从像素读取额外量。",
+        "不使用 contact/acceleration reward 只能避免训练项触发，不能证明底层接触尖峰消失。"
+      ],
+      "outcomes": [
+        "Issue 仍开放；无维护者根因、无关联修复 PR，compliance workaround 也被原作者撤回推荐。"
+      ],
+      "problem_statements": [
+        "足端接触力和 joint acceleration 偶发爆炸能否通过固定 dt 或 compliance 参数稳定解决？"
+      ],
+      "safety_notes": [
+        "任何出现飞起、NaN 或数量级异常的配置都不应直接迁移到真机；先以单环境、限幅、异常终止和 solver telemetry 隔离。"
+      ],
+      "suspected_causes": [
+        "原线程没有得到维护者确认的根因；small dt 只是原作者环境中的相关条件，不是已证明充分原因。"
+      ],
+      "symptoms": [
+        "原作者在 dt=0.001/decimation=10 报告接触力 1.3k～10kN、`joint_acc_l2` 爆炸；另一用户在 dt=0.005/decimation=4 仍见机器人飞起并触发 NaN。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "该线程不能支持这样的通用结论。原作者在自己的 G1 配置中对比 `0.001/10` 异常、`0.005/4` 正常，并一度报告 compliance 3e5/3e2 有效；但后来明确不再推荐 compliance 修法。另一用户又在 `0.005/4` 看到机器人飞起和 NaN，直接限制了 dt workaround 的外推范围。当前只有复现与规避线索，没有维护者根因或正式 fix；应把 target asset、contact model、solver settings、dt/decimation、contact force 与 joint acceleration 同步记录后复测。",
+        "applicability": "仅作为 RobotLab 2.3/Isaac Sim 5.1 附近 G1/H1 接触数值排查入口，不构成通用稳定参数表。",
+        "bilingual_terms": [
+          "仿真时间步（simulation timestep）",
+          "控制降采样（control decimation）",
+          "柔顺接触（compliant contact）",
+          "接触力尖峰（contact-force spike）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索。"
+        },
+        "problem_id": "problem.contact_force_friction.robotlab_contact_spike_dt_4366",
+        "problem_title_zh": "RobotLab 接触力尖峰尚无通用参数修复",
+        "question_zh": "RobotLab 足端接触力和关节加速度爆炸时，把 `sim.dt` 改回 0.005 或调整 compliance 是否就是可靠修复？",
+        "source_locator": "IsaacLab #4366 原作者撤回 compliance 推荐 4554291445；小复现 4670800756；0.005/4 反例 4817539554",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4817539554",
+        "verification_refs": [
+          {
+            "locator": "原作者撤回 compliance 推荐，并把 dt=0.005 仅作为规避",
+            "relation": "conflict",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4554291445"
+          },
+          {
+            "locator": "另一用户在 dt=0.005/decimation=4 仍复现飞起与 NaN",
+            "relation": "conflict",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4817539554"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4366",
+    "query": "Isaac Lab RobotLab small sim dt foot contact force spike joint acceleration NaN",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1 simulation",
+      "Unitree H1 simulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "原作者撤回 compliance 推荐；另一用户在原作者认为稳定的 0.005/4 仍复现飞起与 NaN，因此没有通用参数结论。"
+      }
+    ],
+    "wbc_relevance_reason": "接触力和关节加速度异常会直接污染 locomotion reward、终止条件与接触约束，并可能把数值故障误当成策略失败。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4366",
+  "summary": "IsaacLab #4366 在 RobotLab 2.3/Isaac Sim 5.1 的 Unitree G1 任务中报告：`sim.dt=0.001, decimation=10` 时偶发足端 contact force 与 joint acceleration 爆炸，而 `0.005/4` 对原作者稳定。原作者一度称 compliance stiffness/damping 3e5/3e2 有效，随后明确不再推荐该修法，改为规避到 dt=0.005 或不使用相关 reward，并提供 H1 的小型复现文件。另一用户却在 `0.005/4` 仍报告机器人飞起和 NaN，说明“只改回 dt=0.005”不是通用闭环。线程没有维护者根因或正式修复。",
+  "title": "RobotLab 足端接触力尖峰的 dt 经验仍存在冲突",
+  "version": null
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.67cd7b7d0000000029012c40.945f5e42654f",
+  "schema_version": 1,
+  "source_fingerprint": "b5facdc088b12d36224c09ac9a8ac60fcc2f7dcfc28cbb0530bde74b62191e8c",
+  "translations": {
+    "answer": "Check if the process is pulling cloud USD assets, then download the asset package offline and configure isaacsim.exp.base.kit and user.config.json to point to the local directory; then validate the Isaac Sim asset loading and Isaac Lab training separately. The remote absence of a GUI is a separate issue and cannot be replaced by this asset set for graphics stack diagnosis.",
+    "applicability": "The specific configuration values are not exported character by character; the version is fixed and will become outdated.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Upgrade pip, download the asset package, configure the local asset directory, and then separately validate the Isaac Sim asset page and Isaac Lab training.",
+    "details.diagnostics.0": "Cross-organized by the main text, visible comments, and media instructions; not independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "Isaac Sim 4.5; Isaac Lab 2.0; pip; domestic network; local or remote Ubuntu/Windows scenarios.",
+    "details.limits.0": "The specific configuration values are not exported character by character; the version is fixed and will become outdated.",
+    "details.outcomes.0": "The author claims that local training can start normally; the headless replay in comments and remote GUI are not uniformly solved.",
+    "details.problem_statements.0": "Isaac Sim/Lab installation is complete, but it gets stuck during the first validation or training; how to determine if it's an installation issue or asset problem?",
+    "details.safety_notes.0": "The community candidate is only for forming a diagnostic hypothesis; when involving real machines, limit speed, force, and isolation, and retain logs first.",
+    "details.suspected_causes.0": "Defaulting to Amazon S3 for USD assets; pip not upgraded leading to missing modules; remote environment lacks available graphics/streaming.",
+    "details.symptoms.0": "Isaac Sim/Isaac Lab validation or RL training gets stuck; it appears like an installation failure; no GUI visible on the remote server.",
+    "media_summaries.0": "14 image positions are sequentially linked to pip, offline asset package, isaacsim.exp.base.kit, user.config.json, and training validation; key configuration includes the local asset path, but no full OCR transcription of the image.",
+    "source.locator": "Main text Figure 2–12 and comments on the remote server",
+    "source.title": "Isaac Lab 2.0 Installation Stuck After Launch: S3 Asset and Local Cache Path Diagnosis",
+    "terms.0": "Reinforcement Learning (Reinforcement Learning, RL) (强化学习)",
+    "title": "Isaac Sim/Lab Installation Complete but Gets Stuck During First Validation or Training: How to Determine if It's an Installation or Asset Problem?"
+  }
+}

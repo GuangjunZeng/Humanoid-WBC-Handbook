@@ -2,11 +2,14 @@
   "use strict";
 
   const MAX_RESULTS = 20;
+  const STORAGE_KEY = "wbc-handbook-locale";
   const FIELD_WEIGHTS = Object.freeze({
-    title: 5,
+    title_zh: 5,
+    title_en: 5,
     aliases: 4,
     keywords: 3,
-    summary: 1,
+    summary_zh: 1,
+    summary_en: 1,
     search_text: 1,
   });
   const TOKEN_RE = /[\u3400-\u4dbf\u4e00-\u9fff]|[0-9a-zA-ZÀ-ž._+-]+/gu;
@@ -15,6 +18,44 @@
   const input = document.getElementById("problem-search");
   const resultsElement = document.getElementById("search-results");
   const statusElement = document.getElementById("search-status");
+  const descriptionElement = document.getElementById("page-description");
+  const subtitleElement = document.getElementById("page-subtitle");
+  const labelElement = document.getElementById("search-label");
+  const examplesElement = document.getElementById("search-examples");
+  const localeButtons = Array.from(document.querySelectorAll("[data-locale]"));
+
+  const COPY = Object.freeze({
+    zh: Object.freeze({
+      htmlLang: "zh-CN",
+      description: "快速查询人形机器人全身控制工程问题、排查经验与原始证据。",
+      subtitle: "把分散的全身控制工程经验，整理成可以直接查询的问题与排查路径。",
+      label: "搜索 WBC 工程问题",
+      placeholder: "描述你遇到的工程问题，例如：MuJoCo 正常，G1 真机乱动",
+      examples: "示例：G1 真机乱动 · QP infeasible · 足端打滑 · 状态估计漂移",
+      loading: "正在加载工程问题索引…",
+      noResults: "没有找到匹配问题，尝试换一种症状描述或英文术语。",
+      loadError: "搜索索引加载失败，请刷新页面后重试。",
+      match: "匹配",
+      more: "查看完整经验 →",
+      count: (count) => `共 ${count} 条匹配。`,
+      countLimited: (count) => `共 ${count} 条匹配，显示前 ${MAX_RESULTS} 条；继续输入可缩小范围。`,
+    }),
+    en: Object.freeze({
+      htmlLang: "en",
+      description: "Search humanoid whole-body-control engineering problems, diagnostic experience, and original evidence.",
+      subtitle: "Turn scattered whole-body-control experience into directly searchable problems and diagnostic paths.",
+      label: "Search WBC engineering problems",
+      placeholder: "Describe the problem, for example: MuJoCo works but the G1 hardware is unstable",
+      examples: "Examples: G1 hardware unstable · QP infeasible · foot slip · EKF drift",
+      loading: "Loading the engineering-problem index…",
+      noResults: "No matching problem. Try another symptom description or a Chinese term.",
+      loadError: "The search index failed to load. Refresh the page and try again.",
+      match: "Match",
+      more: "View full experience →",
+      count: (count) => `${count} match${count === 1 ? "" : "es"}.`,
+      countLimited: (count) => `${count} matches; showing the first ${MAX_RESULTS}. Keep typing to narrow the results.`,
+    }),
+  });
 
   let index = null;
   let items = [];
@@ -24,6 +65,33 @@
   let activeIndex = -1;
   let composing = false;
   let lastResults = [];
+  let locale = "zh";
+
+  function storedLocale() {
+    try {
+      const value = window.localStorage.getItem(STORAGE_KEY);
+      return value === "zh" || value === "en" ? value : "";
+    } catch (_error) {
+      return "";
+    }
+  }
+
+  function initialLocale() {
+    const requested = new URL(window.location.href).searchParams.get("lang");
+    if (requested === "zh" || requested === "en") return requested;
+    const stored = storedLocale();
+    if (stored) return stored;
+    const languages = navigator.languages || [navigator.language || ""];
+    return languages.some((value) => String(value).toLowerCase().startsWith("zh"))
+      ? "zh" : "en";
+  }
+
+  function localize(value) {
+    if (value && typeof value === "object") {
+      return String(value[locale] || value.zh || value.en || "");
+    }
+    return String(value || "");
+  }
 
   function normalize(value) {
     return String(value || "")
@@ -49,8 +117,14 @@
       cache: 100,
       document: {
         id: "id",
-        index: ["title", "aliases", "keywords", "summary", "search_text"],
-        store: ["id", "title", "summary", "keywords", "aliases", "url"],
+        index: [
+          "title_zh", "title_en", "aliases", "keywords",
+          "summary_zh", "summary_en", "search_text",
+        ],
+        store: [
+          "id", "title", "summary", "keywords", "aliases", "url",
+          "title_zh", "title_en", "summary_zh", "summary_en",
+        ],
       },
     });
     for (const record of records) {
@@ -145,7 +219,7 @@
   }
 
   function fieldText(record, field) {
-    return normalize(asSearchText(record[field]));
+    return record._normalizedFields[field];
   }
 
   function searchCore(query) {
@@ -172,7 +246,7 @@
         if (fieldText(record, field).includes(normalizedQuery)) {
           score += weight * 35;
         }
-        if (normalize(record.title) === normalizedQuery) {
+        if (record._normalizedTitles.includes(normalizedQuery)) {
           score += 300;
         }
         scores.set(id, previous + score);
@@ -201,7 +275,9 @@
       .filter(Boolean)
       .sort((left, right) =>
         right.score - left.score ||
-        left.record.title.localeCompare(right.record.title, "zh-CN") ||
+        localize(left.record.title).localeCompare(
+          localize(right.record.title), locale === "zh" ? "zh-CN" : "en"
+        ) ||
         left.record.id.localeCompare(right.record.id)
       );
   }
@@ -296,16 +372,52 @@
     lastResults = [];
   }
 
-  function updateQueryUrl(query) {
+  function updateStateUrl(query) {
     const url = new URL(window.location.href);
     if (query.trim()) url.searchParams.set("q", query.trim());
     else url.searchParams.delete("q");
+    url.searchParams.set("lang", locale);
     window.history.replaceState(null, "", url);
+  }
+
+  function applyLocale(nextLocale) {
+    locale = nextLocale === "en" ? "en" : "zh";
+    const copy = COPY[locale];
+    document.documentElement.lang = copy.htmlLang;
+    descriptionElement.setAttribute("content", copy.description);
+    subtitleElement.textContent = copy.subtitle;
+    labelElement.textContent = copy.label;
+    input.setAttribute("placeholder", copy.placeholder);
+    examplesElement.textContent = copy.examples;
+    localeButtons.forEach((button) => {
+      button.setAttribute(
+        "aria-pressed", button.dataset.locale === locale ? "true" : "false"
+      );
+    });
+  }
+
+  function chooseLocale(nextLocale) {
+    if (nextLocale === locale) return;
+    const previousActive = activeIndex;
+    applyLocale(nextLocale);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, locale);
+    } catch (_error) {
+      // Search and URL state still work when storage is unavailable.
+    }
+    if (input.value.trim()) {
+      renderResults(input.value);
+      setActiveResult(previousActive, false);
+    } else {
+      statusElement.textContent = "";
+      updateStateUrl("");
+    }
+    input.focus({ preventScroll: true });
   }
 
   function renderResults(query) {
     const normalizedQuery = normalize(query);
-    updateQueryUrl(query);
+    updateStateUrl(query);
     if (!normalizedQuery) {
       hideResults();
       statusElement.textContent = "";
@@ -321,7 +433,7 @@
     if (!outcome.results.length) {
       resultsElement.hidden = true;
       input.setAttribute("aria-expanded", "false");
-      statusElement.textContent = "没有找到匹配问题，尝试换一种症状描述或英文术语。";
+      statusElement.textContent = COPY[locale].noResults;
       return;
     }
 
@@ -333,26 +445,26 @@
       const link = document.createElement("a");
       link.className = "result-link";
       link.id = `search-result-${resultIndex}`;
-      link.href = record.url;
+      link.href = localize(record.url);
       link.setAttribute("role", "option");
       link.setAttribute("aria-selected", "false");
 
       const title = document.createElement("div");
       title.className = "result-title";
-      appendHighlightedText(title, record.title, query);
+      appendHighlightedText(title, localize(record.title), query);
 
       const summary = document.createElement("div");
       summary.className = "result-summary";
-      appendHighlightedText(summary, record.summary, query);
+      appendHighlightedText(summary, localize(record.summary), query);
 
       const footer = document.createElement("div");
       footer.className = "result-footer";
       const match = document.createElement("span");
       match.className = "result-match";
-      match.textContent = `匹配：${matchingTerms(record, query, outcome.effectiveQuery).join(" · ")}`;
+      match.textContent = `${COPY[locale].match}: ${matchingTerms(record, query, outcome.effectiveQuery).join(" · ")}`;
       const more = document.createElement("span");
       more.className = "result-more";
-      more.textContent = "查看完整经验 →";
+      more.textContent = COPY[locale].more;
       footer.append(match, more);
       link.append(title, summary, footer);
       link.addEventListener("mouseenter", () => setActiveResult(resultIndex, false));
@@ -363,8 +475,8 @@
     resultsElement.hidden = false;
     input.setAttribute("aria-expanded", "true");
     statusElement.textContent = outcome.results.length > MAX_RESULTS
-      ? `共 ${outcome.results.length} 条匹配，显示前 ${MAX_RESULTS} 条；继续输入可缩小范围。`
-      : `共 ${outcome.results.length} 条匹配。`;
+      ? COPY[locale].countLimited(outcome.results.length)
+      : COPY[locale].count(outcome.results.length);
   }
 
   function onKeyDown(event) {
@@ -388,14 +500,42 @@
   }
 
   async function initialize() {
+    applyLocale(initialLocale());
+    statusElement.textContent = COPY[locale].loading;
     try {
       const response = await fetch("./search-index.json", { cache: "no-cache" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const payload = await response.json();
-      if (payload.schema_version !== 1 || !Array.isArray(payload.items)) {
+      if (payload.schema_version !== 2 || !Array.isArray(payload.items)) {
         throw new Error("unsupported search index schema");
       }
-      items = payload.items;
+      items = payload.items.map((item) => {
+        if (
+          !item.title || !item.summary || !item.url ||
+          !item.title.zh || !item.title.en ||
+          !item.summary.zh || !item.summary.en ||
+          !item.url.zh || !item.url.en
+        ) {
+          throw new Error(`invalid localized search item: ${item.id || "unknown"}`);
+        }
+        const record = {
+          ...item,
+          title_zh: item.title.zh,
+          title_en: item.title.en,
+          summary_zh: item.summary.zh,
+          summary_en: item.summary.en,
+        };
+        record._normalizedFields = Object.fromEntries(
+          Object.keys(FIELD_WEIGHTS).map((field) => [
+            field, normalize(asSearchText(record[field])),
+          ])
+        );
+        record._normalizedTitles = [
+          record._normalizedFields.title_zh,
+          record._normalizedFields.title_en,
+        ];
+        return record;
+      });
       itemsById = new Map(items.map((item) => [String(item.id), item]));
       latinDictionary = buildLatinDictionary(items);
       searchLexicon = buildSearchLexicon(items);
@@ -407,11 +547,13 @@
       if (query) {
         input.value = query;
         renderResults(query);
+      } else {
+        updateStateUrl("");
       }
       input.focus({ preventScroll: true });
     } catch (error) {
       input.setAttribute("aria-busy", "false");
-      statusElement.textContent = "搜索索引加载失败，请刷新页面后重试。";
+      statusElement.textContent = COPY[locale].loadError;
       console.error("WBC search initialization failed", error);
     }
   }
@@ -425,6 +567,9 @@
     if (!composing) renderResults(input.value);
   });
   input.addEventListener("keydown", onKeyDown);
+  localeButtons.forEach((button) => {
+    button.addEventListener("click", () => chooseLocale(button.dataset.locale));
+  });
 
   window.__WBC_SEARCH_BENCHMARK__ = function (queries, iterations) {
     const samples = [];

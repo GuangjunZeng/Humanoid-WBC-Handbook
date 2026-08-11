@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "FinnJob"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13",
+  "captured_at": "2026-08-11T12:10:00+08:00",
+  "content_sha256": "caab090ab5f2f73a89bb4f025f3b3573475dc2dbeb5ad25da2aabfc183f93c9f",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 10 条评论；坐标矩阵追问没有答复，卡片明确保留为未解决边界。",
+    "components": [
+      "OmniH2O",
+      "Apple Vision Pro",
+      "HybrIK",
+      "SMPL",
+      "sparse keypoint tracking"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "training_data_retargeting"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者先询问如何实时取得 processed AMASS-like joint data，项目作者澄清其部署不需要该全身 reference。"
+      ],
+      "diagnostics": [
+        "先区分策略任务定义：offline whole-body motion tracking 与 online sparse keypoint tracking 不是同一输入路径。",
+        "确认实时策略实际消费哪些全局 keypoint positions，而不是默认重建完整 AMASS/SMPL motion。"
+      ],
+      "effective_fixes": [
+        "按项目作者说明，从 Vision Pro 或 RGB+HybrIK 获取人体全局关键点位置，作为 sparse tracking reference 直接输入部署路径，不在实时环重复完整动作重定向。"
+      ],
+      "environments": [
+        "human2humanoid/OmniH2O 部署语境；Apple Vision Pro 或 RGB camera + HybrIK；原帖未给软件 commit、频率和相机标定参数。"
+      ],
+      "limits": [
+        "线程没有回答 RGB/HybrIK 坐标到 Isaac Gym/机器人世界坐标的具体矩阵变换、尺度、原点或时间同步。",
+        "没有公开实时部署代码、输入张量布局或延迟测量，不能仅凭此卡复现实机系统。"
+      ],
+      "outcomes": [
+        "提问者回复已理解 sparse-input 与 whole-body retargeting 的区别。"
+      ],
+      "problem_statements": [
+        "RGB/视觉设备得到的 SMPL 人体数据是否必须在实时部署时重复执行离线 gradient retargeting，才能成为机器人 reference？"
+      ],
+      "safety_notes": [
+        "实机使用前仍需单独验证坐标系、尺度、时间戳、异常关键点过滤和速度/位置限幅。"
+      ],
+      "suspected_causes": [
+        "把用于全身训练数据准备的离线 SMPL→H1 retargeting 流程误认为实时 sparse-input 部署的必经步骤。"
+      ],
+      "symptoms": [
+        "使用者看到训练数据预处理会把 SMPL motion 通过 gradient descent 转成 H1 reference，因此不知道实时视觉输入如何满足同一接口。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目作者说明不需要。实机部署直接使用视觉系统输出的人体全局关键点位置，因为策略跟踪的是稀疏输入（sparse inputs），不是完整全身动作（whole-body motions）；离线 SMPL→H1 gradient retargeting 属于训练数据准备路径。原线程没有公开关键点到机器人/Isaac Gym 坐标的具体矩阵变换，因此坐标标定仍需另行验证。",
+        "applicability": "适用于 human2humanoid/OmniH2O 的 sparse tracking 部署设计；坐标变换和具体输入格式未在原线程公开。",
+        "bilingual_terms": [
+          "稀疏输入（sparse inputs）",
+          "全局关键点位置（global keypoint positions）",
+          "动作重定向（motion retargeting）",
+          "坐标标定（coordinate calibration）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.omnih2o_sparse_keypoints_no_online_retarget_13",
+        "problem_title_zh": "OmniH2O 实时稀疏关键点输入不重复离线全身重定向",
+        "question_zh": "OmniH2O 用 RGB+HybrIK 或 Vision Pro 实时遥操时，是否要把每帧 SMPL 数据再通过 gradient descent 重定向成 H1 全身动作？",
+        "source_locator": "human2humanoid #13：作者评论 2426760408/2426762777 给出传感路径，2426906228/2426908658 确认直接 keypoint 与 sparse-input 原因",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426906228",
+        "verification_refs": [
+          {
+            "locator": "项目作者说明使用 Vision Pro 与 RGB+HybrIK 获取人体全局位置",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426760408"
+          },
+          {
+            "locator": "项目作者解释无需全身重定向的原因是策略跟踪 sparse inputs",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426908658"
+          },
+          {
+            "locator": "原作者关于 RGB/Isaac Gym matrix transform 的追问未获项目回答，构成明确未覆盖边界",
+            "relation": "issue",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2446010339"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.13",
+    "query": "OmniH2O real-time RGB HybrIK sparse keypoints direct input no retargeting",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1（human2humanoid/OmniH2O 线程语境）"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "项目作者说明实机直接使用 keypoint positions，不执行离线全身重定向。"
+      },
+      {
+        "text": "项目作者解释该路径成立是因为策略跟踪 sparse inputs，而非 whole-body motions。"
+      }
+    ],
+    "wbc_relevance_reason": "稀疏全身跟踪策略的在线输入接口决定状态估计、坐标标定和延迟预算；把离线 AMASS 重定向错误地放进实时环会引入不必要计算并混淆训练/部署数据流。"
+  },
+  "published_at": "2024-10-21T09:22:01Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.13",
+  "summary": "human2humanoid #13 询问 RGB 相机得到的人体动作如何实时变成 H1 reference。项目作者说明，实机输入来自 Apple Vision Pro 或 RGB+HybrIK 的人体全局关键点；部署时直接使用 keypoint positions，不再执行离线 SMPL→H1 gradient retargeting，因为策略跟踪的是 sparse inputs 而不是 whole-body motions。原作者确认理解；后续关于 RGB/Isaac Gym 坐标矩阵转换的追问没有项目回答，因此该部分保持未解决。",
+  "title": "OmniH2O 实时稀疏遥操直接使用人体关键点，不走离线全身动作重定向",
+  "version": null
+}

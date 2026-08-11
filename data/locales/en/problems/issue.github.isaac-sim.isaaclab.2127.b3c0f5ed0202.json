@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2127.b3c0f5ed0202",
+  "schema_version": 1,
+  "source_fingerprint": "7bb82ee242b88bc4d78c65776251b08208972d0aac5814398b7b2bbc6524de7f",
+  "translations": {
+    "answer": "After official merge of PR #2128, the ArticulationData.body_incoming_joint_wrench_b should be read. The PR document specifies its shape as (num_instances, num_bodies, 6), representing the joint reaction wrench from the parent body to the child body in the parent body frame, with the last dimension being 6 for force and torque. It is not the same interface as the isaacsim.core.articulations API and is not equivalent to any installed pose F/T sensor.",
+    "applicability": "Applies to Isaac Lab ArticulationData; older versions and isaacsim.core.articulations API should be handled according to their own documentation.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and free of conflict, and there is formal documentation or exact citation of independent reproducibility.",
+    "details.attempts.0": "The issue participant asked about get_measured_joint_forces/efforts; the collaborator clarified they are different APIs and pointed to the PR #2128 being added.",
+    "details.diagnostics.0": "Distinguish between the isaacsim.core.articulations API and the Isaac Lab ArticulationData API.",
+    "details.diagnostics.1": "Verify the target version includes PR #2128 and confirm the wrench is expressed in the parent body frame with the last dimension as 6.",
+    "details.effective_fixes.0": "Read ArticulationData.body_incoming_joint_wrench_b in versions containing PR #2128 of the Isaac Lab; it is obtained from get_link_incoming_joint_force and cached as a 6D tensor per body.",
+    "details.environments.0": "Isaac Lab Articulation API; PR #2128 was merged into the official repository on 2025-05-03; the original thread did not provide Isaac Sim/Isaac Lab release versions.",
+    "details.limits.0": "This field is the parent-to-child proximal joint reaction wrench, not equivalent to any installed pose F/T sensor.",
+    "details.limits.1": "The thread does not provide noise, bandwidth, filtering, or real-world sensor consistency validation.",
+    "details.outcomes.0": "PR #2128 has been merged, and static wrench value tests for CPU/CUDA and single/multi-articulation have been added.",
+    "details.problem_statements.0": "How to consistently obtain each body's proximal joint 6D force/torque reaction wrench in the current Isaac Lab Articulation?",
+    "details.safety_notes.0": "Before using the reaction wrench for collision/overload protection, independently verify the sign, body order, coordinate transformation, threshold, and update delay; do not rely solely on simulation reaction wrench to trigger real-world safety actions.",
+    "details.suspected_causes.0": "Cross-version and API layer duplication of old calls, leading to confusion in method ownership and return semantics.",
+    "details.symptoms.0": "Different old issues mix isaacsim.core.articulations and Isaac Lab Articulation API, causing users to be unable to determine which get_measured_* call is applicable to the current version.",
+    "source.locator": "IsaacLab #2127: collaborator comments on 2789530049 explain the new field; PR #2128 was merged and contains static 10 N/10 Nm test.",
+    "source.title": "Isaac Lab uses body_incoming_joint_wrench_b to read each body's proximal joint 6D force/torque reaction wrench and confirm its coordinate system and shape.",
+    "terms.0": "Six-Dimensional Force/Torque (6D F/T) (六维力/力矩)",
+    "terms.1": "Joint Reaction Wrench (关节反作用力矩)",
+    "terms.2": "Parent Body Frame (父刚体坐标系)",
+    "terms.3": "Proximal Joint (近端关节)",
+    "title": "How does Isaac Lab read each body's proximal joint 6D force/torque reaction wrench and confirm its coordinate system and shape?"
+  }
+}

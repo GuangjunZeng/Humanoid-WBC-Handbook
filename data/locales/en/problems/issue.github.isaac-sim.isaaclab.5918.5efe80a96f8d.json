@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.5918.5efe80a96f8d",
+  "schema_version": 1,
+  "source_fingerprint": "4d34c2055c4000909c606024654411096d46b32013fd49db23e759dc96ba67dd",
+  "translations": {
+    "answer": "The root cause is that `apply_nested` stops drilling down after the first successful link, skipping nested sub-links. The PR #6377 adds `stop_on_success` to the decorator, and rigid-body/mass writers use `stop_on_success=False` by default; the default remains true to avoid unintended schema behavior changes. Validation should not only check the cfg, but also traverse all rigid bodies and verify that `disableGravity` and `physics:mass` are covered in each link.",
+    "applicability": "Applies to the Isaac Sim 6.0 importer or custom USD with body-under-body nested hierarchy.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and it has been formally documented or independently reproducible with precise reference.",
+    "details.attempts.0": "PR #6377 adds a default `stop_on_success` to `apply_nested`, and rigid-body/mass writers explicitly set to false.",
+    "details.diagnostics.0": "Traverse each stage, count the number of RigidBodyAPI, disableGravity, and PhysxContactReportAPI bodies covered.",
+    "details.effective_fixes.0": "Upgrade to a version containing PR #6377 and merge commit 10144da, and validate each nested body via stage traversal.",
+    "details.environments.0": "IsaacLab a4a7602f29 v3.0.0-beta 8ef1bf7a8b beta2, Isaac Sim 6.0.0-rc.22, Ubuntu 24.04, RTX 5090, CUDA 13.0, driver 580.159.03.",
+    "details.limits.0": "#6377 only relaxes early stop for rigid-body and mass writers; joint, articulation root, and collision writers still use default behavior.",
+    "details.limits.1": "Behaviors from previous versions of nested assets may affect the task after upgrade.",
+    "details.outcomes.0": "PR has been merged, and the 3/3 links in the nested rigid-body regression test assert `disableGravity` and `physics:mass` successfully.",
+    "details.problem_statements.0": "Why do nested URDF's rigid-body/mass spawn properties only affect the root link?",
+    "details.safety_notes.0": "Do not only check the cfg; after spawn, audit each body's final USD/PhysX attributes, especially gravity, mass, contact report, and depenetration limits.",
+    "details.suspected_causes.0": "`apply_nested` defaults to assuming the physics schema does not nest, and the wrapped function stops traversing children after the root link succeeds.",
+    "details.symptoms.0": "Only 1 out of 29 links gets `disable_gravity=True`, and the hand is about 0.2 m drooping; the contact report API is also 1/N, and the sub-link ContactSensor reports no reporter API found.",
+    "source.locator": "IsaacLab #5918 original post 1/N reproduction, closed statement 5174104792; PR #6377",
+    "source.title": "Isaac Lab nested URDF spawn properties only affect the root link",
+    "terms.0": "Nested rigid-body hierarchy (嵌套刚体层级)",
+    "terms.1": "Spawn properties (生成属性)",
+    "terms.2": "Traversal early stop (遍历早停)",
+    "terms.3": "Regression test (回归测试)",
+    "title": "How to fix and validate that `disable_gravity` and `physics:mass` are covered in all links of a nested URDF?"
+  }
+}

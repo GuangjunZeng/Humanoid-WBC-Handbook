@@ -1,0 +1,131 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "wxmerkt"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/743",
+  "captured_at": "2026-08-11T22:24:00+08:00",
+  "content_sha256": "418be700d28d77ea596e61018608e0aa7d80cbec2c0284349ea07c993a7ef8b4",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 26 条评论和合并 PR #1067 diff；刻意未把线程中的未定 factorization 观察写成答案。",
+    "components": [
+      "Crocoddyl",
+      "BoxQP",
+      "Box-DDP",
+      "Box-FDDP",
+      "Armijo condition",
+      "free-subspace gradient"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "线程比较新旧 active set、gradient norm、linear/exponential line search 和多种 factorization。",
+        "PR #1067 修正 free-subspace gradient/search direction 与 convergence check，并更新 identity-Hessian regularized test。"
+      ],
+      "diagnostics": [
+        "先检查目标版本是否包含 PR #1067，再讨论 LLT/LDLT/PivLU 或 line-search schedule。",
+        "用固定随机 QP 集记录 iteration count、termination reason 与 KKT/free-gradient norm。"
+      ],
+      "effective_fixes": [
+        "升级到包含 PR #1067 / merge commit d5c387e 的 Crocoddyl 版本。"
+      ],
+      "environments": [
+        "Crocoddyl 2020–2022 BoxQP 变更讨论；原帖含 Exotica quadcopter side-by-side benchmark，但未给统一硬件/commit。",
+        "精确修复为 2022-04 合并 PR #1067。"
+      ],
+      "limits": [
+        "#743 中关于 factorization 性能的讨论没有形成可普遍采纳的结论，本卡不推荐某一种分解器。",
+        "原作者提到的 90%/30% speedup 来自其未合并改动，不能归因于 PR #1067。",
+        "不使用原帖性能图作为本卡证据。"
+      ],
+      "outcomes": [
+        "维护者说明修复可避免已找到 solution 后的无用迭代，并恢复随机初始化下该条件的收敛判定；PR 已合并。"
+      ],
+      "problem_statements": [
+        "BoxQP 找到解后仍多跑迭代、随机初值不稳定时，是否一定是矩阵分解器造成？"
+      ],
+      "safety_notes": [
+        "实时 MPC 升级求解器后应对 worst-case iterations、KKT residual、deadline miss 和 fallback 做回归。"
+      ],
+      "suspected_causes": [
+        "维护者明确定位为 Armijo condition 错误，而非 factorization solver。"
+      ],
+      "symptoms": [
+        "求解器找到 solution 后仍运行 extra iterations。",
+        "random initialization 下 convergence 不保证。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先确认版本包含合并 PR #1067。维护者在 #743 中明确定位到 Armijo condition 错误：它会让求解器找到 solution 后仍执行额外迭代，随机初始化时还不保证收敛；该问题不是 factorization solver 的结论。PR #1067 重算 free-subspace gradient/search direction，并在更新后的 free-gradient infinity norm 上检查收敛。修复后仍应以目标 MPC 问题回归 KKT residual 与迭代上界。",
+        "applicability": "适用于缺少 2022-04 PR #1067 的 Crocoddyl BoxQP/Box(F)DDP 路径，尤其 random initialization 与多余迭代问题。",
+        "bilingual_terms": [
+          "阿米霍条件（Armijo condition）",
+          "自由子空间梯度（free-subspace gradient）",
+          "随机初始化（random initialization）",
+          "无用迭代（useless iterations）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.crocoddyl_boxqp_armijo_743",
+        "problem_title_zh": "Crocoddyl BoxQP 的 Armijo 终止错误",
+        "question_zh": "Crocoddyl BoxQP 已找到解却多跑迭代、随机初值不收敛时，应先核对什么？",
+        "source_locator": "Crocoddyl #743 维护者定位 1113252162；PR #1067",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/743#issuecomment-1113252162",
+        "verification_refs": [
+          {
+            "locator": "合并 PR d5c387e 修正 BoxQP free-gradient/search direction 与 convergence check，并更新测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/loco-3d/crocoddyl/pull/1067"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.743",
+    "query": "Crocoddyl BoxQP Armijo condition extra iterations random initialization convergence PR 1067",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "quadcopter benchmark",
+      "generic bound-constrained optimal control"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者最终定位 Armijo condition，而非 factorization；PR #1067 提供精确源码修复。"
+      }
+    ],
+    "wbc_relevance_reason": "BoxQP/Box-FDDP 常用于受限最优控制；错误的线搜索接受条件会增加 MPC 求解时间并破坏随机 warm start 的可靠性。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.743",
+  "summary": "Crocoddyl #743 长期比较新旧 BoxQP 的 active set、line search、factorization 和随机问题性能。维护者最终定位到 Armijo condition 错误：找到解后仍可能多跑无用迭代，随机初始化时甚至不保证收敛，并在合并 PR #1067 修复。源码 diff 重构 free-subspace gradient/search direction，把 convergence check 放在更新后的 free gradient 上并更新测试。线程没有形成 LLT/LDLT/PivLU 的通用优劣结论，因此本卡只提炼 Armijo 子问题。",
+  "title": "BoxQP 随机初值多跑迭代先核对 Armijo 条件修复",
+  "version": null
+}

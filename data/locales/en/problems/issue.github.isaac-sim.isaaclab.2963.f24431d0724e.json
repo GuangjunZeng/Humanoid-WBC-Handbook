@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2963.f24431d0724e",
+  "schema_version": 1,
+  "source_fingerprint": "bcca088cd61d9d3c71fb04f46f8a545a2553e94f21540497d3953a073de9c7dc",
+  "translations": {
+    "answer": "The post only verified the invocation of facts, and no fix conclusion has been given. The author added logging in actuator_net.py and manager_based_rl_env.py, and observed the invocation in the official GO1 rough locomotion task, reporting five policy steps per invocation. The team has not answered whether to invoke every four steps, maintain output, or retrain with 200Hz data. Therefore, the reusable action is to count and record the model training dt for the target version; the specific frequency strategy still needs to be verified in simulation and real-world. The answer is not closed or has conflicting evidence.",
+    "applicability": "Precisely corresponds to the post's original managed GO1 rough locomotion task; other versions and actuator models must be re-counted.",
+    "credibility.rationale": "The answer has not closed or has conflicting evidence.",
+    "details.attempts.0": "The author added instrumentation in actuator_net.py and manager_based_rl_env.py, and ran the official GO1 rough locomotion task.",
+    "details.diagnostics.0": "The invocation count and sim-step counter were recorded simultaneously in the actuator compute and environment physics stepping loop.",
+    "details.diagnostics.1": "The policy period, physics dt, decimation, and actuator model training data dt were recorded in parallel.",
+    "details.environments.0": "Isaac Lab official managed environment: Isaac-Velocity-Rough-Unitree-Go1-v0; the post did not provide exact commit, Isaac Sim version, or hardware.",
+    "details.environments.1": "The author reported a policy rate of 50Hz, decimation=4, and actuator compute around 200Hz.",
+    "details.limits.0": "The invocation count depends on the author's version and post-step/reset path; it must be re-instrumented after an upgrade.",
+    "details.limits.1": "The screenshot log did not participate in the conclusion; the card only uses the author's posted diff, command, and text count.",
+    "details.limits.2": "Cannot infer the current Isaac Lab GO1 policy necessarily having a sim-to-real gap from this thread.",
+    "details.outcomes.0": "Confirmed the invocation frequency in the task; no conclusion on whether to reduce the frequency, maintain output, or retrain with 200Hz data was given.",
+    "details.outcomes.1": "No real-world GO1 deployment validation was provided.",
+    "details.problem_statements.0": "The GO1 actuator MLP was trained with 50Hz data but invoked at 200Hz in the physics loop; should the invocation rate be adjusted or the model retrained?",
+    "details.safety_notes.0": "Do not directly deploy the policy to real-world systems until the actuator model is verified; perform system identification and rollout in low-gain, clipped, and protected conditions with emergency stop and override.",
+    "details.suspected_causes.0": "The author believes the ActuatorNetMLP is explicitly acting in each physics step, but the 50Hz training data time scale is inconsistent; the thread does not have a maintainer to confirm its physical impact.",
+    "details.symptoms.0": "The instrumentation shows the actuator network reasoning at each sim step, not just during policy action updates.",
+    "source.locator": "IsaacLab #2963, author instrumentation 3089324868, official task command 3131807994, team discussion 3193574728",
+    "source.title": "GO1 ActuatorNet Training Sampling Rate and Simulation Invocation Rate Mismatch",
+    "terms.0": "Actuator Network (执行器网络)",
+    "terms.1": "Simulation Step (仿真步)",
+    "terms.2": "Decimation Factor (降采样系数)",
+    "terms.3": "Sampling Rate Mismatch (采样率不匹配)",
+    "title": "GO1 Actuator MLP Trained with 50Hz Data but Invoked at 200Hz in Simulation Step: What Has Been Verified?"
+  }
+}

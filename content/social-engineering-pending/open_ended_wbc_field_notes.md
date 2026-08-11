@@ -1,6 +1,6 @@
 # 开放式 WBC 工程经验：技术待整理
 
-> `scope_id`: `open_ended_wbc_field_notes`；共 48 条，未做用户可见截断。
+> `scope_id`: `open_ended_wbc_field_notes`；共 36 条，未做用户可见截断。
 
 ## 1. [Question] How to import USD files into InteractiveSceneCfg, which attaches the rigid body and deformable body with attachment function in Isaac Sim?
 
@@ -114,15 +114,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 15. [Bug Report] URDF spawn properties only apply to the root link (disable_gravity, contact sensors)
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5918](https://github.com/isaac-sim/IsaacLab/issues/5918)
-- 查询来源：whole body；contact；URDF；fall
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 16. [Question] Collision error between mobile manipulator and YCB object
+## 15. [Question] Collision error between mobile manipulator and YCB object
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/60](https://github.com/isaac-sim/IsaacLab/issues/60)
@@ -130,7 +122,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 17. [Question] Question about getting multi rigid contact data to simulate robot skin
+## 16. [Question] Question about getting multi rigid contact data to simulate robot skin
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/855](https://github.com/isaac-sim/IsaacLab/issues/855)
@@ -138,7 +130,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 18. [Question] AttributeError: 'RigidObject' object has no attribute '_external_force_b' when spawning Rigid Object on DirectRL Environment.
+## 17. [Question] AttributeError: 'RigidObject' object has no attribute '_external_force_b' when spawning Rigid Object on DirectRL Environment.
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/947](https://github.com/isaac-sim/IsaacLab/issues/947)
@@ -146,7 +138,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 19. Question about jointAccelerations initialization in WbcBase.cpp
+## 18. Question about jointAccelerations initialization in WbcBase.cpp
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/leggedrobotics/ocs2/issues/111](https://github.com/leggedrobotics/ocs2/issues/111)
@@ -154,31 +146,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 20. The desired body trajectory of legged robot example is floating upwards
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/leggedrobotics/ocs2/issues/24](https://github.com/leggedrobotics/ocs2/issues/24)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 21. How to "update" the robot observation for the MPC solver by using the robot's measured state info?
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/leggedrobotics/ocs2/issues/27](https://github.com/leggedrobotics/ocs2/issues/27)
-- 查询来源：whole body；WBC
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 22. Legged robot raisim example is unstable
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/leggedrobotics/ocs2/issues/56](https://github.com/leggedrobotics/ocs2/issues/56)
-- 查询来源：WBC
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 23. 'acrobot_urdf.ipynb' Issue
+## 19. 'acrobot_urdf.ipynb' Issue
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/1187](https://github.com/loco-3d/crocoddyl/issues/1187)
@@ -186,7 +154,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 24. Modeling Hand-Object Contacts
+## 20. Modeling Hand-Object Contacts
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/1218](https://github.com/loco-3d/crocoddyl/issues/1218)
@@ -194,7 +162,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 25. Get the contact force/cone data in C++
+## 21. Get the contact force/cone data in C++
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/1382](https://github.com/loco-3d/crocoddyl/issues/1382)
@@ -202,15 +170,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 26. Solver exits at 0 iterations with NaN cost in whole_body_manipulation.ipynb (example notebook)
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/loco-3d/crocoddyl/issues/1395](https://github.com/loco-3d/crocoddyl/issues/1395)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 27. Suggestion needed for adding exteral force
+## 22. Suggestion needed for adding exteral force
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/1416](https://github.com/loco-3d/crocoddyl/issues/1416)
@@ -218,23 +178,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 28. cost function to minimize the acceleration of torso while impact
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/loco-3d/crocoddyl/issues/682](https://github.com/loco-3d/crocoddyl/issues/682)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 29. About whole body manipulation with cop constraint
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/loco-3d/crocoddyl/issues/880](https://github.com/loco-3d/crocoddyl/issues/880)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 30. Error about omniORB.CORBA.BAD_PARAM?
+## 23. Error about omniORB.CORBA.BAD_PARAM?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/896](https://github.com/loco-3d/crocoddyl/issues/896)
@@ -242,7 +186,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 31. GepettoVisualizer object has no attribute viewer
+## 24. GepettoVisualizer object has no attribute viewer
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/loco-3d/crocoddyl/issues/929](https://github.com/loco-3d/crocoddyl/issues/929)
@@ -250,15 +194,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 32. Issue on non-constant angular momentum during aerial phase
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/loco-3d/crocoddyl/issues/979](https://github.com/loco-3d/crocoddyl/issues/979)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 33. Parallel forward kinematics & collision checking
+## 25. Parallel forward kinematics & collision checking
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1088](https://github.com/stack-of-tasks/pinocchio/issues/1088)
@@ -266,23 +202,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 34. Best way to compute forward dynamics and M inverse
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1215](https://github.com/stack-of-tasks/pinocchio/issues/1215)
-- 查询来源：whole body
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 35. Clarification on computeCentroidalMomentum()
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1252](https://github.com/stack-of-tasks/pinocchio/issues/1252)
-- 查询来源：whole body；floating base
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 36. Center of Mass position for every link
+## 26. Center of Mass position for every link
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1394](https://github.com/stack-of-tasks/pinocchio/issues/1394)
@@ -290,15 +210,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 37. time derivative of jacobian
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1395](https://github.com/stack-of-tasks/pinocchio/issues/1395)
-- 查询来源：whole body；Jacobian
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 38. Question: what is the meaning of these Data members?
+## 27. Question: what is the meaning of these Data members?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1435](https://github.com/stack-of-tasks/pinocchio/issues/1435)
@@ -306,7 +218,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 39. E: Unable to locate package robotpkg-osg-dae
+## 28. E: Unable to locate package robotpkg-osg-dae
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1446](https://github.com/stack-of-tasks/pinocchio/issues/1446)
@@ -314,7 +226,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 40. End-Effector Velocity in Bullet vs Pinocchio
+## 29. End-Effector Velocity in Bullet vs Pinocchio
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1795](https://github.com/stack-of-tasks/pinocchio/issues/1795)
@@ -322,15 +234,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 41. Segmentation fault of pinocchio::urdf::buildModel
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2046](https://github.com/stack-of-tasks/pinocchio/issues/2046)
-- 查询来源：WBC
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 42. Doubts about the size of the Hessian matrix
+## 30. Doubts about the size of the Hessian matrix
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2543](https://github.com/stack-of-tasks/pinocchio/issues/2543)
@@ -338,7 +242,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 43. .md files in doc/* not rendering math
+## 31. .md files in doc/* not rendering math
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2628](https://github.com/stack-of-tasks/pinocchio/issues/2628)
@@ -346,7 +250,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 44. Selectively "fixing" (actuated) joints at URDF-parsing time
+## 32. Selectively "fixing" (actuated) joints at URDF-parsing time
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/905](https://github.com/stack-of-tasks/pinocchio/issues/905)
@@ -354,7 +258,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 45. Collecting TSID applications
+## 33. Collecting TSID applications
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/tsid/issues/132](https://github.com/stack-of-tasks/tsid/issues/132)
@@ -362,7 +266,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 46. self collision avoidance
+## 34. self collision avoidance
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/tsid/issues/79](https://github.com/stack-of-tasks/tsid/issues/79)
@@ -370,7 +274,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 47. error from demo_romeo.py
+## 35. error from demo_romeo.py
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/tsid/issues/80](https://github.com/stack-of-tasks/tsid/issues/80)
@@ -378,7 +282,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 48. new feature : convex hull constraint
+## 36. new feature : convex hull constraint
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/tsid/issues/81](https://github.com/stack-of-tasks/tsid/issues/81)

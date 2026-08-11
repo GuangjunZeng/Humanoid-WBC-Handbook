@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1343.cef3b5bd29fc",
+  "schema_version": 1,
+  "source_fingerprint": "8f48ed654c87a134ed142a15172634e4b0f7d9f4d2e1a11147af4e23f557d7a7",
+  "translations": {
+    "answer": "In the original thread, the Pinocchio project contributors explicitly recommended using TSID (Task Space Inverse Dynamics), indicating it fulfills the requested function, provides Python bindings, and is based on Pinocchio; subsequent issue was resolved. The only conclusion that can be directly drawn is that the full generalized force output from RNEA should not be directly equated to the command for underactuated executors. The thread does not provide TSID configuration for contact, task, weights, or torque limits; implementation still requires completing and validating it according to the target robot.",
+    "applicability": "Applicable to scenarios where the input is less than the system state/degrees of freedom in floating base inverse dynamics requirements; specific TSID configuration is not provided.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The project contributor suggests switching to TSID based on Pinocchio and notes it provides Python bindings.",
+    "details.diagnostics.0": "First confirm whether the requirement is to compute generalized force from q, v, a, or to solve underactuated inverse dynamics with contact and task constraints.",
+    "details.effective_fixes.0": "Use TSID processing instead of directly using RNEA output as an actuator command for the floating base underactuated inverse dynamics.",
+    "details.environments.0": "Pinocchio rnea with floating base underactuated system; original post does not specify version, contact model, or robot.",
+    "details.limits.0": "No thread provides TSID task, contact, constraint, or weight configuration.",
+    "details.limits.1": "Cannot infer all constraint dynamics capabilities of Pinocchio from these two replies, and TSID cannot be treated as a general fix that works without modeling.",
+    "details.outcomes.0": "The project contributor marks the issue as resolved; original author did not report actual configuration or execution results.",
+    "details.problem_statements.0": "How to compute inverse dynamics for a floating-base legged robot with insufficient input data?",
+    "details.safety_notes.0": "Prior to real-world deployment, the inverse dynamics matrix, contact constraints, torque limits, and residual dynamics of the floating base must be verified separately.",
+    "details.suspected_causes.0": "Directly mapping the generalized force output from RNEA to the actuator input of an underactuated system.",
+    "details.symptoms.0": "The RNEA returns a force vector corresponding to the number of generalized velocity dimensions, while the actual actuator input is less than the system state or degrees of freedom.",
+    "source.locator": "Pinocchio #1343, TSID issue comment -730571974; project contributor closed issue comment -730576108",
+    "source.title": "Floating Base Underactuated Inverse Dynamics Transition from RNEA to TSID",
+    "terms.0": "Recursive Newton-Euler Algorithm (RNEA) (递归牛顿-欧拉算法)",
+    "terms.1": "Task Space Inverse Dynamics (TSID) (任务空间逆动力学)",
+    "terms.2": "Floating Base (浮动基)",
+    "terms.3": "Underactuated System (欠驱动系统)",
+    "title": "How to Handle Leg-Floating Base Under-Driven Inverse Dynamics When Returning Generalized Forces in Pinocchio RNEA"
+  }
+}

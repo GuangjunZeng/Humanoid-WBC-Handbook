@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1423.b7b0378e8840",
+  "schema_version": 1,
+  "source_fingerprint": "17231c08e84f550cf7c586eab4576a534dcee3b9065903fe0fabc348afc3d683",
+  "translations": {
+    "answer": "The original thread and PR #1809 processing involves: first executing sim.reset(), then scene.update(dt=physics_dt), followed by loading managers or reading IMU.data. Placing scene.update() before sim.reset() would access uninitialized articulation data. The version containing PR #1809 has this step included in ManagerBasedEnv and DirectRLEnv initialization; older versions can be reverted in the same order for retesting.",
+    "applicability": "Original issue corresponds to Isaac Sim 4.2/old IsaacLab main; fix corresponds to version containing PR #1809.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and free of conflicts, and there is formal documentation or precise independent replication.",
+    "details.attempts.0": "The community manually added scene.update() during initialization; DirectRLEnv users encountered Articulation._data not found when placing scene.update() before sim.reset(). Swapping the order resolved the issue.",
+    "details.diagnostics.0": "The initialization call chain was verified to ensure ObservationManager reads data before the first scene.update(); the relative order of scene.update() and sim.reset()/load_managers() was checked.",
+    "details.effective_fixes.0": "Call self.scene.update(dt=self.physics_dt) after sim.reset() and before load_managers() or first sensor observation reading; or use the version containing PR #1809.",
+    "details.environments.0": "Original post: 84b2d2d8849e86752aa5a948d5f818d8430eec5a; Isaac Sim 4.2.0-rc.17; Ubuntu 20.04; RTX A6000; CUDA 11.8; ManagerBasedRLEnv/ANYmal-D; subsequent DirectRLEnv/ANYmal-C retesting.",
+    "details.limits.0": "The PR #1809 checkbox was not selected; manual regression testing is still required for older branches.",
+    "details.outcomes.0": "DirectRLEnv users confirmed the corrected order; PR #1809 was merged into the main repository, and the issue was closed with merge commit 157c6b74.",
+    "details.problem_statements.0": "Why is the ObservationManager reporting an error when trying to access IMU data before the update?",
+    "details.suspected_causes.0": "The environment initialization was not updated before extracting IMU.data, leading to IMU._dt and other scene buffers not being filled.",
+    "details.symptoms.0": "ObservationManager accesses asset.data.lin_acc_b during term dimension preparation; IMU._dt is not set, resulting in a RuntimeError: The update function must be called before the data buffers are accessed the first time.",
+    "source.locator": "Issue #1423 retesting issuecomment-2657349510; merged PR #1809; merged commit 157c6b74",
+    "source.title": "ObservationManager must update after sim.reset() before first IMU data access",
+    "terms.0": "ObservationManager (观测管理器)",
+    "terms.1": "Scene update (场景更新)",
+    "terms.2": "Inertial Measurement Unit (惯性测量单元)",
+    "terms.3": "Initialization order (初始化顺序)",
+    "title": "ObservationManager must update after sim.reset() before first IMU data access"
+  }
+}

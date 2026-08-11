@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lcbw"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1796",
+  "captured_at": "2026-08-11T15:36:00+08:00",
+  "content_sha256": "6a6d5a843e821ecdd1045c9504bc105a06c2fb58860902364d907c9c60bc8835",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 5 条评论，并核对 PR #1215 的完整 diff、合并状态、审阅和测试；没有把 master 能力冒充 Humble backport。",
+    "components": [
+      "ros2_control",
+      "ForceTorqueSensorBroadcaster",
+      "ChainableControllerInterface",
+      "force/torque offset"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PR #1215 增加 `offset.force.*`/`offset.torque.*` 参数、运行期参数刷新、`ChainableControllerInterface` 和 state-interface export。"
+      ],
+      "diagnostics": [
+        "核对目标 ros2_controllers 版本是否包含 PR #1215，并检查 broadcaster 是否导出六轴 state interfaces。"
+      ],
+      "effective_fixes": [
+        "在包含 PR #1215 的版本使用 broadcaster offset 参数，并通过导出的 state interfaces 连接下游 controller。"
+      ],
+      "environments": [
+        "原帖：ROS 2 Humble、Ubuntu 22.04、UR10e、Polyscope 5.11；正式实现：ros2_controllers master，PR #1215 merge commit 4343c7a。"
+      ],
+      "limits": [
+        "原作者没有在合并后复测；原帖 Humble 环境当时不能构建该 PR，线程没有 backport 结论。",
+        "开启两个 broadcaster 形成原始/偏置双流是项目成员建议，原线程没有发布运行结果。"
+      ],
+      "outcomes": [
+        "PR #1215 已获两位 reviewer 批准并合并；补丁包含 offset 数值和导出接口单元测试。"
+      ],
+      "problem_statements": [
+        "怎样在 ros2_control 内实时应用 FT sensor offset，并把校正后数据交给 chained controller？"
+      ],
+      "safety_notes": [
+        "FT offset 应在无外力或已知载荷条件下标定，并对突变、饱和和 frame_id 做监控；不能用 offset 掩盖传感器过载或坐标系错误。"
+      ],
+      "suspected_causes": [
+        "旧 `ForceTorqueSensorBroadcaster` 只发布原始 wrench，未提供参数化 offset 和 chained state interfaces。"
+      ],
+      "symptoms": [
+        "原有 admittance controller 的 exponential filter 不能满足外加 FT offset 和同时读取 offset/non-offset 数据流的需求。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "已合并 PR #1215 将 broadcaster 改为 `ChainableControllerInterface`，新增 `offset.force.{x,y,z}` 与 `offset.torque.{x,y,z}` 参数，在 update 中应用 offset，并导出对应 state interfaces；补丁同时加入 offset 和接口值测试。该能力应按包含 merge commit `4343c7a` 的版本使用。原帖的 Humble 用户没有完成复测，因此不要假定该功能已回移到 Humble。",
+        "applicability": "适用于包含 ros2_controllers PR #1215 的版本；Humble/backport 状态需单独核对。",
+        "bilingual_terms": [
+          "力矩传感器（force-torque sensor）",
+          "偏置校正（offset calibration）",
+          "链式控制器（chainable controller）",
+          "状态接口（state interface）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.contact_force_friction.ros2_control_ft_offset_chainable_1796",
+        "problem_title_zh": "在 ros2_control 链式控制中应用 FT 传感器偏置",
+        "question_zh": "怎样让 `ForceTorqueSensorBroadcaster` 对六轴 FT 数据应用 offset，并把校正结果交给下游 chained controller？",
+        "source_locator": "ros2_control #1796 项目回复；ros2_controllers PR #1215 merge 4343c7a4632a97f52fc664b5dcdcad258ffb5e2a",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/1796#issuecomment-2419697279",
+        "verification_refs": [
+          {
+            "locator": "已合并实现、两次批准、offset/exported state interface 单元测试，merge commit 4343c7a",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros2_controllers/pull/1215"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.1796",
+    "query": "ros2_control force torque sensor offset chainable broadcaster realtime",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "UR10e",
+      "ROS 2 force/admittance controller"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "项目成员指向 offset/chainable PR；原作者说明 Humble 当时无法构建，后续 PR 才正式合并。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/admittance control 直接消费力矩传感器时，偏置校正与原始信号并存必须有明确的数据流和实时接口，避免在控制回路外部通过普通 topic 拼接产生额外延迟。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.1796",
+  "summary": "ros2_control #1796 的 UR10e/Humble 用户需要在 admittance controller 前对 FT 数据加 offset，并同时保留原始与偏置流。项目成员指向 ros2_controllers PR #1215；该 PR 后来合并到 master，把 `ForceTorqueSensorBroadcaster` 改为 chainable controller，新增六轴 offset 参数、运行期参数刷新、导出状态接口和单元测试。原作者当时明确说 PR 在 Humble 还无法构建，线程没有后续回报，因此卡片只确认合并后的 master 能力，不声称已回移到 Humble。",
+  "title": "ForceTorqueSensorBroadcaster 可用参数偏置并导出链式状态接口",
+  "version": null
+}

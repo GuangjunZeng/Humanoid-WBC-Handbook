@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.hybridrobotics.whole_body_tracking.16.48c6b6da599f",
+  "schema_version": 1,
+  "source_fingerprint": "14be6ae0b7c014519e85ad38e3f4978a00b1b6e39f5b3a3e008e40bcbfd9e6cd",
+  "translations": {
+    "answer": "The repository members explicitly stated in the original post that the ratio of the deployment endpoint - differential gain (kp/kd) should remain consistent with the training environment, and neither simulation nor real-world deployment should alter it. Since the original post did not provide the results of the retest, this experience is used to exclude gain inconsistency as the sole cause. The case is not proven to have only this one reason.",
+    "applicability": "Applies to Sim2Sim/Sim-to-Real deployments using the same training strategy, PD action interpretation, and robot model.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner attempted to write their own MuJoCo deployment code; another user suggested using the RoboJuDo configuration, but no author has verified it.",
+    "details.diagnostics.0": "Comparison of the training environment and deployment endpoint kp/kd.",
+    "details.environments.0": "HybridRobotics/whole_body_tracking; walk_subject.csv; self-written MuJoCo deployment code; specific version not mentioned.",
+    "details.limits.0": "The original post did not publish training/deployment gain values, model version, or post-removal video; thus, it cannot be used to determine the sole root cause of the case.",
+    "details.outcomes.0": "The maintainer provided the gain consistency requirement; the questioner did not return the results of the modified run.",
+    "details.problem_statements.0": "The strategy fails to walk in MuJoCo after deployment; should the kp/kd be re-adjusted at the deployment endpoint?",
+    "details.suspected_causes.0": "The post attributes the deployment endpoint PD gain inconsistency as a problem that needs to be first excluded.",
+    "details.symptoms.0": "The robot cannot walk normally in MuJoCo.",
+    "media_summaries.0": "The original post includes an abnormal video, but the card's conclusion is based on text description and the maintainer's reply, and the video is not considered as root cause evidence.",
+    "source.locator": "Issue #16, maintainer reply issuecomment-3214861972",
+    "source.title": "Whole Body Tracking Deployment: PD Gain Inconsistency with Training Environment",
+    "terms.0": "Proportional-Derivative Gains (PD gains) (比例—微分增益)",
+    "terms.1": "Sim2Sim (仿真到仿真)",
+    "terms.2": "Sim-to-Real (仿真到现实)",
+    "title": "Can the Deployment Endpoint PD Gains Be Adjusted Directly in MuJoCo or Real-World Deployment When the Strategy Fails to Walk?"
+  }
+}

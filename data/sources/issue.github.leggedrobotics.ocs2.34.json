@@ -1,0 +1,134 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "IoannisDadiotis"
+  ],
+  "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/34",
+  "captured_at": "2026-08-11T22:48:00+08:00",
+  "content_sha256": "153d9a34a40c9d1c921a719fa2ef7fa098597a2ac883055d50fccc6b3b8934cf",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 4 条评论；视频未用于推断，仅采用作者文字结果与维护者明确诊断。",
+    "components": [
+      "OCS2",
+      "DDP",
+      "MPC",
+      "checkNumericalStability",
+      "displayShortSummary",
+      "backward pass"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者调整 input cost，并用 solver printouts 观察 SSE、rollout merit/cost 与 backward-pass 时间。"
+      ],
+      "diagnostics": [
+        "性能运行时关闭 `checkNumericalStability` 的 expensive eigenvalue checks；打开 `displayInfo`/`displayShortSummary`，查看 adaptive integrator average stepsize 与各 solver phase timing。",
+        "若 backward pass 最慢，检查 problem dimension 与 Riccati stiffness；若 LQ approximation 最慢，分别 benchmark costs、constraints 与 dynamics。"
+      ],
+      "effective_fixes": [
+        "把 `checkNumericalStability=false` 作为性能测量配置，而不是删除开发期检查；用 phase timing 后再针对 input cost/constraints/dynamics 做定点优化。"
+      ],
+      "environments": [
+        "Centauro 39 actuated DoFs、continuous DDP、SRBD 与 centroidal variants、4 feet contacts；OCS2 2022 代码，未固定 commit。"
+      ],
+      "limits": [
+        "维护者提到另一个 48-state/24-input 系统低于 10 ms 只是经验量级，不能作为 Centauro 保证。",
+        "低频 gait、dummy slowdown ratio 与 target node crash 等后续问题没有完整闭环，本卡不为它们提供推测答案。",
+        "线程视频不用于推断 motion quality，只采用作者文字确认。"
+      ],
+      "outcomes": [
+        "作者报告 MPC 已能在 robot-in-place 场景运行，input cost 调整同时帮助降低 backward-pass 时间；没有给最终毫秒数。"
+      ],
+      "problem_statements": [
+        "大自由度 OCS2 MPC 求解过慢时，应先关闭什么开发检查并怎样定位瓶颈？"
+      ],
+      "safety_notes": [
+        "关闭数值检查只用于已通过开发验证的性能运行；上线前仍需离线检查 Hessian/derivative、constraint residual 与 deadline monitor。"
+      ],
+      "suspected_causes": [
+        "开发期 numerical-stability checks 造成额外 eigenvalue 计算；问题 stiffness、cost gains 与 constraint satisfaction 也会增加 steps 或 backward-pass 时间。"
+      ],
+      "symptoms": [
+        "初始界面显示约 2-3 秒求解，并警告 solution time window shorter than MPC delay。",
+        "低 MPC frequency static gait 中 equality constraints SSE、rollout merit 与 rollout cost 爆炸；backward pass 最耗时。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者建议把开发与性能两种配置分开：`checkNumericalStability=true` 会做昂贵的 eigenvalue checks，开发阶段用于验证数值假设，追求速度的已验证运行应设为 false；同时开启 `displayInfo` 或 `displayShortSummary`，先看 adaptive stepping 的平均步长和 LQ approximation、backward pass 等分阶段时间。原作者随后报告 MPC 能运行，并观察到 low-frequency case 的 equality SSE/rollout merit/cost 爆炸；调整 input cost 后也降低了最昂贵 backward pass 的时间。线程没有最终 timing 或通用 cost gains，因此这是 profiling 流程，不是 39-DoF 实时保证。",
+        "applicability": "适用于 OCS2 DDP/MPC 大系统的开发期与性能期分离；字段名和统计输出需按目标版本核对。",
+        "bilingual_terms": [
+          "数值稳定性检查（numerical-stability check）",
+          "特征值检查（eigenvalue check）",
+          "反向传播阶段（backward pass）",
+          "线性二次近似（Linear-Quadratic approximation, LQ approximation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.ocs2_large_system_profiling_34",
+        "problem_title_zh": "OCS2 大系统 MPC 的分阶段性能诊断",
+        "question_zh": "OCS2 大自由度 MPC 每次求解过慢时，怎样避免把数值检查开销和真实 solver 瓶颈混在一起？",
+        "source_locator": "OCS2 #34 维护者性能建议 1083359506、分段定位 1088544950；作者结果 1119497280",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1119497280",
+        "verification_refs": [
+          {
+            "locator": "维护者确认 numerical stability eigenvalue checks 昂贵，并给出 display/profiling flags",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1083359506"
+          },
+          {
+            "locator": "原作者报告 input cost 调整降低 backward-pass 时间，但未给最终 timing",
+            "relation": "issue",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1119497280"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "leggedrobotics.ocs2.34",
+    "query": "OCS2 large system MPC checkNumericalStability eigenvalue checks displayShortSummary backward pass input cost",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Centauro 39-DoF quadruped bi-manual robot",
+      "large legged systems"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者建议关闭性能运行中的昂贵 eigenvalue checks，并用 summary 分解耗时；作者确认 input cost 调整降低 backward-pass 时间但未给最终毫秒数。"
+      }
+    ],
+    "wbc_relevance_reason": "大自由度 WBC/MPC 的实时性不能只靠总耗时判断；必须分离开发期检查、积分步数、LQ 构建、backward pass 与任务 conditioning。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.leggedrobotics.ocs2.34",
+  "summary": "OCS2 #34 记录 39 actuated DoFs 的 Centauro SRBD/DDP 任务一度每次求解耗时 2-3 秒。维护者指出 `checkNumericalStability=true` 会执行昂贵 eigenvalue checks，适合开发检查但追求速度时应关闭；同时开启 `displayInfo`/`displayShortSummary` 查看 adaptive stepsize、LQ approximation、backward pass 等耗时。作者后来让 MPC 原地运行，并报告低频 static gait 的 equality-constraint SSE、rollout merit/cost 爆炸；调整 input cost 后也降低了最昂贵 backward pass 的时间。线程仍有低频稳定性、MRT/MPC ratio 和其他约束问题未闭环，所以只作为 profiling 流程而非性能承诺。",
+  "title": "OCS2 大系统 MPC 先关闭开发期数值检查并分段 profiling",
+  "version": null
+}

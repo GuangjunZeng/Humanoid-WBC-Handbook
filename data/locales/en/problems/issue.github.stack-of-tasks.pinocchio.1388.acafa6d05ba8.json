@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1388.acafa6d05ba8",
+  "schema_version": 1,
+  "source_fingerprint": "e1af8775875e0b50b0297b7106e2aba06d7b9fccf01c734d9d7572504c95063f",
+  "translations": {
+    "answer": "The maintainer confirmed that the inertia of fixed joints is merged because the algorithm layer does not need to retain it separately. The final `data.com` subtree includes the flange, F/T sensor, and tool, so it cannot be treated as the tool's own mass and center of mass. Two processing methods were available at the time: read single-body information from the original URDF parser/tree, or pass the tool inertia as an independent parameter to the control library. The maintainer later stated that #1415 resolved the issue, but the thread did not show the new API and this card therefore does not claim a usage pattern.",
+    "applicability": "Applies to fixed joint chains in URDF and F/T gravity compensation where separate tool inertia is needed; new version capabilities must be verified against #1415 and local API.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Maintainer suggested accessing information via the original URDF parser/tree and discussing saving inertia for Frame; users were advised to pass tool information as an independent parameter during the wait period.",
+    "details.diagnostics.0": "Confirm whether the target is the tool's own inertia or the final rigid body subtree after the fixed joint; do not treat the last data.com entry as the tool parameter directly.",
+    "details.effective_fixes.0": "In the old interface, the original thread passed tool inertia as an independent parameter to the control library; another maintainer suggestion was to directly read the original URDF parser/tree information.",
+    "details.effective_fixes.1": "The maintainer later claimed PR #1415 resolved the issue, but the original thread did not show the specific call method.",
+    "details.environments.0": "Franka Panda; URDF; flange → fixed joint F/T sensor → fixed joint tool; 2021 Pinocchio thread, specific release version not stated.",
+    "details.limits.0": "Could not claim which Pinocchio version, Frame field, or API directly returns fixed chain single-body inertia due to not reading #1415 diff.",
+    "details.outcomes.0": "The team continued research using independent tool parameters; the maintainer ultimately marked the thread as resolved by #1415.",
+    "details.problem_statements.0": "How to obtain the tool's own mass and center of mass for gravity compensation after fixed joint integration in Pinocchio?",
+    "details.safety_notes.0": "Incorrect merged inertia in force/torque sensor gravity compensation would double-count the flange and sensor weights; verify mass, center of mass, coordinate system, and installation direction before real machine testing.",
+    "details.suspected_causes.0": "Maintainer confirmed that the algorithm layer does not need to separate the inertia of fixed chain internal parts, so it was merged during parsing.",
+    "details.symptoms.0": "Fixed joint is only retained as a frame; the last data.com subtree includes merged inertia of flange, F/T sensor, and tool, and cannot isolate the tool.",
+    "source.locator": "Issue #1388, maintainer merged issue comment-773507916; user temporary solution issue comment-773599051; PR status issue comment-811858647",
+    "source.title": "Pinocchio will merge fixed joint chain inertia, old interface cannot directly isolate end-effector inertia",
+    "terms.0": "fixed joint (固定关节)",
+    "terms.1": "inertia (惯量)",
+    "terms.2": "center of mass, CoM (质心)",
+    "terms.3": "force/torque sensor (力/力矩传感器)",
+    "title": "Why can't the tool inertia from fixed joint in Pinocchio be directly retrieved from data.com? What processing methods were provided in the original thread?"
+  }
+}

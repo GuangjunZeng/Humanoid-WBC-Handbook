@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6a0be22200000000370340c8.6886cc2ab501",
+  "schema_version": 1,
+  "source_fingerprint": "a918c41f3288424cf97c80bfc33960318b2f43a568a00c6519c20c517afb64ad",
+  "translations": {
+    "answer": "Offline align video events, action margins, and IMU/joint states to estimate fixed offset and time drift; retain main clock, original timestamp, and synchronization events, and use visualization replay to check. The post only provides principles; specific thresholds must be determined by the control cycle and task bandwidth.",
+    "applicability": "Missing clock source, sampling rate, drift model, and acceptable error threshold.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Suggest selecting the main clock, recording offset, using synchronization signals, and establishing offline quality check metrics.",
+    "details.diagnostics.0": "Cross-organize text, visible comments, and media descriptions; not verified by the paper, source code, or official documentation.",
+    "details.environments.0": "Video, action commands, and multi-sensor asynchronous acquisition.",
+    "details.limits.0": "Missing clock source, sampling rate, drift model, and acceptable error threshold.",
+    "details.outcomes.0": "No public implementation or replication data available.",
+    "details.problem_statements.0": "The imitation learning strategy exhibits regular 'spastic' behavior; how to determine whether it's a control problem or timestamp acquisition issue?",
+    "details.safety_notes.0": "Community candidate only for forming diagnostic hypotheses; when involving real devices, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "Multiple independent clocks, missing offset recording, lack of synchronization pulse, and offline alignment quality check.",
+    "details.symptoms.0": "Strategy behavior after training resembles spasticity; video and action/sensor alignment offsets are off.",
+    "media_summaries.0": "Five information graphs focus on main clock, offset, synchronization signal, and offline quality check; no visible original timestamp scatter or cross-correlation curve, so no threshold can be determined from the graph.",
+    "source.locator": "Root post text",
+    "source.title": "Imitation learning strategy misalignment with video, action, and sensor timestamps causes 'spastic' behavior; how to determine if it's a control or timestamp acquisition problem?",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.2": "Whole-Body Teleoperation (全身遥操作)",
+    "terms.3": "Timestamp Synchronization (时间戳同步)",
+    "title": "Imitation learning strategy exhibits regular 'spastic' behavior; how to determine if it's a control problem or timestamp acquisition problem?"
+  }
+}

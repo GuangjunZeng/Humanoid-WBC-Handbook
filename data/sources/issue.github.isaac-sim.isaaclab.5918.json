@@ -1,0 +1,125 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "AlfredMoore"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5918",
+  "captured_at": "2026-08-11T22:36:00+08:00",
+  "content_sha256": "ffe50878d72082fbafe1b10ff5bb869a6a407440f74396436bf52d512f3de6ce",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 2 条评论和合并 PR #6377 的完整补丁、验证说明与审阅；无图片依赖。",
+    "components": [
+      "Isaac Lab",
+      "URDF spawner",
+      "apply_nested",
+      "RigidBodyPropertiesCfg",
+      "MassPropertiesCfg"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PR #6377 给 `apply_nested` 增加默认保持兼容的 `stop_on_success`，rigid-body/mass writers 显式设置为 false。"
+      ],
+      "diagnostics": [
+        "遍历 stage，分别统计 RigidBodyAPI、disableGravity 和 PhysxContactReportAPI 的 body 覆盖数。"
+      ],
+      "effective_fixes": [
+        "升级到包含 PR #6377、merge commit 10144da 的版本，并用 stage traversal 验证每个 nested body 的属性。"
+      ],
+      "environments": [
+        "IsaacLab a4a7602f29 v3.0.0-beta 与 8ef1bf7a8b beta2、Isaac Sim 6.0.0-rc.22、Ubuntu 24.04、RTX 5090、CUDA 13.0、driver 580.159.03。"
+      ],
+      "limits": [
+        "#6377 只对 rigid-body 与 mass writers 放宽早停；joint、articulation root 和 collision writers 仍保留默认行为。",
+        "对曾按旧的部分生效行为调过 baseline 的 nested asset，升级后任务行为可能变化。"
+      ],
+      "outcomes": [
+        "PR 已合并，三层嵌套刚体 regression test 同时断言 `disableGravity` 和 `physics:mass` 在 3/3 links 生效。"
+      ],
+      "problem_statements": [
+        "为什么 nested URDF 的 rigid-body/mass spawn properties 只作用于根 link？"
+      ],
+      "safety_notes": [
+        "不要只看 cfg；spawn 后应逐 body 审计最终 USD/PhysX 属性，尤其是 gravity、mass、contact report 和 depenetration limits。"
+      ],
+      "suspected_causes": [
+        "`apply_nested` 默认认为 physics schema 不会嵌套，wrapped function 在根 link 成功后停止遍历 children。"
+      ],
+      "symptoms": [
+        "29 links 中只有 1 个得到 `disable_gravity=True`，手端约下垂 0.2 m；contact report API 也是 1/N，子 link ContactSensor 报找不到 reporter API。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "根因是 `apply_nested` 在根 link 首次成功后停止下钻，跳过了嵌套子 links。合并 PR #6377 给 decorator 增加 `stop_on_success`，并让 rigid-body 与 mass property writers 使用 `stop_on_success=False`；默认仍为 true，避免无关 schema 行为变化。验收不能只看 cfg，应遍历全部 rigid bodies，逐项确认 `disableGravity`、`physics:mass` 等目标属性覆盖 N/N。",
+        "applicability": "适用于 Isaac Sim 6.0 importer 或自定义 USD 的 body-under-body nested hierarchy。",
+        "bilingual_terms": [
+          "嵌套刚体层级（nested rigid-body hierarchy）",
+          "生成属性（spawn properties）",
+          "遍历早停（traversal early stop）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.isaaclab_nested_spawn_props_5918",
+        "problem_title_zh": "让 spawn 属性遍历每个嵌套刚体",
+        "question_zh": "Isaac Lab 的 nested URDF 只有根 link 获得 `disable_gravity` 和 mass properties，应如何修复和验收？",
+        "source_locator": "IsaacLab #5918 原帖 1/N 复现、关闭说明 5174104792；合并 PR #6377",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/5918#issuecomment-5174104792",
+        "verification_refs": [
+          {
+            "locator": "已合并：rigid-body/mass writers 继续遍历 nested links，并新增 3-deep regression test",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/6377"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.5918",
+    "query": "Isaac Lab URDF nested links rigid body mass properties only root apply_nested",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "29-link fixed-base arm",
+      "nested-link robots from Isaac Sim 6.0 URDF importer"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者关闭说明：#6377 使 rigid-body 与 mass properties 继续穿过嵌套 hierarchy，并用测试验证每个 body。"
+      }
+    ],
+    "wbc_relevance_reason": "模型 spawn 属性若只作用根 link，会静默改变重力、质量、接触报告和 solver 行为，训练与部署参数表面相同但动力学不同。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.5918",
+  "summary": "IsaacLab #5918 在 3.0.0-beta、Isaac Sim 6.0 rc22 的 29-link fixed-base arm 上复现：`disable_gravity`、`max_depenetration_velocity` 以及 contact report API 只应用到根 link，手端下垂约 0.2 m，子 link ContactSensor 无法启动。原帖定位到 `apply_nested` 在第一个 schema 成功后停止下钻。已合并 PR #6377 为 decorator 增加 `stop_on_success`，让 rigid-body 与 mass property writers 对嵌套 body 继续遍历，并以三层 chain 验证每个 link 都获得属性。",
+  "title": "Isaac Lab 嵌套 URDF 的 spawn 属性只落到根 link",
+  "version": null
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.3328.da34ba185c3e",
+  "schema_version": 1,
+  "source_fingerprint": "d0d7e1c7642dfbd457bb62372f8abf75ca7d4eef5edab16f5eb7aa3b55fe9bfa",
+  "translations": {
+    "answer": "In the 45 g capsule minimum reproduction in MuJoCo 3.8.1, the default elliptic/impratio=10 results in a steady-state downward speed of ~155 µm/s; setting noslip_iterations=10 reduces this to ~1.41 µm/s, a ~110-fold improvement. The maintainer confirms this regularization friction creep is the expected behavior. This parameter is only quantified in this MRE and cannot be used to claim other grasp tasks are completely static.",
+    "applicability": "Regularization friction grasp model for MuJoCo 3.8.1; other models require re-measurement of creep budget.",
+    "credibility.rationale": "Environment, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is lacking.",
+    "details.attempts.0": "Increase impratio.",
+    "details.attempts.1": "Set noslip_iterations=10.",
+    "details.attempts.2": "Change cone, condim, and solref.",
+    "details.diagnostics.0": "Measure downward speed, normal force, and rotation, to exclude rolling and z-motion of gripper.",
+    "details.diagnostics.1": "Separately scan cone, impratio, condim, solref, and noslip_iterations.",
+    "details.environments.0": "MuJoCo 3.8.1; Python 3.12; Linux x86_64 CPU; 45 g capsule; µ=0.7; timestep=0.002.",
+    "details.limits.0": "Single minimum grasp model; numerical and scaling relationships cannot be directly extrapolated to other geometries, masses, time steps, or large-scale parallel environments.",
+    "details.outcomes.0": "noslip_iterations=10 reduces creep speed by ~110-fold in this MRE; maintainer confirms behavior is expected, but no general parameter recommendation is given.",
+    "details.problem_statements.0": "Why does an object continue to slowly descend when the normal force is much greater than gravity demand?",
+    "details.suspected_causes.0": "The post attributes the phenomenon to regularization friction in the vicinity of the origin—slip speed mapping; maintainer confirms behavior is expected.",
+    "details.symptoms.0": "Default elliptic/impratio=10 results in ~155 µm/s steady-state creep; pyramidal is faster when impratio=1.",
+    "source.locator": "Issue #3328 Summary/Observed/Analysis; maintainer replies to issuecomment-4735966682",
+    "source.title": "MuJoCo regularization friction generates stable creep during grasp",
+    "terms.0": "Regularization friction (正则化摩擦)",
+    "terms.1": "Noslip iterations (防滑迭代)",
+    "terms.2": "Tangential creep (切向爬移)",
+    "title": "What is the actual effect of noslip_iterations in the original post when grasp normal force is much greater than gravity demand?"
+  }
+}

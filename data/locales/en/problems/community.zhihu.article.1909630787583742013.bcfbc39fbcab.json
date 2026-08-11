@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1909630787583742013.bcfbc39fbcab",
+  "schema_version": 1,
+  "source_fingerprint": "17636e967b876ca01d320186282375e3281584bd139e8d59a7684bd78b96223a",
+  "translations": {
+    "answer": "The current troubleshooting should not blame the GPU or MuJoCo itself: separate the viewer/render, control loop, logging/histogram, and mj_step timing, and verify with glxinfo/vulkaninfo to ensure they are on llvmpipe. The comment mentions WSL users switching to D3D12, achieving ~30 FPS, but the root cause remains unresolved. The status is unresolved.",
+    "applicability": "The comment solution is applicable only to WSL software rendering scenarios and cannot be extrapolated to the original author's native Ubuntu.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "The solution has not closed or there is a conflict; only problem clues are formed.",
+    "details.attempts.0": "Disable matplotlib threads, reduce resolution, use a simpler model, and run the target XML separately for 5000 steps.",
+    "details.diagnostics.0": "Cross-verified by the main text, visible comments, and media descriptions; not independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "Ubuntu 20.04; Python 3.8.20; MuJoCo 2.3.6; RTX 4080 laptop.",
+    "details.limits.0": "The comment solution is applicable only to WSL software rendering scenarios and cannot be extrapolated to the original author's native Ubuntu.",
+    "details.outcomes.0": "The main issue remains unresolved; the comment solver achieved ~30 FPS on WSL with D3D12.",
+    "details.problem_statements.0": "The complete double-foot project in MuJoCo only achieves 2–3 FPS, but the single XML achieves 102 FPS; how to proceed?",
+    "details.safety_notes.0": "The community candidate is only for forming diagnostic hypotheses; when involving real hardware, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "The root cause is not determined; a WSL case in the comment reveals rendering on llvmpipe.",
+    "details.symptoms.0": "The complete project runs at 2–3 FPS, GPU is almost unused and CPU is not high; the simple model runs at over 1000 FPS, and the target XML runs at ~102 FPS.",
+    "media_summaries.0": "Two media files are used to show low FPS and running status; the main text provides a 3 FPS, 102 FPS, and over 1000 FPS comparison image in pixels, which is more searchable than the profiler timeline.",
+    "source.locator": "Main text baseline; the llvmpipe → D3D12 case in the comment",
+    "source.title": "MuJoCo Double-Foot Project Only Achieves 2–3 FPS: Layered Performance Diagnosis",
+    "terms.0": "Graphics Processing Unit (GPU) (图形处理器)",
+    "terms.1": "Frames Per Second (FPS) (每秒帧数)",
+    "title": "MuJoCo Complete Double-Foot Project Only Achieves 3 FPS, but Single XML Achieves 102 FPS: How to Proceed?"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.gazebosim.gz-sim.3289.d13b6805b6b8",
+  "schema_version": 1,
+  "source_fingerprint": "974aceed520b879ccb6b24ed873c46f0e65273b55a6bf0618bedd9b7bf40a46f",
+  "translations": {
+    "answer": "If the environment is consistent with the original post, do not batch modify the model. The `-1.0` value is a sentinel value used by DART; the validation regression in 6.16.5 incorrectly triggered an alert. DART PR #2493 has been merged and the release record points to 6.16.6; the original author confirmed the alert disappeared after upgrading to DART 6.16.6 via Homebrew. Only continue checking model data when the parameter is not this sentinel, but instead NaN/Inf or custom exception values.",
+    "applicability": "Applies to the `-1` sentinel warning in Gazebo Ionic 9.5.0 / DART 6.16.5; other error values require further investigation.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise independent replication.",
+    "details.attempts.0": "Explicitly setting `slip1=0` and `slip2=0` in SDF can make a single model silent, but it does not resolve large Fuel models; `-v 0` is ineffective.",
+    "details.diagnostics.0": "First check the DART version; confirm the log parameter value is exactly the sentinel `-1`, not NaN/Inf or explicit invalid configuration.",
+    "details.effective_fixes.0": "Upgrade to 6.16.6 containing DART PR #2493; the patch silently returns a default value for negative sentinel, and only retains the warning for NaN/Inf.",
+    "details.environments.0": "macOS Homebrew; Gazebo Ionic 9.5.0; DART 6.16.5 triggers, author upgraded to DART 6.16.6 and retested.",
+    "details.limits.0": "The fix is specific to the sentinel being exactly negative; if input is NaN/Inf or custom non-expected values, still check the SDF and source values.",
+    "details.outcomes.0": "PR is merged and the relevant modification has test coverage; the original author confirmed the alert disappeared after upgrading DART 6.16.6.",
+    "details.problem_statements.0": "Why does Gazebo Ionic continue to print `Invalid primary/secondary slip compliance (-1)` after upgrade? Should we modify each Fuel model individually?",
+    "details.safety_notes.0": "Do not use global discarding of Gazebo stderr to mask logs; distinguish between known sentinel regression and actual contact parameter errors.",
+    "details.suspected_causes.0": "Confirmed in merged PR: DART 6.16.5's new validation incorrectly treats the negative sentinel as an invalid slip compliance.",
+    "details.symptoms.0": "About 100 log lines per second of identical warnings; many Fuel models affected; `-v 0` is ineffective.",
+    "details.symptoms.1": "Maintainer reports Homebrew CI log size increased from <4 MB to over 1.5 GB.",
+    "source.locator": "Gazebo #3289 author retest 3818259239; merged DART PR #2493",
+    "source.title": "Gazebo Ionic slip compliance -1 warning storm caused by DART 6.16.5 regression",
+    "terms.0": "Slip compliance (滑移柔度)",
+    "terms.1": "Sentinel value (哨兵值)",
+    "terms.2": "Contact constraint (接触约束)",
+    "terms.3": "Regression (回归缺陷)",
+    "title": "Should we modify each Fuel model individually when Gazebo Ionic 9.5.0 prints many `-1` slip compliance warnings per second?"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086582709082583420.28306d35a26d",
+  "schema_version": 1,
+  "source_fingerprint": "5b010ee850dbb9d3b8e9687b230a72f49212dfd7e1bc00e45d25880d2cd25cca",
+  "translations": {
+    "answer": "Because bipedal stability depends on active control, direct power cut may result in uncontrolled fall and increase collision risk. This post only confirms the risk and links to research, without providing verified fixes; further design and validation of controlled deceleration, protective posture, braking, and isolation strategies are required.",
+    "applicability": "Applicable to human-like robots in walking or dynamic tasks during emergency stop design.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The answer has not been closed-looped or there is a conflict; the current state is only forming problem clues.",
+    "details.attempts.0": "The post references a study to raise the question.",
+    "details.diagnostics.0": "Distinguish between power cut, controlled deceleration, protective posture, and external support; evaluate fall envelope.",
+    "details.environments.0": "Unitree G1 walking; people/object may be within the fall zone.",
+    "details.limits.0": "No speed, posture, fall direction, or emergency stop implementation details provided; must verify the paper.",
+    "details.outcomes.0": "The original post explicitly states that safe stop is not resolved as an engineering problem.",
+    "details.problem_statements.0": "Emergency stop for walking humanoid robots may be more dangerous than continued controlled motion.",
+    "details.safety_notes.0": "Emergency stop design for real-world scenarios must evaluate controlled deceleration, protective posture, braking, and personnel isolation; cannot assume power cut is safe by default.",
+    "details.suspected_causes.0": "Bipedal stability relies on continuous active control; power cut is not a static safe state.",
+    "details.symptoms.0": "After power cut, uncontrolled fall risk occurs.",
+    "media_summaries.0": "Screenshot clearly shows the text argument 'power cut emergency stop may lead to uncontrolled fall'; no experimental conditions, fall trajectory, or safety boundary shown.",
+    "source.locator": "Root post and source reply",
+    "source.title": "Emergency Stop for G1 Walking May Trigger Uncontrolled Fall",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Emergency Stop (E-Stop) (安全急停)",
+    "title": "Why Can't G1 Simply Treat 'Power Cut' as an Emergency Stop During Walking?"
+  }
+}

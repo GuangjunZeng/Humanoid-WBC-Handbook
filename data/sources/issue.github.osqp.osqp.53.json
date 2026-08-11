@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "yasseryasaei"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/53",
+  "captured_at": "2026-08-11T23:56:00+08:00",
+  "content_sha256": "459f8c37f7537650c890af14a5f9afa4cec79bbe27d7d1679f8771f753761742",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 8 条评论；保留作者未复测的限制，不把 stale 关闭当作闭环。",
+    "components": [
+      "OSQP",
+      "CVXOPT",
+      "conditioning",
+      "termination tolerances"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者给出 `eps_abs=1e-9, eps_rel=1e-9` 的完整代码，并提醒可能需要提高 `max_iter`。"
+      ],
+      "diagnostics": [
+        "先计算 Hessian/约束的条件数和尺度范围，再比较各 solver 的绝对、相对终止容差，而不是只比较 status。"
+      ],
+      "effective_fixes": [
+        "没有作者确认的最终修复；紧容差和预缩放只能作为目标数据上的验证步骤。"
+      ],
+      "environments": [
+        "macOS High Sierra 10.13.3、Python 3.6、OSQP 0.3.0；作者提交了简化数据和 notebook。"
+      ],
+      "limits": [
+        "原帖没有报告新迭代数、误差或循环随机失败是否同时消失；不能把 `1e-9` 写成通用 WBC 配置。"
+      ],
+      "outcomes": [
+        "维护者在附件上得到更接近的结果；Issue 因一个月无后续关闭。"
+      ],
+      "problem_statements": [
+        "OSQP 与 CVXOPT 对同一 QP 给出明显不同的解和目标值时，应先检查什么？"
+      ],
+      "safety_notes": [
+        "真机控制应同时设置求解时限和残差门槛；不要为了追求跨 solver 数值一致而无界增加迭代。"
+      ],
+      "suspected_causes": [
+        "维护者对附件计算得到 `cond(P)=9,860,981.74`，认为病态尺度与 OSQP 默认较松容差共同解释差异。"
+      ],
+      "symptoms": [
+        "OSQP 与 CVXOPT/CVXPY-ECOS 的解和目标值显著不同；最初还被描述为循环中非确定失败。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "不能。维护者在作者提交的数据上测得 `cond(P)≈9.86×10^6`，并说明 OSQP 的启发式缩放未必能完全修复病态问题；一阶方法的默认容差也比对照 solver 松。线程中的实验路径是收紧 `eps_abs/eps_rel` 到 `1e-9` 并视需要提高 `max_iter`。作者没有回报最终结果，因此这是一条有数据支撑的诊断经验，不是通用参数答案。",
+        "applicability": "直接适用于 OSQP 0.3.0 与原帖病态 QP；其他问题应重新计算条件数和实时预算。",
+        "bilingual_terms": [
+          "条件数（condition number）",
+          "内部缩放（internal scaling）",
+          "绝对容差（absolute tolerance）",
+          "相对容差（relative tolerance）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_conditioning_tolerance_53",
+        "problem_title_zh": "联合检查 OSQP 的问题尺度与终止容差",
+        "question_zh": "OSQP 与 CVXOPT 的解差很多时，能否只把它归因于 solver 实现错误？",
+        "source_locator": "OSQP #53 维护者附件诊断与完整代码 375153096",
+        "source_url": "https://github.com/osqp/osqp/issues/53#issuecomment-375153096",
+        "verification_refs": [
+          {
+            "locator": "维护者读取附件、计算条件数并给出可运行紧容差代码",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/osqp/osqp/issues/53#issuecomment-375153096"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.53",
+    "query": "OSQP ill conditioned QP CVXOPT eps_rel eps_abs 1e-9 condition number",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "QP-based WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者在作者数据上得到 `cond(P)=9860981.74`，建议联合调整 `eps_abs/eps_rel` 与 `max_iter`。"
+      }
+    ],
+    "wbc_relevance_reason": "接触切换、任务权重和松弛量跨多个数量级时，WBC QP 容易病态；不同 solver 的默认容差会被误判成算法错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.53",
+  "summary": "OSQP #53 最初描述循环中随机失败，作者后来把问题缩成 OSQP/CVXOPT 结果显著不同的可运行数据。维护者在该数据上计算 `cond(P)=9,860,981.74`，指出 OSQP 的启发式内部缩放不一定能修复病态问题，而且一阶方法默认容差较松；把 `eps_abs`、`eps_rel` 调到 `1e-9` 可让结果更接近 CVXOPT，但会显著增加迭代，可能还要提高 `max_iter`。作者没有发布调参后的复测。",
+  "title": "OSQP 与 CVXOPT 解差异先量化条件数和终止容差",
+  "version": null
+}

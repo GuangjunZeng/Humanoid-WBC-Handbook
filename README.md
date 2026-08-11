@@ -1,8 +1,8 @@
 # Humanoid WBC Engineering Handbook
 
-[![Humanoid WBC Engineering Handbook 中英文快速搜索预览](site/assets/search-preview.svg)](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)
+[![Humanoid WBC Engineering Handbook 中英文快速搜索预览](site/assets/search-preview.svg)](site/)
 
-**[打开中英文快速搜索](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)**：所有工程问题均可搜索；可信度、状态和证据边界在独立详情页查看。
+**[打开中英文快速搜索](site/)**：所有工程问题均可搜索；可信度、状态和证据边界在独立详情页查看。
 
 ---
 
@@ -42,14 +42,22 @@ Without installing:
 PYTHONPATH=src python3 -m wbc_handbook validate --data-dir data
 ```
 
-Render every Chinese-first problem page and build the static bilingual index:
+Render the versioned Chinese and English problem pages, then build their shared
+offline search index:
 
 ```bash
 PYTHONPATH=src python3 -m wbc_handbook render-problems \
-  --data-dir data --output-dir content/problems
+  --data-dir data --translations-dir data/locales/en/problems \
+  --output-dir content/problems
 PYTHONPATH=src python3 -m wbc_handbook build-web-index \
-  --data-dir data --problems-dir content/problems --output site/search-index.json
+  --data-dir data --translations-dir data/locales/en/problems \
+  --problems-dir content/problems --output site/search-index.json
 ```
+
+Chinese detail URLs remain `content/problems/<id>.md`; English versions are
+generated at `content/problems/en/<id>.md`. Both interface languages search the
+same bilingual corpus, while result links follow the selected interface language.
+Source fingerprints make CI reject missing or stale English records.
 
 Import one manually reviewed source record:
 
@@ -112,10 +120,11 @@ which uses only the single-paper analysis part of `paper-daily` and has no push/
 | `src/wbc_handbook/` | Original models, validation, import, paper coverage, on-demand social collection, index, answer, and CLI code |
 | `config/social-queries.json` | Open WBC engineering-problem scopes shared by X, Zhihu, and Xiaohongshu; optional domain hints are not collection boundaries |
 | `content/papers/` | Coverage catalog, quality-gated deep-read registry, generated topic indexes, Chinese interpretations, and key-figure manifests |
-| `content/problems/` | One Chinese-first, bilingual-terminology Markdown detail page per Engineering Claim or engineering QA |
-| `data/` | 174 canonical source records, a minimal all-candidate social/Issue index, and 14 bounded, human-reviewed Engineering Claims |
+| `content/problems/` | Generated Chinese engineering-problem pages plus matching English pages under `content/problems/en/` |
+| `data/` | 286 canonical source records, a minimal all-candidate social/Issue index, and 14 bounded, human-reviewed Engineering Claims |
+| `data/locales/en/problems/` | Reviewed, versioned English problem translations with stale-source fingerprints |
 | `docs/` | Architecture, safety, source policy, clean-room record, and workflows |
-| `site/` | Dependency-free GitHub Pages search UI, vendored FlexSearch, SVG background, and generated static index |
+| `site/` | Dependency-free bilingual GitHub Pages search UI, vendored FlexSearch, SVG background, and generated schema-v2 index |
 | `templates/` | Authoring templates, including full-paper interpretation |
 | `tests/` | Offline deterministic acceptance tests |
 | `var/` | Ignored generated indexes and test artifacts |
@@ -138,7 +147,7 @@ python3 scripts/check_paper_quality.py
 python3 scripts/render_paper_topics.py --check
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a source or claim. Public repository identity and contact details remain explicit items in the [release checklist](docs/release-checklist.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a source or claim. All current work is local; no remote repository is configured or pushed by this build process. Public repository identity and contact details remain explicit items in the [release checklist](docs/release-checklist.md).
 
 ## License and safety
 

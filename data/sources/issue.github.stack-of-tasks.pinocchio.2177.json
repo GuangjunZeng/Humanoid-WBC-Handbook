@@ -1,0 +1,137 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "thuuzi"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2177",
+  "captured_at": "2026-08-11T16:30:00+08:00",
+  "content_sha256": "8c722e348360a3e5b26a7fc12fa47b602f9f999fb483b96fcca78c85041d0498",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 7 条评论及固定 viewer 源码链接；没有把 FreeFlyer 和 Composite root 的速度约定混为一谈。",
+    "components": [
+      "Pinocchio",
+      "JointModelComposite",
+      "JointModelTranslation",
+      "JointModelSphericalZYX",
+      "getFrameJacobian",
+      "floating-base-velocity-viewer.py"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者随机测试多组配置并检查 Jacobian 基座块。",
+        "项目贡献者提供官方 floating-base velocity viewer；原作者扩展后报告测试结论。"
+      ],
+      "diagnostics": [
+        "不要把 FreeFlyer 的 LOCAL velocity 约定自动套到其他复合根关节。",
+        "用官方 floating-base velocity viewer 扩展到目标 root joint，并在不同 base orientation 下观察世界/局部速度箭头或 Jacobian 块。"
+      ],
+      "effective_fixes": [
+        "按 JointModelTranslation+JointModelSphericalZYX 的 WORLD-frame velocity 约定解释状态和 Jacobian，不复用 FreeFlyer 的 LOCAL-frame 假设。"
+      ],
+      "environments": [
+        "Pinocchio C++、自定义 URDF、JointModelComposite(Translation+SphericalZYX)；线程引用 commit 080720a 的官方 Python viewer，未给发布版本或 OS。"
+      ],
+      "limits": [
+        "线程没有贴扩展后的脚本、配置向量或数值输出；不同 Pinocchio 版本应再次运行 viewer/数值对照。",
+        "结论只针对 JointModelTranslation+JointModelSphericalZYX 组合，不外推任意 JointModelComposite。",
+        "FreeFlyer 的 LOCAL 约定仍是另一种 joint model 的语义，两者不能互相覆盖。"
+      ],
+      "outcomes": [
+        "原作者测试后明确确认该复合根关节的 floating-base velocity 在 WORLD frame。"
+      ],
+      "problem_statements": [
+        "用 Translation+SphericalZYX 代替 FreeFlyer 作为根关节时，Pinocchio 广义基座速度表达在 LOCAL 还是 WORLD frame？"
+      ],
+      "safety_notes": [
+        "将基座速度送入实机 WBC 前，应对旋转基座做 frame 单元测试；错误 frame 可同时污染速度反馈、动量和接触约束。"
+      ],
+      "suspected_causes": [
+        "不同根关节模型定义了不同的广义速度参数化；原作者测试确认 Translation+SphericalZYX 组合使用 WORLD-frame base velocity。"
+      ],
+      "symptoms": [
+        "在 LOCAL_WORLD_ALIGNED frame 获取末端 Jacobian 时，基座线速度对应的 top-left 3×3 对随机配置始终为单位阵。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者在多组配置和项目贡献者提供的 floating-base velocity viewer 基础上测试后确认，该 Translation+SphericalZYX 复合根关节的 floating-base velocity 表达在 WORLD frame。这个结论不能套用到 FreeFlyer：FreeFlyer 的 LOCAL 速度约定属于不同 joint model。线程没有贴完整扩展脚本和数值输出，因此升级版本后仍应复测。",
+        "applicability": "适用于 JointModelComposite 中依次加入 JointModelTranslation 与 JointModelSphericalZYX 的根关节模型；其他 root joint 需单独核对。",
+        "bilingual_terms": [
+          "广义速度（generalized velocity）",
+          "复合根关节（composite root joint）",
+          "世界坐标系（world frame）",
+          "局部坐标系（local frame）",
+          "局部原点世界对齐坐标系（local-world-aligned frame）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.pinocchio_translation_sphericalzyx_velocity_world_2177",
+        "problem_title_zh": "Pinocchio Translation+SphericalZYX 根关节的基座速度使用 WORLD frame",
+        "question_zh": "Pinocchio 用 JointModelTranslation+JointModelSphericalZYX 作为复合根关节时，广义基座速度表达在哪个 frame？",
+        "source_locator": "Pinocchio #2177 评论 2007410825 链接 PR #2143/固定 viewer；评论 2008762724 原作者给出测试结论",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2177#issuecomment-2008762724",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者提供、由原作者扩展用于该 root-joint 组合的官方可视化脚本",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/blob/080720adb012468ad4ff2956383199a6877608c7/examples/floating-base-velocity-viewer.py"
+          },
+          {
+            "locator": "原作者测试后明确报告 WORLD-frame 结论",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2177#issuecomment-2008762724"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2177",
+    "query": "Pinocchio floating base velocity JointModelTranslation JointModelSphericalZYX WORLD frame",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "custom URDF with Translation+SphericalZYX composite root joint"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "项目贡献者提供刚合入的 floating-base velocity viewer 作为验证基线。"
+      },
+      {
+        "text": "原作者扩展并测试后确认 Translation+SphericalZYX 的基座速度表达在 WORLD frame。"
+      }
+    ],
+    "wbc_relevance_reason": "状态估计器、WBC 和仿真接口需要把基座 twist 映射到相同 frame；FreeFlyer 与 Translation+SphericalZYX 根关节的速度约定不同会导致 Jacobian/观测解释错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2177",
+  "summary": "Pinocchio #2177 延续 FreeFlyer 速度通常在 LOCAL frame 的讨论，但用户把根关节改为 JointModelTranslation+JointModelSphericalZYX 后，LOCAL_WORLD_ALIGNED 末端 Jacobian 的基座线速度左上 3×3 始终为单位阵。项目贡献者提供刚合入 PR #2143 的 floating-base velocity viewer 脚本作为可视化基线，原作者扩展并测试后明确确认：该复合根关节的 floating-base velocity 表达在 WORLD frame。线程没有给数值矩阵或复现仓库，因此结论限定到这两个 joint model 的组合。",
+  "title": "Translation+SphericalZYX 复合根关节的广义基座速度按 WORLD frame 表达",
+  "version": null
+}

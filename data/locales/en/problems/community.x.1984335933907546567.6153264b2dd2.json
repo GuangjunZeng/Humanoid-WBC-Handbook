@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.1984335933907546567.6153264b2dd2",
+  "schema_version": 1,
+  "source_fingerprint": "401b8600d9ba89a87a92d79980882553c9a9af6e7049666b6093b9c06fb6e5a2",
+  "translations": {
+    "answer": "It extends MoCap/video data and incorporates a physical regularizing loss during retargeting, aiming to preserve scale and dynamic feasibility. The thread states that the scale reaches 3× AMASS, and there is a ~20% improvement in unseen motion tracking, but this should be verified against the paper's metrics.",
+    "applicability": "Applicable to human motion tracking data construction.",
+    "collection.stop_reason": "No growth after visible scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Incorporate physical regularizing loss.",
+    "details.diagnostics.0": "Compare unseen motion tracking and path following.",
+    "details.effective_fixes.0": "Candidate method is to apply physical regularization during retargeting.",
+    "details.environments.0": "MoCap + human video; physical regularization during retargeting; evaluation of unseen motion imitation and path following.",
+    "details.limits.0": "Numerical values need to be confirmed from the paper table; no mention of hardware WBC results.",
+    "details.outcomes.0": "The thread states the scale is 3× AMASS, and there is a ~20% improvement in unseen video tracking.",
+    "details.problem_statements.0": "Current datasets trade scale for physical quality.",
+    "details.safety_notes.0": "Physical feasibility of joints, contact, and torque must be verified before real-world deployment of retargeted data.",
+    "details.suspected_causes.0": "Pure kinematic retargeting does not enforce dynamic feasibility.",
+    "details.symptoms.0": "Large-scale data may be physically infeasible, while small-scale high-quality data may generalize poorly.",
+    "media_summaries.0": "Screenshot video thumbnail shows a large number of human action grids, supporting the 'action set' context; cannot independently prove 3× scale or 20% improvement.",
+    "source.locator": "Root post and author 1/4–4/4 thread",
+    "source.title": "PHUMA: Using physical regularization to address the feasibility of large-scale action data",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Joint Torque (关节力矩)",
+    "terms.2": "Motion Retargeting (动作重定向)",
+    "terms.3": "Motion Tracking (动作跟踪)",
+    "title": "How does PHUMA handle when human action data is physically infeasible?"
+  }
+}

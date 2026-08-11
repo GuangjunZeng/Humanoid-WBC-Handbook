@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.3145.ce7442003c46",
+  "schema_version": 1,
+  "source_fingerprint": "d7d2b90e2b1cdc1a4cef872b4db6bb059e3a35e07114c9b36d5591cc869bd889",
+  "translations": {
+    "answer": "Maintainers did not use atomic flag migration for publishing, but required the use of realtime_tools already existing priority-inheritance recursive mutex. PR #3197 migrated controllers_lock_ and all call sites to realtime_tools::prio_inherit_recursive_mutex, with Windows retaining std::recursive_mutex. The PR has been reviewed and tested. It addresses the source code-level priority inversion risk and should not be expressed as having quantified jitter improvement.",
+    "applicability": "The ros2_control controller_manager uses the POSIX controllers_lock_ on platforms; Windows uses a standard mutex fallback.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise independent replication.",
+    "details.attempts.0": "The initial PoC used atomic flag migration for RT→non-RT triggering; maintainers opted for a smaller scope PI recursive mutex replacement.",
+    "details.diagnostics.0": "Tracing from SCHED_FIFO update() to publish_activity(), and checking if controllers_lock_ is held by the executor/service path.",
+    "details.effective_fixes.0": "PR #3197 migrated controllers_lock_ to realtime_tools::prio_inherit_recursive_mutex and retained the Windows fallback.",
+    "details.environments.0": "The issue was discovered in ros2_control master commit a03be840; the PR was validated in ROS 2 Rolling build; POSIX uses realtime_tools PI mutex, Windows falls back to std::recursive_mutex.",
+    "details.limits.0": "The merged code proof of concept was accepted, but it does not prove that the original path had measurable jitter or provide performance improvement numbers.",
+    "details.limits.1": "The Windows fallback path does not use a PI mutex, and the applicability is different.",
+    "details.outcomes.0": "The PR received two maintainers' approvals, and the changes were tested and merged.",
+    "details.problem_statements.0": "How should the priority inversion risk be mitigated when the RT update path and non-RT services share a recursive mutex?",
+    "details.safety_notes.0": "The mutex replacement should still be measured in fallback, service concurrency, and controller switch pressure scenarios for worst-case delay.",
+    "details.suspected_causes.0": "The standard recursive mutex does not provide the required priority inheritance, and low-priority threads holding the lock may block RT threads.",
+    "details.symptoms.0": "This is a potential priority inversion/jitter risk identified during code audit, with no thread showing robot-specific real-time performance or benchmarking.",
+    "source.locator": "ros2_control #3145 comment 4160585534, 4191555039, 4200304531; PR #3197; merge commit 308e4aab78958b730d847c0054c69f2cefabd8db",
+    "source.title": "Real-time path sharing recursive mutex in ros2_control is replaced with priority-inheritance mutex",
+    "terms.0": "Priority inversion (优先级反转)",
+    "terms.1": "Priority-inheritance mutex (优先级继承互斥锁)",
+    "terms.2": "Real-time thread (实时线程)",
+    "terms.3": "Recursive mutex (递归互斥锁)",
+    "title": "What is the final mitigation for the RT path sharing recursive mutex in publish_activity?"
+  }
+}

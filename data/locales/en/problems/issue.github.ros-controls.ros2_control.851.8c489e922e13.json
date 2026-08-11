@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.851.8c489e922e13",
+  "schema_version": 1,
+  "source_fingerprint": "4e7ab8d2df584b4468a34f06442bc2eb0a69eaf7fbe0eed3fcdaa1326a38f765",
+  "translations": {
+    "answer": "The mutex was fixed to list the storage controllers, preventing changes during non-real-time callback reads; loading itself is not part of the real-time path. Therefore, the comment 'lock controllers' cannot directly infer that the update is locked. However, the original thread lacks a delay benchmark, and the target version still applies path auditing and cycle measurement. The credibility is limited as there is no formal cross-verification or independent replication available.",
+    "applicability": "Applies to ros2_control PR #820 post-merge, and controller_manager/diagnostic_updater lock semantics at the time; other versions require re-tracing the call path.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "The project member cited the controller_manager loading path, indicating that the lock prevents loading of new controllers.",
+    "details.attempts.1": "The author replied after seeing the call path explanation, stating the issue was clear.",
+    "details.diagnostics.0": "All read/write points on controllers_lock_ were checked to confirm it protects the list of controllers, not individual controller objects or the update() execution.",
+    "details.diagnostics.1": "Distinguished between non-real-time 'load controller' operations and real-time controller update paths.",
+    "details.effective_fixes.0": "No need to delete diagnostic functions due to the code; the issue should be resolved by verifying the lock contention based on the protected object and call path.",
+    "details.environments.0": "Original post corresponds to ros2_control PR #820 and the controller_manager master branch at the time; ROS 2 distribution not specified.",
+    "details.limits.0": "The thread only explains lock semantics and call path, but does not provide delay measurement or worst-case blocking time under diagnostic callbacks.",
+    "details.limits.1": "The conclusion corresponds to the 2022 implementation; subsequent versions must re-examine the lock usage location.",
+    "details.outcomes.0": "The original author accepted the explanation; the issue was closed as completed, and the project member later clarified that the lock is on the controller list, not the controller itself.",
+    "details.problem_statements.0": "Will the diagnostic_updater lock the controller execution and affect real-time performance when holding controllers_lock_?",
+    "details.safety_notes.0": "Call path analysis can only exclude misinterpretation in true machine hard real-time WBC; control cycle jitter must still be measured under worst-case diagnostic loads.",
+    "details.suspected_causes.0": "The comment 'lock controllers' is too simplistic, potentially misinterpreting 'locking the list' as 'locking the execution'.",
+    "details.symptoms.0": "The code comment says 'lock controllers', and controllers_lock_ has a std::lock_guard<std::recursive_mutex> created, suggesting a diagnostic callback lock on controllers.",
+    "source.locator": "ros2_control #851 text mutex code; issuecomment-1306113645 call path explanation; issuecomment-1306115705 author confirmation; issuecomment-1306670347 clarification that it is the list, not the controller itself.",
+    "source.title": "ros2_control diagnostic mutex protects the controller list, not the controller execution.",
+    "terms.0": "Mutex (互斥锁)",
+    "terms.1": "Recursive mutex (递归互斥锁)",
+    "terms.2": "Controller list (控制器列表)",
+    "terms.3": "Non-real-time callback (非实时回调)",
+    "terms.4": "Lock contention (锁竞争)",
+    "title": "Will the diagnostic_updater lock the controller execution and disrupt real-time performance when holding controllers_lock_?"
+  }
+}

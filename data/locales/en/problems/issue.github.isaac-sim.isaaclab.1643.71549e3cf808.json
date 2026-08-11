@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1643.71549e3cf808",
+  "schema_version": 1,
+  "source_fingerprint": "e3e99977ea80332b069c5f0c85743b772ba1eb70971ea6be3e63a005cd73d69c",
+  "translations": {
+    "answer": "The version should be implemented as: torque = (q_des - q) * stiffness + (qdot_des - qdot) * damping + feed-forward torque. The Isaac Lab contributor confirmed the code implementation is correct and the documentation should be updated. This conclusion corresponds to the specified commit and 4.2.0 environment; other versions should recheck the current source code.",
+    "applicability": "Isaac Lab commit 8f3b9ca / Isaac Sim 4.2.0; new versions should verify the current implementation.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner provided the formula, code, and parameter definitions; the contributor verified and confirmed.",
+    "details.diagnostics.0": "Directly compared with the API documentation and IdealPDActuator.compute's error_pos/error_vel.",
+    "details.effective_fixes.0": "Explained the torque as (q_des - q) and (qdot_des - qdot) in the code; the contributor indicated the documentation needs updating.",
+    "details.environments.0": "Isaac Lab commit 8f3b9ca; Isaac Sim 4.2.0; Ubuntu 20.04; CUDA 12.2.",
+    "details.limits.0": "No thread provides specific documentation to fix the PR; cannot infer all historical documentation was updated solely by closure status.",
+    "details.outcomes.0": "The contributor confirmed the code is correct; the Issue was subsequently closed.",
+    "details.problem_statements.0": "The documentation formula for IdealPDActuator is opposite in direction to the actual code; which one should be considered?",
+    "details.suspected_causes.0": "The API documentation formula has the symbol written in the opposite direction.",
+    "details.symptoms.0": "The documentation writes (q - q_des) and (qdot - qdot_des), while the code writes the opposite direction.",
+    "source.locator": "Issue #1643 main code reference; contributor replied to issuecomment-2586156271",
+    "source.title": "Isaac Lab IdealPDActuator Documentation and Code Significance Direction Opposite",
+    "terms.0": "Proportional-Derivative Controller (PD controller) (比例—微分控制器)",
+    "terms.1": "Position Error (位置误差)",
+    "terms.2": "Feed-Forward Torque (前馈力矩)",
+    "title": "Should the PD Torque Error Direction in Isaac Lab IdealPDActuator Follow the Documentation or the Code?"
+  }
+}

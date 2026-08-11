@@ -1,0 +1,125 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "andreadelprete"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1104",
+  "captured_at": "2026-08-11T22:44:00+08:00",
+  "content_sha256": "0c0d0c1864aa52889323986781dccb9b64dde68689d883b04553e8c15dbecd17",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取原帖与全部 13 条评论，按时间线采用最终维护者更正；未把 private branch 或未实现 adaptive line search 写成现成功能。",
+    "components": [
+      "Crocoddyl",
+      "DDP",
+      "FDDP",
+      "MPC",
+      "line search",
+      "constraint feasibility"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "线程讨论跳过 dV、用户可配 alpha、自适应 line search 与并行 tryStep；后续维护者基于约束 solver 进展修正第一点。"
+      ],
+      "diagnostics": [
+        "区分无约束 DDP 的下降判据与 constrained solver 中 cost improvement/constraint satisfaction 的联合 step acceptance。"
+      ],
+      "effective_fixes": [
+        "不要在 constrained solver 中仅凭 `dVexp<0` 跳过 `dV`；具体 step acceptance 应以目标版本 solver 实现为准。"
+      ],
+      "environments": [
+        "Crocoddyl 2022-2023 master/devel 讨论；没有固定 release、机器人或 timing benchmark。"
+      ],
+      "limits": [
+        "维护者提到 private branch 的改进尚未在该线程公开，不能据此声称某版本已有 adaptive line search。",
+        "没有 forward-pass before/after timing，不能量化建议的性能影响。"
+      ],
+      "outcomes": [
+        "维护者明确撤销早期 point 1；自适应 alpha 点仍有效但由维护者在更大 solver 改造中处理，线程未提供公开补丁。"
+      ],
+      "problem_statements": [
+        "当 `dVexp<0` 时，为节省 forward-pass 时间能否直接跳过 `dV/tryStep`？"
+      ],
+      "safety_notes": [
+        "接触、摩擦或执行器约束存在时，任何 line-search shortcut 都必须同时回归 cost、constraint violation 与 deadline miss。"
+      ],
+      "suspected_causes": [
+        "早期优化建议只看 optimality，没有覆盖带约束求解需要同时改善 feasibility 的路径。"
+      ],
+      "symptoms": [
+        "forward pass 在部分 MPC 测试中占到约 75%，用户希望减少 line-search rollout。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程最终答案是否定的。维护者在关闭前明确修正早期说法：带 constraints 的 solver 必须在代价改善（optimality）与约束满足（feasibility）之间权衡，单凭 `dVexp<0` 跳过实际 rollout/`dV` 会干扰 step acceptance。用户指定 alpha 列表本身可以配置；根据剩余 MPC 时间自适应测试 alpha 仍是方向，但线程没有提供可复用的公开实现或 benchmark。",
+        "applicability": "适用于包含 feasibility/constraints 权衡的 DDP/FDDP 类 solver；无约束旧 DDP 的具体实现仍需按版本核对。",
+        "bilingual_terms": [
+          "线搜索（line search）",
+          "期望改进（expected improvement, dVexp）",
+          "最优性（optimality）",
+          "可行性（feasibility）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.crocoddyl_dvexp_constraints_1104",
+        "problem_title_zh": "约束 DDP 不能只按 dVexp 跳过 rollout",
+        "question_zh": "为了缩短 Crocoddyl MPC forward pass，`dVexp<0` 时是否可以不计算 `dV/tryStep`？",
+        "source_locator": "Crocoddyl #1104 最终维护者更正 1772562615",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/1104#issuecomment-1772562615",
+        "verification_refs": [
+          {
+            "locator": "维护者明确撤销早期 shortcut，并解释 constrained optimality/feasibility 权衡",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/1104#issuecomment-1772562615"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.1104",
+    "query": "Crocoddyl DDP FDDP dVexp negative skip dV constraints feasibility line search MPC",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "generic optimal-control MPC systems"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "最终维护者回复撤销早期建议：constraints 下不能因 dVexp<0 跳过 dV，否则会干扰 optimality/feasibility 权衡。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/MPC 常在严格周期内运行 DDP/FDDP；错误删除 line-search 计算可能以省时为名破坏约束满足。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.1104",
+  "summary": "Crocoddyl #1104 讨论 MPC line search 的 forward-pass 成本。早期回复一度同意在 DDP 的 `dVexp<0` 时跳过 `tryStep/dV`，但维护者在关闭前明确纠正：在带 constraints 的 solver 中，step acceptance 必须平衡 optimality 与 feasibility，直接不计算 dV 会破坏这种权衡，因此最初建议不再适用。用户指定 alpha 列表是可配置的；按剩余 MPC 时间自适应测试更多 alpha 仍是有效方向，但线程没有公开实现。",
+  "title": "Crocoddyl 约束求解中不能因 dVexp 为负跳过 dV",
+  "version": null
+}

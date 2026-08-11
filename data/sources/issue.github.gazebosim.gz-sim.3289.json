@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "michael-p"
+  ],
+  "canonical_url": "https://github.com/gazebosim/gz-sim/issues/3289",
+  "captured_at": "2026-08-11T23:43:00+08:00",
+  "content_sha256": "a064a92fa6a5efdffa19023865aaa78e7d06468b009c4455c73ea486cf759f1b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue、全部 7 条评论及已合并 DART PR #2493 的补丁、审阅和测试说明；结论不依赖图片。",
+    "components": [
+      "Gazebo Ionic",
+      "DART",
+      "slip compliance",
+      "contact constraint"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "显式在 SDF 写 `slip1=0`、`slip2=0` 可让单模型安静，但不能解决大量 Fuel 模型；`-v 0` 无效。"
+      ],
+      "diagnostics": [
+        "先检查 DART 版本；确认日志参数值恰为 sentinel `-1`，而不是 NaN/Inf 或显式非法配置。"
+      ],
+      "effective_fixes": [
+        "升级到包含 DART PR #2493 的 6.16.6；补丁对负值 sentinel 静默返回默认值，仅对 NaN/Inf 保留警告。"
+      ],
+      "environments": [
+        "macOS Homebrew；Gazebo Ionic 9.5.0；DART 6.16.5 触发，作者升级到 DART 6.16.6 后复测。"
+      ],
+      "limits": [
+        "该修复针对恰为负值 sentinel 的回归；若输入是 NaN/Inf 或自定义非预期值，仍应检查 SDF 和数值来源。"
+      ],
+      "outcomes": [
+        "PR 合并且相关修改行有测试覆盖；原作者确认升级 DART 6.16.6 后告警消失。"
+      ],
+      "problem_statements": [
+        "为什么 Gazebo Ionic 升级后持续打印 `Invalid primary/secondary slip compliance (-1)`，是否要逐个修改 SDF？"
+      ],
+      "safety_notes": [
+        "不要通过全局丢弃 Gazebo stderr 来掩盖日志；先区分已知 sentinel 回归和真实接触参数错误。"
+      ],
+      "suspected_causes": [
+        "已合并 PR 确认：DART 6.16.5 的新校验把表示“use global default”的负值 sentinel 错误地当作非法 slip compliance。"
+      ],
+      "symptoms": [
+        "控制台约每秒 100 行相同警告；Fuel 中大量模型受影响；`-v 0` 无效。",
+        "维护者报告 Homebrew CI 日志从小于 4 MB 增长到 1.5 GB 以上。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "如果环境与原帖一致，先不要批量修改模型。DART 的 `-1.0` 是“使用全局默认值”的哨兵值（sentinel value）；6.16.5 的校验回归把它错误地报警。DART PR #2493 已合并修复，并把发布记录指向 6.16.6；原作者通过 Homebrew 升级到 DART 6.16.6 后确认告警消失。只有参数不是这个 sentinel、而是 NaN/Inf 或自定义异常值时，才应继续检查模型数据。",
+        "applicability": "适用于 Gazebo Ionic 9.5.0 / DART 6.16.5 的 `-1` sentinel 告警回归；其他错误值需另查。",
+        "bilingual_terms": [
+          "滑移柔度（slip compliance）",
+          "哨兵值（sentinel value）",
+          "接触约束（contact constraint）",
+          "回归缺陷（regression）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.simulation_toolchain.gazebo_dart_slip_sentinel_3289",
+        "problem_title_zh": "修复 DART slip-compliance sentinel 告警回归",
+        "question_zh": "Gazebo Ionic 9.5.0 每秒刷出大量 slip compliance `-1` 警告时，应该逐个改 Fuel 模型吗？",
+        "source_locator": "Gazebo #3289 作者复测 3818259239；合并 DART PR #2493",
+        "source_url": "https://github.com/gazebosim/gz-sim/issues/3289#issuecomment-3818259239",
+        "verification_refs": [
+          {
+            "locator": "已合并 PR c827858：区分负值 sentinel 与 NaN/Inf，并增加单元测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/dartsim/dart/pull/2493"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "gazebosim.gz-sim.3289",
+    "query": "Gazebo Ionic invalid slip compliance -1 DART 6.16.5 warning spam",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Gazebo Fuel models",
+      "generic contact simulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者定位到 DART 6.16.5 对 `-1.0` sentinel 的校验回归；作者确认升级 6.16.6 后修复。"
+      }
+    ],
+    "wbc_relevance_reason": "接触参数告警会淹没仿真日志、拖大 CI 产物并遮蔽真正的接触故障；WBC 调参时尤其容易被误导为 Fuel 模型需要逐个修改。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.gazebosim.gz-sim.3289",
+  "summary": "Gazebo #3289 报告 Homebrew 升到 Gazebo Ionic 9.5.0 后，primary/secondary slip compliance 为 -1 的警告约每秒 100 行，`-v 0` 也不能抑制。维护者追到 DART 6.16.5 的校验回归：`-1.0` 本来是“使用全局默认值”的 sentinel，却被当成非法负值。DART PR #2493 已合并到 release-6.16，并增加测试；原作者确认 `brew upgrade dartsim` 到 6.16.6 后问题消失。",
+  "title": "Gazebo Ionic slip compliance -1 告警风暴由 DART 6.16.5 回归引起",
+  "version": null
+}

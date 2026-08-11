@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1913666425719075983.4cd108f474ee",
+  "schema_version": 1,
+  "source_fingerprint": "cf0fdd496422c1c534775a717edfd68da4436210bf87bd1049b5bbdbf4609e10",
+  "translations": {
+    "answer": "Use train.py to train, then run play.py to export a JIT model for deployment. Transfer the policy paths from logs/XBot_ppo/exported/policies to sim2sim.py. When adapting to a new robot, verify the MJCF and URDF joint mapping, and do not only replace file names.",
+    "applicability": "Applicable to the PPO/JIT export chain in Humanoid-Gym; other export formats require further investigation.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. There is formal documentation or an exact citation from an independent replication.",
+    "details.attempts.0": "Create an environment with a fixed version and run the Isaac Gym example.",
+    "details.attempts.1": "Train, then play to export the policy, and finally transfer the model.pt to sim2sim.py.",
+    "details.diagnostics.0": "Verify the version matrix, training commands, export order, and model path against the official README.",
+    "details.effective_fixes.0": "Use the dependency combination and execution order corresponding to the official README.",
+    "details.environments.0": "Python 3.8; PyTorch 1.13.1; CUDA 11.7; NumPy 1.23; Isaac Gym Preview 4; Humanoid-Gym main branch documentation.",
+    "details.limits.0": "The technology stack is outdated; modifications to other robots are still required for asset mapping, joint mapping, default posture, and PD gains.",
+    "details.outcomes.0": "The command line matches the roboterax/humanoid-gym official README exactly.",
+    "details.problem_statements.0": "Which dependency combination should Humanoid-Gym use to complete the minimal reproduction?",
+    "details.problem_statements.1": "Why can't sim2sim.py find or load the trained policy correctly?",
+    "details.safety_notes.0": "Sim2sim passing does not mean it can be directly deployed on real hardware; verify action scale, joint order, limits, and emergency stop.",
+    "details.suspected_causes.0": "Version mismatch between Python/PyTorch/CUDA/NumPy.",
+    "details.suspected_causes.1": "The training checkpoint was not exported by play.py or the model path is incorrect.",
+    "details.symptoms.0": "Dependency drift causes installation or runtime failures.",
+    "details.symptoms.1": "Missing JIT policy in the simulation when play.py is not run first.",
+    "media_summaries.0": "The page primarily expresses the installation and export chain using command blocks; no dependency images can establish the conclusion.",
+    "source.locator": "Steps 4–7 of the main text; official README Usage Guide / Sim-to-sim",
+    "source.title": "Fixed Dependencies, Training Export, and Sim2Sim Reproduction Chain in Humanoid-Gym",
+    "terms.0": "Just-In-Time (JIT) model compilation (即时编译模型)",
+    "terms.1": "Simulation-to-Simulation (Sim2Sim) (仿真到仿真)",
+    "terms.2": "Joint mapping (关节映射)",
+    "title": "What is the correct export order for Sim2Sim after training in Humanoid-Gym?"
+  }
+}

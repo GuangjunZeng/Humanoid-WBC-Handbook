@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "baharehhj"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/609",
+  "captured_at": "2026-08-12T00:05:00+08:00",
+  "content_sha256": "4c7e1927cb9ee8260a0b3dead2a4885022ffdfe26e390445e8a9cd36557860ad",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 8 条评论；保留紧容差、polishing 失败和 clamp 风险，不编写不存在的严格可行修复。",
+    "components": [
+      "OSQP",
+      "non-negativity",
+      "relative residual",
+      "polishing"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "收紧 `eps_abs/eps_rel`、启用 polishing、与 quadprog 对照、询问将负值截为 0。"
+      ],
+      "diagnostics": [
+        "复算 infinity-norm residual 和 `||Ax||/||z||`，而不是只数负值个数；clamp 后重新检查全部 `l≤Ax≤u`。"
+      ],
+      "effective_fixes": [
+        "没有保证严格非负的 solver-side 修复；可对独立 `x≥0` 分量 clamp，但必须重新验证其他一般线性约束和目标影响。"
+      ],
+      "environments": [
+        "OSQP 0.6.3、OSQP-Eigen C++；721 variables、2370 constraints、470615 nonzeros。"
+      ],
+      "limits": [
+        "不能把负值数量当成 solver 指标，也不能假设 clamp 后其他 constraints 仍满足。"
+      ],
+      "outcomes": [
+        "作者在 `1e-7` 下减小了负值幅度但仍存在；polishing 未成功；线程以解释和 clamp 边界结束。"
+      ],
+      "problem_statements": [
+        "OSQP 在 `x≥0` 约束下返回小负值时，为什么 tightening 后仍可能有负数，能否直接 clamp？"
+      ],
+      "safety_notes": [
+        "法向接触力等硬件关键量应在输出层限幅并复查耦合约束；不通过时触发降级而非继续执行。"
+      ],
+      "suspected_causes": [
+        "项目成员按论文 convergence equation 解释：相对项随大尺度 `Ax` 放大允许 residual。"
+      ],
+      "symptoms": [
+        "`eps_abs=eps_rel=1e-5` 时出现到 `-0.0131` 的分量；`1e-7` 时仍约 100 个负数，最小约 `-1e-4`；polishing unsuccessful。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "只能作为有条件的后处理。项目成员说明 OSQP 按 `eps_abs + eps_rel·max(||Ax||,||z||)` 判断 residual，问题尺度达到数千时，小负值仍可能满足相对准则；负元素个数不是终止指标。对独立 `x≥0` 分量向上截到 0 很直观，但如果同一变量还参与一般 `Ax≤b`，clamp 可能制造新的违反。原作者收紧到 `1e-7`、polishing 失败后仍有约 `-1e-4`，所以必须在后处理后复算全部约束。",
+        "applicability": "适用于 OSQP 0.6.3 大尺度一般线性约束；严格安全阈值需按 WBC 单位和耦合关系制定。",
+        "bilingual_terms": [
+          "非负约束（non-negativity constraint）",
+          "相对残差（relative residual）",
+          "无穷范数（infinity norm）",
+          "后处理截断（post-solve clamping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_nonnegative_relative_residual_609",
+        "problem_title_zh": "解释并复核 OSQP 非负约束下的负残差",
+        "question_zh": "OSQP 对显式 `x≥0` 仍返回小负值时，直接把所有负数截成 0 是否安全？",
+        "source_locator": "OSQP #609 convergence 解释 1979012199；clamp 边界 1980361325；作者紧容差结果 1980277232",
+        "source_url": "https://github.com/osqp/osqp/issues/609#issuecomment-1980361325",
+        "verification_refs": [
+          {
+            "locator": "项目成员直接引用 OSQP paper Section 3.4 / convergence equation",
+            "relation": "paper",
+            "source_url": "https://web.stanford.edu/~boyd/papers/pdf/osqp.pdf"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.609",
+    "query": "OSQP nonnegative constraints negative solution relative residual Ax norm polish rounding",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "contact-force and constrained WBC QPs"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目成员：OSQP 看 residual 相对大小而非负值数量；clamp `x≥0` 后可能破坏其他一般线性约束。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的接触力、松弛量或法向力常要求非负；仅数负元素或盲目 clamp 不能证明整个 QP 仍可行。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.609",
+  "summary": "OSQP #609 的 721-variable/2370-constraint QP 显式包含非负约束，却返回到 `-0.0131` 的分量。项目成员解释 OSQP 用相对 convergence check：residual 与 `||Ax||∞`/`||z||∞` 的尺度一起比较；原解中变量达数千，`eps_rel=1e-5` 时约 `1e-3` residual 仍可能满足准则。收紧到 `1e-7` 后作者仍看到约 100 个负数、最小约 `-1e-4`，polishing 失败。项目成员允许对显式 `x≥0` 分量向上截到 0，但警告这可能破坏其他 `Ax≤b` 约束，必须重新验证全部约束。",
+  "title": "OSQP 非负约束下的小负值由相对残差尺度决定",
+  "version": null
+}

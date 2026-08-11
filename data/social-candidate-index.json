@@ -98,6 +98,66 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.c0e4bb2b00b6842e411c",
+      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "retargeting",
+        "deployment"
+      ],
+      "related_problem_ids": [
+        "problem.state_estimation_calibration.omnih2o_sparse_keypoints_no_online_retarget_13"
+      ],
+      "scope_ids": [
+        "retargeting_dataset_quality",
+        "sim_to_sim_and_sim_to_real"
+      ],
+      "title": "Question about real-time teleoperation deployment",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.826eafec9a6daab183d0",
+      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.training_reward_curriculum.h2h_penalty_curriculum_checkpoint_17"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum"
+      ],
+      "title": "Question about the Gait",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.b75dcbf7abf5242fe6a6",
+      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/18",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "retargeting"
+      ],
+      "related_problem_ids": [
+        "problem.retargeting_dataset_quality.phc_smpl_pose_modifier_tpose_96",
+        "problem.retargeting_dataset_quality.phc_body_without_joint_grot_96"
+      ],
+      "scope_ids": [
+        "retargeting_dataset_quality"
+      ],
+      "title": "Error Caused By Mismatch Joints and Links",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.0148184be65ad41fffcd",
       "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/21",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -174,6 +234,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.27c3a0c2a8e4e397726d",
+      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "retargeting"
+      ],
+      "related_problem_ids": [
+        "problem.retargeting_dataset_quality.h2o_teacher_motion_filter_6"
+      ],
+      "scope_ids": [
+        "retargeting_dataset_quality"
+      ],
+      "title": "Question Regarding Data Cleaning and Privileged Policy Training in H2O",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.f1538b1df4ce8b372f52",
       "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/71",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -209,6 +288,158 @@
         "state_estimation_calibration"
       ],
       "title": "how to get root pos in real world",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.5700984a43c59806d838",
+      "canonical_url": "https://github.com/coin-or/qpOASES/issues/37",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.qpoases_matrix_layout_37"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "different results in C++ and Matlab/Simulink version",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.2280f84b628cdfcff0b2",
+      "canonical_url": "https://github.com/coin-or/qpOASES/issues/47",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.qpoases_e_static_dimensions_47"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Is qpOASES_e limited to solving small-scale QP problems?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.1bce66e3e019d81c7039",
+      "canonical_url": "https://github.com/coin-or/qpOASES/issues/48",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.qpoases_zero_stepsize_diagnostic_48"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Stuck with stepsize is 0 warning",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.b54ce8ad681b34f8fa8a",
+      "canonical_url": "https://github.com/coin-or/qpOASES/issues/50",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.acado_qpoases_hessian_export_50"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Error code 31 in version 1.3 used in ACADO (error code 35 in latest version)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.9cc3dd586b9b4f456884",
+      "canonical_url": "https://github.com/coin-or/qpOASES/issues/83",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.qpoases_hotstart_nwsr_reset_83"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Hotstart bug when solving QPs in a looped function",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.50c4784c6da84a6c8311",
+      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/2223",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.sensing_and_perception.gazebo_dynamic_contact_spawn_order_2223"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "System plugins (contact sensor) still not working when spawned",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.98ae37242cf32dc51ca2",
+      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/3289",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.gazebo_dart_slip_sentinel_3289"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Warnings about invalid slip compliance",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ef3f92f3a50c84194ac4",
+      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/880",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.gz_sim_focal_dart_friction_880"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Fix friction for DART on Ubuntu Focal",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -272,6 +503,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.82303a8a1278eedaeb65",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2155",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "terrain"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.mjx_hfield_ray_backend_2155"
+      ],
+      "scope_ids": [
+        "locomotion_contact_terrain"
+      ],
+      "title": "MJX ray has no implementation for hfield geoms",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.3d4f9dec6e25a9c2333b",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2472",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -310,6 +560,63 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.18acb9f1e5c3addfb2c7",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2765",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "terrain"
+      ],
+      "related_problem_ids": [
+        "problem.locomotion_contact_terrain.mujoco_nonsquare_hfield_raycast_2765"
+      ],
+      "scope_ids": [
+        "locomotion_contact_terrain"
+      ],
+      "title": "rangefinders -> hfield wrong measuremts when hfield resolution is not square",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.0643f323ab0b7754363a",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2774",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.locomotion_contact_terrain.mjx_plane_capsule_tangent_fallback_2774"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "MJX plane-capsule collision numerical safety",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.959392a47387dd551cf8",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2777",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.mjx_contact_pair_mesh_hull_2777"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "MJX put_model error: The function \"convex\" in mesh.py error",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.c2c6493939793d4bce16",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2932",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -329,6 +636,63 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.5fee47a32b135523f663",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2934",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.mujoco_grasp_servo_slip_2934"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Mysterious behavior when grasping while controlling gripper poses using caterisan control",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4cad388e863bd9fd5519",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3258",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "terrain"
+      ],
+      "related_problem_ids": [
+        "problem.reward_curriculum_randomization.mjx_batched_hfield_dataid_3258"
+      ],
+      "scope_ids": [
+        "locomotion_contact_terrain"
+      ],
+      "title": "[MJX-Warp] Batched geom_dataid for per-world hfield routing",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.872162751dba09ba0781",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3286",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.mujoco_sysid_modifier_none_3286"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Mujoco sysid not working with Lugre friction parameters of dcmotor",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.93362dfb475eb493f801",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3328",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -344,6 +708,25 @@
         "contact_force_friction"
       ],
       "title": "Regularized friction never sticks: a pinched capsule at 20–95× Coulomb static margin creeps through the grip at 50–2300 µm/s",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.8e1798a6271df8d8f022",
+      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3330",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.locomotion_contact_terrain.mujoco_rigid_flex_concave_limits_3330"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "‘True’ collision detection",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -524,6 +907,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.dd2edae276450f74da54",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1604",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.training_reward_curriculum.isaaclab_gain_randomization_default_reset_1604"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum"
+      ],
+      "title": "[Question] Proper way to implement domain randomization on actuator gains?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.a167afcd9fd417cd9418",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1618",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -587,6 +989,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.9b16802cd173676f09da",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1759",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.isaaclab_jdot_api_1759"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "[Question] Getting time derivative of Jacobian",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.c059d808bb2405d5d3ad",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1784",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -629,6 +1050,44 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.bb7d8a69ae2ef7b530c9",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1995",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "fall"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.isaaclab_static_ground_filter_1995"
+      ],
+      "scope_ids": [
+        "safety_fall_recovery"
+      ],
+      "title": "[Bug Report] [omni.physx.tensors.plugin] GPU contact filter for collider '/World/ground' is not supported",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.0076713d0c739ab47c90",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1999",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.training_reward_curriculum.isaaclab_rslrl_action_clipping_nan_1999"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum"
+      ],
+      "title": "[Bug Report] Default Rough Policy for RSL-RL on Go2 Locomotion Fails as a Result of NaN Values",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.619266fc757a446704e3",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2054",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -648,6 +1107,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.e45fe656bbeb6a63bcf9",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2074",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.isaaclab_contact_sensor_normal_vs_friction_2074"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "[Question] Contact Sensor force not showing x,y directional force",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.6af13f18810cf80b241f",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2103",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -663,6 +1141,45 @@
         "hardware_actuator_thermal_power"
       ],
       "title": "[Question] efffort clipping in DCMotor",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.6da5179b3d8d6a3a5a42",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2127",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.hardware_actuator_thermal_power.isaaclab_body_incoming_joint_wrench_2127"
+      ],
+      "scope_ids": [
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Question] What exactly is going on with force/torque sensors",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.d6de2eff44844498dc61",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2252",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base",
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.dynamics_mass_inertia_actuation.isaaclab_generalized_mass_matrix_2252"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "[Question] Missing dimensions for total mass matrices, gravity compensation term and coriolis term",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -707,6 +1224,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.d448ad3c81c14165bf8b",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2369",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.dynamics_mass_inertia_actuation.isaaclab_joint_drive_actuator_gain_path_2369"
+      ],
+      "scope_ids": [
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Question] Clarification on joint_drive vs. actuator gains",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.3b11750a9334a6d67360",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2391",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -741,6 +1277,125 @@
         "hardware_actuator_thermal_power"
       ],
       "title": "[Bug Report] Unable to access get_measured_joint_efforts (AttributeError)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ee2e37495f9672014f5f",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2635",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward",
+        "fall"
+      ],
+      "related_problem_ids": [
+        "problem.reproducibility_and_debugging.sb3_vecnormalize_checkpoint_2635"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum",
+        "safety_fall_recovery"
+      ],
+      "title": "[Bug Report] SB3 train.py does not save VecNormalize stats; play.py starts with new stats",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.db50a44c62feb50c3a58",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2636",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "deployment"
+      ],
+      "related_problem_ids": [
+        "problem.sim_to_sim_and_sim_to_real.isaaclab_onnx_actionterm_postprocess_2636"
+      ],
+      "scope_ids": [
+        "sim_to_sim_and_sim_to_real"
+      ],
+      "title": "[Question] [Sim2Real] Does ONNX policy output already include action_scale from training?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.df0250917bb1a69b53af",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2654",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "fall"
+      ],
+      "related_problem_ids": [
+        "problem.safety_fall_recovery.isaaclab_g1_requires_balance_policy_2654"
+      ],
+      "scope_ids": [
+        "safety_fall_recovery"
+      ],
+      "title": "Unitree G1 not stable",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.832aeb46d505725618fb",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/267",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base",
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.isaaclab_jacobian_link_order_267"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "[Bug Report] Jacobian calculation for quadruped robot",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ad82aa04f63a7c25b980",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2807",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.hardware_actuator_thermal.franka_joint_velocity_action_2807"
+      ],
+      "scope_ids": [
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Bug Report] Joint velocity control for the Franka robot does not work out-of-the-box when using `mdp.JointVelocityAction",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.f638d850a341504230cb",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2963",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "deployment",
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.hardware_actuator_thermal.go1_actuator_net_rate_2963"
+      ],
+      "scope_ids": [
+        "sim_to_sim_and_sim_to_real",
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Question] GO1's Learned Actuator Model Evaluated at 200Hz while Trained at 50Hz",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -824,6 +1479,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.704f4a92eadc0ca004cc",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3505",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.reproducibility_and_debugging.isaaclab_vision_render_stochastic_3505"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum"
+      ],
+      "title": "[Bug Report] Non-reproducible training results in vision-based tasks with identical seeds",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.3fb1350db4d97337cde0",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3758",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -843,6 +1517,45 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.5db5333b5eea76f66ed6",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3823",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.hardware_actuator_thermal_power.isaaclab_actuator_update_rate_3823"
+      ],
+      "scope_ids": [
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Question] Clarification on Explicit vs Implicit Actuator Control Signal Update Frequency",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ea389fe8ca528d535c9e",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/386",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "deployment"
+      ],
+      "related_problem_ids": [
+        "problem.sim_to_sim_and_sim_to_real.go1_policy_joint_order_386",
+        "problem.sim_to_sim_and_sim_to_real.go1_actuator_pd_retrain_386"
+      ],
+      "scope_ids": [
+        "sim_to_sim_and_sim_to_real"
+      ],
+      "title": "[Question] Unexpected joints behavior when deploy policy on real unitree GO1",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.ae9aa81b18bfa63d3c15",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4136",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -858,6 +1571,65 @@
         "hardware_actuator_thermal_power"
       ],
       "title": "How to retrieve actual actuator torque (ImplicitDrive output), not joint reaction forces?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.0c48e18bb6e167583f6c",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4305",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "IMU"
+      ],
+      "related_problem_ids": [
+        "problem.sensing_and_perception.isaaclab_imu_reset_history_4305"
+      ],
+      "scope_ids": [
+        "state_estimation_calibration"
+      ],
+      "title": "[Bug Report] lin_acc_b from IMU sensor is wrong when reset the environment",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ef942ec37dd47fc8a720",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4320",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.isaaclab_fabric_actuator_gain_runtime_vs_ui_4320"
+      ],
+      "scope_ids": [
+        "training_reward_curriculum"
+      ],
+      "title": "[Bug Report] ImplicitActuatorCfg Does Not Overwrite USD Stiffness and Damping",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.d829b907a03a478e9702",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4366",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact",
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.robotlab_contact_spike_dt_4366"
+      ],
+      "scope_ids": [
+        "contact_force_friction",
+        "training_reward_curriculum"
+      ],
+      "title": "[Bug Report] Foot contact forces spike with small sim.dt and larger decimation (Humaniod Robot)",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -900,6 +1672,25 @@
         "training_reward_curriculum"
       ],
       "title": "[Question] Unexpectedly Identical Training Results on Different PCs (Seed Fixed, torch_deterministic=False)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.67644df609eeb220518d",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4580",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.isaaclab_permanent_global_wrench_4580"
+      ],
+      "scope_ids": [
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Bug Report] Changed behavior of `set_external_force_and_torque()` from v2.3.1 to v2.3.2",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1015,6 +1806,27 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.f1130dbc9ed2547f24f1",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5126",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact",
+        "URDF"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.isaaclab_nested_contact_views_5126"
+      ],
+      "scope_ids": [
+        "contact_force_friction",
+        "model_asset_and_urdf_usd"
+      ],
+      "title": "[Bug] PhysX create_rigid_body_view fails to match bodies under Geometry/ scope from v3.0 URDF converter",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.cbc5f1604b5d5701f9b3",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5363",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1034,6 +1846,54 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.39a5e2b5c8d6299c2981",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5806",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact",
+        "USD",
+        "torque"
+      ],
+      "related_problem_ids": [
+        "problem.sim_to_sim_and_sim_to_real.newton_explicit_gain_mode_5806"
+      ],
+      "scope_ids": [
+        "contact_force_friction",
+        "model_asset_and_urdf_usd",
+        "hardware_actuator_thermal_power"
+      ],
+      "title": "[Bug Report] Newton backend re-enables joint target stiffness/damping for explicit actuators, causing different rest pose from PhysX",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.476543c97eaf86702106",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5918",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body",
+        "contact",
+        "URDF",
+        "fall"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.isaaclab_nested_spawn_props_5918"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes",
+        "contact_force_friction",
+        "model_asset_and_urdf_usd",
+        "safety_fall_recovery"
+      ],
+      "title": "[Bug Report] URDF spawn properties only apply to the root link (disable_gravity, contact sensors)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.a40aac14bb366a920caf",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/663",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1049,6 +1909,70 @@
         "model_asset_and_urdf_usd"
       ],
       "title": "[Question] Clarification on the units of measurement for joint actuators",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.48f6e1ce2d51ecb9eb42",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/6885",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact",
+        "USD",
+        "fall"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.isaaclab_gpu_surface_velocity_6885"
+      ],
+      "scope_ids": [
+        "contact_force_friction",
+        "model_asset_and_urdf_usd",
+        "safety_fall_recovery"
+      ],
+      "title": "[Bug Report] PhysX surface velocity (kinematic conveyor) silently disables all contacts of the body when using GPU simulation with the tensor pipeline",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.03a95522ba01c2c809b3",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/904",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "nondeterministic",
+        "reward"
+      ],
+      "related_problem_ids": [
+        "problem.reproducibility_and_debugging.isaaclab_seed_before_env_904",
+        "problem.reproducibility_and_debugging.isaaclab_env_vs_ppo_904"
+      ],
+      "scope_ids": [
+        "simulator_physics_numerics",
+        "training_reward_curriculum"
+      ],
+      "title": "[Bug Report] Possible resolution for random seed setting and non-deterministic training",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.cf9619d2be6fc1dfa5c8",
+      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/911",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.isaaclab_rotated_base_ik_frame_911"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "[Bug Report] Ik Absolute seems to not work properly with rotated base frame",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1091,6 +2015,103 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.e323ab3a1c052e116c27",
+      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/108",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.ocs2_hard_inequality_path_108"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "hard constriants violation",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.f86c299606aaac749683",
+      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/24",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.ocs2_zero_velocity_contact_z_drift_24"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "The desired body trajectory of legged robot example is floating upwards",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.11d63b29290563213dd5",
+      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/27",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body",
+        "WBC"
+      ],
+      "related_problem_ids": [
+        "problem.state_estimation_calibration.ocs2_quaternion_euler_zyx_feedback_27",
+        "problem.state_estimation_calibration.ocs2_observation_lowpass_delay_27"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "How to \"update\" the robot observation for the MPC solver by using the robot's measured state info?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.e1a6390ffa668952feb6",
+      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/34",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.ocs2_large_system_profiling_34"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Efficiency with larger legged systems",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.34b022544d8cd305991d",
+      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/56",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "WBC"
+      ],
+      "related_problem_ids": [
+        "problem.locomotion_contact_terrain.ocs2_raisim_terrain_position_gain_56"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "Legged robot raisim example is unstable",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.35765bd3f0b26411fe49",
       "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1087",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1106,6 +2127,102 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Cost increases when using 'crocoddyl.SolverFDDP'",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.3c9b0919c25b81b27e54",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1104",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.crocoddyl_dvexp_constraints_1104"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Optimize the [F]DDP Line Search for MPC",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.c2880f4bcf96747035ac",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1395",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.crocoddyl_talos_state_bounds_nan_1395"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "Solver exits at 0 iterations with NaN cost in whole_body_manipulation.ipynb (example notebook)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4743a538e9161a0f344f",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/682",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.safety_fall_recovery.crocoddyl_soft_landing_velocity_acceleration_682"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "cost function to minimize the acceleration of torso while impact",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.befede41a08203774335",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/743",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.crocoddyl_boxqp_armijo_743"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Numerical impact of changes to BoxQP",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.3e2bdf33472d4283615b",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/880",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.force_control_manipulation.crocoddyl_wrench_cone_vs_friction_cop_880",
+        "problem.force_control_manipulation.crocoddyl_wrench_cone_foot_rotation_880"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "About whole body manipulation with cop constraint",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1129,6 +2246,350 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.d379799da0da304fe872",
+      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/979",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.crocoddyl_aerial_momentum_integrator_979"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "Issue on non-constant angular momentum during aerial phase",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4efbbbc8ab4554a6ebdc",
+      "canonical_url": "https://github.com/osqp/osqp/issues/109",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_finite_surrogate_infinity_109"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "osqp not able to find a feasible solution",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.69000099224b30a8698c",
+      "canonical_url": "https://github.com/osqp/osqp/issues/125",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_solution_vs_infeasibility_tolerance_125"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Constraint violation to a higher degree than eps_prim_inf",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.de86290116aef4c36321",
+      "canonical_url": "https://github.com/osqp/osqp/issues/205",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_codegen_adaptive_rho_interval_205"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Mex interface solution inconsistency",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.2d0bbbd88cd104b6c9e7",
+      "canonical_url": "https://github.com/osqp/osqp/issues/255",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_infeasibility_epsilon_sign_255_485"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Detecting infeasibility conditions somewhat broken",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.6c882ca0ac3a9ccf79a6",
+      "canonical_url": "https://github.com/osqp/osqp/issues/276",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_max_iter_tolerance_scaling_276"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Problem reaching maximum iteration",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.a3a7c6b5b6a2c08764bd",
+      "canonical_url": "https://github.com/osqp/osqp/issues/376",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_update_sparsity_pattern_376"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Inconsistent solution obtained by .setup and .update command",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.dda01f9e18b6fb3d56aa",
+      "canonical_url": "https://github.com/osqp/osqp/issues/424",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.cuosqp_float_bound_cast_nan_424"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "NaN values in solution when replacing OSQP with cuOSQP",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.581e73c781d775e9f5eb",
+      "canonical_url": "https://github.com/osqp/osqp/issues/43",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_c_infinity_bound_43"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Reaches iteration limit for a simple infeasible problem, when one bound of the constraint is infinity",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.c90293b18797f7023bee",
+      "canonical_url": "https://github.com/osqp/osqp/issues/485",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_infeasibility_epsilon_sign_255_485"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Incorrect check on primal infeasibility",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.2dd9b41ad47c7e1320b3",
+      "canonical_url": "https://github.com/osqp/osqp/issues/53",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_conditioning_tolerance_53"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "osqp solver in the loop",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.52df6addb71848ecf829",
+      "canonical_url": "https://github.com/osqp/osqp/issues/609",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_nonnegative_relative_residual_609"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Issue with OSQP Returning Negative Values Despite Non-Negative Constraints",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4973d6dabb3bf7ace0e8",
+      "canonical_url": "https://github.com/osqp/osqp/issues/97",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "infeasible"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.osqp_finite_feasibility_polish_97"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Primal feasibility guarantee?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4cc04a18fd60bd49c422",
+      "canonical_url": "https://github.com/raisimTech/raisimLib/issues/322",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "friction"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.raisim_mesh_contact_force_spike_322"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Contact force jumping problem when pushing too heavy to a fixed wall",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.6a86cee3616533afdea2",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/118",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "latency",
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_preempt_rt_cyclictest_acpi_118"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Tests on RT-PREEMPT",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.29d49f04fbfab44688d6",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1574",
+      "first_seen_at": "2026-08-10T21:30:00+08:00",
+      "last_seen_at": "2026-08-10T21:30:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "real time control loop latency jitter"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_i2c_imu_jitter_1574",
+        "problem.realtime_control_latency.ros2_control_update_period_unresolved_1574"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "period parameter in controller::update(time, period) is incorrect",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.6a8a340234d70d28d914",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1796",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.ros2_control_ft_offset_chainable_1796"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "How to implement complex, realtime updated filters as intermediary information streams between sensors and controllers",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.faf8b33ad753eda6d331",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2020",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_memlock_limit_2020"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Invalid size of memlock",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.7557601c60e14f404302",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2049",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1148,6 +2609,140 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.4e549017b887b0ba0545",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2089",
+      "first_seen_at": "2026-08-10T21:30:00+08:00",
+      "last_seen_at": "2026-08-10T21:30:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "real time control loop latency jitter"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_rw_rate_skipped_cycles_2089"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "`rw_rate` with multiple hardware components leads to skipped cycles",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.e8fab66ea0119d117f05",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2113",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_hardware_child_logger_2113"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Logging to /rosout from hardware_interface.cpp",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.deb72e0a7c81979da05a",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2758",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.hardware_actuator_thermal.ros2_control_activation_conflict_2758"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Joint interfaces get stopped when controller activation changes",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.fe951efe60571281d626",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2808",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.communication_and_realtime.ros2_control_zenoh_service_overrun_2808"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Service server exposes by controller manager hangs the control loop",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.e006a34af1c73b39d64c",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3145",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_pi_recursive_mutex_3145"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Potential RT safety concern: publish_activity() called from  update() loop with mutex acquisition",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.73a0e48219412ada133e",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3356",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros2_control_pal_statistics_idle_cpu_3356"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "controller_manager pal_statistics workers wake every cycle even with zero subscribers (idle CPU on small targets)",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.5076972ce0a37c7323fe",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/649",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "latency"
+      ],
+      "related_problem_ids": [
+        "problem.communication_and_realtime.ros2_control_component_rw_rate_649",
+        "problem.communication_and_realtime.ros2_control_single_component_signal_rates_649"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Hardware interface: variable update rates for command/state interfaces",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.17ef9a9b9ab2f1e7f09b",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/668",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1163,6 +2758,25 @@
         "realtime_control_latency"
       ],
       "title": "Dynamic memory allocation inside realtime functions / loops",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.fc6c28744c8c5d391ebc",
+      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/808",
+      "first_seen_at": "2026-08-10T21:30:00+08:00",
+      "last_seen_at": "2026-08-10T21:30:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "real time control loop latency jitter"
+      ],
+      "related_problem_ids": [
+        "problem.communication_and_realtime.ros2_humble_jtc_jitter_808"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "ros2_control_node.cpp real time problem",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1205,6 +2819,102 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.b9ba3a8c451b970a0264",
+      "canonical_url": "https://github.com/ros-controls/ros_control/issues/10",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros_control_switch_vector_clear_10"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "another question about realtime safety of ControlManager.update",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.7e126b425acd821fbd89",
+      "canonical_url": "https://github.com/ros-controls/ros_control/issues/130",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros_control_external_rt_read_update_write_130",
+        "problem.realtime_control_latency.ros_control_callback_queue_rt_buffer_130"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "Examples of realtime hardware interfaces",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.48a472e8abd50e90c766",
+      "canonical_url": "https://github.com/ros-controls/ros_control/issues/211",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "latency"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros_control_prepare_do_switch_timing_211"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "[controller_manager] Fix execution point of doSwitch",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.60840a1bbcc331da2b22",
+      "canonical_url": "https://github.com/ros-controls/ros_control/issues/6",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros_control_rtai_syscall_diagnostic_6"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "controller_namager update does not seem to be realtime safe",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.05565dd2be1427658393",
+      "canonical_url": "https://github.com/ros-controls/ros_control/issues/8",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "realtime"
+      ],
+      "related_problem_ids": [
+        "problem.realtime_control_latency.ros_control_realtime_publisher_unlock_futex_8"
+      ],
+      "scope_ids": [
+        "realtime_control_latency"
+      ],
+      "title": "RealtimePublisher appears to be making a syscall",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.c5d87d037ace9b9c6a59",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1137",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1243,6 +2953,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.d0ddd8d576635068e9b9",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1215",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body"
+      ],
+      "related_problem_ids": [
+        "problem.compute_performance_memory.pinocchio_forward_dynamics_minverse_selection_1215"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "Best way to compute forward dynamics and M inverse",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.f9f501d2c189c66b4411",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1258,6 +2987,47 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Build Reduced Model: How to Fix Joints at Specified Values?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.88c2702fafefa05ef1dd",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body",
+        "floating base"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_centroidal_momentum_frame_1252",
+        "problem.optimization_ik_qp_mpc.pinocchio_centroidal_base_mobility_modeling_1252"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes",
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Clarification on computeCentroidalMomentum()",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.f320794097a6dff56ada",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1290",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.pinocchio_mimic_algorithm_support_boundary_1290"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "What is the status of mimic joint support?",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1300,6 +3070,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.9919832857219eda4763",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base"
+      ],
+      "related_problem_ids": [
+        "problem.joint_mapping_frames_conventions.pinocchio_freeflyer_velocity_frame_1137"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Generalized velocity of the floating base",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.b1893f4ea51a338d61d2",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1388",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1315,6 +3104,27 @@
         "open_ended_wbc_field_notes"
       ],
       "title": "Inertial information of links between fixed joints",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.1ab285e2b0402eaca178",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1395",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "whole body",
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_classical_spatial_jacobian_time_derivative_2141"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes",
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "time derivative of jacobian",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1338,6 +3148,25 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.8f993d47966ac2f03594",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1473",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_centroidal_derivative_freeflyer_translation_bug_1473"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Analytical Derivative of Centroidal Momentum",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.1f8d5b085616ba1c787f",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1353,6 +3182,25 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "How to obtain the Jacobian at a certain position on the manipulator link",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.1082d984805c4dc72f5f",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base"
+      ],
+      "related_problem_ids": [
+        "problem.simulation_toolchain.pinocchio_continuous_joint_configuration_normalization_1534"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Joint accelerations using forward dynamics seem large",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1457,6 +3305,82 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.576ef31fd0e18aa2e4d2",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_fixed_world_force_lwa_1761"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Jacobian and ReferenceFrame understanding prolem",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.b5ce51acde11996256ae",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1779",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.force_control_manipulation.pinocchio_end_effector_wrench_frame_1779"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Question about external force and impedance control",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.7e54387036de52943fcc",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1872",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_rnea_derivatives_composite_casadi_1872"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Derivatives using casadi is NOT equal to analytical derivatives for inverse dynamics",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.a647d6a953b36912df77",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1959",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_ik_error_jacobian_frame_mismatch_1959"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Pinocchio_The problem of inverse kinematics of robots",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.2ed044077f03788f97a9",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1491,6 +3415,25 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Segfault When Getting Frame Placements",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.f02452a2a2148b6cbf13",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "WBC"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.pinocchio_eigen_compile_flag_abi_mismatch_2046"
+      ],
+      "scope_ids": [
+        "open_ended_wbc_field_notes"
+      ],
+      "title": "Segmentation fault of pinocchio::urdf::buildModel",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1537,6 +3480,64 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.8574fa29b254dada360b",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_static_torque_second_order_external_force_2092"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Compute second-order derivative of generalized static torque",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.4442bb5e4ed85eb5b28d",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_classical_spatial_jacobian_time_derivative_2141"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Calculation issue of `getFrameJacobianTimeVariation`",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.8cfe1476ac741f1f75bf",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2177",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base",
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.state_estimation_calibration.pinocchio_translation_sphericalzyx_velocity_world_2177"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Generalized velocity of the floating base",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.871a0e61796ed4368a1b",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1578,6 +3579,44 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.41ebe0e91b3f6136d0a8",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_unconstrained_forward_dynamics_aba_2604"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Inconsistency between tau and model.nv in pinocchio.forwardDynamics Function",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.1ecfd7487db1186254d4",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_frame_jacobian_output_shape_2683"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Possible regression in `computeFrameJacobian` in Pinocchio 3.5.0",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.933d7760a8010b6898cf",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2702",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1598,6 +3637,63 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.2596a5bdb866aab290d7",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2753",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.pinocchio_continuous_mimic_parse_version_2753"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "[Bug]: Potential issue parsing mimic joints if they are continuous joints?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.f67fa50d3be8a8c11f3a",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "URDF"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.pinocchio_fixed_frame_add_joint_2825"
+      ],
+      "scope_ids": [
+        "model_asset_and_urdf_usd"
+      ],
+      "title": "[Bug]: Resulting model with Model::addFrame seems to be incorrect",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.451a5bd23b4784e3a711",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2844",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_frame_kinematic_hessian_2844"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Kinematics  Frame Hessian",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.7df6f198f01539e1a76f",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2854",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1613,6 +3709,25 @@
         "contact_force_friction"
       ],
       "title": "[Bug]: contact models are not returned in fixed-base models when using the python bindings",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.bb6b126734318a266f43",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "URDF"
+      ],
+      "related_problem_ids": [
+        "problem.model_asset_and_urdf_usd.pinocchio_ros2_imported_target_2917"
+      ],
+      "scope_ids": [
+        "model_asset_and_urdf_usd"
+      ],
+      "title": "[Bug]: compile time error from boost's variants when including pinocchio",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1692,6 +3807,25 @@
         "model_asset_and_urdf_usd"
       ],
       "title": "Continuous joint in URDF adds 2 elements to the configuration space",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.ab8858a6b46ac5f828c7",
+      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/867",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "Jacobian"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.pinocchio_contact_hessian_wrench_rnea_867"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "Kinematics Hessian -- Jacobian derivatives",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -1812,6 +3946,26 @@
       "triage_status": "reviewed"
     },
     {
+      "candidate_id": "candidate.3d66e28b2a7a0860ce9d",
+      "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/165",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "floating base"
+      ],
+      "related_problem_ids": [
+        "problem.optimization_ik_qp_mpc.tsid_two_frame_closed_chain_165",
+        "problem.optimization_ik_qp_mpc.tsid_arbitrary_passive_joints_165"
+      ],
+      "scope_ids": [
+        "optimization_ik_qp_mpc"
+      ],
+      "title": "TSID for \"pantograph/biarticular\" robot leg design?",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
       "candidate_id": "candidate.081919640b99142e6902",
       "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/222",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -1827,6 +3981,25 @@
         "open_ended_wbc_field_notes"
       ],
       "title": "TSID Performance Issue, slow HQP solves",
+      "triage_reason_zh": "已结构化进入工程问题手册。",
+      "triage_status": "reviewed"
+    },
+    {
+      "candidate_id": "candidate.5fae1c3eef788885e0e1",
+      "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/247",
+      "first_seen_at": "2026-08-10T21:40:00+08:00",
+      "last_seen_at": "2026-08-10T21:40:00+08:00",
+      "platform": "github_issue",
+      "queries": [
+        "contact"
+      ],
+      "related_problem_ids": [
+        "problem.contact_force_friction.tsid_contact_force_binding_child_overload_247"
+      ],
+      "scope_ids": [
+        "contact_force_friction"
+      ],
+      "title": "Expose TaskContactForceEquality python binding",
       "triage_reason_zh": "已结构化进入工程问题手册。",
       "triage_status": "reviewed"
     },
@@ -2978,59 +5151,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.c0e4bb2b00b6842e411c",
-      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/13",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "retargeting",
-        "deployment"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "retargeting_dataset_quality",
-        "sim_to_sim_and_sim_to_real"
-      ],
-      "title": "Question about real-time teleoperation deployment",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.826eafec9a6daab183d0",
-      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/17",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum"
-      ],
-      "title": "Question about the Gait",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.b75dcbf7abf5242fe6a6",
-      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/18",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "retargeting"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "retargeting_dataset_quality"
-      ],
-      "title": "Error Caused By Mismatch Joints and Links",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.b78157d87ac90dfcf009",
       "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/20",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3245,23 +5365,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.27c3a0c2a8e4e397726d",
-      "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "retargeting"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "retargeting_dataset_quality"
-      ],
-      "title": "Question Regarding Data Cleaning and Privileged Policy Training in H2O",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.3582fadd06e209d51838",
       "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/63",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3381,23 +5484,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.5700984a43c59806d838",
-      "canonical_url": "https://github.com/coin-or/qpOASES/issues/37",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "different results in C++ and Matlab/Simulink version",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.4d5dd9a7838f73b030fd",
       "canonical_url": "https://github.com/coin-or/qpOASES/issues/4",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3428,57 +5514,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "pass intermediate solution if infeasibility is encountered",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.2280f84b628cdfcff0b2",
-      "canonical_url": "https://github.com/coin-or/qpOASES/issues/47",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Is qpOASES_e limited to solving small-scale QP problems?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.1bce66e3e019d81c7039",
-      "canonical_url": "https://github.com/coin-or/qpOASES/issues/48",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Stuck with stepsize is 0 warning",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.b54ce8ad681b34f8fa8a",
-      "canonical_url": "https://github.com/coin-or/qpOASES/issues/50",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Error code 31 in version 1.3 used in ACADO (error code 35 in latest version)",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -3534,23 +5569,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.9cc3dd586b9b4f456884",
-      "canonical_url": "https://github.com/coin-or/qpOASES/issues/83",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Hotstart bug when solving QPs in a looped function",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.58115320016bb6c21567",
       "canonical_url": "https://github.com/gazebosim/gz-sim/issues/1722",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3598,23 +5616,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "Rendering failure of cameras on 22.04 with libgazebo6",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.50c4784c6da84a6c8311",
-      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/2223",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "System plugins (contact sensor) still not working when spawned",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -3810,23 +5811,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.98ae37242cf32dc51ca2",
-      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/3289",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Warnings about invalid slip compliance",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.ca034dfbc99cc5e59acc",
       "canonical_url": "https://github.com/gazebosim/gz-sim/issues/3314",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3946,23 +5930,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.ef3f92f3a50c84194ac4",
-      "canonical_url": "https://github.com/gazebosim/gz-sim/issues/880",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Fix friction for DART on Ubuntu Focal",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.790639c7610955ffe2a3",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/1841",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -3993,23 +5960,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "Wrong HField vertical scaling in unity plugin",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.82303a8a1278eedaeb65",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2155",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "terrain"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "locomotion_contact_terrain"
-      ],
-      "title": "MJX ray has no implementation for hfield geoms",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -4065,57 +6015,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.18acb9f1e5c3addfb2c7",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2765",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "terrain"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "locomotion_contact_terrain"
-      ],
-      "title": "rangefinders -> hfield wrong measuremts when hfield resolution is not square",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.0643f323ab0b7754363a",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2774",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "MJX plane-capsule collision numerical safety",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.959392a47387dd551cf8",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2777",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "MJX put_model error: The function \"convex\" in mesh.py error",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.e9928e52ac8f5a608328",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2882",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -4129,23 +6028,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "Memory leak in mjs_delete when detaching a body",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.5fee47a32b135523f663",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2934",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Mysterious behavior when grasping while controlling gripper poses using caterisan control",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -4269,23 +6151,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.4cad388e863bd9fd5519",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3258",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "terrain"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "locomotion_contact_terrain"
-      ],
-      "title": "[MJX-Warp] Batched geom_dataid for per-world hfield routing",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.941a4db13b4acc14fe3f",
       "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3260",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -4299,40 +6164,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "Planar mesh geom fails to compile with Qhull error",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.872162751dba09ba0781",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3286",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Mujoco sysid not working with Lugre friction parameters of dcmotor",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.8e1798a6271df8d8f022",
-      "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3330",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "‘True’ collision detection",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -5072,23 +6903,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.dd2edae276450f74da54",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1604",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum"
-      ],
-      "title": "[Question] Proper way to implement domain randomization on actuator gains?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.1ea3d2e943c8b7fb52cd",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1653",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -5206,23 +7020,6 @@
         "sim_to_sim_and_sim_to_real"
       ],
       "title": "[Question] Simulation calibration for Digital Twin",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.9b16802cd173676f09da",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1759",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "[Question] Getting time derivative of Jacobian",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -5452,40 +7249,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.bb7d8a69ae2ef7b530c9",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1995",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "fall"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "safety_fall_recovery"
-      ],
-      "title": "[Bug Report] [omni.physx.tensors.plugin] GPU contact filter for collider '/World/ground' is not supported",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.0076713d0c739ab47c90",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1999",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum"
-      ],
-      "title": "[Bug Report] Default Rough Policy for RSL-RL on Go2 Locomotion Fails as a Result of NaN Values",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.866b966edd975a5c649d",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2029",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -5613,23 +7376,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.e45fe656bbeb6a63bcf9",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2074",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "[Question] Contact Sensor force not showing x,y directional force",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.1556f1e6257004a49476",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2089",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -5696,23 +7442,6 @@
         "hardware_actuator_thermal_power"
       ],
       "title": "[Question]In Isaac Lab, the velocity action control of the TurtleBot3 Burger’s wheels is not working properly",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.6da5179b3d8d6a3a5a42",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2127",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Question] What exactly is going on with force/torque sensors",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -5920,24 +7649,6 @@
         "state_estimation_calibration"
       ],
       "title": "[Question] Units and wrapping of joint_pos_rel, joint_vel_rel, base_ang_vel, and root_euler_angle?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.d6de2eff44844498dc61",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2252",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base",
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "[Question] Missing dimensions for total mass matrices, gravity compensation term and coriolis term",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -6185,23 +7896,6 @@
         "state_estimation_calibration"
       ],
       "title": "[Proposal] Change Default Euler Angle Range in euler_xyz_from_quat",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.d448ad3c81c14165bf8b",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2369",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Question] Clarification on joint_drive vs. actuator gains",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -6662,42 +8356,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.ee2e37495f9672014f5f",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2635",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward",
-        "fall"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum",
-        "safety_fall_recovery"
-      ],
-      "title": "[Bug Report] SB3 train.py does not save VecNormalize stats; play.py starts with new stats",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.db50a44c62feb50c3a58",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2636",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "deployment"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "sim_to_sim_and_sim_to_real"
-      ],
-      "title": "[Question] [Sim2Real] Does ONNX policy output already include action_scale from training?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.d961d12bc47b11470c3e",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2641",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -6728,41 +8386,6 @@
         "hardware_actuator_thermal_power"
       ],
       "title": "Why my gripper can not close when I want to grasp the cube?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.df0250917bb1a69b53af",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2654",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "fall"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "safety_fall_recovery"
-      ],
-      "title": "Unitree G1 not stable",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.832aeb46d505725618fb",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/267",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base",
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "[Bug Report] Jacobian calculation for quadruped robot",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -7041,23 +8664,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.ad82aa04f63a7c25b980",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2807",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Bug Report] Joint velocity control for the Franka robot does not work out-of-the-box when using `mdp.JointVelocityAction",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.67a290b8815a20695638",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2810",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -7286,25 +8892,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "[Proposal] Add `ray_distances` for RayCasterData",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.f638d850a341504230cb",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2963",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "deployment",
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "sim_to_sim_and_sim_to_real",
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Question] GO1's Learned Actuator Model Evaluated at 200Hz while Trained at 50Hz",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -8453,23 +10040,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.704f4a92eadc0ca004cc",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3505",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum"
-      ],
-      "title": "[Bug Report] Non-reproducible training results in vision-based tasks with identical seeds",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.29cb7237872b7742f665",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3506",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -8967,23 +10537,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.5db5333b5eea76f66ed6",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3823",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Question] Clarification on Explicit vs Implicit Actuator Control Signal Update Frequency",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.c8c754eaa0206a3aaab2",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3842",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -9018,23 +10571,6 @@
         "locomotion_contact_terrain"
       ],
       "title": "Fail to import custom .usd with TerrainImporterCfg",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.ea389fe8ca528d535c9e",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/386",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "deployment"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "sim_to_sim_and_sim_to_real"
-      ],
-      "title": "[Question] Unexpected joints behavior when deploy policy on real unitree GO1",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -10117,40 +11653,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.0c48e18bb6e167583f6c",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4305",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "IMU"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "state_estimation_calibration"
-      ],
-      "title": "[Bug Report] lin_acc_b from IMU sensor is wrong when reset the environment",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.ef942ec37dd47fc8a720",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4320",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "training_reward_curriculum"
-      ],
-      "title": "[Bug Report] ImplicitActuatorCfg Does Not Overwrite USD Stiffness and Damping",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.dfded422e8285b8708bf",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4327",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -10249,25 +11751,6 @@
         "sim_to_sim_and_sim_to_real"
       ],
       "title": "Issue on page /source/policy_deployment/01_io_descriptors/io_descriptors_101.html",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.d829b907a03a478e9702",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4366",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact",
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction",
-        "training_reward_curriculum"
-      ],
-      "title": "[Bug Report] Foot contact forces spike with small sim.dt and larger decimation (Humaniod Robot)",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -10913,23 +12396,6 @@
         "safety_fall_recovery"
       ],
       "title": "Legged robots stand still despite the rewards of tracking linear and angular velocities",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.67644df609eeb220518d",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4580",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Bug Report] Changed behavior of `set_external_force_and_torque()` from v2.3.1 to v2.3.2",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -11655,25 +13121,6 @@
     {
       "candidate_id": "candidate.d836945e34c84d2d1edd",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5125",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact",
-        "URDF"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction",
-        "model_asset_and_urdf_usd"
-      ],
-      "title": "[Bug] PhysX create_rigid_body_view fails to match bodies under Geometry/ scope from v3.0 URDF converter",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.f1130dbc9ed2547f24f1",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5126",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
       "last_seen_at": "2026-08-10T21:40:00+08:00",
       "platform": "github_issue",
@@ -12670,27 +14117,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.39a5e2b5c8d6299c2981",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5806",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact",
-        "USD",
-        "torque"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction",
-        "model_asset_and_urdf_usd",
-        "hardware_actuator_thermal_power"
-      ],
-      "title": "[Bug Report] Newton backend re-enables joint target stiffness/damping for explicit actuators, causing different rest pose from PhysX",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.20b085775ac521cf4864",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5807",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -12745,29 +14171,6 @@
         "sim_to_sim_and_sim_to_real"
       ],
       "title": "[Question] Transfering policies from IsaacLab to IsaacSim",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.476543c97eaf86702106",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5918",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body",
-        "contact",
-        "URDF",
-        "fall"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes",
-        "contact_force_friction",
-        "model_asset_and_urdf_usd",
-        "safety_fall_recovery"
-      ],
-      "title": "[Bug Report] URDF spawn properties only apply to the root link (disable_gravity, contact sensors)",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -13605,27 +15008,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.48f6e1ce2d51ecb9eb42",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/6885",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact",
-        "USD",
-        "fall"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction",
-        "model_asset_and_urdf_usd",
-        "safety_fall_recovery"
-      ],
-      "title": "[Bug Report] PhysX surface velocity (kinematic conveyor) silently disables all contacts of the body when using GPU simulation with the tensor pipeline",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.32bcc8b335d61b8c0f62",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/6909",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -13903,42 +15285,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.03a95522ba01c2c809b3",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/904",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "nondeterministic",
-        "reward"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "simulator_physics_numerics",
-        "training_reward_curriculum"
-      ],
-      "title": "[Bug Report] Possible resolution for random seed setting and non-deterministic training",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.cf9619d2be6fc1dfa5c8",
-      "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/911",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "[Bug Report] Ik Absolute seems to not work properly with rotated base frame",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.9b9c90610221a194b485",
       "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/915",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -14109,23 +15455,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.e323ab3a1c052e116c27",
-      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/108",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "hard constriants violation",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.43731efc5fd41159eef1",
       "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/111",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -14177,58 +15506,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.f86c299606aaac749683",
-      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/24",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "The desired body trajectory of legged robot example is floating upwards",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.11d63b29290563213dd5",
-      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/27",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body",
-        "WBC"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "How to \"update\" the robot observation for the MPC solver by using the robot's measured state info?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.e1a6390ffa668952feb6",
-      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/34",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Efficiency with larger legged systems",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.1f2c63a408ce5408d74a",
       "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/53",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -14242,23 +15519,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Question on deriving some of the partial derivatives between ocs2 state and pinocchio state",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.34b022544d8cd305991d",
-      "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/56",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "WBC"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "Legged robot raisim example is unstable",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -14327,23 +15587,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Adding environment obstacles and modeling contact with the robot",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.3c9b0919c25b81b27e54",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1104",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Optimize the [F]DDP Line Search for MPC",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -14446,23 +15689,6 @@
         "open_ended_wbc_field_notes"
       ],
       "title": "Get the contact force/cone data in C++",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.c2880f4bcf96747035ac",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1395",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "Solver exits at 0 iterations with NaN cost in whole_body_manipulation.ipynb (example notebook)",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -14708,23 +15934,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.4743a538e9161a0f344f",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/682",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "cost function to minimize the acceleration of torso while impact",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.534e02e8d79c820c31b3",
       "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/728",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -14738,23 +15947,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Bad initialization of dx0 in the forward pass",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.befede41a08203774335",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/743",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Numerical impact of changes to BoxQP",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -14840,23 +16032,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "About prismatic joint",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.3e2bdf33472d4283615b",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/880",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "About whole body manipulation with cop constraint",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -14980,57 +16155,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.d379799da0da304fe872",
-      "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/979",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "Issue on non-constant angular momentum during aerial phase",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.4efbbbc8ab4554a6ebdc",
-      "canonical_url": "https://github.com/osqp/osqp/issues/109",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "osqp not able to find a feasible solution",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.69000099224b30a8698c",
-      "canonical_url": "https://github.com/osqp/osqp/issues/125",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Constraint violation to a higher degree than eps_prim_inf",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.b30d593b85cbb84a3cd7",
       "canonical_url": "https://github.com/osqp/osqp/issues/144",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15099,23 +16223,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.de86290116aef4c36321",
-      "canonical_url": "https://github.com/osqp/osqp/issues/205",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Mex interface solution inconsistency",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.87a1bfcab122d03dd11e",
       "canonical_url": "https://github.com/osqp/osqp/issues/21",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15133,23 +16240,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.2d0bbbd88cd104b6c9e7",
-      "canonical_url": "https://github.com/osqp/osqp/issues/255",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Detecting infeasibility conditions somewhat broken",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.c695df7cd1f4afe5c0f8",
       "canonical_url": "https://github.com/osqp/osqp/issues/273",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15163,23 +16253,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "OSQP returns infeasible solution as \"solved\"",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.6c882ca0ac3a9ccf79a6",
-      "canonical_url": "https://github.com/osqp/osqp/issues/276",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Problem reaching maximum iteration",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -15214,23 +16287,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Incorrect primal infeasibility result on a small QP",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.a3a7c6b5b6a2c08764bd",
-      "canonical_url": "https://github.com/osqp/osqp/issues/376",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Inconsistent solution obtained by .setup and .update command",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -15286,40 +16342,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.dda01f9e18b6fb3d56aa",
-      "canonical_url": "https://github.com/osqp/osqp/issues/424",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "NaN values in solution when replacing OSQP with cuOSQP",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.581e73c781d775e9f5eb",
-      "canonical_url": "https://github.com/osqp/osqp/issues/43",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Reaches iteration limit for a simple infeasible problem, when one bound of the constraint is infinity",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.59869e96fcd14d886e82",
       "canonical_url": "https://github.com/osqp/osqp/issues/46",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15337,40 +16359,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.c90293b18797f7023bee",
-      "canonical_url": "https://github.com/osqp/osqp/issues/485",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Incorrect check on primal infeasibility",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.2dd9b41ad47c7e1320b3",
-      "canonical_url": "https://github.com/osqp/osqp/issues/53",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "osqp solver in the loop",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.2fb0cab91ca9df1482dd",
       "canonical_url": "https://github.com/osqp/osqp/issues/532",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15384,23 +16372,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Few tests fail",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.52df6addb71848ecf829",
-      "canonical_url": "https://github.com/osqp/osqp/issues/609",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Issue with OSQP Returning Negative Values Despite Non-Negative Constraints",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -15473,23 +16444,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.4973d6dabb3bf7ace0e8",
-      "canonical_url": "https://github.com/osqp/osqp/issues/97",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "infeasible"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Primal feasibility guarantee?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.7ec47504bd2bb772d517",
       "canonical_url": "https://github.com/raisimTech/raisimLib/issues/268",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15503,23 +16457,6 @@
         "contact_force_friction"
       ],
       "title": "Compenetration between mesh and box collision causing strange behavior",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.4cc04a18fd60bd49c422",
-      "canonical_url": "https://github.com/raisimTech/raisimLib/issues/322",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "friction"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Contact force jumping problem when pushing too heavy to a fixed wall",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -15849,24 +16786,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.6a86cee3616533afdea2",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/118",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "latency",
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Tests on RT-PREEMPT",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.a97d4dfa37796495f3d5",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1390",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -15914,23 +16833,6 @@
         "middleware_transport_qos"
       ],
       "title": "gazebo plugin not found by controller manager",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.29d49f04fbfab44688d6",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1574",
-      "first_seen_at": "2026-08-10T21:30:00+08:00",
-      "last_seen_at": "2026-08-10T21:30:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "real time control loop latency jitter"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "period parameter in controller::update(time, period) is incorrect",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -16050,23 +16952,6 @@
         "middleware_transport_qos"
       ],
       "title": "[spawner_joint_trajectory_controller]: Could not contact service /controller_manager/list_controllers (UR robot)",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.6a8a340234d70d28d914",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1796",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "How to implement complex, realtime updated filters as intermediary information streams between sensors and controllers",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -16292,23 +17177,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.faf8b33ad753eda6d331",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2020",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Invalid size of memlock",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.27abe3493a7d8ffdb714",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2068",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -16322,40 +17190,6 @@
         "realtime_control_latency"
       ],
       "title": "control_toolbox builid error",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.4e549017b887b0ba0545",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2089",
-      "first_seen_at": "2026-08-10T21:30:00+08:00",
-      "last_seen_at": "2026-08-10T21:30:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "real time control loop latency jitter"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "`rw_rate` with multiple hardware components leads to skipped cycles",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.e8fab66ea0119d117f05",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2113",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Logging to /rosout from hardware_interface.cpp",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -16581,40 +17415,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.deb72e0a7c81979da05a",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2758",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Joint interfaces get stopped when controller activation changes",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.fe951efe60571281d626",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2808",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Service server exposes by controller manager hangs the control loop",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.b098a0760adc41e71431",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/295",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -16649,23 +17449,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.e006a34af1c73b39d64c",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3145",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Potential RT safety concern: publish_activity() called from  update() loop with mutex acquisition",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.ddc793b31ff0993b2e54",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3238",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -16696,23 +17479,6 @@
         "realtime_control_latency"
       ],
       "title": "controller_manager as component node",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.73a0e48219412ada133e",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3356",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "controller_manager pal_statistics workers wake every cycle even with zero subscribers (idle CPU on small targets)",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -16887,23 +17653,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.5076972ce0a37c7323fe",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/649",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "latency"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Hardware interface: variable update rates for command/state interfaces",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.23ff285e6616c06ae479",
       "canonical_url": "https://github.com/ros-controls/ros2_control/issues/70",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -16951,23 +17700,6 @@
         "realtime_control_latency"
       ],
       "title": "Document the (optional) setting of realtime permissions",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.fc6c28744c8c5d391ebc",
-      "canonical_url": "https://github.com/ros-controls/ros2_control/issues/808",
-      "first_seen_at": "2026-08-10T21:30:00+08:00",
-      "last_seen_at": "2026-08-10T21:30:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "real time control loop latency jitter"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "ros2_control_node.cpp real time problem",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17023,23 +17755,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.b9ba3a8c451b970a0264",
-      "canonical_url": "https://github.com/ros-controls/ros_control/issues/10",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "another question about realtime safety of ControlManager.update",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.8e0e6baf5535e3d5eae6",
       "canonical_url": "https://github.com/ros-controls/ros_control/issues/129",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -17071,23 +17786,6 @@
         "realtime_control_latency"
       ],
       "title": "Organize head development branches",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.7e126b425acd821fbd89",
-      "canonical_url": "https://github.com/ros-controls/ros_control/issues/130",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "Examples of realtime hardware interfaces",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17139,23 +17837,6 @@
         "realtime_control_latency"
       ],
       "title": "ros-control 2.0?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.48a472e8abd50e90c766",
-      "canonical_url": "https://github.com/ros-controls/ros_control/issues/211",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "latency"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "[controller_manager] Fix execution point of doSwitch",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17415,23 +18096,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.60840a1bbcc331da2b22",
-      "canonical_url": "https://github.com/ros-controls/ros_control/issues/6",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "controller_namager update does not seem to be realtime safe",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.fd0d5b90a01d67313f88",
       "canonical_url": "https://github.com/ros-controls/ros_control/issues/74",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -17462,23 +18126,6 @@
         "realtime_control_latency"
       ],
       "title": "[proposal] Support multiple hardware interfaces in controllers",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.05565dd2be1427658393",
-      "canonical_url": "https://github.com/ros-controls/ros_control/issues/8",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "realtime"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "realtime_control_latency"
-      ],
-      "title": "RealtimePublisher appears to be making a syscall",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17808,23 +18455,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.d0ddd8d576635068e9b9",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1215",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "Best way to compute forward dynamics and M inverse",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.8bf0b7a3cdc06b78b38f",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1223",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -17855,25 +18485,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Incorrect total system mass for non-free floating base models",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.88c2702fafefa05ef1dd",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1252",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body",
-        "floating base"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes",
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Clarification on computeCentroidalMomentum()",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17912,23 +18523,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.f320794097a6dff56ada",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1290",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "What is the status of mimic joint support?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.0fe85944a277bbe7daa1",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1308",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -17942,23 +18536,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Kinematics tree root and rnea()",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.9919832857219eda4763",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1357",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Generalized velocity of the floating base",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -17978,25 +18555,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Center of Mass position for every link",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.1ab285e2b0402eaca178",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1395",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "whole body",
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes",
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "time derivative of jacobian",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -18086,23 +18644,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.8f993d47966ac2f03594",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1473",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Analytical Derivative of Centroidal Momentum",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.00a7ee6f289e27b18bcc",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1513",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -18150,23 +18691,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Question about using analytical derivatives for contact",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.1082d984805c4dc72f5f",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Joint accelerations using forward dynamics seem large",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -18290,23 +18814,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.576ef31fd0e18aa2e4d2",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Jacobian and ReferenceFrame understanding prolem",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.73c536ebde6960f1e771",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1767",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -18320,23 +18827,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Segmentation fault (core dumped) when calculating Jacobian time variation",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.b5ce51acde11996256ae",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1779",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Question about external force and impedance control",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -18408,23 +18898,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Definition of Joint Jacobian",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.7e54387036de52943fcc",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1872",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Derivatives using casadi is NOT equal to analytical derivatives for inverse dynamics",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -18532,23 +19005,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.a647d6a953b36912df77",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1959",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Pinocchio_The problem of inverse kinematics of robots",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.2283054b95438aa5041b",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1974",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -18634,23 +19090,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.f02452a2a2148b6cbf13",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "WBC"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "open_ended_wbc_field_notes"
-      ],
-      "title": "Segmentation fault of pinocchio::urdf::buildModel",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.c47357c7b9501a09f68a",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2048",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -18664,23 +19103,6 @@
         "model_asset_and_urdf_usd"
       ],
       "title": "Parsing and saving Pinocchio and URDF XMLs",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.8574fa29b254dada360b",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Compute second-order derivative of generalized static torque",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -18737,23 +19159,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.4442bb5e4ed85eb5b28d",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Calculation issue of `getFrameJacobianTimeVariation`",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.31b41a376b49d7c78f6d",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2144",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -18784,24 +19189,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "computecollisions() missing from ros humble installation",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.8cfe1476ac741f1f75bf",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2177",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base",
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Generalized velocity of the floating base",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -19185,23 +19572,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.41ebe0e91b3f6136d0a8",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Inconsistency between tau and model.nv in pinocchio.forwardDynamics Function",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.0db0d5639c5354718807",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2605",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -19306,23 +19676,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.1ecfd7487db1186254d4",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2683",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Possible regression in `computeFrameJacobian` in Pinocchio 3.5.0",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.f05fd5a04fa31b8b892b",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2691",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -19391,23 +19744,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Transforming of Jacobian / Jacobian Time Derivative Functionality",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.2596a5bdb866aab290d7",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2753",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "[Bug]: Potential issue parsing mimic joints if they are continuous joints?",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -19499,23 +19835,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.f67fa50d3be8a8c11f3a",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2825",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "URDF"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "model_asset_and_urdf_usd"
-      ],
-      "title": "[Bug]: Resulting model with Model::addFrame seems to be incorrect",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.2584b1915983619d7223",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2829",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -19529,23 +19848,6 @@
         "model_asset_and_urdf_usd"
       ],
       "title": "[Bug]: Issues with Viser visualizer with DAE geometries",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.451a5bd23b4784e3a711",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2844",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Kinematics  Frame Hessian",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -19597,23 +19899,6 @@
         "model_asset_and_urdf_usd"
       ],
       "title": "[Feature]: Remove urdfdom < 6 capsule workaround",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.bb6b126734318a266f43",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "URDF"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "model_asset_and_urdf_usd"
-      ],
-      "title": "[Bug]: compile time error from boost's variants when including pinocchio",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -19686,23 +19971,6 @@
       "triage_status": "technical_pending"
     },
     {
-      "candidate_id": "candidate.ab8858a6b46ac5f828c7",
-      "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/867",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "Jacobian"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "Kinematics Hessian -- Jacobian derivatives",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
       "candidate_id": "candidate.183d814fe0af72470f0f",
       "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/905",
       "first_seen_at": "2026-08-10T21:40:00+08:00",
@@ -19769,40 +20037,6 @@
         "optimization_ik_qp_mpc"
       ],
       "title": "Choose floating-base (or not) when creating a robot wrapper",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.3d66e28b2a7a0860ce9d",
-      "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/165",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "floating base"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "optimization_ik_qp_mpc"
-      ],
-      "title": "TSID for \"pantograph/biarticular\" robot leg design?",
-      "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
-      "triage_status": "technical_pending"
-    },
-    {
-      "candidate_id": "candidate.5fae1c3eef788885e0e1",
-      "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/247",
-      "first_seen_at": "2026-08-10T21:40:00+08:00",
-      "last_seen_at": "2026-08-10T21:40:00+08:00",
-      "platform": "github_issue",
-      "queries": [
-        "contact"
-      ],
-      "related_problem_ids": [],
-      "scope_ids": [
-        "contact_force_friction"
-      ],
-      "title": "Expose TaskContactForceEquality python binding",
       "triage_reason_zh": "技术相关性待结构化审阅，保守保留。",
       "triage_status": "technical_pending"
     },
@@ -20047,7 +20281,7 @@
       "triage_status": "technical_pending"
     }
   ],
-  "generated_at": "2026-08-11T03:52:49+08:00",
+  "generated_at": "2026-08-11T15:09:32+08:00",
   "schema_version": 1,
   "stats": {
     "decisions_applied": 0,
@@ -20055,8 +20289,8 @@
     "excluded": 0,
     "exclusion_reasons": {},
     "input_candidates": 0,
-    "reviewed": 146,
-    "technical_pending": 985,
+    "reviewed": 258,
+    "technical_pending": 873,
     "unique_candidates": 1131
   }
 }

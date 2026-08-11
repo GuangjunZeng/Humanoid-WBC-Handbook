@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2753.69d39274edb2",
+  "schema_version": 1,
+  "source_fingerprint": "b52297259fe8a8a696f6d4d58e44d9cac7cee19a266172ed3ea23811b84d6345",
+  "translations": {
+    "answer": "The original post indicates that the only mimic identified was the revolute mimic, and all four continuous mimics were missed. Issue #2756 is associated with the closure of this problem, and the official release of Pinocchio v3.8.0 explicitly states that 'continuous joint' can be parsed as a mimic from URDF. Therefore, the issue should be escalated to version 3.8.0 or later, and the buildModelFromUrdf(..., mimic=True) should be used; after upgrade, the actual number of mimics must still be verified.",
+    "applicability": "Directly applicable to the Pinocchio 3.6.0 Python bindings for parsing continuous URDF mimic joints; other versions should be verified against the official release and model array.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise reference to the exact reproduction.",
+    "details.attempts.0": "The original author provided a complete URDF and a minimal Python reproduction, and explicitly compared the results of revolute and continuous mimics.",
+    "details.diagnostics.0": "The mimic statistics should be verified by grouping URDF joints by type, not just checking if the mimic=True parameter is passed in.",
+    "details.diagnostics.1": "The running version should be compared with the continuous mimic parser support boundary in the official v3.8.0 CHANGELOG.",
+    "details.effective_fixes.0": "Upgrade to Pinocchio 3.8.0 or later containing PR #2756, and continue using buildModelFromUrdf(..., mimic=True).",
+    "details.environments.0": "Ubuntu 24.04; Pinocchio 3.6.0 Python bindings; complete Kinova-Robotiq URDF.",
+    "details.limits.0": "The official release proves the parsing capability, but the original Issue page does not show the author's array output after upgrading to v3.8.0.",
+    "details.limits.1": "The fix is specific to continuous mimic parsing; it does not imply that all mimic-related dynamics algorithms are fully available in all versions.",
+    "details.outcomes.0": "The Issue page shows that #2756 is associated with the closure; the official release of Pinocchio v3.8.0 and CHANGELOG list continuous joints that can be parsed as mimics.",
+    "details.problem_statements.0": "Why does the buildModelFromUrdf(..., mimic=True) return only one mimic joint out of five expected in the Robotiq URDF?",
+    "details.safety_notes.0": "Before commanding the gripper, compare the expected mimic count from URDF, the Pinocchio model mapping, and the actual driven degrees of freedom to avoid issuing commands to passive joints.",
+    "details.suspected_causes.0": "The URDF mimic parsing in Pinocchio 3.6.0 does not cover continuous joints; the official v3.8.0 change adds this capability as part of PR #2756.",
+    "details.symptoms.0": "The model.mimicked_joints returns only [9], and model.mimicking_joints returns only [12], while the URDF expects five mimic joints.",
+    "details.symptoms.1": "The only identified passive joint is revolute; the four missing ones are continuous.",
+    "source.locator": "Complete URDF/array reproduction from Pinocchio #2753; associated with PR #2756; official v3.8.0 release and CHANGELOG entry for continuous mimic",
+    "source.title": "Pinocchio 3.6.0 does not parse all continuous URDF joints as mimics",
+    "terms.0": "Passive joint (mimic joint) (从动关节)",
+    "terms.1": "Continuous joint (连续关节)",
+    "terms.2": "Unified Robot Description Format parser (URDF parser) (统一机器人描述格式解析器)",
+    "terms.3": "Joint mapping (关节映射)",
+    "title": "Pinocchio 3.6.0 has mimic=True, but only one of five mimic joints is recognized in Robotiq 2F-85; what is the official release and CHANGELOG conclusion?"
+  }
+}

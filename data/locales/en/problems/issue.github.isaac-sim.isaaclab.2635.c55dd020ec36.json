@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2635.c55dd020ec36",
+  "schema_version": 1,
+  "source_fingerprint": "69875600b1fb47cbe8f408f4d3b4becc204fa6e3dcf7cc8e051cd9d82beb2081",
+  "translations": {
+    "answer": "Use the version containing PR #2022 in 'train.py' to save 'model_vecnormalize.pkl' in the 'run' directory; 'play.py' loads this file from the selected checkpoint directory and sets 'training=False' and 'norm_reward=False', while reading the 'params/agent.yaml' saved during training. If custom scripts lack these steps, normalization stats and policy checkpoint must be saved and loaded together; only loading policy weights is insufficient to reproduce the training input distribution.",
+    "applicability": "Applies to Isaac Lab SB3 workflows that enable 'normalize_input' or 'normalize_value'; custom directory structures must be adjusted.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and free of conflicts, and there is formal documentation or precise citation of the exact reproduction.",
+    "details.attempts.0": "The original post states that any SB3 environment can execute the normalize_input/normalize_value reproduction steps and recommended code.",
+    "details.attempts.1": "PR #2022 simultaneously modifies the save/load paths in 'train.py' and 'play.py'.",
+    "details.diagnostics.0": "Check if the 'run' directory contains 'model_vecnormalize.pkl'.",
+    "details.diagnostics.1": "Check if 'play' loads the stats from the target checkpoint directory and disables 'training' and 'reward normalization'.",
+    "details.diagnostics.2": "Check if 'play' uses the 'agent.yaml' saved during training, rather than the current default configuration.",
+    "details.effective_fixes.0": "Use the version containing PR #2022 (merge commit ad14a67); training saves 'model_vecnormalize.pkl', evaluation loads from the corresponding checkpoint directory and sets 'training=False' and 'norm_reward=False'.",
+    "details.environments.0": "IsaacLab commit 9f1aa4c, Isaac Sim 4.5.0, Ubuntu 22.04.5, RTX 3500 Ada Laptop 12GB, CUDA 12.1, driver 535.230.02.",
+    "details.limits.0": "The filename and path are bound to the specific Isaac Lab script associated with the PR; custom runners must verify their checkpoint layout.",
+    "details.limits.1": "No author has upgraded to retest the issue; the closure is primarily due to the merged code and maintenance confirmation.",
+    "details.outcomes.0": "The SB3 maintainer explicitly confirmed the issue should be fixed by PR #2022, and the issue was subsequently closed; the original author did not post performance numbers after the upgrade.",
+    "details.problem_statements.0": "Why does play performance degrade and reaccumulate statistics after enabling VecNormalize in SB3 training?",
+    "details.safety_notes.0": "Before deployment, verify that policy, VecNormalize stats, agent config, and code commit are treated as a single, non-dismantleable artifact.",
+    "details.suspected_causes.0": "Training statistics are not persisted; the evaluation endpoint reinitializes and updates the mean and variance.",
+    "details.symptoms.0": "train.py does not save normalization statistics; play.py uses a fresh VecNormalize and continues training.",
+    "details.symptoms.1": "The evaluation normalization distribution is inconsistent with training, and policy performance degrades.",
+    "source.locator": "IsaacLab #2635 complete reproduction; SB3 maintainer confirms 3004477599; PR #2022",
+    "source.title": "SB3 play.py must load training VecNormalize stats rather than relearning them.",
+    "terms.0": "Vector Normalization (VecNormalize) (向量归一化)",
+    "terms.1": "Running Statistics (运行统计)",
+    "terms.2": "Evaluation Mode (评测模式)",
+    "terms.3": "Checkpoint (检查点)",
+    "title": "How does Isaac Lab's SB3 play.py avoid relearning VecNormalize stats?"
+  }
+}

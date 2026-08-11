@@ -1,0 +1,141 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Kongx231"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534",
+  "captured_at": "2026-08-11T15:20:00+08:00",
+  "content_sha256": "d1280b9c376cb8ee5659416bd21710a10ea206b5afcde316e53c229eed42015a",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 5 条评论；附件 tar.gz 未在当前环境执行，修正后数值不存在于线程，因此答案保持 partial。",
+    "components": [
+      "Pinocchio",
+      "ABA",
+      "constraintDynamics",
+      "continuous joint",
+      "pin.normalize"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者先从 walking constraintDynamics 简化到单摆 ABA 最小复现，并附 Python 代码与 URDF。",
+        "维护者给出包含 q=pin.normalize(model,q) 的完整脚本片段。"
+      ],
+      "diagnostics": [
+        "检查 URDF joint 类型和 model.nq/model.nv；continuous joint 不能按单个标量角度直接填配置。",
+        "在调用 ABA/constraintDynamics 前对 q 使用 pin.normalize(model,q)，并保留返回值。"
+      ],
+      "effective_fixes": [
+        "以 q=pin.normalize(model,q) 接收归一化返回值后再调用 pin.aba；不要只调用 normalize 而丢弃返回值。"
+      ],
+      "environments": [
+        "pinocchio3-preview、Python、附件 single_pendulum.urdf；原帖未给 OS、具体 commit 或编译选项。"
+      ],
+      "limits": [
+        "线程没有原作者归一化后的 -4.905 对照，也没有回到完整 walking/constraintDynamics 模型复测，因此完整摆动腿问题仍需单独验证。",
+        "本卡不能把所有过大加速度都归因于配置归一化；惯量、单位、外力和约束也需独立核对。",
+        "附件代码/URDF 没有在当前环境重新运行。"
+      ],
+      "outcomes": [
+        "维护者将异常定位为未归一化配置，并解释 continuous joint 的 [cos(theta), sin(theta)] 参数化；原作者没有发布修正后数值。"
+      ],
+      "problem_statements": [
+        "Pinocchio 单摆 ABA 给出的角加速度比解析预期大时，为什么应检查 continuous-joint 配置归一化？"
+      ],
+      "safety_notes": [
+        "动力学输入进入实机 WBC 前应检查配置流形有效性和有限值；异常大加速度不得直接转成力矩下发。"
+      ],
+      "suspected_causes": [
+        "维护者指出原始 q 未归一化；该 continuous joint 的配置使用 [cos(theta), sin(theta)] 参数化。"
+      ],
+      "symptoms": [
+        "单摆长度 2、质量 1、惯量 1、重力 9.81、质心距转轴 1，在 pi/2 零速度初始化时，原作者预期约 -4.905，却从 ABA 得到约 -7.7。",
+        "更大 walking 模型中，原作者先观察到 swing-leg joint accelerations 偏大且与其他 solver 不一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者指出原代码忘记归一化配置。该模型使用 continuous joint，q 以 [cos(theta), sin(theta)] 参数化，因此应在 ABA 前执行 q=pin.normalize(model,q)，并注意 normalize 返回新值，必须重新赋给 q。线程没有给出修正后的加速度输出，也没有回到完整 walking 模型复测，所以只能把这条作为已确认的输入修正，不能声称完整摆动腿问题已经闭环。",
+        "applicability": "适用于 Pinocchio continuous joint 的配置向量及其 ABA/constraintDynamics 调用；完整机器人仍需检查其他动力学输入。",
+        "bilingual_terms": [
+          "连续关节（continuous joint）",
+          "配置流形（configuration manifold）",
+          "构型归一化（configuration normalization）",
+          "关节加速度（joint acceleration）",
+          "关节空间前向动力学算法（Articulated-Body Algorithm, ABA）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.simulation_toolchain.pinocchio_continuous_joint_configuration_normalization_1534",
+        "problem_title_zh": "Pinocchio continuous joint 配置未归一化导致 ABA 加速度异常",
+        "question_zh": "Pinocchio 单摆 ABA 从预期约 -4.905 变成约 -7.7 时，原线程确认的配置问题和调用方式是什么？",
+        "source_locator": "Pinocchio #1534 评论 934651753 给出 normalize 脚本；评论 973980396 解释 continuous joint 参数化；评论 974012875 强调接收返回值",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-934651753",
+        "verification_refs": [
+          {
+            "locator": "维护者说明该 continuous joint 用 q=[cos(theta),sin(theta)] 参数化",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-973980396"
+          },
+          {
+            "locator": "项目成员纠正为 q=pin.normalize(model,q)，必须保存返回值",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-974012875"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1534",
+    "query": "Pinocchio ABA pendulum acceleration continuous joint normalize configuration cos sin",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "single pendulum minimal model",
+      "walking model（原帖未给机器人型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者指出配置向量未归一化，并给出完整调用片段。"
+      },
+      {
+        "text": "维护者解释 continuous joint 的 q 由 cos(theta)、sin(theta) 参数化。"
+      },
+      {
+        "text": "项目成员强调应把 pin.normalize 的返回值重新赋给 q。"
+      }
+    ],
+    "wbc_relevance_reason": "基于 Pinocchio 的仿真、预测模型和 WBC 动力学若接收不在配置流形上的 continuous-joint 状态，会产生看似是 ABA/约束动力学错误的异常加速度。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1534",
+  "summary": "Pinocchio #1534 报告 walking 的 constraintDynamics 中摆动腿加速度偏大，随后缩小到单摆 ABA：预期约 -4.905，却得到约 -7.7。维护者检查附件后指出配置向量忘记归一化，并给出 q=pin.normalize(model,q) 的完整调用位置；后续解释该 URDF 使用 continuous joint，其配置以 [cos(theta), sin(theta)] 参数化。另一位项目成员还纠正示例必须把 normalize 的返回值重新赋给 q。线程没有原作者的修正后加速度输出，因此本卡只确认输入构型约束和调用方式，不声称数值已复测回 -4.905。",
+  "title": "Pinocchio continuous joint 构型未归一化会使 ABA 加速度对照失真",
+  "version": null
+}

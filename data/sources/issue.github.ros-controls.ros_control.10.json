@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "advaitjain"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros_control/issues/10",
+  "captured_at": "2026-08-11T15:32:00+08:00",
+  "content_sha256": "59904c4d5740563e4f6e05b1a1f0d6d5544e549196b338861409175b2ce71cc2",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与唯一 1 条评论；没有补写未公开的分配器行为或提交号。",
+    "components": [
+      "ros_control",
+      "ControllerManager.update",
+      "STL vector",
+      "controller switching"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "把切换列表的 `clear()` 移到非实时切换准备阶段。"
+      ],
+      "diagnostics": [
+        "检查实时更新路径中的容器清理、析构和潜在内存管理操作。"
+      ],
+      "effective_fixes": [
+        "维护者确认默认分支已将 `clear()` 调用移到非实时路径。"
+      ],
+      "environments": [
+        "2012 年 ros_control `ControlManager.update`；具体分支和发布版本未给出。"
+      ],
+      "limits": [
+        "没有 commit、测试或首个修复 release；不能把所有 `clear()` 一概等同为必然分配。"
+      ],
+      "outcomes": [
+        "维护者明确回复修复完成；没有给出 jitter 或分配次数对照。"
+      ],
+      "problem_statements": [
+        "控制器切换过程中，为什么不应在实时 `update()` 分支执行切换列表的 `clear()`？"
+      ],
+      "safety_notes": [
+        "对实时 WBC 路径应同时做静态审查与运行时分配/系统调用检测，避免只凭 API 名称判断。"
+      ],
+      "suspected_causes": [
+        "原线程将实时分支内的 vector `clear()` 视为不应保留的操作。"
+      ],
+      "symptoms": [
+        "代码审查发现 `please_switch_` 分支内清空 STL vector，原作者质疑实时安全。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者在 `please_switch_` 的实时分支发现 vector `clear()`；维护者随后确认把这些调用移动到了非实时路径。该线程没有证明某次 `clear()` 一定发生堆分配，也没有给出 commit，因此可复用原则是审计并隔离实时路径中的容器生命周期操作，而不是把所有同名调用机械判定为故障。",
+        "applicability": "适用于旧 ros_control 切换实现和同类实时容器生命周期审查。",
+        "bilingual_terms": [
+          "实时路径（realtime path）",
+          "控制器切换（controller switching）",
+          "动态分配（dynamic allocation）",
+          "容器清理（container clearing）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros_control_switch_vector_clear_10",
+        "problem_title_zh": "把控制器切换容器清理移出实时路径",
+        "question_zh": "旧 ros_control 的控制器切换分支为什么要把 STL vector 的 `clear()` 移出 `update()`？",
+        "source_locator": "ros_control #10 原帖代码审查；维护者回复 13155600",
+        "source_url": "https://github.com/ros-controls/ros_control/issues/10#issuecomment-13155600",
+        "verification_refs": [
+          {
+            "locator": "维护者确认 clear 调用已移到非实时部分",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros_control/issues/10#issuecomment-13155600"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros_control.10",
+    "query": "ros_control ControllerManager vector clear realtime allocation switch",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROS 1 realtime controller manager"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "维护者明确回复：已把 `clear()` 调用移动到 non-realtime。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 控制器切换发生在周期线程时，容器析构、容量变化或隐藏分配都可能引入不可控时延；切换准备与实时提交必须分层。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros_control.10",
+  "summary": "ros_control #10 指出 `ControlManager.update` 的 `please_switch_` 实时分支中会清空 STL vector。维护者确认已经把这些 `clear()` 调用移动到非实时路径。线程只有一条回复，没有补丁和分配器级测量，因此卡片只记录这一历史实现边界。",
+  "title": "控制器切换列表的 clear 操作应移出实时分支",
+  "version": null
+}

@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "IoannisDadiotis"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092",
+  "captured_at": "2026-08-11T15:20:00+08:00",
+  "content_sha256": "fd9cdf89036b9db25b12562fa1a56106ccb9668b5f94630e2699cfcda9a45b78",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 6 条评论；没有把自动微分计划写成已验证修复，也没有采信缺少基准条件的 2–3 倍时序为通用性能结论。",
+    "components": [
+      "Pinocchio",
+      "computeStaticTorqueDerivatives",
+      "ComputeRNEASecondOrderDerivatives",
+      "external forces",
+      "CppADCodeGen"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者考虑分别求 gravity 与 J(q)^T fext 的二阶导，或把速度和加速度置零后调用 RNEA 二阶导。",
+        "原作者最后表示对自己的应用可能使用 CppADCodeGen 自动微分。"
+      ],
+      "diagnostics": [
+        "先核对目标 Pinocchio 版本的二阶导 API 是否支持 external forces，不要仅凭函数名假定覆盖静力矩场景。",
+        "若考虑通用 RNEA 二阶导替代静态专用导数，应单独基准不需要的速度/加速度导数开销。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "2023-11 的 Pinocchio 公开接口；原帖未给版本、commit、OS、机器人或矩阵规模。"
+      ],
+      "limits": [
+        "CppADCodeGen 只是原作者计划，没有代码、数值正确性、编译时间或运行时结果，不能写成已验证替代方案。",
+        "原作者的 2–3 倍时序缺少硬件、版本和统计方法，不能外推为性能结论。",
+        "该结论对应 2023-11 的接口状态；新版本必须重新检查 release、文档和函数签名。"
+      ],
+      "outcomes": [
+        "线程确认当时没有现成的含外力静力矩二阶导路径；维护者邀请协作实现，原作者没有投入底层开发并转向考虑自动微分。"
+      ],
+      "problem_statements": [
+        "Pinocchio 是否有可直接计算含外力 generalized static torque 对 q 二阶导数的接口，静态专用路径是否更快？"
+      ],
+      "safety_notes": [
+        "将二阶导数用于接触/力矩优化前，应与有限差分或自动微分方向导数交叉检查，避免遗漏 external-force 项。"
+      ],
+      "suspected_causes": [
+        "项目贡献者明确表示当时 Pinocchio 的二阶导支持不完整；含外力静力矩的专用二阶导需要研究和工程实现。"
+      ],
+      "symptoms": [
+        "computeStaticTorque/computeStaticTorqueDerivatives 没有二阶接口，而 ComputeRNEASecondOrderDerivatives 不接收 external forces。",
+        "原作者用 std::chrono 粗测一阶接口时，零速度/零加速度的 ComputeRNEADerivatives 比 computeStaticTorqueDerivatives 慢约 2–3 倍，但未给硬件、重复次数或绝对时延。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "截至原线程时间，项目方明确说二阶导支持尚不完整，没有可直接使用的含 external forces 静力矩二阶导接口；专门利用静态结构可以减少计算，但需要进一步研究和工程实现。原作者最后只表示可能用 CppADCodeGen 自动微分，并未发布实现或结果，所以它只能作为待验证的备选路线。目标版本若更新，必须重新核对 API，不能永久沿用 2023 年结论。",
+        "applicability": "适用于核对 2023-11 前后 Pinocchio 的含外力静力矩二阶导能力；当前版本和具体模型必须重新验证。",
+        "bilingual_terms": [
+          "广义静力矩（generalized static torque）",
+          "二阶导数（second-order derivative）",
+          "外力（external force）",
+          "逆动力学递归牛顿-欧拉算法（Recursive Newton-Euler Algorithm, RNEA）",
+          "自动微分（automatic differentiation, AD）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_static_torque_second_order_external_force_2092",
+        "problem_title_zh": "Pinocchio 含外力静力矩二阶导数的接口缺口",
+        "question_zh": "Pinocchio 当时能否直接计算含 external forces 的 generalized static torque 对 q 的二阶导数，原线程给出的可行替代是什么？",
+        "source_locator": "Pinocchio #2092 评论 1822471230 说明二阶导支持不完整；评论 1824887277 说明可实现但需工程投入；评论 1831924121 原作者仅计划 CppADCodeGen",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1822471230",
+        "verification_refs": [
+          {
+            "locator": "维护者说明能力可以实现，但需要时间和工程投入",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1824887277"
+          },
+          {
+            "locator": "原作者只提出考虑 CppADCodeGen，没有提交实现或验证结果",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1831924121"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2092",
+    "query": "Pinocchio generalized static torque second order derivative external forces CppADCodeGen",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "未指定机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目贡献者说明 Pinocchio 的二阶导支持当时尚不完整，静态专用路径仍需研究。"
+      },
+      {
+        "text": "维护者表示该能力可以实现，但需要时间和工程投入。"
+      },
+      {
+        "text": "原作者只表示可能改用 CppADCodeGen，未给实现或结果。"
+      }
+    ],
+    "wbc_relevance_reason": "二阶最优控制、SQP/DDP 与接触力优化可能需要含外力项的静力矩 Hessian；误以为库已有完整接口会导致错误的导数或不可预期的计算开销。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2092",
+  "summary": "Pinocchio #2092 询问 generalized static torque 对 q 的二阶导数，特别是含 external forces 时能否用 ComputeRNEASecondOrderDerivatives。项目贡献者说明二阶导支持尚不完整，超出经典算法实现且需要进一步研究；静力矩专用导数可以利用结构减少计算，但当时没有现成实现。原作者据此理解为当前不能直接计算含外力的静力矩二阶导，维护者回应“可以做，但需要时间和工程投入”。原作者最终表示可能改用 CppADCodeGen 自动微分，但没有发布实现、时序或验证结果。",
+  "title": "Pinocchio 当时没有带外力静力矩二阶导数的现成接口",
+  "version": null
+}

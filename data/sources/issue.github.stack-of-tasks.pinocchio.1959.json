@@ -1,0 +1,146 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "DawnQiu"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1959",
+  "captured_at": "2026-08-11T15:20:00+08:00",
+  "content_sha256": "9835f3d4c2d47f98da17a13a34b4982c6b8cc3a420784e675d940b3497305cd7",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 6 条评论、PR #1963 元数据、完整 diff、审阅评论和收敛日志；没有把官方示例闭环扩大为原用户机器人及关节限位也已闭环。",
+    "components": [
+      "Pinocchio",
+      "inverse kinematics",
+      "log6",
+      "computeFrameJacobian",
+      "Jlog6"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原用户增加迭代次数并调整时间步长，均未解决自己的机械臂结果。",
+        "PR #1963 在官方 C++/Python 示例中把残差与 Jacobian 统一到当前关节局部坐标系，并加入 Jlog6 修正。"
+      ],
+      "diagnostics": [
+        "逐项标注 log6 残差和 computeFrameJacobian 输出所处的 frame，确认两者一致后再调阻尼或步长。",
+        "对 SE(3) 位姿任务 Jacobian 核对 Jlog6 链式修正；不要只把几何 Jacobian 直接与 log6 残差组合。"
+      ],
+      "effective_fixes": [
+        "按已合入 PR #1963 的方式，以 iMd=data.oMi[JOINT_ID].actInv(oMdes) 计算局部残差，并用 Jlog6(iMd.inverse()) 修正任务 Jacobian；Python 示例使用 np.dot 保持 Python 2.7/ROS Melodic 兼容。"
+      ],
+      "environments": [
+        "Pinocchio C++、用户自有 GEN3Lite.urdf；原帖未给 OS、Pinocchio 版本或 commit。关联 PR #1963 修改官方 C++/Python inverse-kinematics 示例并合入 devel。"
+      ],
+      "limits": [
+        "原用户没有在 GEN3 Lite 模型上发布采用 PR #1963 后的复测结果；本卡确认的是官方示例的 frame/Jlog6 修复，不宣称用户机器人的所有不收敛都已解决。",
+        "PR #1963 没有加入关节限位约束；原帖中超出物理限位的现象需要另行使用受约束 IK 或限位处理，不能由本线程推导已经解决。",
+        "目标可达性、奇异位形、阻尼和步长仍需针对目标机器人验证。"
+      ],
+      "outcomes": [
+        "PR #1963 的 C++ 与 Python 示例日志均显示 Convergence achieved，PR 经项目维护者审阅批准并合入 devel。"
+      ],
+      "problem_statements": [
+        "Pinocchio 迭代逆运动学在增加迭代次数、调整步长后仍不收敛时，怎样检查位姿残差与 Jacobian 的参考坐标系？"
+      ],
+      "safety_notes": [
+        "把 IK 结果用于实机前必须检查关节位置、速度和碰撞约束；即使数值收敛也不能直接下发越界配置。"
+      ],
+      "suspected_causes": [
+        "贡献者指出，原代码的 log6(dMi) 残差表达在目标 frame d，而 computeFrameJacobian 的 Jacobian 表达在当前 body/frame i；两者坐标系不一致。"
+      ],
+      "symptoms": [
+        "原用户运行 1000 次迭代仍未达到 1e-4 误差阈值，最终配置包含约 39.27 和 -39.18 rad 的关节值。",
+        "原用户明确回复，减小 dt 后仍未达到预期结果。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原线程确认的错误是：log6(dMi) 残差表达在目标坐标系 d，而 computeFrameJacobian 的 Jacobian 表达在当前末端/关节坐标系 i。已合入 PR #1963 把残差改为 iMd=data.oMi[JOINT_ID].actInv(oMdes)，使误差位于当前局部坐标系，并用 Jlog6(iMd.inverse()) 对几何 Jacobian 做位姿任务链式修正。修订后的官方 C++/Python 示例均给出收敛日志。减小 dt 单独没有解决原用户问题；原用户也没有证明自己的 GEN3 Lite 关节限位问题已解决。",
+        "applicability": "适用于使用 Pinocchio log6 位姿残差和局部几何 Jacobian 的迭代 IK，尤其是基于旧官方示例的实现；目标机器人仍需单独处理可达性和关节限位。",
+        "bilingual_terms": [
+          "逆运动学（inverse kinematics, IK）",
+          "位姿残差（pose residual）",
+          "几何雅可比矩阵（geometric Jacobian）",
+          "局部坐标系（local frame）",
+          "三维特殊欧氏群（special Euclidean group, SE3）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_ik_error_jacobian_frame_mismatch_1959",
+        "problem_title_zh": "Pinocchio 旧 IK 示例的位姿残差与 Jacobian 参考坐标系不一致",
+        "question_zh": "Pinocchio 迭代 IK 使用 log6 位姿误差时，即使减小步长仍不收敛，原线程确认的接口错误和修复是什么？",
+        "source_locator": "Pinocchio #1959 评论 1543725756 定位 frame mismatch；评论 1543910510 否定仅减小 dt；评论 1543936952/1546547369 指向修复；PR #1963 已审阅、合并并附收敛日志",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1959#issuecomment-1543725756",
+        "verification_refs": [
+          {
+            "locator": "原用户说明减小 dt 后仍未达到预期，排除把步长单独写成已验证修复",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1959#issuecomment-1543910510"
+          },
+          {
+            "locator": "已合入 PR 把残差统一到当前局部 frame、加入 Jlog6，并附 C++/Python 收敛日志",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/1963"
+          },
+          {
+            "locator": "PR #1963 的合并提交，固定官方 IK 示例修改",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/commit/4b28322642096f2e7521e978ba535e94de0667b0"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1959",
+    "query": "Pinocchio inverse kinematics log6 error Jacobian same frame Jlog6 convergence",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Kinova GEN3 Lite（原帖用户模型）",
+      "Pinocchio sample manipulator（合并 PR 示例）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "贡献者指出 log6 残差位于目标 frame，而 Jacobian 位于当前 body frame，两者必须统一。"
+      },
+      {
+        "text": "原用户明确回复减小 dt 后仍不能达到预期。"
+      },
+      {
+        "text": "维护者将修复指向 #1963；该 PR 后续完成审阅并合入。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/IK 中位姿残差与任务 Jacobian 若不在同一参考坐标系，即使阻尼和步长合理也可能不收敛；这是任务空间求解器的基础接口一致性问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1959",
+  "summary": "Pinocchio #1959 中，GEN3 Lite 用户把 log6(oMdes.actInv(oMee)) 得到的目标坐标系残差与 computeFrameJacobian 返回的末端局部 Jacobian 直接组合，1000 次迭代仍未收敛，减小 dt 也没有达到预期。项目贡献者定位到误差与 Jacobian 不在同一坐标系，并发现官方旧 IK 示例同样不一致。关联 PR #1963 把误差改到当前关节/末端局部坐标系，加入 Jlog6 对任务 Jacobian 的修正，给出 C++ 与 Python 的收敛日志，通过审阅后合入 devel。原用户没有在自己的 GEN3 Lite 上发布合并后复测，也没有证明关节限位问题随之解决。",
+  "title": "Pinocchio 旧 IK 示例把目标坐标系残差与局部 Jacobian 混用",
+  "version": null
+}

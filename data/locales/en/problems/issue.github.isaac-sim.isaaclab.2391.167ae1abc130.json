@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2391.167ae1abc130",
+  "schema_version": 1,
+  "source_fingerprint": "59990b20bce6d754ae389e75f08ebc40d3bb45a3ab9cc86bb1b9d18cfb366013",
+  "translations": {
+    "answer": "Confirm that only _step_reward remains with the 0→non-zero→0 weight sequence, and that _reward_buf is correct in total reward. Use the version containing PR #2392, or explicitly set _step_reward[:, term_idx] = 0.0 in the zero-weight branch before continuing. This fix only addresses stale values in per-term visualization/logging and should not be interpreted as a total reward calculation error.",
+    "applicability": "Applies to Isaac Lab 2.1.0 and environments allowing runtime switching of reward term weights in the RewardManager.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. The fix is supported by formal documentation or independent reproducibility.",
+    "details.attempts.0": "The original post provides a minimal pseudocode and acceptance criteria; PR #2392 sets _step_reward[:, term_idx] = 0.0 before continuing.",
+    "details.diagnostics.0": "Dynamic modification of term weights in 0→non-zero→0 order, and simultaneous printing of _step_reward[:, idx] and total reward.",
+    "details.effective_fixes.0": "Upgrade to the version containing PR #2392 and merge commit f1ba9c3, or explicitly set _step_reward[:, term_idx] = 0.0 in the weight == 0 branch.",
+    "details.environments.0": "Isaac Lab 2.1.0 commit 2e6946a, Isaac Sim 4.5, Ubuntu 22.04, RTX 3060, CUDA 12.4, driver 550.120.",
+    "details.limits.0": "Do not misinterpret this bug as a total reward calculation error.",
+    "details.limits.1": "PR checklist does not declare new tests; evidence comes from precise reproducibility and source code fix.",
+    "details.outcomes.0": "Issue is closed with PR merge; fix addresses per-term visualization/logging, not total reward calculation.",
+    "details.problem_statements.0": "Why does per-term visualization still show the old reward after setting the reward weight back to zero?",
+    "details.safety_notes.0": "When curriculum is being recorded, log the weight, per-term contribution, and total reward to avoid relying solely on UI fractionals.",
+    "details.suspected_causes.0": "Zero-weight branch directly continues, missing step buffer clearing.",
+    "details.symptoms.0": "_step_reward retains the previous non-zero value for the term, and the live visualizer/logging displays a stale reward.",
+    "details.symptoms.1": "Total reward _reward_buf remains correct.",
+    "source.locator": "IsaacLab #2391 complete reproduction and environment; PR #2392",
+    "source.title": "Dynamic reward weight reset to 0: live visualizer still shows old value",
+    "terms.0": "Dynamic reward weight (动态奖励权重)",
+    "terms.1": "Step reward buffer (分步奖励缓冲)",
+    "terms.2": "Stale value (过期值)",
+    "terms.3": "Live visualizer (实时可视化器)",
+    "title": "Dynamic reward weight reset to 0: live visualizer still shows old value, how to fix?"
+  }
+}

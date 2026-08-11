@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.649.b4fc23bea88f",
+  "schema_version": 1,
+  "source_fingerprint": "d58a1b95d7173fd4ce1cf92387bbaeb25280c37ae2e308749e1ec2ff03cd0bab",
+  "translations": {
+    "answer": "The thread does not implement scheduling for state interfaces or controllers based on the subset of requests. The maintainer's current approach is: if it can be split, create different components; otherwise, use counter/internal filtering within hardware read to update state at low frequencies, retaining the previous value for skipped periods. The maintainer explicitly states that the controller will reuse cached state during high-frequency reads. Since the caller still treats automatic subset scheduling as an enhancement, this solution should be marked as an engineering implementation suggestion rather than a pre-defined interface scheduling.",
+    "applicability": "Applies to mixed high and low-frequency states within the same hardware component; requires implementation of caching, timestamping, and timeout semantics.",
+    "credibility.rationale": "Engineering records exist for environment, processing steps, and results, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "PR #1570 implements rw_rate for each hardware component and updates the official documentation for different update rates.",
+    "details.attempts.1": "The maintainer suggests using counter/internal filtering within the component to skip low-frequency voltage reads, or to split the components.",
+    "details.diagnostics.0": "First, determine if different frequency signals can be split into separate ros2_control hardware components.",
+    "details.diagnostics.1": "Distinguish between controller update rate, hardware component rw_rate, and the actual sampling rate within each component state.",
+    "details.diagnostics.2": "Expose timestamps or staleness for cached states to prevent controllers from treating cached values as new samples.",
+    "details.effective_fixes.0": "Cross-component: configure ros2_control with rw_rate; the actual rate is limited by the controller_manager rate when higher than the controller_manager rate.",
+    "details.effective_fixes.1": "Same component: update target state at low frequencies using counter/filtering within hardware read, retaining the previous value for skipped periods; or restructure into an independent component.",
+    "details.environments.0": "ros2_control rolling/master period; PR #1570 has been merged; specific ROS 2 release versions need to be checked.",
+    "details.limits.0": "PR #1570 corresponds to the parameter name and semantics at the time of merging; different ROS 2 release versions need to be verified for backport.",
+    "details.limits.1": "The counter scheme for the same component is the maintainer's suggestion; the thread does not provide deployment retesting for the caller.",
+    "details.outcomes.0": "Component-level rw_rate has been merged and documented/tested; fine-grained state interface scheduling for the controller has not been implemented in this thread.",
+    "details.problem_statements.0": "How to configure when multiple hardware components require different read/write rates?",
+    "details.problem_statements.1": "How to avoid reading low-frequency signals when the position is at 100 Hz and voltage at 0.1/1 Hz within the same hardware component?",
+    "details.safety_notes.0": "When reusing cached states, carry timestamps/validity and set timeouts; expired temperature, voltage, or fault states should not be silently used for safety decisions.",
+    "details.symptoms.0": "Fixed high-frequency read/write will consume bandwidth for low-frequency states, causing retries, packet loss, and additional latency.",
+    "source.locator": "ros2_control #649 cache semantics 2246159316, single-component counter/split suggestion 2246220069, caller explanation enhancement not implemented 2246280084",
+    "source.title": "ros2_control: Differentiate component-level rw_rate from internal signal throttling in multi-rate scenarios",
+    "terms.0": "State interface (状态接口)",
+    "terms.1": "Internal filtering/throttling (内部节流)",
+    "terms.2": "Cached state (缓存状态)",
+    "terms.3": "Data staleness (数据陈旧度)",
+    "title": "Can the component-level rw_rate be scheduled separately from internal signal throttling when the position is high-frequency and voltage low-frequency within the same hardware component?"
+  }
+}

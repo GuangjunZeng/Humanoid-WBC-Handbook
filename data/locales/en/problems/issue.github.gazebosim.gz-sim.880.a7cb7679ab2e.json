@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.gazebosim.gz-sim.880.a7cb7679ab2e",
+  "schema_version": 1,
+  "source_fingerprint": "be4b8723b9101bfca75a801c916b33838675f43df7ad5c1915e34b9cfd7a1c4b",
+  "translations": {
+    "answer": "The thread first verifies `libdart` in the original environment, which was 6.9.2-2build4. The maintainer believes that the friction support in the Focal system DART is different from the Gazebo DART fork used in Bionic, and suggests using Bionic, building the fork from source with Ignition, or using the dartsim PPA for version A/B. Since the original author has not published any workaround results, this is clearly a version diagnosis entry and not a verified fix.",
+    "applicability": "Directly applicable to Ubuntu 20.04 Focal Docker + Ignition Gazebo Fortress binary + DART 6.9.2-2build4; other versions require re-A/B.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The thread suggests switching to Bionic, building the Gazebo DART fork from source with Ignition, or using the dartsim PPA.",
+    "details.diagnostics.0": "Record the exact version of `libdart` and use the same world/command to compare the Bionic Gazebo fork, Focal system DART, or PPA build.",
+    "details.effective_fixes.0": "No original author retesting; only the three paths can be considered as the maintainer's suggested workaround.",
+    "details.environments.0": "Ubuntu 20.04 Focal Docker; Ignition Gazebo Fortress binary; system DART 6.9.2-2build4; official `skid_steer_mecanum.sdf`.",
+    "details.limits.0": "No fixed fork commit, PPA package version, or transition error metric provided; Issue remains open.",
+    "details.limits.1": "This conclusion does not apply to Bullet, ODE, or current Gazebo/DART versions.",
+    "details.outcomes.0": "The environment and DART version are confirmed; no trajectory was reported after the workaround was not reported.",
+    "details.problem_statements.0": "Why does the skid-steer example in Gazebo Fortress not turn in the same way as expected on Ubuntu Focal/DART?",
+    "details.safety_notes.0": "Before sim-to-real, the physics engine/package digest should be fixed, and regression should be performed using lateral/angular velocity, contact force, and slip rate, not just the same world file.",
+    "details.suspected_causes.0": "The maintainer attributes the difference to the friction support in the Focal system DART; Bionic uses a native Gazebo fork with better support.",
+    "details.symptoms.0": "Most of the time, the robot moves straight, and occasionally turns 90°, instead of approximating a circular motion.",
+    "source.locator": "gz-sim #880 version confirmed 868260846; maintainer diagnosis/source 867964701/868823079; PPA solution 1101662759",
+    "source.title": "The system DART version on Ubuntu Focal will affect the friction performance of the Gazebo skid-steer example",
+    "terms.0": "Friction model (摩擦模型)",
+    "terms.1": "Skid steering (侧滑转向)",
+    "terms.2": "Physics backend (物理后端)",
+    "terms.3": "Version pinning (版本固定)",
+    "title": "When the Gazebo Fortress skid-steer example primarily moves straight and occasionally turns 90° on Ubuntu Focal, what should be verified first?"
+  }
+}

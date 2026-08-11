@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6a5108b9000000000602095c.8b4f191de316",
+  "schema_version": 1,
+  "source_fingerprint": "9c2d9e6524414c4d23338ca0dcdd59f9c5e82590c706d764ad7e7298bd742da5",
+  "translations": {
+    "answer": "Isolate the risk of falling by using a safety rope or support, and actively downgrade or shut down the system before the first thermal alert. Compare the posture of the left and right shoulders and arms, and environmental cooling; the 85/90°C value is only a clue for official verification.",
+    "applicability": "The 85/90°C threshold has not been independently verified by official documentation; fans cannot replace fault diagnosis.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "The answer has not been closed or there is a conflict; the current information is only a problem clue.",
+    "details.attempts.0": "Community recommendations include monitoring motor temperature and status via App, setting an alarm and closing the program, hanging the robot for cooling, shortening the continuous arm raise, and external air cooling or returning to the factory.",
+    "details.diagnostics.0": "Cross-verify the text, visible comments, and media descriptions; these have not been independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "Sonic full-body remote operation; both arms raised continuously; indoor environment.",
+    "details.limits.0": "The 85/90°C threshold has not been independently verified by official documentation; fans cannot replace fault diagnosis.",
+    "details.outcomes.0": "No results from the author's fix; multiple commenters have reported similar overheating issues.",
+    "details.problem_statements.0": "After the right arm is raised and the arm overheats, the robot should be stopped and the cause identified.",
+    "details.safety_notes.0": "Prioritize fall prevention: hanging the robot, personnel isolation, temperature warning, and fault-level shutdown.",
+    "details.suspected_causes.0": "Comments suspect continuous joint torque and insufficient cooling; some suggest returning to the factory to check joint gap, but the cause is undetermined.",
+    "details.symptoms.0": "The right arm overheats and is disconnected for 1–2 minutes, followed by the right leg being disconnected, and the robot falling over.",
+    "media_summaries.0": "Three media posts show the G1 remote operation and posture, without readable temperature time series; the 1–2 minute and 85/90°C clues come from the text and comments, but need official/remote measurement verification.",
+    "source.locator": "Root post description and temperature/stop/shutdown/return-to-factory comments",
+    "source.title": "G1 Double Arm Raised 1–2 Minutes Overheats and Causes the Right Leg to Disconnect, Prioritizing Stop and Diagnosis?",
+    "terms.0": "Actuator (执行器)",
+    "terms.1": "Joint Torque (关节力矩)",
+    "terms.2": "Whole-Body Teleoperation (全身遥操作)",
+    "terms.3": "Thermal Drift (热漂移)",
+    "title": "G1 Double Arm Raised 1–2 Minutes Overheats and Causes the Right Leg to Disconnect, Prioritizing Stop and Diagnosis?"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Czworldy"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046",
+  "captured_at": "2026-08-11T05:20:00+08:00",
+  "content_sha256": "05729a5c7aabc2db6d53f9675332a596429d88c71dc7e496d9bf86e17875cfa7",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对 GitHub Issue 正文、搜索引擎可见的完整回复链和维护者引用的官方最小 CMake 示例；未把 -march=native 外推为所有 buildModel 崩溃的通用原因。",
+    "components": [
+      "Pinocchio",
+      "OCS2",
+      "Eigen",
+      "CMake",
+      "URDF buildModel"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者给出非 catkin 与 catkin 两种 CMake 写法，均使用 find_package(pinocchio REQUIRED) 和 target_link_libraries(... pinocchio::pinocchio)。",
+        "作者移除仅在其中一个库启用的 -march=native。"
+      ],
+      "diagnostics": [
+        "比较所有链接库的编译器、Eigen 向量化选项和 -march 等 CPU 特定选项，而不是只检查 URDF 内容。",
+        "比较各库对 Pinocchio 的接入方式；维护者建议统一通过 pinocchio::pinocchio imported target 传播依赖与编译定义。"
+      ],
+      "effective_fixes": [
+        "让同一进程内所有 Pinocchio/Eigen 依赖使用兼容且一致的编译选项；原帖中移除单边 -march=native 后段错误消失。",
+        "CMake 工程优先统一链接 pinocchio::pinocchio，不再由不同库分别手工拼接 Pinocchio/Eigen include、library 和编译定义。"
+      ],
+      "environments": [
+        "Ubuntu Focal；Pinocchio 2.6.20 amd64；OCS2 getPinocchioInterfaceFromUrdfModel；两个间接依赖分别使用 CMake package 与 pkg-config。"
+      ],
+      "limits": [
+        "原帖没有给出统一编译后的完整 CI 或独立复现；不能把所有 buildModel 段错误都归因于 -march=native。",
+        "根因是同一进程内编译选项不一致，而不是 -march=native 在所有工程中都应禁用。"
+      ],
+      "outcomes": [
+        "作者明确报告移除库 A 的 -march=native 后 segmentation fault 消失；维护者补充这类混用问题并非 Pinocchio 独有，并将 Issue 关闭为 completed。"
+      ],
+      "problem_statements": [
+        "同一 Pinocchio URDF buildModel 调用在单独示例可用、加入另一个 Pinocchio 依赖库后段错误，应先检查什么？"
+      ],
+      "safety_notes": [
+        "实机 WBC 部署前应在与目标 CPU 一致的构建产物上运行 URDF 加载与动力学冒烟测试，避免 ABI 问题在控制进程启动后才暴露。"
+      ],
+      "suspected_causes": [
+        "维护者指出不同向量化编译选项会让 Eigen 使用不同的 malloc/free 路径；作者随后发现库 A 单独启用了 -march=native。"
+      ],
+      "symptoms": [
+        "pinocchio::urdf::buildModel 过程中在 Eigen aligned allocator 的 free 路径崩溃；GDB 回溯进入 JointModelCompositeTpl 析构。",
+        "函数在其他示例正常，只有同时链接另一个同样依赖 Pinocchio 的库时出现。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者先从 aligned_free 回溯判断，同一进程内的库可能使用了不一致的 Eigen 向量化/CPU 编译选项，并建议所有依赖统一用 find_package(pinocchio REQUIRED) 与 pinocchio::pinocchio。作者最终找到一个库单独启用了 -march=native，移除后段错误消失。因此排查重点是跨库 ABI 与编译选项一致性；不能简单把 buildModel 或 URDF 本身判为根因。",
+        "applicability": "直接适用于原帖 Ubuntu Focal/Pinocchio 2.6.20/OCS2 的混合依赖构建；其他版本或平台需先复核实际编译命令与崩溃栈。",
+        "bilingual_terms": [
+          "应用二进制接口（Application Binary Interface, ABI）",
+          "向量化编译选项（vectorization flags）",
+          "导入目标（imported target）",
+          "对齐分配器（aligned allocator）",
+          "段错误（segmentation fault）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_eigen_compile_flag_abi_mismatch_2046",
+        "problem_title_zh": "Pinocchio/Eigen 编译选项不一致导致 URDF buildModel 段错误",
+        "question_zh": "OCS2 中调用 Pinocchio 的 URDF 建模（buildModel）进入 Eigen aligned_free 并段错误，而同一函数在其他示例正常，原线程如何定位和处理？",
+        "source_locator": "Pinocchio #2046：2023-08-31 维护者编译选项/CMake 诊断，2023-09-05 作者报告移除 -march=native 后恢复",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046",
+        "verification_refs": [
+          {
+            "locator": "2023-08-31 jcarpent 与 nim65s 将 aligned_free 崩溃定位到不同编译选项，并建议统一 pinocchio::pinocchio",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046"
+          },
+          {
+            "locator": "2023-09-05 原作者确认库 A 启用了 -march=native，移除后段错误消失",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2046"
+          },
+          {
+            "locator": "维护者在原线程引用的官方最小 CMake 示例",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio-minimal/blob/master/CMakeLists.txt"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2046",
+    "query": "Pinocchio OCS2 buildModel segmentation fault mixed compilation flags march native",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "OCS2 MPC_WBC_sim 自定义工程；原帖未给出机器人型号"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者指出不同 Eigen 向量化编译选项会改变内存管理，并要求各库统一 CMake imported target。"
+      },
+      {
+        "text": "作者报告移除一个依赖库单独设置的 -march=native 后段错误消失。"
+      }
+    ],
+    "wbc_relevance_reason": "OCS2 与 Pinocchio 是常见 WBC/MPC 组合；ABI/向量化选项不一致会在 URDF 建模阶段表现为内存破坏，而不是清晰的链接错误。"
+  },
+  "published_at": "2023-08-30T00:00:00Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2046",
+  "summary": "Pinocchio #2046 的 OCS2/URDF 建模路径在同时链接两个 Pinocchio 依赖库后进入 Eigen aligned_free 并段错误。维护者根据回溯先判断不同 Eigen 向量化编译选项会改变内存分配/释放方式，随后要求两个库统一使用 find_package(pinocchio REQUIRED) 与 pinocchio::pinocchio imported target。作者最终确认其中一个库单独启用了 -march=native；去掉后段错误消失。",
+  "title": "Pinocchio 与 OCS2 依赖使用不一致编译选项时 buildModel 段错误",
+  "version": null
+}

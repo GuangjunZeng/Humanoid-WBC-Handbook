@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.1817.e6650d6d3009",
+  "schema_version": 1,
+  "source_fingerprint": "3ab4918bf05dbad1a0ebfdd94549fd4e56cb93f9e073141377f7f473d29d3dac",
+  "translations": {
+    "answer": "The original post compared the hfield/plane and margin>0/margin=0; only the hfield positive margin combination showed jumping. The MuJoCo collaborators confirmed that positive margin overall support was poor and in progress. Therefore, in the corresponding version, this contact parameter ablation should be done first, not directly attributing the jumping to WBC. The thread remains without a formal fix.",
+    "applicability": "MuJoCo 3.1.6/3.2.0 hfield positive-margin contact; other versions need retesting.",
+    "credibility.rationale": "The answer has not closed, and key images have not been analyzed.",
+    "details.attempts.0": "The questioner provided a direct-running minimal XML and video.",
+    "details.diagnostics.0": "Comparing hfield/plane with margin=1/0.",
+    "details.environments.0": "macOS 14.5; MuJoCo 3.1.6 and 3.2.0; RK4; timestep=0.002; minimal hopper XML.",
+    "details.limits.0": "No merged fix; cannot infer current all new versions have the same problem from the reply.",
+    "details.outcomes.0": "The maintainer confirmed the issue direction and kept the issue open for fixing.",
+    "details.problem_statements.0": "Why does jumping occur when hfield is set to plane with positive margin, but not when it is plane?",
+    "details.suspected_causes.0": "The MuJoCo collaborators confirmed that positive margin support is problematic.",
+    "details.symptoms.0": "hfield + positive margin causes continuous abnormal jumping.",
+    "media_summaries.0": "The original video shows jumping, but no frame-by-frame analysis; the card only relies on the minimal XML and maintainer confirmation.",
+    "source.locator": "Issue #1817 minimal XML; collaborator reply to issuecomment-2256481378",
+    "source.title": "MuJoCo hfield using positive margin causes abnormal jumping, how to determine if it's a controller problem?",
+    "terms.0": "Height field (hfield) (高度场)",
+    "terms.1": "Contact margin (接触裕量)",
+    "terms.2": "Parameter ablation (参数消融)",
+    "title": "MuJoCo flat hfield with positive margin causes abnormal jumping, how to determine if it's a controller problem?"
+  }
+}

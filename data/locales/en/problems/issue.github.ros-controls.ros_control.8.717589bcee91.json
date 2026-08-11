@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros_control.8.717589bcee91",
+  "schema_version": 1,
+  "source_fingerprint": "c54ea68264c78ea68ec732cca3b5c33a44dcf13d93bb537edf8c310c48de2b9f",
+  "translations": {
+    "answer": "The maintainer's direct reason is: when a real-time thread holds the publish lock while non-realtime threads are blocked, the real-time thread's subsequent unlock is no longer a real-time safe operation. The original author used comments on `unlockAndPublish()` and RTAI syscall number to perform A/B localization. The project claims the default branch is fixed, but no commit or release version is provided, so the conclusion can only be used to identify this lock contention pattern.",
+    "applicability": "Directly applicable to the old RealtimePublisher/RTAI implementation; current version requires re-measurement.",
+    "credibility.rationale": "Environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "A/B comments on `unlockAndPublish()` and confirm with RTAI/dmesg syscall numbers.",
+    "details.diagnostics.0": "Restart or reinsert RTAI module, check dmesg for first hard-to-soft syscall; original author confirmed the machine is 32-bit, so 240 corresponds to futex.",
+    "details.effective_fixes.0": "The maintainer claims the default branch fixed the lock contention path.",
+    "details.environments.0": "2012 ros_control; 32-bit RTAI user-space real-time loop; specific commit not given.",
+    "details.limits.0": "Conclusion is bound to the old ros_control/RTAI implementation; cannot infer modern `realtime_tools` internal implementation from this thread.",
+    "details.outcomes.0": "Root cause is explicitly stated by the maintainer; the thread does not provide syscall count, commit, or release after fix.",
+    "details.problem_statements.0": "Why does `RealtimePublisher::unlockAndPublish()` trigger a futex system call on a real-time thread?",
+    "details.safety_notes.0": "WBC real-time publish path should be tested for lock contention pressure on the target kernel, not just in conditions with no subscribers or low load.",
+    "details.suspected_causes.0": "The maintainer confirmed: real-time thread holds the lock while non-realtime threads begin to block; after that, the real-time thread's unlock enters a non-realtime safe path.",
+    "details.symptoms.0": "Calling `unlockAndPublish()` results in `LXRT CHANGED MODE (SYSCALL)` with syscall number 240; commenting on the call prevents this.",
+    "source.locator": "ros_control #8 syscall observation 10822469; maintainer root cause and fix explanation 13088686",
+    "source.title": "RealtimePublisher Unlocking Causes Non-Realtime Waiters to Disrupt Realtime Safety",
+    "terms.0": "Realtime Publisher (realtime publisher) (实时发布器)",
+    "terms.1": "Mutex (mutex) (互斥锁)",
+    "terms.2": "Fast user-space mutex (futex) (快速用户态互斥锁)",
+    "terms.3": "Priority inversion (priority inversion) (优先级反转)",
+    "title": "Why does the old ros_control's `unlockAndPublish()` cause a futex system call in the real-time loop?"
+  }
+}

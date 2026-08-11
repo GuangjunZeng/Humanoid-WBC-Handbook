@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2683.c1007cb98022",
+  "schema_version": 1,
+  "source_fingerprint": "213056d771f2b3975a1920d2f44fcc197fcc9271be7b9b53e07a4ecf91fa49de",
+  "translations": {
+    "answer": "Check the output matrix from the caller. The Frame Jacobian contains both linear and angular velocity, and the contract is 6×model.nv; the original author only provided 3×nv, with non-zero terms in rows 5 and 6. Starting from 3.5.0, the resize is no longer performed. A 6×nv matrix should be created and cleared before calling. The merged PR #2684 adds a parameter check for 6 rows and nv columns in frame/joint Jacobian. The issue has been closed, and the environment is clear with no conflict. The fix is verified and documented.",
+    "applicability": "Directly overrides Ubuntu 22.04, Pinocchio 3.4/3.5 C++ calls; other versions should also comply with 6×nv frame/joint Jacobian output.",
+    "credibility.rationale": "The issue has been closed, the environment is clear, and there is no conflict. The fix is verified and documented with official references or independent reproducibility.",
+    "details.attempts.0": "The original author wrote the issue as a version regression and compared Python/C++ after re-checking the output size, locating the problem to 3 rows pre-allocated.",
+    "details.diagnostics.0": "Print the output matrix shape before calling, confirming it is 6×model.nv, not just 3×model.nv.",
+    "details.diagnostics.1": "Pre-allocate the output matrix as a 6×nv zero matrix and compare it with Python/C++ and version differences; do not attribute the issue to reference frame or algorithm regression.",
+    "details.effective_fixes.0": "Always pass a cleared 6×model.nv output matrix.",
+    "details.effective_fixes.1": "PR #2684 adds J.rows()==6 and J.cols()==model.nv parameter checks in frame/joint Jacobian, preventing silent passing of incorrect sizes.",
+    "details.environments.0": "Ubuntu 22.04; Pinocchio 3.4.0 and 3.5.0 comparison; C++ Eigen dynamic matrix; original post provides URDF and Python reproduction repositories.",
+    "details.limits.0": "This root cause only explains the output matrix size issue; if 6×nv is still abnormal, continue checking frame ID, configuration q, and reference frame.",
+    "details.limits.1": "The original post did not provide a screenshot of the new values after changing the C++ matrix to 6×nv, but the author has already confirmed and the maintainer's patch directly checks the same condition.",
+    "details.outcomes.0": "The maintainer confirmed 6×nv is the contract for all frame/joint Jacobian; PR #2684 was merged on 2025-05-26, and the issue is closed.",
+    "details.problem_statements.0": "After Pinocchio C++ upgrade, computeFrameJacobian becomes zero, but the same model's Python result is normal; what should be checked first?",
+    "details.safety_notes.0": "Jacobian dimension should be asserted as a precondition for control, to avoid erroneous task space constraints entering real-time QP.",
+    "details.suspected_causes.0": "The caller provided a 3×nv matrix; 3.4.0 implicitly resized, but 3.5.0 does not; non-zero angular velocity rows are therefore not written.",
+    "details.symptoms.0": "C++ 3.5.0 outputs zero, but 3.4.0 and Python output has non-zero values in the last two rows.",
+    "details.symptoms.1": "The Jacobian after calling only has 3 rows, but the frame Jacobian's spatial dimension should be 6.",
+    "source.locator": "Pinocchio #2683: Author comment 2905781523 locates 3×nv; maintainer comment 2906540315 confirms 6×nv; PR #2684 merged 8af6014",
+    "source.title": "Pinocchio 3.5's computeFrameJacobian returns all zeros, but Python and 3.4.0 have non-zero results; original thread confirms the first check and fix.",
+    "terms.0": "Frame Jacobian (帧雅可比矩阵)",
+    "terms.1": "Spatial velocity (空间速度)",
+    "terms.2": "Output matrix shape (输出矩阵尺寸)",
+    "terms.3": "Argument-size check (参数检查)",
+    "title": "Original thread confirms the first check and fix for Pinocchio 3.5's computeFrameJacobian returning all zeros but Python and 3.4.0 having non-zero results."
+  }
+}

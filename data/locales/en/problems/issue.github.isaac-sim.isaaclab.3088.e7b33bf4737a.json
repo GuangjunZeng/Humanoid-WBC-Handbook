@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.3088.e7b33bf4737a",
+  "schema_version": 1,
+  "source_fingerprint": "08c3dbd0afae3d4adfd6fab32bb28661d08f568b05b73b61b61858f02dbed3aa",
+  "translations": {
+    "answer": "In the original Isaac Lab v2.1.1/Isaac Sim 4.5.0 environment, IMU reads the pose, velocity, and center of mass (CoM) buffer of PhysX rigid bodies via create_rigid_body_view, so the target prim must have RigidBodyAPI; only a transform with only transform will fail initialization. Subsequent merged PR #3864 added Xform mounting and automatic parent-body discovery, with testing. Actual handling should first check if the installation version includes this PR: if yes, use the new behavior; if not, must align the target to an available rigid body or re-evaluate the fix. Cannot assume any version has the old behavior.",
+    "applicability": "Original behavior corresponds to Isaac Lab v2.1.1/Isaac Sim 4.5.0; new behavior corresponds to code version containing PR #3864 (2025-12-10).",
+    "credibility.rationale": "The issue has been closed, environment is clear and there is no conflict, and precise references or independent reproducibility are provided.",
+    "details.attempts.0": "The questioner modified the IMU to support Xform; subsequent official PR #3864 implements automatic parent-body discovery and adds testing.",
+    "details.diagnostics.0": "Check if the target prim has UsdPhysics.RigidBodyAPI; confirm data comes from PhysX rigid body buffer via calls to create_rigid_body_view, get_transforms, get_velocities, and get_coms in imu.py.",
+    "details.effective_fixes.0": "Use a version containing PR #3864 to make IMU point to Xform and automatically discover an available parent rigid body; old versions cannot assume any Xform can directly create a rigid body view.",
+    "details.environments.0": "Isaac Lab v2.1.1; Isaac Sim 4.5.0; ergoCub; target prim=/ergoCub/root_link/torso_1/waist_imu_0; original implementation commit 77a6498.",
+    "details.limits.0": "The current Issue page still shows it as open; verification must be done per the target installation version, not just by the main merge date.",
+    "details.outcomes.0": "PR #3864 merged into isaac-sim/IsaacLab main on 2025-12-10, with description matching #3088, and the test added to confirm the fix is valid.",
+    "details.problem_statements.0": "Why does Isaac Lab fail to initialize when the IMU's target prim is just a transform with valid transform, but no RigidBodyAPI?",
+    "details.safety_notes.0": "After changing the IMU reference prim or upgrading the implementation, verify the output reference frame, bias, and installation extrinsic, before using it in closed-loop WBC.",
+    "details.suspected_causes.0": "Old IMU implementation only read data from PhysX rigid body buffers, which were maintained by the physics engine; regular transforms do not have these data.",
+    "details.symptoms.0": "ImuCfg initialization throws RuntimeError: Failed to find a RigidBodyAPI for the prim paths.",
+    "media_summaries.0": "The original post includes a screenshot of the target prim interface, but the root cause and resolution can be independently verified via the error message, source code trace, and merged PR; no extra information can be inferred from the screenshot.",
+    "source.locator": "Issue #3088's environment, error, and author code analysis; merged PR #3864",
+    "source.title": "Old Isaac Lab IMU cannot directly mount to a regular Xform; subsequent merged automatic parent-body discovery",
+    "terms.0": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.1": "RigidBodyAPI (刚体 API)",
+    "terms.2": "Transform prim (变换节点)",
+    "terms.3": "Automatic Parent-Body Discovery (父刚体自动发现)",
+    "terms.4": "PhysX Buffers (物理缓冲)",
+    "title": "Why does Isaac Lab fail to initialize when the IMU's target prim is just a transform with valid transform, but no RigidBodyAPI? What is the root cause and versioned handling?"
+  }
+}

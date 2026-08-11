@@ -1,0 +1,130 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Perkins729"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6",
+  "captured_at": "2026-08-11T12:20:00+08:00",
+  "content_sha256": "4fbfb19a3bb02eb397043cdfbb63d3873902b01478fefb67f6e39f44a3bdec99",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 3 条评论；保留 0.5m 的项目适用边界，没有推广为通用数据清洗阈值。",
+    "components": [
+      "H2O",
+      "AMASS",
+      "privileged teacher policy",
+      "motion filtering",
+      "domain randomization"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者询问是否直接训练 teacher，并用 teacher 输出得到 amass_phc_filtered.pkl；项目作者确认该方向。"
+      ],
+      "diagnostics": [
+        "先保证所有 AMASS motion 已完成目标机器人重定向，再用不含随机化/惩罚的 teacher 做逐动作 rollout。",
+        "逐 timestep 计算项目定义的 reference motion distance，并记录首次超过 0.5 m 的动作。"
+      ],
+      "effective_fixes": [
+        "用无 domain randomization、无 penalty reward 的 privileged teacher 评估全部动作；任一时刻 reference motion distance > 0.5 m 就剔除整条 motion。"
+      ],
+      "environments": [
+        "H2O/human2humanoid 数据清洗流程；完整 AMASS retargeting；privileged teacher；原帖未给 commit、训练步数和距离具体定义代码。"
+      ],
+      "limits": [
+        "0.5 m 是 H2O 线程给出的项目判据，不能不经验证直接用于不同机器人、距离定义或动作尺度。",
+        "线程没有给出 distance 所包含的 body、聚合方式、teacher 训练预算和失败率。"
+      ],
+      "outcomes": [
+        "项目作者确认公开 amass_phc_filtered.pkl 是上述数据处理结果。"
+      ],
+      "problem_statements": [
+        "完成 AMASS→机器人重定向后，如何按 H2O 原项目方式过滤 privileged teacher 无法跟踪的动作？"
+      ],
+      "safety_notes": [
+        "对新机器人应保留被过滤动作和失败轨迹用于审计，并重新标定阈值，避免只依据单一距离掩盖跌倒、力矩或接触失败。"
+      ],
+      "suspected_causes": [
+        "动作在几何上完成重定向不代表目标机器人动力学上可跟踪，需要 privileged teacher 作为 feasibility test。"
+      ],
+      "symptoms": [
+        "仅有重定向后的动作文件，无法区分目标机器人可稳定跟踪与不可跟踪的 reference motions。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原项目作者给出的流程是：先完成整个 AMASS 的目标机器人重定向；训练不使用 domain randomization 和 penalty reward 的 privileged teacher；逐条评估动作，只要任一 timestep 的 reference motion distance 超过 0.5 m，就过滤整条 motion。作者同时确认公开的 amass_phc_filtered.pkl 是该流程结果。对其他机器人必须重新验证 distance 定义和阈值。",
+        "applicability": "直接适用于 H2O 原训练数据清洗；迁移到其他机器人或距离度量时需重新校准。",
+        "bilingual_terms": [
+          "特权教师策略（privileged teacher policy）",
+          "领域随机化（domain randomization）",
+          "动作可行性筛选（motion feasibility filtering）",
+          "参考动作距离（reference motion distance）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.retargeting_dataset_quality.h2o_teacher_motion_filter_6",
+        "problem_title_zh": "H2O 用 privileged teacher 和 0.5m 逐帧阈值过滤重定向动作",
+        "question_zh": "复现 H2O 的 AMASS 数据清洗时，privileged teacher 应如何训练，动作按什么条件被过滤？",
+        "source_locator": "human2humanoid #6：项目作者评论 2417970533 给出完整流程与 >0.5m 条件；2418826815 确认公开 filtered 文件",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2417970533",
+        "verification_refs": [
+          {
+            "locator": "项目作者给出 full-AMASS retarget、无随机化/惩罚 teacher 和任一帧 >0.5m 剔除规则",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2417970533"
+          },
+          {
+            "locator": "项目作者确认 amass_phc_filtered.pkl 是上述流程产物",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2418826815"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.6",
+    "query": "H2O AMASS data cleaning privileged teacher distance 0.5m no domain randomization penalty reward",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "H2O/OmniH2O 训练语境中的 Unitree H1"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_dataset_quality",
+    "selected_comments": [
+      {
+        "text": "项目作者明确给出完整 retargeting、无随机化/惩罚 teacher、任一 timestep 距离超过 0.5m 即过滤的流程。"
+      }
+    ],
+    "wbc_relevance_reason": "不适合目标机器人动力学的重定向动作会污染全身跟踪训练；该线程提供了项目实际采用的 teacher-based feasibility filter 和精确判据。"
+  },
+  "published_at": "2024-10-09T09:34:29Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.6",
+  "summary": "human2humanoid #6 询问如何复现 H2O 数据清洗。项目作者给出明确流程：先完成整个 AMASS 的 retargeting；训练不含 domain randomization 和 penalty reward 的 privileged teacher；用该策略评估所有 AMASS motions，只要任一 timestep 的 reference motion distance 大于 0.5 m 就过滤该 motion。作者确认公开链接中的 amass_phc_filtered.pkl 正是该处理结果。",
+  "title": "H2O 数据清洗用无随机化 privileged teacher 逐帧筛除跟踪距离超过 0.5m 的动作",
+  "version": null
+}

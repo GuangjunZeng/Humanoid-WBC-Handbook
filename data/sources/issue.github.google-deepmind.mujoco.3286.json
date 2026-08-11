@@ -1,0 +1,126 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ndhoang02-source"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3286",
+  "captured_at": "2026-08-11T21:28:00+08:00",
+  "content_sha256": "9e0ab60aa4602c8bdda2ec12a18171c869b9e639d60221eb5c2920e91031e460",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 3 条评论；截图和视频不参与结论，未补写原作者没有提供的修正后数值。",
+    "components": [
+      "MuJoCo 3.8.0",
+      "sysid",
+      "LuGre friction",
+      "dcmotor",
+      "modifier factory",
+      "finite-difference gradient"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者展开 Python 作用域与缩进，检查 Parameter.apply_modifier 的 falsy no-op 路径。",
+        "维护者单独验证 biasprm[3] 写入 spec 后能进入 model，且 biasprm[3]/[4] 被 LuGre ODE 读取。"
+      ],
+      "diagnostics": [
+        "确认传给 sysid.Parameter(modifier=...) 的对象是 callable，而不是 None。",
+        "在优化前手动改变 param，检查 spec、compile 后 model 和 residual 是否随之变化。"
+      ],
+      "effective_fixes": [
+        "把 return modifier 移到 outer factory 作用域；inner modifier 只更新 spec 参数。"
+      ],
+      "environments": [
+        "MuJoCo 3.8.0 Python；Ubuntu 22.04 x86_64；最小单关节 dcmotor/LuGre 模型。"
+      ],
+      "limits": [
+        "原作者没有在评论中贴出修正后的优化数值；结论依据维护者代码诊断与参数通路检查。",
+        "其他零梯度问题仍可能来自尺度、可辨识性或残差设计，不能一概归因于缩进。"
+      ],
+      "outcomes": [
+        "维护者将问题标为 resolved，并明确不做库侧修改，因为属于用户代码错误。"
+      ],
+      "problem_statements": [
+        "MuJoCo sysid 优化 0 次迭代且 LuGre 参数不变时，怎样区分参数通路问题与用户代码错误？"
+      ],
+      "safety_notes": [
+        "将识别参数用于真实执行器前，应保留边界约束并用独立轨迹验证，不要仅凭优化器退出状态接受参数。"
+      ],
+      "suspected_causes": [
+        "两个 factory 的 return modifier 缩进在 inner modifier 内，outer factory 隐式返回 None。"
+      ],
+      "symptoms": [
+        "optimizer 0 iterations、finite-difference gradient 为 0；HTML report 中 initial 与 nominal torque 相同；identified 参数停在 initial。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该例不是 LuGre 参数通路失效，而是 Python factory 的 return modifier 缩进在 inner function 内，outer factory 隐式返回 None。sysid.Parameter 收到 None 后不调用 modifier，candidate 值没有进入 spec，残差不变，有限差分梯度自然为零。修法是让 outer factory 返回 modifier；inner modifier 只修改 spec。维护者还单独检查了 biasprm[3]/[4] 的 spec→model→LuGre ODE 通路。",
+        "applicability": "精确适用于 MuJoCo 3.8.0 sysid 参数 modifier factory 返回 None 的情形；其他零梯度需重新诊断。",
+        "bilingual_terms": [
+          "参数修改器（parameter modifier）",
+          "工厂函数（factory function）",
+          "有限差分梯度（finite-difference gradient）",
+          "刷毛微分方程（LuGre bristle ODE）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.simulation_toolchain.mujoco_sysid_modifier_none_3286",
+        "problem_title_zh": "MuJoCo sysid modifier factory 隐式返回 None",
+        "question_zh": "MuJoCo sysid 对 LuGre 参数零迭代、零梯度且参数不变时，帖子中的实际原因和修法是什么？",
+        "source_locator": "MuJoCo #3286 维护者诊断与修正代码 4546762188，库方结论 4549965819",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/3286#issuecomment-4546762188",
+        "verification_refs": [
+          {
+            "locator": "维护者确认属于 user error、问题 resolved，不做库侧修改",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/3286#issuecomment-4549965819"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.3286",
+    "query": "MuJoCo sysid LuGre zero iterations modifier factory returns None finite difference gradient zero",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "single-joint dcmotor identification model"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者逐行解释 outer factory 返回 None 导致参数不生效，并给出正确 factory。"
+      }
+    ],
+    "wbc_relevance_reason": "摩擦与执行器系统辨识会影响 WBC 前馈和 sim-to-real；modifier 没有生效时，零梯度容易被误判为优化器或动力学库问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.3286",
+  "summary": "MuJoCo #3286 在 3.8.0 Python sysid 中识别 dcmotor LuGre 参数时，优化器 0 次迭代、梯度为零。维护者逐行指出两个 factory 的 return modifier 缩进在内部函数内，导致外层隐式返回 None；None 传给 sysid.Parameter 后 modifier 不执行，candidate 参数从未写入 spec，残差不变。维护者给出修正后的两个 factory，并另行检查 biasprm[3]/[4] 能从 spec.compile 进入 model 并被 LuGre ODE 读取；库方最终认定为用户代码错误，不改库。",
+  "title": "MuJoCo sysid 零迭代先检查 modifier factory 是否真的返回 callable",
+  "version": null
+}

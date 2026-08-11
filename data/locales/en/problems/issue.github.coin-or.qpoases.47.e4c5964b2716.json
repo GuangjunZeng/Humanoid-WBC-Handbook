@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.coin-or.qpoases.47.e4c5964b2716",
+  "schema_version": 1,
+  "source_fingerprint": "26ff5c07b40e02dfbea484c4194fcd8baca1335588ea811644f4eb03aba559dc",
+  "translations": {
+    "answer": "Not necessarily. The maintainer's note indicates that qpOASES_e uses static memory with a default compile-time limit of 50 variables and 100 constraints. First, compare the actual nV/nC with QPOASES_NVMAX and QPOASES_NCMAX; if it exceeds the limit, modify `include/qpOASES_e/Constants.h` and recompile. Since the original post does not provide a recompiled author's verification, the memory usage and solution result must still be validated on the target hardware.",
+    "applicability": "Directly corresponds to the default configuration of qpOASES_e 3.1.1; packages or forks may have modified macro values, so refer to the actual build header file.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The original post used other MATLAB solvers to cross-check the problem's feasibility.",
+    "details.diagnostics.0": "Print the compile-time `QPOASES_NVMAX` and `QPOASES_NCMAX` before analyzing the model's feasibility.",
+    "details.effective_fixes.0": "Increase the two upper limits in `include/qpOASES_e/Constants.h` and recompile all code dependent on this header file.",
+    "details.environments.0": "qpOASES_e 3.1.1; the original report worked within 49 variables / 68 constraints, but failed when increased.",
+    "details.limits.0": "Increasing the static limit will increase memory usage; if it exceeds the new limit or fails, further verification of real feasibility and input layout is required.",
+    "details.outcomes.0": "The maintainer provides clear configuration information and marks the issue as fixed; no author recompiled verification is provided.",
+    "details.problem_statements.0": "qpOASES_e reports infeasible after increasing the number of QP variables or constraints, is this due to default scale limits?",
+    "details.safety_notes.0": "Before modifying the static limit on the embedded target, evaluate RAM/stack, and add static nV/nC assertions during build.",
+    "details.suspected_causes.0": "The maintainer confirms that qpOASES_e uses static memory with a default maximum of 50 variables and 100 constraints.",
+    "details.symptoms.0": "Initialization returns infeasible, but other MATLAB solvers can solve the same problem; the issue occurs near 50 variables.",
+    "source.locator": "qpOASES #47 maintainer reply 589978605",
+    "source.title": "qpOASES_e exceeds default static dimension limit, appears as infeasible, is this always due to an infeasible QP?",
+    "terms.0": "static memory (静态内存)",
+    "terms.1": "compile-time limit (编译时上限)",
+    "terms.2": "variable dimension (变量维度)",
+    "terms.3": "constraint dimension (约束维度)",
+    "title": "qpOASES_e starts reporting infeasible when the number of variables approaches 50, is this always due to an infeasible QP?"
+  }
+}

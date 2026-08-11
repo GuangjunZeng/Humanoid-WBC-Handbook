@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.leggedrobotics.ocs2.24.959a5af19dab",
+  "schema_version": 1,
+  "source_fingerprint": "d1b1e108ba870b890f56ef679ed717b9f12d1340ce5b60e104d0104a5cc8cbbc",
+  "translations": {
+    "answer": "The thread explanation states that dummy simulation and MPC use the same model, and the zero-velocity contact constraint is used to maintain contact. Long-term integration accumulates drift. Commands are still published in the world frame, but the internal ground awareness has drifted along the z-axis, so the green trajectory appears to rise. The thread only mentions that the formal terrain notion will be added in the future, and no reproducible patch was provided at the time.",
+    "applicability": "Applies to the long-term integration phenomenon in the OCS2 legged robot dummy simulation; different simulators, contact models, or new terrain formulations require rechecking.",
+    "credibility.rationale": "No reproducible reproduction record has been formed.",
+    "details.attempts.0": "The original post only reported the environment, images, and videos, without providing the modified retesting steps.",
+    "details.diagnostics.0": "Comparing the world-frame height with the internal contact/ground reference to determine whether the display is drifting relative to the world reference or if the robot dynamics itself is unstable.",
+    "details.diagnostics.1": "Checking if the zero-velocity contact constraint accumulates drift in long-term integration, rather than attributing it to Eigen version.",
+    "details.environments.0": "Ubuntu 20.04, Eigen 3.3.7, OCS2 legged robot example; can complete catkin build; no OCS2 commit provided.",
+    "details.limits.0": "The thread explains the cause but does not validate an immediate fix, so the Issue cannot be considered closed equivalent to the problem being resolved.",
+    "details.limits.1": "The static figure shows the green trajectory above the robot; the video attachment failed to take frames, and the card does not describe the motion process based on the original text and the contributor's reply.",
+    "details.outcomes.0": "The contributor explains that the formulation for the formal world terrain is being expanded and planned to be integrated across optimization, simulation, and command side; the original thread did not publish a patch or retesting result.",
+    "details.problem_statements.0": "Why does the green target body trajectory leave the ground and drift upward after the OCS2 legged robot example runs for some time?",
+    "details.safety_notes.0": "Before long-term simulation or real-world execution, monitor the contact surface height drift relative to the world reference; do not assume the reference is consistent solely based on visual feedback of the robot still moving.",
+    "details.suspected_causes.0": "The contributor explains that the zero-velocity contact constraint accumulates drift in long-term integration; commands are still published in the world frame, but the internal ground awareness has drifted along the z-axis.",
+    "details.symptoms.0": "The green desired body trajectory drifts upward along the z-axis after multiple forward and backward movements.",
+    "details.symptoms.1": "The poster also mentions that the robot's motion still appears reasonable and correct.",
+    "media_summaries.0": "Original post PNG has been verified: in RViz, a green near-horizontal line is visible above the quadruped robot, and the poster uses a black hand-drawn contour to highlight the target trajectory; no height scale, time, or unit is present, supporting the symptom that the target trajectory is clearly above the robot/ground.",
+    "media_summaries.1": "Original post MP4 is open, but the browser playback fails to provide a reproducible video frame; the card does not describe the motion process based on the original text and the contributor's reply.",
+    "source.locator": "OCS2 #24: contributor comment 963489354 explains zero-velocity contact constraint and world-frame ground drift; original author comment 963824521 thanks",
+    "source.title": "OCS2 legged robot example: long-term integration causes green target body trajectory to drift upward after multiple forward/backward movements",
+    "terms.0": "Zero-velocity contact constraint (零速度接触约束)",
+    "terms.1": "World frame (世界坐标系)",
+    "terms.2": "Integration drift (积分漂移)",
+    "terms.3": "Terrain notion (地形参考)",
+    "title": "OCS2 legged robot example: why does the green target body trajectory drift upward after multiple forward and backward movements?"
+  }
+}

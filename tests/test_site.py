@@ -13,9 +13,6 @@ class StaticSearchSiteTests(unittest.TestCase):
         readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
         hero = readme.split("\n---\n", 1)[0]
         self.assertIn("site/assets/search-preview.svg", hero)
-        self.assertIn(
-            "https://guangjunzeng.github.io/Humanoid-WBC-Handbook/", hero
-        )
         self.assertIn("打开中英文快速搜索", hero)
         self.assertIn("所有工程问题均可搜索", hero)
         self.assertIn("可信度、状态和证据边界在独立详情页查看", hero)
@@ -31,8 +28,12 @@ class StaticSearchSiteTests(unittest.TestCase):
             self.assertIn(asset, html)
         self.assertNotIn("https://", html)
         self.assertIn("Content-Security-Policy", html)
-        for forbidden in ("<nav", "<button", "eyebrow", "theme-toggle"):
+        for forbidden in ("<nav", "eyebrow", "theme-toggle"):
             self.assertNotIn(forbidden, html)
+        self.assertIn('class="language-switcher"', html)
+        self.assertIn('data-locale="zh"', html)
+        self.assertIn('data-locale="en"', html)
+        self.assertIn('aria-pressed="true"', html)
 
     def test_search_interaction_keeps_accessibility_and_ime_guards(self):
         html = (PROJECT_ROOT / "site/index.html").read_text(encoding="utf-8")
@@ -53,6 +54,13 @@ class StaticSearchSiteTests(unittest.TestCase):
             'event.key === "Enter"',
             'event.key === "Escape"',
             "history.replaceState",
+            "wbc-handbook-locale",
+            "navigator.languages",
+            'searchParams.get("lang")',
+            'searchParams.set("lang", locale)',
+            "payload.schema_version !== 2",
+            "title_zh",
+            "title_en",
             "FlexSearch.Document",
         ):
             self.assertIn(marker, script)

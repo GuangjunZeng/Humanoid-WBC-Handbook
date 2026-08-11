@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1292.31097f5a6ee0",
+  "schema_version": 1,
+  "source_fingerprint": "4128c37ec22c23b3226936f38ff368313c31fc6e90ce7a5597503e8886475c8b",
+  "translations": {
+    "answer": "Maintainer notes that the original post's WORLD Jacobian is applied at the world origin, which seems to be attached to LF_FOOT; it is not the intended center of the foot. LOCAL_WORLD_ALIGNED is applied at the LF_FOOT frame, with axes aligned to the world frame. The author used LOCAL_WORLD_ALIGNED and confirmed the force values are more reasonable. The original thread did not verify the rest of the assumptions regarding 3×3 matrix extraction, pseudoinverse, and peak torque mapping, so only the reference frame correction is confirmed, and results cannot be called strictly maximum contact force.",
+    "applicability": "Applies to the original post's LF_FOOT contact force coordinate explanation; other frames, points, and torque distribution require separate modeling.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author changed the reference frame of computeFrameJacobian from WORLD to LOCAL_WORLD_ALIGNED.",
+    "details.diagnostics.0": "First, check if the Jacobian's reference frame matches the required point and axis direction.",
+    "details.effective_fixes.0": "Use LOCAL_WORLD_ALIGNED when the contact force mapping requires the center of the foot and world-aligned axes.",
+    "details.environments.0": "Pinocchio Python 2020; FreeFlyer quadruped; q0 is a unit base quaternion; LF_FOOT Jacobian.",
+    "details.limits.0": "The thread did not prove the 3×3 matrix is invertible, nor did it verify the pseudoinverse, other leg coupling, floating base balance, or friction constraints.",
+    "details.limits.1": "A more reasonable number does not equate to a strictly maximum feasible contact force.",
+    "details.outcomes.0": "The author confirmed the force values are more reasonable after changing the reference frame.",
+    "details.problem_statements.0": "Why is one force component significantly larger than expected when estimating contact force from the foot Jacobian using peak joint torques?",
+    "details.safety_notes.0": "Force torque limits and contact feasible region deployment must be verified under complete floating base dynamics and friction constraints before deployment.",
+    "details.suspected_causes.0": "The WORLD frame corresponds to the world origin, and is not centered and world-aligned at the LF_FOOT.",
+    "details.symptoms.0": "Using the WORLD frame, extracting a 3×3 Jacobian, and performing a pseudoinverse on J^T results in at least one x/y/z force component that is significantly larger than expected.",
+    "source.locator": "Issue #1292, maintainer reference frame diagnosis issuecomment-692582302; author re-measure issuecomment-692611643",
+    "source.title": "From the foot Jacobian and joint torques, how should WORLD and LOCAL_WORLD_ALIGNED be chosen?",
+    "terms.0": "Local-world-aligned frame (LOCAL_WORLD_ALIGNED) (局部世界对齐坐标系)",
+    "terms.1": "Foot-frame Jacobian (足端雅可比)",
+    "terms.2": "Contact-force mapping (接触力映射)",
+    "terms.3": "Moore–Penrose pseudoinverse (摩尔-彭若斯伪逆)",
+    "title": "From the foot Jacobian and joint torques, how should WORLD and LOCAL_WORLD_ALIGNED be chosen?"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1523.00e72386769a",
+  "schema_version": 1,
+  "source_fingerprint": "183c10d58769fa6ad7148a4dfe7b1845c17da3cb21ed04937890c30d7c0f122d",
+  "translations": {
+    "answer": "The original post's IsaacLab contributor stated that prismatic joints generate linear forces in Newtons (N), and revolute joints generate torques in Newton-meters (N·m). It is not advisable to first fill in the effort limit using N and then convert it to arm length later. The original post did not address differences in behavior between effort_limit and effort_limit_sim across different Isaac Lab versions, so verification at the target version is still required.",
+    "applicability": "Applies to the effort physical quantity in Isaac Lab joint executor configuration; whether the fields are included in the simulation solver depends on the version and executor type.",
+    "credibility.rationale": "There is engineering record in the environment, processing steps, and results, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "The questioner stated they will set the revolute joint parameters to N·m after the contributor's reply.",
+    "details.diagnostics.0": "Identify whether the joint is a prismatic or revolute joint, and confirm whether the executor outputs linear force or joint torque.",
+    "details.effective_fixes.0": "For prismatic joints (prismatic joint), use N for effort_limit; for revolute joints (revolute joint), use N·m for effort_limit.",
+    "details.environments.0": "Isaac Lab ImplicitActuatorCfg/ArticulationCfg; specific software version and robot not mentioned.",
+    "details.limits.0": "The original post did not specify the Isaac Lab version, joint asset unit scaling, or actual configuration values, nor did it discuss the version differences between effort_limit and effort_limit_sim.",
+    "details.outcomes.0": "The questioner accepted the explanation and closed the issue; no running retest or specific numerical values provided.",
+    "details.problem_statements.0": "Should Isaac Lab's effort_limit be in Newtons (N) or Newton-meters (N·m)?",
+    "details.safety_notes.0": "The force/torque limits directly affect actuator protection and control saturation; verification with the robot manufacturer's rated values and Isaac Lab version must be done before moving to real machine testing.",
+    "details.symptoms.0": "The configuration interface does not clearly distinguish between prismatic and revolute joints in terms of effort unit.",
+    "source.locator": "Issue #1523, contributor reply to issuecomment-2539834819; questioner confirms issuecomment-2540293139",
+    "source.title": "ImplicitActuatorCfg's effort_limit unit depends on joint type",
+    "terms.0": "Prismatic joint (移动关节)",
+    "terms.1": "Revolute joint (转动关节)",
+    "terms.2": "Effort limit (力上限)",
+    "terms.3": "Joint torque (关节力矩)",
+    "title": "Should Isaac Lab's ImplicitActuatorCfg.effort_limit be in Newtons (N) or Newton-meters (N·m)?"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.answer.1943251717090156921.bd72a4177b9e",
+  "schema_version": 1,
+  "source_fingerprint": "d29a2b61a09d81d15e6d16a3b1cd153b617600551fbad93d1ce2de6c9ce3877a",
+  "translations": {
+    "answer": "The original proposal is to execute task strategies on an ideal model, and then use an independent adaptation module to quickly learn and correct for instance differences such as motor zero position, assembly, CoM, moment of inertia, etc. The comment suggests using specific actions for online RL until the instruction aligns with the execution state. This approach has not been validated through original posts and cannot be considered as proven to be better than domain randomization.",
+    "applicability": "Applicable to humanoid robots with observable calibration actions and safe online adaptation conditions; not applicable to direct real machine exploration without safety constraints.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "There is engineering record for environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Current common practice is to add noise and expand the generalization range; the author believes this only expands the response coverage.",
+    "details.diagnostics.0": "Consider each item individually: motor zero position, mechanical processing/assembly, CoM, moment of inertia, model simplification, and multi-machine calibration deviation.",
+    "details.effective_fixes.0": "The author suggests decoupling the ideal task strategy from the fast learn or continuous correction adaptation module.",
+    "details.environments.0": "The humanoid robot reinforcement learning strategy is deployed from an ideal simulation model to real hardware; specific training systems and control frequencies are not mentioned.",
+    "details.limits.0": "This is a personal scheme idea; algorithm details, stability boundaries, and ablation experiments are missing.",
+    "details.outcomes.0": "The original answer and comment do not provide deployment results, convergence speed, or cross-robot comparison.",
+    "details.problem_statements.0": "The same strategy performs inconsistently across sim, different real machines; how to address these differences from a system architecture perspective?",
+    "details.safety_notes.0": "Before directly applying online learning to real machines, set action, torque, velocity, and fall protection boundaries, and verify offline or on a safe platform first.",
+    "details.suspected_causes.0": "There are inherent parameters and assembly differences between the ideal model and actual real machines that cannot be completely eliminated.",
+    "details.symptoms.0": "Real machine actions do not align with the instruction; after the training time domain randomization (DR) is exceeded, the system may fail.",
+    "source.locator": "Full text of the answer and the comment on 'How to adjust the weight strategy for the calibration module'",
+    "source.title": "Humanoid Robot, Reinforcement Learning, Rational Analysis of the Gap Between Simulation and Real Hardware?",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Reinforcement Learning (RL) (强化学习)",
+    "terms.2": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.3": "Domain Randomization (DR) (域随机化)",
+    "terms.4": "Actuator (执行器)",
+    "terms.5": "Joint Torque (关节力矩)",
+    "title": "Humanoid Robot Sim-to-Real and Multi-Machine Differences: Can Task Strategy and Online Adaptation Module Decoupling Solve the Problem?"
+  }
+}

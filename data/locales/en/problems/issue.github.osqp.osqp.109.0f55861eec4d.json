@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.109.0f55861eec4d",
+  "schema_version": 1,
+  "source_fingerprint": "b081d1740989de5dd05be4d63a52258ccfc2e35faa8dadb0ef0cf6b9252e207c",
+  "translations": {
+    "answer": "This change affects the feasible region. The maintainer verified the infeasibility certificate of OSQP and found that quadprog's `x` violated the OSQP lower bound of -219.2470. The original author then confirmed that the inequality lower bound was written as -1000 instead of -inf/-OSQP_INFTY; the fix was applied. It is important to verify that both solvers receive the same `l ≤ Ax ≤ u` before proceeding.",
+    "applicability": "Applicable to finite surrogate encoding of unbounded OSQP or cross-solver comparisons; numerical ranges should be rechecked.",
+    "credibility.rationale": "Engineering records exist for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The maintainer verified the infeasibility certificate and found that quadprog's `x` violated the OSQP lower bound.",
+    "details.diagnostics.0": "Verify the OSQP `prim_inf_cert` condition and compare the reference solver's `x` under the same `l ≤ Ax ≤ u` constraints.",
+    "details.effective_fixes.0": "Use `-inf` or `-OSQP_INFTY` for unbounded inequalities, avoiding arbitrary large negative numbers.",
+    "details.environments.0": "OSQP 0.4.1 MATLAB interface; 64 variables and 82 constraints; MATLAB `quadprog` used as the reference solver.",
+    "details.limits.0": "This conclusion is specific to the modeling difference; if both interfaces input the same elements, further checks for scaling, tolerance, and solver bugs are needed.",
+    "details.outcomes.0": "The original author explicitly stated that using `-inf` resolved the issue.",
+    "details.problem_statements.0": "How to verify that the same constraint problem is being solved when OSQP reports primal infeasibility and another solver provides a solution?",
+    "details.safety_notes.0": "Save normalized QP data before release and let both interfaces verify element-wise consistency to avoid bound entering the feasible region due to unit changes.",
+    "details.suspected_causes.0": "The author confirmed that a non-existent lower bound was encoded as `-1000` instead of `-inf`, and both solvers did not receive the same constraint.",
+    "details.symptoms.0": "OSQP reports primal infeasible after 50 iterations, quadprog reports constraints satisfied.",
+    "source.locator": "OSQP #109 certificate verification 442394129; author root cause and fix 442778706",
+    "source.title": "Using -1000 instead of -inf in OSQP converts the inequality to another QP",
+    "terms.0": "Infeasibility certificate (不可行证书)",
+    "terms.1": "Feasible region (可行域)",
+    "terms.2": "Finite surrogate bound (有限替代边界)",
+    "terms.3": "Infinite bound (无穷边界)",
+    "title": "Why should we check for -1000 instead of -inf before verifying the constraint problem when OSQP reports infeasibility and another solver provides a solution?"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2092.2cd23532278a",
+  "schema_version": 1,
+  "source_fingerprint": "47b0bedc736d946443e40736820296f9e995636735cd8a827315f7aef440ec5b",
+  "translations": {
+    "answer": "As of the original thread time, the project team explicitly stated that second-order derivative support for generalized static torque is not yet complete, and there is no direct, usable interface for external forces static torque second-order derivative; using static structures can reduce computation, but further research and engineering implementation are required. The original author only indicated that it might be possible to use CppADCodeGen for automatic differentiation, and no implementation or results have been published, so it can only be considered as a pending alternative. If the target version is updated, it must be rechecked, and cannot be permanently adopted from the 2023 conclusion.",
+    "applicability": "Applies to verifying the second-order derivative capability for generalized static torque in Pinocchio before and after 2023-11; current version and specific models must be revalidated.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Original author considered computing the second-order derivative of gravity and J(q)^T fext separately, or using RNEA second-order derivative after setting velocity and acceleration to zero.",
+    "details.attempts.1": "Original author indicated that their application might use CppADCodeGen for automatic differentiation.",
+    "details.diagnostics.0": "First verify if the target Pinocchio version supports external forces second-order derivative API, do not assume coverage for static torque scenarios solely by function name.",
+    "details.diagnostics.1": "If considering a general RNEA second-order derivative alternative to static-specific derivatives, benchmark separately the speed/acceleration derivative costs.",
+    "details.environments.0": "Public interface of Pinocchio in 2023-11; original post did not provide version, commit, OS, robot, or matrix size.",
+    "details.limits.0": "CppADCodeGen is only the original author's plan, not code, numerical correctness, compilation time, or runtime results, cannot be written as a verified alternative.",
+    "details.limits.1": "Original author's 2–3x timing lacks hardware, version, and statistical methods, cannot extrapolate to performance conclusions.",
+    "details.limits.2": "This conclusion corresponds to the state of the Pinocchio interface in 2023-11; new versions must be rechecked for release, documentation, and function signature.",
+    "details.outcomes.0": "Thread confirmed that there was no existing second-order derivative path for generalized static torque in external forces; maintainers invited collaboration to implement, original author did not invest in low-level development and shifted to automatic differentiation.",
+    "details.problem_statements.0": "Does Pinocchio have a direct, usable second-order derivative interface for generalized static torque with respect to q? Is the static-specific path faster?",
+    "details.safety_notes.0": "Before using second-order derivatives for contact/force/moment optimization, cross-check with finite difference or automatic differentiation direction derivatives to avoid missing external-force terms.",
+    "details.suspected_causes.0": "Project contributor explicitly stated that the second-order derivative support in Pinocchio was incomplete at the time; a dedicated second-order derivative for external force generalized static torque requires research and engineering implementation.",
+    "details.symptoms.0": "computeStaticTorque and computeStaticTorqueDerivatives lack a second-order derivative interface, while ComputeRNEASecondOrderDerivatives does not accept external forces.",
+    "details.symptoms.1": "Original author used std::chrono to roughly measure the first-order derivative interface, where ComputeRNEADerivatives is about 2–3x slower than computeStaticTorqueDerivatives, but no hardware, repeat count, or absolute time delay was provided.",
+    "source.locator": "Pinocchio #2092 comment 1822471230 explains that second-order derivative support is incomplete; comment 1824887277 states it is implementable but requires engineering input; comment 1831924121 states the original author only planned CppADCodeGen.",
+    "source.title": "Pinocchio at the time did not have a ready-made second-order derivative interface for generalized static torque with respect to q.",
+    "terms.0": "Generalized static torque (广义静力矩)",
+    "terms.1": "Second-order derivative (二阶导数)",
+    "terms.2": "External force (外力)",
+    "terms.3": "Recursive Newton-Euler Algorithm, RNEA (逆动力学递归牛顿-欧拉算法)",
+    "terms.4": "Automatic differentiation, AD (自动微分)",
+    "title": "Can Pinocchio directly compute the second-order derivative of generalized static torque with respect to q for external forces? What is the viable alternative provided by the original thread?"
+  }
+}

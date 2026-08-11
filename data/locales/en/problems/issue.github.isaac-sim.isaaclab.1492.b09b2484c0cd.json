@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1492.b09b2484c0cd",
+  "schema_version": 1,
+  "source_fingerprint": "4f1b630a401e8a2abedcb444340e80e3a5f6c030887c30da36411a0e11b9ddbc",
+  "translations": {
+    "answer": "The original poster's effective handling is to migrate to a manager-based workflow (manager-based locomotion) and define the CurriculumCfg in the RL configuration. The TerrainGeneratorCfg's curriculum is responsible for terrain generation layout, but the task side also needs curriculum items to update the environment difficulty between steps. The author confirms that the IsaacLab v2.2.0 example code works; other versions should be checked against the corresponding configuration path.",
+    "applicability": "Clearly corresponds to the IsaacLab v2.2.0 manager-based locomotion example; other versions need to verify the CurriculumCfg API.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Migrate to a manager-based workflow and confirm that the RL configuration defines CurriculumCfg.",
+    "details.diagnostics.0": "Check if the manager-based RL configuration actually defines CurriculumCfg and if the task has registered a terrain level update item.",
+    "details.effective_fixes.0": "Define CurriculumCfg according to the IsaacLab v2.2.0 manager-based locomotion example, rather than just setting the terrain generator's curriculum flag.",
+    "details.environments.0": "Isaac Lab terrain generator; original poster's custom 15×25 terrain grid; subsequent confirmation of IsaacLab v2.2.0 manager-based example.",
+    "details.limits.0": "The original poster did not show the migration before and after terrain level logs or curriculum item code; different Isaac Lab versions may have varying configuration class paths.",
+    "details.outcomes.0": "The original poster clearly reported the migration issue resolved in the original thread and provided the v2.2.0 example in a follow-up question.",
+    "details.problem_statements.0": "After setting TerrainGeneratorCfg.curriculum=True, why does the training still show difficult terrain at the beginning, without gradually upgrading from flat ground to mild steps?",
+    "details.suspected_causes.0": "The original poster's solution indicates that the old workflow did not properly integrate CurriculumCfg according to the manager-based example.",
+    "details.symptoms.0": "The RL starts with rendered difficult terrain, which does not match the expected gradual training from flat ground or mild steps.",
+    "media_summaries.0": "The original poster has a screenshot of the training initial terrain, but the card conclusion is based on the author's migration confirmation and precise example link, not the screenshot itself.",
+    "source.locator": "Issue #1492 self-answered issuecomment-2531772317; supplementary issuecomment-3395768759",
+    "source.title": "Only setting TerrainGeneratorCfg.curriculum does not equal the training task having integrated the terrain curriculum.",
+    "terms.0": "Terrain generator (地形生成器)",
+    "terms.1": "CurriculumCfg (课程配置)",
+    "terms.2": "Manager-based workflow (管理器式工作流)",
+    "terms.3": "Terrain level (难度等级)",
+    "title": "After setting TerrainGeneratorCfg(curriculum=True), training still does not progress by terrain level; what layer should be checked?"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "huihuishen"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "84a4aa4270b288f9818b7f7248a97df4f792cdf36875c15ac13057f6dbe08995",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与 11 条评论；因无作者复测，保持 partial/not_reproduced，没有把单句建议扩写成完整 torque 公式。",
+    "components": [
+      "Pinocchio",
+      "computeFrameJacobian",
+      "LOCAL_WORLD_ALIGNED",
+      "floating robot",
+      "force-to-torque mapping"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者多次澄清目标，最终明确要把固定 frame 描述的 force 转成 torque。"
+      ],
+      "diagnostics": [
+        "明确外力的坐标轴方向和作用点，再选择 Jacobian reference frame。",
+        "区分固定 universe/inertial frame 与位于移动 body/frame 原点的 world-aligned 表达。"
+      ],
+      "effective_fixes": [
+        "维护者针对该目标回答使用 LOCAL_WORLD_ALIGNED frame Jacobian。"
+      ],
+      "environments": [
+        "Pinocchio RobotWrapper.BuildFromURDF(..., JointModelFreeFlyer())；末端 frame；原帖未给 Pinocchio 版本和 URDF。"
+      ],
+      "limits": [
+        "线程没有验证 Jacobian 转置公式、力/力矩六维排列、符号或作用点，因此不能从该回答单独保证 torque 数值正确。",
+        "没有版本与复现结果，必须在目标模型上用虚功或有限差分等方法另行核对。"
+      ],
+      "outcomes": [
+        "Issue 已关闭，但没有作者的数值结果、代码或修复后确认。"
+      ],
+      "problem_statements": [
+        "外力在固定世界坐标系描述时，Pinocchio 应请求哪种 frame Jacobian 才能映射到关节 torque？"
+      ],
+      "safety_notes": [
+        "实机施力前必须独立验证 wrench 顺序、frame transform、关节顺序和力矩限幅。"
+      ],
+      "suspected_causes": [
+        "把 WORLD convention 中随 body 移动的 coincident point 误解为 universe 坐标轴本身移动。"
+      ],
+      "symptoms": [
+        "作者误以为 WORLD frame 随机器人整体移动，因此无法确定固定世界方向外力应与哪种 Jacobian 配对。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "在作者明确这一目标后，维护者回答使用 LOCAL_WORLD_ALIGNED。线程同时澄清 universe/inertial frame 固定，而 world-aligned coincident point 可随目标 frame 移动。由于作者没有发布 torque 结果或复测，该结论只能作为 reference-frame 选择入口；wrench 排列、作用点、符号和 Jacobian 转置映射仍需在目标模型实际验证。",
+        "applicability": "适用于原帖“固定世界方向外力、末端 frame、浮动基机器人”的目标；未验证具体 torque 映射实现。",
+        "bilingual_terms": [
+          "局部世界对齐坐标系（LOCAL_WORLD_ALIGNED）",
+          "参考坐标系（ReferenceFrame）",
+          "末端雅可比矩阵（end-effector Jacobian）",
+          "外力到关节力矩映射（force-to-torque mapping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_fixed_world_force_lwa_1761",
+        "problem_title_zh": "Pinocchio 固定世界方向外力的 Jacobian 参考系选择",
+        "question_zh": "外力在固定世界坐标系描述、希望通过末端 Jacobian 映射到关节 torque 时，Pinocchio 原线程建议使用哪种 ReferenceFrame？",
+        "source_locator": "Pinocchio #1761：维护者评论 1264712803 澄清 fixed universe/coincident point；1266647907 回答使用 LOCAL_WORLD_ALIGNED",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1266647907",
+        "verification_refs": [
+          {
+            "locator": "维护者澄清 universe 固定，但 coincident point 随 body 移动",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1264712803"
+          },
+          {
+            "locator": "维护者针对固定 frame 外力到 torque 的目标回答使用 LOCAL_WORLD_ALIGNED",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1266647907"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1761",
+    "query": "Pinocchio fixed frame force torque Jacobian WORLD LOCAL_WORLD_ALIGNED floating robot",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基机械臂/机器人（原帖未给具体型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者澄清 universe 固定，移动的是与 body 重合的作用点。"
+      },
+      {
+        "text": "作者明确外力在固定 frame 后，维护者建议 LOCAL_WORLD_ALIGNED。"
+      }
+    ],
+    "wbc_relevance_reason": "末端外力到广义力的 Jacobian 转置映射必须对齐力和 Jacobian 的表达坐标系与作用点；WORLD/LWA 混淆会直接改变力矩结果。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1761",
+  "summary": "Pinocchio #1761 反复询问 WORLD、LOCAL 与 LOCAL_WORLD_ALIGNED 的含义。维护者先澄清 universe/inertial frame 固定，但 WORLD convention 的 coincident point 随 body 移动；当作者明确目标是把固定坐标系描述的外力通过 Jacobian 映射成关节 torque 时，维护者直接回答使用 LOCAL_WORLD_ALIGNED。线程随后关闭，但作者没有发布计算结果或数值复测，因此该卡只保留参考系选择结论，标为需要实际验证。",
+  "title": "Pinocchio 将固定世界方向的末端力映射到关节力矩时使用 LOCAL_WORLD_ALIGNED Jacobian",
+  "version": null
+}

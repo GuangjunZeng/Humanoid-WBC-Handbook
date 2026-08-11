@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4392.af1f26a2294d",
+  "schema_version": 1,
+  "source_fingerprint": "ff1cd92acb430861b976f035e6d83d2dd6bd4644a25a5c40f1cf8aabd4f3f5fb",
+  "translations": {
+    "answer": "Do not directly call the API with a full-zero tensor and a single env_ids, as the global has_external_wrench may be disabled. A workaround has been tested and verified: maintain a full shape=(num_envs, ...) force/torque buffer, set the target environment row to zero, and call without env_ids. The code modification is proposed to use the updated internal buffer, but it is uncertain in terms of compatibility and not verified by maintainers, so it is only noted as a candidate fix.",
+    "applicability": "Corresponds to Isaac Lab commit a466d4e / Isaac Sim 5.0. New versions require checking function semantics and minimal reproduction.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is lacking.",
+    "details.attempts.0": "Participants suggest constructing a full num_envs tensor; the author notes that passing a full tensor with a single env_ids leads to shape mismatch and modifies to call without env_ids.",
+    "details.attempts.1": "The author proposes modifying the internal buffer to check _external_force_b/_external_torque_b, but this is not verified for compatibility.",
+    "details.diagnostics.0": "Distinguish between internal force/torque buffer per environment and the global has_external_wrench switch; check if the second call input is all-zero and if the first dimension of the tensor matches the env_ids.",
+    "details.effective_fixes.0": "The author explicitly tests and verifies a workaround: retain the full num_envs force/torque buffer, set the target environment row to zero, and call without env_ids.",
+    "details.environments.0": "Isaac Lab main commit a466d4e; Isaac Sim 5.0; and RigidObject in parallel environments.",
+    "details.limits.0": "Writing back the full buffer increases data management cost; the source code modification is only a possible fix and not a merged solution.",
+    "details.limits.1": "The InteractiveScene.reset already resets the buffer, so no additional call is needed.",
+    "details.outcomes.0": "The author confirms that calling with the full buffer and without env_ids works; the local env_ids API semantics are not yet verified for the fix.",
+    "details.problem_statements.0": "Why does setting zero external force/torque for only resetting env_ids clear external wrenches for all other environments? What is the actual workaround?",
+    "details.safety_notes.0": "Record actual wrenches for each environment during disturbance or safety recovery testing; do not infer external forces from call parameters alone.",
+    "details.suspected_causes.0": "The current implementation sets the global has_external_wrench based on the current input forces.any()/torques.any(), rather than the updated full internal buffer.",
+    "details.symptoms.0": "Calling with zero force/torque for env 0 and env_ids results in all non-reset environments having zero external wrench.",
+    "source.locator": "Issue #4392, full buffer workaround and issuecomment-3757880219",
+    "source.title": "IsaacLab clears external wrench for only some envs, but this affects all environments - what is the verified workaround?",
+    "terms.0": "External wrench (external force/torque) (外部力旋量)",
+    "terms.1": "Parallel environment index (environment IDs, env_ids) (并行环境索引)",
+    "terms.2": "Internal buffer (内部缓冲区)",
+    "terms.3": "Global enable flag (全局使能标志)",
+    "title": "What is the verified workaround for IsaacLab clearing external wrench for only some envs but affecting all environments?"
+  }
+}

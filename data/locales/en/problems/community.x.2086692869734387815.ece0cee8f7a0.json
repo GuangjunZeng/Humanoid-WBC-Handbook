@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086692869734387815.ece0cee8f7a0",
+  "schema_version": 1,
+  "source_fingerprint": "bbbc44a7b7e84847510aff43013c4c6c1db0728183d559a77db9d133fad85b51",
+  "translations": {
+    "answer": "Due to differences in hand morphology between humans and robots, the same motion may result in completely different contacts. The C2Dex candidate solution involves recovering stable object-side contacts from monocular human videos and explicitly preserving them during retargeting; the post claims this covers 8 real-world tasks, but formal validation and code are still needed.",
+    "applicability": "Applicable to dexterous hands and contact-based operations during retargeting; not directly equivalent to full-body contact in bipedal systems.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "First, recover stable object-side contacts, then retarget with contact constraints.",
+    "details.diagnostics.0": "Evaluate object-side contact preservation separately from pure pose matching.",
+    "details.effective_fixes.0": "The candidate method explicitly preserves object-side contact during retargeting.",
+    "details.environments.0": "Monocular human video; dexterous hand retargeting; 8 real-world tasks.",
+    "details.limits.0": "No failure rate, contact force error, or cross-hand type ablation; content is a paper abstract.",
+    "details.outcomes.0": "The post claims 24 video clips cover 8 real-world tasks.",
+    "details.problem_statements.0": "Only matching kinematic poses may result in different contact geometries for human and robot hands.",
+    "details.safety_notes.0": "Before retargeting, limit force and check for penetration, joint limits, and object slippage.",
+    "details.suspected_causes.0": "Differences in robot morphology compared to human hands; same pose does not guarantee identical contact geometry.",
+    "details.symptoms.0": "Similar action trajectories but unstable or incorrect object-side contacts.",
+    "media_summaries.0": "Screenshot shows the problem statement and C2Dex mark, but no contact points, force curves, or retargeting failure comparison are displayed.",
+    "source.locator": "Root post body text",
+    "source.title": "Why Action Retargeting Can't Just Match Pose: Contact Consistency?",
+    "terms.0": "Contact Constraint (接触约束)",
+    "terms.1": "Motion Retargeting (动作重定向)",
+    "terms.2": "Whole-Body Teleoperation (全身遥操作)",
+    "title": "Why Action Retargeting Can't Just Match Pose: Contact Consistency?"
+  }
+}

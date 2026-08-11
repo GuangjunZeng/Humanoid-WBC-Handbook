@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.loco-3d.crocoddyl.979.e614979c5d5f",
+  "schema_version": 1,
+  "source_fingerprint": "e6717b0863f9ed23b8344c35ec43b3b3150a521f5be4bb7aa562907230b0a266",
+  "translations": {
+    "answer": "The post excluded contact force and confirmed JMinvJt_damping=0; reducing the timestep from 0.005 to 0.001 improved the finite state. According to the maintainer, Euler was replaced with RK4, and the angular momentum remained constant during the aerial phase. The result is suitable for diagnostic A/B testing with the same configuration, but it does not imply all momentum drift is caused by the integrator.",
+    "applicability": "Applicable to Crocoddyl flight trajectory optimization where contact has been excluded and Euler integration produces significant drift.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Author switched from Euler to RK4 while keeping JMinvJt_damping=0.",
+    "details.diagnostics.0": "Confirmed no contact forces during the aerial phase and no contact model.",
+    "details.diagnostics.1": "Recorded JMinvJt_damping and integrator; performed A/B comparison with Euler/RK4 at same cost/contact configuration.",
+    "details.effective_fixes.0": "Author modified to RK4 in specific trajectories, resulting in significant improvement of angular momentum and reporting constant angular momentum during the aerial phase.",
+    "details.environments.0": "Crocoddyl A1 jumping/backflipping optimization; aerial phase has no contact model, and contact forces confirmed to be zero.",
+    "details.environments.1": "Original timestep 0.005, tried 0.001; JMinvJt_damping always 0; no commit/OS provided.",
+    "details.limits.0": "No commit, robot parameters, RK4 timestep, or numerical error threshold, so cannot extrapolate to all flight phases requiring only RK4.",
+    "details.limits.1": "The curve shown by the author is not used for this card; results are verified by text re-measurement.",
+    "details.limits.2": "If integrator still drifts, need to check contact leakage, model/inertia, and cost formulation.",
+    "details.outcomes.0": "Author confirmed the issue was resolved in their case; maintainer explained that advanced integrators can reduce drift.",
+    "details.problem_statements.0": "When angular momentum drifts during the aerial phase, should check first the optimization formulation or the integration scheme?",
+    "details.safety_notes.0": "Before flight on the jumping/backflipping trajectory, independently verify momentum, contact switch, peak torque, and landing impact, and do not rely on optimizer convergence for physical consistency checks.",
+    "details.suspected_causes.0": "Both maintainers attributed drift to numerical integrator injection of energy, not the Pinocchio issue linked.",
+    "details.symptoms.0": "Flight phase angular momentum is not constant, more pronounced during leg swings.",
+    "details.symptoms.1": "Reducing Euler timestep alone does not sufficiently improve the situation.",
+    "source.locator": "Crocoddyl #979 maintainer suggestion 887311851, author re-measure 888126517, maintainer explanation 888133549/888232475",
+    "source.title": "Crocoddyl aerial phase angular momentum drift can be addressed by comparing Euler and RK4 integrators",
+    "terms.0": "Angular momentum (AM) (角动量)",
+    "terms.1": "Aerial phase (飞行相)",
+    "terms.2": "Numerical integrator (数值积分器)",
+    "terms.3": "Symplectic scheme (辛格式)",
+    "title": "Which modification in the post effectively addresses the angular momentum drift in the aerial phase when contact forces are zero?"
+  }
+}

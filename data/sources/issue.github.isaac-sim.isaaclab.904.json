@@ -1,0 +1,177 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "hojae-io"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/904",
+  "captured_at": "2026-08-11T22:10:00+08:00",
+  "content_sha256": "9c4ff0c6bb629e935df75eccd2f2a3f0e7a57cccd0c4c6393872148399fde91b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 7 条评论与合并 PR #940；没有从训练曲线图片推断结果。",
+    "components": [
+      "Isaac Lab",
+      "environment seed",
+      "terrain generation",
+      "PhysX",
+      "PPO",
+      "determinism"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者把 seed 从环境创建后移到环境创建前。",
+        "PR #940 把 seed 设为环境构造器的首个操作，并增加 observation/reward 一致性测试。",
+        "后续用户用 env.reset(seed)、固定动作/seeded random actions 与 tensor hash 隔离环境和 PPO。"
+      ],
+      "diagnostics": [
+        "在环境构造前设置 cfg seed，避免 terrain、PhysX 或内部 buffer 初始化先消耗随机数。",
+        "调用 env.reset(seed=YOUR_SEED) 后，先用 constant actions 或 seeded random actions 驱动环境。",
+        "累计 observation/reward 等环境 tensor 并做 hash，对比同硬件连续运行；只有环境一致后再检查 PPO action sampling。"
+      ],
+      "effective_fixes": [
+        "使用包含 PR #940 的版本，或确保环境 seed 在环境、terrain 与仿真对象创建前生效。",
+        "特定后续案例中，用 env.reset(seed=...) 修复 Hydra args.seed=None 导致 seed 未生效的问题。"
+      ],
+      "environments": [
+        "原帖：Isaac Sim 2024.4.1、Ubuntu 22.04、RTX 3090、CUDA 11.2、driver 550；未给精确 IsaacLab commit。",
+        "维护者 PR #940 在同一进程做固定步数 observation/reward 一致性测试，并以 ANYmal rough locomotion 做三次训练对照。",
+        "后续用户只明确同一硬件连续运行和最多 2000 sim steps，未给完整版本矩阵。"
+      ],
+      "limits": [
+        "PR 测试只证明同一进程/特定任务与版本，不保证跨硬件、跨 Isaac Sim 版本或 GPU scheduling 一致。",
+        "维护者三次训练图未用于本卡结论；只采用其文字说明与 PR 测试代码。",
+        "rough terrain 差异没有维护者闭环，不能声称设置 seed 即保证所有训练曲线重合。"
+      ],
+      "outcomes": [
+        "原作者报告前移 seed 后多次 reward curve 精确重合；维护者测试在同一进程得到相同 observation/reward。",
+        "后续用户报告同硬件连续仿真 2000 步环境 tensor 一致，但其 PPO 动作生成仍不确定。",
+        "rough terrain 的另两位用户仍有未闭环差异。"
+      ],
+      "problem_statements": [
+        "固定 seed 后训练曲线仍不一致时，seed 应在何时生效？",
+        "怎样把环境仿真非确定性与 PPO 动作生成非确定性分开检查？"
+      ],
+      "safety_notes": [
+        "可复现性结论应绑定硬件、driver、Isaac Sim/IsaacLab commit 与 task config；控制算法比较应报告多 seed 分布。"
+      ],
+      "suspected_causes": [
+        "维护者认为初始化阶段的 terrain generation、PhysX solver 和内部 buffer 等随机操作在旧流程中早于 seed。",
+        "后续用户的 2000 步隔离测试把其特定环境的剩余差异定位到 PPO 动作生成。"
+      ],
+      "symptoms": [
+        "同一 seed 的训练 reward curve 不重合。",
+        "rough terrain 即使 terrain seed 固定，仍有用户报告前几次迭代 observation/reward 略有差异并逐渐放大。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程确认旧流程在环境创建后才设置 seed，而 terrain generation、PhysX 初始化和内部 buffer 可能已经消耗随机数。合并 PR #940 把 cfg seed 放到环境构造器的最前面，并用固定步数测试得到相同 observation 与 reward；原作者也报告前移 seed 后重复训练曲线重合。应使用包含该 PR 的版本或保证 seed 早于环境、terrain 和仿真对象创建。这个修复只闭环了初始化顺序问题，不保证 rough terrain、跨硬件或整个 PPO 训练链都完全确定。",
+        "applicability": "适用于缺少 PR #940、或 seed 仍晚于环境构造的 Isaac Lab 管线；精确确定性边界必须在同硬件与固定版本复测。",
+        "bilingual_terms": [
+          "随机种子（random seed）",
+          "环境构造（environment construction）",
+          "确定性（determinism）",
+          "观测与奖励（observations and rewards）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.reproducibility_and_debugging.isaaclab_seed_before_env_904",
+        "problem_title_zh": "Isaac Lab 环境构造前设置随机种子",
+        "question_zh": "Isaac Lab 固定 seed 后训练仍不一致，为什么要在环境构造前设置 seed？",
+        "source_locator": "IsaacLab #904 原帖 Resolution；维护者解释 2320250794、测试 2333392825；PR #940",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2333392825",
+        "verification_refs": [
+          {
+            "locator": "合并 PR ac71354c：环境构造开始即调用 seed，并增加同一进程 observation/reward 确定性测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/940"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "帖子中的可复用隔离法是：先通过 env.reset(seed=YOUR_SEED) 确认 seed 真正传入环境，再用 constant actions 或 seeded random actions 运行，不让 PPO 参与；累计环境 tensor 并对 observation 等结果做 hash。该用户在同一硬件上测到 2000 步连续仿真一致，因此把自己案例的剩余差异定位到 PPO 动作生成。此结果没有覆盖其他硬件或 rough terrain 的所有管线，适合作为诊断步骤而不是通用确定性保证。",
+        "applicability": "适用于同硬件连续运行的环境/PPO 随机源隔离；跨硬件、视觉任务和 rough terrain 需要单独验证。",
+        "bilingual_terms": [
+          "固定动作（constant actions）",
+          "带种子的随机动作（seeded random actions）",
+          "张量哈希（tensor hash）",
+          "策略采样（policy sampling）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reproducibility_and_debugging.isaaclab_env_vs_ppo_904",
+        "problem_title_zh": "隔离 Isaac Lab 环境与 PPO 的随机性",
+        "question_zh": "怎样判断训练不一致来自 Isaac Lab 环境还是 PPO 动作生成？",
+        "source_locator": "IsaacLab #904 后续用户隔离实验 2917221442；rough terrain 未闭环报告 2893545806、2908551344",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2917221442",
+        "verification_refs": [
+          {
+            "locator": "另一 rough-terrain 环境仍报告差异，限定隔离实验的外推范围",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2893545806"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.904",
+    "query": "Isaac Lab random seed before environment construction deterministic training PPO fixed actions",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ANYmal locomotion simulation",
+      "custom rough-terrain legged robots"
+    ],
+    "schema_version": 2,
+    "scope_id": "reproducibility_and_debugging",
+    "selected_comments": [
+      {
+        "text": "维护者把 seed 修复放到构造器首操作并提供测试；后续用户用固定动作和 2000 步 tensor hash 隔离出 PPO 随机性；rough terrain 仍有未闭环报告。"
+      }
+    ],
+    "wbc_relevance_reason": "学习型 WBC、locomotion policy 和 sim-to-real 回归若不能区分环境与算法随机源，会把 seed 管线缺陷误判为控制或 reward 改动。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.904",
+  "summary": "IsaacLab #904 的作者在 Isaac Sim 2024.4.1/Ubuntu 22.04/RTX 3090 上发现，训练脚本在环境创建后才设置 seed；把 seed 前移后，多次 reward curve 重合。维护者解释 terrain generation、PhysX 初始化和内部 buffer 可能在构造阶段消耗随机数，并用合并 PR #940 把环境 seed 移到构造器最前面、增加确定性测试。后续一位用户又用 env.reset(seed=...)、固定或 seeded random actions 和累计环境 tensor hash 测 2000 步，报告同硬件连续仿真一致，把自己剩余的不确定性定位到 PPO 动作生成；另有 rough terrain 用户仍报告曲线分叉，因此不能把 seed 修复外推为所有训练链完全确定。",
+  "title": "Isaac Lab 可复现性要区分环境初始化随机性与策略算法随机性",
+  "version": null
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.3162.792b8865a576",
+  "schema_version": 1,
+  "source_fingerprint": "4a53770423966b636d70bd7fd94b13bd2908409e8b55d5b731efa57be57cf3b4",
+  "translations": {
+    "answer": "The original post indicates that repeated_objects_terrain reads cfg.platform_height, but the corresponding repeated object configuration does not have this field. The field has been merged into PR #3316, and the platform_height: float = -1.0 has been moved to MeshRepeatedObjectsTerrainCfg.ObjectCfg; negative values indicate that the platform height is the same as the object height. This PR did not add new unit tests or a changelog, and upgrades or rollbacks should be verified manually by running repeated-object terrain generation checks.",
+    "applicability": "Applies to Isaac Lab configurations involving repeated objects terrain that include #2695 but not #3316. The original post refers to v2.2.0/Isaac Sim 4.5.",
+    "credibility.rationale": "The issue has been resolved, the environment is clear and there is no conflict, and there is formal documentation or precise reference to the resolution.",
+    "details.attempts.0": "The original post suggested that the field should be placed after platform_width in the repeated object configuration.",
+    "details.attempts.1": "PR #3316 actually moved the field and corrected an unrelated default value for num_waves.",
+    "details.diagnostics.0": "The field reading in repeated_objects_terrain and the definition in MeshRepeatedObjectsTerrainCfg.ObjectCfg should be compared to check for platform_height in the vicinity of platform_width.",
+    "details.diagnostics.1": "It is important to distinguish between repeated object terrain configuration and pyramid stairs terrain configuration to avoid placing the field in a class that does not use it.",
+    "details.effective_fixes.0": "Use merged PR #3316: Remove platform_height from MeshPyramidStairsTerrainCfg and add platform_height: float = -1.0 to MeshRepeatedObjectsTerrainCfg.ObjectCfg; negative values still indicate using the object height.",
+    "details.environments.0": "Isaac Lab release v2.2.0, commit 46dff135f44683f031edf346e544fcfd8456b2bb; Isaac Sim 4.5; Ubuntu 22.04; RTX 5090; CUDA 12.8; GPU driver 570.",
+    "details.limits.0": "The PR #3316 checklist explicitly states that no new tests to verify the fix were added, and the changelog was not updated.",
+    "details.limits.1": "The patch also includes a type and format correction for num_waves; this card only moved platform_height as part of #3162.",
+    "details.limits.2": "The original post and PR do not provide screenshots of the terrain after the patch or target WBC training results.",
+    "details.outcomes.0": "PR #3316 was merged into main on 2025-09-04, closing #3162.",
+    "details.problem_statements.0": "Why does the MeshRepeatedBoxesTerrain generation throw an AttributeError: 'MeshRepeatedBoxesTerrainCfg' object has no attribute 'platform_height'?",
+    "details.suspected_causes.0": "PR #3316 indicates that platform_height was mistakenly placed in MeshPyramidStairsTerrainCfg, but not in MeshRepeatedObjectsTerrainCfg.ObjectCfg.",
+    "details.symptoms.0": "The repeated_objects_terrain reads cfg.platform_height and throws an AttributeError: 'MeshRepeatedBoxesTerrainCfg' object has no attribute 'platform_height'.",
+    "source.locator": "Isaac Lab #3162 main report: AttributeError, environment, merged PR #3316 description, checklist, and file patch",
+    "source.title": "How should the platform_height AttributeError in MeshRepeatedBoxesTerrain be fixed in Isaac Lab v2.2.0?",
+    "terms.0": "Repeated-objects terrain (重复物体地形)",
+    "terms.1": "Configuration attribute (配置字段)",
+    "terms.2": "Platform height (平台高度)",
+    "terms.3": "AttributeError (属性错误)",
+    "title": "How should the platform_height AttributeError in MeshRepeatedBoxesTerrain be fixed in Isaac Lab v2.2.0?"
+  }
+}

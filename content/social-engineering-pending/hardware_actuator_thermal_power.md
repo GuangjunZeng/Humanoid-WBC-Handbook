@@ -1,6 +1,6 @@
 # hardware_actuator_thermal_power：技术待整理
 
-> `scope_id`: `hardware_actuator_thermal_power`；共 87 条，未做用户可见截断。
+> `scope_id`: `hardware_actuator_thermal_power`；共 80 条，未做用户可见截断。
 
 ## 1. how can we get NATURAL_FREQ for different robot ,is it differnt for every joints ,
 
@@ -122,15 +122,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 16. [Question] What exactly is going on with force/torque sensors
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2127](https://github.com/isaac-sim/IsaacLab/issues/2127)
-- 查询来源：torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 17. [Question] How to properly create and import terrains?
+## 16. [Question] How to properly create and import terrains?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2187](https://github.com/isaac-sim/IsaacLab/issues/2187)
@@ -138,7 +130,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 18. How to measure torques on rigid bodies?
+## 17. How to measure torques on rigid bodies?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2257](https://github.com/isaac-sim/IsaacLab/issues/2257)
@@ -146,7 +138,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 19. [Bug Report] During training the models disappear from the scene
+## 18. [Bug Report] During training the models disappear from the scene
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2294](https://github.com/isaac-sim/IsaacLab/issues/2294)
@@ -154,7 +146,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 20. [Bug Report] Unable to allow collisions between robot and trimesh terrain
+## 19. [Bug Report] Unable to allow collisions between robot and trimesh terrain
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2323](https://github.com/isaac-sim/IsaacLab/issues/2323)
@@ -162,7 +154,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 21. [Question] Torque control robotic arm
+## 20. [Question] Torque control robotic arm
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2355](https://github.com/isaac-sim/IsaacLab/issues/2355)
@@ -170,15 +162,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 22. [Question] Clarification on joint_drive vs. actuator gains
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2369](https://github.com/isaac-sim/IsaacLab/issues/2369)
-- 查询来源：torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 23. [Question] Jacobian Retrieval Failure for Whole-Body Loco-Manipulation System
+## 21. [Question] Jacobian Retrieval Failure for Whole-Body Loco-Manipulation System
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2374](https://github.com/isaac-sim/IsaacLab/issues/2374)
@@ -186,7 +170,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 24. [Question] Methods to set joints directly + disable articulation physics simulation?
+## 22. [Question] Methods to set joints directly + disable articulation physics simulation?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2420](https://github.com/isaac-sim/IsaacLab/issues/2420)
@@ -194,7 +178,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 25. [Question] Actuator PD tuning issue? possible bug?
+## 23. [Question] Actuator PD tuning issue? possible bug?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2425](https://github.com/isaac-sim/IsaacLab/issues/2425)
@@ -202,7 +186,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 26. [Question] How to Obtain Contact Surface Normal Vectors from Contact Sensor in Isaac Lab?
+## 24. [Question] How to Obtain Contact Surface Normal Vectors from Contact Sensor in Isaac Lab?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2446](https://github.com/isaac-sim/IsaacLab/issues/2446)
@@ -210,7 +194,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 27. [Question] ImplicitActuatorCfg effort_limit and effor_limit_sim, differences and values due to motor parameters
+## 25. [Question] ImplicitActuatorCfg effort_limit and effor_limit_sim, differences and values due to motor parameters
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2478](https://github.com/isaac-sim/IsaacLab/issues/2478)
@@ -218,7 +202,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 28. [Bug Report] RigidObject.set_external_force_and_torque() doesn't clear buffers
+## 26. [Bug Report] RigidObject.set_external_force_and_torque() doesn't clear buffers
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/262](https://github.com/isaac-sim/IsaacLab/issues/262)
@@ -226,7 +210,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 29. Why my gripper can not close when I want to grasp the cube?
+## 27. Why my gripper can not close when I want to grasp the cube?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2646](https://github.com/isaac-sim/IsaacLab/issues/2646)
@@ -234,7 +218,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 30. [Bug Report] RigidBodyView get_transforms() orientation error
+## 28. [Bug Report] RigidBodyView get_transforms() orientation error
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2673](https://github.com/isaac-sim/IsaacLab/issues/2673)
@@ -242,7 +226,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 31. [Question] How can i get isaac lab env default ArticulationCfg?
+## 29. [Question] How can i get isaac lab env default ArticulationCfg?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2748](https://github.com/isaac-sim/IsaacLab/issues/2748)
@@ -250,7 +234,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 32. [Question] Operational Space Controller not working with UR10 arm
+## 30. [Question] Operational Space Controller not working with UR10 arm
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2775](https://github.com/isaac-sim/IsaacLab/issues/2775)
@@ -258,7 +242,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 33. [Question] Question about tiled camera intrinsics
+## 31. [Question] Question about tiled camera intrinsics
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2806](https://github.com/isaac-sim/IsaacLab/issues/2806)
@@ -266,15 +250,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 34. [Bug Report] Joint velocity control for the Franka robot does not work out-of-the-box when using `mdp.JointVelocityAction
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2807](https://github.com/isaac-sim/IsaacLab/issues/2807)
-- 查询来源：torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 35. How to display and output contact force and joint information in the process or results of reinforcement learning？
+## 32. How to display and output contact force and joint information in the process or results of reinforcement learning？
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2818](https://github.com/isaac-sim/IsaacLab/issues/2818)
@@ -282,7 +258,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 36. [Question] Lift Task with UR10e and Robotiq 2F-140
+## 33. [Question] Lift Task with UR10e and Robotiq 2F-140
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2883](https://github.com/isaac-sim/IsaacLab/issues/2883)
@@ -290,7 +266,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 37. [Question] How to do gravity compensation for mobile manipulators?
+## 34. [Question] How to do gravity compensation for mobile manipulators?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2886](https://github.com/isaac-sim/IsaacLab/issues/2886)
@@ -298,7 +274,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 38. [Proposal]  Inquiry: Demo or API for Rigid Body Collision (Ball vs. Robot End-Effector) with Bounce Effect
+## 35. [Proposal]  Inquiry: Demo or API for Rigid Body Collision (Ball vs. Robot End-Effector) with Bounce Effect
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2890](https://github.com/isaac-sim/IsaacLab/issues/2890)
@@ -306,15 +282,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 39. [Question] GO1's Learned Actuator Model Evaluated at 200Hz while Trained at 50Hz
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2963](https://github.com/isaac-sim/IsaacLab/issues/2963)
-- 查询来源：deployment；torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 40. [Question] Accessing per-environment observations
+## 36. [Question] Accessing per-environment observations
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2975](https://github.com/isaac-sim/IsaacLab/issues/2975)
@@ -322,7 +290,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 41. [Question] A compute torque function is different between a isaaclab and a legged_gym
+## 37. [Question] A compute torque function is different between a isaaclab and a legged_gym
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/2999](https://github.com/isaac-sim/IsaacLab/issues/2999)
@@ -330,7 +298,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 42. [Question] Actor Goes Wild Like Popcorn When Randomly Resetting Poes with Pitch and Yaw
+## 38. [Question] Actor Goes Wild Like Popcorn When Randomly Resetting Poes with Pitch and Yaw
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3035](https://github.com/isaac-sim/IsaacLab/issues/3035)
@@ -338,7 +306,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 43. [Question] Using OperationalSpaceController in the Isaac-Stack-Cube-Franka-IK-Rel-Visuomotor-v0 task.
+## 39. [Question] Using OperationalSpaceController in the Isaac-Stack-Cube-Franka-IK-Rel-Visuomotor-v0 task.
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3046](https://github.com/isaac-sim/IsaacLab/issues/3046)
@@ -346,7 +314,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 44. [Question] API or built-in functions for extracting data during training
+## 40. [Question] API or built-in functions for extracting data during training
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3203](https://github.com/isaac-sim/IsaacLab/issues/3203)
@@ -354,7 +322,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 45. [Question] Robotiq-85 grasping induces consistent end-effector rotation
+## 41. [Question] Robotiq-85 grasping induces consistent end-effector rotation
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3347](https://github.com/isaac-sim/IsaacLab/issues/3347)
@@ -362,7 +330,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 46. [Question] body_incoming_joint_wrench_b
+## 42. [Question] body_incoming_joint_wrench_b
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3369](https://github.com/isaac-sim/IsaacLab/issues/3369)
@@ -370,7 +338,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 47. [Question] How to Set Motor Friction Parameters When Identified from No-Load Condition?​
+## 43. [Question] How to Set Motor Friction Parameters When Identified from No-Load Condition?​
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3410](https://github.com/isaac-sim/IsaacLab/issues/3410)
@@ -378,7 +346,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 48. [Question] SKRL - How to add new parameters in tensorboard logging? (managed RL)
+## 44. [Question] SKRL - How to add new parameters in tensorboard logging? (managed RL)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3492](https://github.com/isaac-sim/IsaacLab/issues/3492)
@@ -386,7 +354,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 49. [Bug Report] The function change_ft_frame in the FORGE task seems to be incorrect
+## 45. [Bug Report] The function change_ft_frame in the FORGE task seems to be incorrect
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3513](https://github.com/isaac-sim/IsaacLab/issues/3513)
@@ -394,7 +362,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 50. [Question] FORGE Implementation and Performance
+## 46. [Question] FORGE Implementation and Performance
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3591](https://github.com/isaac-sim/IsaacLab/issues/3591)
@@ -402,7 +370,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 51. [Question] How to define one RL “step” as a full grasp execution (not physics dt) in Isaac Lab?
+## 47. [Question] How to define one RL “step” as a full grasp execution (not physics dt) in Isaac Lab?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3599](https://github.com/isaac-sim/IsaacLab/issues/3599)
@@ -410,7 +378,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 52. [Bug Report] Robot disappearing while training
+## 48. [Bug Report] Robot disappearing while training
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3637](https://github.com/isaac-sim/IsaacLab/issues/3637)
@@ -418,7 +386,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 53. [Question] Decomposing joint forces into actuation forces and external forces
+## 49. [Question] Decomposing joint forces into actuation forces and external forces
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3715](https://github.com/isaac-sim/IsaacLab/issues/3715)
@@ -426,7 +394,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 54. [Question] Explanation of Sim2Real for universal robot as explained in blog
+## 50. [Question] Explanation of Sim2Real for universal robot as explained in blog
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3815](https://github.com/isaac-sim/IsaacLab/issues/3815)
@@ -434,15 +402,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 55. [Question] Clarification on Explicit vs Implicit Actuator Control Signal Update Frequency
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/3823](https://github.com/isaac-sim/IsaacLab/issues/3823)
-- 查询来源：torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 56. Robot's movement is not correct in "Velocity-G1-Flat v0" training
+## 51. Robot's movement is not correct in "Velocity-G1-Flat v0" training
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4014](https://github.com/isaac-sim/IsaacLab/issues/4014)
@@ -450,7 +410,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 57. [Question] PD Torque Behavior in Isaac Lab and Policy Actions Are Too High and Don't Match Actual Joint Pos
+## 52. [Question] PD Torque Behavior in Isaac Lab and Policy Actions Are Too High and Don't Match Actual Joint Pos
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4075](https://github.com/isaac-sim/IsaacLab/issues/4075)
@@ -458,7 +418,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 58. [Question] UR3e + Robotiq_2F_140_physics_edit : Pick and Place task
+## 53. [Question] UR3e + Robotiq_2F_140_physics_edit : Pick and Place task
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4083](https://github.com/isaac-sim/IsaacLab/issues/4083)
@@ -466,7 +426,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 59. [Question] Where can I find the usage of some functions under root_physx_view, such as those for calculating centrifugal force and Coriolis force?
+## 54. [Question] Where can I find the usage of some functions under root_physx_view, such as those for calculating centrifugal force and Coriolis force?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4405](https://github.com/isaac-sim/IsaacLab/issues/4405)
@@ -474,7 +434,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 60. [Bug Report] Issue with tiled camera in Quadcopter Env
+## 55. [Bug Report] Issue with tiled camera in Quadcopter Env
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4424](https://github.com/isaac-sim/IsaacLab/issues/4424)
@@ -482,7 +442,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 61. [Question] how to deal with a robot Including a spring-damper structure in Isaac Sim
+## 56. [Question] how to deal with a robot Including a spring-damper structure in Isaac Sim
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4435](https://github.com/isaac-sim/IsaacLab/issues/4435)
@@ -490,7 +450,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 62. [Question] How to customize the ground plane
+## 57. [Question] How to customize the ground plane
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4448](https://github.com/isaac-sim/IsaacLab/issues/4448)
@@ -498,7 +458,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 63. [Bug Report] Unitree Actuators can't be spawned
+## 58. [Bug Report] Unitree Actuators can't be spawned
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4467](https://github.com/isaac-sim/IsaacLab/issues/4467)
@@ -506,7 +466,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 64. [Question] TMRobot + Robotiq85 rotating/drifting
+## 59. [Question] TMRobot + Robotiq85 rotating/drifting
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4532](https://github.com/isaac-sim/IsaacLab/issues/4532)
@@ -514,15 +474,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 65. [Bug Report] Changed behavior of `set_external_force_and_torque()` from v2.3.1 to v2.3.2
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4580](https://github.com/isaac-sim/IsaacLab/issues/4580)
-- 查询来源：torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 66. [Question] Articulation object with mechanical closed loops
+## 60. [Question] Articulation object with mechanical closed loops
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4593](https://github.com/isaac-sim/IsaacLab/issues/4593)
@@ -530,7 +482,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 67. [Question] Reliability of get_link_incoming_joint_force()
+## 61. [Question] Reliability of get_link_incoming_joint_force()
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4634](https://github.com/isaac-sim/IsaacLab/issues/4634)
@@ -538,7 +490,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 68. [Question] Infeasible joint velocity readings
+## 62. [Question] Infeasible joint velocity readings
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4648](https://github.com/isaac-sim/IsaacLab/issues/4648)
@@ -546,7 +498,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 69. [Question] Comparison of Joint Position Maintenance: JointPositionAction vs. DifferentialInverseKinematicsAction
+## 63. [Question] Comparison of Joint Position Maintenance: JointPositionAction vs. DifferentialInverseKinematicsAction
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4825](https://github.com/isaac-sim/IsaacLab/issues/4825)
@@ -554,7 +506,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 70. [Question] about in-hand manipulation dynamics
+## 64. [Question] about in-hand manipulation dynamics
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/4963](https://github.com/isaac-sim/IsaacLab/issues/4963)
@@ -562,7 +514,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 71. [Bug Report] Cuda Error when use body_physx_view.apply_forces_and_torques_at_position in multi-GPU Training
+## 65. [Bug Report] Cuda Error when use body_physx_view.apply_forces_and_torques_at_position in multi-GPU Training
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/519](https://github.com/isaac-sim/IsaacLab/issues/519)
@@ -570,7 +522,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 72. PhysX joint actuation ineffective with legacy _setup_scene cloning path
+## 66. PhysX joint actuation ineffective with legacy _setup_scene cloning path
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5302](https://github.com/isaac-sim/IsaacLab/issues/5302)
@@ -578,7 +530,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 73. [OVPHYSX] RigidObject asset
+## 67. [OVPHYSX] RigidObject asset
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5316](https://github.com/isaac-sim/IsaacLab/issues/5316)
@@ -586,7 +538,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 74. [OVPHYSX] IMU sensor
+## 68. [OVPHYSX] IMU sensor
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5318](https://github.com/isaac-sim/IsaacLab/issues/5318)
@@ -594,7 +546,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 75. [Bug Report] RuntimeError: nvrtc: error: invalid value for --gpu-architecture (-arch)
+## 69. [Bug Report] RuntimeError: nvrtc: error: invalid value for --gpu-architecture (-arch)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5520](https://github.com/isaac-sim/IsaacLab/issues/5520)
@@ -602,7 +554,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 76. [Question] Action-State Deviation in GR00T-VLA Fine-Tuning Data Collection
+## 70. [Question] Action-State Deviation in GR00T-VLA Fine-Tuning Data Collection
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5526](https://github.com/isaac-sim/IsaacLab/issues/5526)
@@ -610,7 +562,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 77. [Question] Uncorrect  force data from tacsl demo
+## 71. [Question] Uncorrect  force data from tacsl demo
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5604](https://github.com/isaac-sim/IsaacLab/issues/5604)
@@ -618,7 +570,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 78. Robot Hand/Fingers Penetrating Cube and Unable to Grasp or Lift Object in Isaaclab
+## 72. Robot Hand/Fingers Penetrating Cube and Unable to Grasp or Lift Object in Isaaclab
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5635](https://github.com/isaac-sim/IsaacLab/issues/5635)
@@ -626,7 +578,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 79. [Proposal] add proper handling of gear ratio function for Actuator DCMotor
+## 73. [Proposal] add proper handling of gear ratio function for Actuator DCMotor
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5665](https://github.com/isaac-sim/IsaacLab/issues/5665)
@@ -634,15 +586,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 80. [Bug Report] Newton backend re-enables joint target stiffness/damping for explicit actuators, causing different rest pose from PhysX
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5806](https://github.com/isaac-sim/IsaacLab/issues/5806)
-- 查询来源：contact；USD；torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 81. [Bug Report] Cannot load mdl correctly
+## 74. [Bug Report] Cannot load mdl correctly
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/646](https://github.com/isaac-sim/IsaacLab/issues/646)
@@ -650,7 +594,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 82. [Proposal] Back Newton Articulation joint_viscous_friction_coeff with Model.joint_damping
+## 75. [Proposal] Back Newton Articulation joint_viscous_friction_coeff with Model.joint_damping
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6517](https://github.com/isaac-sim/IsaacLab/issues/6517)
@@ -658,7 +602,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 83. [Question] Question about changing joint's drive type
+## 76. [Question] Question about changing joint's drive type
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/800](https://github.com/isaac-sim/IsaacLab/issues/800)
@@ -666,7 +610,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 84. [Question] Question title How to get the joint 6-D force/torque data in isaaclab?
+## 77. [Question] Question title How to get the joint 6-D force/torque data in isaaclab?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/896](https://github.com/isaac-sim/IsaacLab/issues/896)
@@ -674,7 +618,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 85. [Question] Training performance comparsion between IsaacLab and IsaacGym
+## 78. [Question] Training performance comparsion between IsaacLab and IsaacGym
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/915](https://github.com/isaac-sim/IsaacLab/issues/915)
@@ -682,7 +626,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 86. How to calibrate between simulator and real world?
+## 79. How to calibrate between simulator and real world?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/roboterax/humanoid-gym/issues/53](https://github.com/roboterax/humanoid-gym/issues/53)
@@ -690,7 +634,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 87. why clock  needed in observations
+## 80. why clock  needed in observations
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/roboterax/humanoid-gym/issues/64](https://github.com/roboterax/humanoid-gym/issues/64)

@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.1796.24b542cb30c4",
+  "schema_version": 1,
+  "source_fingerprint": "582fef8a33872c6b4e320aec38dc5ebb101eff3b6b45564f34fbc2c99c16f1a2",
+  "translations": {
+    "answer": "Merge PR #1215 to change broadcaster to `ChainableControllerInterface`, add `offset.force.{x,y,z}` and `offset.torque.{x,y,z}` parameters, apply offset during update, and export corresponding state interfaces; the patch also includes offset and interface value testing. This capability should be used starting from version containing merge commit `4343c7a`. The original post's Humble user has not completed retesting, so do not assume this functionality has been reverted to Humble.",
+    "applicability": "Applies to versions containing ros2_controllers PR #1215; Hume/backport status must be verified separately.",
+    "credibility.rationale": "The issue has been closed, environment is clear and there is no conflict, and there is formal documentation or precise independent replication.",
+    "details.attempts.0": "PR #1215 adds `offset.force.*`/`offset.torque.*` parameters, runtime parameter refresh, `ChainableControllerInterface`, and state-interface export.",
+    "details.diagnostics.0": "Verify that the target ros2_controllers version includes PR #1215 and check if the broadcaster exports six-axis state interfaces.",
+    "details.effective_fixes.0": "Use the broadcaster offset parameter in versions containing PR #1215 and connect downstream controller via the exported state interfaces.",
+    "details.environments.0": "Original post: ROS 2 Humble, Ubuntu 22.04, UR10e, Polyscope 5.11; formal implementation: ros2_controllers master, PR #1215 merge commit `4343c7a`.",
+    "details.limits.0": "Original author did not retest after merge; the original Humble environment could not build this PR, and no backport conclusion was made.",
+    "details.limits.1": "Using two broadcasters to form original and offset streams is a project suggestion, but no results were published from the original thread.",
+    "details.outcomes.0": "PR #1215 has been approved by two reviewers and merged; the patch includes offset values and state interface unit testing.",
+    "details.problem_statements.0": "How to apply FT sensor offset in real-time within ros2_control and pass the corrected data to the chained controller?",
+    "details.safety_notes.0": "FT offset should be calibrated under conditions without external force or known load, and monitored for abrupt changes, saturation, and frame_id; offset cannot be used to mask sensor overloads or coordinate system errors.",
+    "details.suspected_causes.0": "The old `ForceTorqueSensorBroadcaster` only published the original wrench, without parameterized offset or chained state interfaces.",
+    "details.symptoms.0": "The existing admittance controller's exponential filter cannot meet the requirement of applying FT offset and simultaneously reading offset/non-offset data streams.",
+    "source.locator": "ROS 2 Control #1796 project reply; ros2_controllers PR #1215 merge commit `4343c7a4632a97f52fc664b5dcdcad258ffb5e2a`",
+    "source.title": "ForceTorqueSensorBroadcaster can apply offset and export chained state interface parameters",
+    "terms.0": "Force-Torque Sensor (力矩传感器)",
+    "terms.1": "Offset Calibration (偏置校正)",
+    "terms.2": "Chainable Controller (链式控制器)",
+    "terms.3": "State Interface (状态接口)",
+    "title": "How to apply FT sensor offset in real-time within ros2_control and pass corrected data to the chained controller?"
+  }
+}

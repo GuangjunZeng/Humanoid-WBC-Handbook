@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.247.bdccdaa94507",
+  "schema_version": 1,
+  "source_fingerprint": "6e8facd49fb4abbdec77833487406385815f05b96ac9303432c58f43c064e733",
+  "translations": {
+    "answer": "The project maintainer noted that the Boost.Python binding does not automatically complete the required child-to-base identification. It should, like other TSID bindings, explicitly expose constructor overloads for each supported ContactBase subclass. The original author confirmed that the modification works for Contact6d, ContactPoint, and ContactTwoFramePositions; however, this change is only applicable to the user fork commit eb03d05, and no upstream release has been made. The fix is not yet verified in the upstream.",
+    "applicability": "Applies to the original post TSID Python binding fork; due to unknown version and upstream merge status, the target build must be verified in practice.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The original author initially only exposed the ContactBase& constructor, which failed to instantiate.",
+    "details.attempts.1": "Subsequently, overloads for Contact6d, ContactPoint, and ContactTwoFramePositions were added via bp::init.",
+    "details.diagnostics.0": "The binding visitor was found to only expose the ContactBase& constructor, without adding bp::init overloads for specific Contact6d subclass.",
+    "details.diagnostics.1": "This contrasts with the pattern of other TSID bindings, where each possible child class has an independent method or constructor.",
+    "details.effective_fixes.0": "An explicit constructor overload was added to the TaskContactForceEqualityPythonVisitor for each supported ContactBase subclass, along with corresponding contact header files.",
+    "details.environments.0": "TSID user fork; Python binding; UR5 force-task example; original post does not provide TSID/Python/Boost versions or OS information.",
+    "details.limits.0": "The modification is only present in the user fork; no upstream PR has been merged, and no complete working force-control example is available.",
+    "details.limits.1": "The environment version is not provided, and other TSID/Boost.Python versions must be recompiled and verified.",
+    "details.outcomes.0": "The original author confirmed that the modification allows instantiation of Contact6d; the fork commit eb03d05 patch aligns with the explanation.",
+    "details.problem_statements.0": "Why does the TaskContactForceEquality constructor still report a C++ signature mismatch when Contact6d inherits from ContactBase?",
+    "details.safety_notes.0": "A successful binding only proves that an object can be constructed, not that force tasks have correct reference, constraint dimension, contact stability, or real-time force limits.",
+    "details.suspected_causes.0": "The project maintainer noted that the Python binding did not automatically recognize the inheritance from Contact6d to ContactBase at the constructor location.",
+    "details.symptoms.0": "TaskContactForceEquality(name, RobotWrapper, dt, Contact6d) raises an ArgumentError, with the C++ signature only showing ContactBase&.",
+    "source.locator": "TSID #247: Maintainer comment 2568242300 explains subclass overload; author comment 2575770028 confirms instantiation; fork commit eb03d05 includes three constructor overloads",
+    "source.title": "TSID Python binding needs to explicitly expose constructors for Contact6d and other ContactBase subclasses",
+    "terms.0": "Language binding (Python binding) (语言绑定)",
+    "terms.1": "Constructor overload (构造函数重载)",
+    "terms.2": "Child-to-base conversion (子类到基类转换)",
+    "terms.3": "Contact-force equality task (接触力等式任务)",
+    "title": "What is the binding fix that confirms the original thread's binding when Contact6d cannot be passed to the TaskContactForceEquality constructor expecting ContactBase&?"
+  }
+}

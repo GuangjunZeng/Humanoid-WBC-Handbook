@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "community.xiaohongshu.6a2a8788000000003502e5d3.89a64e7b0e62",
+  "schema_version": 1,
+  "source_fingerprint": "db3b6791a6871cece1fccec97900d260457a81d6ab6c85c17e14dd39dfb5900d",
+  "translations": {
+    "answer": "The original post only proposes candidate diagnostic directions: verifying the size of action chunks and timestamps of each sample, confirming whether the 100 Hz cycle is interrupted or repeated, and measuring round-trip cloud-to-ground delay and jitter. Whether interpolation or buffer schemes are sufficient remains undetermined; the integration of these schemes with the MPC horizon needs experimental validation.",
+    "applicability": "Applicable to low-frequency remote strategies and high-frequency local MPC/WBC in a multi-rate system; does not represent the official Pi0.5 architecture.",
+    "collection.stop_reason": "all_visible_comments_loaded",
+    "credibility.rationale": "Engineering records exist for the environment, processing steps, and results, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The original post only proposes candidate causes and discusses issues, without reporting implemented interpolation, buffer, or timestamp alignment schemes.",
+    "details.diagnostics.0": "Verify strategy/control frequency ratio, action chunk size, old target reuse method, end-to-end delay, and delay jitter.",
+    "details.environments.0": "Cloud RTX 4090 running Pi0.5; 1 Hz strategy output; local 100 Hz MPC; round-trip link latency.",
+    "details.limits.0": "Missing action chunk, delay distribution, target interpolation, MPC horizon/cost and delay spectrum data.",
+    "details.outcomes.0": "No fixed answer or validation result is available for the visible content.",
+    "details.problem_statements.0": "The 1 Hz cloud strategy drives the 100 Hz local MPC, causing the arm to continuously vibrate and trajectory to be uneven.",
+    "details.safety_notes.0": "Limit speed, acceleration, and torque until the root cause of the vibration is confirmed; first validate multi-rate bridge in simulation or low-power mode.",
+    "details.suspected_causes.0": "Low-frequency strategy commands are interrupted or stopped between 100 Hz control cycles.",
+    "details.suspected_causes.1": "MPC repeatedly tracks old targets, combined with network delay fluctuations, causing discontinuous correction.",
+    "details.symptoms.0": "The arm continues to vibrate and the trajectory is uneven.",
+    "media_summaries.0": "Visible images show the post title and parameter summary card, displaying 1 Hz cloud inference, 100 Hz local MPC, and the vibration issue; does not include control curve, end-to-end delay histogram, or log, and cannot determine the vibration frequency or root cause from the image.",
+    "source.locator": "Four discussion points in the text and the only visible comment.",
+    "source.title": "💬Pi0.5 Cloud Inference + High-Frequency MPC, Vibration Issue Resolution",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Model Predictive Control (MPC) (模型预测控制)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "terms.3": "Joint Torque (关节力矩)",
+    "terms.4": "End-to-End Latency (端到端时延)",
+    "terms.5": "Latency Jitter (时延抖动)",
+    "title": "1 Hz Cloud Pi0.5 Commands Receiving 100 Hz MPC Result in Continuous Vibration, Should First Validate Which Interface Has Timing Issues?"
+  }
+}

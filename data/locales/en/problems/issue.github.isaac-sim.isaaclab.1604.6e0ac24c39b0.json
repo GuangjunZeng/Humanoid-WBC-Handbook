@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1604.6e0ac24c39b0",
+  "schema_version": 1,
+  "source_fingerprint": "b3a6b664b4128a0fa4769def2f533e1203427d4fc0ebd0ae46b84620a6578f3a",
+  "translations": {
+    "answer": "The original implementation first writes asset.data.default_joint_stiffness into actuator.stiffness, then applies random operations; thus, adding zero maintains the default baseline, but does not necessarily preserve the current actuator gains. The author repeatedly re-run the reward to highlight the difference, and the project contributors agree that the default values and randomization should be separated. However, since the thread did not merge fixes or evaluate the results after repair, the current conclusion is only a configuration audit: compare event before and after for stiffness/damping, and cannot claim a general fix.",
+    "applicability": "Applies to the original post using the Isaac Lab randomize_actuator_gains implementation; target version code may vary, must verify actual events.py.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author used with/without EventTerm to repeatedly compare and locate the code that loads default_joint_stiffness in events.py.",
+    "details.attempts.1": "The project contributor acknowledges that default values and randomization should be separated, and points to a similar design proposal.",
+    "details.diagnostics.0": "Compare event before and after for actuator.stiffness/damping, asset.data.default_joint_stiffness/damping, and asset configuration values.",
+    "details.diagnostics.1": "Do not consider distribution=(0,0) and operation=add as no-ops for current actuator gains.",
+    "details.effective_fixes.0": "The thread only provides a design suggestion: restore default values and randomization separately; no merging of fixes, no formal submission or post-merge training results, so cannot claim a verified solution.",
+    "details.environments.0": "Isaac Lab manager-based locomotion/velocity/config/g1/flat_env_cfg.py; startup EventTerm; joint_names=.*; original post does not provide commit, GPU, or seed.",
+    "details.limits.0": "The thread lacks random seed and complete training curve; 16.69/-10.49 is only a comparison at a specified iteration.",
+    "details.limits.1": "PR #1416 discusses resetting joint state, not direct merge of actuator gain randomization.",
+    "details.outcomes.0": "Issue remains open; project contributor acknowledges the problem direction, but the original author did not publish final fix or result.",
+    "details.problem_statements.0": "Why does actuator gain randomization using add (0,0) still significantly alter G1 training results?",
+    "details.safety_notes.0": "Before real machine deployment, verify that stiffness/damping after randomization fall within the allowed range for actuators and low-level controllers, and do not rely solely on training reward.",
+    "details.suspected_causes.0": "The original post references events.py that first rebuilds default_joint_stiffness, then calls randomize; thus, zero-add maintains the default baseline, but does not necessarily match the current actuator configuration.",
+    "details.symptoms.0": "At the same iteration 243, using add-zero randomization results in mean reward -10.49, while without it it is 16.69; the author claims multiple runs show difference.",
+    "source.locator": "IsaacLab #1604: author comment 2563243878 references events.py's default overwrite; contributor comment 2565844406 acknowledges the separation design.",
+    "source.title": "Isaac Lab actuator gain randomization using add and (0,0) still may alter Unitree G1 training?",
+    "terms.0": "Actuator gain randomization (执行器增益随机化)",
+    "terms.1": "Default joint stiffness (默认关节刚度)",
+    "terms.2": "Implicit Actuator (隐式执行器)",
+    "terms.3": "Zero-add operation (零增量操作)",
+    "title": "Why does randomize_actuator_gains in Isaac Lab using add and (0,0) still alter Unitree G1 training?"
+  }
+}

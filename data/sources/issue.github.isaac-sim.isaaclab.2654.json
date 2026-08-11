@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "FranRFH"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2654",
+  "captured_at": "2026-08-11T18:18:00+08:00",
+  "content_sha256": "c64fd2995abbc88121a441f7fce1786b687bf59090e59ecf0179983d2d44d1ed",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 4 条评论；没有把 H1 模板推断成可直接部署到 G1 的完成方案。",
+    "components": [
+      "Isaac Lab",
+      "Unitree G1",
+      "G1_CFG",
+      "locomotion policy",
+      "balance controller"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者用教程场景与 bipeds.py 复现；团队建议从 H1 humanoid policy deployment 模板加入策略。"
+      ],
+      "diagnostics": [
+        "区分资产/关节配置是否只定义动力学模型，场景中是否实际运行 locomotion 或 balance policy。"
+      ],
+      "effective_fixes": [
+        "为 G1 接入 locomotion policy 或其他闭环平衡控制器，而不是只加载 G1_CFG。"
+      ],
+      "environments": [
+        "Isaac Lab 的 G1_CFG、create_scene.py 与 bipeds.py；原帖未给 Isaac Lab/Isaac Sim 精确版本。"
+      ],
+      "limits": [
+        "线程没有提供可直接用于 G1 的策略、训练配置或站立验收结果；H1 模板只是起点。"
+      ],
+      "outcomes": [
+        "团队两次确认该行为符合预期，当前不作为模型 bug 修复。"
+      ],
+      "problem_statements": [
+        "为什么直接加载 Isaac Lab 的 Unitree G1 配置后机器人会向前倒，是否是模型 bug？"
+      ],
+      "safety_notes": [
+        "实机调试站立策略时应使用吊架/保护绳、限力矩和急停，不能因仿真资产能加载就直接上机。"
+      ],
+      "suspected_causes": [
+        "团队说明没有运动/平衡策略时倒下属于预期行为。"
+      ],
+      "symptoms": [
+        "G1 在场景中无法自行保持站立，bipeds.py 中三台 Unitree 也会倒下。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按 IsaacLab 团队回复，没有 motion 时倒下是预期行为，G1_CFG 不是自动站立控制器。需要接入 locomotion policy 或其他闭环平衡控制；团队建议从 H1 humanoid policy deployment 教程模板开始。原线程没有给 G1 成品策略，因此模板适配与验收仍需自行完成。",
+        "applicability": "适用于只加载 G1 articulation/asset 而没有平衡策略的场景；具体版本和策略实现需另行核对。",
+        "bilingual_terms": [
+          "运动策略（locomotion policy）",
+          "平衡控制器（balance controller）",
+          "关节体配置（articulation configuration）",
+          "被动倒落（passive falling）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.safety_fall_recovery.isaaclab_g1_requires_balance_policy_2654",
+        "problem_title_zh": "Isaac Lab Unitree G1 被动倒下与平衡策略缺失",
+        "question_zh": "只加载 G1_CFG 后 Unitree G1 向前倒，应该修改模型还是加入控制策略？",
+        "source_locator": "IsaacLab #2654 评论 2963360700 与 2967145219",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2654#issuecomment-2967145219",
+        "verification_refs": [
+          {
+            "locator": "团队首次说明无 motion 时倒下是预期行为",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2654#issuecomment-2963360700"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2654",
+    "query": "Isaac Lab Unitree G1 falls standing balance locomotion policy",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1",
+      "H1 humanoid template"
+    ],
+    "schema_version": 2,
+    "scope_id": "safety_fall_recovery",
+    "selected_comments": [
+      {
+        "text": "团队说明只加载资产不会自动平衡，并明确建议加入 locomotion policy。"
+      }
+    ],
+    "wbc_relevance_reason": "人形机器人静态站立本身需要闭环平衡控制；把资产配置或关节初值误认为站立控制器，会导致对仿真模型稳定性的错误判断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2654",
+  "summary": "IsaacLab #2654 的作者直接加载 G1_CFG，观察到 G1 和 bipeds.py 中三台机器人都向前倒。团队明确回复：没有 motion 时这是预期行为，需加入 locomotion/balance policy，并建议从 H1 humanoid policy deployment 模板开始；作者确认收到，团队再次说明当前不会修复，因为这不是待修 bug。",
+  "title": "Unitree G1 仅加载 articulation 配置不会自动保持站立平衡",
+  "version": null
+}

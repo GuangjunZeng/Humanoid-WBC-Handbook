@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1593.a40685405084",
+  "schema_version": 1,
+  "source_fingerprint": "47d9b679efe409861e60b548b4661fb4c423ccae03a10b50c509e16c511d1f0f",
+  "translations": {
+    "answer": "Do not directly fill FreeFlyer quaternions with independent random numbers. Project members recommend using pinocchio.randomConfiguration(model, lowerLimits, upperLimits) to generate results that satisfy the model's configuration manifold; or explicitly normalize the random quaternions. The original author's approach of using unnormalized quaternions as errors in SE3 was confirmed by maintainers.",
+    "applicability": "Applicable to JointModelFreeFlyer and other Pinocchio configurations that carry rotation in four dimensions; random limits still need to be within the model's allowed range.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication has not been confirmed.",
+    "details.attempts.0": "The author added URDF and analyzed random quaternions and velocity vectors; project members provided two handling approaches for quaternions.",
+    "details.diagnostics.0": "First, validate the FreeFlyer quaternions in the configuration; use Pinocchio's random configuration generator or explicitly normalize; then independently verify the input velocity definition of the Jacobian.",
+    "details.effective_fixes.0": "Use pinocchio.randomConfiguration(model, lowerLimits, upperLimits) to generate a configuration that satisfies the model manifold, or explicitly normalize the random quaternions.",
+    "details.environments.0": "Pinocchio CasADi; JointModelFreeFlyer; user-provided external URDF; 100 random configurations/velocities; specific Pinocchio version not stated.",
+    "details.limits.0": "Do not treat unacknowledged local velocity selections as general Pinocchio API rules; the specific Jacobian semantics still need to be verified against the target function documentation and minimal reproduction.",
+    "details.outcomes.0": "Project members indicated that the author has resolved the issue and confirmed the quaternions' handling; no correction values were provided in the thread, and no confirmation of v_j was given.",
+    "details.problem_statements.0": "What input issue should be excluded to resolve the abnormal Jacobian/SE3 results under random floating base configurations?",
+    "details.problem_statements.1": "Did the maintainers confirm that the author's approach of using only local joint velocities rather than full generalized velocities is correct?",
+    "details.suspected_causes.0": "The original author believed that unnormalized quaternions caused errors in SE3; project members confirmed and provided valid configuration generation methods. The second judgment regarding only using v_j was not responded to.",
+    "details.symptoms.0": "The results of getFrameJacobian, computeFrameJacobian, getJointJacobian, and computeJointJacobian multiplied by velocity are inconsistent with the author's expectations.",
+    "source.locator": "Issue #1593, original author self-identified issue comment-1019748618; project members confirmed issue comment-1019809389",
+    "source.title": "Randomly generated unnormalized floating base quaternions cause Jacobian/SE3 matching errors in Pinocchio",
+    "terms.0": "Floating joint (JointModelFreeFlyer) (自由浮动关节)",
+    "terms.1": "Quaternion normalization (四元数归一化)",
+    "terms.2": "Random configuration (随机配置)",
+    "terms.3": "Three-dimensional special Euclidean group (SE3) (三维特殊欧氏群)",
+    "title": "How to avoid invalid quaternions in Jacobian/SE3 matching when Pinocchio FreeFlyer uses random configurations?"
+  }
+}

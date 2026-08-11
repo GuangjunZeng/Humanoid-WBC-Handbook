@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.118.54a7aa49a34c",
+  "schema_version": 1,
+  "source_fingerprint": "c5210419e9ae3903d5442506f42bd952140dccc6aae540f557efcfdd5eab0fe2",
+  "translations": {
+    "answer": "The thread uses `cyclictest -a -t -n -p99` to record the minimum, average, and maximum delay for each real-time thread, and compares the maximum delay with a 1 ms cycle and approximately 800 µs budget. On the author's single machine, without ACPI, the Linux 5.4.47 RT kernel maximum is 30–45 µs, while with ACPI, the reported value is 7000–8000 µs. This result only suggests that internal kernel A/B configuration should be done first, and shutting down ACPI should not be considered a universal fix; the thread has not completed the end-to-end real-time test for ros2_control.",
+    "applicability": "Applicable for establishing a PREEMPT_RT host baseline; values are only for the original thread machine.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Compare kernel configurations with and without ACPI, and configure a self-hosted RT runner.",
+    "details.diagnostics.0": "Run `sudo ./cyclictest -a -t -n -p99` to record the minimum, average, and maximum delay for each thread, and compare it with the control cycle and solution budget.",
+    "details.effective_fixes.0": "The thread has not completed the end-to-end real-time test for ros2_control; the single-machine cyclictest baseline is lower when ACPI is disabled.",
+    "details.environments.0": "Linux 5.4.47 + RT_PREEMPT; four cyclictest threads; author's self-built machine; no complete load matrix except for CPU model and duration.",
+    "details.limits.0": "Single machine, old kernel, no complete CPU/BIOS/load information; disabling ACPI may affect power, thermal control, and device functionality, and cannot be directly used in production robots.",
+    "details.limits.1": "TODO: ros2_control real-time test and CI integration are not completed.",
+    "details.outcomes.0": "With ACPI, four threads have a maximum delay of 7000–8000 µs; without ACPI, the maximum is 30–45 µs.",
+    "details.problem_statements.0": "How to establish a kernel-level cycle jitter baseline for a 1 kHz ros2_control/WBC host?",
+    "details.safety_notes.0": "Kernel configuration changes should be verified for thermal control, emergency stop, bus, and device enumeration; WBC deployment should be tested in real load, not just based on cyclictest.",
+    "details.suspected_causes.0": "The original author linked the significant difference on this machine to ACPI configuration; the thread has not performed cross-machine or firmware setup elimination.",
+    "details.symptoms.0": "The kernel with ACPI reports a maximum delay of 7000–8000 µs, far exceeding a 1 ms cycle; without compiling ACPI, the value is 30–45 µs.",
+    "source.locator": "ros2_control #118; cyclictest/ACPI result 656812972",
+    "source.title": "Use cyclictest to establish a PREEMPT_RT host cycle jitter baseline before deploying 1 kHz ros2_control/WBC",
+    "terms.0": "Preemptive Real-Time Kernel (PREEMPT_RT) (抢占实时内核)",
+    "terms.1": "Cycle Jitter (周期抖动)",
+    "terms.2": "Worst-Case Execution Time (WCET) (最坏执行时间)",
+    "terms.3": "Tail Latency (长尾延迟)",
+    "title": "How to use cyclictest to establish a PREEMPT_RT host cycle jitter baseline before deploying 1 kHz ros2_control/WBC?"
+  }
+}

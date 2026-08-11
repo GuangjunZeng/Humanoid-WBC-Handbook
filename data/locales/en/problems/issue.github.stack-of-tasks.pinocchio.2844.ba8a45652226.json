@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2844.ba8a45652226",
+  "schema_version": 1,
+  "source_fingerprint": "d3d62a3a32df25813721faf6b6e6859948b65a193663c5348ff70f919725467c",
+  "translations": {
+    "answer": "Pinocchio 4 provides getFrameKinematicHessian. First, run computeJointKinematicHessians to fill the data, then call getFrameKinematicHessian with frame_id and reference frame. The official header file returns a 6×nv×nv tensor, but no dynamic allocation requires the caller to zero out the same-sized tensor. Since no user numerical retesting has been done, the finite difference check should still be performed in the target version. The original thread does not have user numerical retesting, so the target version should still verify the available overload.",
+    "applicability": "Applies to Pinocchio 4 C++ builds that include getFrameKinematicHessian; specific Python exposure and minimum release version must be verified in the target environment.",
+    "credibility.rationale": "No reproducible records have been formed.",
+    "details.attempts.0": "The original post references an old #867 discussion where joint Hessian or repeated time-variation was used to construct the result history.",
+    "details.diagnostics.0": "Distinguish between needing a full 6×nv×nv dJ/dq or just Hessian-vector/wrench contraction; the most suitable algorithm differs.",
+    "details.diagnostics.1": "Verify the availability of getFrameKinematicHessian overload and binding in the target installation version's kinematics-derivatives.hpp.",
+    "details.effective_fixes.0": "In Pinocchio 4, first call computeJointKinematicHessians, then call getFrameKinematicHessian(model, data, frame_id, reference_frame, tensor), or use the overload that returns the tensor.",
+    "details.effective_fixes.1": "The overload without dynamic allocation requires the caller to zero out the 6×nv×nv tensor; the return value overload creates a tensor of the same size.",
+    "details.environments.0": "The original post points to Pinocchio 4; the current source code verification is fixed in the devel commit 031ebb13a637babd0705ce030ce9fb2e1e9aae2c.",
+    "details.limits.0": "The original thread does not have users retesting, numerical finite difference checks, or Python binding examples, so the target build should still verify the available overload.",
+    "details.limits.1": "The interface returns the frame kinematic Hessian; the reference frame and tensor index convention should follow the same version documentation and finite difference validation.",
+    "details.outcomes.0": "The maintainer pointed to the implemented official function on 2026-07-28, and Issue is closed as completed; the fixed commit's header file includes the frame_id overload.",
+    "details.problem_statements.0": "How to obtain the full dJ/dq tensor for the end-effector frame Jacobian when only the joint Hessian interface is available in Pinocchio?",
+    "details.safety_notes.0": "Before entering the second-order derivative into the optimizer, perform a finite difference direction derivative check in small perturbations to avoid misusing tensor axes or reference frames.",
+    "details.suspected_causes.0": "The capability was not publicly available in early Pinocchio but was added in Pinocchio 4.",
+    "details.symptoms.0": "The old usage can call getJointKinematicHessian, but no equivalent getFrameKinematicHessian for frame_id is found.",
+    "source.locator": "Pinocchio #2844: maintainer comment 3846183967 explains Pinocchio 4 is implemented, comment 5103983954 points to the source; fixed source code commit 031ebb1 lines 527-539, 655-665",
+    "source.title": "Pinocchio 4 provides the full Hessian interface for end-effector frame Jacobian for joint configuration",
+    "terms.0": "Kinematic Hessian (运动学 Hessian)",
+    "terms.1": "Frame Jacobian derivative (帧雅可比导数)",
+    "terms.2": "Reference frame (参考坐标系)",
+    "terms.3": "Third-order tensor (三阶张量)",
+    "title": "When the official interface and prior calls are needed for the full dJ/dq tensor of end-effector frame Jacobian in Pinocchio,"
+  }
+}

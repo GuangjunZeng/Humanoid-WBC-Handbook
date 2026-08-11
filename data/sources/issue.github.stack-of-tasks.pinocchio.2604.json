@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "qiyuanchn"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "3604a04f73c8afaeed2977528d85849a8804e0896b4788ecc13e7e0fe2e746a0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、4 条评论和作者提供的 URDF；只提炼 API overload 根因，没有推断动力学数值。",
+    "components": [
+      "Pinocchio",
+      "aba",
+      "forwardDynamics",
+      "JointModelFreeFlyer",
+      "constrained dynamics"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者要求完整 URDF 后，与另一位项目成员复核了模型和 API overload。"
+      ],
+      "diagnostics": [
+        "使用 help(pinocchio.forwardDynamics) 检查 Python overload 的参数列表。",
+        "先判断问题是无接触前向动力学，还是带 constraint_jacobian/constraint_drift 的 contact/constrained dynamics。"
+      ],
+      "effective_fixes": [
+        "无接触场景改用 pin.aba(model, data, q, v, tau)；需要接触约束时才按 forwardDynamics 文档提供 constraint_jacobian 与 constraint_drift。"
+      ],
+      "environments": [
+        "Pinocchio Python；iris.urdf；JointModelFreeFlyer；model.nq=15、model.nv=10；无 contacts。"
+      ],
+      "limits": [
+        "该结论只覆盖原帖无接触场景；存在闭链、刚性接触或其他约束时不能直接丢弃 constraint inputs。",
+        "原帖没有给 Pinocchio 版本和最终加速度数值，只确认 API 选择解决尺寸错误。"
+      ],
+      "outcomes": [
+        "原作者回复问题已解决。"
+      ],
+      "problem_statements": [
+        "tau 已按 model.nv 创建，为什么 pin.forwardDynamics 仍报告 expected 10, got 15，且错误指向 tau.size？"
+      ],
+      "safety_notes": [
+        "实机控制前需确认动力学模型、外力/接触约束与执行器输入定义，不能仅以函数成功返回作为动力学正确性证明。"
+      ],
+      "suspected_causes": [
+        "五参数调用匹配了 constrained forwardDynamics 的另一重载，q 被当成只应为 nv 长度的 tau，因此错误信息显示 got nq=15。"
+      ],
+      "symptoms": [
+        "调用 pin.forwardDynamics(model,data,q,v,tau) 报 ValueError: wrong argument size: expected 10, got 15，尽管 tau 长度为 10。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先检查调用的算法语义和 Python overload。原帖是无接触前向动力学，应使用 aba(model,data,q,v,tau)；forwardDynamics 面向带接触/约束的动力学重载，需要 constraint_jacobian 和 constraint_drift。原作者的五参数调用匹配了另一重载，导致 q 被解释成应为 nv 长度的 tau，于是出现 got nq=15 的迷惑报错。原作者改用建议后确认解决。",
+        "applicability": "适用于无 contact/constraint 的 Pinocchio FreeFlyer forward dynamics；带约束问题必须使用对应 constrained API。",
+        "bilingual_terms": [
+          "关节空间惯量算法（Articulated-Body Algorithm, ABA）",
+          "前向动力学（forward dynamics）",
+          "约束动力学（constrained dynamics）",
+          "函数重载（function overload）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_unconstrained_forward_dynamics_aba_2604",
+        "problem_title_zh": "Pinocchio 无接触前向动力学误调用 constrained forwardDynamics",
+        "question_zh": "Pinocchio FreeFlyer 模型中 tau 长度等于 model.nv，调用 forwardDynamics 仍报告 q 的 nq 尺寸错误时应检查什么？",
+        "source_locator": "Pinocchio #2604：贡献者评论 2694376878 解释 aba 与 forwardDynamics overload；原作者 2696551706 确认解决",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2694376878",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者说明无接触 forward dynamics 应使用 aba，并列出 constrained forwardDynamics overload",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2694376878"
+          },
+          {
+            "locator": "原作者确认问题解决",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2696551706"
+          },
+          {
+            "locator": "维护者在原回复中给出的固定提交 aba 无接触仿真示例",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/blob/187afafcfe22d7ac16a26241c0b13a76d04d82c1/examples/simulation-inverted-pendulum.py#L97"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2604",
+    "query": "Pinocchio forwardDynamics wrong argument size model.nv unconstrained aba freeflyer",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "iris quadrotor/drone URDF（原帖）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目贡献者说明无接触场景应调用 aba，forwardDynamics 是带约束重载。"
+      },
+      {
+        "text": "原作者确认改正 API 后问题解决。"
+      }
+    ],
+    "wbc_relevance_reason": "浮动基 WBC 常在无约束 ABA、接触约束动力学和逆动力学之间切换；调用名称相近但参数语义不同会产生迷惑性的 nq/nv 尺寸报错。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2604",
+  "summary": "Pinocchio #2604 的 FreeFlyer iris drone 模型打印 nq=15、nv=10，作者传入 q、v、tau=np.zeros(model.nv) 调用 pin.forwardDynamics 后仍收到 expected 10, got 15。项目贡献者在获得完整 URDF 后说明：无接触场景应调用 aba；作者所调用的 forwardDynamics 面向 contact/constrained dynamics，Python 重载还需要 constraint_jacobian 和 constraint_drift，现有五个参数意外匹配了另一重载，从而把 q 解释成 tau 并产生尺寸错误。作者改用建议后确认问题解决。",
+  "title": "Pinocchio 无接触前向动力学应调用 aba，forwardDynamics 是约束动力学重载",
+  "version": null
+}

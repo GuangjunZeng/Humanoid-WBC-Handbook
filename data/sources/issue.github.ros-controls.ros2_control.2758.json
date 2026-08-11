@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "urfeex"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2758",
+  "captured_at": "2026-08-11T21:36:00+08:00",
+  "content_sha256": "8395e448f8aaae2bc45dd8e2210cdab1b7afa17069b92767653d935b3acb26f0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 9 条评论、PR #2760 全部非 bot 评论与完整 patch；没有把初版 PR 当作已解决，采用修订后作者确认。",
+    "components": [
+      "ros2_control",
+      "controller_manager",
+      "command interface",
+      "resource conflict",
+      "command mode switch",
+      "STRICT switch"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者临时在 hardware prepare_switch 中显式拒绝冲突。",
+        "PR #2760 增加 current/future claimed interface 检查、失败早返回和控制器冲突测试；根据作者初测失败继续修订并跑 UR 测试。"
+      ],
+      "diagnostics": [
+        "构造两个控制器同时 claim 同一 command interface 的严格切换测试。",
+        "确认冲突是否在 non-realtime activation check 阶段返回，而不是进入 hardware perform_command_mode_switch 后才失败。",
+        "失败后断言原 active controller 和硬件 mode flag 保持不变。"
+      ],
+      "effective_fixes": [
+        "采用已合并 PR #2760：在激活前同时考虑 deactivation 释放和 activation 未来占用，已被占用或本批次重复占用时直接返回 ERROR，不继续错误 mode switch。"
+      ],
+      "environments": [
+        "ros2_control 回归位于 PR #2669 之后；作者日志为 UR5e position/velocity modes；问题日期 2025-10；精确 ROS 2 发行版未给。"
+      ],
+      "limits": [
+        "目标发行版是否包含 merge commit f8903b3 需核对。",
+        "修复针对 command interface 资源冲突，不替代硬件自身 position/velocity 兼容性校验。"
+      ],
+      "outcomes": [
+        "原作者在修订版 PR 上确认 regression 已修复；两位维护者批准，PR 合并。"
+      ],
+      "problem_statements": [
+        "同时激活两个占用同一 command interface 的控制器失败后，为何会把原有控制模式停掉？"
+      ],
+      "safety_notes": [
+        "模式切换回归测试必须验证失败时旧控制器仍保持 active、硬件模式标志不变，并在实机使用低速、急停和隔离区。"
+      ],
+      "suspected_causes": [
+        "controller_manager 没有在同时 activation list 中提前检测 future command-interface 冲突，失败清理路径又执行了接口停止。"
+      ],
+      "symptoms": [
+        "第二个 position controller 激活失败后，perform_command_mode_switch 收到停止 position interfaces；硬件 position_control_active 被清除，随后可能错误允许 velocity controller。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "使用包含合并 PR #2760 的版本。该修复在实际 mode switch 前计算 deactivation 将释放的接口和 activation 将占用的接口；若接口当前仍被其他 controller claim，或本次 activation list 中重复占用，就直接返回 ERROR，不再进入会误停原接口的失败清理。PR 初版经原作者测试仍失败，修订后维护者跑过 UR tests，原作者确认 regression 修复并批准。硬件 prepare_switch 仍应保留自身互斥模式校验，但不应再承担 controller_manager 的资源所有权漏洞。",
+        "applicability": "适用于包含 ros-controls/ros2_control PR #2760/merge commit f8903b3 的 controller_manager；发行版包需核对。",
+        "bilingual_terms": [
+          "命令接口（command interface）",
+          "资源冲突（resource conflict）",
+          "命令模式切换（command mode switch）",
+          "提前失败（fail early）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal.ros2_control_activation_conflict_2758",
+        "problem_title_zh": "ros2_control 控制器同时激活的资源冲突早失败",
+        "question_zh": "ros2_control 同时激活占用同一 command interface 的控制器时，怎样避免失败清理误停正在运行的控制模式？",
+        "source_locator": "ros2_control #2758 维护者确认 3462221412；PR #2760 修订后作者复测 3479240549；merge f8903b3",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2758#issuecomment-3471230616",
+        "verification_refs": [
+          {
+            "locator": "已合并 PR 加入冲突预检查、早返回和双 controller 同接口回归测试；原作者复测通过",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros2_control/pull/2760"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2758",
+    "query": "ros2_control simultaneous controller activation resource conflict command mode switch regression fix 2760",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Universal Robots UR5e in author logs"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal",
+    "selected_comments": [
+      {
+        "text": "维护者确认应提前阻断；PR 初版未解决，修订后 UR 测试和原作者复测通过。"
+      }
+    ],
+    "wbc_relevance_reason": "多控制器 WBC/轨迹/速度模式切换若错误释放正在运行的命令接口，可能导致执行器停止输出或允许互斥模式并发，属于控制安全问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2758",
+  "summary": "ros2_control #2758 报告在已有 position controller 时同时尝试激活另一个占用同接口的 controller，会先进入 perform_command_mode_switch，失败清理又停止原 position interfaces，导致硬件认为 position mode 已关闭并错误允许 velocity mode。维护者确认这是应更早截断的 bug。PR #2760 在激活前检查当前和本次请求未来占用的 command interfaces，遇冲突直接返回 ERROR，并补测试；初版未解决作者 UR 场景，更新后维护者本地 UR 测试通过，原作者确认 regression 修复，PR 合并。",
+  "title": "ros2_control 同时激活资源冲突控制器应在 mode switch 前失败",
+  "version": null
+}

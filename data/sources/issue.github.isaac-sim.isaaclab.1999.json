@@ -1,0 +1,140 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "alextong1010"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1999",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "df80985cf9e812724eae63dc023245582d7676b937ef8286c4158110113c3ffd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、2 条评论和 PR #2019 的合并状态/文件 patch；没有编造裁剪阈值。",
+    "components": [
+      "Isaac Lab",
+      "RSL-RL",
+      "RslRlVecEnvWrapper",
+      "Go2 rough locomotion",
+      "action clipping"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "协作者建议合并 PR #2019 后复测。",
+        "原作者按建议测试并回复 Works。"
+      ],
+      "diagnostics": [
+        "检查策略输出是否未经裁剪直接执行，同时又作为 last-action observation 回馈策略。",
+        "记录动作幅值、critic loss 和首次出现 inf/NaN 的 iteration，验证是否存在持续放大的大动作。"
+      ],
+      "effective_fixes": [
+        "使用合入 PR #2019 后的 RslRlVecEnvWrapper，并通过 agent_cfg.clip_actions 启用动作裁剪；该 PR 在 wrapper step 中于执行环境动作前调用 torch.clamp。"
+      ],
+      "environments": [
+        "Isaac Lab 默认 Go2 rough policy、RSL-RL；约 5000–8000 iterations 后失败；原帖日志为 iteration 8391、24576×12 policy loc；未给 Isaac Lab commit 和随机种子。"
+      ],
+      "limits": [
+        "原线程没有给出所用 clip_actions 数值，不能从该帖子推导通用裁剪阈值。",
+        "该修复针对 RSL-RL wrapper 的动作反馈路径，不能把所有 PPO/RL NaN 都归因于同一问题。"
+      ],
+      "outcomes": [
+        "原作者确认合并 PR 后有效并关闭 Issue；PR #2019 于 2025-03-13 合入官方仓库。"
+      ],
+      "problem_statements": [
+        "默认 rough locomotion 训练后期 value function loss 爆炸并产生 NaN 时，如何阻断由大动作和 last-action observation 形成的反馈放大？"
+      ],
+      "safety_notes": [
+        "动作裁剪是训练与接口防护，不替代实机的关节位置、速度、力矩和急停安全限制。"
+      ],
+      "suspected_causes": [
+        "官方 PR #2019 说明，大动作直接执行并作为上一动作观测回馈，会造成 large action→large critic error→更大 sampled action 的负反馈。"
+      ],
+      "symptoms": [
+        "value function loss 变成 inf，随后 torch Normal 的 loc 张量全部为 NaN，训练退出。",
+        "失败前 mean episode length 为 1000，terrain curriculum level 约 6.13；这些日志只描述当时状态，不单独证明根因。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原线程验证的是在 RSL-RL wrapper 执行动作前启用动作裁剪（action clipping）。官方 PR #2019 说明，未裁剪的大动作既进入环境又成为上一动作观测（last-action observation），可能形成动作与 critic error 互相放大的负反馈；PR 增加 agent_cfg.clip_actions 并在 step 中用 torch.clamp。原作者合并后确认有效。线程没有公开通用裁剪阈值，因此阈值仍需按任务动作定义验证。",
+        "applicability": "适用于 Isaac Lab RSL-RL wrapper 中策略动作同时执行并作为上一动作观测的训练路径；具体 clip 范围需匹配任务 action space。",
+        "bilingual_terms": [
+          "动作裁剪（action clipping）",
+          "上一动作观测（last-action observation）",
+          "价值函数损失（value function loss）",
+          "负反馈回路（negative feedback loop）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.training_reward_curriculum.isaaclab_rslrl_action_clipping_nan_1999",
+        "problem_title_zh": "Isaac Lab RSL-RL 大动作反馈导致 value loss 爆炸",
+        "question_zh": "Isaac Lab 的 Go2 rough RSL-RL 训练后期 value loss 变成 inf、策略输出全为 NaN 时，原线程验证了什么修复？",
+        "source_locator": "IsaacLab #1999：协作者评论 2700385656 指向 PR #2019；原作者评论 2719617210 确认 Works；PR 合并提交 f774425",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1999#issuecomment-2719617210",
+        "verification_refs": [
+          {
+            "locator": "原作者合并测试后回复 Works 并关闭 Issue",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1999#issuecomment-2719617210"
+          },
+          {
+            "locator": "官方合并 PR 解释大动作/last-action 负反馈，并增加 clip_actions 配置",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/2019"
+          },
+          {
+            "locator": "固定合并提交：RslRlVecEnvWrapper.step 在 env.step 前对 actions 执行 torch.clamp",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/f774425b4724e3ed0352e241220a6e2b56067106"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1999",
+    "query": "Isaac Lab RSL-RL Go2 value loss inf NaN action clipping negative feedback loop",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree Go2（原帖默认 rough locomotion 任务）"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "协作者建议合并 action clipping PR #2019 后复测。"
+      },
+      {
+        "text": "原作者确认该修改有效并关闭问题。"
+      }
+    ],
+    "wbc_relevance_reason": "动作历史是腿式/人形策略的常见观测；未经限幅的策略输出不仅影响执行，还可能通过上一动作观测放大 critic 与 policy 的数值不稳定。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1999",
+  "summary": "IsaacLab #1999 报告默认 Go2 rough locomotion 的 RSL-RL 训练在约 5000–8000 iterations 后 value function loss 变成 inf，随后 policy distribution 的 loc 全为 NaN。协作者把问题关联到 PR #2019；该 PR 解释，未裁剪的大动作既直接进入环境又作为 last-action observation 回馈策略，会形成大动作→critic error→更大动作的负反馈，并在 RSL-RL wrapper 中增加 clip_actions。原作者合并测试后回复 Works 并关闭 Issue；PR 随后合入官方仓库。",
+  "title": "Isaac Lab RSL-RL 大动作反馈导致 value loss 爆炸时启用 action clipping",
+  "version": null
+}

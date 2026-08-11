@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2063981858983985429.facea4701ff9",
+  "schema_version": 1,
+  "source_fingerprint": "fd9c09a12b5516211b51904f0f8168f9b1eb61d465f8e7d328d9b947308bb5bc",
+  "translations": {
+    "answer": "The post claims that resets are taken from a continuously expanding simulation-validated state pool rather than from physical damage frames. Videos are used only as rough drafts, and no replay occurs during the reasoning phase. The method still relies on motion capture and state input, and validation and verification are required by the paper/code.",
+    "applicability": "Applicable for generating G1 operational skill training data from human videos.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Extract training seeds from the simulation-validated state pool, and discard video references during reasoning.",
+    "details.diagnostics.0": "Identify physical damage frames and test success rate under different video counts.",
+    "details.effective_fixes.0": "Avoid resetting from physical damage frames, as stated in the post.",
+    "details.environments.0": "About 100 videos per task; simulation-validated state pool; G1 state strategy.",
+    "details.limits.0": "Still relies on motion capture and state-based policy, and the skill is coarse; specific numbers need paper validation.",
+    "details.outcomes.0": "The post claims that success rate increases with 20→50→100 video counts and zero-sample execution on G1.",
+    "details.problem_statements.0": "Human videos contain pose drift, guess contact, and physically impossible initial states.",
+    "details.safety_notes.0": "Filter out actions that could cause penetration, incorrect contact, joint limits, and recovery failure before real machine execution.",
+    "details.suspected_causes.0": "Videos provide only rough motion, without reliable robotic contact or dynamics.",
+    "details.symptoms.0": "Direct replay leads to penetration, incorrect contact, and unstable reset.",
+    "media_summaries.0": "Screenshot is the text explanation of the SUGAR method, without showing the reset state pool, success rate curve, or failure recovery frame.",
+    "source.locator": "Root post detail paragraph",
+    "source.title": "SUGAR: Use human videos with pose drift, guess contact, and physical impossibility as rough drafts, not direct references",
+    "terms.0": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.1": "Motion Retargeting (动作重定向)",
+    "terms.2": "Dynamics (动力学)",
+    "title": "How does SUGAR avoid using bad states directly in training when human videos contain penetration and incorrect contact?"
+  }
+}

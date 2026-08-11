@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.5069.b6c0b68d1e36",
+  "schema_version": 1,
+  "source_fingerprint": "dbf679d70673fa3f40de5a88f3b657b9f929f417fead2a1db912159cc7360a6c",
+  "translations": {
+    "answer": "Compare nconmax and use_mujoco_contacts in the same environment to confirm if the issue is with the CollisionPipeline, not with the Whole-Body Control (WBC). The fix for this Issue has been integrated into the main branch of Newton PR #2112; temporary switching of MuJoCo contacts is recommended, but should not solely raise the illegal_contact threshold.",
+    "applicability": "Applies to the corresponding version of Newton/Isaac Lab CollisionPipeline; the issue should still be reproducible with the upgraded contact handling.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is lacking.",
+    "details.attempts.0": "Temporarily raise the illegal_contact threshold and switch to use_mujoco_contacts=True.",
+    "details.diagnostics.0": "Compare use_mujoco_contacts switch, nconmax, and illegal_contact threshold to isolate the contact pipeline.",
+    "details.effective_fixes.0": "The fix has been integrated into the main branch of Newton PR #2112. The maintainer confirmed the fix is in the main branch.",
+    "details.environments.0": "Isaac Lab, Newton CollisionPipeline, MJWarpSolverCfg, Anymal-C flat speed environment.",
+    "details.limits.0": "The actual Newton/Isaac Lab version should be recorded; older versions may still require temporary switching of the contact backend.",
+    "details.outcomes.0": "The comment confirms that the main branch contains the fix.",
+    "details.problem_statements.0": "The robot terminates immediately after increasing nconmax due to false base contact force.",
+    "details.safety_notes.0": "Do not use raising the illegal_contact threshold as a sole solution to mask abnormal contact force and directly migrate to real machine without validation.",
+    "details.suspected_causes.0": "The CollisionPipeline has incorporated an unnecessary contact in high contact capacity scenarios.",
+    "details.symptoms.0": "Only overflow warning when nconmax ≤ 16; abnormal contact force reaches an extremely high level when nconmax = 32.",
+    "source.locator": "Fix confirmed by @camevor.",
+    "source.title": "Newton CollisionPipeline: nconmax Increase Triggers False Contact Force",
+    "terms.0": "Contact Force (接触力)",
+    "terms.1": "Collision Detection (碰撞检测)",
+    "terms.2": "Whole-Body Control (WBC) (全身控制)",
+    "title": "False Contact Force Appears After Increasing nconmax in Newton; How to Diagnose?"
+  }
+}

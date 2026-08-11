@@ -1,0 +1,137 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "matheecs"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141",
+  "captured_at": "2026-08-11T15:20:00+08:00",
+  "content_sha256": "aaf1b614b0afa7dc28b94a341b48b76a8a2f408512f3e7c574710ec034943aab",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 10 条评论；只整理已被脚本验证的 LOCAL-frame 原问题，未回答的 Jc 概念追问和 LOCAL_WORLD_ALIGNED 推广明确保留为限制。",
+    "components": [
+      "Pinocchio",
+      "getFrameJacobianTimeVariation",
+      "getFrameClassicalAcceleration",
+      "getFrameAcceleration",
+      "LOCAL reference frame"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者手工计算叉乘项并得到与经典加速度一致的结果。",
+        "维护者提供完整随机 q、v、qddot 脚本，以三个 isApprox 断言核验关系。"
+      ],
+      "diagnostics": [
+        "先确认需要的是空间加速度（spatial acceleration）还是经典点加速度（classical point acceleration）。",
+        "分别用 getFrameAcceleration 和 getFrameClassicalAcceleration 建立数值对照，并在相同 LOCAL frame 中验证 a_s=J_s*qddot+dJ_s*qdot。"
+      ],
+      "effective_fixes": [
+        "在维护者给出的 LOCAL-frame 范围内，以 Jc=Js，并令 dJc 的线性块加上 skew(omega)@Jc_linear，再用 Jc*qddot+dJc*qdot 重构经典点加速度。"
+      ],
+      "environments": [
+        "Ubuntu 22.04.3 LTS、Pinocchio 3、pin.buildSampleModelManipulator()。"
+      ],
+      "limits": [
+        "维护者脚本只明确覆盖 LOCAL frame；LOCAL_WORLD_ALIGNED 下的经典加速度 Jacobian 时间导数追问未获回答，不能从本线程自行推广公式。",
+        "关于 Jc=Js.copy() 的后续概念追问也未在该线程回答。",
+        "该线程没有给出特定机器人 URDF 的独立复测。"
+      ],
+      "outcomes": [
+        "维护者脚本通过断言验证经典加速度与空间加速度关系、空间 Jacobian 重构和修正后的经典加速度重构；项目方据此认定原始 Issue 已回答且无需修改 Pinocchio。"
+      ],
+      "problem_statements": [
+        "为什么 getFrameJacobianTimeVariation@qdot 与 getFrameClassicalAcceleration 的线加速度不一致，怎样在 LOCAL frame 构造经典点加速度的 Jdot？"
+      ],
+      "safety_notes": [
+        "把 Jdot*qdot 用于加速度或接触约束前，应与同 frame 的运动学加速度接口做数值对照，避免错误补偿进入实机力矩。"
+      ],
+      "suspected_causes": [
+        "维护者明确说明 getFrameJacobianTimeVariation 返回 dJs/dt；把它直接当作经典点加速度的 dJc/dt 会漏掉 omega×Jl 项。"
+      ],
+      "symptoms": [
+        "原帖示例中经典加速度与直接使用 getFrameJacobianTimeVariation@v 的结果在线性前三维明显不同，角加速度后三维一致。",
+        "原作者手工加入 omega 与线性 Jacobian 的叉乘项后，示例数值与 getFrameClassicalAcceleration 一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "getFrameJacobianTimeVariation 返回的是空间加速度对应的 dJs/dt。若目标是经典点加速度，维护者在 LOCAL frame 给出的关系是 dJc=dJs+omega×Jl：代码上复制 Js 为 Jc，再对 dJc 的线性前三行加入 pin.skew(v_s.angular)@Jc[:3,:]。其完整脚本用 isApprox 断言验证了重构结果。LOCAL_WORLD_ALIGNED 的后续问题没有答案，因此该公式不能从本线程直接外推到该 reference frame。",
+        "applicability": "适用于 Pinocchio 3、LOCAL frame、以经典点加速度重构 J*qddot+Jdot*qdot 的场景；其他 reference frame 必须重新推导和验证。",
+        "bilingual_terms": [
+          "空间加速度（spatial acceleration）",
+          "经典点加速度（classical point acceleration）",
+          "雅可比时间导数（Jacobian time derivative）",
+          "局部坐标系（local frame）",
+          "叉乘矩阵（skew-symmetric matrix）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_classical_spatial_jacobian_time_derivative_2141",
+        "problem_title_zh": "Pinocchio 的空间与经典点加速度需要不同的 Jacobian 时间导数",
+        "question_zh": "在 Pinocchio LOCAL frame 中，getFrameJacobianTimeVariation@qdot 为什么不能直接重构经典点加速度，应怎样按原线程修正？",
+        "source_locator": "Pinocchio #2141 评论 1925393733：维护者解释 dJs/dt 与 dJc/dt 差异并给出完整断言脚本；评论 2088271817 说明原始问题已回答；评论 2068201550 的 LWA 追问未获解答",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-1925393733",
+        "verification_refs": [
+          {
+            "locator": "项目方确认原始 Issue 已由维护者脚本回答，因此无需 Pinocchio 代码改动",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-2088271817"
+          },
+          {
+            "locator": "LOCAL_WORLD_ALIGNED 下的后续追问未得到公式，用于限定本卡适用范围",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-2068201550"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2141",
+    "query": "Pinocchio getFrameJacobianTimeVariation classical spatial acceleration Jdot LOCAL",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Pinocchio sample manipulator"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者明确区分 dJs/dt 与经典点加速度所需的 dJc/dt，并给出完整可运行断言脚本。"
+      },
+      {
+        "text": "项目方关闭原始 Issue，但要求把 LOCAL_WORLD_ALIGNED 等相关追问另开 Discussion。"
+      }
+    ],
+    "wbc_relevance_reason": "任务空间加速度约束与逆动力学 WBC 常直接使用 Jdot*qdot；混淆空间加速度和经典点加速度会只在线性部分产生系统性误差。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2141",
+  "summary": "Pinocchio #2141 用 sample manipulator 对比 getFrameClassicalAcceleration 与 getFrameJacobianTimeVariation@v，观察到线加速度不一致。维护者说明该 API 返回与空间加速度对应的 dJs/dt，不是经典点加速度的 dJc/dt；在 LOCAL frame 中需使用 dJc=dJs+skew(omega)Jl。维护者给出完整 Python 脚本，分别断言经典/空间加速度关系、空间 Jacobian 重构和修正后的经典加速度重构。原始问题据此关闭，但关于 Jc 为什么复制 Js 以及 LOCAL_WORLD_ALIGNED 下怎样构造经典加速度 Jacobian 导数的后续追问没有答案。",
+  "title": "getFrameJacobianTimeVariation 返回空间加速度 Jacobian 的时间导数",
+  "version": null
+}

@@ -1,0 +1,146 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "vmstavens"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2934",
+  "captured_at": "2026-08-11T09:44:00+08:00",
+  "content_sha256": "e25bb9ff793a506ca20352885429726dd662c944f2baeb523394950f6f091cf2",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对 Issue 正文、19 条评论、维护者身份与 open 状态，并实际查看第一张关键时序图；排除未经维护者确认的推测性理论评论。",
+    "components": [
+      "MuJoCo 3.3.7",
+      "Robotiq 2F-85",
+      "position actuator",
+      "contact dynamics",
+      "servo damping gain"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者比较普通 general actuator、MjSpec set_to_position、手工构造 affine position actuator，以及把编译后的世界写成 MJCF 后手工改为 position tag。",
+        "社区复现者固定 kp=300 扫描 kv，并记录接触级速度、约束速度与净力时序。"
+      ],
+      "diagnostics": [
+        "分别记录 roll target、qpos、qvel、actuator force、物体净力、接触坐标系切向相对速度和 efc_vel，而不是只对比视频。",
+        "线程测量在 t=3.200 s 给出切向相对接触速度约 0.01225 m/s；t=3.202 s 的切向 efc_vel 约 0.0122，说明可见滚转角尚小时已经出现切向运动。",
+        "维护者要求把 Python/MjSpec 复现继续缩成纯 XML 最小复现，并明确列出 expected/unexpected，才能隔离 MjSpec 与接触模型。"
+      ],
+      "effective_fixes": [
+        "降低 kv 在该复现实验中显著减小漂移，可作为诊断性缓解，但没有完全消除起始切向运动。",
+        "作者报告普通 general actuator 不出现同样现象但不能提供所需位置控制；将编译结果导出为 MJCF 后手工改 position actuator 在其测试中得到期望结果，这些都尚未形成通用修复。"
+      ],
+      "environments": [
+        "Ubuntu 24.04；MuJoCo 3.3.7；CPU；timestep=0.002 s；implicitfast integrator；Newton solver；elliptic cone；Robotiq 2F-85。"
+      ],
+      "limits": [
+        "没有最终维护者根因、合并修复或版本边界，不能将其写成 MuJoCo 已确认 bug。",
+        "第一张时序图已完成本轮视觉核验；第二张接触速度图和原帖视频未作为独立视觉证据，本卡对应数值只引用评论文字。",
+        "线程中存在未经项目方确认的理论性诊断，本卡明确不采用。"
+      ],
+      "outcomes": [
+        "线程已把问题从单纯视觉异常推进到可量化的增益扫描与接触切向速度；截至 2026-04-29 Issue 仍 open，维护者仍等待纯 XML 最小复现。"
+      ],
+      "problem_statements": [
+        "夹爪用 position actuator 旋转时被抓物体在可见滚转前先发生位移，如何用原线程已有数据区分接触滑移、增益放大与尚未确认的引擎缺陷？"
+      ],
+      "safety_notes": [
+        "接触操作控制器应同时限制伺服增益、监测切向相对速度和物体漂移；可见姿态稳定不等于接触仍处于粘着区。"
+      ],
+      "suspected_causes": [
+        "当前有数据支持的解释是 position servo 在目标变化时立即产生力矩，摩擦接触已进入切向滑移；高 kv 明显放大漂移，但原评论明确说它不一定是根因。",
+        "维护者尚未完成线程审查；本卡不采纳第三方提出的“非结合残差”等未经项目维护者确认的最终根因。"
+      ],
+      "symptoms": [
+        "mocap 控制下物体表现正常，使用 position actuator 驱动笛卡尔六关节时，夹爪旋转会让盒子沿夹指方向滑移。",
+        "固定 kp=300 时，社区复现实验报告 kv=5、10、100 的最终相对 y 漂移约为 0.7、1.4、13.6 mm；kv=300 更严重。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "目前只能确认：该复现里接触在滚转开始时已出现约 0.012 m/s 的切向相对速度，高 kv 会显著放大最终漂移；把 kv 从 100 降到 5 时，报告漂移由约 13.6 mm 降到 0.7 mm。应记录 actuator force、qpos/qvel、物体净力、接触切向速度与 efc_vel，并进一步制作纯 XML 最小复现。降低 kv 是缓解与诊断手段，不是已确认根治；维护者尚未给出最终原因，Issue 仍开放。",
+        "applicability": "直接适用于 MuJoCo 3.3.7、CPU、2 ms、implicitfast/Newton、Robotiq 2F-85 的该复现；其他接触模型、增益和步长必须重新测量。",
+        "bilingual_terms": [
+          "位置执行器（position actuator）",
+          "切向相对速度（tangential relative velocity）",
+          "约束空间速度（constraint-space velocity）",
+          "伺服阻尼增益（servo damping gain）",
+          "最小可复现实例（Minimal Reproducible Example, MRE）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.mujoco_grasp_servo_slip_2934",
+        "problem_title_zh": "MuJoCo 高阻尼位置伺服抓取旋转时的切向滑移与漂移",
+        "question_zh": "MuJoCo 中 position actuator 旋转夹爪时物体在明显滚转前就漂移，原线程目前能可靠支持哪些排查与缓解结论？",
+        "source_locator": "MuJoCo #2934 评论 4183505169 的 kv 扫描/接触级测量，评论 4183566032 与 4183580186 的维护者边界说明",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183505169",
+        "verification_refs": [
+          {
+            "locator": "MuJoCo 3.3.7/CPU 的 MjSpec、mocap 与 actuator 对照复现",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2934"
+          },
+          {
+            "locator": "固定 kp=300 的 kv 扫描、接触切向速度、efc_vel 与净力时序",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183505169"
+          },
+          {
+            "locator": "维护者说明力/加速度先于位置可见并不意外，同时明确其余问题仍需继续审查",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183580186"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原评论第一张四联时序图（kp=300、kv=300）已核验：虚线约在 3.2 s；roll target 开始上升时 actuator force 先瞬时冲到约 0.45，物体 y 向净力出现约 1.9 N 瞬态，而 qpos/qvel 仍很小；随后 prop relative y 持续下降，到约 3.84 s 接近 -19 mm。该图支持“力与漂移起始早于明显可见滚转”，不单独证明最终根因。"
+    ],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2934",
+    "query": "MuJoCo grasp position actuator object drift high kv contact tangential slip",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "MuJoCo Menagerie Robotiq 2F-85 抓取器与自由物体"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "社区复现实验给出 kv 扫描、接触切向速度和约束速度的具体数值。"
+      },
+      {
+        "text": "维护者要求纯 XML 最小复现，并没有确认线程中的任何最终根因理论。"
+      }
+    ],
+    "wbc_relevance_reason": "操作空间/全身控制在高增益抓取与接触旋转中会把伺服器、摩擦和离散接触耦合；仅凭画面认为物体“粘住”可能掩盖已经发生的切向滑移。"
+  },
+  "published_at": "2025-11-07T09:04:40Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2934",
+  "summary": "MuJoCo #2934 在 Ubuntu 24.04、MuJoCo 3.3.7、CPU、2 ms 步长的 Robotiq 2F-85 抓取中，对比 mocap 与 position-actuator 控制：后者旋转夹爪时物体沿夹指滑动。线程中的参数扫描在 kp=300 时将 kv 从 5 提到 100，最终相对 y 漂移由约 0.7 mm 增至 13.6 mm；接触级记录显示滚转开始时切向相对速度已非零。维护者指出力/加速度先于位置可见是导数阶次的正常现象，但仍要求纯 XML 最小复现后再判断其余异常。Issue 仍开放，因此本卡只保留已测得的诊断和缓解方向，不宣称最终根因。",
+  "title": "MuJoCo 抓取旋转时物体漂移应先量化伺服增益与切向滑移，而不是仅看可视姿态",
+  "version": null
+}

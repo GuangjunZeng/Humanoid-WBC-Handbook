@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1455.e7021def3262",
+  "schema_version": 1,
+  "source_fingerprint": "1d68fff50e4be6fb37604f1b2be361a67531b5a92f05cbecc52c14edc9710eb7",
+  "translations": {
+    "answer": "Call computeJointJacobians to update the cache. If the end-effector frame coincides with the joint, read the joint Jacobian; otherwise, read the frame Jacobian. Must explicitly verify WORLD, LOCAL, or LOCAL_WORLD_ALIGNED, and not rely solely on matrix values. The result must be cross-verified against official documentation and unit tests during version upgrades.",
+    "applicability": "Applies to the Pinocchio joint/frame Jacobian API; verify against current documentation and unit tests during version upgrades.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "Discuss using Talos configuration scripts to compare frames and joints in WORLD reference frame.",
+    "details.diagnostics.0": "First check if computeJointJacobians is called, then verify if the end-effector frame is defined and the selected reference frame.",
+    "details.effective_fixes.0": "Calculate all joint Jacobians; if end-effector and joint coincide, read joint Jacobian, else read frame Jacobian.",
+    "details.environments.0": "Pinocchio, end-effector frame, WORLD/LOCAL/LOCAL_WORLD_ALIGNED reference frames.",
+    "details.limits.0": "Equality in WORLD space depends on Pinocchio's definition of the reference frame, and cannot be directly applied to LOCAL or LOCAL_WORLD_ALIGNED.",
+    "details.outcomes.0": "Maintainer provides a runnable validation script and closes Issue, but further user input is needed for conceptual discussion.",
+    "details.problem_statements.0": "Unable to determine whether to use joint or frame Jacobian, and why they might be equal in WORLD space.",
+    "details.suspected_causes.0": "Mixing up cache calculation functions and retrieval functions, and confusing the Frame class with reference frames.",
+    "details.symptoms.0": "API returns Jacobian matrix inconsistent with intuitive end-effector speed mapping.",
+    "source.locator": "Maintainer's technical reply @proyan",
+    "source.title": "When to use getJointJacobian and when to use getFrameJacobian in Pinocchio?",
+    "terms.0": "Jacobian Matrix (雅可比矩阵)",
+    "terms.1": "Coordinate Frame (坐标系)",
+    "terms.2": "End Effector (EE) (末端执行器)",
+    "title": "When to use getJointJacobian and when to use getFrameJacobian in Pinocchio?"
+  }
+}

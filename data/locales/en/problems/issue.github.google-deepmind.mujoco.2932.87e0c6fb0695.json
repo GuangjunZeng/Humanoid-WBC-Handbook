@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.google-deepmind.mujoco.2932.87e0c6fb0695",
+  "schema_version": 1,
+  "source_fingerprint": "6b8ae13075a61834671f71f3415918d4b8c4d1411e8b4a91bb9e888bc2507489",
+  "translations": {
+    "answer": "Use the same XML, initial qpos/qvel/ctrl values, and run both mjx.forward→mjx.step and mj_forward→mj_step sequentially to print NaNs. Perform single-variable ablation on float64, integrator, timestep, actuator/transfer, and fixed base. If these changes do not affect the first step NaN in MJX or native MuJoCo, then a high-quality minimal reproducible example can be formed, but it cannot be claimed as the root cause until the maintainer locates it.",
+    "applicability": "MuJoCo 3.3.7/MJX corresponding environment and similar constraint/transfer models.",
+    "credibility.rationale": "The solution has not closed or there is a conflict; the problem is only partially identified.",
+    "details.attempts.0": "Enable JAX float64.",
+    "details.attempts.1": "Test Euler/RK4 and 0.005/0.002/0.001 s.",
+    "details.attempts.2": "Replace actuator/transfer.",
+    "details.attempts.3": "Change freejoint root to weld.",
+    "details.diagnostics.0": "Run MJX and native MuJoCo with the same XML/initial state.",
+    "details.diagnostics.1": "Check qpos/qvel after forward and step.",
+    "details.diagnostics.2": "Ablate precision, integrator, timestep, actuator/transfer, and fixed base.",
+    "details.environments.0": "macOS darwin 24.3.0; Python 3.12; MuJoCo 3.3.7; bundled MJX; JAX CPU build.",
+    "details.limits.0": "No known root cause or fix; minimal model includes tendon/constraint combination, cannot infer all MJX leg models will fail.",
+    "details.outcomes.0": "All ablations still show NaN in MJX first step, while native MuJoCo is stable; Issue remains open.",
+    "details.problem_statements.0": "How to establish a differential reproduction when the same model is stable in native MuJoCo and shows NaN in MJX first step?",
+    "details.safety_notes.0": "Any policy/state with NaN must be intercepted by watchdog before entering the actuator interface.",
+    "details.suspected_causes.0": "Numerical implementation or support difference in MJX for this constraint/transfer combination; root cause not confirmed by maintainer.",
+    "details.symptoms.0": "mjx.forward has no NaN; first mjx.step qpos/qvel is NaN; native mj_step is stable for 5 steps.",
+    "source.locator": "Issue #2932 setup, observations, minimal XML, and reproduction script.",
+    "source.title": "MJX First Step NaN, Native MuJoCo Stable: Differential Reproduction",
+    "terms.0": "Minimal reproducible example (minimal reproducible example) (最小可复现示例)",
+    "terms.1": "Differential test (差分测试)",
+    "terms.2": "Numerical divergence (数值发散)",
+    "title": "MJX First Step NaN, Native MuJoCo Stable: How to Prove It’s Not a Simple Parameter Adjustment?"
+  }
+}

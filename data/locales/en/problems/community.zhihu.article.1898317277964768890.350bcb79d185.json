@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1898317277964768890.350bcb79d185",
+  "schema_version": 1,
+  "source_fingerprint": "31d69c053740562df965908f8e077da760d4fee7d2c737b88a4d1733c582792c",
+  "translations": {
+    "answer": "Average frequency equality does not imply strict synchronization of instantaneous production and consumption. Python scheduling, ROS transmission, and batch write-inflated data cause bursts; if the queue is full and new targets are discarded, the execution layer continues to consume old trajectories, leading to increasing delays and target jumps upon recovery. Double-ended monotonic clocks and queue watermarks should be recorded, and bounded buffers, expired command discarding, and target continuity protection should be set.",
+    "applicability": "Applicable to command bridging between non-real-time upper and high-frequency servo layers; specific conclusions must be verified with local timestamps.",
+    "collection.stop_reason": "nested_replies_collapsed",
+    "credibility.rationale": "The solution has not closed or there is a conflict in the source; the conclusion is not yet verified or reproducible.",
+    "details.attempts.0": "Divide each 20 ms command into 5 parts for 4 ms execution by the execution layer.",
+    "details.attempts.1": "Discard 1/5 of the messages to reduce queue growth.",
+    "details.attempts.2": "Plan to switch the Python middle layer to C++.",
+    "details.diagnostics.0": "Record the upper-level production timestamp, lower-level consumption timestamp, queue depth, packet loss count, and target continuity.",
+    "details.environments.0": "Upper-level remote operation at 50 Hz/20 ms; lower-level C++ execution at 250 Hz/4 ms; ROS topic; maximum queue of 5000, cumulative 10 messages after execution.",
+    "details.limits.0": "Raises questions about the factual basis of the total bus; no public timestamp curve, packet loss rate, or final rewrite result is provided.",
+    "details.outcomes.0": "First solution still causes queue overflow; second solution reduces delay but causes underload jitter; final C++ rewrite direction is not publicly verified.",
+    "details.problem_statements.0": "How to stably send 50 Hz upper-level commands to the 250 Hz lower-level execution loop?",
+    "details.problem_statements.1": "Why does queue overflow and queue underflow both manifest as robot jitter?",
+    "details.safety_notes.0": "Limit joint speed, position increments, and torque during real machine testing; maintain the last safe target or enter damping mode when queue is abnormal; do not directly convert missing frames into abrupt jumps.",
+    "details.suspected_causes.0": "Inconsistent time/scheduling between Python and C++ endpoints.",
+    "details.suspected_causes.1": "Fixed five-part interpolation does not handle network jitter and production-consumption offset.",
+    "details.symptoms.0": "Queue overflow discards new messages, leading to long delays and sudden large oscillations.",
+    "details.symptoms.1": "Delay decreases after discarding 1/5 of the messages, but the queue is exhausted and continues to jitter.",
+    "media_summaries.0": "The Mermaid diagram in the text explains the structure of upper-level asynchronous write to queue and lower-level strict periodic read from queue; the diagram is conceptual and not real-time sequence evidence.",
+    "source.locator": "Description of the phenomenon, queue overflow message, and visible comments that question the facts.",
+    "source.title": "Why does queue overflow and underflow cause burst oscillations when bridging 50 Hz remote operation to 250 Hz execution layer?",
+    "terms.0": "Producer-consumer (producer-consumer) (生产者—消费者)",
+    "terms.1": "Queue depth (queue depth) (队列水位)",
+    "terms.2": "Latency jitter (latency jitter) (时延抖动)",
+    "title": "Why does queue overflow and underflow cause burst oscillations when bridging 50 Hz remote operation to 250 Hz execution layer?"
+  }
+}

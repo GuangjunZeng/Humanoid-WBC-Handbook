@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "giorgionicola"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2765",
+  "captured_at": "2026-08-11T18:20:00+08:00",
+  "content_sha256": "3a1c78569c97c31cf849bb1cfe8212e266073ffdf53147cffc52394d52c62a2b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 1 条评论和完整修复提交 diff；原帖三张截图只用于说明作者症状，本卡结论由最小代码、源码 diff 与测试支撑。",
+    "components": [
+      "MuJoCo 3.3.4",
+      "rangefinder",
+      "height field",
+      "mj_rayHfield",
+      "ray casting"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者提供可运行最小代码和三种分辨率对照；维护者合入源码修复与非方形回归测试。"
+      ],
+      "diagnostics": [
+        "固定 hfield 几何尺寸，只交换 nrow/ncol 分辨率进行 A/B 对照。",
+        "运行原帖最小代码并检查不同分辨率的 rangefinder 读数。"
+      ],
+      "effective_fixes": [
+        "采用包含提交 7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e 的 MuJoCo 版本，或核对等价 mj_rayHfield 索引修复。"
+      ],
+      "environments": [
+        "MuJoCo 3.3.4；Python API；Ubuntu 24；hfield 64x32、32x64 与 32x32 对照。"
+      ],
+      "limits": [
+        "原作者没有在评论中报告升级后复测；闭环依据是维护者确认、修复提交和回归测试。",
+        "不能将此修复外推到其他传感器或 mesh raycast。"
+      ],
+      "outcomes": [
+        "维护者确认已修复；提交增加 4x3 hfield 的四个 rangefinder 期望值测试。"
+      ],
+      "problem_statements": [
+        "MuJoCo 的 rangefinder 在非方形 hfield 上为何给出错误边缘测量，怎样确认已修复？"
+      ],
+      "safety_notes": [
+        "升级前后用目标地图分辨率回放感知测试，避免把错误地形距离直接用于实机落足。"
+      ],
+      "suspected_causes": [
+        "修复提交显示 hfield 边缘高度数据索引误用了 nrow，非方形时应按 ncol 做行跨度。"
+      ],
+      "symptoms": [
+        "几何尺寸不变时，非方形分辨率的 rangefinder 会错误命中 hfield 边缘；方形 32x32 给出预期结果。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先保持 hfield 几何尺寸不变，用 64x32、32x64 与方形分辨率做 A/B；该线程对应的源码修复是提交 7b9f5bd。提交将 hfield 边缘数据的行跨度从 nrow 改为 ncol，并新增 4x3 非方形 hfield 回归测试。应升级到包含该提交的版本，并用自己的地图分辨率复测。",
+        "applicability": "MuJoCo 3.3.4 的 hfield rangefinder/raycast 非方形分辨率问题；其他 raycast 类型需分别验证。",
+        "bilingual_terms": [
+          "高度场（height field, hfield）",
+          "测距传感器（rangefinder）",
+          "射线检测（ray casting）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.mujoco_nonsquare_hfield_raycast_2765",
+        "problem_title_zh": "MuJoCo 非方形 heightfield 的 rangefinder 索引错误",
+        "question_zh": "MuJoCo 3.3.4 的非方形 hfield rangefinder 错测应怎样定位和修复？",
+        "source_locator": "MuJoCo #2765 评论 3151492060；修复提交 7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2765#issuecomment-3151492060",
+        "verification_refs": [
+          {
+            "locator": "Fixes #2765；修正 mj_rayHfield 非方形索引并加入 RayHfield 测试",
+            "relation": "source_code",
+            "source_url": "https://github.com/google-deepmind/mujoco/commit/7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2765",
+    "query": "MuJoCo hfield non-square rangefinder wrong measurement raycast fix",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "legged locomotion test; demo includes Unitree Go2"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "维护者确认已修复；固定提交同时修改索引并增加非方形 hfield 回归测试。"
+      }
+    ],
+    "wbc_relevance_reason": "腿式机器人地形感知与落足规划可能依赖 rangefinder/heightfield；非方形地图索引错误会把感知误差传入接触规划。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2765",
+  "summary": "MuJoCo #2765 在 3.3.4、Python API、Ubuntu 24 上用 64x32/32x64 高度场复现 rangefinder 在 hfield 边缘的错误测量，而 32x32 正常。维护者回复已修复；提交 7b9f5bd 明确 Fixes #2765，把 hfield 边缘数据索引中的 nrow 改为 ncol，并加入 4x3 非方形 hfield 的 RayHfield 回归测试。",
+  "title": "MuJoCo 3.3.4 非方形 hfield 的 rangefinder 错测由 raycast 索引修复",
+  "version": null
+}

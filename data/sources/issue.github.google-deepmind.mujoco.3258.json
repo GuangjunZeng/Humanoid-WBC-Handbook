@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "nico-bohlinger"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3258",
+  "captured_at": "2026-08-11T23:41:00+08:00",
+  "content_sha256": "ea1376cdf879f856685034f8b4e274e34d6304a0c7b31379a573fae51e1c5605",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 4 条评论；没有把未公开的本地 monkey patch 当作修复，结论不依赖图片。",
+    "components": [
+      "MJX-Warp",
+      "geom_dataid",
+      "hfield",
+      "JIT static analysis"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者说自己做过本地 monkey patch，但没有公开结果、补丁或复测数据；因此不把它登记为有效修复。"
+      ],
+      "diagnostics": [
+        "检查转换路径中 `geom_dataid` 的形状是否在进入 Warp 前被压成一维，并实际记录各 world 使用的 data id。"
+      ],
+      "effective_fixes": [
+        "线程没有已合并修复；当前只能把该能力视为未受支持，并在选用替代架构或自建 PR 前做最小验证。"
+      ],
+      "environments": [
+        "`mujoco.mjx` 且 `impl=warp`；原帖基于 2026-05 的公开实现说明，未给发布版号。"
+      ],
+      "limits": [
+        "底层 MuJoCo Warp 的二维字段能力不等于 MJX 前端已暴露该能力；原帖也没有验证任意 monkey patch 的正确性。"
+      ],
+      "outcomes": [
+        "Issue 因功能不在计划中而关闭；维护者允许提交足够小且干净的 PR，但没有承诺接收。"
+      ],
+      "problem_statements": [
+        "MJX-Warp 能否用 batched `geom_dataid` 让每个并行 world 选择不同 hfield？"
+      ],
+      "safety_notes": [
+        "训练前应抽样打印每环境地形 ID 或几何统计，避免域随机化（domain randomization）静默失效。"
+      ],
+      "suspected_causes": [
+        "维护者说明，MJX collision driver 为 JIT 静态分析把 `geom_dataid` 当作 NumPy array；支持动态批量字段可能需要重构。"
+      ],
+      "symptoms": [
+        "多维 `geom_dataid` 在 `_put_model_warp` 中被折叠到第一行，随后所有 world 收到相同映射。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程对应的公开实现不能这样使用。原帖给出的转换代码会把多维 `geom_dataid` 折叠为第一行；维护者也明确 batched `geom_dataid` 当前不计划加入 MJX，并指出 JIT 静态分析下的 collision driver 可能需要重构。作者只提到本地 monkey patch，没有发布补丁或结果，所以不能把它当作可复用解法。",
+        "applicability": "适用于该线程所述 MJX-Warp 转换路径；后续版本若合入新实现需重新检查。",
+        "bilingual_terms": [
+          "批量几何数据标识（batched geom_dataid）",
+          "每环境路由（per-world routing）",
+          "即时编译（Just-In-Time compilation, JIT）",
+          "地形随机化（terrain randomization）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reward_curriculum_randomization.mjx_batched_hfield_dataid_3258",
+        "problem_title_zh": "验证 MJX 每环境 hfield 路由是否真实生效",
+        "question_zh": "在 MJX-Warp 并行环境中给 `geom_dataid` 批量赋值，能否让每个 world 使用不同 hfield？",
+        "source_locator": "MuJoCo #3258 维护者关闭说明 4741236754",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/3258#issuecomment-4741236754",
+        "verification_refs": [
+          {
+            "locator": "维护者说明不在计划内及 collision driver/JIT 静态分析约束",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/3258#issuecomment-4741236754"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.3258",
+    "query": "MJX Warp batched geom_dataid per-world hfield terrain randomization",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "parallel locomotion environments"
+    ],
+    "schema_version": 2,
+    "scope_id": "reward_curriculum_randomization",
+    "selected_comments": [
+      {
+        "text": "维护者：MJX 当前不计划支持 batched `geom_dataid`；实现可能需要重构 collision driver。"
+      }
+    ],
+    "wbc_relevance_reason": "并行足式训练若误以为每个环境能路由不同 hfield，会让地形随机化（terrain randomization）表面配置不同、实际仍共享同一资产。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.3258",
+  "summary": "MuJoCo #3258 指出底层 MuJoCo Warp 的 `geom_dataid` 是 `(nworld, ngeom)`，但 MJX `_put_model_warp` 会在字段为多维时取 `field[0]`，使全部 world 使用同一 hfield asset。维护者明确该功能当前不计划加入 MJX；实现还可能要求重构 MJX collision driver，因为 JIT 静态分析期望 `geom_dataid` 是 NumPy array。",
+  "title": "MJX-Warp 当前不能用 batched geom_dataid 路由每环境 hfield",
+  "version": null
+}

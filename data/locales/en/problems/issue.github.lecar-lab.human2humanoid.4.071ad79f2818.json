@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.4.071ad79f2818",
+  "schema_version": 1,
+  "source_fingerprint": "4c278eed6be47537e1388f9f10853bb42ff344bb5430c95dfe6c442b2c1b74fa",
+  "translations": {
+    "answer": "The repository has been fixed to use 19 degrees of freedom (DoF) for the H1 path, initializing dof_pos from 27 to 19 and aligning the joint name list to 19 entries. The fix should use commits after 0c6fd6f and verify the model's DoF count; custom robots cannot arbitrarily change to 19 without aligning DoF vectors, rotation axes, and joint order.",
+    "applicability": "Directly applicable to the Unitree H1 legacy retargeting script prior to 0c6fd6f; other robots should follow dimension consistency principles.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and consistent, and there is formal documentation or independent reproducible exact reference.",
+    "details.attempts.0": "Community users linked a temporary modification; the questioner replied that it works; the maintainer then released a formal repository update.",
+    "details.diagnostics.0": "The H1_ROTATION_AXIS axis count, the last dimension of dof_pos, and the order of h1_joint_names were all verified outside of torch.cat.",
+    "details.effective_fixes.0": "Commit 0c6fd6f updated grad_fit_h1_shape.py to change dof_pos from torch.zeros((1,27)) to torch.zeros((1,19)) and align the H1 joint list to 19 entries.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; original script used on 2024-10-05; fixed commit 0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd.",
+    "details.limits.0": "19 is the dimension for the H1 model and this script; it is not a universal constant for all custom robots. Dimension changes must synchronize joint order and rotation axes.",
+    "details.outcomes.0": "A collaborator confirmed the latest version is fixed and closed the issue; the diff precisely covers the error line.",
+    "details.problem_statements.0": "What is the correct dimension for the H1_ROTATION_AXIS and dof_pos when multiplying them?",
+    "details.suspected_causes.0": "The old script had H1_ROTATION_AXIS as 19 axes, but dof_pos was initialized as 27 dimensions.",
+    "details.symptoms.0": "RuntimeError: The size of tensor a (19) must match the size of tensor b (27) at non-singleton dimension 1.",
+    "source.locator": "Issue #4; collaborator replies to issuecomment-2516365741; fixed commit 0c6fd6f 27→19",
+    "source.title": "Old grad_fit_h1_shape.py uses 19-axis H1_ROTATION_AXIS with 27-dim dof_pos",
+    "terms.0": "Rotation-axis table (旋转轴表)",
+    "terms.1": "DoF vector (自由度向量)",
+    "terms.2": "Dimension mismatch (维度不匹配)",
+    "terms.3": "Motion retargeting (动作重定向)",
+    "title": "When H1_ROTATION_AXIS is 19 axes and dof_pos is 27 dimensions, how to fix it without masking the mapping error?"
+  }
+}

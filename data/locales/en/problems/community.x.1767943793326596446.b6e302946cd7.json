@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.1767943793326596446.b6e302946cd7",
+  "schema_version": 1,
+  "source_fingerprint": "24b5cd9814c2fbac16050b0b0fa646dca1e16f2a68db51fd4fab0bc4efdf75aa",
+  "translations": {
+    "answer": "The 200 Hz frequency is higher than what is considered for fast low-level control above 1 kHz; whether an additional whole-body constrained controller is needed depends on system delay, actuator bandwidth, and safety constraints. No testing results are available, and the conclusion has not been resolved.",
+    "applicability": "Applicable to low-frequency learning strategies and high-frequency WBC/actuator control in a multi-rate architecture.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "The solution has not closed or there is inconsistency; the problem is still in the form of a clue.",
+    "details.attempts.0": "The discussant proposes a QP-based task-space inverse dynamics as a possible structure.",
+    "details.diagnostics.0": "Distinguish between the setpoint from the learning strategy and the actual low-level tracker; check for task-space acceleration targets, whole-body dynamics constraints, and direct torque output.",
+    "details.environments.0": "Figure 01 two-arm operation public demonstration; learning strategy at ~200 Hz; discussant assumes a higher frequency low-level control loop exists.",
+    "details.limits.0": "The core structure uses 'I'd guess' tone; it should not be written as Figure 01 confirmed architecture.",
+    "details.outcomes.0": "A feasible QP formulation is formed, but it has not been confirmed by the Figure team, and there is no control log or source code available.",
+    "details.problem_statements.0": "After the learning strategy provides wrist/hand setpoints, should the low-level system use PID or direct QP-based torque calculation?",
+    "details.safety_notes.0": "Direct torque control must validate dynamics, contact constraints, torque/velocity limits, and control period; cannot rely on social media to directly implement on real systems.",
+    "details.suspected_causes.0": "A 200 Hz learning model may not be sufficient to replace fast low-level control at 1 kHz; redundant task-space commands require dynamics and constraint resolution.",
+    "details.symptoms.0": "No specific fault reported; the discussion focuses on whether the 200 Hz strategy frequency is sufficient for direct low-level torque control.",
+    "source.locator": "@iandanforth on 200 Hz vs 1 kHz+ technical discussion regarding Figure 01 low-level WBC, QP, and direct torque output.",
+    "source.title": "Technical Discussion on Figure 01 Low-Level WBC, QP, and Direct Torque Output Regarding 200 Hz Learning Strategy",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Quadratic Programming (QP) (二次规划)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "terms.3": "Actuator (执行器)",
+    "terms.4": "Joint Torque (关节力矩)",
+    "terms.5": "Contact Constraint (接触约束)",
+    "title": "Is the 200 Hz Learning Strategy Sufficient to Replace High-Frequency Low-Level Control Loops?"
+  }
+}

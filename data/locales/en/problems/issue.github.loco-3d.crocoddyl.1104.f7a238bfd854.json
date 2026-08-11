@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.loco-3d.crocoddyl.1104.f7a238bfd854",
+  "schema_version": 1,
+  "source_fingerprint": "6fb59fbee5564d05fe4bf674c156c93e86737acacde54535622b04dfd0ed0ee0",
+  "translations": {
+    "answer": "The thread ultimately concludes that the answer is negative. The maintainer explicitly corrected an earlier statement: with constraints, the solver must balance cost improvement (optimality) and constraint satisfaction (feasibility), and skipping `dV` solely based on `dVexp < 0` will interfere with step acceptance. The user's specification of alpha lists can be configured; adaptive testing of alpha remains directionally valid, but the thread does not provide a reusable, public implementation or benchmark.",
+    "applicability": "Applies to DDP/FDDP solvers with feasibility/constraint balancing; specific implementations for unconstrained DDP still need version verification.",
+    "credibility.rationale": "Engineering records exist for environment, processing steps, and results, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The thread discusses skipping `dV` when `dVexp < 0`, user-configurable alpha lists, adaptive line search, and parallel `tryStep`; the maintainer later corrected the first point.",
+    "details.diagnostics.0": "Distinguishes between a descent criterion for unconstrained DDP and a combined step acceptance in constrained solvers.",
+    "details.effective_fixes.0": "Do not skip `dV` in constrained solvers solely based on `dVexp < 0`; step acceptance should be based on the target version solver.",
+    "details.environments.0": "Discussion in Crocoddyl 2022-2023 master/devel; no fixed release, robot, or timing benchmark.",
+    "details.limits.0": "The maintainer notes that improvements in a private branch are not public, so we cannot claim any version has adaptive line search.",
+    "details.limits.1": "No forward-pass before/after timing, so we cannot quantify the suggested performance impact.",
+    "details.outcomes.0": "The maintainer explicitly removes the first point; adaptive alpha remains valid but is handled in larger solver upgrades; the thread does not provide a public patch.",
+    "details.problem_statements.0": "When `dVexp < 0`, is it acceptable to skip `dV/tryStep` to save forward-pass time?",
+    "details.safety_notes.0": "Any line-search shortcut in the presence of contact, friction, or actuator constraints must also revert cost, constraint violation, and deadline miss.",
+    "details.suspected_causes.0": "Early optimization suggestions only considered optimality, without addressing the path requiring both cost improvement and constraint satisfaction.",
+    "details.symptoms.0": "A forward pass in about 75% of MPC tests, with users wishing to reduce line-search rollout.",
+    "source.locator": "Crocoddyl #1104 final maintainer corrects 1772562615",
+    "source.title": "Crocoddyl Constraint Solving: Can We Skip `dV/tryStep` When `dVexp < 0`?",
+    "terms.0": "Line search (线搜索)",
+    "terms.1": "Expected improvement (dVexp) (期望改进)",
+    "terms.2": "Optimality (最优性)",
+    "terms.3": "Feasibility (可行性)",
+    "title": "Can We Skip `dV/tryStep` in Crocoddyl MPC Forward Pass When `dVexp < 0`?"
+  }
+}

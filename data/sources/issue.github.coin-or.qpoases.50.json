@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "yutaochen（Trac 迁移记录）"
+  ],
+  "canonical_url": "https://github.com/coin-or/qpOASES/issues/50",
+  "captured_at": "2026-08-11T23:48:00+08:00",
+  "content_sha256": "dba6e928ab3fdd47459b055d728cedbb2ec1aa960e0e135967c8424c71c266ee",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取迁移 Issue 与全部 16 条评论；只记录维护者对作者实际导出数据的复现，不把早期猜测写成根因，结论不依赖图片。",
+    "components": [
+      "ACADO",
+      "qpOASES_e",
+      "Cholesky decomposition",
+      "Hessian export"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "开启 Levenberg-Marquardt regularization；切换到 qpOASES_e 3.1.1；提供 ACADO 导出代码和数据。"
+      ],
+      "diagnostics": [
+        "用 `qpOASES_writeIntoFileM(acadoWorkspace.H, 300, 300, ...)` 导出逐周期 Hessian 和 QP 数据，再在 stand-alone qpOASES_e 重放。"
+      ],
+      "effective_fixes": [
+        "线程没有给出 ACADO 侧最终修复；有效做法是导出失败周期的实际 QP，stand-alone 重放并把异常 Hessian 交给上游生成器定位。"
+      ],
+      "environments": [
+        "ACADO code generation；最初使用 qpOASES 1.3，随后切换 qpOASES_e 3.1.1；QP 规模 300×300。"
+      ],
+      "limits": [
+        "该根因只对应作者提供的 QP 44；其他 Cholesky failure 仍可能来自不同的非正定、数值尺度或数据损坏。"
+      ],
+      "outcomes": [
+        "维护者独立重放 QP 42/43/44，确认失败随 QP 44 数据而来，qpOASES 侧记录为 wontFix 并建议联系 ACADO。"
+      ],
+      "problem_statements": [
+        "ACADO 中 qpOASES 报 internal/Cholesky error 时，如何判断是 solver 还是上游 QP 构造？"
+      ],
+      "safety_notes": [
+        "不要在线上真机仅靠增大 LM regularization 掩盖异常 Hessian；先保存故障周期并离线检查正定性和构造链。"
+      ],
+      "suspected_causes": [
+        "维护者在收到的数据上复现：QP 44 Hessian 非正定且外观异常，Cholesky 相应失败；判断更可能是 ACADO 构造问题。"
+      ],
+      "symptoms": [
+        "旧版本显示 error 31（Cholesky decomposition failure）；切新版本后 ACADO 返回 -1 或 -2。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按该线程的已复现流程，先切到受支持的 qpOASES_e 版本并保存失败周期的实际 QP，而不是只看 ACADO 的聚合 status。维护者用 `qpOASES_writeIntoFileM` 导出 300×300 Hessian，在 stand-alone qpOASES_e 重放后发现 QP 42/43 正常、QP 44 Hessian 非正定且异常，Cholesky 因而失败；问题被转回 ACADO 构造侧。这个结果只证明该实例，不代表所有 internal error 都由 Hessian 非正定造成。",
+        "applicability": "直接适用于该 ACADO/qpOASES codegen 实例；方法可迁移，但每个故障周期的根因必须独立重放。",
+        "bilingual_terms": [
+          "乔列斯基分解（Cholesky decomposition）",
+          "海森矩阵（Hessian matrix）",
+          "非正定（non-positive-definite）",
+          "独立重放（stand-alone replay）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "independent_reproduction",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.acado_qpoases_hessian_export_50",
+        "problem_title_zh": "导出失败周期 QP 区分 solver 与上游 Hessian 问题",
+        "question_zh": "ACADO codegen 中 qpOASES 报 Cholesky/internal error，怎样定位是求解器故障还是上游 QP 构造异常？",
+        "source_locator": "qpOASES #50 维护者复现与 QP 42/43/44 诊断 589978804",
+        "source_url": "https://github.com/coin-or/qpOASES/issues/50#issuecomment-589978804",
+        "verification_refs": [
+          {
+            "locator": "维护者收到导出代码后独立导出/重放 QP 42、43、44 并定位非正定 Hessian",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/coin-or/qpOASES/issues/50#issuecomment-589978804"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "coin-or.qpoases.50",
+    "query": "ACADO qpOASES Cholesky error QP 44 non positive definite Hessian export data",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "code-generated NMPC and WBC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者重放：QP 42/43 正常，QP 44 Hessian 非正定且异常，stand-alone qpOASES_e 也发生 Cholesky failure。"
+      }
+    ],
+    "wbc_relevance_reason": "NMPC/WBC codegen 的统一 status 容易掩盖具体分解失败；逐周期导出 QP 能区分 solver 故障与上游 Hessian 构造错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.coin-or.qpoases.50",
+  "summary": "qpOASES #50 讨论 ACADO code generation 中旧 qpOASES 1.3 的 error 31 / Cholesky failure。维护者建议切到 qpOASES_e 3.1.1，并解释 ACADO status 0/-1/-2/-3。作者私下提供可编译导出代码后，维护者复现并用 `qpOASES_writeIntoFileM` 导出每个 QP：QP 42、43 能正确求解，QP 44 的 Hessian 非正定且形状异常，stand-alone qpOASES_e 同样 Cholesky 失败，因此把问题转给 ACADO 侧。",
+  "title": "ACADO 内嵌 qpOASES Cholesky 失败要先导出具体 QP Hessian",
+  "version": null
+}

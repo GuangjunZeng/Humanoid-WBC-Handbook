@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1903761818360455378.f01cb3478a05",
+  "schema_version": 1,
+  "source_fingerprint": "f4feb4d46466ddf7ec9e2cddf4873323b5766bc04185210d4deea50f7ba5258d",
+  "translations": {
+    "answer": "Confirm the use of a library compatible with the CPU architecture; ensure the WSL network card is truly in the G1 192.168.123.0/24 subnet, assign a fixed IP address, ping the robot first, and then run the minimal example. The post uses a bridge scheme, but the specific Windows/WSL version and network security policies need independent verification.",
+    "applicability": "Network bridging has system and security risks; wireless availability has not been confirmed; version must match the official SDK.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-verification or independent replication is missing.",
+    "details.attempts.0": "Bridge the network card, assign a fixed IP to eth0 in WSL, ping the robot, and use the ankle_swing example to validate.",
+    "details.diagnostics.0": "Cross-organize comments, visible comments, and media according to the main text; not verified independently by the paper, source code, or official documentation.",
+    "details.environments.0": "Ubuntu 20.04/22.04/24.04; x86_64/aarch64; Windows 11 WSL; G1 subnet 192.168.123.0/24.",
+    "details.limits.0": "Network bridging has system and security risks; wireless availability has not been confirmed; version must match the official SDK.",
+    "details.outcomes.0": "The author claims that a direct Ethernet connection and WSL bridging are viable; comments only indicate an upgrade conclusion for the firmware.",
+    "details.problem_statements.0": "The Unitree SDK2 is compiled, but access to G1 is not available—how to layer-validate?",
+    "details.safety_notes.0": "Community candidates are only for forming diagnostic hypotheses; when involving real hardware, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "The WSL virtual network card is isolated from the host physical subnet; the library directory/CPU architecture is mismatched; the firmware may be outdated.",
+    "details.symptoms.0": "The SDK can compile but is isolated from WSL and the robot network; comments mention an x86 misloading of aarch64 libddsc.",
+    "media_summaries.0": "Four screenshots are used for SDK compilation, ankle_swing and Windows network bridge steps; the configuration focuses on CPU architecture compatibility, 192.168.123.x subnet, and ping validation.",
+    "source.locator": "The architecture and firmware discussion in 'Hack operations' of the main text",
+    "source.title": "Unitree SDK2 Compilation in WSL and Access to G1 Network",
+    "terms.0": "Data Distribution Service (DDS) (数据分发服务)",
+    "terms.1": "Software Development Kit (SDK) (软件开发工具包)",
+    "title": "Unitree SDK2 Compiled in WSL, but Access to G1 is Not Available—How to Layer-Validate?"
+  }
+}

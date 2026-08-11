@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.1977.7aec40b7e73d",
+  "schema_version": 1,
+  "source_fingerprint": "018afff841165f5910362993818bbd77f2a5638f13b74b720ab893e2113bf12e",
+  "translations": {
+    "answer": "The project contributor explicitly stated that [0,-1,0] is the Coriolis/Centrifugal effect, which can be calculated separately using pin.computeCoriolisMatrix(model, data, q, qd) @ qd. The free-flyer configuration should not be all-zero; using pin.neutral(model) ensures normalization of the quaternion. The contributor's use of the neutral configuration still reproduces the same cross-term, indicating it is not solely caused by a full-zero q. The original post did not respond to the question about whether the cross-term disappears after replacing q=0 with the neutral configuration. The answer is therefore a partial explanation.",
+    "applicability": "Applicable to the minimal model of a humanoid robot in the Pinocchio free-flyer context, where speed-related RNEA bias terms are identified. Version not specified; specific human-like model needs independent verification.",
+    "credibility.rationale": "There is engineering record for the environment, processing steps, and results, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The original author used three sets of qd outputs to identify the bias term, and an additional rotational degree of freedom model was used for supplementary comparison.",
+    "details.attempts.1": "The project contributor replaced q=0 in the original code with pin.neutral(model), and reproduced the same y=-1 output.",
+    "details.diagnostics.0": "The project contributor stated that the [0,-1,0] can be calculated separately using pin.computeCoriolisMatrix(model, data, q, qd) @ qd, and compared with the RNEA extra term.",
+    "details.diagnostics.1": "Using pin.neutral(model) to initialize the free-flyer configuration prevents full-zero quaternions from being unnormalized.",
+    "details.effective_fixes.0": "This is not a numerical error to be deleted; the term is identified as Coriolis/centrifugal speed bias, and pin.neutral(model) is used to initialize the valid free-flyer configuration.",
+    "details.environments.0": "Pinocchio Python API, buildModelFromUrdf(..., JointModelFreeFlyer()), 1 kg point mass model; version, operating system, and hardware not specified.",
+    "details.limits.0": "The original author did not respond to whether the computeCoriolisMatrix @ qd is consistent with this term.",
+    "details.limits.1": "Why does the additional rotational joint model no longer produce the same cross-term? The thread does not provide an explanation, and this is not inferred.",
+    "details.limits.2": "The thread does not state the Pinocchio version, and does not extend the minimal example to specific humanoid robot WBC values.",
+    "details.outcomes.0": "The project contributor provided a classification of the cross-term and a path for separate calculation, and used the neutral configuration to reproduce the original output.",
+    "details.problem_statements.0": "Why does RNEA return a y=-1 force when the free flyer has both z-direction linear velocity and x-direction angular velocity?",
+    "details.suspected_causes.0": "The project contributor explicitly stated that [0,-1,0] is the Coriolis/Centrifugal effect.",
+    "details.symptoms.0": "When qd=[0,0,1,1,0,0] and qdd=0, RNEA returns [0,-1,9.81,0,0,0]; no y=-1 term is present when there is no speed or only z-direction linear velocity.",
+    "details.symptoms.1": "When the x-direction angular velocity is replaced with an additional rotational joint speed, the cross-term disappears in the original author's supplementary example.",
+    "source.locator": "Pinocchio #1977; Coriolis/centrifugal explanation issuecomment-1571030718; neutral configuration and reproduction issuecomment-1571032033",
+    "source.title": "Pinocchio Free-Flyer RNEA Speed Cross-Term and Neutral Configuration",
+    "terms.0": "Recursive Newton-Euler Algorithm (RNEA) (递归牛顿-欧拉算法)",
+    "terms.1": "Coriolis/Centrifugal effects (科里奥利/离心效应)",
+    "terms.2": "Neutral configuration (中性构型)",
+    "terms.3": "Free flyer (浮动基)",
+    "title": "Where does the y-direction force come from in RNEA when the free flyer has both linear velocity and angular velocity in the z-direction?"
+  }
+}

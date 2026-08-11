@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "rafa-martin"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2808",
+  "captured_at": "2026-08-11T18:26:00+08:00",
+  "content_sha256": "90f382710a49d00a1defca34e5038cc9ca508bba0ba8dd0ce7865b20be22ba56",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 16 条评论；图和视频用于原作者展示症状，但规避结论来自明确的 RMW A/B 文本确认，未从画面补读数值。",
+    "components": [
+      "ros2_control 4.38.0",
+      "rmw_zenoh",
+      "rmw_fastrtps",
+      "Cyclone DDS",
+      "UR RTDE",
+      "list_controllers"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者提供服务调用、rqt、系统负载证据；维护者测量 mutex 区域仅约 20 us。",
+        "作者从 rmw_zenoh 切到 rmw_fastrtps，并在两个 Zenoh 版本上复现。"
+      ],
+      "diagnostics": [
+        "固定 ros2_control/controller_manager 版本，只切换 RMW_IMPLEMENTATION 做 A/B。",
+        "对比服务调用前、中、后的 controller_manager.total_time；维护者同版本本地未复现，提示不是单纯 controller_manager 版本问题。"
+      ],
+      "effective_fixes": [
+        "在该环境临时从 rmw_zenoh 切换到 Fast DDS；作者也计划使用 Cyclone DDS。"
+      ],
+      "environments": [
+        "Ubuntu 24.04；kernel 6.8.1-1037-realtime PREEMPT_RT；ROS 2 Jazzy；ros-jazzy-controller-manager 4.38.0-1noble.20251008.000820；rmw_zenoh 0.2.8 deb 与 0.2.9 commit 858f7b5；Intel i7-11700。"
+      ],
+      "limits": [
+        "不能据此断言所有 rmw_zenoh 版本或所有服务调用都有该问题。",
+        "Cyclone DDS 在该线程没有给出实际测试数据，只是作者计划。",
+        "Issue 的 stale 关闭不等于 Zenoh 根因修复。"
+      ],
+      "outcomes": [
+        "作者 100% confirmed 仅切换 RMW 即消除现象；根因未深入，Issue 后因 stale 关闭。"
+      ],
+      "problem_statements": [
+        "调用 controller_manager 服务导致 500 Hz 控制环 overrun 和 UR RTDE 断链时，应怎样缩小到 RMW 层？"
+      ],
+      "safety_notes": [
+        "RMW 切换应在实验台验证 QoS、服务语义和控制周期，再恢复真机高速运行。"
+      ],
+      "suspected_causes": [
+        "作者确认现象随 rmw_zenoh 出现，换 Fast DDS 后消失；Zenoh 内部具体锁与机制没有继续定位。"
+      ],
+      "symptoms": [
+        "list_controllers 单次/每秒调用会令 update 约 3.16 ms、总周期约 3.33 ms，错过 500 Hz deadline。",
+        "频繁时 UR RTDE Data Pipeline overflow 并断连。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "在该 Jazzy/4.38.0/UR 环境中，作者用 A/B 确认把 RMW_IMPLEMENTATION 从 rmw_zenoh_cpp 切到 rmw_fastrtps_cpp 后现象消失；其在 Zenoh 0.2.8 deb 和 0.2.9 固定提交上都复现。可把切换 RMW 作为隔离手段，但 Zenoh 为何在服务/发布路径引入延迟没有定位，Cyclone DDS 也未在帖中给出实测。",
+        "applicability": "Ubuntu 24.04 PREEMPT_RT、ROS 2 Jazzy、controller_manager 4.38.0、UR 500 Hz 与 rmw_zenoh 0.2.8/0.2.9。",
+        "bilingual_terms": [
+          "机器人操作系统中间件实现（ROS middleware implementation, RMW）",
+          "控制环超时（control-loop overrun）",
+          "实时数据交换（Real-Time Data Exchange, RTDE）",
+          "服务调用（service call）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.communication_and_realtime.ros2_control_zenoh_service_overrun_2808",
+        "problem_title_zh": "rmw_zenoh 下 controller_manager 服务调用拖慢实时环",
+        "question_zh": "ros2_control 服务调用触发 500 Hz overrun 时，原作者验证过的临时规避是什么，哪些根因仍未知？",
+        "source_locator": "ros2_control #2808 评论 3541490499、3541707255；维护者未复现见 3541065379/3541219103",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2808#issuecomment-3541707255",
+        "verification_refs": [
+          {
+            "locator": "维护者同版本测量 mutex 区域约 20 us 且无法复现，支持继续隔离环境差异",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2808#issuecomment-3541219103"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2808",
+    "query": "ros2_control controller manager service Zenoh RMW latency RTDE pipeline",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Universal Robots arm with ROS 2 driver"
+    ],
+    "schema_version": 2,
+    "scope_id": "communication_and_realtime",
+    "selected_comments": [
+      {
+        "text": "维护者同版本无法复现；作者只切换 RMW 即消除问题，并给出两个 Zenoh 版本。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 上层工具和服务调用不应破坏实时控制环；RMW 实现差异可能在系统集成阶段表现为罕见超时和断链。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2808",
+  "summary": "ros2_control #2808 在 Ubuntu 24.04 PREEMPT_RT、Jazzy deb 4.38.0、UR driver 500 Hz 下，rqt 每秒调用 list_controllers 会触发 3.3 ms overrun，严重时 RTDE pipeline overflow 断连。维护者同版本无法复现，作者随后 A/B 切换 RMW：rmw_zenoh 0.2.8/0.2.9 有问题，换 rmw_fastrtps 后正常，并表示也会使用 Cyclone DDS。线程未继续定位 Zenoh 内部锁，最终因 stale 关闭。",
+  "title": "ros2_control 高频服务调用卡顿在该案例中由 rmw_zenoh 切换 RMW 消除",
+  "version": null
+}

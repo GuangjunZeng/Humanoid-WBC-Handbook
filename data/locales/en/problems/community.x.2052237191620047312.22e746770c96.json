@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2052237191620047312.22e746770c96",
+  "schema_version": 1,
+  "source_fingerprint": "685189cfea0f4fa7f5845fa61bf72c6470c4edbcd274e069a8f65f4be70410e0",
+  "translations": {
+    "answer": "The Article argues that it is not a single model, but a (policy/model, embodiment, task, environment) tuple, and includes action/state space, control frequency, URDF/MJCF, calibration, safety limits, simulation configuration, training execution, and real-world results. It is a community architecture proposal, but is very suitable as a candidate data contract.",
+    "applicability": "Applicable for establishing a WBC engineering problem and a query system for reproducible bundles.",
+    "collection.stop_reason": "article_body_loaded_without_visible_replies",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent reproducibility is lacking.",
+    "details.attempts.0": "The article proposes four categories of registry/bundle mechanisms.",
+    "details.diagnostics.0": "Bind action/state space, control frequency, body, task, environment, URDF, calibration, safety limits, and results together.",
+    "details.effective_fixes.0": "The candidate data model is versioned, complete deployment bundle, and associated with real-world/simulation results and community reproducibility.",
+    "details.environments.0": "Cross-strategy, body, task, environment; Franka/UR5/LeRobot examples.",
+    "details.limits.0": "The article's examples and 30% statement should be verified against the original links.",
+    "details.outcomes.0": "It is an architectural suggestion, not yet deployed platform.",
+    "details.problem_statements.0": "Only code/weights cannot reproduce robot results.",
+    "details.safety_notes.0": "Public bundles should not omit safety limits, calibration version, and known invalid boundaries.",
+    "details.suspected_causes.0": "The robot value unit is a complete tuple, but current hub only focuses on model-centric approach.",
+    "details.symptoms.0": "Training loss is normal, but success rate is 0%; selecting the wrong URDF causes Sim2Real failure; old simulation configuration cannot be re-run.",
+    "media_summaries.0": "Screenshot shows the Article title, TL;DR, and flowchart; the flowchart only explains the article structure, and the four categories of artifact must be referred to the text.",
+    "source.locator": "X Article, Section 3–4",
+    "source.title": "The Minimum Unit for Reproducibility in Robotics is Not a Model, but a Complete Deployment Tuple",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Simulation-to-Real (Sim2Real) (仿真到现实)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Unified Robot Description Format (URDF) (统一机器人描述格式)",
+    "terms.4": "Robot Model Format (MJCF) (机器人模型格式)",
+    "title": "What is the Minimum Record Unit for Reproducibility in WBC and Robotics Projects?"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ddliu365"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/880",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "edbf3b082252b5b6d0f2b057ca484e4f6749d37db5bc5ec768c6922a730599f0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、7 条评论和足板示意图；将主约束选择与旋转接口拆成两张卡，并把未复测的旋转问题保留为 partial。",
+    "components": [
+      "Crocoddyl",
+      "whole-body manipulation",
+      "friction cone",
+      "CoP/ZMP constraint",
+      "contact wrench cone"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者查阅 contact wrench cone 论文，并向维护者确认其是否同时覆盖 friction、ZMP/CoP 和 yaw torque。",
+        "作者提供双脚不对齐世界坐标的图片，追问旋转矩阵。"
+      ],
+      "diagnostics": [
+        "按接触模型需要分别检查切向摩擦、CoP 支撑域与 yaw torque 边界，而不是只看到 friction cone 就认为有限足面稳定性完整。",
+        "核对 wrench cone 构造函数第一个旋转参数所使用的参考系，并让它与实际脚面方向一致。"
+      ],
+      "effective_fixes": [
+        "需要完整有限足面约束时使用 contact wrench cone，并移除单独的 friction cone 或 CoP cost，避免重复。",
+        "脚面不与世界坐标对齐时，通过 wrench cone constructor 的第一个参数指定其旋转。"
+      ],
+      "environments": [
+        "Crocoddyl whole_body_manipulation 示例，线程时间为 2020-10 至 2021-02；未给 Crocoddyl 版本或机器人型号。"
+      ],
+      "limits": [
+        "线程没有给出 contact wrench cone 的具体 API 版本、矩阵方向约定或代码示例。",
+        "不能从足板图片直接推导旋转矩阵；必须回到目标版本构造函数和参考系定义。",
+        "该讨论来自 2020/2021 年，当前 Crocoddyl API 名称需要再次核对。"
+      ],
+      "outcomes": [
+        "作者回复解释清楚，并表示会在方案工作后更新示例；线程没有后续实现或数值结果。",
+        "旋转参数问题只有维护者的一句接口说明，没有作者复测。"
+      ],
+      "problem_statements": [
+        "whole-body manipulation 中 friction cone 或 CoP/ZMP cost 是否足够，何时应改用 contact wrench cone？",
+        "双脚不与 world frame 对齐时，wrench cone 的方向如何配置？"
+      ],
+      "safety_notes": [
+        "高动态实机操作中应同时监控摩擦裕度、CoP 支撑域和 yaw torque；约束参考系错误可能产生看似可行但不可执行的接触力矩。"
+      ],
+      "suspected_causes": [
+        "示例在 contact wrench cone 功能开发前编写，维护者说明这就是示例仍只用 friction cone 的原因，而不是表示 friction cone 已足够。"
+      ],
+      "symptoms": [
+        "用户无法判断摩擦锥、CoP/ZMP 和 contact wrench cone 三类 cost 在高动态全身操作中的组合关系。",
+        "脚板带偏航角时，用户不清楚 wrench cone rotation matrix 如何定义。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者明确回答：单独 friction constraint 不够，单独 CoP 也不够，需要 contact wrench cone。原作者把 wrench cone 理解为同时包含摩擦、ZMP/CoP 边界以及 yaw torque 边界，维护者确认正确。使用 wrench cone 时应移除单独的 friction cone 或 CoP cost；旧示例未集成它是因为示例早于该功能。",
+        "applicability": "适用于有限足面 whole-body manipulation 的接触稳定性建模；当前 Crocoddyl API 和约束维度需按目标版本核对。",
+        "bilingual_terms": [
+          "接触力矩锥（contact wrench cone）",
+          "摩擦锥（friction cone）",
+          "压力中心（center of pressure, CoP）",
+          "偏航力矩（yaw torque）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.force_control_manipulation.crocoddyl_wrench_cone_vs_friction_cop_880",
+        "problem_title_zh": "Crocoddyl 全身操作不能只靠 friction cone 或 CoP 约束有限足面接触",
+        "question_zh": "Crocoddyl whole-body manipulation 中，friction cone 与 CoP/ZMP cost 是否足够，什么时候应使用 contact wrench cone？",
+        "source_locator": "Crocoddyl #880：维护者评论 718918420/718918724 给出结论；评论 719454648 确认作者理解并说明 cost 组合；作者 719600191 表示解释清楚",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-719454648",
+        "verification_refs": [
+          {
+            "locator": "维护者明确说明 friction constraint 和 CoP 单独都不够，需要 contact wrench cone",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-718918420"
+          },
+          {
+            "locator": "维护者确认作者对 wrench cone 的理解，并要求移除单独 friction cone 或 CoP cost",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-719454648"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者只给出一个明确接口提示：wrench cone constructor 的第一个元素/参数定义其 rotation。线程没有给出旋转矩阵方向、参考系约定或复测代码，因此只能作为定位 API 的入口，不能仅凭配图直接构造矩阵。",
+        "applicability": "适用于该线程时期 Crocoddyl wrench cone constructor；当前版本的参数类型、旋转方向和 frame convention 必须查源码/文档验证。",
+        "bilingual_terms": [
+          "旋转矩阵（rotation matrix）",
+          "世界坐标系（world frame）",
+          "支撑多边形（support polygon）",
+          "接触力矩锥（contact wrench cone）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.force_control_manipulation.crocoddyl_wrench_cone_foot_rotation_880",
+        "problem_title_zh": "Crocoddyl 脚面不对齐世界坐标时需显式设置 wrench cone 旋转",
+        "question_zh": "双脚不与 world frame 对齐时，Crocoddyl contact wrench cone 的旋转从哪里指定？",
+        "source_locator": "Crocoddyl #880：作者评论 722446675 提供足板图片并提问；维护者评论 771044606 指出 constructor 第一个参数定义旋转",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-771044606",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 wrench cone constructor 的第一个参数定义其旋转",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-771044606"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "评论 722446675 的图片已核验：左侧是双脚脚板照片，右侧示意图标注 Left foot、Right foot、support polygon、support polygon with margin 和 Δx_zmp，双脚明显不平行；图片支持“脚面不与同一世界方向对齐”的提问，但没有坐标轴或矩阵定义，不能用于推导旋转参数。"
+    ],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.880",
+    "query": "Crocoddyl whole body manipulation friction cone CoP ZMP contact wrench cone rotation foot",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "双足 whole-body manipulation（原帖未给机器人型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "force_control_manipulation",
+    "selected_comments": [
+      {
+        "text": "维护者明确说明 friction constraint 与 CoP 单独都不足，需要 contact wrench cone。"
+      },
+      {
+        "text": "维护者确认使用 wrench cone 时应移除单独 friction cone 或 CoP cost。"
+      },
+      {
+        "text": "对脚面旋转问题，维护者仅指出 constructor 第一个参数定义 rotation。"
+      }
+    ],
+    "wbc_relevance_reason": "全身操作中的有限足面接触不仅受摩擦约束，还受 CoP 和偏航力矩边界约束；错误组合或坐标旋转会让接触稳定性模型不完整。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.880",
+  "summary": "Crocoddyl #880 讨论 whole-body manipulation 时 friction cone、CoP/ZMP 与 contact wrench cone 的选择。维护者明确回答：单独 friction constraint 不够，单独 CoP 也不够，需要 contact wrench cone；作者把它理解为同时覆盖摩擦、ZMP/CoP 边界和 yaw torque，维护者确认该理解正确。启用 wrench cone 时应移除 friction cone 或 CoP cost。对于脚不与 world frame 对齐的情况，维护者补充 wrench cone constructor 的第一个参数定义其旋转，但线程没有给出具体矩阵或复测。",
+  "title": "Crocoddyl 全身操作中 contact wrench cone 与足部旋转的配置选择",
+  "version": null
+}

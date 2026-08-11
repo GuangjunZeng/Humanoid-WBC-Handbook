@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1698.433211db1c0c",
+  "schema_version": 1,
+  "source_fingerprint": "d7c1554a343aa4dcab715679dfa2e4c51713229e7bcfc0ea2e4c950e751f154c",
+  "translations": {
+    "answer": "Substitute the code into the symbolic expression: if sensor.data.pos_w[:,2] is actually equal to root_link_pos_w[:,2], then root_height - (target_height + sensor_origin_height) simplifies to -target_height, making the reward a constant. Verify using terrain height from the RayCaster or define a clear local reference, and confirm the reward changes with different terrain/robot height units.",
+    "applicability": "Applies to Isaac Lab versions using RayCaster to correct rough terrain target heights.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "Issue suggests using center-of-mass actual terrain height; associated PR attempts to handle sensor invalid values.",
+    "details.diagnostics.0": "Expand the adjusted_target_height formula and verify if sensor.data.pos_w is the sensor origin or terrain height.",
+    "details.environments.0": "Isaac Lab rewards.py b5078de; rough terrain; RayCaster sensor.",
+    "details.limits.0": "Cannot equate shutdown state with published fix; verify current branch rewards.py.",
+    "details.outcomes.0": "Issue closed, but associated PR #1727 remains open; no merged alternative fix found.",
+    "details.problem_statements.0": "Why does the base_height_l2 not change with robot/terrain height?",
+    "details.safety_notes.0": "Re-train and check strategy behavior after reward change; do not use old checkpoint as fix verification.",
+    "details.suspected_causes.0": "Misuse of sensor origin in world coordinates as terrain reference.",
+    "details.symptoms.0": "The reward simplifies to a constant target_height, unable to express vertical height error.",
+    "source.locator": "Issue #1698 lines 166—205; associated PR #1727 remains open.",
+    "source.title": "Base_height_l2 reward appears normal but fails to provide effective gradient, how to discover formula cancellation?",
+    "terms.0": "Height reward (base-height reward) (高度奖励)",
+    "terms.1": "RayCaster (射线投射器)",
+    "terms.2": "Constant reward (constant reward) (常数奖励)",
+    "title": "Base_height_l2 reward appears normal but fails to provide effective gradient, how to discover formula cancellation?"
+  }
+}

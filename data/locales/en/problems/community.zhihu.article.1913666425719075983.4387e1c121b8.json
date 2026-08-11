@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1913666425719075983.4387e1c121b8",
+  "schema_version": 1,
+  "source_fingerprint": "076c57d0bd7c5ffd6ef1d4ede54e3240f7119c7d0dc37ab71a2b2aace9c06579",
+  "translations": {
+    "answer": "Use Python 3.8, PyTorch 1.13.1, CUDA 11.7, NumPy 1.23, and Isaac Gym Preview 4 according to the common configuration in this post and the official repository. Run the Isaac Gym examples first, then install in an editable mode for humanoid-gym. Do not attribute errors to outdated NumPy/PyTorch after installation.",
+    "applicability": "This applies to the old Isaac Gym technology stack described in the repository document.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. There is formal documentation or precise independent replication.",
+    "details.attempts.0": "Create an environment with a fixed version and run the Isaac Gym example.",
+    "details.attempts.1": "Train, then play to export the policy, and finally transfer the exported model.pt to sim2sim.py.",
+    "details.diagnostics.0": "Verify the version matrix, training commands, export order, and model path against the official README.",
+    "details.effective_fixes.0": "Use the dependency combination and execution order specified in the official README.",
+    "details.environments.0": "Python 3.8; PyTorch 1.13.1; CUDA 11.7; NumPy 1.23; Isaac Gym Preview 4; Humanoid-Gym main branch documentation.",
+    "details.limits.0": "The technology stack is outdated; modifications to assets, joint mapping, default posture, and PD gains are required when migrating to other robots.",
+    "details.outcomes.0": "The command line instructions match the official README exactly.",
+    "details.problem_statements.0": "Which dependency combination should Humanoid-Gym use to complete the minimal reproduction?",
+    "details.problem_statements.1": "Why can't sim2sim.py find or load the trained policy correctly?",
+    "details.safety_notes.0": "Sim2sim passing does not mean direct deployment to real robots; verify action scale, joint order, limits, and emergency stop.",
+    "details.suspected_causes.0": "Incompatible Python/PyTorch/CUDA/NumPy version combinations.",
+    "details.suspected_causes.1": "The training checkpoint was not exported via play.py or the model path is incorrect.",
+    "details.symptoms.0": "Dependency drift causes installation or runtime failures.",
+    "details.symptoms.1": "Missing JIT policy in sim2sim when play.py is not run.",
+    "media_summaries.0": "The page primarily expresses the installation and export process in block commands; no dependency images are necessary for the conclusion to be valid.",
+    "source.locator": "Steps 1–3 in the text; official README Installation",
+    "source.title": "Fixed Dependencies, Training, and Sim2Sim Reproduction Chain for Humanoid-Gym",
+    "terms.0": "Dependency pinning (依赖锁定)",
+    "terms.1": "Editable install (可编辑安装)",
+    "terms.2": "Compatibility matrix (版本矩阵)",
+    "title": "Which dependency versions should be locked for the minimal reproduction in Humanoid-Gym?"
+  }
+}

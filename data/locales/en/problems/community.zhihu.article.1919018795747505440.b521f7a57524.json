@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.1919018795747505440.b521f7a57524",
+  "schema_version": 1,
+  "source_fingerprint": "ed366ad6c4c9880533a2fa18d151ab27a1de00ad2fa4f13c32ef0c2228fcff64",
+  "translations": {
+    "answer": "The main chain provided in the post is SMPL data fields → Mink/PHC redirection → contact filtering and visualization → humanoidverse training/evaluation → ONNX → MuJoCo/real machine inference. Engineering-wise, the frame rate, joint mapping, and robot configuration should be fixed; comments point to PR #22's G1 code, but only an example of a lunge strike is present; source code and safety constraints need verification.",
+    "applicability": "The real machine result is a single comment example; PR, version, and safety parameters need independent verification.",
+    "collection.stop_reason": "reply_expansion_limit",
+    "credibility.rationale": "There are engineering records for the environment, processing steps, and results, but formal data cross-validation or independent replication is missing.",
+    "details.attempts.0": "Clearly define the poses/trans/framerate fields, providing Mink/PHC retarget, filtering, visualization, training, ONNX, and MuJoCo inference commands.",
+    "details.diagnostics.0": "Cross-verified in the main text, comments, and media descriptions; not independently verified.",
+    "details.environments.0": "Python 3.8; Isaac Gym Preview 4; PBHC/humanoidverse; MuJoCo; G1.",
+    "details.limits.0": "Actual results are single-comment examples; PR, version, and safety parameters must be independently verified.",
+    "details.outcomes.0": "Comment states that the ONNX code for PR #22 can be deployed on G1 for a horse step punch example.",
+    "details.problem_statements.0": "What is the most likely point of failure when deploying PBHC action imitation from video/AMASS to G1?",
+    "details.safety_notes.0": "Community candidates are only for forming hypothesis checks; when involving real machines, limit speed, limit force, isolate personnel, and retain logs.",
+    "details.suspected_causes.0": "Data format, toolchain, and deployment code are scattered; model format does not align with inference framework.",
+    "details.symptoms.0": "Official README lacks information on data processing, real-machine deployment, and commenters reported redirecting efforts for two days.",
+    "media_summaries.0": "Three media ports accompany the text to display action data, redirecting, and deployment process; confirmed toolchain exists, but no frame-by-frame contact error or real-machine safety parameters are confirmed.",
+    "source.locator": "Text 'Data processing/retarget/training/deployment' and PR #22 comment",
+    "source.title": "Practical Guide to Building a Humanoid Robot with SMPL Data, Motion Retargeting, and ONNX Deployment",
+    "terms.0": "Open Neural Network Exchange (ONNX) Format (开放神经网络交换格式)",
+    "terms.1": "Frames Per Second (FPS) (每秒帧数)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "terms.3": "Motion Retargeting (动作重定向)",
+    "title": "Which interfaces are most likely to be disrupted during the deployment of PBHC actions from video/AMASS to G1?"
+  }
+}

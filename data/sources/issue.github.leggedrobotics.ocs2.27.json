@@ -1,0 +1,193 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "edward9503"
+  ],
+  "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/27",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "f8c283f136f843891ddd899e10c4a52109d2fd786941f9baa4cd5d824f167429",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、5 条评论和两段 GIF，并逐段截取多个可见时刻；修复与限制均来自原作者/贡献者文字，没有从动图反推参数。",
+    "components": [
+      "OCS2 SLQ-MPC",
+      "RaiSim",
+      "custom WBC",
+      "quaternion-to-Euler ZYX conversion",
+      "observation feedback",
+      "low-pass filter"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者在 1 kHz 和 1 Hz 以及其他 MRT/MPC/observation 频率组合间尝试，均未直接解决。",
+        "作者修正 quaternion-to-Euler ZYX 计算后，四足能够行走。",
+        "作者把全状态和输入反馈给 MPC，在 WBC 初测中只跟踪 base pose 与腿关节角，并对真实 observation feedback 加低通滤波。"
+      ],
+      "diagnostics": [
+        "先核对 MPC 与仿真/WBC 两侧的姿态约定和 quaternion 到 Euler ZYX 的转换。",
+        "分离 MPC feedforward 与 WBC 对 base pose/twist 的附加反馈，检查是否把 MPC 已有反馈重复叠加。",
+        "不要仅靠改变 observation 更新频率判断根因；同时检查参考状态/输入的连续性和坐标变换。"
+      ],
+      "effective_fixes": [
+        "修正 quaternion 到 Euler ZYX 的姿态转换错误；这是原作者明确确认有效的修复。",
+        "低通滤波 observation feedback 在作者当前步行测试中使 MPC 参考更平滑并稳定了闭环，但仅是该环境的工程做法。"
+      ],
+      "environments": [
+        "ANYmal C、RaiSim、自研 WBC 1 kHz、mrtDesiredFrequency 1 kHz、mpcDesiredFrequency=-1（作者机器实际约 250 Hz）；未给 OCS2 commit。"
+      ],
+      "limits": [
+        "帖子没有公开姿态转换代码、滤波器类型、截止频率或延迟量，不能复制一个通用滤波参数。",
+        "贡献者建议仅跟踪 MPC desired base acceleration，但原作者只表示将尝试，线程没有给出该方案的复测结果。",
+        "低通滤波结果只覆盖作者当时的步行测试，未覆盖更动态运动。"
+      ],
+      "outcomes": [
+        "原作者明确回复修正姿态转换后 quadruped can walk。",
+        "原作者报告低通滤波后的 current walkable WBC 可稳定行走；贡献者认可当前结果，同时警告动态动作中的相位延迟风险。"
+      ],
+      "problem_statements": [
+        "把 RaiSim 测量状态回灌 OCS2 MPC 后四足不走、漂移或跳变时，应先核对什么接口错误？",
+        "用低通滤波平滑 MPC observation feedback 能否作为通用稳定方案？"
+      ],
+      "safety_notes": [
+        "实机接入前应离线验证姿态约定、单位和符号；任何新增滤波必须测量相位延迟，并在低速/悬空或安全支撑条件下逐步闭环。"
+      ],
+      "suspected_causes": [
+        "原作者最终确认存在 quaternion 到 Euler ZYX 的微小计算错误。",
+        "贡献者指出，WBC 中额外的 base pose/twist error feedback 可能与 MPC 自身的测量状态反馈叠加并使闭环失稳。"
+      ],
+      "symptoms": [
+        "以 1 kHz 更新 observation_ 时，机器人起初站立不动，随后漂移。",
+        "把 observation_ 更新降到 1 Hz 后，RViz 机器人位置跳变，RaiSim 侧再次不稳定。",
+        "作者尝试多组 MRT/MPC/observation 更新频率仍不稳定。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "贡献者先建议核对两侧 orientation convention；原作者随后确认 quaternion 到 Euler ZYX 的一个微小计算错误，修正后四足能够行走。线程同时提醒，MPC 已用测量状态闭环时，WBC 对 base pose/twist 的额外强反馈可能重复叠加；但原作者没有在该线程验证“只跟踪 desired base acceleration”这一建议，因此它只能作为后续排查项。",
+        "applicability": "适用于 OCS2 MPC、RaiSim 和自研 WBC 之间传递浮基姿态的接口；具体状态布局、旋转顺序和单位必须按目标代码核对。",
+        "bilingual_terms": [
+          "姿态约定（orientation convention）",
+          "四元数（quaternion）",
+          "欧拉角 ZYX（Euler ZYX）",
+          "测量状态回灌（measured-state feedback）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.ocs2_quaternion_euler_zyx_feedback_27",
+        "problem_title_zh": "OCS2/RaiSim/WBC 状态回灌因 quaternion-to-Euler ZYX 转换错误而失稳",
+        "question_zh": "ANYmal C 的 RaiSim 测量状态回灌 OCS2 MPC 后不走、漂移或跳变时，原线程最终确认的接口故障是什么？",
+        "source_locator": "OCS2 #27：贡献者评论 998091116 建议核对姿态约定；原作者评论 999336345 确认 quaternion→Euler ZYX 修复后可行走",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者确认 measured-state feedback 方向正确，并建议核对 orientation convention",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-998091116"
+          },
+          {
+            "locator": "原作者确认修正 quaternion 到 Euler ZYX 计算后四足可以行走",
+            "relation": "issue",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "只能视为该线程环境中的阶段性工程方案。原作者报告低通滤波让 MPC 的 base pose/twist 参考更平滑，并使当前四足步行闭环稳定；项目贡献者同时明确指出，滤波会加入人工 phase shift/delay，可能妨碍更动态运动。帖子没有滤波器参数或动态动作复测，所以应用到目标机器人前必须实测延迟与稳定裕度。",
+        "applicability": "仅覆盖原帖 ANYmal C/RaiSim/OCS2/自研 WBC 的当时步行测试；更动态动作与不同滤波参数必须重新验证。",
+        "bilingual_terms": [
+          "低通滤波（low-pass filter）",
+          "相位偏移（phase shift）",
+          "时延（delay）",
+          "稳定裕度（stability margin）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.ocs2_observation_lowpass_delay_27",
+        "problem_title_zh": "OCS2 observation feedback 低通滤波能稳定步行但引入相位延迟",
+        "question_zh": "对回灌 OCS2 的真实 observation state 做低通滤波，能否作为 MPC/WBC 闭环的通用稳定方案？",
+        "source_locator": "OCS2 #27：原作者评论 999336345 报告低通滤波后可行走；贡献者评论 999452836 警告动态动作的 phase shift/delay",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999452836",
+        "verification_refs": [
+          {
+            "locator": "原作者报告 observation feedback 低通滤波后当前闭环可稳定行走",
+            "relation": "issue",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345"
+          },
+          {
+            "locator": "项目贡献者提醒滤波引入 phase shift/delay，可能影响更动态运动",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999452836"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "第一段 GIF 已在多个时刻核验：画面左右分别是 RViz 和 RaiSim，左侧机器人出现明显多姿态重影，右侧机器人姿态与左侧参考不一致；没有时间戳、数值或坐标说明，不能从图中量化漂移。",
+      "第二段 GIF 已在多个时刻核验：两帧中左侧 RViz 足端轨迹/机器人姿态和右侧 RaiSim 机器人姿态发生明显跳变；它支持帖子描述的可视不同步/不稳定症状，但不单独证明更新频率或姿态转换是根因。"
+    ],
+    "platform": "github_issue",
+    "post_id": "leggedrobotics.ocs2.27",
+    "query": "OCS2 measured observation MPC WBC quaternion Euler ZYX RaiSim instability low pass filter",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ANYmal C"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "贡献者确认 measured-state feedback 的总体方向正确，并要求检查两侧 orientation convention 及 WBC 额外反馈。"
+      },
+      {
+        "text": "原作者确认 quaternion→Euler ZYX 计算错误修正后可以行走，并报告其低通滤波方案在当前步行中有效。"
+      },
+      {
+        "text": "贡献者警告低通滤波加入的 phase shift/delay 可能妨碍更动态动作。"
+      }
+    ],
+    "wbc_relevance_reason": "MPC 状态反馈、姿态坐标约定和 WBC 跟踪反馈是典型闭环接口；同一状态若转换错误或被多层反馈放大，可让参考轨迹连续但实机/仿真失稳。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.leggedrobotics.ocs2.27",
+  "summary": "OCS2 #27 记录 ANYmal C 在 RaiSim 中用自研 WBC 跟踪 OCS2 MPC 时的闭环失稳：1 kHz 回灌 observation 后先站立再漂移，1 Hz 回灌则 RViz 跳变并使 RaiSim 不稳。贡献者确认向 MPC 回灌测量状态的方向正确，建议核对两侧姿态约定，并提醒 WBC 若再对 base pose/twist 加强反馈，可能与 MPC 自身反馈叠加而失稳。原作者随后确认 quaternion 到 Euler ZYX 的微小计算错误是关键故障，修正后四足可行走；其观测低通滤波方案在当前测试中也稳定了闭环，但贡献者明确警告额外相位延迟可能妨碍更动态动作。",
+  "title": "OCS2 与 RaiSim/WBC 闭环中姿态约定错误及观测低通滤波的边界",
+  "version": null
+}

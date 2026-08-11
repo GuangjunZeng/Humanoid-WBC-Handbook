@@ -1,0 +1,165 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Nate711"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/1574",
+  "captured_at": "2026-08-11T18:22:00+08:00",
+  "content_sha256": "6ae431d615bc73da8430460d22958f0c006465acddd6cd05be679b5952b2bfdc",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和全部 8 条评论；将已确认的 I2C 抖动与未解决的 period 语义拆为两张卡。",
+    "components": [
+      "ros2_control",
+      "Raspberry Pi 5",
+      "I2C IMU",
+      "controller update period",
+      "low-latency kernel"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "配置 realtime group limits；用 chrt 调整进程及子进程优先级；停用 I2C IMU 读取；维护者建议同点打印时间变量。"
+      ],
+      "diagnostics": [
+        "先移除或隔离 I2C IMU 读取，观察控制周期抖动是否消失。",
+        "不要用同一现象替 period 参数定性；在 ros2_control node 同一位置同时打印 current_time、previous_time、measured_period。"
+      ],
+      "effective_fixes": [
+        "针对循环抖动，移除/隔离该 I2C IMU 读取后作者观察到循环稳定。"
+      ],
+      "environments": [
+        "Raspberry Pi 5；controller_manager 250 Hz；low-latency kernel；realtime group limits 后续已配置；未给 ROS 2/ros2_control 精确版本。"
+      ],
+      "limits": [
+        "线程没有说明采用异步 I/O、独立线程或具体驱动修复，只确认停读后稳定。",
+        "不能把低延迟内核下的结果直接外推到所有硬件和 RT kernel。"
+      ],
+      "outcomes": [
+        "I2C 引起的抖动已由作者 A/B 确认；update period 参数问题没有闭环。"
+      ],
+      "problem_statements": [
+        "ros2_control 250 Hz 循环出现大抖动时，I2C 读取和 update period 参数应怎样分别诊断？"
+      ],
+      "safety_notes": [
+        "传感器读取不要无界阻塞实时控制线程；应监控 worst-case execution time 和 deadline miss。"
+      ],
+      "suspected_causes": [
+        "作者确认大抖动来自 I2C IMU 读取；period 参数异常仍未定位。"
+      ],
+      "symptoms": [
+        "实际时间差在约 1.1-6.9 ms 之间波动，update() 的 period 参数与作者离线时间差不一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "作者在配置 realtime group limits、尝试 chrt 后仍看到抖动，随后用 A/B 确认是读取 I2C IMU 导致；停读后，即使仅使用 low-latency kernel，循环也很稳定。线程没有给异步化或驱动层最终实现，所以可执行的结论是先把该 I/O 从实时路径隔离并复测，而不是声称某种线程方案已被验证。",
+        "applicability": "Raspberry Pi 5、250 Hz、low-latency kernel 且实时路径直接读取 I2C IMU 的场景。",
+        "bilingual_terms": [
+          "控制循环抖动（control-loop jitter）",
+          "低延迟内核（low-latency kernel）",
+          "实时调度优先级（real-time scheduling priority）",
+          "阻塞式 I/O（blocking I/O）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_i2c_imu_jitter_1574",
+        "problem_title_zh": "ros2_control 实时循环被 I2C IMU 读取拖慢",
+        "question_zh": "提高进程优先级后 ros2_control 仍有大抖动，原线程确认的具体来源是什么？",
+        "source_locator": "ros2_control #1574 评论 2183981102",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183981102",
+        "verification_refs": [
+          {
+            "locator": "作者停用 I2C IMU 读取后循环稳定的 A/B 结果",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183981102"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "没有。作者在排除 I2C 抖动后仍认为 period 参数不正确；维护者无法在普通 PC 复现，并要求在 ros2_control node 内同时打印 current_time、previous_time、measured_period。线程到此结束，因此只能保留诊断步骤，不能自行给出 period 计算错误的根因或修复。",
+        "applicability": "Raspberry Pi 5 上的该线程记录；缺少精确 ros2_control 版本且维护者未复现。",
+        "bilingual_terms": [
+          "控制器周期参数（controller period parameter）",
+          "测量周期（measured period）",
+          "当前/前一时间戳（current/previous timestamp）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_update_period_unresolved_1574",
+        "problem_title_zh": "ros2_control controller update 的 period 参数与实测时间差不一致",
+        "question_zh": "原线程是否已经解释 update(time, period) 中 period 与相邻调用时间差不一致？",
+        "source_locator": "ros2_control #1574 评论 2183981102、2183982425、2183984139",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183984139",
+        "verification_refs": [
+          {
+            "locator": "维护者无法在普通 PC 复现并继续询问时间来源",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183982425"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.1574",
+    "query": "ros2_control update period jitter Raspberry Pi I2C IMU",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Raspberry Pi 5 robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "作者确认 I2C IMU 读取导致大抖动，但 period 参数问题仍在。"
+      },
+      {
+        "text": "维护者要求在 node 内同点打印三个时间量，随后没有复现结果。"
+      }
+    ],
+    "wbc_relevance_reason": "硬件 I/O 阻塞与框架 period 语义是两个不同问题；混在一起会误判控制器积分步长和实时性。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.1574",
+  "summary": "ros2_control #1574 在 Raspberry Pi 5、250 Hz、低延迟内核上记录 update(time, period) 与时间差不一致。作者补齐 realtime group limits 和调度优先级后抖动仍在，最终定位为读取 I2C IMU；停读后循环即使不用 RT kernel 也稳定。但 period 参数仍显得不正确，维护者无法在普通 PC 复现并要求进一步打印 current_time、previous_time、measured_period，线程没有后续。",
+  "title": "ros2_control 控制循环高抖动与 update period 异常必须拆开排查",
+  "version": null
+}

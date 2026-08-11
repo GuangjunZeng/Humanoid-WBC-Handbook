@@ -1,0 +1,134 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "adolfo-rt"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros_control/issues/211",
+  "captured_at": "2026-08-11T15:34:00+08:00",
+  "content_sha256": "54344496d4b46718a026266ec4a2b846d5dde9c67d4e026c60658f7693cdefb0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 9 条评论，并核对 PR #209/#210 的完整 diff、评论、合并提交和复测；保留慢速硬件争议，不写成通用单周期保证。",
+    "components": [
+      "ros_control",
+      "ControllerManager",
+      "RobotHW::prepareSwitch",
+      "RobotHW::doSwitch"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PR #209/#210 保存 start/stop list，把 `doSwitch()` 移到实时 `update()`，并用非实时 `prepareSwitch()` 做可阻塞准备。"
+      ],
+      "diagnostics": [
+        "审计 `prepareSwitch/doSwitch/controller start-stop` 的调用线程和实际顺序，并记录硬件模式确认所需周期。"
+      ],
+      "effective_fixes": [
+        "采用 `prepareSwitch()` 非实时准备 + `doSwitch()` 实时、非阻塞提交的两阶段接口。"
+      ],
+      "environments": [
+        "ROS 1 ros_control Indigo/Jade；作者在硬件复现；ros_canopen 参与者报告典型切换需 3–4 个周期，部分硬件 5 个以上。"
+      ],
+      "limits": [
+        "这是 ROS 1 Indigo/Jade 历史接口；慢速硬件仍需自行定义切换期间的命令保持、丢弃和同步策略。",
+        "线程对是否允许多周期切换有过争论，最终合并方案不等同于任意硬件都能单周期完成物理模式切换。"
+      ],
+      "outcomes": [
+        "PR #209 和 #210 均已合并；#209 修订后测试通过；ros_canopen 参与者确认在 Indigo 变更上按预期工作。"
+      ],
+      "problem_statements": [
+        "硬件控制模式为什么不能在非实时 switch service callback 中先于控制器完成切换？",
+        "慢速硬件怎样与单周期 controller switch 语义共存？"
+      ],
+      "safety_notes": [
+        "真机模式切换应先在吊架/空载和低增益条件验证，监控旧/新命令、硬件 mode acknowledgement 与急停状态；不得在实时 `doSwitch()` 中阻塞等待总线。"
+      ],
+      "suspected_causes": [
+        "`doSwitch()` 错放在只负责调度切换的非实时 ROS callback，而 controller start/stop 实际在实时 update 线程发生。"
+      ],
+      "symptoms": [
+        "旧实现可能先切硬件模式、后启动新 controller，导致命令落入错误模式或出现未定义行为。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程和已合并 PR #209/#210 将职责分成两层：非实时 callback 中的 `prepareSwitch()` 负责可能耗时的准备与可行性检查；真正提交硬件模式切换的 `doSwitch()` 与 controller start/stop 一起在实时 `update()` 路径发生，并必须非阻塞。这样避免硬件模式在 controller 尚未切换时提前改变。对需多个周期确认的 CANopen 等硬件，线程没有给通用策略，驱动仍必须明确切换期间旧/新命令的处理。",
+        "applicability": "直接适用于 ROS 1 Indigo/Jade 历史接口；现代 ros2_control 需按当前 lifecycle/switch API 重新核对。",
+        "bilingual_terms": [
+          "模式切换（mode switching）",
+          "非实时准备（non-realtime preparation）",
+          "原子提交（atomic commit）",
+          "实时安全（realtime safe）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros_control_prepare_do_switch_timing_211",
+        "problem_title_zh": "同步硬件模式与控制器切换时序",
+        "question_zh": "ros_control 中 `prepareSwitch()` 与 `doSwitch()` 应分别在哪个线程执行，为什么？",
+        "source_locator": "ros_control #211 原帖真机复现；PR #209 merge 57c94c0；PR #210 merge 1ae7a0b；ros_canopen 复测 157007428",
+        "source_url": "https://github.com/ros-controls/ros_control/issues/211",
+        "verification_refs": [
+          {
+            "locator": "Indigo 修复已合并，merge commit 57c94c096796aabe59f10625cf28e839e85f6415",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros_control/pull/209"
+          },
+          {
+            "locator": "Jade 修复已合并，merge commit 1ae7a0b201d1a1aea49a7fa8e6b0fee92b4775fd",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros_control/pull/210"
+          },
+          {
+            "locator": "ros_canopen 参与者确认 Indigo 变更按预期工作",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/ros-controls/ros_control/pull/210#issuecomment-157007428"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros_control.211",
+    "query": "ros_control doSwitch update realtime prepareSwitch controller mode",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROS 1 Indigo/Jade hardware controller switching",
+      "CANopen multi-axis robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "线程完整讨论单周期语义、慢速 CANopen 边界，最终形成 prepareSwitch 非实时准备、doSwitch 实时提交的合并实现。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 在位置/速度/力矩控制器之间切换时，硬件模式与控制器状态不同步可能产生丢命令、突跳或失控；准备阶段与原子提交必须有清晰时序。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros_control.211",
+  "summary": "ros_control #211 在真机复现：旧实现从非实时 ROS callback 调用 `RobotHW::doSwitch()`，会让硬件模式先于控制器切换，产生未定义行为。合并 PR #209/#210 将 `doSwitch()` 移到实时 `update()` 中，并把非实时准备收敛到 `prepareSwitch()`；修订后 tests passing，ros_canopen 参与者在 Indigo 变更上确认符合预期。线程也明确慢速 CANopen 切换的边界：`doSwitch()` 必须实时安全且非阻塞，耗时准备不能偷渡进周期线程。",
+  "title": "控制器模式切换的 prepareSwitch 与 doSwitch 必须分属非实时和实时阶段",
+  "version": null
+}

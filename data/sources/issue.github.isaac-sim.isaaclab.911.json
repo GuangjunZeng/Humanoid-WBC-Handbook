@@ -1,0 +1,145 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zoctipus"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/911",
+  "captured_at": "2026-08-11T09:42:00+08:00",
+  "content_sha256": "2d2fa4ffef8c99e00e60aefd5cd1a8f419e9c274e1b7a917b9316944a52ae108",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对 Issue 正文、14 条评论和 PR #967 的合并状态；没有把 world-frame Jacobian 本身描述成 PhysX 错误。",
+    "components": [
+      "Isaac Lab DifferentialInverseKinematicsAction",
+      "Franka Panda",
+      "geometric Jacobian",
+      "root frame",
+      "quaternion rotation"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者用 inverse(base_quat) 生成 3×3 旋转矩阵，对 Jacobian 的线速度三行和角速度三行分别做批量矩阵乘法，并在旋转 90 度基座上演示稳定遥操作。",
+        "贡献者进一步讨论绝对目标若在 world frame 给出，还需先转换为 base frame；线程明确这是接口设计选择，调用侧必须保持约定一致。"
+      ],
+      "diagnostics": [
+        "同时标注 action target、当前末端姿态与 Jacobian 的 frame，不要仅看误差向量初值。",
+        "维护者澄清 PhysX Jacobian 本身可合法地位于 world frame；问题在于 DifferentialInverseKinematicsAction 需要与 root/base-frame 目标保持一致。",
+        "quat_apply 只接受 N×3 向量，而 Jacobian 块是 N×3×n_Dof；线程中确认应使用 matrix_from_quat 与 torch.bmm。"
+      ],
+      "effective_fixes": [
+        "使用包含 PR #967 的版本；该 PR 在 DifferentialInverseKinematicsAction 内把 Jacobian 转到 root frame，并区分 world-frame 与 base-frame Jacobian 属性。",
+        "旧版本手工修补时，用基座逆旋转矩阵分别左乘 Jacobian 的线速度块与角速度块，且把绝对目标转换到同一 base/root frame。"
+      ],
+      "environments": [
+        "Isaac Lab commit 7452386；Isaac Sim 4.1；Ubuntu 20.04；RTX 4090；CUDA 12.5；Franka IK-Abs 任务。"
+      ],
+      "limits": [
+        "world-frame Jacobian 不是天然错误；只有在控制器误差与命令使用 root/base frame 时才必须转换。",
+        "PR #967 描述中的测试 checklist 未勾选新增测试，部署到其他机器人仍应做旋转基座回归测试。"
+      ],
+      "outcomes": [
+        "作者在旋转 90 度的 Franka 基座上展示修补后可稳定遥操作；PR #967 已合并，merge commit 为 762f4e32，Issue completed 关闭。"
+      ],
+      "problem_statements": [
+        "绝对 IK 在机器人 base 未旋转时可跟踪、旋转 90 度后持续漂移时，应如何核对目标与 Jacobian 的参考坐标系？"
+      ],
+      "safety_notes": [
+        "实机移动操作前至少用两个非零 base 朝向验证同一末端目标，并记录 frame 名；零朝向测试不能暴露此类坐标系错误。"
+      ],
+      "suspected_causes": [
+        "旧实现没有读取 root/base 姿态来转换几何 Jacobian，导致旋转基座时 Jacobian 与目标/误差所在 frame 不一致。"
+      ],
+      "symptoms": [
+        "同一常量 base-frame 目标在默认基座下稳定，在基座旋转 90 度后末端持续偏离目标。",
+        "初始时位置误差和姿态误差接近零，但控制过程仍漂移。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先把目标、误差和 Jacobian 的参考坐标系统一。旧 DifferentialInverseKinematicsAction 直接使用 world-frame 几何 Jacobian，却按 root/base-frame 目标求解；作者用基座逆旋转矩阵分别左乘 Jacobian 的线速度和角速度块后，在旋转基座上恢复稳定控制。已合并的 PR #967 将该转换放入 action，并区分 world-frame 与 base-frame Jacobian。绝对目标若来自 world frame，也必须由调用侧或 action 按同一约定转换。",
+        "applicability": "直接适用于 Isaac Lab commit 7452386/Isaac Sim 4.1 的 Franka IK-Abs；其他版本与机器人应核对 action API 当前声明的 frame。",
+        "bilingual_terms": [
+          "几何雅可比（geometric Jacobian）",
+          "基座坐标系（base frame）",
+          "世界坐标系（world frame）",
+          "批量矩阵乘法（batched matrix multiplication）",
+          "微分逆运动学（Differential Inverse Kinematics, Differential IK）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.isaaclab_rotated_base_ik_frame_911",
+        "problem_title_zh": "Isaac Lab 旋转基座下 IK 的 Jacobian 坐标系不一致",
+        "question_zh": "Isaac Lab 绝对 IK 在基座默认朝向可用、旋转 90 度后末端漂移，原线程与合并 PR 如何处理？",
+        "source_locator": "Isaac Lab #911 评论 2333206262/2333999077 的修补与形状说明，评论 2523695195 指向已合并 PR #967",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/911#issuecomment-2523695195",
+        "verification_refs": [
+          {
+            "locator": "旋转/未旋转基座对照、完整复现脚本与环境",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/911"
+          },
+          {
+            "locator": "协作者确认 Jacobian 是 N×3×n_Dof，matrix_from_quat + torch.bmm 路径有效，并澄清 world/root frame 语义",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/911#issuecomment-2333999077"
+          },
+          {
+            "locator": "2024-12-12 合并；Computes Jacobian in the root frame；Fixes #911",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/967"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.911",
+    "query": "Isaac Lab differential IK absolute rotated base root frame Jacobian PR 967",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Franka Panda；Isaac-Lift-Cube-Franka-IK-Abs-v0"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "作者用逆基座旋转矩阵与 torch.bmm 修补 Jacobian，并展示旋转 90 度基座下稳定控制。"
+      },
+      {
+        "text": "协作者说明 world-frame Jacobian 本身可用，关键是 action 内的目标、误差和 Jacobian frame 必须一致。"
+      },
+      {
+        "text": "PR #967 已合并并关闭 #911。"
+      }
+    ],
+    "wbc_relevance_reason": "移动操作与浮动基 WBC 经常在 world、root/base 与 end-effector 坐标系间传递目标和 Jacobian；坐标系不一致会在零基座旋转时隐藏、在部署姿态改变后突然失效。"
+  },
+  "published_at": "2024-08-30T23:07:58Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.911",
+  "summary": "Isaac Lab #911 用同一 Isaac-Lift-Cube-Franka-IK-Abs-v0 任务对比基座未旋转与绕竖直轴旋转 90 度，只有旋转基座无法稳定跟踪。贡献者指出当时 DifferentialInverseKinematicsAction 没有用机器人 base pose 把几何 Jacobian 转到 root frame；作者以逆基座四元数生成旋转矩阵并用 torch.bmm 分别旋转 Jacobian 线速度/角速度块后恢复遥操作。关联 PR #967 于 2024-12-12 合并并关闭 Issue。",
+  "title": "Isaac Lab 绝对 IK 在旋转基座下漂移是 Jacobian 坐标系未转换",
+  "version": null
+}

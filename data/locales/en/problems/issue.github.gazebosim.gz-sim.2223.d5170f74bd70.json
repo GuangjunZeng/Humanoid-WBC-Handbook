@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.gazebosim.gz-sim.2223.d5170f74bd70",
+  "schema_version": 1,
+  "source_fingerprint": "1211b7f520984cc016614b316324faba2521e17c3503901179e1436c0888c778",
+  "translations": {
+    "answer": "Cannot be treated as a general fix. The order of execution is a critical mechanism: `UserCommands` should be created before `Contact` in the `PreUpdate` phase. The original author resolved their specific scenario by swapping plugin order; however, subsequent users encountering the same sequence still fail upon simulation startup. The current approach should be treated as a pending workaround, with sequential verification of topics, component creation, and data freshness; the thread has not been fully resolved.",
+    "applicability": "The original workaround was effective in the original author's environment; all environments must be verified for Harmonic and simulation startup spawn models.",
+    "credibility.rationale": "The solution has not closed or resolved conflicts; the source conclusion has unresolved conflicts.",
+    "details.attempts.0": "The original author placed `UserCommands` in the `SDF` before `Contact`; the original scenario no longer reproduces; the maintainer explained this ensures entity creation first.",
+    "details.attempts.1": "Subsequent users have used the order `Physics, UserCommands, SceneBroadcaster, Contact...`; simulation startup spawn still fails.",
+    "details.diagnostics.0": "Record the actual execution order of `UserCommands::PreUpdate` and `Contact::PreUpdate`, and verify that `EachNew` runs after entity creation.",
+    "details.effective_fixes.0": "No confirmed fix for all dynamically generated scenarios; plugin order is only a local workaround and must be verified for topic and contact data.",
+    "details.environments.0": "Original post notes Ubuntu 22.04, Gazebo Harmonic; subsequent Unitree and Gazebo Classic migration reports similar issues.",
+    "details.limits.0": "Results may vary based on Gazebo version, system priority configuration, and spawn time; cannot solely rely on SDF tag order to assert resolution.",
+    "details.outcomes.0": "Original scenario is mitigated, but subsequent environments show counterexamples; the maintainer proposes `Update/PostUpdate/ECM` direction, and the issue remains open.",
+    "details.problem_statements.0": "Why does the `contact` topic exist when loading a model statically, but not when dynamically generating the same model?",
+    "details.safety_notes.0": "Set explicit survival and data freshness checks for `contact` topic during protection or state switch inputs after spawn.",
+    "details.suspected_causes.0": "The maintainer reenacted and explained: service generation runs through `UserCommands::PreUpdate`; if `Contact::PreUpdate`'s `EachNew` runs first, the new entity is not visible.",
+    "details.symptoms.0": "Model loading with `world` file shows `contact` topic; no `contact` topic after `/world/test_world/create` in empty world.",
+    "source.locator": "Gazebo #2223 original workaround 1845594063, maintainer's mechanism explanation 1850611180, subsequent counterexample 2821527232",
+    "source.title": "Gazebo Dynamic Model Spawn Contact Sensor Plugin Order Workaround Is Not Generalizable",
+    "terms.0": "Dynamic spawn (动态生成)",
+    "terms.1": "Contact sensor (接触传感器)",
+    "terms.2": "PreUpdate (更新前阶段)",
+    "terms.3": "System execution order (系统执行顺序)",
+    "title": "Placing `UserCommands` Before `Contact` in the Plugin Order Can Be a General Solution for Dynamic Spawn Contact Topic Missing?"
+  }
+}

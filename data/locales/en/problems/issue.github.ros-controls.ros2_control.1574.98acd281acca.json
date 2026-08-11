@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.1574.98acd281acca",
+  "schema_version": 1,
+  "source_fingerprint": "bd624851a105792c4467929f40de4187ee5894bd9634fe3f6a2b5726d5947439",
+  "translations": {
+    "answer": "No. The author still believes the 'period' parameter is incorrect after excluding I2C jitter; maintainers cannot reproduce it on a regular PC and require printing 'current_time', 'previous_time', and 'measured_period' within the 'ros2_control' node. The thread ends here, so only diagnostic steps are retained, and no root cause or fix for the period calculation error is provided.",
+    "applicability": "Recorded on Raspberry Pi 5; missing precise ros2_control version and maintainers have not reproduced it.",
+    "credibility.rationale": "The answer has not been closed or there is a conflict; only problem clues are formed; no reproducible reproduction record is formed.",
+    "details.attempts.0": "Configure realtime group limits; use chrt to adjust process and child process priority; disable I2C IMU read; maintainers suggest printing time variables at the same location.",
+    "details.diagnostics.0": "First, remove or isolate I2C IMU read to observe if control cycle jitter disappears.",
+    "details.diagnostics.1": "Do not use the same phenomenon to qualitatively define 'period' parameter; print 'current_time', 'previous_time', and 'measured_period' in the same location within the 'ros2_control' node.",
+    "details.effective_fixes.0": "For cyclic jitter, remove or isolate the I2C IMU read after which the author observed cyclic stability.",
+    "details.environments.0": "Raspberry Pi 5; controller_manager at 250 Hz; low-latency kernel; realtime group limits configured afterward; no precise ROS 2/ros2_control version provided.",
+    "details.limits.0": "The thread does not explain using asynchronous I/O, independent thread, or specific driver fix; only confirms stability after stopping.",
+    "details.limits.1": "Cannot directly extrapolate low-latency kernel results to all hardware and RT kernels.",
+    "details.outcomes.0": "I2C-induced jitter has been confirmed by author A/B; the 'period' parameter issue has not closed.",
+    "details.problem_statements.0": "How should I2C read and 'update(period)' parameter be diagnosed when ros2_control 250 Hz cycle has large jitter?",
+    "details.safety_notes.0": "Do not let sensor read cause unbounded blocking of real-time control thread; monitor worst-case execution time and deadline miss.",
+    "details.suspected_causes.0": "Author confirms large jitter comes from I2C IMU read; 'period' parameter issue remains undiagnosed.",
+    "details.symptoms.0": "Actual time difference fluctuates between ~1.1-6.9 ms; 'update()' period parameter does not match the author's offline time difference.",
+    "source.locator": "ros2_control #1574 comment 2183981102, 2183982425, 2183984139",
+    "source.title": "ros2_control control cycle high jitter and 'update(period)' period anomaly must be separated for diagnosis",
+    "terms.0": "Controller period parameter (控制器周期参数)",
+    "terms.1": "Measured period (测量周期)",
+    "terms.2": "Current/previous timestamp (当前/前一时间戳)",
+    "title": "Original thread explains 'update(time, period)' period inconsistency with adjacent calls?"
+  }
+}

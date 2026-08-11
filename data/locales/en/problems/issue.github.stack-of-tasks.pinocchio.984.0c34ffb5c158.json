@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.984.0c34ffb5c158",
+  "schema_version": 1,
+  "source_fingerprint": "879fb371a314e30a2c9569089e72e867ccc1b3426a64b8d013ca26b496bf7733",
+  "translations": {
+    "answer": "First check the generalized force reference coordinate system at the base. The root cause is misinterpreting the generalized force of the base as part of the machine system, when it should be interpreted in the world frame; correcting this leads the original author to confirm the system is working. If further strict coupling of constraint force and acceleration is required, consider equality constraints using QP.",
+    "applicability": "Applicable to Pinocchio planar/base model and ABA input structure.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The author checked the joint Jacobian, velocity derivatives, and forward dynamics interface before constraints.",
+    "details.diagnostics.0": "Each generalized coordinate, generalized velocity, and generalized force component was verified for the reference coordinate system.",
+    "details.effective_fixes.0": "The base generalized force was reinterpreted and constructed in the world coordinate system.",
+    "details.environments.0": "Pinocchio, planar root joint, ABA, two-wheel differential drive mobile robot.",
+    "details.limits.0": "The strict equality constraint coupling of constraint force and acceleration still may require QP; this case ultimately fixes the coordinate system misunderstanding.",
+    "details.outcomes.0": "The original author confirmed the code works after correcting the coordinate system understanding.",
+    "details.problem_statements.0": "The control strategy did not comply with the side-zero velocity constraint on the mobile base.",
+    "details.safety_notes.0": "Before real-world testing of the baseplate, perform coordinate system unit tests for each generalized force component.",
+    "details.suspected_causes.0": "Misinterpreting the base force moment from the ABA input as part of the machine system, when it should be interpreted in the world frame.",
+    "details.symptoms.0": "There is a contradiction in the calculation of the side force on the base and local y velocity.",
+    "source.locator": "Original author resolves @micko-plz",
+    "source.title": "Pinocchio ABA with Mobile Base Side Constraint Abnormality: First Check What?",
+    "terms.0": "Forward Dynamics (前向动力学)",
+    "terms.1": "Coordinate Frame (坐标系)",
+    "terms.2": "Quadratic Programming (QP) (二次规划)",
+    "title": "Pinocchio ABA with Mobile Base Side Constraint Abnormality: First Check What?"
+  }
+}

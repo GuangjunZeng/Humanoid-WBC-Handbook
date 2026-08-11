@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.lecar-lab.human2humanoid.71.d90724c82733",
+  "schema_version": 1,
+  "source_fingerprint": "b5eac9a0bf0271aa1dfe40349ae7160a52e29a365591c1bac8a90be9a0c2426e",
+  "translations": {
+    "answer": "The original poster confirmed two issues: the negative direction joint axes in URDF need to be multiplied by -1 at the corresponding DOF positions; the NECK_Y import position disrupts the order of the upper arm joints, requiring adjustment of the order of the worldbody in MuJoCo XML and the ROTATION_AXIS to be in the same order. Only changing the sign of one axis is insufficient to fix the index misalignment. This conclusion was verified on a 30-joint custom humanoid robot and needs re-validation when migrating to other models.",
+    "applicability": "Applies to custom humanoid re-directions where joint axis signs and DOF ordering are explained via separate ROTATION_AXIS tables.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The questioner first modified the axis sign, but no change occurred; then both the sign matrix of dof_pos and joint order were adjusted.",
+    "details.diagnostics.0": "Compare joint axis signs in URDF with runtime ROTATION_AXIS; print the joint order after import to confirm if NECK_Y is inserted before the upper arm DOF and causes index misalignment.",
+    "details.effective_fixes.0": "Create a sign matrix for negative-axis joints in URDF, multiply corresponding dof_pos by -1; adjust the order of NECK_Y in MuJoCo XML worldbody and modify the ROTATION_AXIS in torch_humanoid_batch.py accordingly.",
+    "details.environments.0": "LeCAR-Lab/human2humanoid; stable_punch.pkl; 30-joint custom humanoid; vis_motion.py; MuJoCo XML/URDF; specific submission and version not mentioned.",
+    "details.limits.0": "This is a self-test by the author of the custom humanoid; the order of DOF indices by importers (sorted by name, tree structure, or XML order) needs verification in the target toolchain.",
+    "details.outcomes.0": "The questioner explicitly states the problem resolved and lists the two reasons and fixes mentioned.",
+    "details.problem_statements.0": "When redirecting a custom humanoid, the left key points align, but the right body is misaligned; how to diagnose the issue?",
+    "details.safety_notes.0": "Incorrect axis signs or joint order can produce commands with opposite directions; verify with small single-joint commands before real machine testing.",
+    "details.suspected_causes.0": "Negative-axis joints in URDF are not compensated in dof_pos; NECK_Y is imported before the upper arm DOF, causing the right joint vector to misalign with the ROTATION_AXIS order.",
+    "details.symptoms.0": "Left arm and leg can match the red key points, but the right body cannot; changing a single axis sign does not resolve the issue.",
+    "media_summaries.0": "The original poster used red key points to describe left-right differences, but the root cause and fix are explicitly stated in the questioner's text; no additional conclusions from unreviewed screenshots were added.",
+    "source.locator": "Issue #71, questioner self-answered in issuecomment-3149818647",
+    "source.title": "Custom Humanoid Re-direction Causes One Side Normal, the Other Key Points Misaligned: Negative Axis Sign and Joint Order Are Not Consistent",
+    "terms.0": "Joint-axis sign (关节轴符号)",
+    "terms.1": "DOF ordering (自由度顺序)",
+    "terms.2": "Rotation axis table (ROTATION_AXIS) (旋转轴表)",
+    "terms.3": "Forward kinematics (正向运动学)",
+    "title": "How to Diagnose and Fix Axis Sign and Joint Order Mismatches in Custom Humanoid Re-directions Where One Side is Normal and the Other is Misaligned?"
+  }
+}

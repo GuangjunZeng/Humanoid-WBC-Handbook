@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.2808.b8716ee68d29",
+  "schema_version": 1,
+  "source_fingerprint": "56beafcaa554b93a436c27c9d488a3704838d3733e9253c66b7a2696b7b91c72",
+  "translations": {
+    "answer": "In the Jazzy/4.38.0/UR environment, the author confirmed that switching RMW_IMPLEMENTATION from rmw_zenoh_cpp to rmw_fastrtps_cpp eliminated the phenomenon; it was reproducible on Zenoh 0.2.8 deb and 0.2.9 commit 858f7b5. Switching RMW can be used as an isolation method, but the cause of delay in the service/publish path in Zenoh is not identified, and Cyclone DDS is not provided in the post.",
+    "applicability": "Ubuntu 24.04 PREEMPT_RT, ROS 2 Jazzy, controller_manager 4.38.0, UR 500 Hz with rmw_zenoh 0.2.8/0.2.9.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent reproduction is missing.",
+    "details.attempts.0": "The author provided evidence of service calls, rqt, and system load; the maintainer measured the mutex region to be approximately 20 us.",
+    "details.attempts.1": "The author switched from rmw_zenoh to rmw_fastrtps and reproduced the issue on two Zenoh versions.",
+    "details.diagnostics.0": "Fixing the ros2_control/controller_manager version, switching only RMW_IMPLEMENTATION for A/B.",
+    "details.diagnostics.1": "Comparing controller_manager.total_time before, during, and after the service call; the maintainer did not reproduce it on the same version locally, indicating it is not solely a controller_manager version issue.",
+    "details.effective_fixes.0": "Temporarily switching from rmw_zenoh to Fast DDS in this environment; the author also plans to use Cyclone DDS.",
+    "details.environments.0": "Ubuntu 24.04; kernel 6.8.1-1037-realtime PREEMPT_RT; ROS 2 Jazzy; ros-jazzy-controller-manager 4.38.0-1noble.20251008.000820; rmw_zenoh 0.2.8 deb and 0.2.9 commit 858f7b5; Intel i7-11700.",
+    "details.limits.0": "Cannot conclude that all rmw_zenoh versions or all service calls have this issue.",
+    "details.limits.1": "Cyclone DDS does not provide actual test data on this thread; it is only a plan by the author.",
+    "details.limits.2": "The stale issue closure does not equal the root cause of Zenoh.",
+    "details.outcomes.0": "The author confirmed that switching RMW alone eliminates the phenomenon; the root cause is not fully identified, and the issue was closed due to stale closure.",
+    "details.problem_statements.0": "How can one narrow down the issue to the RMW layer when calling the controller_manager service during a 500 Hz control loop overrun and UR RTDE disconnection?",
+    "details.safety_notes.0": "RMW switching should be validated on an experimental platform before restoring to real machine high-speed operation.",
+    "details.suspected_causes.0": "The author confirmed the phenomenon occurs with rmw_zenoh, disappears when switching to Fast DDS; the internal lock and mechanism in Zenoh are not further identified.",
+    "details.symptoms.0": "List_controllers is called once per second, causing an update delay of approximately 3.16 ms and a total cycle of approximately 3.33 ms, missing the 500 Hz deadline.",
+    "details.symptoms.1": "Frequent calls lead to UR RTDE Data Pipeline overflow and disconnection.",
+    "source.locator": "ros2_control #2808 comment 3541490499, 3541707255; maintainer did not reproduce see 3541065379/3541219103",
+    "source.title": "ros2_control service call latency in the case is eliminated by switching RMW in this scenario, but root cause remains unknown.",
+    "terms.0": "Robot Operating System (ROS) middleware implementation (RMW) (机器人操作系统中间件实现)",
+    "terms.1": "Control-loop overrun (控制环超时)",
+    "terms.2": "Real-Time Data Exchange (RTDE) (实时数据交换)",
+    "terms.3": "Service call (服务调用)",
+    "title": "What is the temporary workaround validated by the original author for the service call triggering 500 Hz overrun in this case, and what root causes remain unknown?"
+  }
+}

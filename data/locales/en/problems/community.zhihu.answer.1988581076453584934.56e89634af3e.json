@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.answer.1988581076453584934.56e89634af3e",
+  "schema_version": 1,
+  "source_fingerprint": "45fbedbfdd5c9e9931e09a12ea3ceee2deed9c0f63333b305288517d9e03b42a",
+  "translations": {
+    "answer": "This incident requires explicit definition of the world frame/robot frame orientation semantics, and speed, workspace, and human-robot distance constraints should be enforced before large leg movements; absolute and incremental mapping should be designed separately. The post does not provide a retest, and the delay is only an estimate, so it can only be considered as an unresolved safety case.",
+    "applicability": "0.3–0.5 s for video estimation; comments are largely off-topic, so it cannot be considered as technical evidence.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "The solution has not closed or there is a conflict; the current state is only forming a problem clue.",
+    "details.attempts.0": "A comparison of absolute, incremental, and mixed mapping is made, emphasizing the danger of the incident.",
+    "details.diagnostics.0": "Cross-verified through the text, visible comments, and media summaries; not independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "G1 Whole-Body Teleoperation; the operator and robot face in different directions.",
+    "details.limits.0": "0.3–0.5 s for video estimation; comments are largely off-topic, so it cannot be considered as technical evidence.",
+    "details.outcomes.0": "No retest results provided.",
+    "details.problem_statements.0": "In whole-body teleoperation, how can we prevent mapping errors while avoiding injury to the operator?",
+    "details.safety_notes.0": "Community candidates are only for forming a diagnostic hypothesis; when involving real machines, limit speed, force, and isolate personnel while retaining logs.",
+    "details.suspected_causes.0": "The responder believes the issue is primarily due to orientation/primary/secondary mapping strategies and insufficient spatial isolation, not simply attributed to sensor absence.",
+    "details.symptoms.0": "The operator's leg movement causes the robot to kick the operator; the action reenactment still shows delay after the incident.",
+    "media_summaries.0": "Seven visible media frames show the operator lifting their leg, G1 orientation, and the action sequence after impact; the images support spatial orientation risk, but the 0.3–0.5 s delay is only an estimate.",
+    "source.locator": "The orientation mapping and delay analysis in the text description",
+    "source.title": "G1 Whole-Body Teleoperation: Operator and Robot Facing in Different Directions – Orientation Mapping and End-to-End Delay Risk",
+    "terms.0": "Whole-Body Teleoperation (WB Teleop) (全身遥操作)",
+    "terms.1": "End-to-End Latency (端到端时延)",
+    "title": "In Whole-Body Teleoperation, Operator and Robot Facing in Different Directions – How to Prevent Mapping Errors While Injuring the Operator?"
+  }
+}

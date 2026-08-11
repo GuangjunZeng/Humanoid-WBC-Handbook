@@ -1,0 +1,31 @@
+{
+  "kind": "claim",
+  "problem_id": "loco-manipulation.sequential-unified-policy.ulc",
+  "schema_version": 1,
+  "source_fingerprint": "1f8cfd452e39986744a6d3e3ecb4d9992e3fde05a4626028333ed4ff38a6dff1",
+  "translations": {
+    "answer": "In the three-degree-of-freedom waist Unitree G1 simulation setup of ULC, skills are opened in the order of speed, height, torso/arms, combined with forward feed of arm actions with residuals, command interpolation/delay, payload randomization, and CoM reward, allowing training of a single policy that covers a large command space; evidence does not support extrapolation to complex leg actions or uncontrolled contact tasks.",
+    "applicability.assumptions.0": "Target tasks can be commanded by root velocity/height, torso orientation and arm joint positions.",
+    "applicability.assumptions.1": "A 3-DoF-waist Unitree G1-like embodiment and procedural command sampler are available.",
+    "applicability.controllers.0": "ULC unified PPO policy",
+    "applicability.environments.0": "four simulation command/load/delay evaluations",
+    "applicability.environments.1": "reported teleoperation tasks",
+    "applicability.robots.0": "Unitree G1 with 3-DoF waist",
+    "applicability.simulators.0": "Isaac Lab",
+    "confidence_rationale": "Large simulation comparisons and component ablations support the design, but baseline interfaces differ, public code is unavailable, and real task evidence is mainly qualitative.",
+    "evidence.0.locator": "Figure 2, Equations 25-26, Tables III-V and Figure 5",
+    "evidence.0.note": "Supports unified command tracking, residual arm action and component ablations.",
+    "evidence.0.title": "ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation",
+    "evidence.1.locator": "Official project page code control, accessed 2026-08-10",
+    "evidence.1.note": "Records advertised but unreleased official implementation.",
+    "evidence.1.title": "ULC official project page",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Curriculum Learning (课程学习)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Whole-Body Teleoperation (全身遥操作)",
+    "terms.4": "End-to-End Latency (端到端时延)",
+    "terms.5": "Center of Mass (CoM) (质心)",
+    "terms.6": "Payload (有效载荷)",
+    "title": "How does a single whole-body strategy reduce training conflicts in multi-object mobile tasks?"
+  }
+}

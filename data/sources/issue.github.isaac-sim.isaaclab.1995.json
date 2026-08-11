@@ -1,0 +1,141 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "bikcrum"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1995",
+  "captured_at": "2026-08-11T09:43:00+08:00",
+  "content_sha256": "0c1694832b9fc3537cf08a5963a8e4df0c1a04fefc3c540e0e8c1417871f0f2f",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对原帖与 14 条评论；将底层支持状态保留为 partial，没有从 Issue 关闭状态推断引擎已经修复。",
+    "components": [
+      "Isaac Lab ContactSensorCfg",
+      "PhysX GPU contact filter",
+      "static collider",
+      "RigidBodyAPI",
+      "kinematic rigid body"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目贡献者建议给地面 prim 添加 RigidBodyAPI 并启用 kinematic 属性。",
+        "原作者用 SceneCfg 中的 RigidObjectCfg/CuboidCfg 建立大尺寸薄地面，设置 RigidBodyPropertiesCfg(kinematic_enabled=True)、collision_props 和摩擦材质。"
+      ],
+      "diagnostics": [
+        "区分接触物理求解与接触检索/过滤 API：维护者明确静态 collider 的物理碰撞仍正常，受限的是 filtered contact retrieval。",
+        "检查目标 prim 是否只有 collider、没有 RigidBodyAPI；若用 workaround，还要确认 kinematic body 尺寸覆盖所有环境。"
+      ],
+      "effective_fixes": [
+        "在原版本需要 filtered contact 时，把普通 GroundPlane/static collider 改成覆盖工作区的 kinematic rigid body；原作者明确报告该 RigidObjectCfg 方案可用。"
+      ],
+      "environments": [
+        "Isaac Sim 4.5.0；Isaac Lab 2.0.0；GPU pipeline；/World/ground 为普通静态 collider。"
+      ],
+      "limits": [
+        "该绕行方案改变了地面 prim 类型；TerrainImporterCfg、RayCaster 的 mesh_prim_paths 与多环境路径需要分别验证，不能直接照搬。",
+        "后续参与者报告过 prim path 与 ray-caster mesh 错误，但那不是原始 filtered-contact 限制的已确认修复；本卡不把这些跟帖推成通用结论。"
+      ],
+      "outcomes": [
+        "原作者发布了工作配置；Issue 之后 completed 关闭，但线程没有给出引擎版本修复或证明普通 static collider 过滤已被支持。"
+      ],
+      "problem_statements": [
+        "ContactSensorCfg 对 /World/ground 设置 filter_prim_paths_expr 后报 GPU contact filter 不支持且矩阵为空，是否表示地面接触没有被物理引擎求解？"
+      ],
+      "safety_notes": [
+        "不要仅依据 filtered matrix 为零判定机器人离地；应同时用未过滤净接触、姿态/高度与终止逻辑做交叉检查。"
+      ],
+      "suspected_causes": [
+        "当时 PhysX GPU 接触检索 API 不支持对不是 rigid body 的静态 collider 做过滤。"
+      ],
+      "symptoms": [
+        "控制台警告 GPU contact filter for collider '/World/ground' is not supported。",
+        "指定 filter_prim_paths_expr 后不能取得该静态地面的 filtered contact 数据；不使用 filter 时普通接触仍可参与仿真。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "这不等于物理引擎没有求解地面接触。项目贡献者明确说限制在静态 collider 的接触检索/过滤 API；普通静态碰撞仍参与物理求解。原版本的可用绕行是把地面建成带 RigidBodyAPI 的运动学刚体（kinematic rigid body），例如用 RigidObjectCfg + 薄 CuboidCfg 并设置 kinematic_enabled=True。原作者给出了工作配置，但线程没有证明底层静态过滤限制已在后续版本消失，因此升级后仍需实测。",
+        "applicability": "直接适用于 Isaac Sim 4.5.0、Isaac Lab 2.0.0 的 GPU filtered contact 与普通 static ground collider；其他版本需核对当前 PhysX 支持。",
+        "bilingual_terms": [
+          "过滤接触（filtered contact）",
+          "静态碰撞体（static collider）",
+          "运动学刚体（kinematic rigid body）",
+          "接触检索接口（contact retrieval API）",
+          "刚体接口（Rigid Body API, RigidBodyAPI）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.isaaclab_static_ground_filter_1995",
+        "problem_title_zh": "Isaac Lab 静态地面不支持 GPU filtered contact",
+        "question_zh": "Isaac Lab 的 ContactSensorCfg 对 /World/ground 设置 filter_prim_paths_expr 后报 GPU contact filter 不支持且没有过滤数据，原线程如何解释和绕行？",
+        "source_locator": "Isaac Lab #1995 评论 2708680265/2711098361 的维护者限制说明，评论 2877887219 的原作者可用 RigidObjectCfg 配置",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2877887219",
+        "verification_refs": [
+          {
+            "locator": "Isaac Sim 4.5.0/Isaac Lab 2.0.0 的配置、警告和空 filtered contact 现象",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1995"
+          },
+          {
+            "locator": "贡献者确认限制在检索/过滤 API，静态 collider 的物理接触求解不受影响",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2711098361"
+          },
+          {
+            "locator": "原作者报告 RigidObjectCfg + kinematic Cuboid 地面可用并提供代码",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2877887219"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1995",
+    "query": "Isaac Lab GPU contact filter static ground collider rigid kinematic workaround",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖为通用 Isaac Lab 场景；后续讨论包含 JetBot 示例"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "项目贡献者确认受限的是静态 collider 的 filtered contact retrieval，不是接触物理求解。"
+      },
+      {
+        "text": "原作者给出 kinematic RigidObjectCfg 地面的可用代码，同时提醒地面尺寸必须覆盖资产区域。"
+      }
+    ],
+    "wbc_relevance_reason": "足底接触、跌倒检测和接触切换经常依赖 filtered contact；如果把“过滤 API 不支持”误判为“仿真没有接触”，会直接破坏奖励、终止条件和 WBC 接触状态。"
+  },
+  "published_at": "2025-03-03T07:18:59Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1995",
+  "summary": "Isaac Lab #1995 在 Isaac Sim 4.5.0、Isaac Lab 2.0.0 中给 ContactSensorCfg.filter_prim_paths_expr 指定 /World/ground 后出现 GPU contact filter for collider is not supported，过滤后的接触力为空。项目贡献者说明限制位于静态 collider 的接触检索/过滤 API，而不是物理求解本身；可把地面改成启用 RigidBodyAPI 的 kinematic rigid body。原作者随后给出 RigidObjectCfg + CuboidCfg + kinematic_enabled=True 的实际可用配置，但线程没有证明后续版本已消除底层限制。",
+  "title": "Isaac Lab GPU contact filter 不能过滤普通静态 ground collider",
+  "version": null
+}

@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "tristanc（Trac 迁移记录）"
+  ],
+  "canonical_url": "https://github.com/coin-or/qpOASES/issues/48",
+  "captured_at": "2026-08-11T23:47:00+08:00",
+  "content_sha256": "180bf672fa863c199c9a6296ff676736e8eb063fec3c307b3610e216bf1ab448",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取迁移 Issue 与全部 4 条评论；closed/fixed 不替代技术闭环，结论不依赖图片。",
+    "components": [
+      "qpOASES",
+      "homotopy",
+      "working set",
+      "constraint redundancy"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者给出三步排查；作者回复会尝试，但没有发布结果或 QP 数据。"
+      ],
+      "diagnostics": [
+        "先独立验证 QP 可行性；再小幅放宽 variable bounds 与 constraints 排除 round-off；最后逐元素核对 row-major `A`。"
+      ],
+      "effective_fixes": [
+        "没有经原作者确认的有效修复；放宽边界和重排矩阵只能在确认具体问题后采用。"
+      ],
+      "environments": [
+        "qpOASES 3.2.0 的迁移支持记录；原帖未提供 QP 数据或系统环境。"
+      ],
+      "limits": [
+        "没有最小复现、参数尺度或作者结果；不能从日志序列推断真实根因。"
+      ],
+      "outcomes": [
+        "记录后来标记 fixed，但线程没有技术闭环，因此本卡保持 partial。"
+      ],
+      "problem_statements": [
+        "出现 `Stepsize is 0` 并随后报 QP infeasible 时，zero stepsize 本身说明什么？"
+      ],
+      "safety_notes": [
+        "实时控制中不要无条件放宽安全约束；若为数值诊断，只在离线副本或受控限幅下试验。"
+      ],
+      "suspected_causes": [
+        "维护者说偶发 zero step 常与冗余约束和 working-set 线性独立性有关；但该线程没有定位用户具体 infeasible 的唯一根因。"
+      ],
+      "symptoms": [
+        "先打印 zero stepsize warning，随后 premature homotopy termination / infeasible。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "不能。维护者说明偶发 zero step 通常表示冗余约束使 working-set 迭代当下无法前进，并不单独构成故障结论。若最终还报 infeasible，原帖给出的排查顺序是：验证 QP 真实可行性；在不影响安全的离线副本中小幅放宽 bounds/constraints 检查 round-off；核对 `A` 的 row-major 布局。作者没有回报哪一步有效，所以这是一份诊断清单，不是已确认修复。",
+        "applicability": "适用于 qpOASES 3.2.0 同类日志的初步排查；具体根因必须用 QP 数据复现。",
+        "bilingual_terms": [
+          "步长（step size）",
+          "同伦路径（homotopy path）",
+          "工作集（working set）",
+          "舍入误差（round-off error）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.qpoases_zero_stepsize_diagnostic_48",
+        "problem_title_zh": "分离 zero stepsize 与 QP infeasibility 的诊断",
+        "question_zh": "qpOASES 打印 `Stepsize is 0` 后报 infeasible，能否直接认定 zero step 是根因？",
+        "source_locator": "qpOASES #48 维护者诊断回复 589978627；作者仅表示会尝试 589978633",
+        "source_url": "https://github.com/coin-or/qpOASES/issues/48#issuecomment-589978627",
+        "verification_refs": [
+          {
+            "locator": "维护者解释 zero step 并给出三步排查；无作者结果确认",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/coin-or/qpOASES/issues/48#issuecomment-589978627"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "coin-or.qpoases.48",
+    "query": "qpOASES zero stepsize premature homotopy infeasible redundant constraints row major roundoff",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "QP-based WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者：偶发 zero stepsize 常与约束冗余有关；最终 infeasible 要另查可行性、round-off 和矩阵布局。"
+      }
+    ],
+    "wbc_relevance_reason": "在线 WBC/QP 日志中若把 zero stepsize 直接当成 solver 崩溃，容易跳过真正的可行性、尺度和矩阵布局检查。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.coin-or.qpoases.48",
+  "summary": "qpOASES #48 报告 `Stepsize is 0` 后出现 `Premature homotopy termination because QP is infeasible`。维护者解释，偶发 zero stepsize 通常只表示某些约束冗余、求 working set 时该次迭代无法沿 homotopy path 前进；若同时报 infeasible，应依次检查真实可行性、轻微放宽 bounds/constraints 以排除 round-off，再检查 `A` 是否按 row-major 传入。作者只说会尝试，没有回报结果。",
+  "title": "qpOASES zero stepsize 不是单独的故障结论",
+  "version": null
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.tsid.222.29814db05f66",
+  "schema_version": 1,
+  "source_fingerprint": "9db142405299e5f59c76c719fec8baa8d297661553ad82730aea8e037f76706c",
+  "translations": {
+    "answer": "The TSID body has been set to Release, but the published installation command only includes 'cmake ..'. The collaborators point out that eiquadprog does not explicitly use CMAKE_BUILD_TYPE=RELEASE. The maintainers confirm this is likely missing. The author then modifies the command to 'cmake .. -DCMAKE_BUILD_TYPE=RELEASE' and rebuilds, confirming that single-loop recovery is 0.002 s, and the full example is less than 10 s. Therefore, it is recommended to check each solver and its dependencies' build type individually, rather than only verifying the main TSID library as Release.",
+    "applicability": "Applies to the original TSID Exercise 2, eiquadprog source code build, and the mentioned Intel Xeon/Python 3.10 environment; other HQP solvers or binary packages need to be addressed separately.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The collaborator suggests changing the eiquadprog configuration command to 'cmake .. -DCMAKE_BUILD_TYPE=RELEASE', and the author re-builds and re-measures.",
+    "details.diagnostics.0": "The processing is segmented into compute sample, HQP setup, HQP solve, and whole loop, to confirm the main bottleneck is in the HQP solve.",
+    "details.diagnostics.1": "Each solver and its dependencies' CMake build type are checked individually, not just confirming the main TSID library as Release.",
+    "details.diagnostics.2": "From the installation command provided, eiquadprog only executes 'cmake ..', and no explicit Release is given.",
+    "details.effective_fixes.0": "The eiquadprog is re-configured and rebuilt with CMAKE_BUILD_TYPE=RELEASE.",
+    "details.environments.0": "2024 TSID source code build with Python 3.10; Intel Xeon E3-1225 v5 @ 3.30 GHz; Pinocchio/hpp-fcl installed via robotpkg; eiquadprog initially built with 'cmake ..'.",
+    "details.limits.0": "The 1 kHz TALOS data from another Intel i7 2.8 GHz system is a project experience, not a benchmark for the original author's machine.",
+    "details.limits.1": "No thread statistics are provided for the same machine before and after, and no proof that all TSID applications reach 0.5–1 kHz.",
+    "details.limits.2": "The layout of site-packages/dist-packages is unrelated to the HQP performance root cause.",
+    "details.outcomes.0": "The author confirms single-loop recovery to the expected 0.002 s, and the full run is less than 10 s.",
+    "details.problem_statements.0": "The HQP solve in TSID Exercise 2 takes about 23–27 ms, making a 2 ms configuration cycle unachievable; how to identify the build-side bottleneck?",
+    "details.suspected_causes.0": "eiquadprog is not compiled in Release mode; the maintainer notes that missing Release in dependencies can lead to about twenty times the usual runtime increase.",
+    "details.symptoms.0": "Compute sample: ~0.00003 s, HQP setup: ~0.00020 s, HQP solve: ~0.026 s, single-loop: ~0.027 s, significantly exceeding conf.dt=0.002 s.",
+    "details.symptoms.1": "One CPU core is continuously 100%, full run: ~107–120 s, while the companion machine is less than 10 s.",
+    "source.locator": "Issue #222, collaborator locates issuecomment-1958893254; maintainer confirms issuecomment-1959212460; author re-measures issuecomment-1959689788",
+    "source.title": "TSID's HQP cycle goes from 27 ms to 2 ms: checking the build type of eiquadprog",
+    "terms.0": "Hierarchical Quadratic Programming (HQP) (层级二次规划)",
+    "terms.1": "Solve Cycle (求解周期)",
+    "terms.2": "Release Build (发布构建)",
+    "terms.3": "Sampling Period (采样周期)",
+    "title": "TSID's HQP solve is ~26 ms, cycle ~27 ms, with conf.dt=2 ms, what build problem is finally located?"
+  }
+}

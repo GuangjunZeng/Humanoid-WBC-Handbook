@@ -1,0 +1,33 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros2_control.649.59f2e044916e",
+  "schema_version": 1,
+  "source_fingerprint": "8b11c0ab6c28931c9c5b5e67f04473d436cd8171c756ba10f172ed6732c87a8b",
+  "translations": {
+    "answer": "Yes. PR #1570 adds rw_rate to each ros2_control hardware component and updates the official documentation, parsing/scheduling implementation, and testing. The documentation example shows system, actuator, and sensor running at 500/200/250 Hz respectively; if not set, it follows controller_manager, and if higher, it only runs at controller_manager rate.",
+    "applicability": "Applies to versions containing PR #1570; whether the release package has been reverted needs separate confirmation.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict, and there is formal documentation or precise reference to an independent replication.",
+    "details.attempts.0": "PR #1570 adds rw_rate to each hardware component.",
+    "details.attempts.1": "Maintainer suggests using counter/internal filtering to skip low-frequency voltage readings within a component, or splitting components.",
+    "details.diagnostics.0": "First determine if different frequency signals can be assigned to different ros2_control hardware components.",
+    "details.diagnostics.1": "Distinguish between controller update rate, hardware component rw_rate, and the actual sampling rate of each state within a component.",
+    "details.diagnostics.2": "Expose timestamp or staleness of states used for reusing old values to prevent controllers from treating cached values as new samples.",
+    "details.effective_fixes.0": "Across components: set rw_rate in ros2_control tag; actual rate is limited by controller_manager rate when higher.",
+    "details.effective_fixes.1": "Same component: update target state with counter/filter rules for low-frequency readings, skip periodic retention of previous values; or restructure into separate components.",
+    "details.environments.0": "ros2_control rolling/master period; PR #1570 has been merged; specific ROS 2 release version needs to be checked for backport.",
+    "details.limits.0": "PR #1570 corresponds to the parameter name and semantics of the merge version; different ROS 2 release versions need verification.",
+    "details.limits.1": "The counter scheme for the same component is a maintainer's suggestion; no thread has been published with deployment testing.",
+    "details.outcomes.0": "Component-level rw_rate has been merged and documented/tested; fine-grained interface for sub-state of state being updated by controller is not yet implemented in this thread.",
+    "details.problem_statements.0": "How to configure different read/write rates for multiple hardware components?",
+    "details.problem_statements.1": "How to avoid reading low-frequency signals when position is 100 Hz and voltage is 0.1/1 Hz within a single hardware component?",
+    "details.safety_notes.0": "When reusing old values, carry timestamp/validity and set timeout; expired temperature, voltage, or fault states should not be silently used for safety decisions.",
+    "details.symptoms.0": "Fixed high-frequency read/write will cause low-frequency states to consume bandwidth, leading to retries, packet loss, and extra delay.",
+    "source.locator": "ros2_control #649 maintainer's comment pointing to PR #1570; merged documentation, implementation, and testing for PR #1570",
+    "source.title": "ros2_control multi-rate needs to distinguish component-level rw_rate from internal signal throttling within a component",
+    "terms.0": "Hardware component (硬件组件)",
+    "terms.1": "Read/write rate (rw_rate) (读写频率)",
+    "terms.2": "Controller manager (控制器管理器)",
+    "terms.3": "Asynchronous hardware (异步硬件)",
+    "title": "Does ros2_control already have a formal mechanism for different read/write rates for hardware components?"
+  }
+}

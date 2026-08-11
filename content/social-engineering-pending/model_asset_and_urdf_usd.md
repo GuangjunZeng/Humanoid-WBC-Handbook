@@ -1,6 +1,6 @@
 # model_asset_and_urdf_usd：技术待整理
 
-> `scope_id`: `model_asset_and_urdf_usd`；共 179 条，未做用户可见截断。
+> `scope_id`: `model_asset_and_urdf_usd`；共 173 条，未做用户可见截断。
 
 ## 1. Support Exporting Flexes and Skins with the USDExporter
 
@@ -818,15 +818,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 103. [Bug] PhysX create_rigid_body_view fails to match bodies under Geometry/ scope from v3.0 URDF converter
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5126](https://github.com/isaac-sim/IsaacLab/issues/5126)
-- 查询来源：contact；URDF
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 104. [Bug Report] Inconsistent Behavior and Frame Rate for loading USD Asset with Physics via GUI and Standalone Python
+## 103. [Bug Report] Inconsistent Behavior and Frame Rate for loading USD Asset with Physics via GUI and Standalone Python
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5144](https://github.com/isaac-sim/IsaacLab/issues/5144)
@@ -834,7 +826,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 105. IsaacSim/IsaacLab is hard to use by multiple users on the same PC
+## 104. IsaacSim/IsaacLab is hard to use by multiple users on the same PC
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5158](https://github.com/isaac-sim/IsaacLab/issues/5158)
@@ -842,7 +834,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 106. [Bug Report] Deformables visualization issues on IsaacLab 2.3.1 and 3.0.0
+## 105. [Bug Report] Deformables visualization issues on IsaacLab 2.3.1 and 3.0.0
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5159](https://github.com/isaac-sim/IsaacLab/issues/5159)
@@ -850,7 +842,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 107. [Proposal] Provide configurable self-collision group filtering for Newton articulations
+## 106. [Proposal] Provide configurable self-collision group filtering for Newton articulations
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5217](https://github.com/isaac-sim/IsaacLab/issues/5217)
@@ -858,7 +850,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 108. [Bug Report] isaaclab:v3.0.0-beta    :   ./isaaclab.sh --install  error
+## 107. [Bug Report] isaaclab:v3.0.0-beta    :   ./isaaclab.sh --install  error
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5229](https://github.com/isaac-sim/IsaacLab/issues/5229)
@@ -866,7 +858,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 109. [Question] train Isaac-SO-ARM100-Lift-Cube-v0 lift rewards aways is 0
+## 108. [Question] train Isaac-SO-ARM100-Lift-Cube-v0 lift rewards aways is 0
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5244](https://github.com/isaac-sim/IsaacLab/issues/5244)
@@ -874,7 +866,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 110. [Bug Report]  Dependency conflict in process of installing isaaclab(isaaclab[v3.0.0-beta)( Executing ./isaaclab.sh --install with errors（isaaclab[v3.0.0-beta]）)
+## 109. [Bug Report]  Dependency conflict in process of installing isaaclab(isaaclab[v3.0.0-beta)( Executing ./isaaclab.sh --install with errors（isaaclab[v3.0.0-beta]）)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5249](https://github.com/isaac-sim/IsaacLab/issues/5249)
@@ -882,7 +874,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 111. [Proposal] Add Newton deformable object API with coupled rigid-deformable simulation
+## 110. [Proposal] Add Newton deformable object API with coupled rigid-deformable simulation
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5285](https://github.com/isaac-sim/IsaacLab/issues/5285)
@@ -890,7 +882,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 112. Imported urdf loads only the stage tree but not the robot
+## 111. Imported urdf loads only the stage tree but not the robot
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/530](https://github.com/isaac-sim/IsaacLab/issues/530)
@@ -898,7 +890,7 @@
 - 首次/最近发现：2026-08-10T21:30:00+08:00 / 2026-08-10T21:30:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 113. [OVPHYSX] Support for rough terrain locomotion
+## 112. [OVPHYSX] Support for rough terrain locomotion
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5321](https://github.com/isaac-sim/IsaacLab/issues/5321)
@@ -906,7 +898,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 114. [OVPHYSX] Improve USD integration to avoid disk dumps
+## 113. [OVPHYSX] Improve USD integration to avoid disk dumps
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5324](https://github.com/isaac-sim/IsaacLab/issues/5324)
@@ -914,7 +906,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 115. [OVPHYSX] SceneDataProvider
+## 114. [OVPHYSX] SceneDataProvider
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5327](https://github.com/isaac-sim/IsaacLab/issues/5327)
@@ -922,7 +914,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 116. [OVPHYSX] Test infrastructure
+## 115. [OVPHYSX] Test infrastructure
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5328](https://github.com/isaac-sim/IsaacLab/issues/5328)
@@ -930,7 +922,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 117. [Question] How is joint coupling implemented for the Shadow Dexterous Hand? (Shadowlite sim2real)
+## 116. [Question] How is joint coupling implemented for the Shadow Dexterous Hand? (Shadowlite sim2real)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5355](https://github.com/isaac-sim/IsaacLab/issues/5355)
@@ -938,7 +930,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 118. [Bug Report] play.py with --livestream 2 establishes WebRTC session without a video track, resulting in blank viewport
+## 117. [Bug Report] play.py with --livestream 2 establishes WebRTC session without a video track, resulting in blank viewport
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5364](https://github.com/isaac-sim/IsaacLab/issues/5364)
@@ -946,7 +938,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 119. Importing Carter from URDF does not allow actuation, no textures/colors
+## 118. Importing Carter from URDF does not allow actuation, no textures/colors
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/546](https://github.com/isaac-sim/IsaacLab/issues/546)
@@ -954,7 +946,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 120. [Bug Report]  Unable to run example add a new robot to Isaac Lab
+## 119. [Bug Report]  Unable to run example add a new robot to Isaac Lab
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5480](https://github.com/isaac-sim/IsaacLab/issues/5480)
@@ -962,7 +954,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 121. [Docs] Expand OvPhysX backend page when in-flight integration PRs land
+## 120. [Docs] Expand OvPhysX backend page when in-flight integration PRs land
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5634](https://github.com/isaac-sim/IsaacLab/issues/5634)
@@ -970,7 +962,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 122. [Bug Report] headless training behaves differently with collisionApproximateCylinders=true
+## 121. [Bug Report] headless training behaves differently with collisionApproximateCylinders=true
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5666](https://github.com/isaac-sim/IsaacLab/issues/5666)
@@ -978,7 +970,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 123. [Question] What is best way to make the texture moving in IsaacLab?
+## 122. [Question] What is best way to make the texture moving in IsaacLab?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5762](https://github.com/isaac-sim/IsaacLab/issues/5762)
@@ -986,7 +978,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 124. [Bug Report] unbuntu26 is unsurported
+## 123. [Bug Report] unbuntu26 is unsurported
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5777](https://github.com/isaac-sim/IsaacLab/issues/5777)
@@ -994,7 +986,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 125. [Question] Official tutorial cameras show uniform white
+## 124. [Question] Official tutorial cameras show uniform white
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5801](https://github.com/isaac-sim/IsaacLab/issues/5801)
@@ -1002,15 +994,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 126. [Bug Report] Newton backend re-enables joint target stiffness/damping for explicit actuators, causing different rest pose from PhysX
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5806](https://github.com/isaac-sim/IsaacLab/issues/5806)
-- 查询来源：contact；USD；torque
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 127. [Question] Transfering policies from IsaacLab to IsaacSim
+## 125. [Question] Transfering policies from IsaacLab to IsaacSim
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5899](https://github.com/isaac-sim/IsaacLab/issues/5899)
@@ -1018,15 +1002,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 128. [Bug Report] URDF spawn properties only apply to the root link (disable_gravity, contact sensors)
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5918](https://github.com/isaac-sim/IsaacLab/issues/5918)
-- 查询来源：whole body；contact；URDF；fall
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 129. The microwave dropped under the table
+## 126. The microwave dropped under the table
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/5922](https://github.com/isaac-sim/IsaacLab/issues/5922)
@@ -1034,7 +1010,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 130. [Proposal] Support Kit-less Deformable USD
+## 127. [Proposal] Support Kit-less Deformable USD
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6142](https://github.com/isaac-sim/IsaacLab/issues/6142)
@@ -1042,7 +1018,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 131. [Proposal] General USD Model to Newton Mesh API
+## 128. [Proposal] General USD Model to Newton Mesh API
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6143](https://github.com/isaac-sim/IsaacLab/issues/6143)
@@ -1050,7 +1026,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 132. [Proposal] Support Mixed Spawns with Newton-MJWarp
+## 129. [Proposal] Support Mixed Spawns with Newton-MJWarp
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6162](https://github.com/isaac-sim/IsaacLab/issues/6162)
@@ -1058,7 +1034,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 133. [Proposal] Remove deformable registry; spawn deformables via Newton import_usd
+## 130. [Proposal] Remove deformable registry; spawn deformables via Newton import_usd
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6208](https://github.com/isaac-sim/IsaacLab/issues/6208)
@@ -1066,7 +1042,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 134. Accessing child prims in a multi-object USD for RL environment
+## 131. Accessing child prims in a multi-object USD for RL environment
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6217](https://github.com/isaac-sim/IsaacLab/issues/6217)
@@ -1074,7 +1050,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 135. [Bug Report]Camera perspective / frame desync mismatch between headed (GUI) and headless mode with identical camera intrinsics/extrinsics; stale frames after episode reset
+## 132. [Bug Report]Camera perspective / frame desync mismatch between headed (GUI) and headless mode with identical camera intrinsics/extrinsics; stale frames after episode reset
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6250](https://github.com/isaac-sim/IsaacLab/issues/6250)
@@ -1082,7 +1058,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 136. [Question] ISAAC_NUCLEUS_DIR resolves to Nucleus cloud URL instead of local asset root despite local Isaac Sim asset configuration
+## 133. [Question] ISAAC_NUCLEUS_DIR resolves to Nucleus cloud URL instead of local asset root despite local Isaac Sim asset configuration
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6318](https://github.com/isaac-sim/IsaacLab/issues/6318)
@@ -1090,7 +1066,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 137. TerrainImporter plane import assumes legacy collision and shader prim paths
+## 134. TerrainImporter plane import assumes legacy collision and shader prim paths
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6326](https://github.com/isaac-sim/IsaacLab/issues/6326)
@@ -1098,7 +1074,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 138. [Question] Point cloud generation fails in the camera output example because camera pose fields become zero/NaN
+## 135. [Question] Point cloud generation fails in the camera output example because camera pose fields become zero/NaN
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6422](https://github.com/isaac-sim/IsaacLab/issues/6422)
@@ -1106,7 +1082,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 139. [Bug Report] Isaac Lab v2.3.1 fails to launch with Isaac Sim 5.1.0 pip installation due to missing isaacsim.asset.importer.urdf 2.4.31
+## 136. [Bug Report] Isaac Lab v2.3.1 fails to launch with Isaac Sim 5.1.0 pip installation due to missing isaacsim.asset.importer.urdf 2.4.31
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6618](https://github.com/isaac-sim/IsaacLab/issues/6618)
@@ -1114,7 +1090,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 140. [Bug Report] OVRTX intermittently drops Newton-driven robot links with GPU transform reads enabled
+## 137. [Bug Report] OVRTX intermittently drops Newton-driven robot links with GPU transform reads enabled
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6625](https://github.com/isaac-sim/IsaacLab/issues/6625)
@@ -1122,7 +1098,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 141. [Bug Report] ImplicitActuatorCfg does not author Newton joint target mode
+## 138. [Bug Report] ImplicitActuatorCfg does not author Newton joint target mode
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6649](https://github.com/isaac-sim/IsaacLab/issues/6649)
@@ -1130,7 +1106,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 142. [Bug Report] SIGSEGV on pause→play with Raycast + IMU sensors on same articulation
+## 139. [Bug Report] SIGSEGV on pause→play with Raycast + IMU sensors on same articulation
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6734](https://github.com/isaac-sim/IsaacLab/issues/6734)
@@ -1138,7 +1114,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 143. Newton scene cloning intermittently corrupts heap in shape color replacement
+## 140. Newton scene cloning intermittently corrupts heap in shape color replacement
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6735](https://github.com/isaac-sim/IsaacLab/issues/6735)
@@ -1146,7 +1122,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 144. Newton USD import discards authored physics:approximation; convexDecomposition assets become a single convex hull
+## 141. Newton USD import discards authored physics:approximation; convexDecomposition assets become a single convex hull
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6765](https://github.com/isaac-sim/IsaacLab/issues/6765)
@@ -1154,7 +1130,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 145. Newton: rigid-body root scale is dropped from the Fabric world matrix, so scaled assets render at the wrong size
+## 142. Newton: rigid-body root scale is dropped from the Fabric world matrix, so scaled assets render at the wrong size
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6787](https://github.com/isaac-sim/IsaacLab/issues/6787)
@@ -1162,7 +1138,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 146. [Bug Report] Newton USD import drops mjc:frictionloss.
+## 143. [Bug Report] Newton USD import drops mjc:frictionloss.
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6829](https://github.com/isaac-sim/IsaacLab/issues/6829)
@@ -1170,7 +1146,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 147. [Bug Report] GPU physics pipeline(not sure): cart joint (slider_to_cart) does not respond to effort commands in Isaac-Cartpole-Direct-v0 (works fine on CPU)
+## 144. [Bug Report] GPU physics pipeline(not sure): cart joint (slider_to_cart) does not respond to effort commands in Isaac-Cartpole-Direct-v0 (works fine on CPU)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6852](https://github.com/isaac-sim/IsaacLab/issues/6852)
@@ -1178,7 +1154,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 148. [Bug] MJCF importer loses multi-axis joint metadata when collapsing joints into a PhysX D6
+## 145. [Bug] MJCF importer loses multi-axis joint metadata when collapsing joints into a PhysX D6
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6854](https://github.com/isaac-sim/IsaacLab/issues/6854)
@@ -1186,15 +1162,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 149. [Bug Report] PhysX surface velocity (kinematic conveyor) silently disables all contacts of the body when using GPU simulation with the tensor pipeline
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6885](https://github.com/isaac-sim/IsaacLab/issues/6885)
-- 查询来源：contact；USD；fall
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 150. [Proposal] Add renderer API for runtime scene attribute updates
+## 146. [Proposal] Add renderer API for runtime scene attribute updates
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/6943](https://github.com/isaac-sim/IsaacLab/issues/6943)
@@ -1202,7 +1170,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 151. [Bug Report] Conda environment not being setup correctly for ZSH
+## 147. [Bug Report] Conda environment not being setup correctly for ZSH
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/703](https://github.com/isaac-sim/IsaacLab/issues/703)
@@ -1210,7 +1178,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 152. [Bug] URDF Importer / URDF->USD conversion
+## 148. [Bug] URDF Importer / URDF->USD conversion
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/885](https://github.com/isaac-sim/IsaacLab/issues/885)
@@ -1218,7 +1186,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 153. [Question] pip's dependency conflicts when using "./isaaclab.sh -i" in conda environment
+## 149. [Question] pip's dependency conflicts when using "./isaaclab.sh -i" in conda environment
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/isaac-sim/IsaacLab/issues/988](https://github.com/isaac-sim/IsaacLab/issues/988)
@@ -1226,7 +1194,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 154. Errors encountered during the installation of OCS2
+## 150. Errors encountered during the installation of OCS2
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/leggedrobotics/ocs2/issues/103](https://github.com/leggedrobotics/ocs2/issues/103)
@@ -1234,7 +1202,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 155. Adding disturbance to simulation
+## 151. Adding disturbance to simulation
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/leggedrobotics/ocs2/issues/121](https://github.com/leggedrobotics/ocs2/issues/121)
@@ -1242,7 +1210,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 156. Compiling URDF and SRDF parsers
+## 152. Compiling URDF and SRDF parsers
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1078](https://github.com/stack-of-tasks/pinocchio/issues/1078)
@@ -1250,7 +1218,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 157. extractCartesianAxis does not account for negative axis values?
+## 153. extractCartesianAxis does not account for negative axis values?
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/1523](https://github.com/stack-of-tasks/pinocchio/issues/1523)
@@ -1258,7 +1226,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 158. Add parsing of safety_limits in URDF
+## 154. Add parsing of safety_limits in URDF
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2039](https://github.com/stack-of-tasks/pinocchio/issues/2039)
@@ -1266,7 +1234,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 159. Parsing and saving Pinocchio and URDF XMLs
+## 155. Parsing and saving Pinocchio and URDF XMLs
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2048](https://github.com/stack-of-tasks/pinocchio/issues/2048)
@@ -1274,7 +1242,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 160. Homogenize internal namespace
+## 156. Homogenize internal namespace
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2252](https://github.com/stack-of-tasks/pinocchio/issues/2252)
@@ -1282,7 +1250,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 161. Error with buildReducedModel
+## 157. Error with buildReducedModel
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2313](https://github.com/stack-of-tasks/pinocchio/issues/2313)
@@ -1290,7 +1258,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 162. Inconsistency in collision pairs with hpp-fcl
+## 158. Inconsistency in collision pairs with hpp-fcl
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2338](https://github.com/stack-of-tasks/pinocchio/issues/2338)
@@ -1298,7 +1266,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 163. Find a way to use homogenize parsing of models between SDF/URDF/MJCF
+## 159. Find a way to use homogenize parsing of models between SDF/URDF/MJCF
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2433](https://github.com/stack-of-tasks/pinocchio/issues/2433)
@@ -1306,7 +1274,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 164. buildReducedModel is cleaning collisionPairs since v3.0.0
+## 160. buildReducedModel is cleaning collisionPairs since v3.0.0
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2516](https://github.com/stack-of-tasks/pinocchio/issues/2516)
@@ -1314,7 +1282,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 165. Simplify pinocchio.pc (pkg-config)
+## 161. Simplify pinocchio.pc (pkg-config)
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2525](https://github.com/stack-of-tasks/pinocchio/issues/2525)
@@ -1322,7 +1290,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 166. CMake Cannot find casadi headers when compiling from source
+## 162. CMake Cannot find casadi headers when compiling from source
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2605](https://github.com/stack-of-tasks/pinocchio/issues/2605)
@@ -1330,7 +1298,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 167. Handling Gripper Width with Mimic Joints
+## 163. Handling Gripper Width with Mimic Joints
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2676](https://github.com/stack-of-tasks/pinocchio/issues/2676)
@@ -1338,7 +1306,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 168. Inverse/Forward Dynamics of a closed kinematic chain robot
+## 164. Inverse/Forward Dynamics of a closed kinematic chain robot
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2729](https://github.com/stack-of-tasks/pinocchio/issues/2729)
@@ -1346,7 +1314,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 169. Setting root joint gives "wrong argument size" error
+## 165. Setting root joint gives "wrong argument size" error
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2804](https://github.com/stack-of-tasks/pinocchio/issues/2804)
@@ -1354,7 +1322,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 170. modelAppend with URDF-Submodel with fixed Joints
+## 166. modelAppend with URDF-Submodel with fixed Joints
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2805](https://github.com/stack-of-tasks/pinocchio/issues/2805)
@@ -1362,7 +1330,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 171. [Feature]: How to add limit constraints automatically when solve ik
+## 167. [Feature]: How to add limit constraints automatically when solve ik
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2808](https://github.com/stack-of-tasks/pinocchio/issues/2808)
@@ -1370,7 +1338,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 172. [Bug]: Sensor frames are reordered after buildModel() instead of preserving insertion order
+## 168. [Bug]: Sensor frames are reordered after buildModel() instead of preserving insertion order
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2810](https://github.com/stack-of-tasks/pinocchio/issues/2810)
@@ -1378,15 +1346,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 173. [Bug]: Resulting model with Model::addFrame seems to be incorrect
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2825](https://github.com/stack-of-tasks/pinocchio/issues/2825)
-- 查询来源：URDF
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 174. [Bug]: Issues with Viser visualizer with DAE geometries
+## 169. [Bug]: Issues with Viser visualizer with DAE geometries
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2829](https://github.com/stack-of-tasks/pinocchio/issues/2829)
@@ -1394,7 +1354,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 175. [Bug]: Changing Root Joint doesn't do anything
+## 170. [Bug]: Changing Root Joint doesn't do anything
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2862](https://github.com/stack-of-tasks/pinocchio/issues/2862)
@@ -1402,7 +1362,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 176. [Feature]: Support URDF 1.2
+## 171. [Feature]: Support URDF 1.2
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2893](https://github.com/stack-of-tasks/pinocchio/issues/2893)
@@ -1410,7 +1370,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 177. [Feature]: Remove urdfdom < 6 capsule workaround
+## 172. [Feature]: Remove urdfdom < 6 capsule workaround
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2913](https://github.com/stack-of-tasks/pinocchio/issues/2913)
@@ -1418,15 +1378,7 @@
 - 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
 - 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
 
-## 178. [Bug]: compile time error from boost's variants when including pinocchio
-
-- 平台：`github_issue`
-- 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/2917](https://github.com/stack-of-tasks/pinocchio/issues/2917)
-- 查询来源：URDF
-- 首次/最近发现：2026-08-10T21:40:00+08:00 / 2026-08-10T21:40:00+08:00
-- 审阅状态：`technical_pending` — 技术相关性待结构化审阅，保守保留。
-
-## 179. Add option to reorder joint after parsing URDF
+## 173. Add option to reorder joint after parsing URDF
 
 - 平台：`github_issue`
 - 原链接：[https://github.com/stack-of-tasks/pinocchio/issues/379](https://github.com/stack-of-tasks/pinocchio/issues/379)

@@ -5,63 +5,75 @@
     "diegoaldarondo-fauna"
   ],
   "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1384",
-  "captured_at": "2026-08-11T12:00:00+08:00",
-  "content_sha256": "2214e6c7f1dee9da8e67bc9e74ad885b67fad6c2bd15cddf0813d76b5795ceb0",
+  "captured_at": "2026-08-11T22:20:00+08:00",
+  "content_sha256": "1f1412fa71241076c0b6c064ebc61c90f4824acece3c9ad402a291ecfff97e66",
   "excerpt": null,
   "kind": "issue",
   "license": null,
   "metadata": {
-    "collector_note": "GitHub 官方公开 API：完整读取 Issue、7 条评论和 PR #1509 元数据；合并状态与修复范围均有原始记录。",
+    "collector_note": "读取完整 Issue、全部 7 条评论以及 PR #1509/#1654/#1873；卡片按版本链表述，不把过渡实现说成永久当前行为。",
     "components": [
       "Isaac Lab",
-      "ActuatorBaseCfg",
+      "explicit actuator",
+      "implicit actuator",
       "DCMotor",
+      "velocity_limit",
+      "velocity_limit_sim",
       "PhysX"
     ],
     "domain_hints": [
-      "loco_manipulation_wbc",
       "locomotion_terrain"
     ],
     "engineering_details": {
       "attempts": [
-        "维护者讨论区分模型级限制与求解器级限制。",
-        "PR #1509 实现速度限制传播。"
+        "PR #1509 先把 velocity_limit 写入 PhysX 并加测试。",
+        "评审指出外载下 motor 可进入 torque-speed 另一象限，no-load speed 不应直接做 joint hard clamp。",
+        "PR #1654 增加 *_limit_sim；PR #1873 对 implicit actuator 恢复显式 *_limit_sim 的要求。"
       ],
       "diagnostics": [
-        "分别检查显式执行器的模型限制与 root_physx_view 的求解器限制。"
+        "分别打印 actuator.velocity_limit、actuator.velocity_limit_sim 与 root_physx_view.get_dof_max_velocities。",
+        "确认 DCMotor torque-speed cutoff 和 physics solver maxJointVelocity 是否需要不同数值。",
+        "升级跨越 #1509/#1654/#1873 时做训练曲线与 joint velocity distribution 回归。"
       ],
       "effective_fixes": [
-        "PR #1509 将 ActuatorBaseCfg 的 velocity_limits 传播到 articulation root_physx_view。"
+        "在该版本变更链中，用 velocity_limit 表达 explicit actuator/DCMotor 模型内部速度能力，用 velocity_limit_sim 表达传播到 PhysX 的硬速度上限；implicit actuator 要设置 solver limit 时显式使用 velocity_limit_sim。"
       ],
       "environments": [
-        "Isaac Lab commit b9a49ca；Isaac Sim 4.0.0—4.2.0；Ubuntu 22.04；RTX 4090。"
+        "原 Issue commit b9a49ca、Isaac Sim 4.0.0–4.2.0、Ubuntu 22.04、RTX 4090、CUDA 12.1。",
+        "语义分离在 Isaac Lab extension 0.34.0 / PR #1654 中引入，PR #1873 于 2025-03 进一步回退 implicit actuator 的旧字段传播。"
       ],
       "limits": [
-        "该行为对应历史版本；新版本字段命名和模型/求解器限制分工需查当前文档。"
+        "字段语义继续演进，使用时必须以目标 Isaac Lab 版本文档和源码为准，不能无版本复制。",
+        "tight solver limits 可能引入仿真伪影，数值必须通过 trajectory/contact 回归而非只看配置。",
+        "不依赖 PR 中训练曲线图片。"
       ],
       "outcomes": [
-        "PR #1509 于 2024-12-08 合并，merge commit 4ee4957e；PR 清单声明加入证明修复的测试。"
+        "#1384 关闭；#1654 和 #1873 均合并。PR #1654 评论中的 quadruped 用户报告分离后可把 actuator limit 恢复为正常值。"
       ],
       "problem_statements": [
-        "显式执行器配置了 velocity_limit，为什么仿真关节仍受导入 USD 的另一组最大速度限制？"
+        "DCMotor 的 no-load speed 与 PhysX joint hard velocity clamp 应怎样分开表达？"
       ],
-      "safety_notes": [],
+      "safety_notes": [
+        "实机速度保护仍应在硬件驱动/安全控制器独立实现；仿真 solver clamp 不是实机 safety limit。"
+      ],
       "suspected_causes": [
-        "ActuatorBaseCfg.velocity_limit 未传播到 root_physx_view。"
+        "同一个 velocity_limit 字段曾承担 actuator no-load speed 与 solver hard clamp 两种不同物理语义。"
       ],
       "symptoms": [
-        "DCMotor 的模型速度限制可能被 PhysX/导入资产速度限制静默覆盖或截断。"
+        "早期 explicit actuator 的 velocity_limit 不会写入 root_physx_view，imported joint limit 可静默压过 DCMotor 设置。",
+        "把同一个 velocity_limit 同时当 no-load speed 和 solver hard clamp 后，社区用户报告 quadruped training 被破坏或版本间行为变化。"
       ]
     },
     "engineering_qa": [
       {
         "answer_status": "resolved",
-        "answer_zh": "原 Issue 的维护者说明：当时 ActuatorBaseCfg.velocity_limit 只有 DCMotor 用来计算扭矩—转速上限，没有写入 root_physx_view，因此导入 USD 中的求解器速度限制可能继续生效。合并的 PR #1509 将该限制传播到 PhysX，并增加对应测试。",
-        "applicability": "Isaac Lab 4.0.0—4.2.0 附近版本；新版本需核对模型级与 solver-level 限制字段。",
+        "answer_zh": "在 #1384 对应的 0.34.0 变更链中，velocity_limit 用于 explicit actuator/DCMotor 的模型内部 torque-speed 或 no-load speed 语义；velocity_limit_sim 才是写入 root_physx_view/PhysX 的 joint hard clamp。PR #1654 建立这两个字段，PR #1873 又明确 implicit actuator 不应继续把旧 velocity_limit 自动传播到 solver，要限 PhysX 速度时显式配置 velocity_limit_sim。迁移时应同时打印两层值并回归训练/轨迹，不能把厂家 no-load speed 机械地当 solver hard clamp。",
+        "applicability": "适用于 Isaac Lab 0.34.0 附近的 actuator limit 迁移；更晚版本必须按同名字段的目标版本实现复核。",
         "bilingual_terms": [
-          "显式执行器（explicit actuator）",
-          "求解器级限制（solver-level limit）",
-          "扭矩—转速限制（torque-speed limit）"
+          "空载转速（no-load speed）",
+          "执行器模型上限（actuator-model limit）",
+          "求解器硬限幅（solver hard clamp）",
+          "仿真速度上限（velocity_limit_sim）"
         ],
         "credibility": {
           "basis": {
@@ -78,15 +90,20 @@
           "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
         },
         "problem_id": "problem.hardware_actuator_thermal_power.88761dd27f8b57d1",
-        "problem_title_zh": "Isaac Lab 显式执行器的速度限制为什么可能与 PhysX 实际限制不一致？",
-        "question_zh": "Isaac Lab 显式执行器的速度限制为什么可能与 PhysX 实际限制不一致？",
-        "source_locator": "Issue #1384 维护者讨论；merged PR #1509",
-        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1384#issuecomment-2465073195",
+        "problem_title_zh": "执行器速度能力与求解器硬限幅分离",
+        "question_zh": "Isaac Lab 中 DCMotor velocity_limit 与 PhysX velocity_limit_sim 应怎样区分？",
+        "source_locator": "IsaacLab #1384 讨论；PR #1509、#1654、#1873",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1384#issuecomment-2532105463",
         "verification_refs": [
           {
-            "locator": "merged PR：传播 ActuatorBaseCfg velocity_limits 到 root_physx_view；merge commit 4ee4957e；含测试声明",
+            "locator": "合并 PR 4c4377d 引入 velocity_limit_sim/effort_limit_sim，分离 actuator 与 solver limits",
             "relation": "pull_request",
-            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1509"
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1654"
+          },
+          {
+            "locator": "合并 PR 3d836ab 回退 implicit actuator 对旧 velocity_limit 的自动传播并要求显式 *_limit_sim",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1873"
           }
         ],
         "verification_status": "issue_candidate"
@@ -97,27 +114,25 @@
     "media_summaries": [],
     "platform": "github_issue",
     "post_id": "isaac-sim.isaaclab.1384",
-    "query": "Isaac Lab explicit actuator velocity limit PhysX",
+    "query": "Isaac Lab explicit actuator velocity_limit velocity_limit_sim PhysX hard clamp DCMotor no-load speed",
     "review_status": "candidate",
     "robot_platforms": [
-      "使用显式执行器模型的机器人"
+      "generic explicit-actuator quadrupeds",
+      "generic implicit-actuator assets"
     ],
     "schema_version": 2,
-    "scope_id": "hardware_actuator_thermal_power",
+    "scope_id": "hardware_actuator_thermal",
     "selected_comments": [
       {
-        "text": "协作者解释当时 velocity_limit 仅由 DCMotor 用于扭矩限制，未写入 root_physx_view。"
-      },
-      {
-        "text": "贡献者提示模型级与求解器级限制需要明确区分。"
+        "text": "Issue 与三条合并 PR 显示语义演进：先传播、再拆分、再恢复 implicit actuator 的显式 solver-limit 配置。"
       }
     ],
-    "wbc_relevance_reason": "策略与电机模型使用的速度限制若被求解器另一组限制静默截断，会改变训练动力学和 Sim-to-Real 行为。"
+    "wbc_relevance_reason": "WBC 的 actuator feasibility 与仿真 solver clamp 是两个不同约束；混用会改变 torque-speed 曲线、训练动力学和 sim-to-real。"
   },
   "published_at": null,
   "publisher": "GitHub Issues",
   "source_id": "issue.github.isaac-sim.isaaclab.1384",
-  "summary": "Isaac Lab issue 说明显式执行器的 velocity_limit 当时只有 DCMotor 用于扭矩—转速限制，没有写入 root_physx_view；导入 USD 的隐式限制会继续生效。PR #1509 将 ActuatorBaseCfg 的速度限制传播到 PhysX，并声明增加测试，2024-12-08 合并。",
-  "title": "显式执行器 velocity_limit 未传播到 PhysX 求解器",
+  "summary": "IsaacLab #1384 报告 explicit actuator 的 velocity_limit 只被 DCMotor 用于 torque-speed limit，却没有覆盖 root_physx_view 的 imported max velocity。初始 PR #1509 把 velocity_limit 直接传播到 PhysX，但评审指出 DCMotor no-load speed 不等于 joint hard clamp，紧限幅可能产生仿真伪影；后续合并 PR #1654 引入 velocity_limit_sim/effort_limit_sim 分离 actuator model limit 与 physics solver limit，合并 PR #1873 又恢复 implicit actuator 不自动传播旧 velocity_limit 的行为，要求显式使用 *_limit_sim。",
+  "title": "执行器速度能力与 PhysX 硬速度上限必须分开配置",
   "version": null
 }

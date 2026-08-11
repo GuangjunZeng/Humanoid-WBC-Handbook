@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.loco-3d.crocoddyl.914.e837351cfb5c",
+  "schema_version": 1,
+  "source_fingerprint": "1dd01d00bb2976b69d136ba326d9c09842dc5dab1e347908ccb42ad7055ef694",
+  "translations": {
+    "answer": "In the free forward dynamics model used in this Issue, there is no caching error: the maintainer explains that the model does not update the global center of mass (CoM) information by design, therefore maintaining shared CoM and Jcom at zero. The issue should first be resolved by using an action model that matches the contact/center-of-mass task, or explicitly calculating and evaluating the real-time cost.",
+    "applicability": "Applies to DifferentialActionModelFreeFwdDynamics; contact models and new behavior require further verification.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The user directly calls centerOfMass and jacobianCenterOfMass in the cost.",
+    "details.diagnostics.0": "First confirm whether the current differential action model updates the global center of mass data as per design.",
+    "details.effective_fixes.0": "Select a model that updates the required shared data according to the task motivation, or explicitly calculate and accept additional cost.",
+    "details.environments.0": "Crocoddyl DifferentialActionModelFreeFwdDynamics and Pinocchio share data.",
+    "details.limits.0": "The maintainer also questions the physical motivation for controlling the global center of mass in free forward dynamics; this cannot be extrapolated to contact dynamics models.",
+    "details.outcomes.0": "After the maintainer explains the design boundary, the original author confirms the issue is resolved and the Issue is closed.",
+    "details.problem_statements.0": "The trajectory remains unchanged after adding the center of mass cost.",
+    "details.suspected_causes.0": "The free forward dynamics model defaults to not updating the global center of mass information.",
+    "details.symptoms.0": "data.shared.pinocchio.com[0] and Jcom are both zero; manual invocation of the center of mass function becomes effective but slows down.",
+    "source.locator": "The maintainer replies to @cmastalli",
+    "source.title": "Crocoddyl Free Forward Dynamics: Center of Mass Cost is Not Effective and Jcom is Zero",
+    "terms.0": "Center of Mass (CoM) (质心)",
+    "terms.1": "Jacobian Matrix (雅可比矩阵)",
+    "terms.2": "Forward Dynamics (前向动力学)",
+    "title": "Crocoddyl Free Forward Dynamics: Center of Mass Cost is Not Effective and Jcom is Zero, Is This a Caching Error?"
+  }
+}

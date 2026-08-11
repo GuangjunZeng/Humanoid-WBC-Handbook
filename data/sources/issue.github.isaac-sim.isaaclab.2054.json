@@ -1,80 +1,74 @@
 {
-  "access_mode": "public_api",
+  "access_mode": "manual_import",
   "attention": {},
   "authors": [
     "Hellod035"
   ],
   "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2054",
-  "captured_at": "2026-08-11T03:31:00+08:00",
-  "content_sha256": "f215ba22bb25a5c3a5dc84ff6eb319a573366c72ebfe50a2f377dcfcfe7afc57",
+  "captured_at": "2026-08-11T22:12:00+08:00",
+  "content_sha256": "8d7ef395b42c6de9fa6bae6af9ae54f662a070585a92572694affe9deef3f1ff",
   "excerpt": null,
   "kind": "issue",
   "license": null,
   "metadata": {
-    "collector_note": "通过 GitHub 官方公开 REST 读取 Issue 正文和全部 5 条回复，逐文件核对已合并 PR #2098 的最终补丁，并直接读取原帖截图。没有把 USD 配置值等同于真实硬件安全值。",
+    "collector_note": "读取完整 Issue、全部 5 条评论和合并 PR #2098 的完整 diff；沿用前轮已直接核验的 USD Max Force=88.0 截图记录，没有把 USD 配置值等同于真实硬件安全值。",
     "components": [
       "Isaac Lab",
       "ImplicitActuator",
-      "ActuatorBase",
-      "USD Drive",
-      "PhysX effort limit"
+      "effort_limit_sim",
+      "USD joint drive",
+      "PhysX solver"
     ],
     "domain_hints": [
       "locomotion_terrain",
-      "loco_manipulation_wbc",
-      "recovery_safety_force"
+      "loco_manipulation_wbc"
     ],
     "engineering_details": {
       "attempts": [
-        "作者在两个 G1 训练任务中注释显式上限复现 1e9。",
-        "评论中的临时建议是在机器人配置文件中显式写入力矩上限。",
-        "PR #2098 修正隐式模型判断，并合入 PR #2114 对关节属性和测试的改进。"
+        "作者分别在官方 G1 与 Legged Lab G1 配置中注释 limit 后复现。",
+        "维护者修改默认判断并扩展 limits 单元测试。"
       ],
       "diagnostics": [
-        "在同一 asset 上并列记录 USD Drive Max Force、root_physx_view.get_dof_max_forces() 和 asset.data.joint_effort_limits。",
-        "分别在设置与不设置 effort_limit_sim/effort_limit 时比较结果，避免把用户显式覆盖与 USD 默认继承混在一起。"
+        "同时检查 actuator cfg 的 effort_limit/effort_limit_sim、USD drive max_effort、asset.data.joint_effort_limits 和 PhysX 实际上限。",
+        "区分 implicit actuator 与 explicit actuator 的默认行为。"
       ],
       "effective_fixes": [
-        "使用包含已合并 PR #2098 的版本：ActuatorBase 改用 self.is_implicit_model 判断，ImplicitActuator 在两个上限都未设置时保留 USD/PhysX 的 max effort。",
-        "无法升级时，可按评论中的办法在机器人配置里显式设置 effort_limit 或 effort_limit_sim，但必须使用已核实的硬件值。"
+        "升级到包含 PR #2098 / merge commit d7da02d 的版本；implicit actuator 未配置 limit 时继承 USD max_effort，explicit actuator 的 solver effort 默认仍可保持 1e9。"
       ],
       "environments": [
-        "Isaac Sim 4.5；Ubuntu 22.04；RTX 4090D；CUDA 12.4；GPU driver 550.144.03；Issue 标注 Isaac Lab Latest。",
-        "作者用 Isaac-Velocity-Flat-G1-v0 和 Legged_Lab g1_flat，在注释 effort_limit 或 effort_limit_sim 后复现。"
+        "Isaac Sim 4.5、Ubuntu 22.04、RTX 4090D、CUDA 12.4、driver 550.144.03、IsaacLab latest（2025-03）。",
+        "复现任务包括 Isaac-Velocity-Flat-G1-v0 与 Legged Lab g1_flat。"
       ],
       "limits": [
-        "原帖截图只能证明 USD UI 中 Max Force=88.0；Python 端 1e9 来自作者文字记录，不在截图中。",
-        "PR 主检查清单仍未勾选“新增证明修复的测试”，但最终合并补丁通过 #2114 修改了现有 effort-limit 测试；在目标 Isaac Lab/Isaac Sim 组合中仍应运行同样的三方对照。",
-        "这一修复保留 USD 限制，不保证 USD 中的数值与真实电机、减速器、电源和热限制一致。"
+        "修复不等于推荐省略所有限制；不同 asset 的 USD max_effort 仍必须审计。",
+        "原帖截图未参与结论，结论来自文字复现、源码 diff 与测试。"
       ],
       "outcomes": [
-        "PR #2098 于 2025-03-19 合并，合并提交 d7da02da62b46153da3dc3e54585eea078e0d9cb；changelog 记录版本 0.36.3 修复隐式执行器的默认 effort limit 行为。",
-        "最终补丁的 articulation 测试在 effort_limit_sim 和 effort_limit 均为 None 时，期望 PhysX effort limit 等于 USD joint_drive_props.max_effort。"
+        "Issue 随 PR #2098 合并关闭；测试覆盖 implicit actuator 使用 USD limit、explicit actuator 1e9 默认和 actuator/simulation limit 分离。"
       ],
       "problem_statements": [
-        "为什么 USD 中的关节 Max Force 是有限值，ImplicitActuator 的 joint_effort_limits 却变成 1e9？"
+        "ImplicitActuator 不填写 effort limit 时，为什么 joint_effort_limits 会是 1e9 而不是 USD max force？"
       ],
       "safety_notes": [
-        "不得把 1e9 当作真机可用力矩；部署前要另行核对硬件限流、温升、减速器峰值与急停链路。"
+        "实机 WBC 不得把仿真 1e9 默认当作硬件允许力矩；部署前应显式设置厂家限制并验证最终下发裁剪。"
       ],
       "suspected_causes": [
-        "PR #2098 显示旧的 ActuatorBase 构造逻辑检查 ActuatorBase.is_implicit_model，即使子类 ImplicitActuator 已标记为隐式模型，该基类检查仍会走到显式执行器的 1e9 默认分支。"
+        "PR #2098 的源码说明：默认逻辑错误地通过 ActuatorBase 类属性判断 implicit/explicit，导致 implicit actuator 也进入 explicit actuator 的 1e9 分支。"
       ],
       "symptoms": [
-        "原帖截图中 USD Drive > Angular 显示 Type=force、Max Force=88.0，文字同时记录 robot.data.joint_effort_limits=1e9。",
-        "另一名使用者回复力矩上限没有从 Isaac Sim 读取，但速度上限能读取。"
+        "USD asset 显示正确 max force，但 asset.data.joint_effort_limits 为 1e9。"
       ]
     },
     "engineering_qa": [
       {
         "answer_status": "resolved",
-        "answer_zh": "#2054 的复现是在 effort_limit_sim/effort_limit 都未显式设置时出现。合并 PR #2098 表明，旧代码在 ActuatorBase 中错用 ActuatorBase.is_implicit_model 做判断，使隐式执行器走到显式执行器的 1e9 默认分支。修复改为 self.is_implicit_model，未显式配置时保留 USD/PhysX max effort，最终补丁也核对了该默认路径。升级前可在机器人配置里显式填写经硬件核实的上限，但不能用 1e9 作为真机保护。",
-        "applicability": "适用于 Isaac Lab 使用 ImplicitActuator，并期望在未设置 effort_limit_sim/effort_limit 时继承 USD Drive max effort 的版本；原环境为 Isaac Sim 4.5。",
+        "answer_zh": "使用包含 PR #2098 的版本，并核对 actuator cfg、USD drive max_effort、asset.data.joint_effort_limits 与 PhysX 实际值。该 PR 修正 implicit/explicit 判断：implicit actuator 未显式给 limit 时继承 USD joint drive 的 max_effort；1e9 默认只保留给 explicit actuator 的 simulation effort limit。即使升级后也应显式审计 USD 数值，不能把继承行为直接视为实机安全配置。",
+        "applicability": "适用于 2025-03 修复前后 Isaac Lab implicit/explicit actuator limit 迁移；具体 USD 与 cfg 仍需逐 asset 核对。",
         "bilingual_terms": [
           "隐式执行器（implicit actuator）",
-          "关节力矩上限（joint effort limit）",
-          "默认继承（default inheritance）",
-          "回归测试（regression test）"
+          "力矩上限（effort limit）",
+          "仿真求解器上限（simulation solver limit）",
+          "关节 USD 驱动（USD joint drive）"
         ],
         "credibility": {
           "basis": {
@@ -93,28 +87,28 @@
           "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
         },
         "problem_id": "problem.hardware_actuator_thermal_power.isaaclab_implicit_actuator_usd_effort_limit_2054",
-        "problem_title_zh": "Isaac Lab 隐式执行器未继承 USD 力矩上限",
-        "question_zh": "Isaac Lab 的 USD Drive 已设置 Max Force，为什么 ImplicitActuator 读到的 joint_effort_limits 仍是 1e9？",
-        "source_locator": "Isaac Lab #2054 正文、USD Max Force=88.0 截图、issuecomment-2721483228 的 G1 复现、issuecomment-2723958505 的独立现象与已合并 PR #2098",
-        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2054",
+        "problem_title_zh": "ImplicitActuator 的 USD 力矩上限回退",
+        "question_zh": "Isaac Lab 的 ImplicitActuator 未设置 effort_limit_sim 时，怎样避免 joint_effort_limits 错误变成 1e9？",
+        "source_locator": "IsaacLab #2054 复现 2721483228、维护者修复 2737536308；PR #2098",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2737536308",
         "verification_refs": [
           {
-            "locator": "原作者在 Isaac Lab 和 Legged_Lab 的 G1 任务中注释显式上限后复现 1e9",
+            "locator": "原作者在 Isaac Lab 与 Legged Lab 的 G1 任务中注释显式上限后均复现 1e9",
             "relation": "issue",
             "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2721483228"
           },
           {
-            "locator": "另一名使用者报告速度上限能读取、力矩上限不能读取",
+            "locator": "另一使用者独立报告速度上限能读、力矩上限没有从 Isaac Sim 读取",
             "relation": "independent_reproduction",
             "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2723958505"
           },
           {
-            "locator": "项目贡献者确认 PR #2098 是修复，并表示增强了 effort/velocity limit 检查",
+            "locator": "维护者确认 PR #2098 为修复并扩展 effort/velocity limit 检查",
             "relation": "maintainer_confirmation",
             "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2737536308"
           },
           {
-            "locator": "已合并修复：隐式执行器未配置上限时保留 USD max effort，并改进关节属性测试",
+            "locator": "合并 PR 修复 implicit/explicit 默认判断并加入 effort/velocity limits 测试",
             "relation": "pull_request",
             "source_url": "https://github.com/isaac-sim/IsaacLab/pull/2098"
           },
@@ -130,34 +124,29 @@
     "experience_quality": "rich",
     "experience_signal_count": 6,
     "media_summaries": [
-      "原帖 699×259 截图已读取：Isaac Sim 属性面板中 Drive > Angular 显示 Type=force、Max Force=88.0、Target Position=0.0、Target Velocity=0.0、Damping=0.0、Stiffness=0.0。图中没有 Python 侧 1e9，该数值来自正文记录。"
+      "原帖 699×259 截图已在前轮读取：Isaac Sim 属性面板 Drive > Angular 显示 Type=force、Max Force=88.0、Target Position=0.0、Target Velocity=0.0、Damping=0.0、Stiffness=0.0；Python 侧 1e9 来自正文而非截图。"
     ],
     "platform": "github_issue",
     "post_id": "isaac-sim.isaaclab.2054",
-    "query": "Isaac Lab ImplicitActuator joint_effort_limits USD max force 1e9",
+    "query": "Isaac Lab implicit actuator joint effort limits USD 1e9 effort_limit_sim",
     "review_status": "candidate",
     "robot_platforms": [
-      "Unitree G1 用于作者补充复现；问题也被作者描述为适用于未显式配置上限的任意 asset"
+      "Unitree G1 simulation",
+      "generic articulated robots"
     ],
     "schema_version": 2,
-    "scope_id": "hardware_actuator_thermal_power",
+    "scope_id": "hardware_actuator_thermal",
     "selected_comments": [
       {
-        "text": "原作者补充：在 Isaac Lab 和 Legged_Lab 的 G1 任务中，只要不设置 effort_limit_sim/effort_limit 就读到 1e9。"
-      },
-      {
-        "text": "另一名使用者表示 velocity limit 可从 Isaac Sim 读取，effort limit 不可，因此当时需在机器人配置中显式填写。"
-      },
-      {
-        "text": "项目贡献者确认 PR #2098 提供修复，并加强 effort/velocity limit 的测试检查。"
+        "text": "作者在两套 G1 任务中复现 unset limit→1e9；维护者以 PR #2098 修复并扩展测试。"
       }
     ],
-    "wbc_relevance_reason": "WBC 仿真和强化学习依赖正确的执行器力矩上限；意外使用 1e9 会让求解器侧限制形同虚设，污染策略训练和力矩安全语义。"
+    "wbc_relevance_reason": "关节力矩上限同时影响仿真 solver、执行器裁剪和 WBC 可行域；错误的 1e9 回退会让安全限制与训练动力学失真。"
   },
-  "published_at": "2025-03-10T15:14:18Z",
+  "published_at": null,
   "publisher": "GitHub Issues",
   "source_id": "issue.github.isaac-sim.isaaclab.2054",
-  "summary": "Isaac Lab #2054 在 Isaac Sim 4.5 中记录：USD Drive 界面显示 Max Force 88.0，但使用 ImplicitActuator 且没有显式设置 effort_limit_sim/effort_limit 时，asset.data.joint_effort_limits 为 1e9。另一名使用者报告速度上限能读取、力矩上限不能读取。合并 PR #2098 将 ActuatorBase 中对隐式模型的判断从基类类变量改为实例属性，未显式配置时改为保留 USD max effort，并在最终补丁中核对 PhysX 上限。",
-  "title": "Isaac Lab 隐式执行器未继承 USD 关节力矩上限",
+  "summary": "IsaacLab #2054 在 Isaac Sim 4.5/Ubuntu 22.04/RTX 4090D 上报告：ImplicitActuator 未设置 effort_limit_sim 或 effort_limit 时，USD 明明有 max force，asset.data.joint_effort_limits 却变为 1e9。作者用 Unitree G1 官方任务和 Legged Lab G1 任务复现；维护者以合并 PR #2098 修复。代码将错误的类属性判断改为实例判断，使 1e9 默认只用于 explicit actuator；implicit actuator 未显式覆盖时读取 USD joint drive max_effort，并补充 implicit/explicit limit 测试。",
+  "title": "Isaac Lab 隐式执行器未配置力矩上限时曾错误回退到 1e9",
   "version": null
 }

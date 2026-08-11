@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ParlitsisG"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2127",
+  "captured_at": "2026-08-11T11:23:25+08:00",
+  "content_sha256": "1e5e4f4c71dffd11fa7047e4a083dc79e439e768133e94c7649b33feda1e3cde",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、4 条评论和 PR #2128 的合并 patch/测试；没有把 reaction wrench 描述成任意位置的实体传感器。",
+    "components": [
+      "Isaac Lab",
+      "ArticulationData",
+      "body_incoming_joint_wrench_b",
+      "PhysX Tensor API",
+      "6D force/torque measurement"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "Issue 参与者询问 get_measured_joint_forces/efforts；协作者澄清它们属于不同 API，并指向正在加入的 PR #2128。"
+      ],
+      "diagnostics": [
+        "先区分 isaacsim.core.articulations API 与 Isaac Lab ArticulationData API。",
+        "核对目标版本是否包含 PR #2128，并确认 wrench 表达在 parent body frame、最后一维为 6。"
+      ],
+      "effective_fixes": [
+        "在包含 PR #2128 的 Isaac Lab 版本中读取 ArticulationData.body_incoming_joint_wrench_b；它从底层 get_link_incoming_joint_force 取得数据并缓存为每 body 的 6D 张量。"
+      ],
+      "environments": [
+        "Isaac Lab Articulation API；PR #2128 于 2025-05-03 合入官方仓库；原线程没有给 Isaac Sim/Isaac Lab release 版本。"
+      ],
+      "limits": [
+        "该字段是 parent-to-child 近端关节 reaction wrench，不等同于任意安装位置的独立 F/T sensor。",
+        "线程没有给噪声、带宽、滤波或实机传感器一致性验证。"
+      ],
+      "outcomes": [
+        "官方 PR #2128 已合入，并增加 CPU/CUDA、单/多 articulation 的静态 wrench 数值测试。"
+      ],
+      "problem_statements": [
+        "在当前 Isaac Lab Articulation 中，怎样一致地取得每个 body 近端关节的 6D force/torque reaction wrench？"
+      ],
+      "safety_notes": [
+        "用于碰撞/过载保护前需独立验证符号、body 顺序、坐标变换、阈值和更新延迟，不得只依赖仿真 reaction wrench 触发实机安全动作。"
+      ],
+      "suspected_causes": [
+        "跨 Isaac Sim/Isaac Lab 版本和 API 层复制旧调用，导致方法归属与返回语义混淆。"
+      ],
+      "symptoms": [
+        "不同旧 Issue 混用 isaacsim.core.articulations 与 Isaac Lab Articulation API，导致使用者无法确认哪些 get_measured_* 调用适用于当前版本。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "官方合并 PR #2128 后，应读取 ArticulationData.body_incoming_joint_wrench_b。PR 文档规定其形状为 (num_instances, num_bodies, 6)，表示 parent body 向 child body 施加的 joint reaction wrench，坐标在 parent body frame，并包含 root body 到 world 的条目。它与 isaacsim.core.articulations 的 get_measured_* API 不是同一层接口，也不等同于任意安装位姿的实体 F/T sensor。",
+        "applicability": "适用于包含 PR #2128 的 Isaac Lab ArticulationData；旧版本和 isaacsim.core.articulations API 需按其自身文档处理。",
+        "bilingual_terms": [
+          "六维力/力矩（Six-Dimensional Force/Torque, 6D F/T）",
+          "关节反作用力矩（joint reaction wrench）",
+          "父刚体坐标系（parent body frame）",
+          "近端关节（proximal joint）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.isaaclab_body_incoming_joint_wrench_2127",
+        "problem_title_zh": "Isaac Lab articulation 的 6D 近端关节反作用 wrench 读取接口",
+        "question_zh": "Isaac Lab 中怎样读取 articulation 每个 body 近端关节的 6D force/torque reaction wrench，并确认它的坐标系和形状？",
+        "source_locator": "IsaacLab #2127：协作者评论 2789530049 说明新字段；PR #2128 合并提交 1393f3b，含静态 10 N/10 Nm 测试",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2127#issuecomment-2789530049",
+        "verification_refs": [
+          {
+            "locator": "项目协作者说明新 API 将提供每个 articulation body 近端关节的 6D F/T measurement",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2127#issuecomment-2789530049"
+          },
+          {
+            "locator": "官方合并 PR 定义字段语义、形状和 parent body frame，并增加数值测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/2128"
+          },
+          {
+            "locator": "固定合并提交：ArticulationData.body_incoming_joint_wrench_b 与 test_body_incoming_joint_wrench_b_single_joint",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/1393f3b8b2306c61bf7a67a8256036967dd58bde"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2127",
+    "query": "Isaac Lab articulation 6D force torque sensor proximal joint reaction wrench body frame",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用 Isaac Lab articulation（Issue 未限定机器人型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "协作者澄清 isaacsim.core.articulations 与 Isaac Lab Articulation 是不同 API。"
+      },
+      {
+        "text": "协作者指向 PR #2128 新增的 body_incoming_joint_wrench_b。"
+      }
+    ],
+    "wbc_relevance_reason": "关节/连杆 6D 反作用力矩是受力监控、接触诊断和 WBC 外力估计的基础输入；API 所属层级、表达坐标系和张量形状必须明确。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2127",
+  "summary": "IsaacLab #2127 汇总多个版本中 articulation 6D force/torque sensor API 不一致的问题。项目协作者说明，isaacsim.core.articulations 的 get_measured_joint_forces/efforts 与 Isaac Lab Articulation API 不同；随后 PR #2128 向 ArticulationData 增加 body_incoming_joint_wrench_b，暴露每个 body 近端关节的 6D reaction wrench。PR 文档明确输出形状为 (num_instances, num_bodies, 6)，在 parent body frame 表达，并包含 root body 到 world 的反作用 wrench；官方测试施加 10 N 与 10 Nm 并核对静态结果，PR 已合入。",
+  "title": "Isaac Lab 用 body_incoming_joint_wrench_b 读取每个 body 近端关节的 6D 反作用力矩",
+  "version": null
+}

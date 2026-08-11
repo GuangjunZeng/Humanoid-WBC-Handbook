@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2825.60c38d997907",
+  "schema_version": 1,
+  "source_fingerprint": "c03e87a08d6b9f8c8ed10873622e1fa212d887acccfcd4aadfadec0cf76a4548",
+  "translations": {
+    "answer": "The fixed link's frame is not part of the joint kinematic chain; its inertia is merged into the carrying joint, and the transformation is folded into subsequent joint placements. During programmatic addition, first take the target body frame, then use frame.placement * new joint local placement as the static transformation for addJoint; afterward, use Identity to attach the body frame to the new joint and add inertia, or directly appendBodyToJoint. The original author confirmed that the maintainer's example and explanation resolved the issue.",
+    "applicability": "Applies to URDF submodels with fixed links in Pinocchio; original context was Ubuntu Jammy and devel commit 7b4ae02283203f37320c70e1098204d177f07ae9.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is lacking.",
+    "details.attempts.0": "The original author used addFrame and appendBodyToJoint to construct q_dummy; both methods missed the fixed-link placement during addJoint.",
+    "details.diagnostics.0": "Print Model::jointPlacements, Model::inertias, frame placement, and data.oMi; do not directly infer the joint tree from link/frame lists.",
+    "details.diagnostics.1": "Use getBodyId to obtain the frame carrying the fixed link; check if the placement needs to be multiplied by the new joint's static placement.",
+    "details.effective_fixes.0": "Read link_2 body frame and use link2_frame.placement * dummy_placement as the joint placement for addJoint.",
+    "details.effective_fixes.1": "Subsequently, attach the dummy body frame with Identity to the new joint and add inertia; if no frame is needed, directly appendBodyToJoint.",
+    "details.environments.0": "Ubuntu Jammy; Pinocchio devel commit 7b4ae02283203f37320c70e1098204d177f07ae9; Python minimal reproduction; FreeFlyer root joint.",
+    "details.limits.0": "The example covers fixed-link folding and a single new PZ joint; more complex multi-branch, closed-chain, or frame semantics require step-by-step verification.",
+    "details.limits.1": "The author confirms understanding and the example, but the thread does not publish the full regression results of the estimator.",
+    "details.outcomes.0": "The maintainer provides a runnable Variant 4 and structural explanation; the original author confirms understanding and the explanation is in line with expectations, Issue closed.",
+    "details.problem_statements.0": "After programmatic addition of joints and inertias from the URDF submodel, why is the new joint's origin zero and the CoM offset?",
+    "details.safety_notes.0": "After model concatenation, regression should be performed on total mass, CoM, key frame placements, and gravity torque moments for real-world control.",
+    "details.suspected_causes.0": "The URDF fixed links are not considered independent joints; their inertia is merged into the parent joint, and the transformation is used to calculate subsequent joint placements. The original program directly attaches the new joint to the parent joint's Identity placement, missing the link_2 frame transformation.",
+    "details.symptoms.0": "URDF direct parsing yields urdf_joint2 origin=[1.5, 0.1, 0.3], CoM=[0, 0, 0]; programmatic q_dummy yields origin=[0, 0, 0], CoM=[0.5, 0.1, 0.3].",
+    "details.symptoms.1": "Adding joints sequentially, the position offset of the preceding fixed link remains missing.",
+    "source.locator": "Pinocchio #2825: maintainer comment 3641336177 provides Variant 4; comment 3641830698 explains fixed frame/joint/inertia semantics; author comment 3643534486 confirms.",
+    "source.title": "Pinocchio: Programmatic addJoint in URDF submodel fails to treat fixed link frame as kinematic chain joint.",
+    "terms.0": "Joint static pose (joint placement) (关节静态位姿)",
+    "terms.1": "Fixed link (fixed link) (固定连杆)",
+    "terms.2": "Kinematic chain (kinematic chain) (运动学树)",
+    "terms.3": "Spatial inertia (spatial inertia) (空间惯量)",
+    "title": "What is the correct model semantics and construction method for a new joint with origin zero and CoM offset after adding a fixed link frame in URDF submodel?"
+  }
+}

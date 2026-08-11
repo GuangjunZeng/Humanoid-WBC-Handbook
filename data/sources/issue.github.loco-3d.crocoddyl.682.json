@@ -1,0 +1,142 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ddliu365"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/682",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "612f5447c5c0ed53b2174b1422ee4373f156cc3352bb55ea4c52c136ee2a414b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 和 7 条评论；只提炼软着陆主话题，后续无关 visualization error 未纳入；冲突按原文保留。",
+    "components": [
+      "Crocoddyl",
+      "soft landing",
+      "impulse dynamics",
+      "CostModelImpulseCoM",
+      "velocity/acceleration cost"
+    ],
+    "domain_hints": [
+      "recovery_safety_force",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议 contact dynamics + high velocity penalization，使用 weighted quadratic state cost 高权重惩罚 torso 和 joint velocities。",
+        "维护者说明当时 impulse dynamics 可用 crocoddyl::CostModelImpulseCoM。",
+        "另一位维护者指出加速度在一般 formulation 中也可以惩罚，可能只是当时 API 没有现成接口。"
+      ],
+      "diagnostics": [
+        "区分 formulation 的表达能力与目标版本现成 API：前者允许自定义加速度代价，后者当时提供的是速度/impact velocity 路径。",
+        "若使用 impulse dynamics，核对 CostModelImpulseCoM 只针对 CoM impact velocity，而不是完整 torso/whole-body impact velocity。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Crocoddyl devel 分支，线程时间为 2020-02；未给 commit、Python/C++ 版本或机器人型号。"
+      ],
+      "limits": [
+        "线程中的“不能惩罚加速度”被另一位维护者限定为可能只是当前 API 限制，结论存在表述冲突。",
+        "API 名称和能力来自 2020 年 devel 分支，当前版本必须查源码/文档。",
+        "线程后半段转入一个无关的 quadrupedal_gaits visualization AttributeError；本卡未把该子话题混入软着陆结论。"
+      ],
+      "outcomes": [
+        "作者表示会继续研究，但没有发布实现或软着陆复测结果。"
+      ],
+      "problem_statements": [
+        "Crocoddyl 中为了软着陆，应直接惩罚躯干加速度，还是使用速度/冲击速度代价？"
+      ],
+      "safety_notes": [
+        "实机落地调参必须同时约束关节速度、接触冲量、力矩和姿态，并从低高度开始；单一代价项不构成冲击安全保证。"
+      ],
+      "suspected_causes": [
+        "原 jumping example 没有针对作者所需软着陆指标配置足够的落地速度/冲击代价。"
+      ],
+      "symptoms": [
+        "用户观察 jumping example 落地不够柔和，希望增加最小化 torso acceleration 的 cost。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "线程给出的可执行旧 API 路径是：在 contact dynamics 中用 weighted quadratic state cost 高权重惩罚 torso/joint velocities，或在 impulse dynamics 中使用当时的 crocoddyl::CostModelImpulseCoM 惩罚 CoM impact velocity。另一位维护者同时纠正，formulation 本身并不禁止加速度代价，限制可能只是当时 API。由于没有版本锁定和复测，不能写成“加速度绝对不能惩罚”，应在目标版本核对现成 residual/cost 或自行派生模型。",
+        "applicability": "仅作为 2020 年 Crocoddyl devel 的设计线索；当前 API、机器人落地模型和 impact/contact dynamics 必须实际验证。",
+        "bilingual_terms": [
+          "软着陆（soft landing）",
+          "冲击速度（impact velocity）",
+          "冲量动力学（impulse dynamics）",
+          "加速度代价（acceleration cost）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.safety_fall_recovery.crocoddyl_soft_landing_velocity_acceleration_682",
+        "problem_title_zh": "Crocoddyl 软着陆代价需区分通用 formulation 与当时 API 能力",
+        "question_zh": "Crocoddyl 中想让机器人软着陆，应该惩罚 torso acceleration 还是 impact velocity？",
+        "source_locator": "Crocoddyl #682：维护者评论 583300715 建议 velocity/impact velocity；583484115 给出 CostModelImpulseCoM；成员评论 585627084 说明 formulation 可罚 acceleration、可能仅 API 受限",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-585627084",
+        "verification_refs": [
+          {
+            "locator": "维护者给出 contact dynamics + velocity penalty 与 impulse dynamics 两条路径",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-583300715"
+          },
+          {
+            "locator": "维护者给出当时 API 名称 crocoddyl::CostModelImpulseCoM",
+            "relation": "issue",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-583484115"
+          },
+          {
+            "locator": "另一位维护者说明 formulation 可以惩罚加速度，可能只是现有 API 限制",
+            "relation": "conflict",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-585627084"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.682",
+    "query": "Crocoddyl soft landing torso acceleration impact velocity CostModelImpulseCoM",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "跳跃/落地机器人（原帖未给具体型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "safety_fall_recovery",
+    "selected_comments": [
+      {
+        "text": "维护者建议用速度/冲击速度惩罚实现软着陆，并说明当时只有 CoM impact velocity cost。"
+      },
+      {
+        "text": "维护者给出旧 API 名称 crocoddyl::CostModelImpulseCoM。"
+      },
+      {
+        "text": "另一位维护者指出 formulation 本身可以惩罚加速度，可能只是当时 API 的限制。"
+      }
+    ],
+    "wbc_relevance_reason": "落地冲击代价直接影响跳跃、跌落恢复与接触切换；需要区分最优控制 formulation 能表达什么和特定版本 API 已提供什么。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.682",
+  "summary": "Crocoddyl #682 询问机器人落地时如何最小化躯干加速度。维护者最初建议在当时 API 中使用速度/冲击速度惩罚：接触动力学配合高权重 torso/joint velocity state cost，或 impulse dynamics 下使用 CostModelImpulseCoM（只罚 CoM impact velocity，不是 torso）。另一位维护者随后纠正严格表述：从 formulation 本身看加速度可以惩罚，限制可能只在当时 API。线程没有具体版本、实现或软着陆结果，因此两个层次的说法需要在目标版本中验证，不能简单写成“加速度不能罚”。",
+  "title": "Crocoddyl 软着陆中加速度与冲击速度代价的 API 边界",
+  "version": null
+}

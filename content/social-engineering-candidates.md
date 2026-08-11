@@ -1,6 +1,6 @@
 # WBC 社交平台工程问题查询手册
 
-> 生成时间：2026-08-11T03:52:49+08:00。所有已发现经验均按问题聚合并完整展示；等级仅说明核验基础，不会自动升级为正式 `EngineeringClaim`。
+> 生成时间：2026-08-11T15:09:42+08:00。所有已发现经验均按问题聚合并完整展示；等级仅说明核验基础，不会自动升级为正式 `EngineeringClaim`。
 
 ## 等级与使用
 
@@ -14,46 +14,46 @@
 
 ## 总览
 
-- 已审阅来源：146
-- 工程问题：179；工程经验：189
-- 经验等级：可信度很高 22 / 值得参考 123 / 需要实际验证 44
-- 解答状态：resolved 63 / partial 93 / unresolved 26 / conflicting 7
+- 已审阅来源：258
+- 工程问题：298；工程经验：311
+- 经验等级：可信度很高 56 / 值得参考 194 / 需要实际验证 61
+- 解答状态：resolved 138 / partial 131 / unresolved 28 / conflicting 14
 - Scope 覆盖：32/32
 
 | 工程范围 | `scope_id` | X | 知乎 | 小红书 | GitHub Issues | 问题 | 经验 | 需实际验证 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | 开放式 WBC 工程经验 | `open_ended_wbc_field_notes` | 1 | 1 | 1 | 0 | 5 | 5 | 1 |
 | 安装、依赖与版本兼容 | `environment_setup_dependencies` | 1 | 3 | 1 | 2 | 10 | 12 | 4 |
-| 仿真器与工具链 | `simulation_toolchain` | 1 | 0 | 1 | 3 | 5 | 6 | 2 |
+| 仿真器与工具链 | `simulation_toolchain` | 1 | 0 | 1 | 11 | 13 | 14 | 4 |
 | 训练不稳定与崩溃 | `training_instability` | 1 | 0 | 1 | 0 | 2 | 2 | 0 |
-| 奖励、课程与随机化 | `reward_curriculum_randomization` | 1 | 1 | 0 | 2 | 6 | 6 | 1 |
-| 性能、显存与并行仿真 | `compute_performance_memory` | 0 | 1 | 1 | 2 | 5 | 5 | 3 |
+| 奖励、课程与随机化 | `reward_curriculum_randomization` | 1 | 1 | 0 | 3 | 7 | 7 | 1 |
+| 性能、显存与并行仿真 | `compute_performance_memory` | 0 | 1 | 1 | 3 | 6 | 6 | 3 |
 | 动作重定向与数据质量 | `retargeting_and_dataset` | 2 | 1 | 0 | 0 | 3 | 3 | 0 |
 | 跟踪与遥操 | `tracking_and_teleoperation` | 1 | 1 | 1 | 0 | 3 | 3 | 2 |
-| 状态估计、标定与时间同步 | `state_estimation_calibration` | 1 | 1 | 0 | 6 | 9 | 9 | 2 |
-| 通信、时延与实时性 | `communication_and_realtime` | 0 | 1 | 1 | 0 | 2 | 2 | 1 |
-| sim-to-sim 与 sim-to-real | `sim_to_sim_and_sim_to_real` | 2 | 1 | 1 | 4 | 12 | 12 | 2 |
-| 足式运动、接触与地形 | `locomotion_contact_terrain` | 1 | 0 | 0 | 3 | 4 | 4 | 2 |
-| IK/QP/MPC/WBC 优化问题 | `optimization_ik_qp_mpc` | 1 | 2 | 1 | 15 | 23 | 26 | 3 |
-| 力控、接触操作与载荷 | `force_control_manipulation` | 1 | 1 | 1 | 1 | 6 | 6 | 2 |
-| 电机、减速器、温升与磨损 | `hardware_actuator_thermal` | 1 | 0 | 1 | 1 | 3 | 5 | 2 |
+| 状态估计、标定与时间同步 | `state_estimation_calibration` | 1 | 1 | 0 | 9 | 13 | 13 | 2 |
+| 通信、时延与实时性 | `communication_and_realtime` | 0 | 1 | 1 | 3 | 6 | 6 | 1 |
+| sim-to-sim 与 sim-to-real | `sim_to_sim_and_sim_to_real` | 2 | 1 | 1 | 7 | 16 | 16 | 3 |
+| 足式运动、接触与地形 | `locomotion_contact_terrain` | 1 | 0 | 0 | 7 | 8 | 8 | 3 |
+| IK/QP/MPC/WBC 优化问题 | `optimization_ik_qp_mpc` | 1 | 2 | 1 | 54 | 62 | 67 | 9 |
+| 力控、接触操作与载荷 | `force_control_manipulation` | 1 | 1 | 1 | 3 | 9 | 9 | 3 |
+| 电机、减速器、温升与磨损 | `hardware_actuator_thermal` | 1 | 0 | 1 | 6 | 8 | 10 | 3 |
 | 部署、固件与 SDK | `deployment_firmware_sdk` | 2 | 1 | 0 | 0 | 6 | 6 | 0 |
-| 安全、跌倒、冲击与起身 | `safety_fall_recovery` | 2 | 0 | 1 | 0 | 3 | 3 | 2 |
-| 传感器与感知接口 | `sensing_and_perception` | 1 | 0 | 1 | 0 | 2 | 2 | 0 |
-| 复现、日志、评估与调试方法 | `reproducibility_and_debugging` | 1 | 0 | 0 | 0 | 1 | 1 | 0 |
+| 安全、跌倒、冲击与起身 | `safety_fall_recovery` | 2 | 0 | 1 | 2 | 5 | 5 | 3 |
+| 传感器与感知接口 | `sensing_and_perception` | 1 | 0 | 1 | 2 | 4 | 4 | 1 |
+| 复现、日志、评估与调试方法 | `reproducibility_and_debugging` | 1 | 0 | 0 | 3 | 5 | 5 | 0 |
 | 机械集成、负载与配重 | `mechanical_payload_integration` | 0 | 1 | 0 | 1 | 2 | 2 | 0 |
 | communication_realtime_control | `communication_realtime_control` | 0 | 2 | 0 | 0 | 5 | 5 | 5 |
-| contact_force_friction | `contact_force_friction` | 0 | 0 | 0 | 8 | 11 | 11 | 3 |
+| contact_force_friction | `contact_force_friction` | 0 | 0 | 0 | 17 | 20 | 20 | 5 |
 | debugging_logging_reproducibility | `debugging_logging_reproducibility` | 0 | 0 | 0 | 2 | 2 | 2 | 1 |
-| dynamics_mass_inertia_actuation | `dynamics_mass_inertia_actuation` | 0 | 0 | 0 | 1 | 1 | 1 | 0 |
+| dynamics_mass_inertia_actuation | `dynamics_mass_inertia_actuation` | 0 | 0 | 0 | 3 | 3 | 3 | 0 |
 | dynamics_model_validation | `dynamics_model_validation` | 0 | 0 | 0 | 1 | 1 | 1 | 0 |
 | hardware_actuator_thermal_power | `hardware_actuator_thermal_power` | 0 | 0 | 0 | 8 | 8 | 8 | 1 |
-| joint_mapping_frames_conventions | `joint_mapping_frames_conventions` | 0 | 0 | 0 | 12 | 14 | 16 | 3 |
-| model_asset_and_urdf_usd | `model_asset_and_urdf_usd` | 0 | 0 | 0 | 4 | 4 | 4 | 0 |
-| realtime_control_latency | `realtime_control_latency` | 0 | 0 | 0 | 6 | 6 | 6 | 0 |
-| retargeting_dataset_quality | `retargeting_dataset_quality` | 0 | 0 | 0 | 5 | 5 | 5 | 0 |
+| joint_mapping_frames_conventions | `joint_mapping_frames_conventions` | 0 | 0 | 0 | 13 | 14 | 17 | 3 |
+| model_asset_and_urdf_usd | `model_asset_and_urdf_usd` | 0 | 0 | 0 | 11 | 11 | 11 | 0 |
+| realtime_control_latency | `realtime_control_latency` | 0 | 0 | 0 | 18 | 20 | 20 | 1 |
+| retargeting_dataset_quality | `retargeting_dataset_quality` | 0 | 0 | 0 | 7 | 8 | 8 | 0 |
 | simulator_physics_numerics | `simulator_physics_numerics` | 0 | 0 | 0 | 2 | 2 | 2 | 1 |
-| training_reward_curriculum | `training_reward_curriculum` | 0 | 1 | 0 | 4 | 8 | 8 | 1 |
+| training_reward_curriculum | `training_reward_curriculum` | 0 | 1 | 0 | 7 | 11 | 11 | 1 |
 
 平台列是已审阅入库来源数；全部技术候选见待整理附录。
 
@@ -686,6 +686,229 @@
 - 独立核验引用：[issue · 作者纠正 shape/env_ids 组合，确认完整缓冲区无 env_ids 的片段可工作，并将源码改动标为不确定的 possible fix](https://github.com/isaac-sim/IsaacLab/issues/4392#issuecomment-3757880219)
 - 适用边界：对应 Isaac Lab commit a466d4e / Isaac Sim 5.0 的 RigidObject；新版实现需先查看函数语义和最小复现。
 
+### OCS2 零速度接触约束长时间积分造成世界地面参考漂移
+
+- `problem_id`：`problem.simulation_toolchain.ocs2_zero_velocity_contact_z_drift_24`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 legged robot 示例长时间积分后目标轨迹沿 z 方向漂移**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：项目贡献者的线程内解释是：dummy simulation 与 MPC 使用相同模型，并用零速度接触约束（zero-velocity contact constraint）维持接触；长时间积分会累计漂移。命令仍在世界坐标系（world frame）发布，但内部对地面的认知已经沿 z 方向漂移，所以绿色轨迹看起来升高。线程只提到未来加入正式 terrain notion，没有给出当时可复测的补丁。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #24：贡献者评论 963489354 解释零速度接触约束与 world-frame ground drift；原作者评论 963824521 致谢
+- 原帖/精确回复：[OCS2 legged robot 示例长时间积分后目标轨迹沿 z 方向漂移](https://github.com/leggedrobotics/ocs2/issues/24#issuecomment-963489354)
+- 平台/作者：GitHub Issues / edward9503
+- 关键术语：零速度接触约束（zero-velocity contact constraint）；世界坐标系（world frame）；积分漂移（integration drift）；地形参考（terrain notion）
+- 环境：Ubuntu 20.04、Eigen 3.3.7、OCS2 legged robot example；可以完整 catkin build；未给 OCS2 commit。
+- 症状：多次让机器人向前和向后移动后，绿色 desired body trajectory 沿 z 方向上漂。；发帖人同时说明机器人运动仍显得正确、合理。
+- 诊断：对比目标轨迹的 world-frame 高度与内部接触/地面参考，判断是显示与世界参考漂移还是机器人动力学本身失稳。；检查长时间积分中的零速度接触约束是否累计漂移，而不是先归因于 Eigen 版本。
+- 原因：项目贡献者解释，零速度接触约束在长时间积分中会产生漂移；命令仍按 world frame 发布，但内部地面概念已经沿 z 漂移。
+- 处理过程：原帖只报告环境、图片和视频，没有给出修改后的复测步骤。
+- 结果：贡献者说明扩展 formulation 正在加入正式世界地形概念，并计划贯穿优化、仿真和命令侧；原线程没有发布补丁或复测结果。
+- 限制：该线程解释了原因但没有验证可立即采用的修复，因此不能把 Issue 的 closed 状态等同于实现已修好。；静态图能看到绿色轨迹位于机器人上方；视频附件未成功取帧，本卡不对视频中的运动速度或时间作推断。
+- 安全提示：长时间仿真或实机执行前，应监控接触面高度与世界参考漂移；不能只凭可视化中机器人仍在运动就认为参考一致。
+- 图片分析：原帖 PNG 已核验：RViz 中四足机器人上方有一条绿色近水平线，发帖人用黑色手绘轮廓圈出该目标轨迹；画面没有高度刻度、时间或单位，只能支持“目标轨迹明显位于机器人/地面上方”的症状。；原帖 MP4 已打开，但浏览器播放器未成功提供可核验的视频帧；本卡不据此描述运动过程，原因与限制仅来自原帖文字及贡献者回复。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者解释零速度约束导致长时间漂移以及 world-frame 命令与内部地面参考失配](https://github.com/leggedrobotics/ocs2/issues/24#issuecomment-963489354)
+- 适用边界：适用于该 OCS2 legged robot dummy simulation 的长时间积分现象；不同仿真器、接触模型或新版地形 formulation 需重新核对。
+
+### Isaac Lab Fabric 下 actuator gain 的 UI 显示与运行时生效状态不一致
+
+- `problem_id`：`problem.simulation_toolchain.isaaclab_fabric_actuator_gain_runtime_vs_ui_4320`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab GPU/Fabric 下 UI 不显示 actuator gain 与运行时是否生效不能混为一谈**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突。
+- 解答状态：`conflicting`
+- 候选解答：不能仅凭 UI 判断。项目维护者明确说明 GPU simulation/Fabric 会抑制 USD read/write，所以运行时属性和 transform 不会在 UI 中显示；需要观察 UI 时可用 --device cpu env.sim.use_fabric=false 调试。但线程对运行时是否实际生效没有闭环：后续回复称自定义 gain 会生效，原作者最后却说自己已经使用同样的 ImplicitActuatorCfg 仍不工作。因此应把 UI 可见性和 runtime gain 分开验证，不能把任一方的陈述当作最终修复。
+- 证据状态：`issue_candidate`
+- 来源定位：Isaac Lab #4320 评论 3707421315 解释 GPU/Fabric UI 行为；评论 3725503782 声称 gain 生效；评论 3914083197 原作者说明相同配置仍不工作
+- 原帖/精确回复：[Isaac Lab GPU/Fabric 下 UI 不显示 actuator gain 与运行时是否生效不能混为一谈](https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3707421315)
+- 平台/作者：GitHub Issues / junshi356rl
+- 关键术语：隐式执行器配置（ImplicitActuatorCfg）；关节刚度（joint stiffness）；关节阻尼（joint damping）；运行时状态（runtime state）；通用场景描述（Universal Scene Description, USD）
+- 环境：Isaac Lab、Isaac Sim 5.1、Python 3.11、Ubuntu 24.04.3、RTX 5080、driver 580.95.05；manager-based PPO template，UR-with-gripper USD；原帖未给 Isaac Lab commit。
+- 症状：配置 finger_joint stiffness=280、damping=28 后，Isaac Sim UI 仍显示 USD 文件中的原值。；原作者怀疑参数未应用，因为 joint-velocity penalty 明显增大。；在获得同一 ImplicitActuatorCfg 示例后，原作者最后仍回复该配置没有工作。
+- 诊断：先把 UI/USD 可见性与 PhysX/Fabric 运行时值分开：GPU Fabric 下 UI 不显示修改是项目方明确说明的已知行为。；需要查看 USD 侧调试值时，按维护者建议使用 CPU 且关闭 Fabric；运行时是否生效则应另做受控动态响应或底层 buffer 对照。
+- 原因：UI 不更新的原因由维护者解释为 GPU simulation 为提速抑制 USD read/write。；实际 stiffness/damping 是否生效没有闭环：回复者称会生效，但原作者用相同配置后仍称不工作。
+- 处理过程：维护者建议以 --device cpu env.sim.use_fabric=false 运行，便于在 UI 中查看运行时修改。；后续回复者再次给出 ImplicitActuatorCfg 的 arm/gripper 配置；原作者说明自己原帖已经使用同类配置且无效。
+- 结果：线程只解释了 GPU/Fabric 下 UI 不反映修改的机制；没有证明原作者环境中的 gripper stiffness/damping 已在运行时生效，也没有关联 PR 或最终修复。
+- 限制：CPU+关闭 Fabric 是显示/调试建议，原作者没有报告执行结果，不能写成已经修复 actuator gain。；线程没有读取 PhysX runtime buffer、阶跃响应、关节轨迹或独立力矩对照；仅凭 UI 和 penalty 变化不能判断实际 gain。；Issue 虽关闭，但最后一条技术回复仍是原作者称相同配置没有工作，关闭状态不能替代闭环证据。
+- 安全提示：把策略或控制器迁移到实机前，应通过受控小幅响应识别等效 stiffness/damping，并限制力矩、速度和位置；不能依据 UI 单值直接标定。
+- 独立核验引用：[conflict · 回复者声称 Fabric 默认开启时自定义 stiffness/damping 会生效](https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3725503782)；[conflict · 原作者明确说明自己已使用同样的 ImplicitActuatorCfg，但仍不工作](https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3914083197)
+- 适用边界：适用于 Isaac Sim 5.1/Isaac Lab GPU simulation 中 ImplicitActuatorCfg 与 Fabric/USD UI 的诊断；实际 gain 需在目标 commit 和资产上独立测量。
+
+### Pinocchio continuous joint 配置未归一化导致 ABA 加速度异常
+
+- `problem_id`：`problem.simulation_toolchain.pinocchio_continuous_joint_configuration_normalization_1534`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio continuous joint 构型未归一化会使 ABA 加速度对照失真**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：维护者指出原代码忘记归一化配置。该模型使用 continuous joint，q 以 \[cos(theta), sin(theta)\] 参数化，因此应在 ABA 前执行 q=pin.normalize(model,q)，并注意 normalize 返回新值，必须重新赋给 q。线程没有给出修正后的加速度输出，也没有回到完整 walking 模型复测，所以只能把这条作为已确认的输入修正，不能声称完整摆动腿问题已经闭环。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1534 评论 934651753 给出 normalize 脚本；评论 973980396 解释 continuous joint 参数化；评论 974012875 强调接收返回值
+- 原帖/精确回复：[Pinocchio continuous joint 构型未归一化会使 ABA 加速度对照失真](https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-934651753)
+- 平台/作者：GitHub Issues / Kongx231
+- 关键术语：连续关节（continuous joint）；配置流形（configuration manifold）；构型归一化（configuration normalization）；关节加速度（joint acceleration）；关节空间前向动力学算法（Articulated-Body Algorithm, ABA）
+- 环境：pinocchio3-preview、Python、附件 single_pendulum.urdf；原帖未给 OS、具体 commit 或编译选项。
+- 症状：单摆长度 2、质量 1、惯量 1、重力 9.81、质心距转轴 1，在 pi/2 零速度初始化时，原作者预期约 -4.905，却从 ABA 得到约 -7.7。；更大 walking 模型中，原作者先观察到 swing-leg joint accelerations 偏大且与其他 solver 不一致。
+- 诊断：检查 URDF joint 类型和 model.nq/model.nv；continuous joint 不能按单个标量角度直接填配置。；在调用 ABA/constraintDynamics 前对 q 使用 pin.normalize(model,q)，并保留返回值。
+- 原因：维护者指出原始 q 未归一化；该 continuous joint 的配置使用 \[cos(theta), sin(theta)\] 参数化。
+- 处理过程：原作者先从 walking constraintDynamics 简化到单摆 ABA 最小复现，并附 Python 代码与 URDF。；维护者给出包含 q=pin.normalize(model,q) 的完整脚本片段。
+- 有效处理：以 q=pin.normalize(model,q) 接收归一化返回值后再调用 pin.aba；不要只调用 normalize 而丢弃返回值。
+- 结果：维护者将异常定位为未归一化配置，并解释 continuous joint 的 \[cos(theta), sin(theta)\] 参数化；原作者没有发布修正后数值。
+- 限制：线程没有原作者归一化后的 -4.905 对照，也没有回到完整 walking/constraintDynamics 模型复测，因此完整摆动腿问题仍需单独验证。；本卡不能把所有过大加速度都归因于配置归一化；惯量、单位、外力和约束也需独立核对。；附件代码/URDF 没有在当前环境重新运行。
+- 安全提示：动力学输入进入实机 WBC 前应检查配置流形有效性和有限值；异常大加速度不得直接转成力矩下发。
+- 独立核验引用：[maintainer_confirmation · 维护者说明该 continuous joint 用 q=\[cos(theta),sin(theta)\] 参数化](https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-973980396)；[issue · 项目成员纠正为 q=pin.normalize(model,q)，必须保存返回值](https://github.com/stack-of-tasks/pinocchio/issues/1534#issuecomment-974012875)
+- 适用边界：适用于 Pinocchio continuous joint 的配置向量及其 ABA/constraintDynamics 调用；完整机器人仍需检查其他动力学输入。
+
+### MJX contact pair mesh 的凸包缺失修复
+
+- `problem_id`：`problem.simulation_toolchain.mjx_contact_pair_mesh_hull_2777`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MJX put_model 遇到仅通过 contact pair 碰撞的 mesh 时需要凸包修复**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先确认该 mesh 的 contype/conaffinity 为 0、碰撞只由 contact/pair 指定；若符合，使用包含提交 3434f5d 的 MuJoCo 版本。该提交在编译期先解析 pairs，把 pair 中的 mesh 标记为需要 convex hull，并加入 ConvexHullForPairCollisionMeshes 回归测试。原作者未报告升级复测，但维护者诊断、作者模型确认、正式源码修复和测试形成了完整证据链。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #2777 维护者诊断 3133421618、作者模型确认 3134769229；commit 3434f5d
+- 原帖/精确回复：[MJX put_model 遇到仅通过 contact pair 碰撞的 mesh 时需要凸包修复](https://github.com/google-deepmind/mujoco/issues/2777#issuecomment-3133421618)
+- 平台/作者：GitHub Issues / VincentFEI
+- 关键术语：接触对（contact pair）；凸包（convex hull）；网格图地址（mesh_graphadr）；回归测试（regression test）
+- 环境：MuJoCo/MJX 3.3.4；Python API；Ubuntu 24.04；原模型通过 contact/pair 让 contype=0、conaffinity=0 的 mesh 参与碰撞。
+- 症状：mjx.put_model 报 mesh.py convex 错误；相关 mesh_graphadr 为 -1；把 mesh 替换为 box 后不报错。
+- 诊断：检查异常 mesh 是否 contype/conaffinity 都为 0，却只在 contact/pair 中参与碰撞。；检查安装版本是否包含提交 3434f5d 或 changelog 中对应修复。
+- 原因：正式提交说明：只通过 contact pair 碰撞的 mesh 没有被标记计算 convex hull。
+- 处理过程：维护者把问题与原模型的 contact pair 对齐；作者确认原模型确有 pair。
+- 有效处理：使用包含 MuJoCo 提交 3434f5d9c774bf56d3cf4dd26d0beca8d9c509f1 的版本；该修复会在 convex-hull 检查前编译 pairs，并把 pair 中 mesh 标记为需要 hull。
+- 结果：修复提交加入专门的 pair-collision mesh 回归测试并写入 changelog；原作者未在评论中报告升级后复测。
+- 限制：原帖最小复现被维护者指出与真实 bug 不一致；适用前必须确认真实模型确有 contact pair。；不能把该修复外推到所有 mesh.py convex 错误。
+- 安全提示：升级后应对脚底接触数量、法向和摩擦行为做回归，不能只以 put_model 不报错作为动力学验收。
+- 独立核验引用：[source_code · 正式提交修改 user_model.cc、加入 pair mesh convex-hull 回归测试并更新 changelog](https://github.com/google-deepmind/mujoco/commit/3434f5d9c774bf56d3cf4dd26d0beca8d9c509f1)
+- 适用边界：适用于 MuJoCo/MJX 3.3.4 及缺少该提交的版本，并且 mesh 仅通过 contact pair 参与碰撞。
+
+### MuJoCo sysid modifier factory 隐式返回 None
+
+- `problem_id`：`problem.simulation_toolchain.mujoco_sysid_modifier_none_3286`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MuJoCo sysid 零迭代先检查 modifier factory 是否真的返回 callable**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该例不是 LuGre 参数通路失效，而是 Python factory 的 return modifier 缩进在 inner function 内，outer factory 隐式返回 None。sysid.Parameter 收到 None 后不调用 modifier，candidate 值没有进入 spec，残差不变，有限差分梯度自然为零。修法是让 outer factory 返回 modifier；inner modifier 只修改 spec。维护者还单独检查了 biasprm\[3\]/\[4\] 的 spec→model→LuGre ODE 通路。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #3286 维护者诊断与修正代码 4546762188，库方结论 4549965819
+- 原帖/精确回复：[MuJoCo sysid 零迭代先检查 modifier factory 是否真的返回 callable](https://github.com/google-deepmind/mujoco/issues/3286#issuecomment-4546762188)
+- 平台/作者：GitHub Issues / ndhoang02-source
+- 关键术语：参数修改器（parameter modifier）；工厂函数（factory function）；有限差分梯度（finite-difference gradient）；刷毛微分方程（LuGre bristle ODE）
+- 环境：MuJoCo 3.8.0 Python；Ubuntu 22.04 x86_64；最小单关节 dcmotor/LuGre 模型。
+- 症状：optimizer 0 iterations、finite-difference gradient 为 0；HTML report 中 initial 与 nominal torque 相同；identified 参数停在 initial。
+- 诊断：确认传给 sysid.Parameter(modifier=...) 的对象是 callable，而不是 None。；在优化前手动改变 param，检查 spec、compile 后 model 和 residual 是否随之变化。
+- 原因：两个 factory 的 return modifier 缩进在 inner modifier 内，outer factory 隐式返回 None。
+- 处理过程：维护者展开 Python 作用域与缩进，检查 Parameter.apply_modifier 的 falsy no-op 路径。；维护者单独验证 biasprm\[3\] 写入 spec 后能进入 model，且 biasprm\[3\]/\[4\] 被 LuGre ODE 读取。
+- 有效处理：把 return modifier 移到 outer factory 作用域；inner modifier 只更新 spec 参数。
+- 结果：维护者将问题标为 resolved，并明确不做库侧修改，因为属于用户代码错误。
+- 限制：原作者没有在评论中贴出修正后的优化数值；结论依据维护者代码诊断与参数通路检查。；其他零梯度问题仍可能来自尺度、可辨识性或残差设计，不能一概归因于缩进。
+- 安全提示：将识别参数用于真实执行器前，应保留边界约束并用独立轨迹验证，不要仅凭优化器退出状态接受参数。
+- 独立核验引用：[maintainer_confirmation · 维护者确认属于 user error、问题 resolved，不做库侧修改](https://github.com/google-deepmind/mujoco/issues/3286#issuecomment-4549965819)
+- 适用边界：精确适用于 MuJoCo 3.8.0 sysid 参数 modifier factory 返回 None 的情形；其他零梯度需重新诊断。
+
+### 核对永久外力的 world/body frame 缓存
+
+- `problem_id`：`problem.simulation_toolchain.isaaclab_permanent_global_wrench_4580`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 永久 world-frame 外力会随 body frame 转向**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原作者沿固定 commit 的调用链说明：force 在 reset 时按当时姿态从 world frame 投影到 local frame，随后缓存 vector 每步以 `is_global=False` 应用；body frame 改变后没有重新投影，所以世界方向漂移甚至翻转。这个根因路径得到维护者正面回应。#4604 尝试 mixed representation，但仍处于 open，维护者指出它可能破坏 permanent local force 随 body rotation 的语义，作者也认可，因此不能当作已验证 fix。当前应先用旋转 180° 的最小测试同时检查永久 global 与 local force，再等待或实现能分别保持两种 frame 语义的修复。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #4580 详细调用链 3871986934、维护者回应 3889639271；开放 PR #4604 的未解决评审
+- 原帖/精确回复：[Isaac Lab 永久 world-frame 外力会随 body frame 转向](https://github.com/isaac-sim/IsaacLab/issues/4580#issuecomment-3871986934)
+- 平台/作者：GitHub Issues / LoreMoretti
+- 关键术语：永久外力（permanent force）；世界坐标系（world frame）；机体坐标系（body frame）；混合表示（mixed representation）
+- 环境：IsaacLab v2.3.2、commit 37ddf626871758333d6ed89cf64ad702aef127d0、Ubuntu 24.04、RTX 5090、CUDA 13.0、driver 580.126.09；原帖 Isaac Sim 版本字段未实际填写。
+- 症状：世界系 `\[0,0,-10\]` 力在 body 绕 x 轴转 180° 后变成相反的世界方向；只影响 permanent wrench composer。
+- 诊断：跟踪 reset 时 world-to-local 投影、`composed_forces_b` 缓存和后续 `is_global=False` 的 apply 调用，检查是否每步重投影。
+- 原因：永久 world force 只在 reset 姿态下投影到 local frame，之后缓存的旧 local vector 被套到不断变化的新 body frame。
+- 处理过程：作者提交 PR #4604，尝试使用 world orientation/link-origin 的 mixed representation；维护者随后指出 permanent local force tracking rotations 仍可能错误。
+- 有效处理：当前没有合并且经维护者接受的修复；#4604 不能作为完成方案。
+- 结果：维护者认可详细复现并计划修复；#4604 仍 open，作者对维护者指出的问题回复 `you're right`。
+- 限制：Issue 的 Isaac Sim version 是模板占位文字，不能视为确切 5.0。；线程没有发布最终 workaround；若要恢复 v2.3.1 语义，应在目标版本自行做旋转 body 的方向不变量测试。
+- 安全提示：外力用于真机或安全评估前，必须记录 force 表达 frame、application point 与每步实际 world wrench，避免方向翻转。
+- 独立核验引用：[source_code · 原作者逐段绑定 commit 37ddf626 的 reset 投影、缓存与 apply 调用](https://github.com/isaac-sim/IsaacLab/issues/4580#issuecomment-3871986934)；[conflict · 维护者指出 proposed mixed representation 的 permanent local-force rotation 仍有问题](https://github.com/isaac-sim/IsaacLab/pull/4604#issuecomment-3908653234)
+- 适用边界：适用于 v2.3.2 composable wrench permanent composer；其他版本需运行 global/local 两组旋转不变量测试。
+
+### 选择支持 hfield 射线检测的 MuJoCo 后端
+
+- `problem_id`：`problem.simulation_toolchain.mjx_hfield_ray_backend_2155`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MJX 不计划补齐 hfield ray，项目指向 MuJoCo Warp**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：按 MuJoCo 维护者在该线程的最终决定，不应把当前方案建立在 MJX 即将补齐此功能的假设上：该能力不计划加入 MJX。维护者明确指向 MuJoCo Warp 的 `ray`，其官方 API 文档包含 height fields。工程上应把它作为候选后端重新评估，但原帖没有证明两条后端在性能、数值或接口上完全等价。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #2155 维护者最终回复 4707886038
+- 原帖/精确回复：[MJX 不计划补齐 hfield ray，项目指向 MuJoCo Warp](https://github.com/google-deepmind/mujoco/issues/2155#issuecomment-4707886038)
+- 平台/作者：GitHub Issues / nico-bohlinger
+- 关键术语：高度场（height field, hfield）；射线检测（ray casting）；测距传感器（rangefinder）；计算后端（compute backend）
+- 环境：原始请求针对 MJX 的 `mjx.ray` 与 hfield geom；线程未固定 MuJoCo 版本。
+- 症状：`mjx.ray` 当时没有 hfield geom 实现，无法直接为 hfield locomotion terrain 生成所需射线结果。
+- 诊断：先确认目标后端是 MJX 还是 MuJoCo Warp，再核对所需 geom 类型是否在该后端 `ray` API 中受支持。
+- 原因：这是维护者确认的功能边界，不是原帖已经定位出的运行时故障。
+- 处理过程：原帖提出把 CPU `mj_rayHfield` 移植到 MJX；后续贡献者询问是否可以实现。
+- 有效处理：若需求是 hfield ray casting，按维护者指向评估 MuJoCo Warp `ray`；线程没有声称 MJX 与 MuJoCo Warp 可无成本互换。
+- 结果：维护者明确 MJX 不计划此功能，并把 Issue 关闭；官方 MuJoCo Warp `ray` 文档列出 height fields。
+- 限制：该结论只回答项目公开计划与后端能力选择，不比较两个后端的性能、数值一致性或完整迁移成本。
+- 安全提示：把地形感知输入用于真机 WBC 前，还需独立验证量程、遮挡、坐标系和时延。
+- 独立核验引用：[official_documentation · MuJoCo Warp ray API：维护者直接链接的 height-field ray casting 文档](https://mujoco.readthedocs.io/en/latest/mjwarp/api.html#mujoco_warp.ray)
+- 适用边界：适用于需要 hfield ray casting、正在 MJX 与 MuJoCo Warp 间选型的项目；具体版本与迁移代价需另行验证。
+
+### 修复 DART slip-compliance sentinel 告警回归
+
+- `problem_id`：`problem.simulation_toolchain.gazebo_dart_slip_sentinel_3289`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Gazebo Ionic slip compliance -1 告警风暴由 DART 6.16.5 回归引起**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：如果环境与原帖一致，先不要批量修改模型。DART 的 `-1.0` 是“使用全局默认值”的哨兵值（sentinel value）；6.16.5 的校验回归把它错误地报警。DART PR #2493 已合并修复，并把发布记录指向 6.16.6；原作者通过 Homebrew 升级到 DART 6.16.6 后确认告警消失。只有参数不是这个 sentinel、而是 NaN/Inf 或自定义异常值时，才应继续检查模型数据。
+- 证据状态：`issue_candidate`
+- 来源定位：Gazebo #3289 作者复测 3818259239；合并 DART PR #2493
+- 原帖/精确回复：[Gazebo Ionic slip compliance -1 告警风暴由 DART 6.16.5 回归引起](https://github.com/gazebosim/gz-sim/issues/3289#issuecomment-3818259239)
+- 平台/作者：GitHub Issues / michael-p
+- 关键术语：滑移柔度（slip compliance）；哨兵值（sentinel value）；接触约束（contact constraint）；回归缺陷（regression）
+- 环境：macOS Homebrew；Gazebo Ionic 9.5.0；DART 6.16.5 触发，作者升级到 DART 6.16.6 后复测。
+- 症状：控制台约每秒 100 行相同警告；Fuel 中大量模型受影响；`-v 0` 无效。；维护者报告 Homebrew CI 日志从小于 4 MB 增长到 1.5 GB 以上。
+- 诊断：先检查 DART 版本；确认日志参数值恰为 sentinel `-1`，而不是 NaN/Inf 或显式非法配置。
+- 原因：已合并 PR 确认：DART 6.16.5 的新校验把表示“use global default”的负值 sentinel 错误地当作非法 slip compliance。
+- 处理过程：显式在 SDF 写 `slip1=0`、`slip2=0` 可让单模型安静，但不能解决大量 Fuel 模型；`-v 0` 无效。
+- 有效处理：升级到包含 DART PR #2493 的 6.16.6；补丁对负值 sentinel 静默返回默认值，仅对 NaN/Inf 保留警告。
+- 结果：PR 合并且相关修改行有测试覆盖；原作者确认升级 DART 6.16.6 后告警消失。
+- 限制：该修复针对恰为负值 sentinel 的回归；若输入是 NaN/Inf 或自定义非预期值，仍应检查 SDF 和数值来源。
+- 安全提示：不要通过全局丢弃 Gazebo stderr 来掩盖日志；先区分已知 sentinel 回归和真实接触参数错误。
+- 独立核验引用：[pull_request · 已合并 PR c827858：区分负值 sentinel 与 NaN/Inf，并增加单元测试](https://github.com/dartsim/dart/pull/2493)
+- 适用边界：适用于 Gazebo Ionic 9.5.0 / DART 6.16.5 的 `-1` sentinel 告警回归；其他错误值需另查。
+
 ## 训练不稳定与崩溃 (`training_instability`)
 
 ### 人形 locomotion 一开始完全训不出来，reward 应该怎么减法排查？
@@ -912,6 +1135,34 @@
 - 独立核验引用：[maintainer_confirmation · 维护者说明不同 shape 模型不能 stack，并提出 host dispatch 或最大对象数方向](https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123601780)；[issue · 协作者明确说加载所有 mesh 并移出未用对象的技巧未尝试/YMMV](https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2599343381)；[maintainer_confirmation · 协作者限定 max_contact_points/max_geom_pairs 只节省部分碰撞检测工作](https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2599358830)
 - 适用边界：仅适用于能容忍固定最大模型 shape、额外物体开销和位置掩码风险的 MJX 环境；静态 world object 的位置变更另有重编译边界。
 
+### 验证 MJX 每环境 hfield 路由是否真实生效
+
+- `problem_id`：`problem.reward_curriculum_randomization.mjx_batched_hfield_dataid_3258`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MJX-Warp 当前不能用 batched geom_dataid 路由每环境 hfield**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该线程对应的公开实现不能这样使用。原帖给出的转换代码会把多维 `geom_dataid` 折叠为第一行；维护者也明确 batched `geom_dataid` 当前不计划加入 MJX，并指出 JIT 静态分析下的 collision driver 可能需要重构。作者只提到本地 monkey patch，没有发布补丁或结果，所以不能把它当作可复用解法。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #3258 维护者关闭说明 4741236754
+- 原帖/精确回复：[MJX-Warp 当前不能用 batched geom_dataid 路由每环境 hfield](https://github.com/google-deepmind/mujoco/issues/3258#issuecomment-4741236754)
+- 平台/作者：GitHub Issues / nico-bohlinger
+- 关键术语：批量几何数据标识（batched geom_dataid）；每环境路由（per-world routing）；即时编译（Just-In-Time compilation, JIT）；地形随机化（terrain randomization）
+- 环境：`mujoco.mjx` 且 `impl=warp`；原帖基于 2026-05 的公开实现说明，未给发布版号。
+- 症状：多维 `geom_dataid` 在 `_put_model_warp` 中被折叠到第一行，随后所有 world 收到相同映射。
+- 诊断：检查转换路径中 `geom_dataid` 的形状是否在进入 Warp 前被压成一维，并实际记录各 world 使用的 data id。
+- 原因：维护者说明，MJX collision driver 为 JIT 静态分析把 `geom_dataid` 当作 NumPy array；支持动态批量字段可能需要重构。
+- 处理过程：作者说自己做过本地 monkey patch，但没有公开结果、补丁或复测数据；因此不把它登记为有效修复。
+- 有效处理：线程没有已合并修复；当前只能把该能力视为未受支持，并在选用替代架构或自建 PR 前做最小验证。
+- 结果：Issue 因功能不在计划中而关闭；维护者允许提交足够小且干净的 PR，但没有承诺接收。
+- 限制：底层 MuJoCo Warp 的二维字段能力不等于 MJX 前端已暴露该能力；原帖也没有验证任意 monkey patch 的正确性。
+- 安全提示：训练前应抽样打印每环境地形 ID 或几何统计，避免域随机化（domain randomization）静默失效。
+- 独立核验引用：[maintainer_confirmation · 维护者说明不在计划内及 collision driver/JIT 静态分析约束](https://github.com/google-deepmind/mujoco/issues/3258#issuecomment-4741236754)
+- 适用边界：适用于该线程所述 MJX-Warp 转换路径；后续版本若合入新实现需重新检查。
+
 ## 性能、显存与并行仿真 (`compute_performance_memory`)
 
 ### MuJoCo 完整双足项目只有 3 FPS，但单独 XML 有 102 FPS，如何继续定位？
@@ -1050,6 +1301,32 @@
 - 安全提示：大规模训练应保留定期 checkpoint 与显存/主存趋势，避免长时崩溃丢失全部进度。
 - 独立核验引用：[maintainer_confirmation · 项目协作者确认为 known issue](https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2470592676)；[maintainer_confirmation · 协作者说计划在 2.0 修复，但未给精确修复定位](https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2590839226)；[issue · 原作者报告 2.0.1+CCD 下仍复现并观察到内存持续增长](https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2700179359)
 - 适用边界：适用于 Isaac Sim 4.2/当时 Isaac Lab 以及原作者后续 2.0.1+CCD 长时训练记录；不证明所有版本或场景必然触发。
+
+### Pinocchio 的 ABA、computeMinverse 与 Cholesky 路径选择
+
+- `problem_id`：`problem.compute_performance_memory.pinocchio_forward_dynamics_minverse_selection_1215`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 前向动力学与质量矩阵逆的计算路径应按已计算量和乘法形式选择**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：维护者给出的通用规则是：已有质量矩阵时复用 Cholesky；已执行 ABA 时优先考虑 computeMinverse；只需 M^-1 乘向量时用 Cholesky solve，避免显式形成完整逆；需要矩阵-矩阵运算时才更可能需要完整 M^-1；通用 Eigen inverse 不能利用腿式机器人运动树稀疏性。可是原作者的接触 Jacobian 完整矩阵特例没有闭环：维护者链接的 contact-dynamics.hxx 使用 Cholesky，原作者指出与前述建议不一致后没有获得解释。因此应把这些规则作为候选起点，并在目标矩阵运算上 benchmark。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1215 评论 630212062 给出通用决策规则；评论 630280866 指向 contact-dynamics.hxx；评论 631426324 指出特例未解释的矛盾，之后无技术回复
+- 原帖/精确回复：[Pinocchio 前向动力学与质量矩阵逆的计算路径应按已计算量和乘法形式选择](https://github.com/stack-of-tasks/pinocchio/issues/1215#issuecomment-630212062)
+- 平台/作者：GitHub Issues / andreadelprete
+- 关键术语：关节空间前向动力学算法（Articulated-Body Algorithm, ABA）；复合刚体算法（Composite Rigid Body Algorithm, CRBA）；质量矩阵逆（inverse mass matrix）；乔列斯基分解（Cholesky decomposition）；运动树稀疏性（kinematic-tree sparsity）
+- 环境：2020 年 Pinocchio C++ API；原帖给出典型 nv=18、3k=12 的接触 Jacobian 规模，但没有软件版本、硬件、编译器或实测时延。
+- 症状：同一库提供多条前向动力学和质量矩阵逆路径，调用者不确定是否需要逐应用 benchmark。；原作者需要构造含接触 Jacobian 和 M^-1 的完整矩阵并进一步计算 matrix exponential。
+- 诊断：先区分所需结果是完整 M^-1、M^-1 乘向量，还是接触投影/矩阵-矩阵运算。；记录当前计算图是否已经得到 M 或已执行 ABA，再选择可以复用中间量的算法。；腿式运动树可利用稀疏性；不要默认把 CRBA 结果交给通用 Eigen inverse。
+- 处理过程：维护者按已有 M、已有 ABA、向量乘法和完整矩阵四种情况给出选择建议。；对于原作者的接触矩阵特例，维护者只链接了 contact-dynamics.hxx，没有解释其中 Cholesky 与此前建议的关系。
+- 结果：通用选择规则得到维护者明确说明；原作者的接触矩阵特例没有最终算法选择、benchmark 或复测结果。
+- 限制：不能从该线程断言 computeMinverse 对所有接触矩阵运算都最快；维护者指向的实现使用 Cholesky，而最后追问未回答。；线程没有给绝对时延、机器人拓扑对照或当前 Pinocchio 版本 benchmark；算法实现和复杂度可能已演进。；原帖写作 J*Minv*J，未给完整维度表达；本卡不自行补写是否应有转置。
+- 安全提示：实时 WBC 上线前应在目标模型、编译选项和矩阵形状上测量最坏时延；平均更快不等于满足硬实时截止时间。
+- 独立核验引用：[issue · 原作者指出接触矩阵实现使用 Cholesky，与已调用 ABA 后优先 computeMinverse 的建议关系未被解释](https://github.com/stack-of-tasks/pinocchio/issues/1215#issuecomment-631426324)；[source_code · 维护者为接触矩阵特例直接给出的固定源码位置](https://github.com/stack-of-tasks/pinocchio/blob/ada5b11e5881e3fbc28e3bac717075ed8fa6855c/src/algorithm/contact-dynamics.hxx#L39)
+- 适用边界：适用于 Pinocchio 中 ABA/CRBA/质量矩阵逆及接触矩阵运算的方案预选；最终路径需按当前版本、目标机器人和乘法形式实测。
 
 ## 动作重定向与数据质量 (`retargeting_and_dataset`)
 
@@ -1394,6 +1671,64 @@
 - 独立核验引用：[conflict · 原提问者报告切换 ImplicitActuator 后结果仍错误](https://github.com/isaac-sim/IsaacLab/issues/1618#issuecomment-2597325994)；[conflict · 团队在 Isaac Sim 5.0 无法复现旧问题](https://github.com/isaac-sim/IsaacLab/issues/1618#issuecomment-3076020376)
 - 适用边界：适用于旧 IsaacLab/Isaac Sim 环境中使用显式 IdealPD 类执行器并读取刚体加速度的场景；版本边界尚未闭环。
 
+### OCS2 observation feedback 低通滤波能稳定步行但引入相位延迟
+
+- `problem_id`：`problem.state_estimation_calibration.ocs2_observation_lowpass_delay_27`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 与 RaiSim/WBC 闭环中姿态约定错误及观测低通滤波的边界**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：只能视为该线程环境中的阶段性工程方案。原作者报告低通滤波让 MPC 的 base pose/twist 参考更平滑，并使当前四足步行闭环稳定；项目贡献者同时明确指出，滤波会加入人工 phase shift/delay，可能妨碍更动态运动。帖子没有滤波器参数或动态动作复测，所以应用到目标机器人前必须实测延迟与稳定裕度。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #27：原作者评论 999336345 报告低通滤波后可行走；贡献者评论 999452836 警告动态动作的 phase shift/delay
+- 原帖/精确回复：[OCS2 与 RaiSim/WBC 闭环中姿态约定错误及观测低通滤波的边界](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999452836)
+- 平台/作者：GitHub Issues / edward9503
+- 关键术语：低通滤波（low-pass filter）；相位偏移（phase shift）；时延（delay）；稳定裕度（stability margin）
+- 环境：ANYmal C、RaiSim、自研 WBC 1 kHz、mrtDesiredFrequency 1 kHz、mpcDesiredFrequency=-1（作者机器实际约 250 Hz）；未给 OCS2 commit。
+- 症状：以 1 kHz 更新 observation_ 时，机器人起初站立不动，随后漂移。；把 observation_ 更新降到 1 Hz 后，RViz 机器人位置跳变，RaiSim 侧再次不稳定。；作者尝试多组 MRT/MPC/observation 更新频率仍不稳定。
+- 诊断：先核对 MPC 与仿真/WBC 两侧的姿态约定和 quaternion 到 Euler ZYX 的转换。；分离 MPC feedforward 与 WBC 对 base pose/twist 的附加反馈，检查是否把 MPC 已有反馈重复叠加。；不要仅靠改变 observation 更新频率判断根因；同时检查参考状态/输入的连续性和坐标变换。
+- 原因：原作者最终确认存在 quaternion 到 Euler ZYX 的微小计算错误。；贡献者指出，WBC 中额外的 base pose/twist error feedback 可能与 MPC 自身的测量状态反馈叠加并使闭环失稳。
+- 处理过程：作者在 1 kHz 和 1 Hz 以及其他 MRT/MPC/observation 频率组合间尝试，均未直接解决。；作者修正 quaternion-to-Euler ZYX 计算后，四足能够行走。；作者把全状态和输入反馈给 MPC，在 WBC 初测中只跟踪 base pose 与腿关节角，并对真实 observation feedback 加低通滤波。
+- 有效处理：修正 quaternion 到 Euler ZYX 的姿态转换错误；这是原作者明确确认有效的修复。；低通滤波 observation feedback 在作者当前步行测试中使 MPC 参考更平滑并稳定了闭环，但仅是该环境的工程做法。
+- 结果：原作者明确回复修正姿态转换后 quadruped can walk。；原作者报告低通滤波后的 current walkable WBC 可稳定行走；贡献者认可当前结果，同时警告动态动作中的相位延迟风险。
+- 限制：帖子没有公开姿态转换代码、滤波器类型、截止频率或延迟量，不能复制一个通用滤波参数。；贡献者建议仅跟踪 MPC desired base acceleration，但原作者只表示将尝试，线程没有给出该方案的复测结果。；低通滤波结果只覆盖作者当时的步行测试，未覆盖更动态运动。
+- 安全提示：实机接入前应离线验证姿态约定、单位和符号；任何新增滤波必须测量相位延迟，并在低速/悬空或安全支撑条件下逐步闭环。
+- 图片分析：第一段 GIF 已在多个时刻核验：画面左右分别是 RViz 和 RaiSim，左侧机器人出现明显多姿态重影，右侧机器人姿态与左侧参考不一致；没有时间戳、数值或坐标说明，不能从图中量化漂移。；第二段 GIF 已在多个时刻核验：两帧中左侧 RViz 足端轨迹/机器人姿态和右侧 RaiSim 机器人姿态发生明显跳变；它支持帖子描述的可视不同步/不稳定症状，但不单独证明更新频率或姿态转换是根因。
+- 独立核验引用：[issue · 原作者报告 observation feedback 低通滤波后当前闭环可稳定行走](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345)；[maintainer_confirmation · 项目贡献者提醒滤波引入 phase shift/delay，可能影响更动态运动](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999452836)
+- 适用边界：仅覆盖原帖 ANYmal C/RaiSim/OCS2/自研 WBC 的当时步行测试；更动态动作与不同滤波参数必须重新验证。
+
+### OCS2/RaiSim/WBC 状态回灌因 quaternion-to-Euler ZYX 转换错误而失稳
+
+- `problem_id`：`problem.state_estimation_calibration.ocs2_quaternion_euler_zyx_feedback_27`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 与 RaiSim/WBC 闭环中姿态约定错误及观测低通滤波的边界**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：贡献者先建议核对两侧 orientation convention；原作者随后确认 quaternion 到 Euler ZYX 的一个微小计算错误，修正后四足能够行走。线程同时提醒，MPC 已用测量状态闭环时，WBC 对 base pose/twist 的额外强反馈可能重复叠加；但原作者没有在该线程验证“只跟踪 desired base acceleration”这一建议，因此它只能作为后续排查项。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #27：贡献者评论 998091116 建议核对姿态约定；原作者评论 999336345 确认 quaternion→Euler ZYX 修复后可行走
+- 原帖/精确回复：[OCS2 与 RaiSim/WBC 闭环中姿态约定错误及观测低通滤波的边界](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345)
+- 平台/作者：GitHub Issues / edward9503
+- 关键术语：姿态约定（orientation convention）；四元数（quaternion）；欧拉角 ZYX（Euler ZYX）；测量状态回灌（measured-state feedback）
+- 环境：ANYmal C、RaiSim、自研 WBC 1 kHz、mrtDesiredFrequency 1 kHz、mpcDesiredFrequency=-1（作者机器实际约 250 Hz）；未给 OCS2 commit。
+- 症状：以 1 kHz 更新 observation_ 时，机器人起初站立不动，随后漂移。；把 observation_ 更新降到 1 Hz 后，RViz 机器人位置跳变，RaiSim 侧再次不稳定。；作者尝试多组 MRT/MPC/observation 更新频率仍不稳定。
+- 诊断：先核对 MPC 与仿真/WBC 两侧的姿态约定和 quaternion 到 Euler ZYX 的转换。；分离 MPC feedforward 与 WBC 对 base pose/twist 的附加反馈，检查是否把 MPC 已有反馈重复叠加。；不要仅靠改变 observation 更新频率判断根因；同时检查参考状态/输入的连续性和坐标变换。
+- 原因：原作者最终确认存在 quaternion 到 Euler ZYX 的微小计算错误。；贡献者指出，WBC 中额外的 base pose/twist error feedback 可能与 MPC 自身的测量状态反馈叠加并使闭环失稳。
+- 处理过程：作者在 1 kHz 和 1 Hz 以及其他 MRT/MPC/observation 频率组合间尝试，均未直接解决。；作者修正 quaternion-to-Euler ZYX 计算后，四足能够行走。；作者把全状态和输入反馈给 MPC，在 WBC 初测中只跟踪 base pose 与腿关节角，并对真实 observation feedback 加低通滤波。
+- 有效处理：修正 quaternion 到 Euler ZYX 的姿态转换错误；这是原作者明确确认有效的修复。；低通滤波 observation feedback 在作者当前步行测试中使 MPC 参考更平滑并稳定了闭环，但仅是该环境的工程做法。
+- 结果：原作者明确回复修正姿态转换后 quadruped can walk。；原作者报告低通滤波后的 current walkable WBC 可稳定行走；贡献者认可当前结果，同时警告动态动作中的相位延迟风险。
+- 限制：帖子没有公开姿态转换代码、滤波器类型、截止频率或延迟量，不能复制一个通用滤波参数。；贡献者建议仅跟踪 MPC desired base acceleration，但原作者只表示将尝试，线程没有给出该方案的复测结果。；低通滤波结果只覆盖作者当时的步行测试，未覆盖更动态运动。
+- 安全提示：实机接入前应离线验证姿态约定、单位和符号；任何新增滤波必须测量相位延迟，并在低速/悬空或安全支撑条件下逐步闭环。
+- 图片分析：第一段 GIF 已在多个时刻核验：画面左右分别是 RViz 和 RaiSim，左侧机器人出现明显多姿态重影，右侧机器人姿态与左侧参考不一致；没有时间戳、数值或坐标说明，不能从图中量化漂移。；第二段 GIF 已在多个时刻核验：两帧中左侧 RViz 足端轨迹/机器人姿态和右侧 RaiSim 机器人姿态发生明显跳变；它支持帖子描述的可视不同步/不稳定症状，但不单独证明更新频率或姿态转换是根因。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者确认 measured-state feedback 方向正确，并建议核对 orientation convention](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-998091116)；[issue · 原作者确认修正 quaternion 到 Euler ZYX 计算后四足可以行走](https://github.com/leggedrobotics/ocs2/issues/27#issuecomment-999336345)
+- 适用边界：适用于 OCS2 MPC、RaiSim 和自研 WBC 之间传递浮基姿态的接口；具体状态布局、旋转顺序和单位必须按目标代码核对。
+
 ### Whole Body Tracking 中 anchor_body 必须等于 USD 根链接或主 IMU 所在链接吗？
 
 - `problem_id`：`problem.state_estimation_calibration.ec77676abbf7a02f`
@@ -1475,6 +1810,62 @@
 - 独立核验引用：[maintainer_confirmation · 项目贡献者确认实时遥操作前需对齐 VR 与 ZED 偏移](https://github.com/LeCAR-Lab/human2humanoid/issues/8#issuecomment-2426752129)
 - 适用边界：适用于同时使用 VR 目标与 ZED VIO 世界系的 human2humanoid 遥操作。
 
+### OmniH2O 实时稀疏关键点输入不重复离线全身重定向
+
+- `problem_id`：`problem.state_estimation_calibration.omnih2o_sparse_keypoints_no_online_retarget_13`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OmniH2O 实时稀疏遥操直接使用人体关键点，不走离线全身动作重定向**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：项目作者说明不需要。实机部署直接使用视觉系统输出的人体全局关键点位置，因为策略跟踪的是稀疏输入（sparse inputs），不是完整全身动作（whole-body motions）；离线 SMPL→H1 gradient retargeting 属于训练数据准备路径。原线程没有公开关键点到机器人/Isaac Gym 坐标的具体矩阵变换，因此坐标标定仍需另行验证。
+- 证据状态：`issue_candidate`
+- 来源定位：human2humanoid #13：作者评论 2426760408/2426762777 给出传感路径，2426906228/2426908658 确认直接 keypoint 与 sparse-input 原因
+- 原帖/精确回复：[OmniH2O 实时稀疏遥操直接使用人体关键点，不走离线全身动作重定向](https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426906228)
+- 平台/作者：GitHub Issues / FinnJob
+- 关键术语：稀疏输入（sparse inputs）；全局关键点位置（global keypoint positions）；动作重定向（motion retargeting）；坐标标定（coordinate calibration）
+- 环境：human2humanoid/OmniH2O 部署语境；Apple Vision Pro 或 RGB camera + HybrIK；原帖未给软件 commit、频率和相机标定参数。
+- 症状：使用者看到训练数据预处理会把 SMPL motion 通过 gradient descent 转成 H1 reference，因此不知道实时视觉输入如何满足同一接口。
+- 诊断：先区分策略任务定义：offline whole-body motion tracking 与 online sparse keypoint tracking 不是同一输入路径。；确认实时策略实际消费哪些全局 keypoint positions，而不是默认重建完整 AMASS/SMPL motion。
+- 原因：把用于全身训练数据准备的离线 SMPL→H1 retargeting 流程误认为实时 sparse-input 部署的必经步骤。
+- 处理过程：原作者先询问如何实时取得 processed AMASS-like joint data，项目作者澄清其部署不需要该全身 reference。
+- 有效处理：按项目作者说明，从 Vision Pro 或 RGB+HybrIK 获取人体全局关键点位置，作为 sparse tracking reference 直接输入部署路径，不在实时环重复完整动作重定向。
+- 结果：提问者回复已理解 sparse-input 与 whole-body retargeting 的区别。
+- 限制：线程没有回答 RGB/HybrIK 坐标到 Isaac Gym/机器人世界坐标的具体矩阵变换、尺度、原点或时间同步。；没有公开实时部署代码、输入张量布局或延迟测量，不能仅凭此卡复现实机系统。
+- 安全提示：实机使用前仍需单独验证坐标系、尺度、时间戳、异常关键点过滤和速度/位置限幅。
+- 独立核验引用：[maintainer_confirmation · 项目作者说明使用 Vision Pro 与 RGB+HybrIK 获取人体全局位置](https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426760408)；[maintainer_confirmation · 项目作者解释无需全身重定向的原因是策略跟踪 sparse inputs](https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2426908658)；[issue · 原作者关于 RGB/Isaac Gym matrix transform 的追问未获项目回答，构成明确未覆盖边界](https://github.com/LeCAR-Lab/human2humanoid/issues/13#issuecomment-2446010339)
+- 适用边界：适用于 human2humanoid/OmniH2O 的 sparse tracking 部署设计；坐标变换和具体输入格式未在原线程公开。
+
+### Pinocchio Translation+SphericalZYX 根关节的基座速度使用 WORLD frame
+
+- `problem_id`：`problem.state_estimation_calibration.pinocchio_translation_sphericalzyx_velocity_world_2177`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Translation+SphericalZYX 复合根关节的广义基座速度按 WORLD frame 表达**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：原作者在多组配置和项目贡献者提供的 floating-base velocity viewer 基础上测试后确认，该 Translation+SphericalZYX 复合根关节的 floating-base velocity 表达在 WORLD frame。这个结论不能套用到 FreeFlyer：FreeFlyer 的 LOCAL 速度约定属于不同 joint model。线程没有贴完整扩展脚本和数值输出，因此升级版本后仍应复测。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2177 评论 2007410825 链接 PR #2143/固定 viewer；评论 2008762724 原作者给出测试结论
+- 原帖/精确回复：[Translation+SphericalZYX 复合根关节的广义基座速度按 WORLD frame 表达](https://github.com/stack-of-tasks/pinocchio/issues/2177#issuecomment-2008762724)
+- 平台/作者：GitHub Issues / thuuzi
+- 关键术语：广义速度（generalized velocity）；复合根关节（composite root joint）；世界坐标系（world frame）；局部坐标系（local frame）；局部原点世界对齐坐标系（local-world-aligned frame）
+- 环境：Pinocchio C++、自定义 URDF、JointModelComposite(Translation+SphericalZYX)；线程引用 commit 080720a 的官方 Python viewer，未给发布版本或 OS。
+- 症状：在 LOCAL_WORLD_ALIGNED frame 获取末端 Jacobian 时，基座线速度对应的 top-left 3×3 对随机配置始终为单位阵。
+- 诊断：不要把 FreeFlyer 的 LOCAL velocity 约定自动套到其他复合根关节。；用官方 floating-base velocity viewer 扩展到目标 root joint，并在不同 base orientation 下观察世界/局部速度箭头或 Jacobian 块。
+- 原因：不同根关节模型定义了不同的广义速度参数化；原作者测试确认 Translation+SphericalZYX 组合使用 WORLD-frame base velocity。
+- 处理过程：原作者随机测试多组配置并检查 Jacobian 基座块。；项目贡献者提供官方 floating-base velocity viewer；原作者扩展后报告测试结论。
+- 有效处理：按 JointModelTranslation+JointModelSphericalZYX 的 WORLD-frame velocity 约定解释状态和 Jacobian，不复用 FreeFlyer 的 LOCAL-frame 假设。
+- 结果：原作者测试后明确确认该复合根关节的 floating-base velocity 在 WORLD frame。
+- 限制：线程没有贴扩展后的脚本、配置向量或数值输出；不同 Pinocchio 版本应再次运行 viewer/数值对照。；结论只针对 JointModelTranslation+JointModelSphericalZYX 组合，不外推任意 JointModelComposite。；FreeFlyer 的 LOCAL 约定仍是另一种 joint model 的语义，两者不能互相覆盖。
+- 安全提示：将基座速度送入实机 WBC 前，应对旋转基座做 frame 单元测试；错误 frame 可同时污染速度反馈、动量和接触约束。
+- 独立核验引用：[source_code · 项目贡献者提供、由原作者扩展用于该 root-joint 组合的官方可视化脚本](https://github.com/stack-of-tasks/pinocchio/blob/080720adb012468ad4ff2956383199a6877608c7/examples/floating-base-velocity-viewer.py)；[issue · 原作者测试后明确报告 WORLD-frame 结论](https://github.com/stack-of-tasks/pinocchio/issues/2177#issuecomment-2008762724)
+- 适用边界：适用于 JointModelComposite 中依次加入 JointModelTranslation 与 JointModelSphericalZYX 的根关节模型；其他 root joint 需单独核对。
+
 ## 通信、时延与实时性 (`communication_and_realtime`)
 
 ### Unitree SDK2 节点都运行了却互相发现不到，先对齐哪几项？
@@ -1532,6 +1923,116 @@
 - 图片分析：三张信息图概括共享内存/零拷贝、话题优先级、跨 VLAN discovery；未见抓包、丢包率或端到端时延曲线。
 - 采集完整性：`partial_visible`；可见回复 0；展开 0 次；回复深度 0/10；停止原因：all_visible_comments_loaded
 - 适用边界：‘90%’是未经验证的宣传性数字；具体实现取决于 DDS 与网络设备。
+
+### rmw_zenoh 下 controller_manager 服务调用拖慢实时环
+
+- `problem_id`：`problem.communication_and_realtime.ros2_control_zenoh_service_overrun_2808`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 高频服务调用卡顿在该案例中由 rmw_zenoh 切换 RMW 消除**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：在该 Jazzy/4.38.0/UR 环境中，作者用 A/B 确认把 RMW_IMPLEMENTATION 从 rmw_zenoh_cpp 切到 rmw_fastrtps_cpp 后现象消失；其在 Zenoh 0.2.8 deb 和 0.2.9 固定提交上都复现。可把切换 RMW 作为隔离手段，但 Zenoh 为何在服务/发布路径引入延迟没有定位，Cyclone DDS 也未在帖中给出实测。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #2808 评论 3541490499、3541707255；维护者未复现见 3541065379/3541219103
+- 原帖/精确回复：[ros2_control 高频服务调用卡顿在该案例中由 rmw_zenoh 切换 RMW 消除](https://github.com/ros-controls/ros2_control/issues/2808#issuecomment-3541707255)
+- 平台/作者：GitHub Issues / rafa-martin
+- 关键术语：机器人操作系统中间件实现（ROS middleware implementation, RMW）；控制环超时（control-loop overrun）；实时数据交换（Real-Time Data Exchange, RTDE）；服务调用（service call）
+- 环境：Ubuntu 24.04；kernel 6.8.1-1037-realtime PREEMPT_RT；ROS 2 Jazzy；ros-jazzy-controller-manager 4.38.0-1noble.20251008.000820；rmw_zenoh 0.2.8 deb 与 0.2.9 commit 858f7b5；Intel i7-11700。
+- 症状：list_controllers 单次/每秒调用会令 update 约 3.16 ms、总周期约 3.33 ms，错过 500 Hz deadline。；频繁时 UR RTDE Data Pipeline overflow 并断连。
+- 诊断：固定 ros2_control/controller_manager 版本，只切换 RMW_IMPLEMENTATION 做 A/B。；对比服务调用前、中、后的 controller_manager.total_time；维护者同版本本地未复现，提示不是单纯 controller_manager 版本问题。
+- 原因：作者确认现象随 rmw_zenoh 出现，换 Fast DDS 后消失；Zenoh 内部具体锁与机制没有继续定位。
+- 处理过程：作者提供服务调用、rqt、系统负载证据；维护者测量 mutex 区域仅约 20 us。；作者从 rmw_zenoh 切到 rmw_fastrtps，并在两个 Zenoh 版本上复现。
+- 有效处理：在该环境临时从 rmw_zenoh 切换到 Fast DDS；作者也计划使用 Cyclone DDS。
+- 结果：作者 100% confirmed 仅切换 RMW 即消除现象；根因未深入，Issue 后因 stale 关闭。
+- 限制：不能据此断言所有 rmw_zenoh 版本或所有服务调用都有该问题。；Cyclone DDS 在该线程没有给出实际测试数据，只是作者计划。；Issue 的 stale 关闭不等于 Zenoh 根因修复。
+- 安全提示：RMW 切换应在实验台验证 QoS、服务语义和控制周期，再恢复真机高速运行。
+- 独立核验引用：[issue · 维护者同版本测量 mutex 区域约 20 us 且无法复现，支持继续隔离环境差异](https://github.com/ros-controls/ros2_control/issues/2808#issuecomment-3541219103)
+- 适用边界：Ubuntu 24.04 PREEMPT_RT、ROS 2 Jazzy、controller_manager 4.38.0、UR 500 Hz 与 rmw_zenoh 0.2.8/0.2.9。
+
+### ROS 2 Humble joint_trajectory_controller 的版本化时延差异
+
+- `problem_id`：`problem.communication_and_realtime.ros2_humble_jtc_jitter_808`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ROS 2 Humble 控制循环抖动要区分打印开销与发行版控制器实现**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：先移除实时循环里的 print 干扰，并把时延分段到 read/controller update/write。该作者定位到 joint_trajectory_controller 后，对比发现 apt 的 Humble 包偶发 2000–3000 us，而当时从 master 构建的源码版偶发小于 500 us，机器人抖动明显降低；维护者确认近期改进尚未同步到 Humble。由于帖子没有给 master commit，实际使用时应固定源码提交并重新做最坏时延测试，而不是直接追随 master。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #808 测量警告 1242789008，作者对照 1248844616/1248848453，维护者确认 1264354371
+- 原帖/精确回复：[ROS 2 Humble 控制循环抖动要区分打印开销与发行版控制器实现](https://github.com/ros-controls/ros2_control/issues/808#issuecomment-1264354371)
+- 平台/作者：GitHub Issues / yeyanlei
+- 关键术语：控制循环抖动（control-loop jitter）；抢占实时内核（PREEMPT_RT kernel）；最坏执行时间（worst-case execution time, WCET）；发行版回移（release backport）
+- 环境：Ubuntu 22.04；ROS 2 Humble；Linux 5.15.55-rt48 PREEMPT_RT；FIFO priority 90；1 ms loop；joint_trajectory_controller、hand controller、joint_state_broadcaster。
+- 症状：measured_period 偶发 2–6 ms；作者定位 controller_manager update 内 joint_trajectory_controller 延迟。
+- 诊断：不要在每个实时循环中使用 std::cout/print 作为唯一测量方法，先移除或改成预分配缓冲的低扰动 trace。；分别测 read、controller update、write，并记录具体 controller 和配置。；对比发行版二进制与固定源码提交，而不是只比较模糊的 master。
+- 原因：维护者确认当时近期性能改进尚未同步到 Humble；线程未给具体 commit。
+- 处理过程：作者把 apt 安装的 joint_trajectory_controller 与当时 master 源码构建做时延对照。
+- 有效处理：作者改用源码版 joint_trajectory_controller 后，报告执行时间从偶发 2000–3000 us 降到偶发小于 500 us，机器人抖动明显降低。
+- 结果：维护者确认改进未同步到 Humble并关闭问题；没有精确补丁或长期统计。
+- 限制：master 是移动目标，必须记录实际 commit；不能把 500 us 视为所有硬件的保证。；循环内 print 本身会扰动测量，原线程数字只能作为该环境对照。
+- 安全提示：实时控制器升级后必须在目标负载下做周期分布、最坏时延和 deadline miss 回归，再连接高功率执行器。
+- 独立核验引用：[maintainer_confirmation · 维护者确认近期改进尚未同步到 Humble，并因作者已解决而关闭](https://github.com/ros-controls/ros2_control/issues/808#issuecomment-1264354371)
+- 适用边界：适用于 2022 年 ROS 2 Humble/PREEMPT_RT 的该控制器版本差异；当前发行版需重新对照。
+
+### ros2_control hardware component 级 rw_rate
+
+- `problem_id`：`problem.communication_and_realtime.ros2_control_component_rw_rate_649`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 多速率要区分组件级 rw_rate 与单组件内部信号节流**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：有。合并的 PR #1570 为每个 ros2_control hardware component 增加 rw_rate，并更新 different update rates 官方文档、解析/调度实现和测试。文档示例让 system、actuator、sensor 分别运行 500/200/250 Hz；未设置时跟随 controller_manager，配置频率高于 controller_manager 时也只按 controller_manager 频率运行。使用前仍要核对目标 ROS 2 发行版是否包含该合并提交。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #649 维护者指向 PR #1570 的评论 2245933173；merged PR #1570 文档、实现和测试
+- 原帖/精确回复：[ros2_control 多速率要区分组件级 rw_rate 与单组件内部信号节流](https://github.com/ros-controls/ros2_control/issues/649#issuecomment-2245933173)
+- 平台/作者：GitHub Issues / bijoua29
+- 关键术语：硬件组件（hardware component）；读写频率（read/write rate, rw_rate）；控制器管理器（controller manager）；异步硬件（asynchronous hardware）
+- 环境：ros2_control rolling/master 时期；PR #1570 已合并；具体 ROS 2 发行版需查看 backport。
+- 症状：固定高频 read/write 会让低频状态占用带宽，引发重试、丢包和额外时延。
+- 诊断：先判断不同频率信号是否能拆为不同 ros2_control hardware components。；区分 controller update rate、hardware component rw_rate 与单 component 内部每个 state 的实际采样率。；为复用旧值的 state 暴露时间戳或陈旧度，避免控制器把缓存值当新样本。
+- 处理过程：PR #1570 实现每个 hardware component 的 rw_rate，并更新官方不同更新率文档。；维护者建议同 component 内用 counter/internal filtering 跳过低频电压读取，或拆分 components。
+- 有效处理：跨 component：在 ros2_control 标签配置 rw_rate；高于 controller_manager rate 时实际被 controller_manager rate 限制。；同 component：在硬件 read 内按计数器/过滤规则低频更新目标 state，跳过周期保留上次值；或重构为独立 component。
+- 结果：组件级 rw_rate 已合并并有文档/测试；按 controller 请求 state 子集的细粒度接口仍未在该线程实现。
+- 限制：PR #1570 当时参数名和语义对应其合并版本；不同 ROS 2 发行版需核对是否已回移。；同 component 的 counter 方案是维护者建议，线程没有贴出调用者的部署复测。
+- 安全提示：低频状态复用旧值时，应携带时间戳/validity 并设置超时；温度、电压或故障状态过期不能静默用于安全决策。
+- 独立核验引用：[pull_request · 已合并 PR 增加 rw_rate、官方 userdoc、release note、实现与多频率测试](https://github.com/ros-controls/ros2_control/pull/1570)
+- 适用边界：适用于包含 ros-controls/ros2_control PR #1570 的版本；发行版包是否回移需单独确认。
+
+### 单个 ros2_control hardware component 内信号的多速率读取
+
+- `problem_id`：`problem.communication_and_realtime.ros2_control_single_component_signal_rates_649`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 多速率要区分组件级 rw_rate 与单组件内部信号节流**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：该线程没有实现按 state interface 或 controller 请求子集的调度。维护者给出的现有做法是：若能拆分就建不同 components；否则在 hardware read 内用 counter/internal filtering 只按低频更新电压等状态，跳过的周期继续保留上次值。维护者明确说明 controller 高频读取时会复用缓存 state。因为调用者仍把自动子集调度视为增强诉求，这个方案应标为工程实现建议，而不是框架已提供的逐 interface 调度。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #649 缓存语义 2246159316，单组件 counter/拆分建议 2246220069，调用者说明增强仍未实现 2246280084
+- 原帖/精确回复：[ros2_control 多速率要区分组件级 rw_rate 与单组件内部信号节流](https://github.com/ros-controls/ros2_control/issues/649#issuecomment-2246220069)
+- 平台/作者：GitHub Issues / bijoua29
+- 关键术语：状态接口（state interface）；内部节流（internal filtering/throttling）；缓存状态（cached state）；数据陈旧度（data staleness）
+- 环境：ros2_control rolling/master 时期；PR #1570 已合并；具体 ROS 2 发行版需查看 backport。
+- 症状：固定高频 read/write 会让低频状态占用带宽，引发重试、丢包和额外时延。
+- 诊断：先判断不同频率信号是否能拆为不同 ros2_control hardware components。；区分 controller update rate、hardware component rw_rate 与单 component 内部每个 state 的实际采样率。；为复用旧值的 state 暴露时间戳或陈旧度，避免控制器把缓存值当新样本。
+- 处理过程：PR #1570 实现每个 hardware component 的 rw_rate，并更新官方不同更新率文档。；维护者建议同 component 内用 counter/internal filtering 跳过低频电压读取，或拆分 components。
+- 有效处理：跨 component：在 ros2_control 标签配置 rw_rate；高于 controller_manager rate 时实际被 controller_manager rate 限制。；同 component：在硬件 read 内按计数器/过滤规则低频更新目标 state，跳过周期保留上次值；或重构为独立 component。
+- 结果：组件级 rw_rate 已合并并有文档/测试；按 controller 请求 state 子集的细粒度接口仍未在该线程实现。
+- 限制：PR #1570 当时参数名和语义对应其合并版本；不同 ROS 2 发行版需核对是否已回移。；同 component 的 counter 方案是维护者建议，线程没有贴出调用者的部署复测。
+- 安全提示：低频状态复用旧值时，应携带时间戳/validity 并设置超时；温度、电压或故障状态过期不能静默用于安全决策。
+- 独立核验引用：[maintainer_confirmation · 维护者说明低频 hardware 更新之间 controller 会复用同一 state 值](https://github.com/ros-controls/ros2_control/issues/649#issuecomment-2246159316)
+- 适用边界：适用于同一 hardware component 内混合高低频状态；需自行实现缓存、时间戳和超时语义。
 
 ## sim-to-sim 与 sim-to-real (`sim_to_sim_and_sim_to_real`)
 
@@ -1860,6 +2361,117 @@
 - 独立核验引用：[maintainer_confirmation · 项目贡献者确认蒸馏未加噪且完成部署](https://github.com/LeCAR-Lab/human2humanoid/issues/21#issuecomment-2518578080)
 - 适用边界：仅限该项目报告的蒸馏与部署流程；缺少版本和传感器环境。
 
+### Isaac Lab ONNX 输出与 ActionTerm 后处理的边界
+
+- `problem_id`：`problem.sim_to_sim_and_sim_to_real.isaaclab_onnx_actionterm_postprocess_2636`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 导出 ONNX 后不要假定 ActionTerm 的 scale 与 clipping 已打包**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：原帖回复建议把两层处理拆开核对：ActionTerm 的 scale、clipping 等后处理通常需要在实机侧复现；RSL-RL agent 配置内的 clipping 则可能已经进入导出模型。由于回复带有不确定措辞且没有复测，可靠做法不是直接照搬乘法，而是对同一 observation 比较训练环境 actuator 前的最终 action 与 ONNX 加部署后处理的逐元素结果。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2636 唯一评论 2954156235
+- 原帖/精确回复：[Isaac Lab 导出 ONNX 后不要假定 ActionTerm 的 scale 与 clipping 已打包](https://github.com/isaac-sim/IsaacLab/issues/2636#issuecomment-2954156235)
+- 平台/作者：GitHub Issues / lde-RL
+- 关键术语：动作缩放（action scaling）；动作裁剪（action clipping）；动作项（ActionTerm）；模型后处理（post-processing）
+- 环境：Isaac Lab + RSL-RL + ONNX sim-to-real；原帖未给软件版本、机器人或导出脚本提交。
+- 症状：ONNX 输出超过 \[-1,1\]，例如 1.5 或 -2.0；部署者不确定是否还要乘 action_scale。
+- 诊断：分别列出 RSL-RL agent 配置中的处理与 Isaac Lab ActionTerm 中的 scale/clipping，不要把两层混为一层。；用同一 observation 对比训练环境中送入 actuator 前的最终 action 与 ONNX+部署后处理结果。
+- 原因：回复者认为 ActionTerm 后处理可能不在 ONNX 中，而 agent 配置内的 clipping 可能在导出图内。
+- 处理过程：回复建议在实机侧复现 ActionTerm 后处理，并单独核对 agent 配置是否已包含 clipping。
+- 结果：得到排查分层，但没有作者复测、导出图检查或目标机器人结果。
+- 限制：回复使用了 I think/might，不能视为所有版本和导出器的确定契约。；不能仅凭 ONNX 输出越界判断 scale 已应用或未应用。
+- 安全提示：首次上机前离线逐元素对齐 action，并加硬件侧限幅、急停和低增益测试。
+- 独立核验引用：[issue · 回复区分 ActionTerm 后处理与 agent 配置内处理，但没有复测](https://github.com/isaac-sim/IsaacLab/issues/2636#issuecomment-2954156235)
+- 适用边界：Isaac Lab + RSL-RL 的 ONNX 部署排查入口；版本、导出脚本和 ActionTerm 类型未知，必须实测。
+
+### GO1 actuator net 替换为 PD 后的作者实机结果
+
+- `problem_id`：`problem.sim_to_sim_and_sim_to_real.go1_actuator_pd_retrain_386`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Unitree GO1 策略上机前要同时核对关节顺序与 actuator 模型**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：作者把 GO1 actuator net 换成 PD model 并重新训练后，报告真实 GO1 不再突然踢腿、抖动到功率保护，并能在 velocity_commands 全零时站立。这是作者环境中的有效 workaround；由于同一线程还发现 motor order 不一致，且没有消融实验，不能把 actuator net 写成已证实的唯一根因，也不能直接复用未公开的 PD 参数。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #386 作者实机复测评论 2094062434
+- 原帖/精确回复：[Unitree GO1 策略上机前要同时核对关节顺序与 actuator 模型](https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434)
+- 平台/作者：GitHub Issues / Pansamic
+- 关键术语：执行器网络（actuator network）；比例—微分模型（proportional-derivative model, PD model）；功率保护（power protection）；消融实验（ablation test）
+- 环境：2024-04 的 Orbit/Isaac Lab unitree-go1-flat policy；真实 Unitree GO1；ONNX Runtime C++；原帖未给精确提交、SDK 或固件版本。
+- 症状：零 velocity_commands 下，真实 GO1 腿部突然踢动、抖动并进入 power protection。
+- 诊断：在训练环境打印 asset.joint_names 或 asset_cfg.joint_names，并与实机 SDK、legged-gym 和部署端 observation/action 数组逐项对齐。；若使用高度扫描，另外核对 Isaac Sim/Orbit 的 XY 与旧管线的 YX 排列。；把关节顺序修正与 actuator model 替换分开做 A/B 复测，避免把两个变化混成一个根因。
+- 原因：作者确认 legged-gym 与 Orbit 的 motor order 实际不同。；作者怀疑 GO1 actuator net，但线程没有证明它是唯一根因。
+- 处理过程：维护者给出打印 joint order 的代码并说明 BFS/DFS 与 height-scan 排列差异。；作者把 actuator net 换为 PD model 后重新训练。
+- 有效处理：作者特定环境中，改用 PD model 重新训练后，真实 GO1 不再踢动、抖动到功率保护，并可在零速度命令下站立。
+- 结果：实机症状消失；但 joint order 修正和 actuator model 替换没有单独消融，唯一根因未闭环。
+- 限制：不能由该线程断言所有 GO1 actuator net 都有问题。；没有给出 PD stiffness/damping、动作限幅、策略提交或实机 SDK 版本。；height-scan 只是一项维护者提示，原作者没有报告它是否参与该策略。
+- 安全提示：涉及实机突然踢腿和功率保护；重新上机必须使用吊架/保护绳、低增益、动作与力矩限幅、急停和人员隔离。
+- 独立核验引用：[issue · 作者说明替换为 PD、重新训练后的真实 GO1 结果，同时使用 suspect 而非已证明措辞](https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434)
+- 适用边界：只适用于该作者的 Orbit/GO1 策略链；PD 增益、限幅、SDK 与模型版本缺失，其他机器人必须重新训练和低风险复测。
+
+### GO1 策略部署的关节与扫描顺序对齐
+
+- `problem_id`：`problem.sim_to_sim_and_sim_to_real.go1_policy_joint_order_386`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Unitree GO1 策略上机前要同时核对关节顺序与 actuator 模型**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原帖给出的可核对步骤是：在训练环境打印 asset.joint_names 或 asset_cfg.joint_names，再与 legged-gym、实机 SDK 和部署端数组逐项对齐；Isaac Gym/legged-gym 与 Isaac Sim/Orbit 还可能有 DFS/BFS 顺序差异，若策略包含 height scan，还要核对 XY/YX 排列。作者最终确认 legged-gym 与 Orbit 的 motor order 实际不同，但没有单独报告只修正顺序后的实机结果，因此这是一条必须执行的接口检查，而不是已隔离的唯一修复。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #386 评论 2082831221、2092587921 与作者确认 2094062434
+- 原帖/精确回复：[Unitree GO1 策略上机前要同时核对关节顺序与 actuator 模型](https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2094062434)
+- 平台/作者：GitHub Issues / Pansamic
+- 关键术语：关节顺序（joint ordering）；深度/广度优先遍历（depth-first/breadth-first parsing, DFS/BFS）；高度扫描（height scan）；观测—动作映射（observation-action mapping）
+- 环境：2024-04 的 Orbit/Isaac Lab unitree-go1-flat policy；真实 Unitree GO1；ONNX Runtime C++；原帖未给精确提交、SDK 或固件版本。
+- 症状：零 velocity_commands 下，真实 GO1 腿部突然踢动、抖动并进入 power protection。
+- 诊断：在训练环境打印 asset.joint_names 或 asset_cfg.joint_names，并与实机 SDK、legged-gym 和部署端 observation/action 数组逐项对齐。；若使用高度扫描，另外核对 Isaac Sim/Orbit 的 XY 与旧管线的 YX 排列。；把关节顺序修正与 actuator model 替换分开做 A/B 复测，避免把两个变化混成一个根因。
+- 原因：作者确认 legged-gym 与 Orbit 的 motor order 实际不同。；作者怀疑 GO1 actuator net，但线程没有证明它是唯一根因。
+- 处理过程：维护者给出打印 joint order 的代码并说明 BFS/DFS 与 height-scan 排列差异。；作者把 actuator net 换为 PD model 后重新训练。
+- 有效处理：作者特定环境中，改用 PD model 重新训练后，真实 GO1 不再踢动、抖动到功率保护，并可在零速度命令下站立。
+- 结果：实机症状消失；但 joint order 修正和 actuator model 替换没有单独消融，唯一根因未闭环。
+- 限制：不能由该线程断言所有 GO1 actuator net 都有问题。；没有给出 PD stiffness/damping、动作限幅、策略提交或实机 SDK 版本。；height-scan 只是一项维护者提示，原作者没有报告它是否参与该策略。
+- 安全提示：涉及实机突然踢腿和功率保护；重新上机必须使用吊架/保护绳、低增益、动作与力矩限幅、急停和人员隔离。
+- 独立核验引用：[maintainer_confirmation · 维护者给出打印实际 joint order 的代码并提示 Isaac Sim 与 Isaac Gym 顺序不同](https://github.com/isaac-sim/IsaacLab/issues/386#issuecomment-2082831221)
+- 适用边界：适用于 legged-gym/Isaac Gym 策略向 Isaac Sim/Orbit 或真实 GO1 迁移；具体顺序必须以目标版本打印结果为准。
+
+### 区分 Newton gain buffer 与实际双控制器
+
+- `problem_id`：`problem.sim_to_sim_and_sim_to_real.newton_explicit_gain_mode_5806`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Newton 显式 actuator gains 写回不一定等于双控制器生效**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：不能直接判定。线程中两位独立排查者都确认写入顺序会把配置 stiffness/damping 写回 simulator-bound buffer，并都得到将其重定向到 actuator-data buffer 的 proposed patch；但 stock Go2 实测同时显示 `mjw_model.nu==0`、全部 joints 为 EFFORT mode，因此该资产上的 nonzero gains 没有对应 MJWarp actuator，不能解释约 0.118 rad 的 rest-pose 差异。只有 USD authored nonzero drive gains 使关节导入为 position/velocity mode、solver 实际创建 actuator 时，旧写入才可能形成双控制器。应联合检查 USD gains、target mode、`nu` 和 live torque；当前 patch 尚未合并。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #5806 原帖源码链与 proposed patch；独立确认/Go2 测量 4871459996
+- 原帖/精确回复：[Newton 显式 actuator gains 写回不一定等于双控制器生效](https://github.com/isaac-sim/IsaacLab/issues/5806#issuecomment-4871459996)
+- 平台/作者：GitHub Issues / ecstayalive
+- 关键术语：显式执行器（explicit actuator）；目标模式（target mode）；零拷贝绑定（zero-copy binding）；静止姿态（rest pose）
+- 环境：Isaac Lab 3.0.0 a4a7602f、isaaclab_newton 0.5.9、Newton 1.0.0、warp 1.12.0、mujoco-warp 3.5.0.2；独立测量 driver 570.211.01/CUDA 12.8；原帖 Ubuntu 24.04、Isaac Sim 6.0。
+- 症状：同一 stock Go2 cfg 下 `data.joint_stiffness` 为 Newton 25.0、PhysX 0.0；zero-action hold 的 rest-pose 差约 0.118 rad。
+- 诊断：同时检查写入顺序、`data.joint_stiffness`、USD authored drive gains、`JointTargetMode` 和 `mjw_model.nu`，不要只看 gain buffer。
+- 原因：写入顺序确实让 explicit actuator 的配置 gains 回到 simulator-bound buffer；但其是否产生控制作用取决于导入 mode 和 MJWarp 是否实际创建 actuator。；独立回复认为 stock Go2 的剩余 rest-pose 差更像 solver/contact difference，但该部分只是其判断，未被维护者确认。
+- 处理过程：原作者与独立回复者分别提出把两个 kernel outputs 改写到 `_actuator_stiffness/_actuator_damping`；独立回复额外转储 PhysX/Newton parsed model、mode 和 `nu`。
+- 有效处理：当前没有合并修复。诊断时先按 asset 分成 authored-zero 与 authored-nonzero drive gains，再检查 `nu`/target mode；两行 buffer redirect 仍是 proposed patch，必须对两类资产做 regression test 后才能采用。
+- 结果：独立回复确认写入链和 proposed redirect；stock Go2 上 gains 为 inert，因而否定了用该 bug 解释其 rest-pose 差异。
+- 限制：Issue 仍开放，没有维护者技术结论或合并 PR；原帖所用资产的 USD drive gains 没有在回复中核对。；独立仓库与原始 JSON dumps 是外部工程记录，本轮未把其中未贴在线程的数字扩写为正式结论。
+- 安全提示：后端对照应限制 effort、记录 mode/targets/actual torque，并在真机部署前单独验证硬件驱动不会叠加位置环。
+- 独立核验引用：[independent_reproduction · 独立重走写入链并转储 stock Go2 live model；`nu==0` 限定双控制器结论](https://github.com/isaac-sim/IsaacLab/issues/5806#issuecomment-4871459996)
+- 适用边界：适用于 Isaac Lab 3.0.0/Newton 0.5.9 附近的 explicit actuator 初始化；其他版本必须重走 binding 与 solver mode。
+
 ## 足式运动、接触与地形 (`locomotion_contact_terrain`)
 
 ### 足底多维触觉对人形 WBC 可能补充什么信息？
@@ -1944,6 +2556,35 @@
 - 独立核验引用：[maintainer_confirmation · 协作者区分本帖单向漂移与文档所述 friction-cone slip](https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2904345405)；[issue · 原作者报告 elliptic friction 后漂移仍存在](https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2914692123)；[issue · 原作者报告 timestep=1e-7 只降低漂移，friction=0 时行为正常](https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2921313334)；[issue · 原作者补充 timestep=1e-6 的类似结果](https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2921314882)
 - 适用边界：严格限于原帖 MuJoCo 3.3.0、Linux、高频交替驱动与该接触模型；不能直接外推到所有足式机器人。
 
+### OCS2 RaiSim 生成地形与平地位置误差增益冲突导致静止失稳
+
+- `problem_id`：`problem.locomotion_contact_terrain.ocs2_raisim_terrain_position_gain_56`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 RaiSim 示例因平地位置误差假设与生成地形不一致而失稳**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：贡献者指出根因不是简化模型、关节 Kp/Kd 或缺少 WBC，而是 EE 的 ZeroVelocityConstraint.positionErrorGain 假设平地，与 generated terrain 冲突。平地使用者应设 generateTerrain=false；确实需要粗糙地形时应设 positionErrorGain=0.0。原作者复测后回复 Works like a charm，但没有说明具体选择哪一条。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #56：贡献者评论 1304459256 给出两种配置；原作者评论 1304836921 确认有效
+- 原帖/精确回复：[OCS2 RaiSim 示例因平地位置误差假设与生成地形不一致而失稳](https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304836921)
+- 平台/作者：GitHub Issues / Kate88L
+- 关键术语：零速度约束（ZeroVelocityConstraint）；位置误差增益（position error gain）；生成地形（generated terrain）；粗糙地形（rough terrain）
+- 环境：OCS2 legged_robot_raisim 示例并启用 generated terrain；原帖未给 OCS2 commit、RaiSim 版本或机器人参数。
+- 症状：仿真启动后机器人姿态立即改变，CoM 略向 x 移动，前腿接触力改变机身姿态并轻微振荡。；无 gait command、无 trajectory command，右后腿仍会逐渐浮起，随后计算崩溃。；第二位用户在同一线程报告相同问题。
+- 诊断：检查是否同时开启 generateTerrain 且 ZeroVelocityConstraint 的 positionErrorGain 仍按平地假设工作。；在调整 Kp/Kd 或另写 WBC 前，先用线程给出的两种互斥配置验证地形假设。
+- 原因：项目贡献者明确指出，EE ZeroVelocityConstraint 的 positionErrorGain 当前假设地形平坦，与 generated terrain 不一致。
+- 处理过程：第二位复现者询问是否需要调整 joint Kp/Kd、RaiSim 参数或实现 WBC；贡献者明确回答这些都不是必要修复。；原作者按贡献者给出的配置方案修改后复测。
+- 有效处理：若只需平地，把 raisim.info 中 generateTerrain 设为 false。；若需要粗糙地形，把 task.info 中 ZeroVelocityConstraint 的 positionErrorGain 设为 0.0。
+- 结果：原作者回复 Works like a charm，并感谢快速答复。
+- 限制：线程没有说明原作者最终采用两种方案中的哪一种，也没有公开修改后日志。；配置链接指向当时 main 分支行号；目标版本的文件位置和参数名需要重新核对。；positionErrorGain=0.0 是该粗糙地形示例的线程建议，不能直接推广为所有足端位置误差反馈都应关闭。
+- 安全提示：实机或高保真仿真中修改接触位置反馈前，应限制力矩/速度并验证足端穿透、滑移和地形估计误差。
+- 图片分析：原帖 PNG 已核验：RViz 画面中机器人呈现多个姿态重影，右后足有一处明显抬起，足端附近可见绿色力箭头；图中无时间、单位或配置值，只支持“静止状态姿态漂移/抬腿”的症状。；第二位用户的 GIF 已在两个时刻核验：彩色网格地形上机器人姿态发生明显变化并伴随重影；它支持独立用户遇到相似失稳，但不能从画面确定 positionErrorGain 数值。
+- 独立核验引用：[issue · 第二位用户报告相同问题并提供复现 GIF](https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1302022974)；[maintainer_confirmation · 项目贡献者明确原因并给出 flat/rough terrain 两种配置](https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304459256)；[source_code · 贡献者引用的 generateTerrain 配置位置](https://github.com/leggedrobotics/ocs2/blob/main/ocs2_raisim/ocs2_legged_robot_raisim/config/raisim.info#L11)；[source_code · 贡献者引用的 positionErrorGain 配置位置](https://github.com/leggedrobotics/ocs2/blob/main/ocs2_robotic_examples/ocs2_legged_robot/config/mpc/task.info#L12)；[issue · 原作者确认配置方案有效](https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304836921)
+- 适用边界：适用于线程所述 OCS2 legged_robot_raisim generated-terrain 配置；新版参数路径和真实地形估计方案需另行确认。
+
 ### MuJoCo 平坦 hfield 设置 positive margin 后异常弹跳，应如何判断是否是控制器问题？
 
 - `problem_id`：`problem.locomotion_contact_terrain.87b0a9351706c261`
@@ -1970,6 +2611,89 @@
 - 图片分析：原帖视频显示弹跳，但未做逐帧分析；卡片只依赖最小 XML 对照和维护者确认。
 - 独立核验引用：[maintainer_confirmation · MuJoCo 协作者确认 positive margins 支持问题，修复尚未完成](https://github.com/google-deepmind/mujoco/issues/1817#issuecomment-2256481378)
 - 适用边界：MuJoCo 3.1.6/3.2.0 的 hfield positive-margin 接触；其他版本需复测。
+
+### MuJoCo 非方形 heightfield 的 rangefinder 索引错误
+
+- `problem_id`：`problem.locomotion_contact_terrain.mujoco_nonsquare_hfield_raycast_2765`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MuJoCo 3.3.4 非方形 hfield 的 rangefinder 错测由 raycast 索引修复**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先保持 hfield 几何尺寸不变，用 64x32、32x64 与方形分辨率做 A/B；该线程对应的源码修复是提交 7b9f5bd。提交将 hfield 边缘数据的行跨度从 nrow 改为 ncol，并新增 4x3 非方形 hfield 回归测试。应升级到包含该提交的版本，并用自己的地图分辨率复测。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #2765 评论 3151492060；修复提交 7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e
+- 原帖/精确回复：[MuJoCo 3.3.4 非方形 hfield 的 rangefinder 错测由 raycast 索引修复](https://github.com/google-deepmind/mujoco/issues/2765#issuecomment-3151492060)
+- 平台/作者：GitHub Issues / giorgionicola
+- 关键术语：高度场（height field, hfield）；测距传感器（rangefinder）；射线检测（ray casting）；回归测试（regression test）
+- 环境：MuJoCo 3.3.4；Python API；Ubuntu 24；hfield 64x32、32x64 与 32x32 对照。
+- 症状：几何尺寸不变时，非方形分辨率的 rangefinder 会错误命中 hfield 边缘；方形 32x32 给出预期结果。
+- 诊断：固定 hfield 几何尺寸，只交换 nrow/ncol 分辨率进行 A/B 对照。；运行原帖最小代码并检查不同分辨率的 rangefinder 读数。
+- 原因：修复提交显示 hfield 边缘高度数据索引误用了 nrow，非方形时应按 ncol 做行跨度。
+- 处理过程：作者提供可运行最小代码和三种分辨率对照；维护者合入源码修复与非方形回归测试。
+- 有效处理：采用包含提交 7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e 的 MuJoCo 版本，或核对等价 mj_rayHfield 索引修复。
+- 结果：维护者确认已修复；提交增加 4x3 hfield 的四个 rangefinder 期望值测试。
+- 限制：原作者没有在评论中报告升级后复测；闭环依据是维护者确认、修复提交和回归测试。；不能将此修复外推到其他传感器或 mesh raycast。
+- 安全提示：升级前后用目标地图分辨率回放感知测试，避免把错误地形距离直接用于实机落足。
+- 独立核验引用：[source_code · Fixes #2765；修正 mj_rayHfield 非方形索引并加入 RayHfield 测试](https://github.com/google-deepmind/mujoco/commit/7b9f5bdae72480bdbc3b7fd4bef73e6a0925d96e)
+- 适用边界：MuJoCo 3.3.4 的 hfield rangefinder/raycast 非方形分辨率问题；其他 raycast 类型需分别验证。
+
+### MuJoCo rigid flex 凹碰撞的适用范围
+
+- `problem_id`：`problem.locomotion_contact_terrain.mujoco_rigid_flex_concave_limits_3330`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MuJoCo rigid flex 可做凹碰撞，但复杂穿透场景有性能与崩溃边界**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原作者确认 rigid=true 的 flexcomp 在简单模型中确实能产生凹碰撞；但复杂模型性能降到 40 FPS/5 FPS，穿透静态物体时出现大量接触、arena memory full 和 findEdges 错误。把 nconmax 提高到 30000 只消除了内存警告，findEdges 错误和 simulate.exe 退出仍存在。因此 rigid flex 可作为简化模型方案，但帖子没有证明它能替代复杂焊接工件的 Coal 集成。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #3330 rigid flex 建议 4688939402；作者简单成功 4690882257；复杂限制 4704015555、4714020235、4714129335
+- 原帖/精确回复：[MuJoCo rigid flex 可做凹碰撞，但复杂穿透场景有性能与崩溃边界](https://github.com/google-deepmind/mujoco/issues/3330#issuecomment-4714020235)
+- 平台/作者：GitHub Issues / G-Yong
+- 关键术语：刚性柔性体（rigid flex）；凹碰撞（concave collision）；接触竞技场内存（contact arena memory）；静态穿透（static penetration）
+- 环境：2026-06 的 MuJoCo Issue；Windows simulate.exe 被评论提及；精确 MuJoCo 版本、CPU/GPU 和 mesh 规模未给。
+- 症状：普通 convex hull 对空腔误报碰撞；简单 rigid flex 可用。；复杂 rigid flex 降至 40 FPS 或 5 FPS；穿透静态地面时 ncon=22287、arena memory full，随后 findEdges: no tree found 并退出。
+- 诊断：先用简化 mesh 验证 rigid flex 的凹碰撞。；记录 ncon、arena memory、FPS，并单独测试静态穿透。；增大 nconmax 后区分内存警告是否消失，以及 findEdges 错误是否仍独立存在。
+- 处理过程：使用 rigid=true 的 flexcomp 和 contact 配置。；把 size nconmax 提高到 30000。
+- 有效处理：简单模型中 rigid flex 实现了作者需要的凹碰撞。
+- 结果：提高 nconmax 只消除了 arena memory full 警告，没有消除 findEdges 错误和进程退出；复杂场景性能仍不足，作者继续依赖 Coal。
+- 限制：rigid flex 不是该复杂焊接场景的完整替代方案。；线程没有维护者给出的 findEdges 修复或可用版本。；视频和截图未用于本卡结论，所有结果来自作者文字。
+- 安全提示：将非凸碰撞用于运动规划前，应把穿透、接触数上限、实时因子和进程异常纳入自动回归，避免仿真崩溃中断安全检查。
+- 独立核验引用：[issue · 作者给出复杂模型的接触数、错误文本和性能结果](https://github.com/google-deepmind/mujoco/issues/3330#issuecomment-4704015555)
+- 适用边界：适用于评估复杂 mesh 的 rigid flex 凹碰撞；精确版本和模型规模未知，必须在目标模型复测。
+
+### 核对 MJX plane-capsule fallback 的接触切向基
+
+- `problem_id`：`problem.locomotion_contact_terrain.mjx_plane_capsule_tangent_fallback_2774`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MJX plane-capsule 切向基 fallback 的数值差异仍待维护者确认**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突。
+- 解答状态：`conflicting`
+- 候选解答：目前不能。线程中的详细最小例子确实纠正了早期对 `normalize_with_norm` 返回值的理解，并展示了 fallback 可能生成非正交 frame、且差异集中在 pyramidal friction 的证据；但维护者只是重新打开 Issue 并表示将检查，尚未确认根因或合并修复。可把 frozen-state、contact frame、cone type 和 `qacc_warmstart=0` 的对比流程用于复现，不能把作者提议的 `math.orthogonals` 替换写成通用有效修复。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #2774 详细纠正与复现实验 5082490175；维护者重新打开 5104526098
+- 原帖/精确回复：[MJX plane-capsule 切向基 fallback 的数值差异仍待维护者确认](https://github.com/google-deepmind/mujoco/issues/2774#issuecomment-5082490175)
+- 平台/作者：GitHub Issues / GJBoth
+- 关键术语：接触坐标系（contact frame）；正交归一基（orthonormal basis）；金字塔摩擦锥（pyramidal friction cone）；预热加速度（qacc warm-start）
+- 环境：详细跟进固定到 MuJoCo commit 6882095；一个 plane、一个 free capsule、一个显式 contact pair；CPU double 与 jitted MJX float64，同一 frozen state、fresh data、`qacc_warmstart=0`。
+- 症状：跟进报告 `b_norm=0.4407495` 时 fallback 触发；给定 `n=\[0.3,0.4,0.8660254\]` 会选 `b=\[0,1,0\]`，从而 `n·b=0.4`。；同一 common-world point Jacobian 约差 `5.82e-18`，但 active contact tangent 不同；pyramidal friction 下 force 与 `qacc` 差异明显，`condim=1` 和 isotropic elliptic 基本一致。
+- 诊断：冻结同一状态、清空 warmstart，分别比较 common-world Jacobian、contact frame、friction cone 类型、constraint force 与 `qacc`；不要只比较接触点位置。
+- 原因：跟进作者指出 fallback 复用了 `math.orthogonals` 的轴选择，但缺少后续投影和重新归一化；维护者尚未正式确认该根因。
+- 处理过程：作者提出在很小容差下使用 `math.orthogonals(n)\[0\]`，并报告替换选择后 parity 恢复；尚无维护者审核或合并补丁。
+- 有效处理：当前没有可登记的正式修复；只能把该替换作为待验证实验，不应直接升级生产或训练基线。
+- 结果：Issue 从关闭状态重新打开；维护者表示会检查，线程截至采集时没有进一步结论。
+- 限制：现有数据来自一个最小 frozen-state 例子；尚未证明对所有 plane-capsule 姿态、cone 类型和 MuJoCo 版本都成立。
+- 安全提示：若 WBC 依赖摩擦方向或接触力阈值，应在目标版本对 CPU/MJX 接触 frame 和 cone 配置做回归测试。
+- 独立核验引用：[conflict · 维护者重新打开 Issue，表示将进一步检查；不是技术确认](https://github.com/google-deepmind/mujoco/issues/2774#issuecomment-5104526098)
+- 适用边界：仅直接适用于 commit 6882095 和原帖最小 plane-capsule frozen-state 配置；其他版本与接触几何需复现。
 
 ## IK/QP/MPC/WBC 优化问题 (`optimization_ik_qp_mpc`)
 
@@ -2685,6 +3409,1137 @@
 - 独立核验引用：[maintainer_confirmation · 项目协作者确认第二点是 bug 且已在 devel 修复](https://github.com/stack-of-tasks/tsid/issues/138#issuecomment-890048340)；[source_code · 官方提交把 m_eq 累加置于 motionPriorityLevel==0 条件内](https://github.com/stack-of-tasks/tsid/commit/5a6b452861247b44593cf6041b014edd72c059f8)
 - 适用边界：适用于 commit 5a6b452 之前的 TSID InverseDynamicsFormulationAccForce::addRigidContact 计数逻辑；具体 release 需按提交包含关系核对。
 
+### Isaac Lab Jacobian 的 link 索引与 body view 排序错位
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.isaaclab_jacobian_link_order_267`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 四足机器人 Jacobian 取错 link 的根因是 body view 与 articulation view 排序不同**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先确认索引和数据来自同一个 PhysX 视图。原帖用 rigid body view 的 find_bodies 索引读取 root_physx_view.get_jacobians()，但当时 body view 与 articulation view 的 link 排序不同，所以整数 4 并不对应预期足端。维护者合并 e3c40acf，在 Orbit 0.14.0 中令 Articulation.body_names 遵循 PhysX articulation 顺序，并内部重排 body-view 数据。旧版本应按 root_physx_view.shared_metatype.link_names 取索引；新版本应使用统一后的 Articulation/root_physx_view 接口。
+- 证据状态：`issue_candidate`
+- 来源定位：Isaac Lab #267 评论 1992307071 的双视图顺序对照、评论 1994213116 的作者确认、评论 2000071829 与 commit e3c40acf 的正式修复
+- 原帖/精确回复：[Isaac Lab 四足机器人 Jacobian 取错 link 的根因是 body view 与 articulation view 排序不同](https://github.com/isaac-sim/IsaacLab/issues/267#issuecomment-2000071829)
+- 平台/作者：GitHub Issues / catachiii
+- 关键术语：雅可比矩阵（Jacobian matrix）；刚体视图（Rigid Body View）；关节体视图（Articulation View）；连杆索引（link indexing）；有限差分（finite difference）
+- 环境：Isaac Lab/Orbit main；Isaac Sim 2023.1.1；Ubuntu 22.04；RTX 4090；CUDA 12.3；Unitree Go2 与 ANYmal-C。
+- 症状：提问者以 jacobian\[0, 4, 0:3, -12:\] 读取自认为是 FL_foot 的条目，矩阵除一列外几乎全零。；同一读取方式在 Go2 与 ANYmal-C 上都出现。
+- 诊断：分别打印 body_physx_view.prim_paths 导出的 body 名顺序和 root_physx_view.shared_metatype.link_names，确认索引来源与 Jacobian 来源一致。；ANYmal 示例中 body view 按每条腿链排列，而 articulation view 先列四个 hip、再列 thigh、shank、foot；相同整数索引对应不同 link。
+- 原因：find_bodies 使用 rigid body view 的 body_names 返回索引，而 Jacobian 来自 PhysX articulation view；两个视图当时的 link 排序不一致。
+- 处理过程：作者按维护者提供的 articulation view link_names 重新解释索引，并确认原索引把数据取错。；维护者合并 commit e3c40acf，把 Articulation.body_names 改为 PhysX articulation 顺序，并在内部处理 articulation-link 到 body-view 的重排。
+- 有效处理：旧版本中读取 root_physx_view 数据时必须使用 root_physx_view.shared_metatype.link_names 对应的索引。；升级到包含 e3c40acf 的 Orbit 0.14.0 或后续 Isaac Lab 版本，使用统一后的 Articulation.body_names/root_physx_view 接口，不再混用已弃用的 body_physx_view。
+- 结果：作者确认 index messed things up；维护者发布修复提交并说明它覆盖 Jacobian、质量矩阵等 link 数据的索引一致性，Issue completed 关闭。
+- 限制：该修复解决的是 link 排序一致性，不代表任意 Jacobian 数值异常都由索引导致。；不同 Isaac Lab 版本的公共属性名称已有变化，排查时应以当前版本 Articulation API 为准。
+- 安全提示：WBC 上实机前应把每个 Jacobian 行块与 link 名做自动断言，并用有限差分或已知关节运动做方向检查，避免对错 link 下发控制。
+- 独立核验引用：[issue · Go2/ANYmal-C 的最小读取方式、近零矩阵和完整环境](https://github.com/isaac-sim/IsaacLab/issues/267)；[maintainer_confirmation · 维护者列出 body view 与 articulation view 的两套实际 link 顺序](https://github.com/isaac-sim/IsaacLab/issues/267#issuecomment-1992307071)；[source_code · Orbit 0.14.0：统一 Articulation.body_names 排序并内部重排 body-view 数据](https://github.com/isaac-sim/IsaacLab/commit/e3c40acf5e6433c1d88b54a6e9d45bd6d3e73152)
+- 适用边界：直接适用于 Isaac Sim 2023.1.1/旧 Orbit 的 Go2 与 ANYmal-C；后续版本仍应确认当前 API 返回顺序后再复用索引。
+
+### Isaac Lab 旋转基座下 IK 的 Jacobian 坐标系不一致
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.isaaclab_rotated_base_ik_frame_911`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 绝对 IK 在旋转基座下漂移是 Jacobian 坐标系未转换**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先把目标、误差和 Jacobian 的参考坐标系统一。旧 DifferentialInverseKinematicsAction 直接使用 world-frame 几何 Jacobian，却按 root/base-frame 目标求解；作者用基座逆旋转矩阵分别左乘 Jacobian 的线速度和角速度块后，在旋转基座上恢复稳定控制。已合并的 PR #967 将该转换放入 action，并区分 world-frame 与 base-frame Jacobian。绝对目标若来自 world frame，也必须由调用侧或 action 按同一约定转换。
+- 证据状态：`issue_candidate`
+- 来源定位：Isaac Lab #911 评论 2333206262/2333999077 的修补与形状说明，评论 2523695195 指向已合并 PR #967
+- 原帖/精确回复：[Isaac Lab 绝对 IK 在旋转基座下漂移是 Jacobian 坐标系未转换](https://github.com/isaac-sim/IsaacLab/issues/911#issuecomment-2523695195)
+- 平台/作者：GitHub Issues / zoctipus
+- 关键术语：几何雅可比（geometric Jacobian）；基座坐标系（base frame）；世界坐标系（world frame）；批量矩阵乘法（batched matrix multiplication）；微分逆运动学（Differential Inverse Kinematics, Differential IK）
+- 环境：Isaac Lab commit 7452386；Isaac Sim 4.1；Ubuntu 20.04；RTX 4090；CUDA 12.5；Franka IK-Abs 任务。
+- 症状：同一常量 base-frame 目标在默认基座下稳定，在基座旋转 90 度后末端持续偏离目标。；初始时位置误差和姿态误差接近零，但控制过程仍漂移。
+- 诊断：同时标注 action target、当前末端姿态与 Jacobian 的 frame，不要仅看误差向量初值。；维护者澄清 PhysX Jacobian 本身可合法地位于 world frame；问题在于 DifferentialInverseKinematicsAction 需要与 root/base-frame 目标保持一致。；quat_apply 只接受 N×3 向量，而 Jacobian 块是 N×3×n_Dof；线程中确认应使用 matrix_from_quat 与 torch.bmm。
+- 原因：旧实现没有读取 root/base 姿态来转换几何 Jacobian，导致旋转基座时 Jacobian 与目标/误差所在 frame 不一致。
+- 处理过程：作者用 inverse(base_quat) 生成 3×3 旋转矩阵，对 Jacobian 的线速度三行和角速度三行分别做批量矩阵乘法，并在旋转 90 度基座上演示稳定遥操作。；贡献者进一步讨论绝对目标若在 world frame 给出，还需先转换为 base frame；线程明确这是接口设计选择，调用侧必须保持约定一致。
+- 有效处理：使用包含 PR #967 的版本；该 PR 在 DifferentialInverseKinematicsAction 内把 Jacobian 转到 root frame，并区分 world-frame 与 base-frame Jacobian 属性。；旧版本手工修补时，用基座逆旋转矩阵分别左乘 Jacobian 的线速度块与角速度块，且把绝对目标转换到同一 base/root frame。
+- 结果：作者在旋转 90 度的 Franka 基座上展示修补后可稳定遥操作；PR #967 已合并，merge commit 为 762f4e32，Issue completed 关闭。
+- 限制：world-frame Jacobian 不是天然错误；只有在控制器误差与命令使用 root/base frame 时才必须转换。；PR #967 描述中的测试 checklist 未勾选新增测试，部署到其他机器人仍应做旋转基座回归测试。
+- 安全提示：实机移动操作前至少用两个非零 base 朝向验证同一末端目标，并记录 frame 名；零朝向测试不能暴露此类坐标系错误。
+- 独立核验引用：[issue · 旋转/未旋转基座对照、完整复现脚本与环境](https://github.com/isaac-sim/IsaacLab/issues/911)；[maintainer_confirmation · 协作者确认 Jacobian 是 N×3×n_Dof，matrix_from_quat + torch.bmm 路径有效，并澄清 world/root frame 语义](https://github.com/isaac-sim/IsaacLab/issues/911#issuecomment-2333999077)；[pull_request · 2024-12-12 合并；Computes Jacobian in the root frame；Fixes #911](https://github.com/isaac-sim/IsaacLab/pull/967)
+- 适用边界：直接适用于 Isaac Lab commit 7452386/Isaac Sim 4.1 的 Franka IK-Abs；其他版本与机器人应核对 action API 当前声明的 frame。
+
+### Pinocchio frame Jacobian 输出矩阵少三行导致结果看似全零
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_frame_jacobian_output_shape_2683`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 3.5 的 computeFrameJacobian 不再替调用方修正 3×nv 输出矩阵**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先检查调用方输出矩阵。Frame Jacobian 同时包含线速度与角速度，契约是 6×model.nv；原作者只传了 3×nv，非零项恰在第 5、6 行，而 3.5.0 不再替调用方 resize。应在调用前创建并清零 6×nv 矩阵。已合并的 PR #2684 又为 frame/joint Jacobian 增加 6 行和 nv 列的参数检查。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2683：作者评论 2905781523 定位 3×nv；维护者评论 2906540315 确认 6×nv；PR #2684 合并提交 8af6014
+- 原帖/精确回复：[Pinocchio 3.5 的 computeFrameJacobian 不再替调用方修正 3×nv 输出矩阵](https://github.com/stack-of-tasks/pinocchio/issues/2683#issuecomment-2905781523)
+- 平台/作者：GitHub Issues / scastro-bdai
+- 关键术语：帧雅可比矩阵（frame Jacobian）；空间速度（spatial velocity）；输出矩阵尺寸（output matrix shape）；参数检查（argument-size check）
+- 环境：Ubuntu 22.04；Pinocchio 3.4.0 与 3.5.0 对照；C++ Eigen 动态矩阵；原帖提供 URDF 与 Python 复现仓库。
+- 症状：C++ 3.5.0 输出全零，3.4.0 与 Python 输出在最后两行存在非零项。；调用结束后的 Jacobian 仍只有 3 行，而 frame Jacobian 的空间维度应为 6。
+- 诊断：在调用前打印输出矩阵形状，确认是 6×model.nv，而不是只含线速度的 3×model.nv。；将输出矩阵预置为 6×nv 的零矩阵，再比较 Python/C++ 和版本差异；不要先把问题归因于参考系或算法回归。
+- 原因：调用方传入了 3×nv 矩阵；3.4.0 曾隐式 resize，3.5.0 不再这样做，非零角速度行因此没有被写入。
+- 处理过程：原作者把问题写成版本回归并对照 Python/C++ 后，重新检查输出尺寸，定位到 3 行预分配。
+- 有效处理：始终传入已清零的 6×model.nv 输出矩阵。；PR #2684 在 frame/joint Jacobian 路径加入 J.rows()==6 与 J.cols()==model.nv 的参数检查，使错误尺寸不再静默通过。
+- 结果：维护者确认 6×nv 是所有 frame/joint Jacobian 的契约；PR #2684 于 2025-05-26 合并，Issue 以 completed 关闭。
+- 限制：该根因只解释输出矩阵尺寸错误；若 6×nv 仍异常，仍需继续核对 frame id、配置 q 和 reference frame。；原帖没有给出把 C++ 矩阵改成 6×nv 后的新数值截图，但作者已明确定位，维护者补丁直接检查同一条件。
+- 安全提示：将 Jacobian 维度作为控制启动前断言，避免错误任务空间约束进入实机 QP。
+- 独立核验引用：[issue · Python/C++、3.4/3.5 对照，frame、q、输出矩阵与系统环境](https://github.com/stack-of-tasks/pinocchio/issues/2683)；[maintainer_confirmation · 维护者确认所有 frame/joint Jacobian 均须由调用方提供 6×nv 矩阵](https://github.com/stack-of-tasks/pinocchio/issues/2683#issuecomment-2906540315)；[pull_request · 2025-05-26 合并；对 J/dJ 增加 6 行与 model.nv 列检查](https://github.com/stack-of-tasks/pinocchio/pull/2684)；[source_code · PR #2684 merge commit：frames.hxx 与 jacobian.hxx 参数尺寸检查](https://github.com/stack-of-tasks/pinocchio/commit/8af6014f6143022f4645e49fbefce2eb0418a225)
+- 适用边界：直接覆盖 Ubuntu 22.04、Pinocchio 3.4/3.5 C++ 调用；其他版本也应遵守 6×nv 的 frame/joint Jacobian 输出契约。
+
+### Pinocchio 固定世界方向外力的 Jacobian 参考系选择
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_fixed_world_force_lwa_1761`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 将固定世界方向的末端力映射到关节力矩时使用 LOCAL_WORLD_ALIGNED Jacobian**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：在作者明确这一目标后，维护者回答使用 LOCAL_WORLD_ALIGNED。线程同时澄清 universe/inertial frame 固定，而 world-aligned coincident point 可随目标 frame 移动。由于作者没有发布 torque 结果或复测，该结论只能作为 reference-frame 选择入口；wrench 排列、作用点、符号和 Jacobian 转置映射仍需在目标模型实际验证。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1761：维护者评论 1264712803 澄清 fixed universe/coincident point；1266647907 回答使用 LOCAL_WORLD_ALIGNED
+- 原帖/精确回复：[Pinocchio 将固定世界方向的末端力映射到关节力矩时使用 LOCAL_WORLD_ALIGNED Jacobian](https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1266647907)
+- 平台/作者：GitHub Issues / huihuishen
+- 关键术语：局部世界对齐坐标系（LOCAL_WORLD_ALIGNED）；参考坐标系（ReferenceFrame）；末端雅可比矩阵（end-effector Jacobian）；外力到关节力矩映射（force-to-torque mapping）
+- 环境：Pinocchio RobotWrapper.BuildFromURDF(..., JointModelFreeFlyer())；末端 frame；原帖未给 Pinocchio 版本和 URDF。
+- 症状：作者误以为 WORLD frame 随机器人整体移动，因此无法确定固定世界方向外力应与哪种 Jacobian 配对。
+- 诊断：明确外力的坐标轴方向和作用点，再选择 Jacobian reference frame。；区分固定 universe/inertial frame 与位于移动 body/frame 原点的 world-aligned 表达。
+- 原因：把 WORLD convention 中随 body 移动的 coincident point 误解为 universe 坐标轴本身移动。
+- 处理过程：作者多次澄清目标，最终明确要把固定 frame 描述的 force 转成 torque。
+- 有效处理：维护者针对该目标回答使用 LOCAL_WORLD_ALIGNED frame Jacobian。
+- 结果：Issue 已关闭，但没有作者的数值结果、代码或修复后确认。
+- 限制：线程没有验证 Jacobian 转置公式、力/力矩六维排列、符号或作用点，因此不能从该回答单独保证 torque 数值正确。；没有版本与复现结果，必须在目标模型上用虚功或有限差分等方法另行核对。
+- 安全提示：实机施力前必须独立验证 wrench 顺序、frame transform、关节顺序和力矩限幅。
+- 独立核验引用：[maintainer_confirmation · 维护者澄清 universe 固定，但 coincident point 随 body 移动](https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1264712803)；[maintainer_confirmation · 维护者针对固定 frame 外力到 torque 的目标回答使用 LOCAL_WORLD_ALIGNED](https://github.com/stack-of-tasks/pinocchio/issues/1761#issuecomment-1266647907)
+- 适用边界：适用于原帖“固定世界方向外力、末端 frame、浮动基机器人”的目标；未验证具体 torque 映射实现。
+
+### Pinocchio 无接触前向动力学误调用 constrained forwardDynamics
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_unconstrained_forward_dynamics_aba_2604`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 无接触前向动力学应调用 aba，forwardDynamics 是约束动力学重载**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：先检查调用的算法语义和 Python overload。原帖是无接触前向动力学，应使用 aba(model,data,q,v,tau)；forwardDynamics 面向带接触/约束的动力学重载，需要 constraint_jacobian 和 constraint_drift。原作者的五参数调用匹配了另一重载，导致 q 被解释成应为 nv 长度的 tau，于是出现 got nq=15 的迷惑报错。原作者改用建议后确认解决。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2604：贡献者评论 2694376878 解释 aba 与 forwardDynamics overload；原作者 2696551706 确认解决
+- 原帖/精确回复：[Pinocchio 无接触前向动力学应调用 aba，forwardDynamics 是约束动力学重载](https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2694376878)
+- 平台/作者：GitHub Issues / qiyuanchn
+- 关键术语：关节空间惯量算法（Articulated-Body Algorithm, ABA）；前向动力学（forward dynamics）；约束动力学（constrained dynamics）；函数重载（function overload）
+- 环境：Pinocchio Python；iris.urdf；JointModelFreeFlyer；model.nq=15、model.nv=10；无 contacts。
+- 症状：调用 pin.forwardDynamics(model,data,q,v,tau) 报 ValueError: wrong argument size: expected 10, got 15，尽管 tau 长度为 10。
+- 诊断：使用 help(pinocchio.forwardDynamics) 检查 Python overload 的参数列表。；先判断问题是无接触前向动力学，还是带 constraint_jacobian/constraint_drift 的 contact/constrained dynamics。
+- 原因：五参数调用匹配了 constrained forwardDynamics 的另一重载，q 被当成只应为 nv 长度的 tau，因此错误信息显示 got nq=15。
+- 处理过程：维护者要求完整 URDF 后，与另一位项目成员复核了模型和 API overload。
+- 有效处理：无接触场景改用 pin.aba(model, data, q, v, tau)；需要接触约束时才按 forwardDynamics 文档提供 constraint_jacobian 与 constraint_drift。
+- 结果：原作者回复问题已解决。
+- 限制：该结论只覆盖原帖无接触场景；存在闭链、刚性接触或其他约束时不能直接丢弃 constraint inputs。；原帖没有给 Pinocchio 版本和最终加速度数值，只确认 API 选择解决尺寸错误。
+- 安全提示：实机控制前需确认动力学模型、外力/接触约束与执行器输入定义，不能仅以函数成功返回作为动力学正确性证明。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者说明无接触 forward dynamics 应使用 aba，并列出 constrained forwardDynamics overload](https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2694376878)；[issue · 原作者确认问题解决](https://github.com/stack-of-tasks/pinocchio/issues/2604#issuecomment-2696551706)；[source_code · 维护者在原回复中给出的固定提交 aba 无接触仿真示例](https://github.com/stack-of-tasks/pinocchio/blob/187afafcfe22d7ac16a26241c0b13a76d04d82c1/examples/simulation-inverted-pendulum.py#L97)
+- 适用边界：适用于无 contact/constraint 的 Pinocchio FreeFlyer forward dynamics；带约束问题必须使用对应 constrained API。
+
+### Pinocchio 4 获取 frame Jacobian 对 q 的 6×nv×nv Hessian
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_frame_kinematic_hessian_2844`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 4 已提供 frame Jacobian 对关节配置的完整 Hessian 接口**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`resolved`
+- 候选解答：Pinocchio 4 已提供 getFrameKinematicHessian。先运行 computeJointKinematicHessians 填充 data，再用 frame_id 和 reference frame 调用 getFrameKinematicHessian；官方头文件的返回值 overload 创建 6×nv×nv tensor，无动态分配 overload 则要求调用方预先清零同尺寸 tensor。原线程没有用户数值复测，因此仍应在目标版本做有限差分校验。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2844：维护者评论 3846183967 说明 Pinocchio 4 已实现，评论 5103983954 指向源码；固定源码 commit 031ebb1 行 527-539、655-665
+- 原帖/精确回复：[Pinocchio 4 已提供 frame Jacobian 对关节配置的完整 Hessian 接口](https://github.com/stack-of-tasks/pinocchio/issues/2844#issuecomment-5103983954)
+- 平台/作者：GitHub Issues / Decembereye
+- 关键术语：运动学 Hessian（kinematic Hessian）；帧雅可比导数（frame Jacobian derivative）；参考坐标系（reference frame）；三阶张量（third-order tensor）
+- 环境：原帖指向 Pinocchio 4；本轮源码核验固定在 devel commit 031ebb13a637babd0705ce030ce9fb2e1e9aae2c。
+- 症状：旧用法能调用 getJointKinematicHessian，却找不到对 frame_id 等价的 getFrameKinematicHessian。
+- 诊断：先区分需要完整 6×nv×nv dJ/dq，还是只需要 Hessian-vector/wrench contraction；两者最合适的算法不同。；在目标安装版本的 kinematics-derivatives.hpp 中确认 getFrameKinematicHessian overload 与 binding 可用性。
+- 原因：该能力在早期 Pinocchio 没有公开 frame 接口，而 Pinocchio 4 才补齐。
+- 处理过程：原帖引用旧 #867 中通过 joint Hessian 或重复 time-variation 调用构造结果的历史讨论。
+- 有效处理：在 Pinocchio 4 先调用 computeJointKinematicHessians，再调用 getFrameKinematicHessian(model, data, frame_id, reference_frame, tensor)，或使用返回 tensor 的 overload。；无动态分配的 overload 要求调用方先把 6×nv×nv tensor 清零；返回值 overload 会创建同尺寸 tensor。
+- 结果：维护者在 2026-07-28 指向已实现的官方函数，Issue 以 completed 关闭；固定 commit 的头文件包含 frame_id overload。
+- 限制：原线程没有调用者复测、数值有限差分对照或 Python binding 示例，因此在目标构建上仍应核对可用 overload。；接口返回的是 frame kinematic Hessian；具体 reference frame 与张量索引约定应按同版本文档和有限差分验证。
+- 安全提示：二阶导数进入优化器前，应在小扰动下做有限差分方向导数检查，避免张量轴或 reference frame 误用。
+- 独立核验引用：[maintainer_confirmation · 维护者说明 frame kinematic Hessian 已在 Pinocchio 4 实现](https://github.com/stack-of-tasks/pinocchio/issues/2844#issuecomment-3846183967)；[source_code · 固定 commit 的 frame_id + output tensor overload，并转发 parentJoint/frame.placement](https://github.com/stack-of-tasks/pinocchio/blob/031ebb13a637babd0705ce030ce9fb2e1e9aae2c/include/pinocchio/algorithm/kinematics-derivatives.hpp#L527-L539)；[source_code · 返回值 overload 创建 6×nv×nv tensor、清零并调用填充版本](https://github.com/stack-of-tasks/pinocchio/blob/031ebb13a637babd0705ce030ce9fb2e1e9aae2c/include/pinocchio/algorithm/kinematics-derivatives.hpp#L655-L665)
+- 适用边界：适用于包含 getFrameKinematicHessian 的 Pinocchio 4 C++ 构建；具体 Python 暴露和最低发布版本需在目标环境核验。
+
+### 接触 QP 用 RNEA derivatives 直接计算 Hessian-wrench contraction
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_contact_hessian_wrench_rnea_867`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：接触 QP 只需要 dJᵀ/dq·λ 时可用 Pinocchio RNEA derivatives 避免构造完整 Hessian**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：先确认目标是沿空间 wrench λ 收缩后的 nv×nv 矩阵，而不是完整 dJ/dq。原线程指出，RNEA 的 external-force 项包含 J^Tλ，因此可用 RNEA analytical derivatives 直接求 d(J^Tλ)/dq。Valkyrie nv=32 的原作者确认该方法可用，并报告原始 derivative 调用约 0.035 ms；这些时序只代表其旧环境，不应外推。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #867：评论 526278645 写出 contraction 与 RNEA 关系；评论 530373296 确认可用并给出对照；评论 530407733 补充 raw 调用时序
+- 原帖/精确回复：[接触 QP 只需要 dJᵀ/dq·λ 时可用 Pinocchio RNEA derivatives 避免构造完整 Hessian](https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530373296)
+- 平台/作者：GitHub Issues / Leph
+- 关键术语：递归牛顿-欧拉算法导数（Recursive Newton-Euler Algorithm derivatives, RNEA derivatives）；外部力（external force）；张量收缩（tensor contraction）；有限差分（finite difference）
+- 环境：2019 年 Pinocchio/RBDL 对照；Valkyrie humanoid，nv=32；作者仅说明标准 laptop，未给 CPU 与精确 Pinocchio 版本。
+- 症状：有限差分完整 Hessian 阻碍约 1 ms 的计算预算；实际目标是对 Hessian 第一维与 contact wrench λ 收缩后得到 nv×nv 矩阵。
+- 诊断：先把优化中的真实表达式写成 J(q+dq)^T λ，确认需要的是 d(J^T λ)/dq，而非完整 dJ/dq。；区分张量最后一维的 Hessian-vector product 与原帖沿空间 wrench 维度收缩的 nv×nv 结果。
+- 原因：直接构造完整 Hessian 计算了优化器不会使用的大量元素；RNEA 外力项已经包含 J^T λ，其解析导数可直接给出所需收缩。
+- 处理过程：作者先用 RBDL 有限差分，并讨论过完整 tensor API 与 nv 次 time-variation 调用。；随后把零重力、零速度/加速度和外力项的 RNEA 导数用于 dJ^T/dq·λ。
+- 有效处理：若目标确实是 d(J^T λ)/dq，使用带 external forces 的 RNEA analytical derivatives 直接计算，而不是先构造完整 frame Hessian。
+- 结果：作者明确确认 RNEA derivatives 能取得所需 Hessian-wrench product，并报告其本机 Valkyrie 对照时序。
+- 限制：0.500/0.060/0.035 ms 是单一作者、旧版本和未注明 CPU 的线程记录，不能作为当前硬件通用 benchmark。；维护者推测标准 laptop 可到 0.015 ms，但作者没有验证该数值，本卡不把它作为结果。；若优化确实需要完整 dJ/dq，应改用 Pinocchio 4 的 frame kinematic Hessian 接口，而不是此 contraction。
+- 安全提示：把解析 contraction 与有限差分在随机 q、λ 上做方向导数对照后，再放入实时接触 QP。
+- 独立核验引用：[issue · 作者写出 M(i,j)=Σk H(k,i,j)λ(k)，并识别 RNEA derivatives 路径](https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-526278645)；[issue · 作者确认带 external forces 的 RNEA derivative 可取得所需 product，并报告对照时序](https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530373296)；[issue · 作者说明 0.060 ms 含 Pinocchio/RBDL 转换，raw RNEA derivatives 约 0.035 ms](https://github.com/stack-of-tasks/pinocchio/issues/867#issuecomment-530407733)
+- 适用边界：适用于接触 QP 中 d(J^Tλ)/dq 这一特定 contraction；原帖为 Valkyrie nv=32 和 2019 年 API，当前签名需按目标 Pinocchio 版本核对。
+
+### Crocoddyl TALOS 状态边界代价在初始求解时产生 NaN
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.crocoddyl_talos_state_bounds_nan_1395`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl TALOS whole-body manipulation 的状态边界代价导致 NaN**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：原作者把 NaN 定位到 xBounds 代价中的 ResidualModelState(state, 0*x0, actuation.nu)。维护者的 PR #1403 把它改为 ResidualModelState(state, actuation.nu)，PR 正文明确写明修复 #1395，随后合入 devel 并关闭 Issue。应优先使用包含该 PR 的 notebook；线程没有给出原作者合并后复跑日志，因此不能扩展为所有 Crocoddyl NaN 的通用结论。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #1395：协作者评论 2922474130 复现；原作者评论 2931328830 定位 xBounds；维护者评论 2936325526 指向 PR #1403；合并提交 8e3c143
+- 原帖/精确回复：[Crocoddyl TALOS whole-body manipulation 的状态边界代价导致 NaN](https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2936325526)
+- 平台/作者：GitHub Issues / pran-d
+- 关键术语：状态边界惩罚（state limits penalization）；残差模型（residual model）；二次障碍激活（quadratic barrier activation）；全身操作（whole-body manipulation）
+- 环境：Ubuntu 24.04.2、Python 3.12.3、Crocoddyl 3.0.1；原作者降级到 Crocoddyl 2.2.0 后仍复现；未给 example_robot_data 版本。
+- 症状：whole_body_manipulation.ipynb 不改动运行时 cost 显示 NaN，solver 在第 0 次迭代退出。；移除 differential model 的 contacts 后问题仍在；相同环境和 cost formulation 换 Panda 模型可以求解并到达目标。
+- 诊断：先用同一虚拟环境替换机器人模型，区分通用求解器故障与特定多体状态维度/边界故障。；逐项移除或检查 cost；原作者把 NaN 定位到 xBounds 中 ActivationBounds 与 ResidualModelState 的组合。；核对 StateMultibody 的 nq、nv、状态切空间维度以及 residual 期望维度，不要仅按 nq+nv 猜测。
+- 原因：原线程把直接原因定位到状态边界惩罚中 ResidualModelState(state, 0*x0, actuation.nu) 的参考状态构造；维护者修复补丁移除了该错误参考参数。
+- 处理过程：原作者尝试移除 contacts，问题仍存在。；原作者把 TALOS 换成 Panda 后求解正常，并在 Crocoddyl 3.0.1/2.2.0 间交叉复现。；协作者使用 PR #1396 提供的 Jupyter 入口复现了错误行为。
+- 有效处理：采用已合入 PR #1403 的 notebook，或把 xBounds residual 从 ResidualModelState(state, 0*x0, actuation.nu) 改为 ResidualModelState(state, actuation.nu)。
+- 结果：PR #1403 明确声明修复 #1395，于 2025-06-04 合入 loco-3d/crocoddyl:devel；Issue 状态为 completed。
+- 限制：原作者没有在合并后再次留言确认运行结果；闭环依据是协作者复现、维护者指向修复、PR 明确关联并合入以及 Issue 关闭。；PR #1403 还修改了 contact stabilization、notebook 结构和 README；本卡只把原作者已定位且补丁直接改动的 xBounds residual 作为该 NaN 的线程内修复。；不能从该线程推导任意 StateMultibody 的通用边界切片公式。
+- 安全提示：在把优化结果用于实机前，先把初始 cost、residual 维度和有限值检查作为启动门槛；NaN 状态下不得下发控制量。
+- 独立核验引用：[independent_reproduction · 项目协作者说明使用 #1396 可以复现该错误行为](https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2922474130)；[issue · 原作者给出 xBounds 代码并把 NaN 定位到状态边界代价](https://github.com/loco-3d/crocoddyl/issues/1395#issuecomment-2931328830)；[pull_request · PR 正文明确 Fixes #1395，2025-06-04 合入 devel](https://github.com/loco-3d/crocoddyl/pull/1403)；[source_code · 固定提交把 xBounds 的 ResidualModelState(state, 0*x0, ...) 改为不传错误参考状态的构造](https://github.com/loco-3d/crocoddyl/commit/d2ab9a5510094fb52c5f8212fbbb25d749f56d66)
+- 适用边界：适用于旧版 whole_body_manipulation.ipynb 的 TALOS 状态边界代价构造；目标安装必须确认是否已包含 PR #1403。
+
+### Pinocchio 旧 IK 示例的位姿残差与 Jacobian 参考坐标系不一致
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_ik_error_jacobian_frame_mismatch_1959`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 旧 IK 示例把目标坐标系残差与局部 Jacobian 混用**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：原线程确认的错误是：log6(dMi) 残差表达在目标坐标系 d，而 computeFrameJacobian 的 Jacobian 表达在当前末端/关节坐标系 i。已合入 PR #1963 把残差改为 iMd=data.oMi\[JOINT_ID\].actInv(oMdes)，使误差位于当前局部坐标系，并用 Jlog6(iMd.inverse()) 对几何 Jacobian 做位姿任务链式修正。修订后的官方 C++/Python 示例均给出收敛日志。减小 dt 单独没有解决原用户问题；原用户也没有证明自己的 GEN3 Lite 关节限位问题已解决。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1959 评论 1543725756 定位 frame mismatch；评论 1543910510 否定仅减小 dt；评论 1543936952/1546547369 指向修复；PR #1963 已审阅、合并并附收敛日志
+- 原帖/精确回复：[Pinocchio 旧 IK 示例把目标坐标系残差与局部 Jacobian 混用](https://github.com/stack-of-tasks/pinocchio/issues/1959#issuecomment-1543725756)
+- 平台/作者：GitHub Issues / DawnQiu
+- 关键术语：逆运动学（inverse kinematics, IK）；位姿残差（pose residual）；几何雅可比矩阵（geometric Jacobian）；局部坐标系（local frame）；三维特殊欧氏群（special Euclidean group, SE3）
+- 环境：Pinocchio C++、用户自有 GEN3Lite.urdf；原帖未给 OS、Pinocchio 版本或 commit。关联 PR #1963 修改官方 C++/Python inverse-kinematics 示例并合入 devel。
+- 症状：原用户运行 1000 次迭代仍未达到 1e-4 误差阈值，最终配置包含约 39.27 和 -39.18 rad 的关节值。；原用户明确回复，减小 dt 后仍未达到预期结果。
+- 诊断：逐项标注 log6 残差和 computeFrameJacobian 输出所处的 frame，确认两者一致后再调阻尼或步长。；对 SE(3) 位姿任务 Jacobian 核对 Jlog6 链式修正；不要只把几何 Jacobian 直接与 log6 残差组合。
+- 原因：贡献者指出，原代码的 log6(dMi) 残差表达在目标 frame d，而 computeFrameJacobian 的 Jacobian 表达在当前 body/frame i；两者坐标系不一致。
+- 处理过程：原用户增加迭代次数并调整时间步长，均未解决自己的机械臂结果。；PR #1963 在官方 C++/Python 示例中把残差与 Jacobian 统一到当前关节局部坐标系，并加入 Jlog6 修正。
+- 有效处理：按已合入 PR #1963 的方式，以 iMd=data.oMi\[JOINT_ID\].actInv(oMdes) 计算局部残差，并用 Jlog6(iMd.inverse()) 修正任务 Jacobian；Python 示例使用 np.dot 保持 Python 2.7/ROS Melodic 兼容。
+- 结果：PR #1963 的 C++ 与 Python 示例日志均显示 Convergence achieved，PR 经项目维护者审阅批准并合入 devel。
+- 限制：原用户没有在 GEN3 Lite 模型上发布采用 PR #1963 后的复测结果；本卡确认的是官方示例的 frame/Jlog6 修复，不宣称用户机器人的所有不收敛都已解决。；PR #1963 没有加入关节限位约束；原帖中超出物理限位的现象需要另行使用受约束 IK 或限位处理，不能由本线程推导已经解决。；目标可达性、奇异位形、阻尼和步长仍需针对目标机器人验证。
+- 安全提示：把 IK 结果用于实机前必须检查关节位置、速度和碰撞约束；即使数值收敛也不能直接下发越界配置。
+- 独立核验引用：[issue · 原用户说明减小 dt 后仍未达到预期，排除把步长单独写成已验证修复](https://github.com/stack-of-tasks/pinocchio/issues/1959#issuecomment-1543910510)；[pull_request · 已合入 PR 把残差统一到当前局部 frame、加入 Jlog6，并附 C++/Python 收敛日志](https://github.com/stack-of-tasks/pinocchio/pull/1963)；[source_code · PR #1963 的合并提交，固定官方 IK 示例修改](https://github.com/stack-of-tasks/pinocchio/commit/4b28322642096f2e7521e978ba535e94de0667b0)
+- 适用边界：适用于使用 Pinocchio log6 位姿残差和局部几何 Jacobian 的迭代 IK，尤其是基于旧官方示例的实现；目标机器人仍需单独处理可达性和关节限位。
+
+### Pinocchio 含外力静力矩二阶导数的接口缺口
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_static_torque_second_order_external_force_2092`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 当时没有带外力静力矩二阶导数的现成接口**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：截至原线程时间，项目方明确说二阶导支持尚不完整，没有可直接使用的含 external forces 静力矩二阶导接口；专门利用静态结构可以减少计算，但需要进一步研究和工程实现。原作者最后只表示可能用 CppADCodeGen 自动微分，并未发布实现或结果，所以它只能作为待验证的备选路线。目标版本若更新，必须重新核对 API，不能永久沿用 2023 年结论。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2092 评论 1822471230 说明二阶导支持不完整；评论 1824887277 说明可实现但需工程投入；评论 1831924121 原作者仅计划 CppADCodeGen
+- 原帖/精确回复：[Pinocchio 当时没有带外力静力矩二阶导数的现成接口](https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1822471230)
+- 平台/作者：GitHub Issues / IoannisDadiotis
+- 关键术语：广义静力矩（generalized static torque）；二阶导数（second-order derivative）；外力（external force）；逆动力学递归牛顿-欧拉算法（Recursive Newton-Euler Algorithm, RNEA）；自动微分（automatic differentiation, AD）
+- 环境：2023-11 的 Pinocchio 公开接口；原帖未给版本、commit、OS、机器人或矩阵规模。
+- 症状：computeStaticTorque/computeStaticTorqueDerivatives 没有二阶接口，而 ComputeRNEASecondOrderDerivatives 不接收 external forces。；原作者用 std::chrono 粗测一阶接口时，零速度/零加速度的 ComputeRNEADerivatives 比 computeStaticTorqueDerivatives 慢约 2–3 倍，但未给硬件、重复次数或绝对时延。
+- 诊断：先核对目标 Pinocchio 版本的二阶导 API 是否支持 external forces，不要仅凭函数名假定覆盖静力矩场景。；若考虑通用 RNEA 二阶导替代静态专用导数，应单独基准不需要的速度/加速度导数开销。
+- 原因：项目贡献者明确表示当时 Pinocchio 的二阶导支持不完整；含外力静力矩的专用二阶导需要研究和工程实现。
+- 处理过程：原作者考虑分别求 gravity 与 J(q)^T fext 的二阶导，或把速度和加速度置零后调用 RNEA 二阶导。；原作者最后表示对自己的应用可能使用 CppADCodeGen 自动微分。
+- 结果：线程确认当时没有现成的含外力静力矩二阶导路径；维护者邀请协作实现，原作者没有投入底层开发并转向考虑自动微分。
+- 限制：CppADCodeGen 只是原作者计划，没有代码、数值正确性、编译时间或运行时结果，不能写成已验证替代方案。；原作者的 2–3 倍时序缺少硬件、版本和统计方法，不能外推为性能结论。；该结论对应 2023-11 的接口状态；新版本必须重新检查 release、文档和函数签名。
+- 安全提示：将二阶导数用于接触/力矩优化前，应与有限差分或自动微分方向导数交叉检查，避免遗漏 external-force 项。
+- 独立核验引用：[maintainer_confirmation · 维护者说明能力可以实现，但需要时间和工程投入](https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1824887277)；[issue · 原作者只提出考虑 CppADCodeGen，没有提交实现或验证结果](https://github.com/stack-of-tasks/pinocchio/issues/2092#issuecomment-1831924121)
+- 适用边界：适用于核对 2023-11 前后 Pinocchio 的含外力静力矩二阶导能力；当前版本和具体模型必须重新验证。
+
+### Pinocchio 的空间与经典点加速度需要不同的 Jacobian 时间导数
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_classical_spatial_jacobian_time_derivative_2141`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：2（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：getFrameJacobianTimeVariation 返回空间加速度 Jacobian 的时间导数**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：getFrameJacobianTimeVariation 返回的是空间加速度对应的 dJs/dt。若目标是经典点加速度，维护者在 LOCAL frame 给出的关系是 dJc=dJs+omega×Jl：代码上复制 Js 为 Jc，再对 dJc 的线性前三行加入 pin.skew(v_s.angular)@Jc\[:3,:\]。其完整脚本用 isApprox 断言验证了重构结果。LOCAL_WORLD_ALIGNED 的后续问题没有答案，因此该公式不能从本线程直接外推到该 reference frame。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2141 评论 1925393733：维护者解释 dJs/dt 与 dJc/dt 差异并给出完整断言脚本；评论 2088271817 说明原始问题已回答；评论 2068201550 的 LWA 追问未获解答
+- 原帖/精确回复：[getFrameJacobianTimeVariation 返回空间加速度 Jacobian 的时间导数](https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-1925393733)
+- 平台/作者：GitHub Issues / matheecs
+- 关键术语：空间加速度（spatial acceleration）；经典点加速度（classical point acceleration）；雅可比时间导数（Jacobian time derivative）；局部坐标系（local frame）；叉乘矩阵（skew-symmetric matrix）
+- 环境：Ubuntu 22.04.3 LTS、Pinocchio 3、pin.buildSampleModelManipulator()。
+- 症状：原帖示例中经典加速度与直接使用 getFrameJacobianTimeVariation@v 的结果在线性前三维明显不同，角加速度后三维一致。；原作者手工加入 omega 与线性 Jacobian 的叉乘项后，示例数值与 getFrameClassicalAcceleration 一致。
+- 诊断：先确认需要的是空间加速度（spatial acceleration）还是经典点加速度（classical point acceleration）。；分别用 getFrameAcceleration 和 getFrameClassicalAcceleration 建立数值对照，并在相同 LOCAL frame 中验证 a_s=J_s*qddot+dJ_s*qdot。
+- 原因：维护者明确说明 getFrameJacobianTimeVariation 返回 dJs/dt；把它直接当作经典点加速度的 dJc/dt 会漏掉 omega×Jl 项。
+- 处理过程：原作者手工计算叉乘项并得到与经典加速度一致的结果。；维护者提供完整随机 q、v、qddot 脚本，以三个 isApprox 断言核验关系。
+- 有效处理：在维护者给出的 LOCAL-frame 范围内，以 Jc=Js，并令 dJc 的线性块加上 skew(omega)@Jc_linear，再用 Jc*qddot+dJc*qdot 重构经典点加速度。
+- 结果：维护者脚本通过断言验证经典加速度与空间加速度关系、空间 Jacobian 重构和修正后的经典加速度重构；项目方据此认定原始 Issue 已回答且无需修改 Pinocchio。
+- 限制：维护者脚本只明确覆盖 LOCAL frame；LOCAL_WORLD_ALIGNED 下的经典加速度 Jacobian 时间导数追问未获回答，不能从本线程自行推广公式。；关于 Jc=Js.copy() 的后续概念追问也未在该线程回答。；该线程没有给出特定机器人 URDF 的独立复测。
+- 安全提示：把 Jdot*qdot 用于加速度或接触约束前，应与同 frame 的运动学加速度接口做数值对照，避免错误补偿进入实机力矩。
+- 独立核验引用：[maintainer_confirmation · 项目方确认原始 Issue 已由维护者脚本回答，因此无需 Pinocchio 代码改动](https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-2088271817)；[issue · LOCAL_WORLD_ALIGNED 下的后续追问未得到公式，用于限定本卡适用范围](https://github.com/stack-of-tasks/pinocchio/issues/2141#issuecomment-2068201550)
+- 适用边界：适用于 Pinocchio 3、LOCAL frame、以经典点加速度重构 J*qddot+Jdot*qdot 的场景；其他 reference frame 必须重新推导和验证。
+
+**经验 2：任务空间控制只需要 Jdot*qdot 时可直接读取经典加速度漂移项**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者建议先用 forwardKinematics(model,data,q,v,0*v) 把广义加速度置零，再通过 getFrameClassicalAcceleration 直接读取 frame 的经典加速度漂移；原作者确认这就是其公式中所需的 classical Jdot*qdot。它只返回乘积/漂移项，不等于提供完整 Jdot 矩阵。后续用户自写的矩阵公式没有项目方确认，不应混入这一已闭环经验。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1395 评论 779978792 说明零 qddot 后读取 acceleration drift；评论 779991630 原作者确认 getFrameClassicalAcceleration；评论 780094814 维护者确认
+- 原帖/精确回复：[任务空间控制只需要 Jdot*qdot 时可直接读取经典加速度漂移项](https://github.com/stack-of-tasks/pinocchio/issues/1395#issuecomment-779991630)
+- 平台/作者：GitHub Issues / junhyeokahn
+- 关键术语：经典点加速度（classical point acceleration）；空间加速度（spatial acceleration）；雅可比时间导数（Jacobian time derivative）；加速度漂移项（acceleration drift term）；任务空间控制（task-space control）
+- 环境：2021 年 Pinocchio API、两自由度机械臂示例；原帖未给版本、OS 或完整代码。
+- 症状：getFrameJacobianTimeVariation 返回 spatial acceleration 相关量，而控制器公式 qddot_des=pinv(J)(ac_des-Jdot*qdot) 需要 classical acceleration drift。
+- 诊断：先确认控制器实际需要完整 Jdot 还是只需要乘积 Jdot*qdot。；将 qddot 置零运行 forward kinematics，使 frame classical acceleration 对应速度产生的漂移项。
+- 原因：问题来自把 spatial Jacobian derivative 与 classical point acceleration 控制公式混用。
+- 处理过程：维护者建议 forwardKinematics(model,data,q,v,0*v) 后直接获取 acceleration drift，并指向 TSID 的同类控制器。；原作者确认 getFrameClassicalAcceleration 可直接得到其所需的 classical Jdot*qdot。
+- 有效处理：当只需乘积项时，以零 qddot 调用 forwardKinematics，再使用 getFrameClassicalAcceleration 读取 frame 的 classical acceleration drift，避免显式构造 Jdot。
+- 结果：原作者确认理解并采用这一思路；维护者确认该方式简单且高效。
+- 限制：线程没有给完整函数调用顺序、reference frame 参数或数值输出；目标版本应以最小测试核对。；这一捷径只直接回答 Jdot*qdot，不提供完整 Jdot 矩阵；确实需要矩阵本身时仍需使用相应 API/推导。；后续用户自行写出的 classical dJ 公式没有维护者确认，没有纳入答案。
+- 安全提示：把漂移补偿用于实机前，应以数值差分或已知轨迹验证符号、frame 和量纲；错误偏置会直接改变期望关节加速度。
+- 独立核验引用：[issue · 独立原线程给出 spatial/classical Jdot 的显式关系和完整断言脚本；本卡聚合为同一稳定问题](https://github.com/stack-of-tasks/pinocchio/issues/2141)；[maintainer_confirmation · 维护者确认直接获取漂移项的方式简单且高效](https://github.com/stack-of-tasks/pinocchio/issues/1395#issuecomment-780094814)
+- 适用边界：适用于加速度级任务控制只需要 frame classical Jdot*qdot 漂移项的场景；需要完整 Jdot 或其他 frame 时需单独处理。
+
+### Pinocchio 质心动力学是否包含基座惯量取决于基座是否被建模为可动自由度
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_centroidal_base_mobility_modeling_1252`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 质心动量的表达坐标系与基座建模边界**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者说明，真正固定的机械臂 base 不运动，其 base 惯量不会作为运动基座贡献进入 centroidal dynamics；若机械臂放在由 JointModelPlanar 表达的移动基座上，基座惯量会贡献。由 prismatic cart 与 revolute pendulum 建模的系统也不是传统固定基，而是自由度较少的移动/浮动基系统。线程确认了建模分类，但没有给数值等价测试。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1252 评论 716349153 解释固定 base；评论 716646794 澄清 cart-pendulum；评论 716667472 解释 planar mobile base 的惯量贡献；评论 716704766 确认建模方向
+- 原帖/精确回复：[Pinocchio 质心动量的表达坐标系与基座建模边界](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716667472)
+- 平台/作者：GitHub Issues / rshum19
+- 关键术语：固定基座（fixed base）；移动基座（mobile base）；平面关节（planar joint）；欠驱动系统（underactuated system）；基座惯量（base inertia）
+- 环境：2020–2022 年 Pinocchio C++ API；原帖未给具体版本、机器人 URDF 或数值测试。
+- 症状：调用者不确定 computeCentroidalMomentum 是否对应 Orin、Goswami、Lee 2013 所述的人形质心动量。；调用者进一步不确定没有显式 JointModelFreeFlyer 时，cart-pendulum 或固定机械臂的 base 惯量是否被计入。
+- 诊断：记录质心动量 frame 的原点和轴向：原点在 CoM，轴与 world 对齐。；检查模型中的 base 是否具有实际广义坐标；不要把“没有 FreeFlyer”自动等同为固定基。；区分静止固定 base 的惯量与通过 planar/prismatic 自由度运动的 base 惯量。
+- 处理过程：维护者直接确认函数定义、表达 frame 和时间导数接口。；原作者以固定机械臂、cart-pendulum 和 JointModelPlanar 移动基座逐步澄清基座建模。
+- 有效处理：需要移动基座对系统动量的贡献时，在 URDF/根关节模型中显式建模相应自由度；线程确认 JointModelPlanar 是移动平面基座的可用建模入口。
+- 结果：原作者确认 computeCentroidalMomentum 的定义回答了解其问题，并在基座建模讨论后再次表示理解。
+- 限制：线程没有给线/角动量向量元素顺序、单位或数值例子；这些应从目标版本 API 文档与测试核对。；维护者对 URDF 中移动关节与 buildModel(..., JointModelPlanar()) 的最后回复很简短，本卡不把它扩写成任意模型都数值等价。；本线程不讨论外力、接触切换或质心动量矩阵导数。
+- 安全提示：动量控制用于实机前，应以独立动量/力矩平衡检查 frame、单位和基座自由度，避免错误约束导致大接触力。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者澄清 prismatic cart + pendulum 不是固定基，而是自由度较少的移动/浮动基](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716646794)；[issue · 原作者在建模讨论后确认理解](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-716707958)
+- 适用边界：适用于以固定、prismatic/planar 或 FreeFlyer 根关节构造 Pinocchio 模型时解释基座对质心动力学的贡献。
+
+### Pinocchio 质心动量的 CoM 原点与 world-aligned 轴约定
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_centroidal_momentum_frame_1252`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 质心动量的表达坐标系与基座建模边界**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者确认，该函数计算刚体树的总质心动量，表达 frame 的原点位于系统质心，坐标轴与 world frame 对齐；后续追问确认线动量也采用相同约定。需要时间导数时调用 computeCentroidalMomentumTimeVariation。原线程没有给向量元素顺序或数值例子，因此实现时仍要核对目标版本文档。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1252 评论 650976642 确认定义、frame 与时间导数接口；评论 651815897 原作者确认；评论 1051564222 确认线动量同样适用
+- 原帖/精确回复：[Pinocchio 质心动量的表达坐标系与基座建模边界](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-650976642)
+- 平台/作者：GitHub Issues / rshum19
+- 关键术语：质心动量（centroidal momentum）；线动量（linear momentum）；角动量（angular momentum）；质心坐标系（center-of-mass frame）；世界对齐坐标轴（world-aligned axes）
+- 环境：2020–2022 年 Pinocchio C++ API；原帖未给具体版本、机器人 URDF 或数值测试。
+- 症状：调用者不确定 computeCentroidalMomentum 是否对应 Orin、Goswami、Lee 2013 所述的人形质心动量。；调用者进一步不确定没有显式 JointModelFreeFlyer 时，cart-pendulum 或固定机械臂的 base 惯量是否被计入。
+- 诊断：记录质心动量 frame 的原点和轴向：原点在 CoM，轴与 world 对齐。；检查模型中的 base 是否具有实际广义坐标；不要把“没有 FreeFlyer”自动等同为固定基。；区分静止固定 base 的惯量与通过 planar/prismatic 自由度运动的 base 惯量。
+- 处理过程：维护者直接确认函数定义、表达 frame 和时间导数接口。；原作者以固定机械臂、cart-pendulum 和 JointModelPlanar 移动基座逐步澄清基座建模。
+- 有效处理：需要移动基座对系统动量的贡献时，在 URDF/根关节模型中显式建模相应自由度；线程确认 JointModelPlanar 是移动平面基座的可用建模入口。
+- 结果：原作者确认 computeCentroidalMomentum 的定义回答了解其问题，并在基座建模讨论后再次表示理解。
+- 限制：线程没有给线/角动量向量元素顺序、单位或数值例子；这些应从目标版本 API 文档与测试核对。；维护者对 URDF 中移动关节与 buildModel(..., JointModelPlanar()) 的最后回复很简短，本卡不把它扩写成任意模型都数值等价。；本线程不讨论外力、接触切换或质心动量矩阵导数。
+- 安全提示：动量控制用于实机前，应以独立动量/力矩平衡检查 frame、单位和基座自由度，避免错误约束导致大接触力。
+- 独立核验引用：[issue · 原作者确认函数定义回答了其问题](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-651815897)；[maintainer_confirmation · 维护者确认线动量与角动量使用同一表达 frame 约定](https://github.com/stack-of-tasks/pinocchio/issues/1252#issuecomment-1051564222)
+- 适用边界：适用于 Pinocchio computeCentroidalMomentum 与 computeCentroidalMomentumTimeVariation 的 frame 解释；输出排列和单位仍以目标版本为准。
+
+### Pinocchio 质心动量解析导数的 FreeFlyer 平移漏项
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_centroidal_derivative_freeflyer_translation_bug_1473`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 质心动量对 FreeFlyer 平移的解析导数曾漏项**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：原作者先验证只改变 base position 的 q1/q2 得到相同 centroidal momentum，维护者随后确认 q 偏导漏掉一项。已合入 PR #1474 在 CoM 平移后的 dh_dq 与 dhdot_dq 角动量块补上相应项，并把有限差分测试改为直接比较 hg/dhg。应确认目标 Pinocchio 包含合并提交 d780648 或等价补丁；线程没有给第一个修复 release，也没有原作者合并后的新矩阵。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1473 评论 886642671 给出 h1/h2 对照；评论 886658456 维护者确认漏项；PR #1474 已合入并更新实现与测试
+- 原帖/精确回复：[Pinocchio 质心动量对 FreeFlyer 平移的解析导数曾漏项](https://github.com/stack-of-tasks/pinocchio/issues/1473#issuecomment-886658456)
+- 平台/作者：GitHub Issues / jp-sleiman
+- 关键术语：质心动量导数（centroidal momentum derivative）；自由浮动关节（FreeFlyer joint）；解析导数（analytical derivative）；自动微分（automatic differentiation, AD）；有限差分（finite difference）
+- 环境：2021 年 Pinocchio computeCentroidalDynamicsDerivatives 与 CppAD 对照；原帖未给版本、OS 或模型文件，修复固定在合并 PR #1474/commit d780648。
+- 症状：解析 dh_dq 对 FreeFlyer position 的三列非零，而 CppAD 结果为零。；原作者用 Pinocchio 分别计算仅 base translation 不同的 q1/q2，得到 h1 与 h2 相同。
+- 诊断：构造仅改变 FreeFlyer position 的成对配置，先验证 centroidal momentum 本身是否保持不变。；将解析 dh_dq 与自动微分/有限差分对照，并单独检查 base translation 三列。
+- 原因：维护者最终确认 q 偏导计算漏掉一项；PR #1474 在把力集合平移到 CoM 后补充与线动量和 CoM 导数相关的角动量偏导项。
+- 处理过程：原作者使用 CppAD 对照，并用 q1/q2 只改变 FreeFlyer position 的直接函数值对照排查。；维护者提交 PR #1474，修改两条 centroidal derivatives 路径及有限差分单元测试。
+- 有效处理：使用包含 PR #1474 合并提交 d780648 的 Pinocchio，或核对目标版本是否包含等价的 centroidal derivatives 漏项修复。
+- 结果：PR #1474 已合入；补丁同时更新 dh_dq/dhdot_dq 计算和 centroidal derivatives 有限差分测试。
+- 限制：原作者没有在 PR 合并后发布新的 CppAD 数值矩阵；闭环依据是原作者函数值对照、维护者确认、补丁和测试。；线程没有声明第一个包含修复的正式 release；不能仅按版本号猜测。；本卡只覆盖该 FreeFlyer 平移漏项，不外推所有 centroidal derivative 差异。
+- 安全提示：解析导数进入接触/动量优化前，应持续保留自动微分或有限差分回归，避免旧二进制或不同关节模型再次引入梯度错误。
+- 独立核验引用：[pull_request · 已合入 PR 明确 Related to #1473，并修改两条 centroidal derivatives 路径和有限差分测试](https://github.com/stack-of-tasks/pinocchio/pull/1474)；[source_code · PR #1474 的固定合并提交](https://github.com/stack-of-tasks/pinocchio/commit/d78064830c8ac0859001dfd47f63169709c079cc)
+- 适用边界：适用于旧版 computeCentroidalDynamicsDerivatives 的 FreeFlyer position 偏导；目标安装需核对是否包含 PR #1474。
+
+### Pinocchio Composite Joint 下 CasADi 与解析 RNEA 导数不一致
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.pinocchio_rnea_derivatives_composite_casadi_1872`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio Composite Joint 下 CasADi 与 RNEA 解析导数不一致的支持边界**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：维护者判断原模型使用的 JointModelComposite 当时未正式支持 derivatives，建议改为纯 JointModelFreeFlyer，并用 integrate/difference 在配置流形切空间中定义扰动；同时给出官方 C++ CasADi RNEA derivative 测试作为调用参考。但原作者没有发布换 FreeFlyer 后的对照，最后关于 error-state/Euler/quaternion 优化变量的追问也没有答案。因此这不是已验证修复，只能作为目标版本和 joint model 的排查路径。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1872 评论 1436459057 判断 Composite derivatives 未支持并建议 FreeFlyer/integrate/difference；评论 1436461285 链接固定单元测试；评论 1439410356 的优化变量追问未回答
+- 原帖/精确回复：[Pinocchio Composite Joint 下 CasADi 与 RNEA 解析导数不一致的支持边界](https://github.com/stack-of-tasks/pinocchio/issues/1872#issuecomment-1436459057)
+- 平台/作者：GitHub Issues / matheecs
+- 关键术语：逆动力学导数（inverse-dynamics derivative）；复合关节（Composite Joint）；自由浮动关节（FreeFlyer joint）；配置流形（configuration manifold）；切空间（tangent space）
+- 环境：Pinocchio 3 Python、pin.buildSampleModelHumanoidRandom(False)、CasADi SX；原帖未给 OS、CasADi/Pinocchio 精确版本或 commit。
+- 症状：解析 dtau_dq 与 CasADi Jacobian 的非根部关节列相同，但浮动基相关列出现明显不同。；原作者担心差异会影响优化。
+- 诊断：先检查根关节是否为 JointModelComposite，以及目标算法是否正式支持该 joint model。；对 FreeFlyer 配置使用 integrate/difference 在切空间构造扰动；不要直接假定欧拉角或四元数坐标的普通导数与切空间导数等价。；参考维护者链接的固定 C++ 单元测试建立同一 joint model、同一扰动定义的对照。
+- 原因：维护者判断 JointModelComposite 当时尚未支持 derivatives，需要额外工程工作。
+- 处理过程：原作者用同一 q、v、a 比较 Pinocchio 解析 dtau_dq 与 CasADi 直接 q-Jacobian。；维护者建议使用纯 FreeFlyer 与 integrate/difference，并链接官方 C++ CasADi derivative 测试。
+- 结果：线程没有换成 FreeFlyer 后的数值结果，也没有回答优化变量应怎样具体参数化；Issue 关闭不能证明差异已在原环境消失。
+- 限制：维护者的原因判断没有原作者复测或关联修复 PR；只能作为高价值排查方向。；最后关于 error state、Euler angle 和 quaternion 优化变量的追问未回答，本卡不自行给出优化器设计。；链接的单元测试展示官方用法，但没有证明原作者的 Composite Joint 模型已受支持。
+- 安全提示：导数进入优化器前应对同一切空间方向做有限差分/自动微分检查；浮动基列不一致时不得直接用于实机力矩优化。
+- 独立核验引用：[source_code · 维护者提供的固定 C++ CasADi RNEA derivatives 单元测试；仅用于参考官方扰动/比较方式](https://github.com/stack-of-tasks/pinocchio/blob/0d53f26acdf9a0b5740b88145f624b11d97f40f9/unittest/casadi/rnea-derivatives.cpp#L24-L174)；[issue · 原作者关于优化变量的最后追问没有回答，用于限制本卡结论](https://github.com/stack-of-tasks/pinocchio/issues/1872#issuecomment-1439410356)
+- 适用边界：适用于 Pinocchio 3、CasADi RNEA derivatives 与 Composite/FreeFlyer 根关节的对照；当前版本的 Composite 支持状态需重新核对。
+
+### Isaac Lab 的 Jacobian 时间导数 Jdot 能力边界
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.isaaclab_jdot_api_1759`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 没有直接给出 Jacobian 时间导数 Jdot 的接口**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：按 IsaacLab 团队在 2025-02 的原帖回复，当时没有现成 Jdot 能力，需要手工实现。线程没有给出实现细节或复测，因此这是一条版本相关的能力线索：先在目标版本 API 中重新确认，再自行选择并验证解析或数值实现，不能把帖子补写成某一种算法建议。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #1759 唯一评论 2628472796
+- 原帖/精确回复：[Isaac Lab 没有直接给出 Jacobian 时间导数 Jdot 的接口](https://github.com/isaac-sim/IsaacLab/issues/1759#issuecomment-2628472796)
+- 平台/作者：GitHub Issues / hojae-io
+- 关键术语：雅可比时间导数（Jacobian time derivative, Jdot）；任务空间加速度（task-space acceleration）；手工实现（manual implementation）
+- 环境：2025-01 的 IsaacLab Issue；原帖未给 Isaac Lab、Isaac Sim、GPU 或机器人版本。
+- 症状：实现 v=Jqdot 的时间微分关系时需要 Jdot，但调用者找不到现成接口。
+- 诊断：先确认所用 Isaac Lab/Isaac Sim 版本是否新增 Jdot API；原线程只覆盖 2025-01 时点。
+- 处理过程：团队成员检查后回复，当时没有该能力，需要手工实现。
+- 结果：能力边界得到回答，但手工实现方案、数值稳定性和验收方法均未给出。
+- 限制：不能从该线程推导应使用有限差分、解析递推还是自动微分；也不能断言当前最新版仍没有该接口。
+- 安全提示：若用数值差分估计 Jdot 或 Jdot*qdot，应在目标控制频率下检查噪声放大和最坏时延。
+- 独立核验引用：[maintainer_confirmation · 团队回复当时没有现成 Jdot 能力，需要手工实现](https://github.com/isaac-sim/IsaacLab/issues/1759#issuecomment-2628472796)
+- 适用边界：适用于核对 2025 年初 Isaac Lab 的 Jdot API 能力；当前版本和具体实现仍需复核。
+
+### Crocoddyl 飞行相动量的积分器漂移
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.crocoddyl_aerial_momentum_integrator_979`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl 空中相角动量漂移可先对比 Euler 与 RK4 积分器**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：帖子先排除了 contact force，并确认 JMinvJt_damping=0；单纯把 timestep 从 0.005 降到 0.001 改善有限。按维护者建议把 Euler 换为 RK4 后，作者报告 angular momentum 在 aerial phase 保持恒定。维护者将原因归为 numerical integrator 引入的 drift/energy injection。该结果适合作为同配置 A/B 诊断，不代表所有动量漂移都由积分器造成。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #979 维护者建议 887311851、作者复测 888126517、维护者解释 888133549/888232475
+- 原帖/精确回复：[Crocoddyl 空中相角动量漂移可先对比 Euler 与 RK4 积分器](https://github.com/loco-3d/crocoddyl/issues/979#issuecomment-888126517)
+- 平台/作者：GitHub Issues / zzhou387
+- 关键术语：角动量（angular momentum, AM）；飞行相（aerial phase）；数值积分器（numerical integrator）；辛格式（symplectic scheme）
+- 环境：Crocoddyl A1 jumping/backflipping optimization；aerial phase 无 contact model、contact forces 已确认始终为零。；原 timestep 0.005，尝试 0.001；JMinvJt_damping 一直为 0；未给 commit/OS。
+- 症状：飞行相 angular momentum 不恒定，腿部摆动时更明显。；仅减小 Euler timestep 没有充分改善。
+- 诊断：先确认 aerial phase contact forces 为零且没有 contact model。；记录 JMinvJt_damping 与 integrator；在相同 cost/contact 配置下做 Euler/RK4 A/B。
+- 原因：两位维护者把漂移归因于 numerical integrator 注入能量，而不是所链接的 Pinocchio issue。
+- 处理过程：作者从 Euler 切换到 RK4，同时保持 JMinvJt_damping=0。
+- 有效处理：作者特定轨迹中改用 RK4 后 angular momentum 漂移大幅改善，并报告飞行相保持恒定。
+- 结果：作者确认问题在其案例中解决；维护者解释 advanced integrator 可降低 drift。
+- 限制：没有 commit、机器人参数、RK4 timestep 或数值误差阈值，不能外推为所有飞行相只需换 RK4。；作者贴出的曲线图未用于本卡判断；结果采用其文字复测。；若换积分器仍漂移，还需继续检查 contact leakage、model/inertia 和 cost formulation。
+- 安全提示：跳跃轨迹上机前应独立检查动量、接触切换、峰值力矩和落地冲击，不以优化器收敛替代物理一致性验收。
+- 独立核验引用：[maintainer_confirmation · Crocoddyl 维护者确认 numerical integrators 会注入能量，并说明 Euler/RK4 的设计约束](https://github.com/loco-3d/crocoddyl/issues/979#issuecomment-888232475)
+- 适用边界：适用于 Crocoddyl 飞行相 trajectory optimization 中 contact 已排除且 Euler 积分产生明显漂移的案例。
+
+### Crocoddyl BoxQP 的 Armijo 终止错误
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.crocoddyl_boxqp_armijo_743`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：BoxQP 随机初值多跑迭代先核对 Armijo 条件修复**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先确认版本包含合并 PR #1067。维护者在 #743 中明确定位到 Armijo condition 错误：它会让求解器找到 solution 后仍执行额外迭代，随机初始化时还不保证收敛；该问题不是 factorization solver 的结论。PR #1067 重算 free-subspace gradient/search direction，并在更新后的 free-gradient infinity norm 上检查收敛。修复后仍应以目标 MPC 问题回归 KKT residual 与迭代上界。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #743 维护者定位 1113252162；PR #1067
+- 原帖/精确回复：[BoxQP 随机初值多跑迭代先核对 Armijo 条件修复](https://github.com/loco-3d/crocoddyl/issues/743#issuecomment-1113252162)
+- 平台/作者：GitHub Issues / wxmerkt
+- 关键术语：阿米霍条件（Armijo condition）；自由子空间梯度（free-subspace gradient）；随机初始化（random initialization）；无用迭代（useless iterations）
+- 环境：Crocoddyl 2020–2022 BoxQP 变更讨论；原帖含 Exotica quadcopter side-by-side benchmark，但未给统一硬件/commit。；精确修复为 2022-04 合并 PR #1067。
+- 症状：求解器找到 solution 后仍运行 extra iterations。；random initialization 下 convergence 不保证。
+- 诊断：先检查目标版本是否包含 PR #1067，再讨论 LLT/LDLT/PivLU 或 line-search schedule。；用固定随机 QP 集记录 iteration count、termination reason 与 KKT/free-gradient norm。
+- 原因：维护者明确定位为 Armijo condition 错误，而非 factorization solver。
+- 处理过程：线程比较新旧 active set、gradient norm、linear/exponential line search 和多种 factorization。；PR #1067 修正 free-subspace gradient/search direction 与 convergence check，并更新 identity-Hessian regularized test。
+- 有效处理：升级到包含 PR #1067 / merge commit d5c387e 的 Crocoddyl 版本。
+- 结果：维护者说明修复可避免已找到 solution 后的无用迭代，并恢复随机初始化下该条件的收敛判定；PR 已合并。
+- 限制：#743 中关于 factorization 性能的讨论没有形成可普遍采纳的结论，本卡不推荐某一种分解器。；原作者提到的 90%/30% speedup 来自其未合并改动，不能归因于 PR #1067。；不使用原帖性能图作为本卡证据。
+- 安全提示：实时 MPC 升级求解器后应对 worst-case iterations、KKT residual、deadline miss 和 fallback 做回归。
+- 独立核验引用：[pull_request · 合并 PR d5c387e 修正 BoxQP free-gradient/search direction 与 convergence check，并更新测试](https://github.com/loco-3d/crocoddyl/pull/1067)
+- 适用边界：适用于缺少 2022-04 PR #1067 的 Crocoddyl BoxQP/Box(F)DDP 路径，尤其 random initialization 与多余迭代问题。
+
+### OCS2 hard inequality constraint 的实际求解路径
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.ocs2_hard_inequality_path_108`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 hard inequality constraint 路径的社区解释相互冲突**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索；尚未形成可核对的复现记录；适用环境未知。
+- 解答状态：`conflicting`
+- 候选解答：没有。线程中的解释互相冲突：一条回复称 SQP 用 relaxed barrier，后续源码讨论又认为 hard constraints 可能进入 HPIPM，原回复者随后承认只确认了 equality path、没有找到 inequality path。也没有维护者、版本化最小复现或原作者复测。当前能可靠保留的只有排查方法：在目标 commit 分开测试 state/state-input 与 equality/inequality，逐层打印 constraint value、linearization、QP bounds 和 HPIPM residual；delta/mu 调参不能当作已验证答案。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #108 社区解释 2346304811、反向源码观察 2413803782、修正 2414510557、同类复现 2721087622
+- 原帖/精确回复：[OCS2 hard inequality constraint 路径的社区解释相互冲突](https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2414510557)
+- 平台/作者：GitHub Issues / min-dai
+- 关键术语：硬不等式约束（hard inequality constraint）；松弛障碍函数（relaxed barrier function）；内点法（interior-point method, IPM）；约束残差（constraint residual）
+- 环境：原帖未给 OCS2 commit、solver config、机器人模型、操作系统或最小复现。；评论源码链接锚定 commit 164c26b 的 SqpSolver/HpipmInterface。
+- 症状：hard input inequality constraints 未满足；equality 只有 linear portion 满足。；constraint violation 时 MPC 继续运行且不报告 infeasible。；另一用户把 stateinputConstraint 放入 inequalityConstraintPtr 后也报告无变化。
+- 诊断：在目标 commit 追踪 constraint collection、linearization、SqpSolver 到 HpipmInterface 的具体数组，并打印每阶段维度。；构造单状态/单输入最小问题，同时记录原始 constraint value、linear approximation、QP bounds 与 solver residual。；把 state-only、state-input、equality、inequality 四类约束分开测试。
+- 原因：评论对 hard inequality 是否使用 relaxed barrier、是否传入 HPIPM 的解释互相矛盾；没有证据足以确定根因。
+- 处理过程：社区用户逐行查了 SqpSolver.cpp 和 HpipmInterface.cpp 的 equality path。；有人建议调 relaxed-barrier delta/mu，但随后承认前述 inequality 解释可能错误。
+- 结果：没有原作者复测、维护者确认或已合并修复；2025-03 仍有用户询问同类问题。
+- 限制：不能把 delta/mu 调参写成已验证解法。；不能从 thread 确认 inequality 根本没有传给 HPIPM；需要绑定目标 commit 做 source trace。；帖子缺少最小复现和版本，适用性未知。
+- 安全提示：在 constraint path 未闭环前，不应依赖该约束保护真实机器人；必须增加独立 runtime monitor、command clamp 和安全停机。
+- 独立核验引用：[conflict · 首条回复称 inequality 使用 relaxed barrier、无 hard guarantee](https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2346304811)；[conflict · 后续用户按源码提出 hard constraints 进入 HPIPM 的相反解释](https://github.com/leggedrobotics/ocs2/issues/108#issuecomment-2413803782)
+- 适用边界：仅作为 OCS2 SQP/IPM constraint-path 排查入口；因缺少版本和最小复现，不能直接外推。
+
+### 约束 DDP 不能只按 dVexp 跳过 rollout
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.crocoddyl_dvexp_constraints_1104`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl 约束求解中不能因 dVexp 为负跳过 dV**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该线程最终答案是否定的。维护者在关闭前明确修正早期说法：带 constraints 的 solver 必须在代价改善（optimality）与约束满足（feasibility）之间权衡，单凭 `dVexp<0` 跳过实际 rollout/`dV` 会干扰 step acceptance。用户指定 alpha 列表本身可以配置；根据剩余 MPC 时间自适应测试 alpha 仍是方向，但线程没有提供可复用的公开实现或 benchmark。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #1104 最终维护者更正 1772562615
+- 原帖/精确回复：[Crocoddyl 约束求解中不能因 dVexp 为负跳过 dV](https://github.com/loco-3d/crocoddyl/issues/1104#issuecomment-1772562615)
+- 平台/作者：GitHub Issues / andreadelprete
+- 关键术语：线搜索（line search）；期望改进（expected improvement, dVexp）；最优性（optimality）；可行性（feasibility）
+- 环境：Crocoddyl 2022-2023 master/devel 讨论；没有固定 release、机器人或 timing benchmark。
+- 症状：forward pass 在部分 MPC 测试中占到约 75%，用户希望减少 line-search rollout。
+- 诊断：区分无约束 DDP 的下降判据与 constrained solver 中 cost improvement/constraint satisfaction 的联合 step acceptance。
+- 原因：早期优化建议只看 optimality，没有覆盖带约束求解需要同时改善 feasibility 的路径。
+- 处理过程：线程讨论跳过 dV、用户可配 alpha、自适应 line search 与并行 tryStep；后续维护者基于约束 solver 进展修正第一点。
+- 有效处理：不要在 constrained solver 中仅凭 `dVexp<0` 跳过 `dV`；具体 step acceptance 应以目标版本 solver 实现为准。
+- 结果：维护者明确撤销早期 point 1；自适应 alpha 点仍有效但由维护者在更大 solver 改造中处理，线程未提供公开补丁。
+- 限制：维护者提到 private branch 的改进尚未在该线程公开，不能据此声称某版本已有 adaptive line search。；没有 forward-pass before/after timing，不能量化建议的性能影响。
+- 安全提示：接触、摩擦或执行器约束存在时，任何 line-search shortcut 都必须同时回归 cost、constraint violation 与 deadline miss。
+- 独立核验引用：[maintainer_confirmation · 维护者明确撤销早期 shortcut，并解释 constrained optimality/feasibility 权衡](https://github.com/loco-3d/crocoddyl/issues/1104#issuecomment-1772562615)
+- 适用边界：适用于包含 feasibility/constraints 权衡的 DDP/FDDP 类 solver；无约束旧 DDP 的具体实现仍需按版本核对。
+
+### TSID 任意 internal passive joints 尚需 formulation 支持
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.tsid_arbitrary_passive_joints_165`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：TSID 两 frame 闭链 contact 已合并但任意 passive joints 仍需分开处理**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原线程不能支持这一结论。作者在 fully-actuated loop 中成功，但把 pantograph 的其他 passive joints 设为 zero torque limit 后出现异常运动。维护者说明当时 TSID 除 floating base 外不能声明任意 passive joints；建议在 `RobotWrapper` 保存 passive-joint 信息，并在 `InverseDynamicsFormulation` 中选取对应 M、h、J rows，加入 torque=0 的 dynamics equality；较不整洁的替代是实现 `TaskActuationEquality`。这些只是明确的实现方向，线程没有合并代码或结果，因此 #218 不能单独视为 pantograph 完整修复。
+- 证据状态：`issue_candidate`
+- 来源定位：TSID #165 作者失败边界 1181695831、维护者 formulation 建议 1184238644
+- 原帖/精确回复：[TSID 两 frame 闭链 contact 已合并但任意 passive joints 仍需分开处理](https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1184238644)
+- 平台/作者：GitHub Issues / egordv
+- 关键术语：被动关节（passive joint）；驱动选择矩阵（actuation selector）；逆动力学等式（inverse-dynamics equality）；零力矩约束（zero-torque constraint）
+- 环境：TSID devel/master 2022-2024；作者在 fully-actuated humanoid wrists 和 Talos gripper demo 上检查 TwoFrames contact；没有固定 release。
+- 症状：TwoFrames contact 在 fully-actuated closed loop 工作；把 pantograph passive joints 伪装成 torque-limit=0 后出现 weird movements。
+- 诊断：先区分 loop-closure constraint 与 actuation/passive-joint selector；验证 contact 能否保持相对 frame displacement，再单独检查 passive rows 的 torque=0 equality。
+- 原因：原 TSID formulation 只把 floating base 作为 unactuated 部分，不能声明任意 internal passive joints。
+- 处理过程：作者实现并验证 TwoFrames contact；维护者建议在 RobotWrapper 记录 passive joints，并在 InverseDynamicsFormulation 中选择对应 M、h、J rows 构造 torque-zero equality。
+- 有效处理：刚性闭链使用已合并 PR #218 的 `ContactTwoFramePositions`/`TaskTwoFramesEquality` 路径。；任意 passive joints 的 formulation 修改在原线程没有落地；不要把 zero torque-limit hack 或 #218 单独当成 pantograph 完整解。
+- 结果：PR #218 于 2024-02-02 合并；维护者复现 covariant return 的最小代码并接受 PR。；passive-joint selector/equality 方案没有关联实现或复测。
+- 限制：#218 demo 证明特定闭链 contact，不证明任意 passive-joint pantograph；后续一位用户在 PAL REEM-C TwoFramesEquality 遇到 segfault，未在线程闭环。；spring-damper 的高刚度数值积分建议来自维护者设计讨论，本轮没有额外生成独立卡。
+- 安全提示：闭链与 passive joint 错模会产生虚假约束力或不可执行 torque；真机前应检查 constraint residual、actuation selector、joint torque 与闭链内力。
+- 独立核验引用：[maintainer_confirmation · 维护者确认当时无任意 passive-joint 接口，并给出 formulation rows/equality 实现方向](https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1184238644)
+- 适用边界：适用于需要 floating base 之外 internal passive joints 的 TSID 模型；目标版本若已有新接口必须重新核对。
+
+### 用 TwoFrames contact 表达 TSID 刚性闭链
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.tsid_two_frame_closed_chain_165`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：TSID 两 frame 闭链 contact 已合并但任意 passive joints 仍需分开处理**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：维护者明确建议使用 robot links 之间的 contact，而不是高增益 task。作者实现 `TaskTwoFramesEquality` 与 `ContactTwoFramePositions`，先在 fully-actuated 双腕闭链中报告有效，后续 PR #218 合并了实现、Python bindings 与 Talos gripper demo。它约束两 frames 的相对位置，可表达这一类 loop closure；但不自动解决任意 internal passive joints。
+- 证据状态：`issue_candidate`
+- 来源定位：TSID #165 维护者 contact 建议 1178973756、作者仿真 1181695831；合并 PR #218
+- 原帖/精确回复：[TSID 两 frame 闭链 contact 已合并但任意 passive joints 仍需分开处理](https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1181695831)
+- 平台/作者：GitHub Issues / egordv
+- 关键术语：闭合运动链（closed kinematic chain）；两坐标系接触（two-frame contact）；相对位姿（relative placement）；全驱动（fully actuated）
+- 环境：TSID devel/master 2022-2024；作者在 fully-actuated humanoid wrists 和 Talos gripper demo 上检查 TwoFrames contact；没有固定 release。
+- 症状：TwoFrames contact 在 fully-actuated closed loop 工作；把 pantograph passive joints 伪装成 torque-limit=0 后出现 weird movements。
+- 诊断：先区分 loop-closure constraint 与 actuation/passive-joint selector；验证 contact 能否保持相对 frame displacement，再单独检查 passive rows 的 torque=0 equality。
+- 原因：原 TSID formulation 只把 floating base 作为 unactuated 部分，不能声明任意 internal passive joints。
+- 处理过程：作者实现并验证 TwoFrames contact；维护者建议在 RobotWrapper 记录 passive joints，并在 InverseDynamicsFormulation 中选择对应 M、h、J rows 构造 torque-zero equality。
+- 有效处理：刚性闭链使用已合并 PR #218 的 `ContactTwoFramePositions`/`TaskTwoFramesEquality` 路径。；任意 passive joints 的 formulation 修改在原线程没有落地；不要把 zero torque-limit hack 或 #218 单独当成 pantograph 完整解。
+- 结果：PR #218 于 2024-02-02 合并；维护者复现 covariant return 的最小代码并接受 PR。；passive-joint selector/equality 方案没有关联实现或复测。
+- 限制：#218 demo 证明特定闭链 contact，不证明任意 passive-joint pantograph；后续一位用户在 PAL REEM-C TwoFramesEquality 遇到 segfault，未在线程闭环。；spring-damper 的高刚度数值积分建议来自维护者设计讨论，本轮没有额外生成独立卡。
+- 安全提示：闭链与 passive joint 错模会产生虚假约束力或不可执行 torque；真机前应检查 constraint residual、actuation selector、joint torque 与闭链内力。
+- 独立核验引用：[pull_request · 已合并 TwoFramesEquality/ContactTwoFramePositions、Python bindings 与 Talos gripper closed-chain demo](https://github.com/stack-of-tasks/tsid/pull/218)
+- 适用边界：适用于以两个 frame 相对位置约束表达的 rigid closed chain；需按 mask/contact 类型核对目标 joint 几何。
+
+### OCS2 大系统 MPC 的分阶段性能诊断
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.ocs2_large_system_profiling_34`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OCS2 大系统 MPC 先关闭开发期数值检查并分段 profiling**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：维护者建议把开发与性能两种配置分开：`checkNumericalStability=true` 会做昂贵的 eigenvalue checks，开发阶段用于验证数值假设，追求速度的已验证运行应设为 false；同时开启 `displayInfo` 或 `displayShortSummary`，先看 adaptive stepping 的平均步长和 LQ approximation、backward pass 等分阶段时间。原作者随后报告 MPC 能运行，并观察到 low-frequency case 的 equality SSE/rollout merit/cost 爆炸；调整 input cost 后也降低了最昂贵 backward pass 的时间。线程没有最终 timing 或通用 cost gains，因此这是 profiling 流程，不是 39-DoF 实时保证。
+- 证据状态：`issue_candidate`
+- 来源定位：OCS2 #34 维护者性能建议 1083359506、分段定位 1088544950；作者结果 1119497280
+- 原帖/精确回复：[OCS2 大系统 MPC 先关闭开发期数值检查并分段 profiling](https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1119497280)
+- 平台/作者：GitHub Issues / IoannisDadiotis
+- 关键术语：数值稳定性检查（numerical-stability check）；特征值检查（eigenvalue check）；反向传播阶段（backward pass）；线性二次近似（Linear-Quadratic approximation, LQ approximation）
+- 环境：Centauro 39 actuated DoFs、continuous DDP、SRBD 与 centroidal variants、4 feet contacts；OCS2 2022 代码，未固定 commit。
+- 症状：初始界面显示约 2-3 秒求解，并警告 solution time window shorter than MPC delay。；低 MPC frequency static gait 中 equality constraints SSE、rollout merit 与 rollout cost 爆炸；backward pass 最耗时。
+- 诊断：性能运行时关闭 `checkNumericalStability` 的 expensive eigenvalue checks；打开 `displayInfo`/`displayShortSummary`，查看 adaptive integrator average stepsize 与各 solver phase timing。；若 backward pass 最慢，检查 problem dimension 与 Riccati stiffness；若 LQ approximation 最慢，分别 benchmark costs、constraints 与 dynamics。
+- 原因：开发期 numerical-stability checks 造成额外 eigenvalue 计算；问题 stiffness、cost gains 与 constraint satisfaction 也会增加 steps 或 backward-pass 时间。
+- 处理过程：作者调整 input cost，并用 solver printouts 观察 SSE、rollout merit/cost 与 backward-pass 时间。
+- 有效处理：把 `checkNumericalStability=false` 作为性能测量配置，而不是删除开发期检查；用 phase timing 后再针对 input cost/constraints/dynamics 做定点优化。
+- 结果：作者报告 MPC 已能在 robot-in-place 场景运行，input cost 调整同时帮助降低 backward-pass 时间；没有给最终毫秒数。
+- 限制：维护者提到另一个 48-state/24-input 系统低于 10 ms 只是经验量级，不能作为 Centauro 保证。；低频 gait、dummy slowdown ratio 与 target node crash 等后续问题没有完整闭环，本卡不为它们提供推测答案。；线程视频不用于推断 motion quality，只采用作者文字确认。
+- 安全提示：关闭数值检查只用于已通过开发验证的性能运行；上线前仍需离线检查 Hessian/derivative、constraint residual 与 deadline monitor。
+- 独立核验引用：[maintainer_confirmation · 维护者确认 numerical stability eigenvalue checks 昂贵，并给出 display/profiling flags](https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1083359506)；[issue · 原作者报告 input cost 调整降低 backward-pass 时间，但未给最终 timing](https://github.com/leggedrobotics/ocs2/issues/34#issuecomment-1119497280)
+- 适用边界：适用于 OCS2 DDP/MPC 大系统的开发期与性能期分离；字段名和统计输出需按目标版本核对。
+
+### 校验 qpOASES 跨接口的约束矩阵布局
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.qpoases_matrix_layout_37`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：qpOASES C++ 与 Matlab/Simulink 结果不一致先查 A 的存储顺序**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：先逐元素检查 constraint matrix `A` 的存储顺序。维护者说明 C++ 接口期望行主序（row-major），而 Matlab/Simulink 内部采用列主序（column-major）；`A` 被隐式转置时，求解器拿到的是另一个 QP，常表现为不可行。对称 `H` 可能掩盖布局错误。Simulink 还要按接口要求把 `A` 堆叠为向量。只有确认实际传入矩阵一致后，才继续比较求解选项与数值设置。
+- 证据状态：`issue_candidate`
+- 来源定位：qpOASES #37 维护者支持记录正文与 resolution 589978265
+- 原帖/精确回复：[qpOASES C++ 与 Matlab/Simulink 结果不一致先查 A 的存储顺序](https://github.com/coin-or/qpOASES/issues/37)
+- 平台/作者：GitHub Issues / ferreau（Trac 迁移记录）
+- 关键术语：行主序（row-major）；列主序（column-major）；约束矩阵（constraint matrix）；不可行二次规划（infeasible quadratic program）
+- 环境：qpOASES 3.1.0 的迁移支持记录；C++、Matlab 与 Simulink 接口。
+- 症状：C++ 与 Matlab/Simulink 结果不同；隐式转置 `A` 时常表现为不可行。
+- 诊断：逐元素打印 C++ 实际接收的 `A`，按 row-major 还原并与 Matlab 中的矩阵比较；Simulink 同时检查向量堆叠顺序。
+- 原因：维护者记录的典型原因是 C++ row-major 与 Matlab/Simulink column-major 不匹配，导致 constraint matrix 被隐式转置。
+- 处理过程：原记录直接给出接口布局差异和 Simulink 的 `A` 向量化要求。
+- 有效处理：按 C++ row-major 正确构造 `A`；在 Simulink 侧按接口规定的顺序堆叠约束矩阵。
+- 结果：记录被标记 fixed，但没有附用户的独立复测数据。
+- 限制：若实际传入矩阵逐元素一致，仍需继续检查 bounds、scaling、options 和精度；不能把所有接口差异都归因于布局。
+- 安全提示：部署前保存一组黄金 QP，逐元素比较各接口输入与 primal/dual/status，避免静默求解了不同问题。
+- 独立核验引用：[issue · 维护者在迁移后的 Issue 正文记录 row-major/column-major 边界](https://github.com/coin-or/qpOASES/issues/37)
+- 适用边界：直接对应 qpOASES 3.1.0 接口记录；其他版本应以目标接口文档和实际内存数据复核。
+
+### 核对 qpOASES_e 的静态 QP 维度上限
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.qpoases_e_static_dimensions_47`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：qpOASES_e 超过默认静态维度上限会伪装成 infeasible**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不一定。该维护者记录说明 qpOASES_e 只用静态内存，默认编译上限为 50 个变量和 100 个约束。先把实际 nV/nC 与 `QPOASES_NVMAX`、`QPOASES_NCMAX` 对照；确实越界时修改 `include/qpOASES_e/Constants.h` 并重新编译。原帖没有提供重新编译后的作者复测，因此仍应在目标硬件上同时验证内存占用和求解结果。
+- 证据状态：`issue_candidate`
+- 来源定位：qpOASES #47 维护者回复 589978605
+- 原帖/精确回复：[qpOASES_e 超过默认静态维度上限会伪装成 infeasible](https://github.com/coin-or/qpOASES/issues/47#issuecomment-589978605)
+- 平台/作者：GitHub Issues / ferreau（Trac 迁移记录）
+- 关键术语：静态内存（static memory）；编译时上限（compile-time limit）；变量维度（variable dimension）；约束维度（constraint dimension）
+- 环境：qpOASES_e 3.1.1；原报告在 49 variables / 68 constraints 以内工作，继续增大后失败。
+- 症状：初始化返回 infeasible，但 Matlab 其他 solver 能解同一问题；转折点靠近 50 variables。
+- 诊断：在分析模型可行性前，先打印编译时 `QPOASES_NVMAX`、`QPOASES_NCMAX` 与实际 nV/nC。
+- 原因：维护者确认 qpOASES_e 使用静态内存，默认最大 50 variables、100 constraints。
+- 处理过程：原帖用其他 Matlab solver 交叉检查问题可解。
+- 有效处理：提高 `include/qpOASES_e/Constants.h` 中两个上限并重新编译全部依赖该头文件的代码。
+- 结果：维护者给出明确配置位置并将记录标记 fixed；没有附作者重新编译后的复测。
+- 限制：增大静态上限会增加内存占用；超过新上限或仍失败时还需继续检查真实可行性与输入布局。
+- 安全提示：嵌入式目标上修改上限前评估 RAM/stack，并在构建时加 nV/nC 静态或启动期断言。
+- 独立核验引用：[maintainer_confirmation · 维护者给出默认 50/100 上限、宏名、文件位置和重新编译要求](https://github.com/coin-or/qpOASES/issues/47#issuecomment-589978605)
+- 适用边界：直接对应 qpOASES_e 3.1.1 默认配置；发行包或 fork 可能改过宏值，应读实际构建头文件。
+
+### 分离 zero stepsize 与 QP infeasibility 的诊断
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.qpoases_zero_stepsize_diagnostic_48`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：qpOASES zero stepsize 不是单独的故障结论**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：不能。维护者说明偶发 zero step 通常表示冗余约束使 working-set 迭代当下无法前进，并不单独构成故障结论。若最终还报 infeasible，原帖给出的排查顺序是：验证 QP 真实可行性；在不影响安全的离线副本中小幅放宽 bounds/constraints 检查 round-off；核对 `A` 的 row-major 布局。作者没有回报哪一步有效，所以这是一份诊断清单，不是已确认修复。
+- 证据状态：`issue_candidate`
+- 来源定位：qpOASES #48 维护者诊断回复 589978627；作者仅表示会尝试 589978633
+- 原帖/精确回复：[qpOASES zero stepsize 不是单独的故障结论](https://github.com/coin-or/qpOASES/issues/48#issuecomment-589978627)
+- 平台/作者：GitHub Issues / tristanc（Trac 迁移记录）
+- 关键术语：步长（step size）；同伦路径（homotopy path）；工作集（working set）；舍入误差（round-off error）
+- 环境：qpOASES 3.2.0 的迁移支持记录；原帖未提供 QP 数据或系统环境。
+- 症状：先打印 zero stepsize warning，随后 premature homotopy termination / infeasible。
+- 诊断：先独立验证 QP 可行性；再小幅放宽 variable bounds 与 constraints 排除 round-off；最后逐元素核对 row-major `A`。
+- 原因：维护者说偶发 zero step 常与冗余约束和 working-set 线性独立性有关；但该线程没有定位用户具体 infeasible 的唯一根因。
+- 处理过程：维护者给出三步排查；作者回复会尝试，但没有发布结果或 QP 数据。
+- 有效处理：没有经原作者确认的有效修复；放宽边界和重排矩阵只能在确认具体问题后采用。
+- 结果：记录后来标记 fixed，但线程没有技术闭环，因此本卡保持 partial。
+- 限制：没有最小复现、参数尺度或作者结果；不能从日志序列推断真实根因。
+- 安全提示：实时控制中不要无条件放宽安全约束；若为数值诊断，只在离线副本或受控限幅下试验。
+- 独立核验引用：[maintainer_confirmation · 维护者解释 zero step 并给出三步排查；无作者结果确认](https://github.com/coin-or/qpOASES/issues/48#issuecomment-589978627)
+- 适用边界：适用于 qpOASES 3.2.0 同类日志的初步排查；具体根因必须用 QP 数据复现。
+
+### 导出失败周期 QP 区分 solver 与上游 Hessian 问题
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.acado_qpoases_hessian_export_50`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ACADO 内嵌 qpOASES Cholesky 失败要先导出具体 QP Hessian**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：按该线程的已复现流程，先切到受支持的 qpOASES_e 版本并保存失败周期的实际 QP，而不是只看 ACADO 的聚合 status。维护者用 `qpOASES_writeIntoFileM` 导出 300×300 Hessian，在 stand-alone qpOASES_e 重放后发现 QP 42/43 正常、QP 44 Hessian 非正定且异常，Cholesky 因而失败；问题被转回 ACADO 构造侧。这个结果只证明该实例，不代表所有 internal error 都由 Hessian 非正定造成。
+- 证据状态：`issue_candidate`
+- 来源定位：qpOASES #50 维护者复现与 QP 42/43/44 诊断 589978804
+- 原帖/精确回复：[ACADO 内嵌 qpOASES Cholesky 失败要先导出具体 QP Hessian](https://github.com/coin-or/qpOASES/issues/50#issuecomment-589978804)
+- 平台/作者：GitHub Issues / yutaochen（Trac 迁移记录）
+- 关键术语：乔列斯基分解（Cholesky decomposition）；海森矩阵（Hessian matrix）；非正定（non-positive-definite）；独立重放（stand-alone replay）
+- 环境：ACADO code generation；最初使用 qpOASES 1.3，随后切换 qpOASES_e 3.1.1；QP 规模 300×300。
+- 症状：旧版本显示 error 31（Cholesky decomposition failure）；切新版本后 ACADO 返回 -1 或 -2。
+- 诊断：用 `qpOASES_writeIntoFileM(acadoWorkspace.H, 300, 300, ...)` 导出逐周期 Hessian 和 QP 数据，再在 stand-alone qpOASES_e 重放。
+- 原因：维护者在收到的数据上复现：QP 44 Hessian 非正定且外观异常，Cholesky 相应失败；判断更可能是 ACADO 构造问题。
+- 处理过程：开启 Levenberg-Marquardt regularization；切换到 qpOASES_e 3.1.1；提供 ACADO 导出代码和数据。
+- 有效处理：线程没有给出 ACADO 侧最终修复；有效做法是导出失败周期的实际 QP，stand-alone 重放并把异常 Hessian 交给上游生成器定位。
+- 结果：维护者独立重放 QP 42/43/44，确认失败随 QP 44 数据而来，qpOASES 侧记录为 wontFix 并建议联系 ACADO。
+- 限制：该根因只对应作者提供的 QP 44；其他 Cholesky failure 仍可能来自不同的非正定、数值尺度或数据损坏。
+- 安全提示：不要在线上真机仅靠增大 LM regularization 掩盖异常 Hessian；先保存故障周期并离线检查正定性和构造链。
+- 独立核验引用：[independent_reproduction · 维护者收到导出代码后独立导出/重放 QP 42、43、44 并定位非正定 Hessian](https://github.com/coin-or/qpOASES/issues/50#issuecomment-589978804)
+- 适用边界：直接适用于该 ACADO/qpOASES codegen 实例；方法可迁移，但每个故障周期的根因必须独立重放。
+
+### 每次 qpOASES hotstart 前重置 nWSR 预算
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.qpoases_hotstart_nwsr_reset_83`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：qpOASES hotstart 循环中必须每次重置 nWSR**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者说明 `nWSR` 不是只读上限，而是输入/输出参数：调用后它会带回实际或剩余的 working-set change 信息。若只在 for-loop 外初始化一次，后续调用继承的允许次数会单调减少，最终触发上限错误，并导致下一次提示 previous QP not solved。应在每次 `hotstart` 前重新赋值期望预算，并逐次检查返回码。该结论对应后续多次循环复现，不等于最初“第二次调用即失败”的报告已被完整复现。
+- 证据状态：`issue_candidate`
+- 来源定位：qpOASES #83 维护者最终解释 762053495
+- 原帖/精确回复：[qpOASES hotstart 循环中必须每次重置 nWSR](https://github.com/coin-or/qpOASES/issues/83#issuecomment-762053495)
+- 平台/作者：GitHub Issues / lrjcool（Trac 迁移记录）
+- 关键术语：热启动（hot start）；输入输出参数（input/output parameter）；工作集重计算（working-set recalculation）；迭代预算（iteration budget）
+- 环境：原帖 qpOASES 3.2.1；后续复现 Ubuntu 16.04、qpOASES 3.2.1、Bazel 0.18.1。
+- 症状：前两三个 QP 正常，随后出现 maximum number of working set recalculations；再后续提示 previous QP is not solved。
+- 诊断：在每次调用前后打印 `nWSR`，确认调用是否把它改写；同时检查错误发生后 solver 状态。
+- 原因：维护者确认 `nWSR` 是 input/output parameter，外层只初始化一次会使下一次调用继承较小的剩余值。
+- 处理过程：把 `nWSR` 定义或重新赋值放到每次 `hotstart` 的循环体内。
+- 有效处理：每个控制周期在调用 `hotstart` 前重新设置期望的最大 `nWSR`；不要把上次输出值直接作为下次预算。
+- 结果：另一用户给出 workaround，维护者补充了参数语义和为何会单调减少；原始 Issue 仍 open。
+- 限制：最初的第二次调用问题在 trunk 上不可复现；明确闭环的是“多次循环复用 nWSR”这一后续场景。
+- 安全提示：实时循环还应检查每次返回码；一旦 previous QP 未 solved，不要继续把旧控制量当成新有效解。
+- 独立核验引用：[maintainer_confirmation · 维护者明确 `nWSR` 为 input/output 并要求每次 hotstart 前重置](https://github.com/coin-or/qpOASES/issues/83#issuecomment-762053495)
+- 适用边界：适用于 qpOASES 3.2.1 中把 `nWSR` 复用于连续 hotstart 的循环；其他 API 版本需核对参数语义。
+
+### 正确编码 OSQP C 接口的无穷边界
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_c_infinity_bound_43`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP C 接口的一侧无穷边界必须使用 OSQP_INFTY**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该线程的直接原因是示例使用了 OSQP 项目未定义的 `INFINITY` 宏。维护者要求改用 `glob_opts.h` 中的 `OSQP_INFTY`，原作者确认替换后不可行问题可以正确处理。工程上还应打印最终传入的 `l/u`，因为不同 OSQP 大版本可能调整公开头文件或常量位置。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #43 维护者回复 364638732；作者确认 364714680
+- 原帖/精确回复：[OSQP C 接口的一侧无穷边界必须使用 OSQP_INFTY](https://github.com/osqp/osqp/issues/43#issuecomment-364714680)
+- 平台/作者：GitHub Issues / hongkai-dai
+- 关键术语：单侧边界（one-sided bound）；无穷常量（infinity constant）；不可行检测（infeasibility detection）；迭代上限（iteration limit）
+- 环境：2018 年 OSQP C 示例；原帖基于 `examples/osqp_demo.c` 修改，未给发布版本号。
+- 症状：使用 `INFINITY` 时简单不可行 QP 达到迭代上限并持续增加 penalty；把上界改成有限值时能立即检测不可行。
+- 诊断：打印实际传入 `l/u` 的数值和类型，确认使用目标 OSQP 版本定义的无穷常量。
+- 原因：维护者确认 `INFINITY` 不是 OSQP 项目定义的宏，C 接口应使用 `OSQP_INFTY`。
+- 处理过程：将通用 `INFINITY` 替换为 `glob_opts.h` 定义的 `OSQP_INFTY`。
+- 有效处理：在该 OSQP C 接口环境中用 `OSQP_INFTY` 表示单侧无穷 bound。
+- 结果：原作者明确确认 `OSQP_INFTY` 解决问题。
+- 限制：宏所在头文件和内部表示可能随 OSQP 大版本变化；应以目标版本 C API 为准，不把旧路径硬编码为永久接口。
+- 安全提示：上线前用一个已知不可行和一个已知可行的边界测试校验 bound 编码，避免控制循环在故障状态耗尽迭代预算。
+- 独立核验引用：[maintainer_confirmation · 维护者指定 `OSQP_INFTY`；下一条评论由原作者确认](https://github.com/osqp/osqp/issues/43#issuecomment-364638732)
+- 适用边界：直接适用于该线程的 OSQP C 接口；其他版本需核对对应 C API 常量。
+
+### 联合检查 OSQP 的问题尺度与终止容差
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_conditioning_tolerance_53`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP 与 CVXOPT 解差异先量化条件数和终止容差**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：不能。维护者在作者提交的数据上测得 `cond(P)≈9.86×10^6`，并说明 OSQP 的启发式缩放未必能完全修复病态问题；一阶方法的默认容差也比对照 solver 松。线程中的实验路径是收紧 `eps_abs/eps_rel` 到 `1e-9` 并视需要提高 `max_iter`。作者没有回报最终结果，因此这是一条有数据支撑的诊断经验，不是通用参数答案。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #53 维护者附件诊断与完整代码 375153096
+- 原帖/精确回复：[OSQP 与 CVXOPT 解差异先量化条件数和终止容差](https://github.com/osqp/osqp/issues/53#issuecomment-375153096)
+- 平台/作者：GitHub Issues / yasseryasaei
+- 关键术语：条件数（condition number）；内部缩放（internal scaling）；绝对容差（absolute tolerance）；相对容差（relative tolerance）
+- 环境：macOS High Sierra 10.13.3、Python 3.6、OSQP 0.3.0；作者提交了简化数据和 notebook。
+- 症状：OSQP 与 CVXOPT/CVXPY-ECOS 的解和目标值显著不同；最初还被描述为循环中非确定失败。
+- 诊断：先计算 Hessian/约束的条件数和尺度范围，再比较各 solver 的绝对、相对终止容差，而不是只比较 status。
+- 原因：维护者对附件计算得到 `cond(P)=9,860,981.74`，认为病态尺度与 OSQP 默认较松容差共同解释差异。
+- 处理过程：维护者给出 `eps_abs=1e-9, eps_rel=1e-9` 的完整代码，并提醒可能需要提高 `max_iter`。
+- 有效处理：没有作者确认的最终修复；紧容差和预缩放只能作为目标数据上的验证步骤。
+- 结果：维护者在附件上得到更接近的结果；Issue 因一个月无后续关闭。
+- 限制：原帖没有报告新迭代数、误差或循环随机失败是否同时消失；不能把 `1e-9` 写成通用 WBC 配置。
+- 安全提示：真机控制应同时设置求解时限和残差门槛；不要为了追求跨 solver 数值一致而无界增加迭代。
+- 独立核验引用：[maintainer_confirmation · 维护者读取附件、计算条件数并给出可运行紧容差代码](https://github.com/osqp/osqp/issues/53#issuecomment-375153096)
+- 适用边界：直接适用于 OSQP 0.3.0 与原帖病态 QP；其他问题应重新计算条件数和实时预算。
+
+### 区分 OSQP 有限迭代收敛与严格可行
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_finite_feasibility_polish_97`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP/ADMM 有限迭代不保证严格原始可行**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不能。项目成员明确说明 ADMM 不保证有限步达到严格可行点；OSQP 只按残差容差终止。polishing 成功时会基于猜测的 active set 计算高精度解，但并不保证成功。原作者最终把 primal/dual residual 降到约 `5e-10` 并认为足够，polishing 仍失败。工程上应按应用复算约束残差并设置上层安全门槛，而不是把 `solved` 等同于零残差。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #97 有限步回答 427692913；作者最终结果 427903194
+- 原帖/精确回复：[OSQP/ADMM 有限迭代不保证严格原始可行](https://github.com/osqp/osqp/issues/97#issuecomment-427903194)
+- 平台/作者：GitHub Issues / qnzhou
+- 关键术语：原始可行性（primal feasibility）；交替方向乘子法（Alternating Direction Method of Multipliers, ADMM）；解抛光（solution polishing）；活动集（active set）
+- 环境：作者最终测试：209 variables、288 constraints、部分 equality、`P=0` 的 LP；未给 OSQP 发布版。
+- 症状：正常求解总有非零 primal residual；polishing 在作者问题上一直不成功。
+- 诊断：同时观察 primal/dual residual、polishing status、迭代数和 active-set 是否稳定；不要只读 `solved`。
+- 原因：项目成员说明 ADMM 的可行性残差只在极限中趋零；polishing 失败表示 active-set 猜测未成功或问题可能不可行。
+- 处理过程：作者极端收紧容差、减小 `rho`、设 `max_iter=1e7` 和 `polish_refine_iter=1e7`；维护者指出后两项设置不合理。
+- 有效处理：没有严格有限步保证；按目标误差设置可审计的 primal/dual residual 门槛，polishing 成功时采用其高精度解，失败时保留原解并执行上层安全策略。
+- 结果：作者最终得到 primal/dual residual 约 `5e-10`，认为已足够并关闭 Issue；polishing 仍未成功。
+- 限制：不能从该 LP 的 `5e-10` 推导所有 WBC 的安全阈值；线程也没有给 active-set method 的统一替换方案。
+- 安全提示：对硬件关键约束，应在 solver 外复算 `l≤Ax≤u` 和执行限幅/降级，不把 `solved` 当成零残差证明。
+- 独立核验引用：[maintainer_confirmation · 项目成员说明有限步无严格可行保证与 polishing 语义](https://github.com/osqp/osqp/issues/97#issuecomment-427692913)
+- 适用边界：适用于 ADMM/OSQP 的有限迭代解读；具体残差阈值必须按 WBC 约束尺度制定。
+
+### 避免用大有限数替代 OSQP 无穷边界
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_finite_surrogate_infinity_109`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：用 -1000 代替 -inf 会把 OSQP inequality 改成另一个 QP**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：因为这会改变可行域。该线程中维护者验证 OSQP 的不可行证书成立，并发现 quadprog 的 `x` 对 OSQP 输入有 `min(Ax-l)=-219.2470` 的违反。原作者随后确认 inequality lower bound 被写成 `-1000`，而不是 `-inf`/`-OSQP_INFTY`；改成真正无下界后问题解决。比较 solver 前必须先证明两边实际接收的是同一个 `l≤Ax≤u`。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #109 证书核对 442394129；作者根因与修复 442778706
+- 原帖/精确回复：[用 -1000 代替 -inf 会把 OSQP inequality 改成另一个 QP](https://github.com/osqp/osqp/issues/109#issuecomment-442778706)
+- 平台/作者：GitHub Issues / GiulioRomualdi
+- 关键术语：不可行证书（infeasibility certificate）；可行域（feasible region）；有限替代边界（finite surrogate bound）；无穷边界（infinite bound）
+- 环境：OSQP 0.4.1 MATLAB interface；64 variables、82 constraints；对照 MATLAB quadprog。
+- 症状：OSQP 50 iterations 报 primal infeasible，quadprog 报 constraints satisfied。
+- 诊断：验证 OSQP 的 `prim_inf_cert` 条件，并把对照 solver 的 `x` 代回同一 `l≤Ax≤u` 逐项检查。
+- 原因：作者最终确认把不存在的下界编码为 `-1000`，而非真正的 `-inf`，两 solver 实际没有被同样约束。
+- 处理过程：维护者计算不可行证书并验证 quadprog 解违反 OSQP 下界；作者随后检查建模代码。
+- 有效处理：对无下界的 inequality 使用接口支持的 `-inf` 或 C 端 `-OSQP_INFTY`，不要用任意“大负数”代替。
+- 结果：原作者明确说明改用 `-inf` 后问题解决。
+- 限制：该结论只对应这次建模差异；若两个接口逐元素输入一致，仍需检查缩放、容差和 solver bug。
+- 安全提示：发布前保存规范化 QP 数据并让两个接口逐元素校验，避免单位变化后有限 surrogate bound 进入真实可达区间。
+- 独立核验引用：[maintainer_confirmation · 维护者核验 infeasibility certificate 并将 quadprog 解代回同一 constraints](https://github.com/osqp/osqp/issues/109#issuecomment-442394129)
+- 适用边界：适用于用有限 surrogate 编码无边界的 OSQP/跨 solver 对照；数值范围不同也应重复检查。
+
+### 区分 OSQP 解容差与不可行证书容差
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_solution_vs_infeasibility_tolerance_125`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP 约束精度不能用 eps_prim_inf 调节**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：不应该。维护者说明 `eps_prim_inf` 控制 primal infeasibility certificate 检查，不控制正常 `solved` 解的残差。对作者提供的 OSQP 0.5.0 数据，把 `eps_abs`、`eps_rel` 调为 `1e-6` 后，约束违反从约 `10^-3` 降到 `10^-12` 量级，同时迭代从 25 增至 125。实际 WBC 必须按自身尺度和周期预算选择容差。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #125 维护者参数解释、附件复跑与结果 479371495
+- 原帖/精确回复：[OSQP 约束精度不能用 eps_prim_inf 调节](https://github.com/osqp/osqp/issues/125#issuecomment-479371495)
+- 平台/作者：GitHub Issues / avikde
+- 关键术语：原始不可行容差（primal infeasibility tolerance）；绝对终止容差（absolute termination tolerance）；相对终止容差（relative termination tolerance）；约束违反（constraint violation）
+- 环境：OSQP 0.5.0 Python；46 variables、82 constraints；作者提供 `P/A/q/l/u` 最小数据。
+- 症状：默认 `eps_abs=1e-3, eps_rel=1e-4` 时，两个方向 constraint violation 约 `-0.00185/-0.00252`，大于 `1e-4` 控制限。
+- 诊断：区分 infeasibility certificate tolerance 与 solved residual termination tolerance；直接复算 `Ax-l`、`u-Ax`。
+- 原因：维护者确认参数语义混淆：`eps_prim_inf` 只用于 primal infeasibility 检查。
+- 处理过程：维护者对同一附件改为 `eps_abs=eps_rel=1e-6`。
+- 有效处理：按问题尺度调小 `eps_abs/eps_rel`，并同时评估增加的迭代与实时预算。
+- 结果：维护者实跑从 25 iterations 增至 125，constraint violation 降到约 `1e-12` 或更小。
+- 限制：原作者没有另行复测；`1e-6` 只在该数据上被维护者验证，不是所有控制器的默认值。
+- 安全提示：控制循环应在应用层复算约束，并把容差、最大迭代和 fallback 一起纳入时限设计。
+- 独立核验引用：[official_documentation · 维护者回复直接链接的 OSQP convergence 文档](https://osqp.org/docs/solver/index.html#convergence)；[independent_reproduction · 维护者在作者附件上实跑 `eps_abs=eps_rel=1e-6` 并给出残差](https://github.com/osqp/osqp/issues/125#issuecomment-479371495)
+- 适用边界：直接适用于 OSQP 0.5.0 原帖数据；参数语义可参考，目标数值需按版本和尺度复测。
+
+### 固定 OSQP codegen 的 adaptive-rho 更新间隔
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_codegen_adaptive_rho_interval_205`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP MATLAB 与 codegen 对照应固定 adaptive_rho_interval**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：线程中的对照表明，默认 time-based adaptive `rho` 会因两条执行路径的墙钟时间不同而在不同迭代触发。关闭 adaptive rho 后，两者均在 1225 iterations 结束且残差一致；改用固定 `adaptive_rho_interval=25` 后，作者确认原始和简化问题都恢复一致。工程上应固定更新间隔并同步 generated workspace 的 `max_iter`，而不是把 25 当成所有 QP 的最优参数。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #205 维护者 A/B 533609939；作者确认 534015433
+- 原帖/精确回复：[OSQP MATLAB 与 codegen 对照应固定 adaptive_rho_interval](https://github.com/osqp/osqp/issues/205#issuecomment-534015433)
+- 平台/作者：GitHub Issues / markosvec
+- 关键术语：自适应罚参数（adaptive rho）；固定更新间隔（fixed update interval）；代码生成（code generation）；原始/对偶残差（primal/dual residuals）
+- 环境：2019 OSQP MATLAB/codegen；作者提供原始数据、2–3 维简化 QP 和导出代码；未固定 release。
+- 症状：MATLAB 约 350 iterations 解出；codegen 在 1000 达上限，解误差虽约 `1e-6`。
+- 诊断：先让两条路径使用同一固定 `adaptive_rho_interval`，比较 primal/dual residual 和迭代数；同时核对 generated workspace 的 `max_iter`。
+- 原因：维护者实测确认默认 time-based rho update 在两条路径的触发点不同。
+- 处理过程：关闭 adaptive rho 时，两 solver 都在 1225 iterations 结束且残差一致；随后使用固定更新间隔。
+- 有效处理：把 `adaptive_rho_interval` 设置为非零固定值，例如线程中验证的 25；不要用墙钟触发做可复现对照。
+- 结果：原作者确认 `adaptive_rho_interval=25` 对原始与简化问题均有效。
+- 限制：25 不是所有 QP 的最优 interval；该卡只确认固定 interval 消除了两路径触发差异。
+- 安全提示：生成代码部署前应固定全部 solver settings，并对最坏迭代数和返回码做硬实时验收。
+- 独立核验引用：[maintainer_confirmation · 维护者禁用 adaptive rho 后实测两条路径 1225 iterations、残差一致](https://github.com/osqp/osqp/issues/205#issuecomment-533609939)
+- 适用边界：适用于 OSQP MATLAB/codegen 的自适应 rho 跨路径复现；其他接口需核对更新策略。
+
+### 审计 OSQP 不可行证书 epsilon 符号的双向边界
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_infeasibility_epsilon_sign_255_485`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：2（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP 旧版不可行证书符号修复已合并但后来出现边界争议**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：Issue #255 与合并 PR #256 把旧版 certificate 判据中的负 epsilon 改为正 epsilon，并用独立的 `OSQP_DIVISION_TOL` 判断 certificate 向量非零；文档也对齐最终论文。该变更确实作为 `develop-0.x` 的正式修复合入。由于后来的 #485 报告正 epsilon 在 singleton feasible region 上可能产生反向误判，这张经验只证明历史合并与原 MRE，不证明判据覆盖所有退化边界。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #255 维护者确认 639451057/639472858；合并 PR #256
+- 原帖/精确回复：[OSQP 旧版不可行证书符号修复已合并但后来出现边界争议](https://github.com/osqp/osqp/issues/255#issuecomment-639472858)
+- 平台/作者：GitHub Issues / bodono
+- 关键术语：不可行证书（infeasibility certificate）；原始不可行容差（primal infeasibility tolerance）；严格不等式（strict inequality）；退化可行域（degenerate feasible region）
+- 环境：2020 年 `develop-0.x` 分支；Issue 给出 CVXPY 标量 MRE，PR 给出直接 OSQP Python MRE。
+- 症状：对任意 `eps_prim_inf` 都能构造一个间隔等于该 epsilon 的不可行标量问题，使旧条件无法给出 certificate。
+- 诊断：对照代码、最终论文 Section 3.4 与当前 certificate inequality；保留退化/单点可行域回归集。
+- 原因：维护者确认旧代码把 negativity test 写成负 epsilon，且用 `eps_*_inf` 自身判断 certificate 向量非零。
+- 处理过程：PR #256 把 primal/dual 条件换成正 epsilon，并用 `OSQP_DIVISION_TOL` 处理零范数；同步文档。
+- 有效处理：历史上升级到包含 merge commit `fad7cf2` 的 `develop-0.x` 修复旧版 non-detection；不能据此断言所有退化边界都正确。
+- 结果：PR 已批准、合并；作者/维护者给出修复前失败的最小例。
+- 限制：PR 没有在可见 diff 中加入专门测试文件；#485 后来报告正 epsilon 对 singleton feasible region 的相反问题，本问题综合等级必须保留冲突。
+- 安全提示：升级 solver 后同时测试明确 infeasible、普通 feasible 和 singleton/退化 feasible 三类 QP。
+- 独立核验引用：[pull_request · 已批准并合并；merge `fad7cf2`，修改 primal/dual certificate inequality 与文档](https://github.com/osqp/osqp/pull/256)
+- 适用边界：直接对应 2020 年 `develop-0.x` 修复；后续版本和 singleton feasible case 必须与 #485 一并验证。
+
+**经验 2：OSQP 正 epsilon 不可行判据在 singleton feasible case 上仍有公开争议**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索。
+- 解答状态：`conflicting`
+- 候选解答：目前不能把它当作通用修复。#485 的数学质疑指出正 epsilon check 可能接受 `lhs=0` 的 certificate，两位用户报告 singleton case，第二位本地改符号后成功；但没有完整公开 MRE或维护者确认。直接改回负号又可能重新引入 #255 已正式修复的“小间隔不可行问题无法终止”。应把两类 QP 放进同一回归集，并在维护者/正式补丁出现前保持 `conflicting`。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #485 原始数学质疑；第二用户 A/B 2533462232；未解决状态 2537174191
+- 原帖/精确回复：[OSQP 正 epsilon 不可行判据在 singleton feasible case 上仍有公开争议](https://github.com/osqp/osqp/issues/485#issuecomment-2537174191)
+- 平台/作者：GitHub Issues / forrestlaine
+- 关键术语：单点可行域（singleton feasible region）；不可行证书（infeasibility certificate）；假阳性（false positive）；回归测试集（regression test suite）
+- 环境：Issue 固定到 commit `5dab81d` 的 `src/auxil.c`；第二用户固定到 commit `e5f1e50`；未给完整 QP MRE。
+- 症状：两位用户报告 singleton feasible region 被判 primal infeasible；第二位称改 epsilon 符号后找到解。
+- 诊断：对退化 QP 同时验证 certificate 的严格数学条件、返回 `v`、已知 singleton 点和不同 epsilon 符号的 A/B。
+- 原因：作者认为 `lhs < +eps·||v||` 允许 lhs 为零，可能放宽到错误 certificate；维护者未确认。
+- 处理过程：一位作者愿提交 PR 但等待维护者解释；第二位用户本地改符号后报告可求得 singleton 解。
+- 有效处理：没有已合并修复；本地改符号只是用户 A/B，且可能重新引入 #255 的 non-detection。
+- 结果：截至采集时 Issue open、无人维护者答复；#255 与 #485 形成双向边界冲突。
+- 限制：缺少公开完整 MRE、目标 release 和维护者结论；不能建议直接 revert PR #256。
+- 安全提示：WBC solver 回归集必须同时包含 singleton feasible 与间隔很小的 infeasible QP；任一类型失败都应阻止升级。
+- 独立核验引用：[conflict · PR #256 的正式正 epsilon 修复与本帖建议的反向符号直接冲突](https://github.com/osqp/osqp/pull/256)
+- 适用边界：仅作为 singleton/退化可行域的问题线索；任何本地符号修改都必须同时回归 #255 的 infeasible MRE。
+
+### 排查 OSQP 循环求解的迭代尖峰
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_max_iter_tolerance_scaling_276`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP 周期性 max-iteration 先检查过紧容差和 Hessian 条件数**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不能。维护者对单独数据用默认 setup 在 75 iterations 解出；作者后来披露线上把 `eps_abs/eps_rel` 设为 `1e-8`。维护者建议对 ADMM 使用约 `1e-4` relative tolerance，作者确认有帮助，并补充还必须缩放 condition number 很大的 `P`。原帖没有验证 warm-start 污染，也没有给修正后的最坏时延，因此只能采用“容差＋尺度”的已确认缓解。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #276 配置 719565150；维护者建议 721814742；作者确认 725366350
+- 原帖/精确回复：[OSQP 周期性 max-iteration 先检查过紧容差和 Hessian 条件数](https://github.com/osqp/osqp/issues/276#issuecomment-725366350)
+- 平台/作者：GitHub Issues / Ajin2305
+- 关键术语：最大迭代（maximum iterations）；热启动（warm start）；问题缩放（problem scaling）；最坏执行时间（worst-case execution time, WCET）
+- 环境：2020 OSQP MATLAB 与生成 MEX；实际设置 `eps_abs=eps_rel=1e-8`、`adaptive_rho_interval=25`、`max_iter=20000`。
+- 症状：部分周期运行时大幅增加并返回 maximum iterations；单独重放一个数据却 75 iterations 解出。
+- 诊断：记录每周期 QP、warm-start state、容差和 `cond(P)`；先对单独数据用默认设置复现，再逐项恢复线上配置。
+- 原因：维护者最终把极严 `1e-8` 容差列为主要原因；作者另确认 `P` 条件数巨大并需要缩放。
+- 处理过程：放宽 relative tolerance 到约 `1e-4`；缩放问题以处理 `P` 的巨大 condition number。
+- 有效处理：作者确认两项都有帮助，但没有发布新状态分布或最坏运行时，因此登记为环境内缓解。
+- 结果：作者回复“does help”，同时说明还必须缩放 `P`；Issue 随后关闭。
+- 限制：最初关于坏 warm start 的猜测没有被作者确认；没有曲线后的精确尖峰率或实时保证。
+- 安全提示：必须设置 solver deadline 和 fallback；容差放宽前先定义允许的约束残差，而不是只优化速度。
+- 图片分析：原帖两张图只显示循环运行时间尖峰与 status 2/-2 的出现位置；图中缺少足够轴信息，未用于推断根因。
+- 独立核验引用：[maintainer_confirmation · 维护者明确指出 `1e-8` 对 ADMM 极严并建议约 `1e-4`](https://github.com/osqp/osqp/issues/276#issuecomment-721814742)
+- 适用边界：适用于原帖极严容差和病态 `P`；其他周期尖峰需保存具体 QP 与 solver state。
+
+### 保持 OSQP 在线矩阵更新的稀疏结构不变
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_update_sparsity_pattern_376`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP update 只能改已有稀疏结构中的非零值**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不能。维护者说明 setup 与 update 后的 `P/A` 必须具有相同 sparsity pattern；value-only update 不能从全零结构创建新 nonzeros。MATLAB 线程还要求 `Ax=nonzeros(A)` 按列主序，`Px=nonzeros(triu(P))` 只传对称 `P` 上三角。维护者给出完整工作代码，作者确认问题来自自己的更新方式。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #376 维护者格式 998756951、工作代码 998793473；作者确认 998794367
+- 原帖/精确回复：[OSQP update 只能改已有稀疏结构中的非零值](https://github.com/osqp/osqp/issues/376#issuecomment-998794367)
+- 平台/作者：GitHub Issues / epsonlq138
+- 关键术语：稀疏结构（sparsity pattern）；压缩稀疏列（Compressed Sparse Column, CSC）；上三角（upper triangular）；数值更新（value-only update）
+- 环境：OSQP 0.6.2 MATLAB；258 variables、258 constraints。
+- 症状：直接 setup 在 275 iterations `solved`；零矩阵 setup 后 update 在 25 iterations 报 dual infeasible。
+- 诊断：比较 setup/update 的 CSC sparsity pattern、nonzero 个数和顺序；检查 `P` 是否只传 upper triangle。
+- 原因：维护者确认 update 只替换既有 nonzeros；全零 setup 没有为后续 `P/A` 建立结构。
+- 处理过程：setup 时先用目标 `P/A` 结构和零 `q/l/u`，update 时传 `nonzeros(triu(P))` 与 `nonzeros(A)`。
+- 有效处理：固定可覆盖所有运行模式的 sparsity pattern 后只更新值；如果 pattern 真要变化，重新 setup solver。
+- 结果：维护者代码按预期工作；原作者确认是自己的错误。
+- 限制：该线程只覆盖 MATLAB 0.6.2 update API；其他语言的索引更新能力需读目标版本接口。
+- 安全提示：接触模式变化前后应断言 nonzero pattern hash；模式未覆盖时宁可重新 setup，也不要继续使用旧结构。
+- 独立核验引用：[official_documentation · 维护者直接链接的 OSQP MATLAB matrix update 示例](https://osqp.org/docs/examples/update-matrices.html#matlab)
+- 适用边界：直接适用于 OSQP 0.6.2 MATLAB update；其他接口需核对是否支持 indexed pattern update。
+
+### 校验 cuOSQP 单精度边界转换
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.cuosqp_float_bound_cast_nan_424`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：cuOSQP 首迭代 NaN 要检查 l/u 的 double→float Inf 转换**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该线程中矩阵和 CUDA demo 最终都被排除；原作者发现 `l/u` 从 double 转成 float 后含 NaN/Inf，Inf cast 也会让 cuOSQP 输出 NaN。把应用改成全 float 后原始问题解决。因此应在 `osqp_setup` 前检查目标 dtype 中全部 `P/q/A/l/u`，尤其 bounds 的 finite/无穷编码。线程没有解决后续 CPU/GPU 解差异和迭代慢，不能把全 float 当成完整性能修复。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #424 作者最终根因与修复 1153368937
+- 原帖/精确回复：[cuOSQP 首迭代 NaN 要检查 l/u 的 double→float Inf 转换](https://github.com/osqp/osqp/issues/424#issuecomment-1153368937)
+- 平台/作者：GitHub Issues / gacamilo
+- 关键术语：单精度（single precision）；类型转换（type cast）；非数值（Not a Number, NaN）；线性系统零主元（zero pivot）
+- 环境：cuOSQP/OSQP C interface，CUDA 11.6，Visual Studio；MPC 目标 100 Hz；未给 release。
+- 症状：CPU OSQP 正常，cuOSQP 从第一迭代 objective/solution 即 NaN；官方 CUDA PCG demo 在同一应用中正常。
+- 诊断：逐元素比较 CPU/GPU 的 `P/q/A/l/u` 在最终 dtype 中的值、finite 状态和无穷编码；不要只比较源 double 数据。
+- 原因：原作者最终确认 `l/u` 的 double→float 转换产生 NaN/Inf，并触发 NaN 输出。
+- 处理过程：对比 `P/A`、令 `P=0`、运行 2×2/demo、检查 GPU 配置；最后改成全 float 数据路径。
+- 有效处理：在进入 cuOSQP 前使用目标 float 类型构造 bounds，并显式检查 `isfinite`/允许的无穷表示。
+- 结果：作者确认全 float 修改解决原始 NaN；但 CPU/GPU 解不同与 cuOSQP 数千迭代仍待继续排查。
+- 限制：不能把所有 GPU NaN 都归因于 bounds cast；原帖剩余性能与解差异没有闭环。
+- 安全提示：真机前对每周期 QP 全字段做 finite 检查；GPU solver 返回 NaN 时必须拒绝控制量并进入安全 fallback。
+- 图片分析：原帖截图只显示 cuOSQP 首迭代出现 NaN；根因来自后续文字复查 `l/u`，未从截图推断。
+- 独立核验引用：[maintainer_confirmation · 项目成员给出 C 接口矩阵/首迭代线性求解的诊断边界；作者最终定位 bounds](https://github.com/osqp/osqp/issues/424#issuecomment-1148438546)
+- 适用边界：适用于 cuOSQP 单精度数据路径和含无穷 bounds 的 MPC；其他 GPU backend 需核对自身类型。
+
+### 解释并复核 OSQP 非负约束下的负残差
+
+- `problem_id`：`problem.optimization_ik_qp_mpc.osqp_nonnegative_relative_residual_609`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：OSQP 非负约束下的小负值由相对残差尺度决定**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：只能作为有条件的后处理。项目成员说明 OSQP 按 `eps_abs + eps_rel·max(||Ax||,||z||)` 判断 residual，问题尺度达到数千时，小负值仍可能满足相对准则；负元素个数不是终止指标。对独立 `x≥0` 分量向上截到 0 很直观，但如果同一变量还参与一般 `Ax≤b`，clamp 可能制造新的违反。原作者收紧到 `1e-7`、polishing 失败后仍有约 `-1e-4`，所以必须在后处理后复算全部约束。
+- 证据状态：`issue_candidate`
+- 来源定位：OSQP #609 convergence 解释 1979012199；clamp 边界 1980361325；作者紧容差结果 1980277232
+- 原帖/精确回复：[OSQP 非负约束下的小负值由相对残差尺度决定](https://github.com/osqp/osqp/issues/609#issuecomment-1980361325)
+- 平台/作者：GitHub Issues / baharehhj
+- 关键术语：非负约束（non-negativity constraint）；相对残差（relative residual）；无穷范数（infinity norm）；后处理截断（post-solve clamping）
+- 环境：OSQP 0.6.3、OSQP-Eigen C++；721 variables、2370 constraints、470615 nonzeros。
+- 症状：`eps_abs=eps_rel=1e-5` 时出现到 `-0.0131` 的分量；`1e-7` 时仍约 100 个负数，最小约 `-1e-4`；polishing unsuccessful。
+- 诊断：复算 infinity-norm residual 和 `||Ax||/||z||`，而不是只数负值个数；clamp 后重新检查全部 `l≤Ax≤u`。
+- 原因：项目成员按论文 convergence equation 解释：相对项随大尺度 `Ax` 放大允许 residual。
+- 处理过程：收紧 `eps_abs/eps_rel`、启用 polishing、与 quadprog 对照、询问将负值截为 0。
+- 有效处理：没有保证严格非负的 solver-side 修复；可对独立 `x≥0` 分量 clamp，但必须重新验证其他一般线性约束和目标影响。
+- 结果：作者在 `1e-7` 下减小了负值幅度但仍存在；polishing 未成功；线程以解释和 clamp 边界结束。
+- 限制：不能把负值数量当成 solver 指标，也不能假设 clamp 后其他 constraints 仍满足。
+- 安全提示：法向接触力等硬件关键量应在输出层限幅并复查耦合约束；不通过时触发降级而非继续执行。
+- 独立核验引用：[paper · 项目成员直接引用 OSQP paper Section 3.4 / convergence equation](https://web.stanford.edu/~boyd/papers/pdf/osqp.pdf)
+- 适用边界：适用于 OSQP 0.6.3 大尺度一般线性约束；严格安全阈值需按 WBC 单位和耦合关系制定。
+
 ## 力控、接触操作与载荷 (`force_control_manipulation`)
 
 ### 怎样避免只看厂商‘100 Hz 带宽’就误判力控关节？
@@ -2856,6 +4711,92 @@
 - 独立核验引用：[issue · 用户提供 welded mounting-body workaround 并报告额外质量导致偏差](https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1816986241)；[conflict · 另一用户报告软 weld constraint 导致伸长](https://github.com/google-deepmind/mujoco/issues/832#issuecomment-2500739225)；[conflict · 调紧 solref 只能部分改善](https://github.com/google-deepmind/mujoco/issues/832#issuecomment-2500866159)
 - 适用边界：仅作为 MuJoCo 模型中的试验性 workaround；必须核对 mounting-body 质量、weld solref、伸长与相位误差。
 
+### Crocoddyl 脚面不对齐世界坐标时需显式设置 wrench cone 旋转
+
+- `problem_id`：`problem.force_control_manipulation.crocoddyl_wrench_cone_foot_rotation_880`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl 全身操作中 contact wrench cone 与足部旋转的配置选择**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：维护者只给出一个明确接口提示：wrench cone constructor 的第一个元素/参数定义其 rotation。线程没有给出旋转矩阵方向、参考系约定或复测代码，因此只能作为定位 API 的入口，不能仅凭配图直接构造矩阵。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #880：作者评论 722446675 提供足板图片并提问；维护者评论 771044606 指出 constructor 第一个参数定义旋转
+- 原帖/精确回复：[Crocoddyl 全身操作中 contact wrench cone 与足部旋转的配置选择](https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-771044606)
+- 平台/作者：GitHub Issues / ddliu365
+- 关键术语：旋转矩阵（rotation matrix）；世界坐标系（world frame）；支撑多边形（support polygon）；接触力矩锥（contact wrench cone）
+- 环境：Crocoddyl whole_body_manipulation 示例，线程时间为 2020-10 至 2021-02；未给 Crocoddyl 版本或机器人型号。
+- 症状：用户无法判断摩擦锥、CoP/ZMP 和 contact wrench cone 三类 cost 在高动态全身操作中的组合关系。；脚板带偏航角时，用户不清楚 wrench cone rotation matrix 如何定义。
+- 诊断：按接触模型需要分别检查切向摩擦、CoP 支撑域与 yaw torque 边界，而不是只看到 friction cone 就认为有限足面稳定性完整。；核对 wrench cone 构造函数第一个旋转参数所使用的参考系，并让它与实际脚面方向一致。
+- 原因：示例在 contact wrench cone 功能开发前编写，维护者说明这就是示例仍只用 friction cone 的原因，而不是表示 friction cone 已足够。
+- 处理过程：作者查阅 contact wrench cone 论文，并向维护者确认其是否同时覆盖 friction、ZMP/CoP 和 yaw torque。；作者提供双脚不对齐世界坐标的图片，追问旋转矩阵。
+- 有效处理：需要完整有限足面约束时使用 contact wrench cone，并移除单独的 friction cone 或 CoP cost，避免重复。；脚面不与世界坐标对齐时，通过 wrench cone constructor 的第一个参数指定其旋转。
+- 结果：作者回复解释清楚，并表示会在方案工作后更新示例；线程没有后续实现或数值结果。；旋转参数问题只有维护者的一句接口说明，没有作者复测。
+- 限制：线程没有给出 contact wrench cone 的具体 API 版本、矩阵方向约定或代码示例。；不能从足板图片直接推导旋转矩阵；必须回到目标版本构造函数和参考系定义。；该讨论来自 2020/2021 年，当前 Crocoddyl API 名称需要再次核对。
+- 安全提示：高动态实机操作中应同时监控摩擦裕度、CoP 支撑域和 yaw torque；约束参考系错误可能产生看似可行但不可执行的接触力矩。
+- 图片分析：评论 722446675 的图片已核验：左侧是双脚脚板照片，右侧示意图标注 Left foot、Right foot、support polygon、support polygon with margin 和 Δx_zmp，双脚明显不平行；图片支持“脚面不与同一世界方向对齐”的提问，但没有坐标轴或矩阵定义，不能用于推导旋转参数。
+- 独立核验引用：[maintainer_confirmation · 维护者说明 wrench cone constructor 的第一个参数定义其旋转](https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-771044606)
+- 适用边界：适用于该线程时期 Crocoddyl wrench cone constructor；当前版本的参数类型、旋转方向和 frame convention 必须查源码/文档验证。
+
+### Crocoddyl 全身操作不能只靠 friction cone 或 CoP 约束有限足面接触
+
+- `problem_id`：`problem.force_control_manipulation.crocoddyl_wrench_cone_vs_friction_cop_880`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl 全身操作中 contact wrench cone 与足部旋转的配置选择**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者明确回答：单独 friction constraint 不够，单独 CoP 也不够，需要 contact wrench cone。原作者把 wrench cone 理解为同时包含摩擦、ZMP/CoP 边界以及 yaw torque 边界，维护者确认正确。使用 wrench cone 时应移除单独的 friction cone 或 CoP cost；旧示例未集成它是因为示例早于该功能。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #880：维护者评论 718918420/718918724 给出结论；评论 719454648 确认作者理解并说明 cost 组合；作者 719600191 表示解释清楚
+- 原帖/精确回复：[Crocoddyl 全身操作中 contact wrench cone 与足部旋转的配置选择](https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-719454648)
+- 平台/作者：GitHub Issues / ddliu365
+- 关键术语：接触力矩锥（contact wrench cone）；摩擦锥（friction cone）；压力中心（center of pressure, CoP）；偏航力矩（yaw torque）
+- 环境：Crocoddyl whole_body_manipulation 示例，线程时间为 2020-10 至 2021-02；未给 Crocoddyl 版本或机器人型号。
+- 症状：用户无法判断摩擦锥、CoP/ZMP 和 contact wrench cone 三类 cost 在高动态全身操作中的组合关系。；脚板带偏航角时，用户不清楚 wrench cone rotation matrix 如何定义。
+- 诊断：按接触模型需要分别检查切向摩擦、CoP 支撑域与 yaw torque 边界，而不是只看到 friction cone 就认为有限足面稳定性完整。；核对 wrench cone 构造函数第一个旋转参数所使用的参考系，并让它与实际脚面方向一致。
+- 原因：示例在 contact wrench cone 功能开发前编写，维护者说明这就是示例仍只用 friction cone 的原因，而不是表示 friction cone 已足够。
+- 处理过程：作者查阅 contact wrench cone 论文，并向维护者确认其是否同时覆盖 friction、ZMP/CoP 和 yaw torque。；作者提供双脚不对齐世界坐标的图片，追问旋转矩阵。
+- 有效处理：需要完整有限足面约束时使用 contact wrench cone，并移除单独的 friction cone 或 CoP cost，避免重复。；脚面不与世界坐标对齐时，通过 wrench cone constructor 的第一个参数指定其旋转。
+- 结果：作者回复解释清楚，并表示会在方案工作后更新示例；线程没有后续实现或数值结果。；旋转参数问题只有维护者的一句接口说明，没有作者复测。
+- 限制：线程没有给出 contact wrench cone 的具体 API 版本、矩阵方向约定或代码示例。；不能从足板图片直接推导旋转矩阵；必须回到目标版本构造函数和参考系定义。；该讨论来自 2020/2021 年，当前 Crocoddyl API 名称需要再次核对。
+- 安全提示：高动态实机操作中应同时监控摩擦裕度、CoP 支撑域和 yaw torque；约束参考系错误可能产生看似可行但不可执行的接触力矩。
+- 图片分析：评论 722446675 的图片已核验：左侧是双脚脚板照片，右侧示意图标注 Left foot、Right foot、support polygon、support polygon with margin 和 Δx_zmp，双脚明显不平行；图片支持“脚面不与同一世界方向对齐”的提问，但没有坐标轴或矩阵定义，不能用于推导旋转参数。
+- 独立核验引用：[maintainer_confirmation · 维护者明确说明 friction constraint 和 CoP 单独都不够，需要 contact wrench cone](https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-718918420)；[maintainer_confirmation · 维护者确认作者对 wrench cone 的理解，并要求移除单独 friction cone 或 CoP cost](https://github.com/loco-3d/crocoddyl/issues/880#issuecomment-719454648)
+- 适用边界：适用于有限足面 whole-body manipulation 的接触稳定性建模；当前 Crocoddyl API 和约束维度需按目标版本核对。
+
+### Pinocchio 阻抗控制的末端 wrench 与 LOCAL Jacobian 坐标系对齐
+
+- `problem_id`：`problem.force_control_manipulation.pinocchio_end_effector_wrench_frame_1779`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 阻抗控制中的末端 wrench 必须与 LOCAL Jacobian 使用同一坐标系**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：getFrameJacobian(..., LOCAL) 已考虑 frame 相对 parent joint 的 placement，并把 Jacobian 表达在末端 frame。wrench 若已在同一 LOCAL frame，无需变换；若按原回复的特定约定，它表达在世界原点且轴与世界坐标对齐，可用 data.oMf\[frame_id\].actInv(wrench) 转到末端 LOCAL。原作者确认该回答足够。对于不同作用点或其他库的 wrench 约定，必须重新核对，不能把这一行代码当作无条件通用公式。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1779 评论 1290530047 解释 LOCAL Jacobian 与 frame placement；评论 1290556806 给出 wrench 变换；评论 1290559993 原作者确认
+- 原帖/精确回复：[Pinocchio 阻抗控制中的末端 wrench 必须与 LOCAL Jacobian 使用同一坐标系](https://github.com/stack-of-tasks/pinocchio/issues/1779#issuecomment-1290556806)
+- 平台/作者：GitHub Issues / Betancourt20
+- 关键术语：阻抗控制（impedance control）；力旋量（wrench）；末端执行器（end effector）；局部坐标系（local frame）；雅可比转置映射（Jacobian-transpose mapping）
+- 环境：Kinova Jaco、Pinocchio Python；原帖未给 OS、Pinocchio 版本、URDF commit 或控制周期。
+- 症状：机械臂会运动，但方向/行为与机器人文档描述不一致；原作者怀疑 force/wrench 位于错误 frame。
+- 诊断：确认 getFrameJacobian 的 reference frame，并显式记录 wrench 的表达坐标系和作用点。；不要重复应用 frame-to-parent 偏置；LOCAL Jacobian 已把 frame placement 纳入计算。
+- 原因：原实现把 LOCAL Jacobian 与未明确表达 frame 的 wrench 组合，坐标约定没有对齐。
+- 处理过程：原作者曾按 MATLAB Robotics System Toolbox 示例尝试 frame 变换，但没有成功。；维护者先澄清 frame placement/Jacobian 语义，再按 wrench 已在 LOCAL 或位于世界原点且 world-aligned 两种情况给出处理。
+- 有效处理：wrench 已表达在末端 LOCAL frame 时不变换；若按原线程限定，wrench 位于世界原点且轴与世界坐标对齐，则用 data.oMf\[frame_id\].actInv(wrench) 转到该 frame 的 LOCAL 表达。
+- 结果：原作者回复该解释完全足够并同意关闭 Issue。
+- 限制：本线程只覆盖维护者明确描述的 wrench 表达和作用点约定；其他作用点、传感器坐标系或库的 wrench action/dual-action 约定不能直接照抄。；线程没有发布修正后的轨迹、力矩曲线或实机稳定性结果。；回复中的变换应与目标 Pinocchio 版本的 Force/SE3 API 约定再次核对。
+- 安全提示：在实机启用阻抗/外力控制前，用小幅静态 wrench 检查关节力矩符号、frame 和限幅，并配置急停；错误 frame 可直接反转期望力方向。
+- 独立核验引用：[maintainer_confirmation · 维护者说明 LOCAL Jacobian 已纳入 frame placement 并表达在 frame LOCAL](https://github.com/stack-of-tasks/pinocchio/issues/1779#issuecomment-1290530047)；[issue · 原作者确认该回答完全足够](https://github.com/stack-of-tasks/pinocchio/issues/1779#issuecomment-1290559993)
+- 适用边界：适用于 Pinocchio Python 中末端 frame LOCAL Jacobian，以及原回复明确描述的世界原点/world-aligned wrench；不同作用点和 API 版本需验证。
+
 ## 电机、减速器、温升与磨损 (`hardware_actuator_thermal`)
 
 ### G1 双臂前举后手臂过热下线并带倒右腿，优先怎样止损和定位？
@@ -2985,6 +4926,146 @@
 - 安全提示：实机力矩与加速度预测前应确认 rotor inertia、gear ratio、armature 的单位和折算位置；重复折算会放大惯性，漏折算会低估执行器负担。
 - 独立核验引用：[maintainer_confirmation · 维护者给出 computeAllTerms、对角更新和 Cholesky 路径](https://github.com/stack-of-tasks/pinocchio/issues/671#issuecomment-553836029)；[issue · 用户报告自定义 ABA 对 Eigen LLT 的 20–25% 性能差异及 nq/nv](https://github.com/stack-of-tasks/pinocchio/issues/671#issuecomment-553882755)；[maintainer_confirmation · 维护者警告 preview API 可能变化且仍可能有 bug](https://github.com/stack-of-tasks/pinocchio/issues/671#issuecomment-888498268)；[maintainer_confirmation · 维护者最终说明已在 pinocchio-3x 完成](https://github.com/stack-of-tasks/pinocchio/issues/671#issuecomment-1117049845)
 - 适用边界：性能数字只对应用户的 nq=37、nv=32 模型和 Eigen LLT；Pinocchio 3.x 的具体 API/版本必须在本地文档与源码核对。
+
+### Franka JointVelocityAction 的版本化增益配置
+
+- `problem_id`：`problem.hardware_actuator_thermal.franka_joint_velocity_action_2807`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Franka JointVelocityAction 的可用配置依赖 Isaac Lab 版本与执行器参数**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：一位用户在 IsaacLab 1.4.1、IsaacSim 4.2.0 的 PPO reach 任务中使用 stiffness=0、damping=50、effort_limit=1e9，并把 JointVelocityAction 设为 scale=1、use_default_offset=True；他报告可以直接发送速度命令，并建议过快时限制 joint velocity。原作者的 2.1.0/4.5.0 环境没有复测这套配置，维护者也未确认它是框架通用解法；尤其 1e9 仅可视为仿真 workaround，绝不能用于实机限幅。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2807 社区结果 3018405585 与精确配置 3026762388
+- 原帖/精确回复：[Franka JointVelocityAction 的可用配置依赖 Isaac Lab 版本与执行器参数](https://github.com/isaac-sim/IsaacLab/issues/2807#issuecomment-3026762388)
+- 平台/作者：GitHub Issues / EntangledQuantum
+- 关键术语：关节速度动作（joint velocity action）；隐式执行器（implicit actuator）；重力补偿（gravity compensation）；力矩上限（effort limit）
+- 环境：问题环境：Isaac Lab 2.1.0 commit 3d6f55b、Isaac Sim 4.5.0、Ubuntu 24.04.2、NVIDIA A10。；workaround 环境：IsaacLab 1.4.1、IsaacSim 4.2.0、PPO reach task；硬件细节未给。
+- 症状：零或非零速度命令下，Franka 关节不稳定且不能按期望跟踪速度。
+- 诊断：先记录 Isaac Lab/Isaac Sim 与 robot asset 精确版本，避免跨版本直接复制 actuator 配置。；检查 velocity action 下 implicit actuator 的 stiffness、damping、effort limit 和 joint velocity limit。
+- 原因：原帖作者认为 position target 与重力补偿/增益设置共同导致异常；线程没有维护者确认这一因果。
+- 处理过程：社区用户在旧版本中使用 stiffness=0、damping=50、effort_limit=1e9、JointVelocityAction scale=1，并建议必要时限制 joint velocity。
+- 有效处理：该用户报告用上述配置完成 PPO reach 训练并可直接发送速度命令。
+- 结果：社区用户环境中得到可用结果；原作者的 2.1.0/4.5.0 环境没有复测闭环。
+- 限制：effort_limit=1e9 是仿真配置，不是实机安全参数。；旧版本的配置不能视为 Isaac Lab 2.1/Isaac Sim 4.5 或 5.0 的通用答案。；视频未用于本卡结论，结果只采用评论中的文字报告。
+- 安全提示：禁止把 1e9 effort limit 迁移到实机；实机应使用厂家力矩/速度限制、急停和逐级增益测试。
+- 独立核验引用：[issue · 同一用户用文字报告 PPO reach 的速度命令控制结果；本卡不依赖视频](https://github.com/isaac-sim/IsaacLab/issues/2807#issuecomment-3018405585)
+- 适用边界：精确对应 IsaacLab 1.4.1/IsaacSim 4.2.0 的仿真 PPO reach；其他版本和实机必须重新验证。
+
+### ros2_control 控制器同时激活的资源冲突早失败
+
+- `problem_id`：`problem.hardware_actuator_thermal.ros2_control_activation_conflict_2758`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 同时激活资源冲突控制器应在 mode switch 前失败**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：使用包含合并 PR #2760 的版本。该修复在实际 mode switch 前计算 deactivation 将释放的接口和 activation 将占用的接口；若接口当前仍被其他 controller claim，或本次 activation list 中重复占用，就直接返回 ERROR，不再进入会误停原接口的失败清理。PR 初版经原作者测试仍失败，修订后维护者跑过 UR tests，原作者确认 regression 修复并批准。硬件 prepare_switch 仍应保留自身互斥模式校验，但不应再承担 controller_manager 的资源所有权漏洞。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #2758 维护者确认 3462221412；PR #2760 修订后作者复测 3479240549；merge f8903b3
+- 原帖/精确回复：[ros2_control 同时激活资源冲突控制器应在 mode switch 前失败](https://github.com/ros-controls/ros2_control/issues/2758#issuecomment-3471230616)
+- 平台/作者：GitHub Issues / urfeex
+- 关键术语：命令接口（command interface）；资源冲突（resource conflict）；命令模式切换（command mode switch）；提前失败（fail early）
+- 环境：ros2_control 回归位于 PR #2669 之后；作者日志为 UR5e position/velocity modes；问题日期 2025-10；精确 ROS 2 发行版未给。
+- 症状：第二个 position controller 激活失败后，perform_command_mode_switch 收到停止 position interfaces；硬件 position_control_active 被清除，随后可能错误允许 velocity controller。
+- 诊断：构造两个控制器同时 claim 同一 command interface 的严格切换测试。；确认冲突是否在 non-realtime activation check 阶段返回，而不是进入 hardware perform_command_mode_switch 后才失败。；失败后断言原 active controller 和硬件 mode flag 保持不变。
+- 原因：controller_manager 没有在同时 activation list 中提前检测 future command-interface 冲突，失败清理路径又执行了接口停止。
+- 处理过程：作者临时在 hardware prepare_switch 中显式拒绝冲突。；PR #2760 增加 current/future claimed interface 检查、失败早返回和控制器冲突测试；根据作者初测失败继续修订并跑 UR 测试。
+- 有效处理：采用已合并 PR #2760：在激活前同时考虑 deactivation 释放和 activation 未来占用，已被占用或本批次重复占用时直接返回 ERROR，不继续错误 mode switch。
+- 结果：原作者在修订版 PR 上确认 regression 已修复；两位维护者批准，PR 合并。
+- 限制：目标发行版是否包含 merge commit f8903b3 需核对。；修复针对 command interface 资源冲突，不替代硬件自身 position/velocity 兼容性校验。
+- 安全提示：模式切换回归测试必须验证失败时旧控制器仍保持 active、硬件模式标志不变，并在实机使用低速、急停和隔离区。
+- 独立核验引用：[pull_request · 已合并 PR 加入冲突预检查、早返回和双 controller 同接口回归测试；原作者复测通过](https://github.com/ros-controls/ros2_control/pull/2760)
+- 适用边界：适用于包含 ros-controls/ros2_control PR #2760/merge commit f8903b3 的 controller_manager；发行版包需核对。
+
+### ImplicitActuator 的 USD 力矩上限回退
+
+- `problem_id`：`problem.hardware_actuator_thermal_power.isaaclab_implicit_actuator_usd_effort_limit_2054`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 隐式执行器未配置力矩上限时曾错误回退到 1e9**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：使用包含 PR #2098 的版本，并核对 actuator cfg、USD drive max_effort、asset.data.joint_effort_limits 与 PhysX 实际值。该 PR 修正 implicit/explicit 判断：implicit actuator 未显式给 limit 时继承 USD joint drive 的 max_effort；1e9 默认只保留给 explicit actuator 的 simulation effort limit。即使升级后也应显式审计 USD 数值，不能把继承行为直接视为实机安全配置。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2054 复现 2721483228、维护者修复 2737536308；PR #2098
+- 原帖/精确回复：[Isaac Lab 隐式执行器未配置力矩上限时曾错误回退到 1e9](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2737536308)
+- 平台/作者：GitHub Issues / Hellod035
+- 关键术语：隐式执行器（implicit actuator）；力矩上限（effort limit）；仿真求解器上限（simulation solver limit）；关节 USD 驱动（USD joint drive）
+- 环境：Isaac Sim 4.5、Ubuntu 22.04、RTX 4090D、CUDA 12.4、driver 550.144.03、IsaacLab latest（2025-03）。；复现任务包括 Isaac-Velocity-Flat-G1-v0 与 Legged Lab g1_flat。
+- 症状：USD asset 显示正确 max force，但 asset.data.joint_effort_limits 为 1e9。
+- 诊断：同时检查 actuator cfg 的 effort_limit/effort_limit_sim、USD drive max_effort、asset.data.joint_effort_limits 和 PhysX 实际上限。；区分 implicit actuator 与 explicit actuator 的默认行为。
+- 原因：PR #2098 的源码说明：默认逻辑错误地通过 ActuatorBase 类属性判断 implicit/explicit，导致 implicit actuator 也进入 explicit actuator 的 1e9 分支。
+- 处理过程：作者分别在官方 G1 与 Legged Lab G1 配置中注释 limit 后复现。；维护者修改默认判断并扩展 limits 单元测试。
+- 有效处理：升级到包含 PR #2098 / merge commit d7da02d 的版本；implicit actuator 未配置 limit 时继承 USD max_effort，explicit actuator 的 solver effort 默认仍可保持 1e9。
+- 结果：Issue 随 PR #2098 合并关闭；测试覆盖 implicit actuator 使用 USD limit、explicit actuator 1e9 默认和 actuator/simulation limit 分离。
+- 限制：修复不等于推荐省略所有限制；不同 asset 的 USD max_effort 仍必须审计。；原帖截图未参与结论，结论来自文字复现、源码 diff 与测试。
+- 安全提示：实机 WBC 不得把仿真 1e9 默认当作硬件允许力矩；部署前应显式设置厂家限制并验证最终下发裁剪。
+- 图片分析：原帖 699×259 截图已在前轮读取：Isaac Sim 属性面板 Drive > Angular 显示 Type=force、Max Force=88.0、Target Position=0.0、Target Velocity=0.0、Damping=0.0、Stiffness=0.0；Python 侧 1e9 来自正文而非截图。
+- 独立核验引用：[issue · 原作者在 Isaac Lab 与 Legged Lab 的 G1 任务中注释显式上限后均复现 1e9](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2721483228)；[independent_reproduction · 另一使用者独立报告速度上限能读、力矩上限没有从 Isaac Sim 读取](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2723958505)；[maintainer_confirmation · 维护者确认 PR #2098 为修复并扩展 effort/velocity limit 检查](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2737536308)；[pull_request · 合并 PR 修复 implicit/explicit 默认判断并加入 effort/velocity limits 测试](https://github.com/isaac-sim/IsaacLab/pull/2098)；[source_code · PR #2098 合并提交](https://github.com/isaac-sim/IsaacLab/commit/d7da02da62b46153da3dc3e54585eea078e0d9cb)
+- 适用边界：适用于 2025-03 修复前后 Isaac Lab implicit/explicit actuator limit 迁移；具体 USD 与 cfg 仍需逐 asset 核对。
+
+### GO1 ActuatorNet 的训练与调用频率匹配
+
+- `problem_id`：`problem.hardware_actuator_thermal.go1_actuator_net_rate_2963`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：GO1 ActuatorNet 训练采样率与仿真调用率不一致仍未闭环**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突。
+- 解答状态：`unresolved`
+- 候选解答：帖子只验证了调用事实，尚未给出修复结论。作者在 ActuatorNetMLP.compute 和 environment step 中加日志，在官方 GO1 rough task 中观察到网络每个 physics step 调用，并报告每个 policy step 共五次。团队没有回答应该每四步调用一次、保持输出，还是用 200Hz 数据重训，也没有实机结果。因此可复用动作是先对目标版本做同样的调用计数并记录 model training dt；具体频率策略仍需在仿真和实机上实际验证。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2963 作者 instrumentation 3089324868、官方任务命令 3131807994、团队转 Discussion 3193574728
+- 原帖/精确回复：[GO1 ActuatorNet 训练采样率与仿真调用率不一致仍未闭环](https://github.com/isaac-sim/IsaacLab/issues/2963#issuecomment-3089324868)
+- 平台/作者：GitHub Issues / ammousa
+- 关键术语：执行器网络（actuator network）；仿真步（simulation step）；降采样系数（decimation）；采样率不匹配（sampling-rate mismatch）
+- 环境：Isaac Lab 官方 managed environment：Isaac-Velocity-Rough-Unitree-Go1-v0；帖子未给精确 commit、Isaac Sim 版本或硬件。；作者报告 policy rate 50Hz、decimation=4、actuator compute 约 200Hz。
+- 症状：instrumentation 显示 actuator network 在每个 sim step 推理，而不是只在 policy action 更新时推理。
+- 诊断：在 actuator compute 与 environment physics stepping loop 同时记录调用计数和 sim-step counter。；把 policy period、physics dt、decimation、actuator model 训练数据 dt 并列记录。
+- 原因：作者认为 ActuatorNetMLP 作为 explicit actuator 在每个 physics step 计算，与 50Hz 训练数据时间尺度不一致；线程没有维护者确认其物理影响。
+- 处理过程：作者在 actuator_net.py 与 manager_based_rl_env.py 加 instrumentation，并用官方 GO1 rough locomotion 任务运行。
+- 结果：确认了该任务中的调用频率；没有确认降低调用频率、保持输出或以 200Hz 数据重训哪一种方案正确。；没有帖子内的真实 GO1 部署验证。
+- 限制：调用次数结论依赖作者当时版本与 post-step/reset 路径；升级后必须重新 instrument。；日志截图未参与结论，卡片只采用作者贴出的 diff、命令和文字计数。；不能从该线程推断当前 Isaac Lab GO1 policy 必然存在 sim-to-real gap。
+- 安全提示：在未验证 actuator model 时间尺度前，不应直接把策略用于实机；先在低增益、限幅、保护绳与急停条件下做 system identification 和 rollout 对照。
+- 独立核验引用：[issue · 团队仅转入 Discussions 并建议升级，没有给调用率或重训方案的结论](https://github.com/isaac-sim/IsaacLab/issues/2963#issuecomment-3193574728)
+- 适用边界：精确对应帖子当时的 managed GO1 rough locomotion task；其他版本和 actuator model 必须重新计数。
+
+### 执行器速度能力与求解器硬限幅分离
+
+- `problem_id`：`problem.hardware_actuator_thermal_power.88761dd27f8b57d1`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：执行器速度能力与 PhysX 硬速度上限必须分开配置**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：在 #1384 对应的 0.34.0 变更链中，velocity_limit 用于 explicit actuator/DCMotor 的模型内部 torque-speed 或 no-load speed 语义；velocity_limit_sim 才是写入 root_physx_view/PhysX 的 joint hard clamp。PR #1654 建立这两个字段，PR #1873 又明确 implicit actuator 不应继续把旧 velocity_limit 自动传播到 solver，要限 PhysX 速度时显式配置 velocity_limit_sim。迁移时应同时打印两层值并回归训练/轨迹，不能把厂家 no-load speed 机械地当 solver hard clamp。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #1384 讨论；PR #1509、#1654、#1873
+- 原帖/精确回复：[执行器速度能力与 PhysX 硬速度上限必须分开配置](https://github.com/isaac-sim/IsaacLab/issues/1384#issuecomment-2532105463)
+- 平台/作者：GitHub Issues / diegoaldarondo-fauna
+- 关键术语：空载转速（no-load speed）；执行器模型上限（actuator-model limit）；求解器硬限幅（solver hard clamp）；仿真速度上限（velocity_limit_sim）
+- 环境：原 Issue commit b9a49ca、Isaac Sim 4.0.0–4.2.0、Ubuntu 22.04、RTX 4090、CUDA 12.1。；语义分离在 Isaac Lab extension 0.34.0 / PR #1654 中引入，PR #1873 于 2025-03 进一步回退 implicit actuator 的旧字段传播。
+- 症状：早期 explicit actuator 的 velocity_limit 不会写入 root_physx_view，imported joint limit 可静默压过 DCMotor 设置。；把同一个 velocity_limit 同时当 no-load speed 和 solver hard clamp 后，社区用户报告 quadruped training 被破坏或版本间行为变化。
+- 诊断：分别打印 actuator.velocity_limit、actuator.velocity_limit_sim 与 root_physx_view.get_dof_max_velocities。；确认 DCMotor torque-speed cutoff 和 physics solver maxJointVelocity 是否需要不同数值。；升级跨越 #1509/#1654/#1873 时做训练曲线与 joint velocity distribution 回归。
+- 原因：同一个 velocity_limit 字段曾承担 actuator no-load speed 与 solver hard clamp 两种不同物理语义。
+- 处理过程：PR #1509 先把 velocity_limit 写入 PhysX 并加测试。；评审指出外载下 motor 可进入 torque-speed 另一象限，no-load speed 不应直接做 joint hard clamp。；PR #1654 增加 *_limit_sim；PR #1873 对 implicit actuator 恢复显式 *_limit_sim 的要求。
+- 有效处理：在该版本变更链中，用 velocity_limit 表达 explicit actuator/DCMotor 模型内部速度能力，用 velocity_limit_sim 表达传播到 PhysX 的硬速度上限；implicit actuator 要设置 solver limit 时显式使用 velocity_limit_sim。
+- 结果：#1384 关闭；#1654 和 #1873 均合并。PR #1654 评论中的 quadruped 用户报告分离后可把 actuator limit 恢复为正常值。
+- 限制：字段语义继续演进，使用时必须以目标 Isaac Lab 版本文档和源码为准，不能无版本复制。；tight solver limits 可能引入仿真伪影，数值必须通过 trajectory/contact 回归而非只看配置。；不依赖 PR 中训练曲线图片。
+- 安全提示：实机速度保护仍应在硬件驱动/安全控制器独立实现；仿真 solver clamp 不是实机 safety limit。
+- 独立核验引用：[pull_request · 合并 PR 4c4377d 引入 velocity_limit_sim/effort_limit_sim，分离 actuator 与 solver limits](https://github.com/isaac-sim/IsaacLab/pull/1654)；[pull_request · 合并 PR 3d836ab 回退 implicit actuator 对旧 velocity_limit 的自动传播并要求显式 *_limit_sim](https://github.com/isaac-sim/IsaacLab/pull/1873)
+- 适用边界：适用于 Isaac Lab 0.34.0 附近的 actuator limit 迁移；更晚版本必须按同名字段的目标版本实现复核。
 
 ## 部署、固件与 SDK (`deployment_firmware_sdk`)
 
@@ -3243,6 +5324,61 @@
 - 采集完整性：`partial_visible`；可见回复 5；展开 0 次；回复深度 1/10；停止原因：no_growth_after_visible_scroll
 - 适用边界：适用于评审人形演示视频的证据强度。
 
+### Crocoddyl 软着陆代价需区分通用 formulation 与当时 API 能力
+
+- `problem_id`：`problem.safety_fall_recovery.crocoddyl_soft_landing_velocity_acceleration_682`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Crocoddyl 软着陆中加速度与冲击速度代价的 API 边界**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突；尚未形成可核对的复现记录。
+- 解答状态：`conflicting`
+- 候选解答：线程给出的可执行旧 API 路径是：在 contact dynamics 中用 weighted quadratic state cost 高权重惩罚 torso/joint velocities，或在 impulse dynamics 中使用当时的 crocoddyl::CostModelImpulseCoM 惩罚 CoM impact velocity。另一位维护者同时纠正，formulation 本身并不禁止加速度代价，限制可能只是当时 API。由于没有版本锁定和复测，不能写成“加速度绝对不能惩罚”，应在目标版本核对现成 residual/cost 或自行派生模型。
+- 证据状态：`issue_candidate`
+- 来源定位：Crocoddyl #682：维护者评论 583300715 建议 velocity/impact velocity；583484115 给出 CostModelImpulseCoM；成员评论 585627084 说明 formulation 可罚 acceleration、可能仅 API 受限
+- 原帖/精确回复：[Crocoddyl 软着陆中加速度与冲击速度代价的 API 边界](https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-585627084)
+- 平台/作者：GitHub Issues / ddliu365
+- 关键术语：软着陆（soft landing）；冲击速度（impact velocity）；冲量动力学（impulse dynamics）；加速度代价（acceleration cost）
+- 环境：Crocoddyl devel 分支，线程时间为 2020-02；未给 commit、Python/C++ 版本或机器人型号。
+- 症状：用户观察 jumping example 落地不够柔和，希望增加最小化 torso acceleration 的 cost。
+- 诊断：区分 formulation 的表达能力与目标版本现成 API：前者允许自定义加速度代价，后者当时提供的是速度/impact velocity 路径。；若使用 impulse dynamics，核对 CostModelImpulseCoM 只针对 CoM impact velocity，而不是完整 torso/whole-body impact velocity。
+- 原因：原 jumping example 没有针对作者所需软着陆指标配置足够的落地速度/冲击代价。
+- 处理过程：维护者建议 contact dynamics + high velocity penalization，使用 weighted quadratic state cost 高权重惩罚 torso 和 joint velocities。；维护者说明当时 impulse dynamics 可用 crocoddyl::CostModelImpulseCoM。；另一位维护者指出加速度在一般 formulation 中也可以惩罚，可能只是当时 API 没有现成接口。
+- 结果：作者表示会继续研究，但没有发布实现或软着陆复测结果。
+- 限制：线程中的“不能惩罚加速度”被另一位维护者限定为可能只是当前 API 限制，结论存在表述冲突。；API 名称和能力来自 2020 年 devel 分支，当前版本必须查源码/文档。；线程后半段转入一个无关的 quadrupedal_gaits visualization AttributeError；本卡未把该子话题混入软着陆结论。
+- 安全提示：实机落地调参必须同时约束关节速度、接触冲量、力矩和姿态，并从低高度开始；单一代价项不构成冲击安全保证。
+- 独立核验引用：[maintainer_confirmation · 维护者给出 contact dynamics + velocity penalty 与 impulse dynamics 两条路径](https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-583300715)；[issue · 维护者给出当时 API 名称 crocoddyl::CostModelImpulseCoM](https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-583484115)；[conflict · 另一位维护者说明 formulation 可以惩罚加速度，可能只是现有 API 限制](https://github.com/loco-3d/crocoddyl/issues/682#issuecomment-585627084)
+- 适用边界：仅作为 2020 年 Crocoddyl devel 的设计线索；当前 API、机器人落地模型和 impact/contact dynamics 必须实际验证。
+
+### Isaac Lab Unitree G1 被动倒下与平衡策略缺失
+
+- `problem_id`：`problem.safety_fall_recovery.isaaclab_g1_requires_balance_policy_2654`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Unitree G1 仅加载 articulation 配置不会自动保持站立平衡**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：按 IsaacLab 团队回复，没有 motion 时倒下是预期行为，G1_CFG 不是自动站立控制器。需要接入 locomotion policy 或其他闭环平衡控制；团队建议从 H1 humanoid policy deployment 教程模板开始。原线程没有给 G1 成品策略，因此模板适配与验收仍需自行完成。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2654 评论 2963360700 与 2967145219
+- 原帖/精确回复：[Unitree G1 仅加载 articulation 配置不会自动保持站立平衡](https://github.com/isaac-sim/IsaacLab/issues/2654#issuecomment-2967145219)
+- 平台/作者：GitHub Issues / FranRFH
+- 关键术语：运动策略（locomotion policy）；平衡控制器（balance controller）；关节体配置（articulation configuration）；被动倒落（passive falling）
+- 环境：Isaac Lab 的 G1_CFG、create_scene.py 与 bipeds.py；原帖未给 Isaac Lab/Isaac Sim 精确版本。
+- 症状：G1 在场景中无法自行保持站立，bipeds.py 中三台 Unitree 也会倒下。
+- 诊断：区分资产/关节配置是否只定义动力学模型，场景中是否实际运行 locomotion 或 balance policy。
+- 原因：团队说明没有运动/平衡策略时倒下属于预期行为。
+- 处理过程：作者用教程场景与 bipeds.py 复现；团队建议从 H1 humanoid policy deployment 模板加入策略。
+- 有效处理：为 G1 接入 locomotion policy 或其他闭环平衡控制器，而不是只加载 G1_CFG。
+- 结果：团队两次确认该行为符合预期，当前不作为模型 bug 修复。
+- 限制：线程没有提供可直接用于 G1 的策略、训练配置或站立验收结果；H1 模板只是起点。
+- 安全提示：实机调试站立策略时应使用吊架/保护绳、限力矩和急停，不能因仿真资产能加载就直接上机。
+- 独立核验引用：[maintainer_confirmation · 团队首次说明无 motion 时倒下是预期行为](https://github.com/isaac-sim/IsaacLab/issues/2654#issuecomment-2963360700)
+- 适用边界：适用于只加载 G1 articulation/asset 而没有平衡策略的场景；具体版本和策略实现需另行核对。
+
 ## 传感器与感知接口 (`sensing_and_perception`)
 
 ### 模仿学习策略出现规律性‘抽搐’，怎样判断是控制问题还是采集时间戳问题？
@@ -3302,6 +5438,62 @@
 - 采集完整性：`partial_visible`；可见回复 3；展开 0 次；回复深度 1/10；停止原因：no_growth_after_visible_scroll
 - 适用边界：适用于高吞吐 sampling-based MPC 的工具链取舍，非直接人形结论。
 
+### Isaac Lab 重置 IMU 历史缓存
+
+- `problem_id`：`problem.sensing_and_perception.isaaclab_imu_reset_history_4305`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 环境重置后 IMU 首帧加速度尖峰**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：该线程的最小复现、源码定位与合并 PR #4306 一致：IMU 用相邻速度做数值微分（numerical differentiation），旧 `reset()` 只清输出，没有清前一帧线速度与角速度缓存，因而首帧拿 reset 前速度参与微分。修复是在 `imu.py` 的 `reset(env_ids)` 中同时把 `_prev_lin_vel_w\[env_ids\]` 和 `_prev_ang_vel_w\[env_ids\]` 置零。原作者确认修复后首帧 `lin_acc_b` 为重力、`ang_acc_b` 为零。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #4305 原帖复现与作者确认 3911771595；合并 PR #4306
+- 原帖/精确回复：[Isaac Lab 环境重置后 IMU 首帧加速度尖峰](https://github.com/isaac-sim/IsaacLab/issues/4305#issuecomment-3911771595)
+- 平台/作者：GitHub Issues / DreaverZhao
+- 关键术语：惯性测量单元（Inertial Measurement Unit, IMU）；数值微分（numerical differentiation）；历史缓存（history buffer）；环境重置（environment reset）
+- 环境：IsaacLab commit 244483ee、Isaac Sim 5.1.0、Ubuntu 22.04、RTX 4060Ti 16G、CUDA 12.9、driver 580.95.05；Quadcopter Direct、1 env、IMU update_period=0.005。
+- 症状：两次示例中，reset 前加速度为几十量级，reset 后首帧 z 分量分别约 325.6 和 262.9，下一帧恢复正常量级。
+- 诊断：检查 IMU 数值微分的历史速度缓存是否与环境、传感器一起按 env_ids 清零。
+- 原因：原帖与合并补丁共同确认：`reset()` 清了输出加速度，却没有清 `_prev_lin_vel_w` 和 `_prev_ang_vel_w`，首帧微分仍使用 reset 前速度。
+- 处理过程：PR #4306 在 IMU reset 中增加两行，按 env_ids 清零前一帧线速度和角速度缓存。
+- 有效处理：升级到包含 PR #4306、merge commit 85d85bd 的版本，或等价地在 IMU reset 中同步清零两个历史速度缓存。
+- 结果：PR 已合并；原作者确认修复后 reset 首帧 `lin_acc_b` 为重力、`ang_acc_b` 为零。
+- 限制：这里只核验 Isaac Lab 该版本的 IMU 实现，不把首帧结果外推为所有真实 IMU 驱动的重置语义。
+- 安全提示：如果首帧 IMU 参与真机保护或状态估计，应在目标驱动上额外核对 reset、时间戳与滤波器状态。
+- 独立核验引用：[pull_request · 已合并 PR 85d85bd：reset 同步清零 `_prev_lin_vel_w` 与 `_prev_ang_vel_w`](https://github.com/isaac-sim/IsaacLab/pull/4306)
+- 适用边界：适用于包含同一历史缓存实现的 Isaac Lab IMU；其他版本或真实传感器需核对自身 reset 语义。
+
+### 验证 Gazebo 动态生成后的 contact sensor 注册
+
+- `problem_id`：`problem.sensing_and_perception.gazebo_dynamic_contact_spawn_order_2223`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Gazebo 动态生成模型的 Contact sensor 插件顺序 workaround 并不通用**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突。
+- 解答状态：`conflicting`
+- 候选解答：不能当作通用修复。维护者确认执行顺序是关键机制：`UserCommands` 在 `PreUpdate` 创建实体，`Contact` 的 `EachNew` 必须在之后运行。原作者通过调换插件顺序解决了自己的场景；但后续用户给出相同顺序，仿真启动后再 spawn 仍失败。当前应把顺序调整当作待验证 workaround，同时逐次检查 topic、组件创建和数据新鲜度；线程没有最终修复。
+- 证据状态：`issue_candidate`
+- 来源定位：Gazebo #2223 原作者 workaround 1845594063、维护者机制说明 1850611180、后续反例 2821527232
+- 原帖/精确回复：[Gazebo 动态生成模型的 Contact sensor 插件顺序 workaround 并不通用](https://github.com/gazebosim/gz-sim/issues/2223#issuecomment-2821527232)
+- 平台/作者：GitHub Issues / yschulz
+- 关键术语：动态生成（dynamic spawn）；接触传感器（contact sensor）；更新前阶段（PreUpdate）；系统执行顺序（system execution order）
+- 环境：原帖标注 Ubuntu 22.04、Gazebo Harmonic；后续 Unitree 与 Gazebo Classic 迁移用户报告同类问题。
+- 症状：world 文件加载模型时有 contact topic；空 world 启动后经 `/world/test_world/create` 生成时没有。
+- 诊断：记录 `UserCommands::PreUpdate` 与 `Contact::PreUpdate` 的实际执行顺序，并检查 `EachNew` 是否在实体创建后才运行。
+- 原因：维护者复现并说明：服务生成走 `UserCommands::PreUpdate`；若 `Contact::PreUpdate` 的 `EachNew` 先执行，本轮看不到新实体。
+- 处理过程：原作者把 SDF 中 `UserCommands` 放在 `Contact` 前，原始场景不再复现；维护者解释这使实体先创建。；后续用户已经使用 `Physics, UserCommands, SceneBroadcaster, Contact...` 的顺序，仿真启动后再生成模型仍失败。
+- 有效处理：当前没有对所有动态生成场景都被确认的修复；插件顺序只能作为局部 workaround 试验，并必须检查 topic 和 contact data。
+- 结果：原作者场景得到缓解，但后续环境出现反例；维护者提出 Update/PostUpdate/ECM 方向，Issue 截至采集时仍 open。
+- 限制：不同 Gazebo 版本、system priority 配置和生成时刻可能改变结果；不能仅凭 SDF 标签顺序断言已修复。
+- 安全提示：接触 topic 是保护或状态切换输入时，应在每次 spawn 后设置显式存活与数据新鲜度检查。
+- 独立核验引用：[maintainer_confirmation · 维护者说明 UserCommands::PreUpdate 必须先于 Contact::PreUpdate](https://github.com/gazebosim/gz-sim/issues/2223#issuecomment-1850611180)
+- 适用边界：原 workaround 在原作者环境有效；对 Harmonic 及仿真启动后任意时刻 spawn 的模型必须逐环境验证。
+
 ## 复现、日志、评估与调试方法 (`reproducibility_and_debugging`)
 
 ### WBC/机器人项目要做到可查询和可复现，最小记录单位应是什么？
@@ -3332,6 +5524,117 @@
 - 图片分析：截图展示 Article 标题、TL;DR 和流程示意图；示意图只能说明文章结构，具体四类 artifact 需以正文为准。
 - 采集完整性：`partial_visible`；可见回复 0；展开 0 次；回复深度 0/10；停止原因：article_body_loaded_without_visible_replies
 - 适用边界：适用于建立 WBC 工程问题与复现 bundle 查询系统。
+
+### Isaac Lab 视觉训练的渲染非确定性边界
+
+- `problem_id`：`problem.reproducibility_and_debugging.isaaclab_vision_render_stochastic_3505`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 视觉训练固定 seed 仍可能受随机渲染管线影响**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：在该线程的 Isaac Sim 5.0/5.1 测试中，强制 PyTorch/cuDNN deterministic、设置 PYTHONHASHSEED/CUBLAS_WORKSPACE_CONFIG，以及 antialiasing OFF 或 FXAA 都没有恢复 RGB 任务可复现性。IsaacLab 团队成员随后明确说明当前 rendering pipeline 本质上具有随机性，暂时没有保证 rendered outputs 确定性的好方法。因此这些设置仍可排除其他随机源，但不能当作当前视觉管线的充分修复；评测应改为多次运行的分布和 camera observation 回归。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #3505 作者复测 3315924447/3326940823，双人 AA 复测 3330102174/3331426534，团队结论 3862666319
+- 原帖/精确回复：[Isaac Lab 视觉训练固定 seed 仍可能受随机渲染管线影响](https://github.com/isaac-sim/IsaacLab/issues/3505#issuecomment-3862666319)
+- 平台/作者：GitHub Issues / twkang43
+- 关键术语：可复现性（reproducibility）；确定性算法（deterministic algorithms）；随机渲染管线（stochastic rendering pipeline）；抗锯齿（anti-aliasing, AA/FXAA）
+- 环境：初始：Isaac Sim 4.5、IsaacLab commit f20d74c、Ubuntu 22.04、RTX A6000、CUDA 12.9、driver 575.64.03。；复测：Isaac Sim 5.0.0、IsaacLab commit 90dda53；另有用户报告 Sim 5.1。
+- 症状：同 seed 的 state-based 任务训练曲线一致，而 RGB 与 RGB-ResNet18 任务多次运行明显分叉。
+- 诊断：先用同任务的 state observation 与 RGB observation 做 A/B 对照。；分别验证 PyTorch/cuDNN 确定性、CUBLAS/PYTHONHASHSEED 与渲染 anti-aliasing，而不是把它们混成一个开关。
+- 原因：IsaacLab 团队成员说明当前 rendering pipeline 具有随机性，不能保证 rendered outputs 确定。
+- 处理过程：升级 Isaac Sim 5.0/IsaacLab 新提交。；开启 torch.use_deterministic_algorithms、禁用 cudnn benchmark、启用 cudnn deterministic、设置 PYTHONHASHSEED 与 CUBLAS_WORKSPACE_CONFIG。；分别尝试 antialiasing OFF 与 FXAA。
+- 结果：上述尝试在帖子所列环境中都没有恢复视觉训练的可复现性；团队未给当前管线的修复。
+- 限制：该结论针对帖子测试的 Isaac Cartpole RGB 任务和 4.5/5.0/5.1 时期管线，不能外推未来简化 RTX 模式或 Newton tiled camera。；训练曲线图片未用于判定；卡片只采用多位用户和团队的文字结果。
+- 安全提示：视觉策略回归应保存 camera observation 校验样本和多 seed 分布，不要把单次训练差异直接归因于算法改动。
+- 独立核验引用：[maintainer_confirmation · 团队成员说明当前渲染管线随机，暂不能保证 rendered outputs 确定](https://github.com/isaac-sim/IsaacLab/issues/3505#issuecomment-3862666319)
+- 适用边界：适用于帖子覆盖的 Isaac Sim 4.5、5.0、5.1 视觉训练管线；未来渲染模式需重新测试。
+
+### 隔离 Isaac Lab 环境与 PPO 的随机性
+
+- `problem_id`：`problem.reproducibility_and_debugging.isaaclab_env_vs_ppo_904`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 可复现性要区分环境初始化随机性与策略算法随机性**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：帖子中的可复用隔离法是：先通过 env.reset(seed=YOUR_SEED) 确认 seed 真正传入环境，再用 constant actions 或 seeded random actions 运行，不让 PPO 参与；累计环境 tensor 并对 observation 等结果做 hash。该用户在同一硬件上测到 2000 步连续仿真一致，因此把自己案例的剩余差异定位到 PPO 动作生成。此结果没有覆盖其他硬件或 rough terrain 的所有管线，适合作为诊断步骤而不是通用确定性保证。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #904 后续用户隔离实验 2917221442；rough terrain 未闭环报告 2893545806、2908551344
+- 原帖/精确回复：[Isaac Lab 可复现性要区分环境初始化随机性与策略算法随机性](https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2917221442)
+- 平台/作者：GitHub Issues / hojae-io
+- 关键术语：固定动作（constant actions）；带种子的随机动作（seeded random actions）；张量哈希（tensor hash）；策略采样（policy sampling）
+- 环境：原帖：Isaac Sim 2024.4.1、Ubuntu 22.04、RTX 3090、CUDA 11.2、driver 550；未给精确 IsaacLab commit。；维护者 PR #940 在同一进程做固定步数 observation/reward 一致性测试，并以 ANYmal rough locomotion 做三次训练对照。；后续用户只明确同一硬件连续运行和最多 2000 sim steps，未给完整版本矩阵。
+- 症状：同一 seed 的训练 reward curve 不重合。；rough terrain 即使 terrain seed 固定，仍有用户报告前几次迭代 observation/reward 略有差异并逐渐放大。
+- 诊断：在环境构造前设置 cfg seed，避免 terrain、PhysX 或内部 buffer 初始化先消耗随机数。；调用 env.reset(seed=YOUR_SEED) 后，先用 constant actions 或 seeded random actions 驱动环境。；累计 observation/reward 等环境 tensor 并做 hash，对比同硬件连续运行；只有环境一致后再检查 PPO action sampling。
+- 原因：维护者认为初始化阶段的 terrain generation、PhysX solver 和内部 buffer 等随机操作在旧流程中早于 seed。；后续用户的 2000 步隔离测试把其特定环境的剩余差异定位到 PPO 动作生成。
+- 处理过程：原作者把 seed 从环境创建后移到环境创建前。；PR #940 把 seed 设为环境构造器的首个操作，并增加 observation/reward 一致性测试。；后续用户用 env.reset(seed)、固定动作/seeded random actions 与 tensor hash 隔离环境和 PPO。
+- 有效处理：使用包含 PR #940 的版本，或确保环境 seed 在环境、terrain 与仿真对象创建前生效。；特定后续案例中，用 env.reset(seed=...) 修复 Hydra args.seed=None 导致 seed 未生效的问题。
+- 结果：原作者报告前移 seed 后多次 reward curve 精确重合；维护者测试在同一进程得到相同 observation/reward。；后续用户报告同硬件连续仿真 2000 步环境 tensor 一致，但其 PPO 动作生成仍不确定。；rough terrain 的另两位用户仍有未闭环差异。
+- 限制：PR 测试只证明同一进程/特定任务与版本，不保证跨硬件、跨 Isaac Sim 版本或 GPU scheduling 一致。；维护者三次训练图未用于本卡结论；只采用其文字说明与 PR 测试代码。；rough terrain 差异没有维护者闭环，不能声称设置 seed 即保证所有训练曲线重合。
+- 安全提示：可复现性结论应绑定硬件、driver、Isaac Sim/IsaacLab commit 与 task config；控制算法比较应报告多 seed 分布。
+- 独立核验引用：[issue · 另一 rough-terrain 环境仍报告差异，限定隔离实验的外推范围](https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2893545806)
+- 适用边界：适用于同硬件连续运行的环境/PPO 随机源隔离；跨硬件、视觉任务和 rough terrain 需要单独验证。
+
+### Isaac Lab 环境构造前设置随机种子
+
+- `problem_id`：`problem.reproducibility_and_debugging.isaaclab_seed_before_env_904`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 可复现性要区分环境初始化随机性与策略算法随机性**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：该线程确认旧流程在环境创建后才设置 seed，而 terrain generation、PhysX 初始化和内部 buffer 可能已经消耗随机数。合并 PR #940 把 cfg seed 放到环境构造器的最前面，并用固定步数测试得到相同 observation 与 reward；原作者也报告前移 seed 后重复训练曲线重合。应使用包含该 PR 的版本或保证 seed 早于环境、terrain 和仿真对象创建。这个修复只闭环了初始化顺序问题，不保证 rough terrain、跨硬件或整个 PPO 训练链都完全确定。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #904 原帖 Resolution；维护者解释 2320250794、测试 2333392825；PR #940
+- 原帖/精确回复：[Isaac Lab 可复现性要区分环境初始化随机性与策略算法随机性](https://github.com/isaac-sim/IsaacLab/issues/904#issuecomment-2333392825)
+- 平台/作者：GitHub Issues / hojae-io
+- 关键术语：随机种子（random seed）；环境构造（environment construction）；确定性（determinism）；观测与奖励（observations and rewards）
+- 环境：原帖：Isaac Sim 2024.4.1、Ubuntu 22.04、RTX 3090、CUDA 11.2、driver 550；未给精确 IsaacLab commit。；维护者 PR #940 在同一进程做固定步数 observation/reward 一致性测试，并以 ANYmal rough locomotion 做三次训练对照。；后续用户只明确同一硬件连续运行和最多 2000 sim steps，未给完整版本矩阵。
+- 症状：同一 seed 的训练 reward curve 不重合。；rough terrain 即使 terrain seed 固定，仍有用户报告前几次迭代 observation/reward 略有差异并逐渐放大。
+- 诊断：在环境构造前设置 cfg seed，避免 terrain、PhysX 或内部 buffer 初始化先消耗随机数。；调用 env.reset(seed=YOUR_SEED) 后，先用 constant actions 或 seeded random actions 驱动环境。；累计 observation/reward 等环境 tensor 并做 hash，对比同硬件连续运行；只有环境一致后再检查 PPO action sampling。
+- 原因：维护者认为初始化阶段的 terrain generation、PhysX solver 和内部 buffer 等随机操作在旧流程中早于 seed。；后续用户的 2000 步隔离测试把其特定环境的剩余差异定位到 PPO 动作生成。
+- 处理过程：原作者把 seed 从环境创建后移到环境创建前。；PR #940 把 seed 设为环境构造器的首个操作，并增加 observation/reward 一致性测试。；后续用户用 env.reset(seed)、固定动作/seeded random actions 与 tensor hash 隔离环境和 PPO。
+- 有效处理：使用包含 PR #940 的版本，或确保环境 seed 在环境、terrain 与仿真对象创建前生效。；特定后续案例中，用 env.reset(seed=...) 修复 Hydra args.seed=None 导致 seed 未生效的问题。
+- 结果：原作者报告前移 seed 后多次 reward curve 精确重合；维护者测试在同一进程得到相同 observation/reward。；后续用户报告同硬件连续仿真 2000 步环境 tensor 一致，但其 PPO 动作生成仍不确定。；rough terrain 的另两位用户仍有未闭环差异。
+- 限制：PR 测试只证明同一进程/特定任务与版本，不保证跨硬件、跨 Isaac Sim 版本或 GPU scheduling 一致。；维护者三次训练图未用于本卡结论；只采用其文字说明与 PR 测试代码。；rough terrain 差异没有维护者闭环，不能声称设置 seed 即保证所有训练曲线重合。
+- 安全提示：可复现性结论应绑定硬件、driver、Isaac Sim/IsaacLab commit 与 task config；控制算法比较应报告多 seed 分布。
+- 独立核验引用：[pull_request · 合并 PR ac71354c：环境构造开始即调用 seed，并增加同一进程 observation/reward 确定性测试](https://github.com/isaac-sim/IsaacLab/pull/940)
+- 适用边界：适用于缺少 PR #940、或 seed 仍晚于环境构造的 Isaac Lab 管线；精确确定性边界必须在同硬件与固定版本复测。
+
+### SB3 评测复用训练期 VecNormalize 统计
+
+- `problem_id`：`problem.reproducibility_and_debugging.sb3_vecnormalize_checkpoint_2635`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：SB3 play 必须加载训练期 VecNormalize 统计而不是重新学习**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：使用包含 PR #2022 的版本：train.py 在 run directory 保存 model_vecnormalize.pkl；play.py 从所选 checkpoint 的目录加载该文件，并设置 training=False、norm_reward=False，同时读取训练时保存的 params/agent.yaml。若自定义脚本没有这些步骤，就必须把 normalization stats 与 policy checkpoint 一起保存和加载；仅加载 policy 权重不足以复现训练期输入分布。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2635 完整复现；SB3 维护者确认 3004477599；PR #2022
+- 原帖/精确回复：[SB3 play 必须加载训练期 VecNormalize 统计而不是重新学习](https://github.com/isaac-sim/IsaacLab/issues/2635#issuecomment-3004477599)
+- 平台/作者：GitHub Issues / JonasFano
+- 关键术语：向量归一化（vector normalization, VecNormalize）；运行统计（running statistics）；评测模式（evaluation mode）；检查点（checkpoint）
+- 环境：IsaacLab commit 9f1aa4c、Isaac Sim 4.5.0、Ubuntu 22.04.5、RTX 3500 Ada Laptop 12GB、CUDA 12.1、driver 535.230.02。
+- 症状：train.py 不保存 normalization statistics；play.py 用 fresh VecNormalize 且继续 training。；evaluation normalization distribution 与训练期不一致，策略表现下降。
+- 诊断：检查 run directory 是否有 model_vecnormalize.pkl。；检查 play 是否从目标 checkpoint 同目录加载 stats，并把 training 与 reward normalization 关闭。；检查 play 使用的是训练时保存的 agent.yaml，而不是当前默认配置。
+- 原因：训练统计未持久化，评测端重新初始化并更新均值/方差。
+- 处理过程：原帖给出任何 SB3 环境都可执行的 normalize_input/normalize_value 复现步骤与建议代码。；PR #2022 同时修改 train.py 与 play.py 的保存/加载路径。
+- 有效处理：使用包含 PR #2022 / merge commit ad14a67 的版本；训练结束保存 model_vecnormalize.pkl，评测从 checkpoint 对应目录加载并设置 training=False、norm_reward=False。
+- 结果：SB3 维护者明确回复问题应由 PR #2022 修复，Issue 随后关闭；原作者未贴升级后的性能数值。
+- 限制：文件名与路径绑定该 PR 的 Isaac Lab 脚本；自定义 runner 需核对自己的 checkpoint layout。；没有作者升级复测，闭环主要来自合并源码修复与维护者确认。
+- 安全提示：部署前应把 policy、VecNormalize stats、agent config 和代码 commit 作为同一不可拆分 artifact 校验。
+- 独立核验引用：[pull_request · 合并 PR ad14a67 保存/加载 model_vecnormalize.pkl，并在 play 关闭 stats 更新与 reward normalization](https://github.com/isaac-sim/IsaacLab/pull/2022)
+- 适用边界：适用于启用 normalize_input 或 normalize_value 的 Isaac Lab SB3 工作流；自定义目录结构需调整路径。
 
 ## 机械集成、负载与配重 (`mechanical_payload_integration`)
 
@@ -3812,6 +6115,120 @@
 - 独立核验引用：[maintainer_confirmation · 项目成员说明单 root 限制，并给出 TSID/QP/Schur-complement 架构方向](https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1127623596)
 - 适用边界：适用于需要同时满足多个加速度级 holonomic contacts 的 floating-base WBC 设计；求解器实现与稳定性未在该线程验证。
 
+### Isaac Lab 静态地面不支持 GPU filtered contact
+
+- `problem_id`：`problem.contact_force_friction.isaaclab_static_ground_filter_1995`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab GPU contact filter 不能过滤普通静态 ground collider**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：这不等于物理引擎没有求解地面接触。项目贡献者明确说限制在静态 collider 的接触检索/过滤 API；普通静态碰撞仍参与物理求解。原版本的可用绕行是把地面建成带 RigidBodyAPI 的运动学刚体（kinematic rigid body），例如用 RigidObjectCfg + 薄 CuboidCfg 并设置 kinematic_enabled=True。原作者给出了工作配置，但线程没有证明底层静态过滤限制已在后续版本消失，因此升级后仍需实测。
+- 证据状态：`issue_candidate`
+- 来源定位：Isaac Lab #1995 评论 2708680265/2711098361 的维护者限制说明，评论 2877887219 的原作者可用 RigidObjectCfg 配置
+- 原帖/精确回复：[Isaac Lab GPU contact filter 不能过滤普通静态 ground collider](https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2877887219)
+- 平台/作者：GitHub Issues / bikcrum
+- 关键术语：过滤接触（filtered contact）；静态碰撞体（static collider）；运动学刚体（kinematic rigid body）；接触检索接口（contact retrieval API）；刚体接口（Rigid Body API, RigidBodyAPI）
+- 环境：Isaac Sim 4.5.0；Isaac Lab 2.0.0；GPU pipeline；/World/ground 为普通静态 collider。
+- 症状：控制台警告 GPU contact filter for collider '/World/ground' is not supported。；指定 filter_prim_paths_expr 后不能取得该静态地面的 filtered contact 数据；不使用 filter 时普通接触仍可参与仿真。
+- 诊断：区分接触物理求解与接触检索/过滤 API：维护者明确静态 collider 的物理碰撞仍正常，受限的是 filtered contact retrieval。；检查目标 prim 是否只有 collider、没有 RigidBodyAPI；若用 workaround，还要确认 kinematic body 尺寸覆盖所有环境。
+- 原因：当时 PhysX GPU 接触检索 API 不支持对不是 rigid body 的静态 collider 做过滤。
+- 处理过程：项目贡献者建议给地面 prim 添加 RigidBodyAPI 并启用 kinematic 属性。；原作者用 SceneCfg 中的 RigidObjectCfg/CuboidCfg 建立大尺寸薄地面，设置 RigidBodyPropertiesCfg(kinematic_enabled=True)、collision_props 和摩擦材质。
+- 有效处理：在原版本需要 filtered contact 时，把普通 GroundPlane/static collider 改成覆盖工作区的 kinematic rigid body；原作者明确报告该 RigidObjectCfg 方案可用。
+- 结果：原作者发布了工作配置；Issue 之后 completed 关闭，但线程没有给出引擎版本修复或证明普通 static collider 过滤已被支持。
+- 限制：该绕行方案改变了地面 prim 类型；TerrainImporterCfg、RayCaster 的 mesh_prim_paths 与多环境路径需要分别验证，不能直接照搬。；后续参与者报告过 prim path 与 ray-caster mesh 错误，但那不是原始 filtered-contact 限制的已确认修复；本卡不把这些跟帖推成通用结论。
+- 安全提示：不要仅依据 filtered matrix 为零判定机器人离地；应同时用未过滤净接触、姿态/高度与终止逻辑做交叉检查。
+- 独立核验引用：[issue · Isaac Sim 4.5.0/Isaac Lab 2.0.0 的配置、警告和空 filtered contact 现象](https://github.com/isaac-sim/IsaacLab/issues/1995)；[maintainer_confirmation · 贡献者确认限制在检索/过滤 API，静态 collider 的物理接触求解不受影响](https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2711098361)；[issue · 原作者报告 RigidObjectCfg + kinematic Cuboid 地面可用并提供代码](https://github.com/isaac-sim/IsaacLab/issues/1995#issuecomment-2877887219)
+- 适用边界：直接适用于 Isaac Sim 4.5.0、Isaac Lab 2.0.0 的 GPU filtered contact 与普通 static ground collider；其他版本需核对当前 PhysX 支持。
+
+### MuJoCo 高阻尼位置伺服抓取旋转时的切向滑移与漂移
+
+- `problem_id`：`problem.contact_force_friction.mujoco_grasp_servo_slip_2934`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：MuJoCo 抓取旋转时物体漂移应先量化伺服增益与切向滑移，而不是仅看可视姿态**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：目前只能确认：该复现里接触在滚转开始时已出现约 0.012 m/s 的切向相对速度，高 kv 会显著放大最终漂移；把 kv 从 100 降到 5 时，报告漂移由约 13.6 mm 降到 0.7 mm。应记录 actuator force、qpos/qvel、物体净力、接触切向速度与 efc_vel，并进一步制作纯 XML 最小复现。降低 kv 是缓解与诊断手段，不是已确认根治；维护者尚未给出最终原因，Issue 仍开放。
+- 证据状态：`issue_candidate`
+- 来源定位：MuJoCo #2934 评论 4183505169 的 kv 扫描/接触级测量，评论 4183566032 与 4183580186 的维护者边界说明
+- 原帖/精确回复：[MuJoCo 抓取旋转时物体漂移应先量化伺服增益与切向滑移，而不是仅看可视姿态](https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183505169)
+- 平台/作者：GitHub Issues / vmstavens
+- 关键术语：位置执行器（position actuator）；切向相对速度（tangential relative velocity）；约束空间速度（constraint-space velocity）；伺服阻尼增益（servo damping gain）；最小可复现实例（Minimal Reproducible Example, MRE）
+- 环境：Ubuntu 24.04；MuJoCo 3.3.7；CPU；timestep=0.002 s；implicitfast integrator；Newton solver；elliptic cone；Robotiq 2F-85。
+- 症状：mocap 控制下物体表现正常，使用 position actuator 驱动笛卡尔六关节时，夹爪旋转会让盒子沿夹指方向滑移。；固定 kp=300 时，社区复现实验报告 kv=5、10、100 的最终相对 y 漂移约为 0.7、1.4、13.6 mm；kv=300 更严重。
+- 诊断：分别记录 roll target、qpos、qvel、actuator force、物体净力、接触坐标系切向相对速度和 efc_vel，而不是只对比视频。；线程测量在 t=3.200 s 给出切向相对接触速度约 0.01225 m/s；t=3.202 s 的切向 efc_vel 约 0.0122，说明可见滚转角尚小时已经出现切向运动。；维护者要求把 Python/MjSpec 复现继续缩成纯 XML 最小复现，并明确列出 expected/unexpected，才能隔离 MjSpec 与接触模型。
+- 原因：当前有数据支持的解释是 position servo 在目标变化时立即产生力矩，摩擦接触已进入切向滑移；高 kv 明显放大漂移，但原评论明确说它不一定是根因。；维护者尚未完成线程审查；本卡不采纳第三方提出的“非结合残差”等未经项目维护者确认的最终根因。
+- 处理过程：作者比较普通 general actuator、MjSpec set_to_position、手工构造 affine position actuator，以及把编译后的世界写成 MJCF 后手工改为 position tag。；社区复现者固定 kp=300 扫描 kv，并记录接触级速度、约束速度与净力时序。
+- 有效处理：降低 kv 在该复现实验中显著减小漂移，可作为诊断性缓解，但没有完全消除起始切向运动。；作者报告普通 general actuator 不出现同样现象但不能提供所需位置控制；将编译结果导出为 MJCF 后手工改 position actuator 在其测试中得到期望结果，这些都尚未形成通用修复。
+- 结果：线程已把问题从单纯视觉异常推进到可量化的增益扫描与接触切向速度；截至 2026-04-29 Issue 仍 open，维护者仍等待纯 XML 最小复现。
+- 限制：没有最终维护者根因、合并修复或版本边界，不能将其写成 MuJoCo 已确认 bug。；第一张时序图已完成本轮视觉核验；第二张接触速度图和原帖视频未作为独立视觉证据，本卡对应数值只引用评论文字。；线程中存在未经项目方确认的理论性诊断，本卡明确不采用。
+- 安全提示：接触操作控制器应同时限制伺服增益、监测切向相对速度和物体漂移；可见姿态稳定不等于接触仍处于粘着区。
+- 图片分析：原评论第一张四联时序图（kp=300、kv=300）已核验：虚线约在 3.2 s；roll target 开始上升时 actuator force 先瞬时冲到约 0.45，物体 y 向净力出现约 1.9 N 瞬态，而 qpos/qvel 仍很小；随后 prop relative y 持续下降，到约 3.84 s 接近 -19 mm。该图支持“力与漂移起始早于明显可见滚转”，不单独证明最终根因。
+- 独立核验引用：[issue · MuJoCo 3.3.7/CPU 的 MjSpec、mocap 与 actuator 对照复现](https://github.com/google-deepmind/mujoco/issues/2934)；[issue · 固定 kp=300 的 kv 扫描、接触切向速度、efc_vel 与净力时序](https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183505169)；[maintainer_confirmation · 维护者说明力/加速度先于位置可见并不意外，同时明确其余问题仍需继续审查](https://github.com/google-deepmind/mujoco/issues/2934#issuecomment-4183580186)
+- 适用边界：直接适用于 MuJoCo 3.3.7、CPU、2 ms、implicitfast/Newton、Robotiq 2F-85 的该复现；其他接触模型、增益和步长必须重新测量。
+
+### Isaac Lab ContactSensor 的法向力与摩擦力字段不能混用
+
+- `problem_id`：`problem.contact_force_friction.isaaclab_contact_sensor_normal_vs_friction_2074`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab ContactSensor 的 net_forces_w 只含法向力，摩擦力需单独跟踪**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：维护者明确说明 net_forces_w 是世界坐标中的净法向接触力（net normal contact force），并不包含完整摩擦分量。旧版底层 get_friction_data(dt) 需要自行聚合，且原作者试用后仍得到全零。官方合并 PR #3563 后，应启用 track_friction_forces 并读取 friction_forces_w；该字段按 env/body/filter 聚合摩擦力且有官方测试。使用时必须先核对目标版本是否包含该 PR。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2074：贡献者评论 2737575470 解释字段语义；协作者 2737622128 提醒输出格式；原作者 2741377794 报告旧路径全零；PR #3563 合入正式字段
+- 原帖/精确回复：[Isaac Lab ContactSensor 的 net_forces_w 只含法向力，摩擦力需单独跟踪](https://github.com/isaac-sim/IsaacLab/issues/2074#issuecomment-2737575470)
+- 平台/作者：GitHub Issues / hojae-io
+- 关键术语：净法向接触力（net normal contact force）；摩擦力（friction force）；接触传感器（ContactSensor）；世界坐标系（world frame）
+- 环境：Isaac Lab ContactSensor、长细圆柱 foot collision geometry；原帖未给版本；PR #3563 于 2025-12-10 合入官方仓库。
+- 症状：原帖张量中接触足的 z 分量约为 667 N/543 N，而 x 仅约 8e-05/6e-05、y 为零。；另一位使用者的曲线图显示仅一个世界轴分量随拖动变化，另外两条曲线保持零。
+- 诊断：先确认读取字段语义：net_forces_w 是 world frame 的净法向接触力，不是 normal+friction 的完整合力。；确认目标版本是否已包含 PR #3563，以及是否启用 track_friction_forces、配置非空 filter_prim_paths_expr 和有效 max_contact_data_count_per_prim。
+- 原因：读取了只承载法向力的兼容字段 net_forces_w，却期待其中包含切向摩擦力。
+- 处理过程：维护者建议旧路径直接调用 contact_physx_view.get_friction_data(dt)，并提醒必须按不同输出格式自行聚合。；原作者按旧路径尝试后报告仍全零，因此该旧路径在其环境中没有形成已验证修复。
+- 有效处理：在包含官方 PR #3563 的版本中启用 ContactSensorCfg.track_friction_forces，并读取 ContactSensorData.friction_forces_w；官方实现按 env/body/filter 对摩擦数据求和，并有接触/非接触测试。
+- 结果：PR #3563 合入后，Issue 被标记为 completed；PR 测试验证 friction_forces_w 与底层 get_friction_data 聚合结果一致。
+- 限制：Issue 早期的 get_friction_data(dt) 建议未在原作者环境成功，不能把它单独当作旧版本通用修复。；两张原图没有 Isaac Lab 版本、摩擦系数、单位和完整实验配置，不能从曲线大小反推出真实摩擦参数。
+- 安全提示：用于实机滑移/摩擦锥判定前，应校验坐标系、符号、滤波、采样周期和传感器/模型误差；仿真接触力不是实机足底传感器的替代品。
+- 图片分析：评论 2733805649 的曲线图已核验：图例为 X/Y/Z，只有蓝色 X 曲线在约 -3 至 -10 区间变化并有若干尖峰，橙色 Y 与绿色 Z 基本停在零；坐标仅标 Force/Time，没有单位、版本和摩擦参数，因此只能支持“另外两轴为零”的症状，不能证明力值标定。；评论 2752798128 的 MuJoCo 截图已核验：画面显示机器人足部附近多根浅蓝色向上箭头及数值标注，但没有图例、坐标轴或单位；它只表达作者希望获得类似可视化的完整接触力，不能作为 Isaac Lab 修复结果图。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者确认 net_forces_w 仅为 world frame 中的净法向接触力](https://github.com/isaac-sim/IsaacLab/issues/2074#issuecomment-2737575470)；[issue · 原作者报告旧版 get_friction_data 路径在其环境仍返回全零](https://github.com/isaac-sim/IsaacLab/issues/2074#issuecomment-2741377794)；[pull_request · 官方合并 PR 增加 track_friction_forces 与 friction_forces_w，并包含聚合测试](https://github.com/isaac-sim/IsaacLab/pull/3563)；[source_code · 固定合并提交：ContactSensor 对 get_friction_data 按 env/body/filter 求和](https://github.com/isaac-sim/IsaacLab/commit/7b16b6794fba6b1c86a38dddb02f998a6fe32ca6)
+- 适用边界：适用于 Isaac Lab ContactSensor；显式 friction_forces_w 路径要求目标版本包含合并 PR #3563，并按配置启用摩擦跟踪。
+
+### Isaac Lab GPU tensor pipeline 启用 surface velocity 后接触消失
+
+- `problem_id`：`problem.contact_force_friction.isaaclab_gpu_surface_velocity_6885`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab GPU tensor pipeline 当前不支持 PhysX surface velocity 接触**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：项目维护者明确说明 GPU 当前不支持该 surface-velocity 行为，应使用 CPU。原帖通过四种管线对照和单独关闭 surfaceVelocityEnabled 证明普通 collider 仍能接触，触发条件是 GPU tensor pipeline 加 surface velocity。若必须留在 GPU，原帖只记录了静态 collider 后逐步改写物体水平 root velocity 的近似方案；它不等价于原生接触，不能拿来验证摩擦或接触力。
+- 证据状态：`issue_candidate`
+- 来源定位：Isaac Lab #6885：正文四配置对照与最小脚本；维护者评论 5196164192 确认 GPU 不支持并要求使用 CPU
+- 原帖/精确回复：[Isaac Lab GPU tensor pipeline 当前不支持 PhysX surface velocity 接触](https://github.com/isaac-sim/IsaacLab/issues/6885#issuecomment-5196164192)
+- 平台/作者：GitHub Issues / lxl-2404
+- 关键术语：表面速度（surface velocity）；张量管线（tensor pipeline）；运动学刚体（kinematic rigid body）；接触穿透（contact tunneling）
+- 环境：Isaac Sim 5.0；omni.physx 107.3.26；Ubuntu 22.04.5；RTX 4090；CUDA 13.0；driver 580.173.02；device=cpu/cuda:0 对照。
+- 症状：CPU tensor pipeline 中方块停在约 z=0.30 并以皮带速度移动；GPU tensor pipeline 中方块穿过皮带，落到 ground z≈0.0375，水平速度为零。；没有 warning/error；只关闭 surfaceVelocityEnabled 就恢复同一 collider 的普通 GPU 接触。
+- 诊断：用同一场景做 CPU/GPU、timeline/tensor pipeline 四格对照，并只切换 surfaceVelocityEnabled，隔离 collider 与 surface velocity 功能。；记录物体 z、水平速度和是否落到 ground，避免仅凭 viewport 判断。
+- 原因：项目维护者确认 GPU 当前不支持该 surface-velocity 行为；不是原帖 collider 本身失效。
+- 处理过程：原帖同时测试新 PhysxSurfaceVelocityAPI 与官方 ConveyorBeltDemo 使用的 legacy velocity attribute，二者在 GPU tensor pipeline 下表现相同。；关闭 surface velocity 后普通接触恢复。
+- 有效处理：需要原生 surface velocity contact 时改用 CPU pipeline。；原帖记录的 GPU 变通是静态 collider 配合每步事件直接覆盖接触物体的水平 root velocity；它只是行为近似，不是 PhysX 接触解。
+- 结果：维护者称该行为符合当前支持边界并要求使用 CPU；Issue 以 completed 关闭，但 GPU 原生 surface velocity 仍没有实现。
+- 限制：原帖 System Info 中 Isaac Lab commit/version 字段未填写，只明确 Isaac Sim/PhysX、OS、GPU、CUDA 与 driver。；直接写 root velocity 会绕开真实摩擦/冲量响应，不能用于验证接触力或控制稳定性。；线程没有给出 GPU 支持恢复的版本或补丁。
+- 安全提示：不要把 GPU 下穿透现象用于调参或训练接触策略；先切 CPU 验证接触功能边界，并把行为近似与物理接触实验分开。
+- 独立核验引用：[issue · CPU/GPU 与 timeline/tensor 四格结果、最小脚本、数值位置和关闭 API 对照](https://github.com/isaac-sim/IsaacLab/issues/6885)；[maintainer_confirmation · 项目维护者确认 GPU 当前不支持，应使用 CPU](https://github.com/isaac-sim/IsaacLab/issues/6885#issuecomment-5196164192)
+- 适用边界：直接覆盖 Isaac Sim 5.0/PhysX 107.3.26 的 GPU tensor pipeline；Isaac Lab 精确 commit 未填，后续版本需复测。
+
 ### MuJoCo 夹持力充足但物体仍缓慢下滑时，noslip_iterations 在原帖中有什么实测作用？
 
 - `problem_id`：`problem.contact_force_friction.37d4dea7eb784f2c`
@@ -3837,6 +6254,146 @@
 - 限制：单一最小夹持模型；数值和缩放关系不能直接外推到其他几何、质量、时间步或大规模并行环境。
 - 独立核验引用：[maintainer_confirmation · MuJoCo 协作者确认该行为 WAI，并建议改进文档](https://github.com/google-deepmind/mujoco/issues/3328#issuecomment-4735966682)
 - 适用边界：MuJoCo 3.8.1 的正则化摩擦抓持模型；其他模型需重新测量爬移预算。
+
+### TSID ContactForce Python binding 缺少 Contact6d 子类构造 overload
+
+- `problem_id`：`problem.contact_force_friction.tsid_contact_force_binding_child_overload_247`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：TSID Python binding 需为 Contact6d 等 ContactBase 子类显式暴露构造函数**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：项目维护者指出该 Boost.Python binding 不会自动完成所需的 child-to-base 识别，应像其他 TSID bindings 一样，为每个支持的 ContactBase 子类显式暴露 constructor overload。原作者为 Contact6d、ContactPoint 和 ContactTwoFramePositions 增加 bp::init 后确认可实例化；该修改只在用户 fork commit eb03d05，尚无上游发布。
+- 证据状态：`issue_candidate`
+- 来源定位：TSID #247：维护者评论 2568242300 解释子类 overload；作者评论 2575770028 确认可实例化；fork commit eb03d05 包含三类构造函数 patch
+- 原帖/精确回复：[TSID Python binding 需为 Contact6d 等 ContactBase 子类显式暴露构造函数](https://github.com/stack-of-tasks/tsid/issues/247#issuecomment-2575770028)
+- 平台/作者：GitHub Issues / danielcostanzi18
+- 关键术语：语言绑定（Python binding）；构造函数重载（constructor overload）；子类到基类转换（child-to-base conversion）；接触力等式任务（contact-force equality task）
+- 环境：TSID 用户 fork；Python binding；UR5 force-task 示例；原帖未给 TSID/Python/Boost 版本和操作系统。
+- 症状：TaskContactForceEquality(name, RobotWrapper, dt, Contact6d) 报 ArgumentError，C++ signature 只显示 ContactBase&。
+- 诊断：检查 binding visitor 是否只暴露 ContactBase& constructor，而没有为具体 Contact6d child class 添加 bp::init overload。；对照 TSID 其他 binding 中为每个可能 child class 实现独立方法/构造函数的模式。
+- 原因：项目维护者指出 Python binding 没有在该构造函数位置自动识别 Contact6d→ContactBase 继承转换。
+- 处理过程：原作者最初只暴露接受 ContactBase& 的构造函数，实例化失败。；随后为 Contact6d、ContactPoint、ContactTwoFramePositions 分别增加 bp::init overload。
+- 有效处理：在 TaskContactForceEqualityPythonVisitor 中为每个支持的 ContactBase 子类显式添加 constructor overload，并包含相应 contact headers。
+- 结果：原作者确认修改后可传 Contact6d 实例化 task；fork commit eb03d05 的 patch 与该说明一致。
+- 限制：修改只存在用户 fork，线程没有上游 PR 合并、发布版本或完整 working force-control example。；环境版本未提供，其他 TSID/Boost.Python 版本必须重新编译验证。
+- 安全提示：binding 成功只证明对象可构造，不证明 force task 的 reference、约束维度、接触稳定性或实机力限幅正确。
+- 独立核验引用：[maintainer_confirmation · 维护者解释需为 ContactBase 的每个 possible child class 实现独立 constructor](https://github.com/stack-of-tasks/tsid/issues/247#issuecomment-2568242300)；[source_code · 用户 fork：增加 Contact6d、ContactPoint、ContactTwoFramePositions bp::init overload 与 headers](https://github.com/danielcostanzi18/tsid/commit/eb03d0528b401c4d511d30ffe4f13c21fa3faece)
+- 适用边界：适用于原帖 TSID Python binding fork；因版本和上游合并状态未知，目标构建需实际验证。
+
+### 在 ros2_control 链式控制中应用 FT 传感器偏置
+
+- `problem_id`：`problem.contact_force_friction.ros2_control_ft_offset_chainable_1796`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ForceTorqueSensorBroadcaster 可用参数偏置并导出链式状态接口**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：已合并 PR #1215 将 broadcaster 改为 `ChainableControllerInterface`，新增 `offset.force.{x,y,z}` 与 `offset.torque.{x,y,z}` 参数，在 update 中应用 offset，并导出对应 state interfaces；补丁同时加入 offset 和接口值测试。该能力应按包含 merge commit `4343c7a` 的版本使用。原帖的 Humble 用户没有完成复测，因此不要假定该功能已回移到 Humble。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #1796 项目回复；ros2_controllers PR #1215 merge 4343c7a4632a97f52fc664b5dcdcad258ffb5e2a
+- 原帖/精确回复：[ForceTorqueSensorBroadcaster 可用参数偏置并导出链式状态接口](https://github.com/ros-controls/ros2_control/issues/1796#issuecomment-2419697279)
+- 平台/作者：GitHub Issues / lcbw
+- 关键术语：力矩传感器（force-torque sensor）；偏置校正（offset calibration）；链式控制器（chainable controller）；状态接口（state interface）
+- 环境：原帖：ROS 2 Humble、Ubuntu 22.04、UR10e、Polyscope 5.11；正式实现：ros2_controllers master，PR #1215 merge commit 4343c7a。
+- 症状：原有 admittance controller 的 exponential filter 不能满足外加 FT offset 和同时读取 offset/non-offset 数据流的需求。
+- 诊断：核对目标 ros2_controllers 版本是否包含 PR #1215，并检查 broadcaster 是否导出六轴 state interfaces。
+- 原因：旧 `ForceTorqueSensorBroadcaster` 只发布原始 wrench，未提供参数化 offset 和 chained state interfaces。
+- 处理过程：PR #1215 增加 `offset.force.*`/`offset.torque.*` 参数、运行期参数刷新、`ChainableControllerInterface` 和 state-interface export。
+- 有效处理：在包含 PR #1215 的版本使用 broadcaster offset 参数，并通过导出的 state interfaces 连接下游 controller。
+- 结果：PR #1215 已获两位 reviewer 批准并合并；补丁包含 offset 数值和导出接口单元测试。
+- 限制：原作者没有在合并后复测；原帖 Humble 环境当时不能构建该 PR，线程没有 backport 结论。；开启两个 broadcaster 形成原始/偏置双流是项目成员建议，原线程没有发布运行结果。
+- 安全提示：FT offset 应在无外力或已知载荷条件下标定，并对突变、饱和和 frame_id 做监控；不能用 offset 掩盖传感器过载或坐标系错误。
+- 独立核验引用：[pull_request · 已合并实现、两次批准、offset/exported state interface 单元测试，merge commit 4343c7a](https://github.com/ros-controls/ros2_controllers/pull/1215)
+- 适用边界：适用于包含 ros2_controllers PR #1215 的版本；Humble/backport 状态需单独核对。
+
+### 排查 RaiSim 网格接触力跳变
+
+- `problem_id`：`problem.contact_force_friction.raisim_mesh_contact_force_spike_322`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：RaiSim 网格接触力跳变只能先做滤波和碰撞几何排查**
+
+- 独立等级：**需要实际验证** — 尚未形成可核对的复现记录。
+- 解答状态：`partial`
+- 候选解答：原线程只支持一个有限结论：`dt=0.001 s` 和多组 ERP 对原作者没有改善；项目作者建议需要平滑输出时做时间滤波，并指出碰撞几何切换会产生 spike、网格宜采用更大三角形。降低摩擦被其明确说成未测试，作者也没有发布滤波或重建网格后的结果。因此这些只能作为排查顺序，必须在目标控制器上实际验证滤波延迟和峰值。
+- 证据状态：`issue_candidate`
+- 来源定位：RaiSim #322 dt/ERP 失败 1165374721；滤波/网格建议 1165990145；ERP 解释 1173562853
+- 原帖/精确回复：[RaiSim 网格接触力跳变只能先做滤波和碰撞几何排查](https://github.com/raisimTech/raisimLib/issues/322#issuecomment-1165990145)
+- 平台/作者：GitHub Issues / edward9503
+- 关键术语：接触力尖峰（contact force spike）；误差修正参数（error reduction parameter, ERP）；碰撞网格（collision mesh）；时间滤波（temporal filtering）
+- 环境：RaiSim；机械臂 Cartesian-space control；固定 OBJ wall；`dt=0.001 s`；版本未给出。
+- 症状：增大推墙深度后，测得 contact force 在零与应有数值之间反复跳变；配图曲线仅用于说明症状。
+- 诊断：比较 timestep、ERP、碰撞网格三角形尺度和几何切换位置；对原始与滤波 force 同时记录。
+- 原因：项目作者说明碰撞几何发生变化时会出现 spike，并建议使用较大三角形；线程没有给源码级根因或定量验证。
+- 处理过程：原作者已试 `dt=0.001 s` 和不同 ERP，均称没有改善。
+- 有效处理：项目作者认为时间滤波是获取平滑 force 的最佳办法，并建议较大网格三角形；原作者未复测。
+- 结果：没有公开最终改善数据；ERP spring/damper 只得到概念解释。
+- 限制：降低摩擦是项目作者未亲自测试的建议，不能登记为有效修复。；滤波会引入相位延迟，线程没有给 cutoff、order 或 WBC 稳定性结果。
+- 安全提示：接触力滤波用于真机控制前必须评估相位裕度、峰值保留和碰撞检测延迟；不得仅为曲线平滑而隐藏冲击。
+- 独立核验引用：[maintainer_confirmation · 项目作者解释 ERP spring/damper 与 apparent inertia、simulation step 的关系；没有参数范围或结果](https://github.com/raisimTech/raisimLib/issues/322#issuecomment-1173562853)
+- 适用边界：适用于该 OBJ wall + Cartesian pushing 场景；没有版本和最终复测。
+
+### 识别 Gazebo/DART 版本造成的 skid-steer 摩擦差异
+
+- `problem_id`：`problem.contact_force_friction.gz_sim_focal_dart_friction_880`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Ubuntu Focal 的系统 DART 版本会改变 Gazebo skid-steer 摩擦表现**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：该线程首先核对 `libdart`，原作者环境为 6.9.2-2build4。维护者认为 Focal 系统 DART 的摩擦支持与 Bionic 所用 Gazebo DART fork 不同，并建议用 Bionic、在 Focal 从源码构建该 fork 与 Ignition，或使用 dartsim PPA做版本 A/B。原作者没有公布任何 workaround 结果，所以它是明确的版本诊断入口，不是已验证修复。
+- 证据状态：`issue_candidate`
+- 来源定位：gz-sim #880 版本确认 868260846；维护者诊断/源码方案 867964701/868823079；PPA 方案 1101662759
+- 原帖/精确回复：[Ubuntu Focal 的系统 DART 版本会改变 Gazebo skid-steer 摩擦表现](https://github.com/gazebosim/gz-sim/issues/880#issuecomment-868823079)
+- 平台/作者：GitHub Issues / ctampier
+- 关键术语：摩擦模型（friction model）；侧滑转向（skid steering）；物理后端（physics backend）；版本固定（version pinning）
+- 环境：Ubuntu 20.04 Focal Docker；Ignition Gazebo Fortress binary；系统 DART 6.9.2-2build4；官方 `skid_steer_mecanum.sdf`。
+- 症状：命令 linear x=0.5、angular z=0.5 时，机器人多数时间直行，偶尔突然转 90°，而不是近似圆周运动。
+- 诊断：记录 `libdart` 精确版本，并用相同 world/command 对比 Bionic Gazebo fork、Focal system DART 或 PPA build。
+- 原因：维护者将差异归到 Focal 系统 DART 的摩擦支持；Bionic 使用 Gazebo 自有 fork，支持更好。
+- 处理过程：线程建议切换 Bionic、从源码构建 Gazebo DART fork 与 Ignition，或使用 dartsim PPA。
+- 有效处理：没有原作者复测；三种路径只能标为维护者给出的 workaround 候选。
+- 结果：环境和 DART 版本被确认，未报告 workaround 后的轨迹。
+- 限制：未给固定 fork commit、PPA 包版本或转向误差指标；Issue 仍开放。；该结论不适用于 Bullet、ODE 或当前 Gazebo/DART 版本。
+- 安全提示：sim-to-real 前应固定 physics engine/package digest，并用横向/角向速度、接触力和滑移率做回归，不能只看 world 文件相同。
+- 独立核验引用：[maintainer_confirmation · 维护者明确关联 Focal DART 版本与 Bionic fork 摩擦支持差异](https://github.com/gazebosim/gz-sim/issues/880#issuecomment-867964701)
+- 适用边界：直接适用于 Focal + Fortress binary + DART 6.9.2-2build4；其他版本需重新 A/B。
+
+### RobotLab 接触力尖峰尚无通用参数修复
+
+- `problem_id`：`problem.contact_force_friction.robotlab_contact_spike_dt_4366`
+- 问题综合等级：**需要实际验证** — 不同来源存在尚未解决的冲突，全部经验继续展示并等待目标环境验证。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：RobotLab 足端接触力尖峰的 dt 经验仍存在冲突**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索。
+- 解答状态：`conflicting`
+- 候选解答：该线程不能支持这样的通用结论。原作者在自己的 G1 配置中对比 `0.001/10` 异常、`0.005/4` 正常，并一度报告 compliance 3e5/3e2 有效；但后来明确不再推荐 compliance 修法。另一用户又在 `0.005/4` 看到机器人飞起和 NaN，直接限制了 dt workaround 的外推范围。当前只有复现与规避线索，没有维护者根因或正式 fix；应把 target asset、contact model、solver settings、dt/decimation、contact force 与 joint acceleration 同步记录后复测。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #4366 原作者撤回 compliance 推荐 4554291445；小复现 4670800756；0.005/4 反例 4817539554
+- 原帖/精确回复：[RobotLab 足端接触力尖峰的 dt 经验仍存在冲突](https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4817539554)
+- 平台/作者：GitHub Issues / super-dashuaibi
+- 关键术语：仿真时间步（simulation timestep）；控制降采样（control decimation）；柔顺接触（compliant contact）；接触力尖峰（contact-force spike）
+- 环境：原帖：RobotLab 2.3、Isaac Sim 5.1.0、Ubuntu 22.04、4090D、CUDA 12.8、driver 570；Unitree G1。；后续小复现使用 RobotLab 2.3.0 的 Unitree H1 flat task、32 envs。
+- 症状：原作者在 dt=0.001/decimation=10 报告接触力 1.3k～10kN、`joint_acc_l2` 爆炸；另一用户在 dt=0.005/decimation=4 仍见机器人飞起并触发 NaN。
+- 诊断：把训练和 play 使用的 dt/decimation 分开核对；同时记录 latest contact forces、joint acceleration 与异常 env_ids。
+- 原因：原线程没有得到维护者确认的根因；small dt 只是原作者环境中的相关条件，不是已证明充分原因。
+- 处理过程：原作者尝试 `compliant_contact_stiffness=3e5`、`compliant_contact_damping=3e2` 并一度称有效；后来撤回推荐。；原作者提供替换 `rewards.py`/`flat_env_cfg.py` 的小型复现流程。
+- 有效处理：没有经线程闭环的通用修复；dt=0.005 只是原作者规避，已被另一环境反例否定为普适答案。
+- 结果：Issue 仍开放；无维护者根因、无关联修复 PR，compliance workaround 也被原作者撤回推荐。
+- 限制：原帖和评论包含多张曲线/截图，本卡只采用作者在文字中明确报告的数值与结论，没有从像素读取额外量。；不使用 contact/acceleration reward 只能避免训练项触发，不能证明底层接触尖峰消失。
+- 安全提示：任何出现飞起、NaN 或数量级异常的配置都不应直接迁移到真机；先以单环境、限幅、异常终止和 solver telemetry 隔离。
+- 独立核验引用：[conflict · 原作者撤回 compliance 推荐，并把 dt=0.005 仅作为规避](https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4554291445)；[conflict · 另一用户在 dt=0.005/decimation=4 仍复现飞起与 NaN](https://github.com/isaac-sim/IsaacLab/issues/4366#issuecomment-4817539554)
+- 适用边界：仅作为 RobotLab 2.3/Isaac Sim 5.1 附近 G1/H1 接触数值排查入口，不构成通用稳定参数表。
 
 ## debugging_logging_reproducibility (`debugging_logging_reproducibility`)
 
@@ -3920,6 +6477,60 @@
 - 结果：维护者说明设计边界后，原作者确认问题得到解释并关闭 Issue。
 - 限制：维护者同时质疑在无接触自由动力学中控制全身质心的物理动机；不能把该解释外推到接触动力学模型。
 - 适用边界：适用于 DifferentialActionModelFreeFwdDynamics；接触模型与新版行为需另查。
+
+### Isaac Lab 浮动基完整质量矩阵的读取接口
+
+- `problem_id`：`problem.dynamics_mass_inertia_actuation.isaaclab_generalized_mass_matrix_2252`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Sim 4.5 浮动基机器人完整质量矩阵应读取 generalized mass matrix**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：团队建议使用 root_physx_view.get_generalized_mass_matrices()。官方 OSC 示例也先读取该矩阵，再用 arm_joint_ids 切成机械臂子矩阵；浮动基 WBC 若要全系统矩阵，不应照抄这一步切片。原线程没有回答完整 gravity 和 Coriolis 项的对应接口，因此这两部分仍需查目标版本 API。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2252 评论 2783953307；当前官方 OSC 示例 run_osc.py 第 317 行附近
+- 原帖/精确回复：[Isaac Sim 4.5 浮动基机器人完整质量矩阵应读取 generalized mass matrix](https://github.com/isaac-sim/IsaacLab/issues/2252#issuecomment-2783953307)
+- 平台/作者：GitHub Issues / JinAses
+- 关键术语：广义质量矩阵（generalized mass matrix）；浮动基（floating base）；重力补偿项（gravity compensation term）；科氏与离心项（Coriolis and centrifugal term）
+- 环境：Isaac Sim 4.5；浮动基四足或人形机器人；原帖未给 Isaac Lab 精确版本。
+- 症状：get_mass_matrices、get_coriolis_and_centrifugal_forces、get_generalized_gravity_forces 只出现关节维度，而 Jacobian 包含浮动基自由度。
+- 诊断：对照 get_jacobians 与动力学量的最后一维，确认是否包含浮动基自由度。；参照官方 OSC 示例核对 get_generalized_mass_matrices 的返回后是否又被关节索引切片。
+- 处理过程：团队建议改用 get_generalized_mass_matrices，并指向 Omni Physics Tensors API 与 OSC 示例。
+- 有效处理：在 Isaac Sim 4.5 读取 get_generalized_mass_matrices；需要全系统矩阵时不要像机械臂示例那样只保留 arm_joint_ids。
+- 结果：完整质量矩阵入口得到官方回复与示例交叉核对；完整 gravity/Coriolis 入口仍未回答。
+- 限制：本卡只确认质量矩阵；不能把同一方法外推为完整重力或科氏项接口。；当前文档可能已演进，其他 Isaac Sim 版本需重新核对 API。
+- 安全提示：将矩阵送入 WBC/QP 前应断言维度、自由度顺序和浮动基坐标约定。
+- 独立核验引用：[official_documentation · 当前官方 OSC 示例第 317 行读取 get_generalized_mass_matrices 后按 arm_joint_ids 切片](https://isaac-sim.github.io/IsaacLab/main/source/tutorials/05_controllers/run_osc.html#the-code)
+- 适用边界：Isaac Sim 4.5 的 PhysX articulation；其他版本需核对 API 名称和矩阵维度。
+
+### Isaac Lab joint drive 与 actuator 增益的覆盖关系
+
+- `problem_id`：`problem.dynamics_mass_inertia_actuation.isaaclab_joint_drive_actuator_gain_path_2369`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 隐式与显式 actuator 对 PhysX joint drive 增益的处理不同**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：在固定提交 3b6d615 的 articulation.py 中，ImplicitActuator 分支把 actuator stiffness/damping 写入模拟器；其他显式 actuator 分支把模拟器 joint stiffness/damping 写为 0，显式 actuator 自己处理增益和力矩。原帖团队总结与该源码一致。调试时应查看目标版本的同一初始化路径，而不是假定 URDF joint_drive 和 actuator gains 会同时生效。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2369 评论 2912221637 定位源码；评论 2941414534 给出团队总结；固定提交 articulation.py 1360-1390 行
+- 原帖/精确回复：[Isaac Lab 隐式与显式 actuator 对 PhysX joint drive 增益的处理不同](https://github.com/isaac-sim/IsaacLab/issues/2369#issuecomment-2941414534)
+- 平台/作者：GitHub Issues / KyleM73
+- 关键术语：关节驱动（joint drive）；隐式执行器（implicit actuator）；显式执行器（explicit actuator）；刚度/阻尼增益（stiffness/damping gains）
+- 环境：IsaacLab 源码固定提交 3b6d615f9aff7435fdafaa75a0d59365500a428c；Issue 未给 Isaac Sim 精确版本。
+- 症状：URDF importer 和 actuator 配置都出现 stiffness/damping，调用者不确定是否叠加、覆盖或忽略。
+- 诊断：在目标版本 articulation 初始化路径中检查 implicit 与 explicit 分支实际写入模拟器的 stiffness/damping。
+- 处理过程：讨论者定位固定源码行；团队给出 joint drive 和 actuator 的角色总结。
+- 有效处理：implicit actuator 由配置的 actuator gains 写入 PhysX；explicit actuator 将 PhysX joint stiffness/damping 置零，避免与显式力矩计算干扰。
+- 结果：固定提交的源码与团队总结一致，明确了两类 actuator 的增益写入路径。
+- 限制：本卡只确认固定提交的运行路径，不外推所有历史/未来版本。；原评论还讨论 None 默认值和调参建议；本卡没有把未逐行核对的附加建议并入结论。
+- 安全提示：部署前记录实际写入 simulator 的 stiffness、damping 和 effort limits，避免双重 PD 或意外零增益。
+- 独立核验引用：[source_code · ImplicitActuator 写入 gains；explicit 分支将 simulator stiffness/damping 置零](https://github.com/isaac-sim/IsaacLab/blob/3b6d615f9aff7435fdafaa75a0d59365500a428c/source/isaaclab/isaaclab/assets/articulation/articulation.py#L1371)
+- 适用边界：精确适用于 IsaacLab 提交 3b6d615 的 articulation 初始化路径；其他版本需对照源码。
 
 ## dynamics_model_validation (`dynamics_model_validation`)
 
@@ -4061,35 +6672,6 @@
 - 独立核验引用：[pull_request · 已合并 PR 反转 isclose 结果，更新 docstring/changelog，并新增 CPU/CUDA 回归测试](https://github.com/isaac-sim/IsaacLab/pull/3163)；[source_code · PR #3163 合并提交](https://github.com/isaac-sim/IsaacLab/commit/a60168a2dc0b7f56f76b8985d0bca2e79a4e5ef6)；[source_code · test_joint_effort_limits 在 CPU/CUDA 和 1/2 articulation 下验证无裁剪与模拟裁剪两种真值表](https://github.com/isaac-sim/IsaacLab/pull/3163/files)
 - 适用边界：适用于使用 Isaac Lab joint_effort_out_of_limit 比较 computed/applied torque 的版本；原帖环境为 Isaac Sim 5.0 功能分支。
 
-### Isaac Lab 隐式执行器未继承 USD 力矩上限
-
-- `problem_id`：`problem.hardware_actuator_thermal_power.isaaclab_implicit_actuator_usd_effort_limit_2054`
-- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
-- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
-
-**经验 1：Isaac Lab 隐式执行器未继承 USD 关节力矩上限**
-
-- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
-- 解答状态：`resolved`
-- 候选解答：#2054 的复现是在 effort_limit_sim/effort_limit 都未显式设置时出现。合并 PR #2098 表明，旧代码在 ActuatorBase 中错用 ActuatorBase.is_implicit_model 做判断，使隐式执行器走到显式执行器的 1e9 默认分支。修复改为 self.is_implicit_model，未显式配置时保留 USD/PhysX max effort，最终补丁也核对了该默认路径。升级前可在机器人配置里显式填写经硬件核实的上限，但不能用 1e9 作为真机保护。
-- 证据状态：`issue_candidate`
-- 来源定位：Isaac Lab #2054 正文、USD Max Force=88.0 截图、issuecomment-2721483228 的 G1 复现、issuecomment-2723958505 的独立现象与已合并 PR #2098
-- 原帖/精确回复：[Isaac Lab 隐式执行器未继承 USD 关节力矩上限](https://github.com/isaac-sim/IsaacLab/issues/2054)
-- 平台/作者：GitHub Issues / Hellod035
-- 关键术语：隐式执行器（implicit actuator）；关节力矩上限（joint effort limit）；默认继承（default inheritance）；回归测试（regression test）
-- 环境：Isaac Sim 4.5；Ubuntu 22.04；RTX 4090D；CUDA 12.4；GPU driver 550.144.03；Issue 标注 Isaac Lab Latest。；作者用 Isaac-Velocity-Flat-G1-v0 和 Legged_Lab g1_flat，在注释 effort_limit 或 effort_limit_sim 后复现。
-- 症状：原帖截图中 USD Drive > Angular 显示 Type=force、Max Force=88.0，文字同时记录 robot.data.joint_effort_limits=1e9。；另一名使用者回复力矩上限没有从 Isaac Sim 读取，但速度上限能读取。
-- 诊断：在同一 asset 上并列记录 USD Drive Max Force、root_physx_view.get_dof_max_forces() 和 asset.data.joint_effort_limits。；分别在设置与不设置 effort_limit_sim/effort_limit 时比较结果，避免把用户显式覆盖与 USD 默认继承混在一起。
-- 原因：PR #2098 显示旧的 ActuatorBase 构造逻辑检查 ActuatorBase.is_implicit_model，即使子类 ImplicitActuator 已标记为隐式模型，该基类检查仍会走到显式执行器的 1e9 默认分支。
-- 处理过程：作者在两个 G1 训练任务中注释显式上限复现 1e9。；评论中的临时建议是在机器人配置文件中显式写入力矩上限。；PR #2098 修正隐式模型判断，并合入 PR #2114 对关节属性和测试的改进。
-- 有效处理：使用包含已合并 PR #2098 的版本：ActuatorBase 改用 self.is_implicit_model 判断，ImplicitActuator 在两个上限都未设置时保留 USD/PhysX 的 max effort。；无法升级时，可按评论中的办法在机器人配置里显式设置 effort_limit 或 effort_limit_sim，但必须使用已核实的硬件值。
-- 结果：PR #2098 于 2025-03-19 合并，合并提交 d7da02da62b46153da3dc3e54585eea078e0d9cb；changelog 记录版本 0.36.3 修复隐式执行器的默认 effort limit 行为。；最终补丁的 articulation 测试在 effort_limit_sim 和 effort_limit 均为 None 时，期望 PhysX effort limit 等于 USD joint_drive_props.max_effort。
-- 限制：原帖截图只能证明 USD UI 中 Max Force=88.0；Python 端 1e9 来自作者文字记录，不在截图中。；PR 主检查清单仍未勾选“新增证明修复的测试”，但最终合并补丁通过 #2114 修改了现有 effort-limit 测试；在目标 Isaac Lab/Isaac Sim 组合中仍应运行同样的三方对照。；这一修复保留 USD 限制，不保证 USD 中的数值与真实电机、减速器、电源和热限制一致。
-- 安全提示：不得把 1e9 当作真机可用力矩；部署前要另行核对硬件限流、温升、减速器峰值与急停链路。
-- 图片分析：原帖 699×259 截图已读取：Isaac Sim 属性面板中 Drive > Angular 显示 Type=force、Max Force=88.0、Target Position=0.0、Target Velocity=0.0、Damping=0.0、Stiffness=0.0。图中没有 Python 侧 1e9，该数值来自正文记录。
-- 独立核验引用：[issue · 原作者在 Isaac Lab 和 Legged_Lab 的 G1 任务中注释显式上限后复现 1e9](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2721483228)；[independent_reproduction · 另一名使用者报告速度上限能读取、力矩上限不能读取](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2723958505)；[maintainer_confirmation · 项目贡献者确认 PR #2098 是修复，并表示增强了 effort/velocity limit 检查](https://github.com/isaac-sim/IsaacLab/issues/2054#issuecomment-2737536308)；[pull_request · 已合并修复：隐式执行器未配置上限时保留 USD max effort，并改进关节属性测试](https://github.com/isaac-sim/IsaacLab/pull/2098)；[source_code · PR #2098 合并提交](https://github.com/isaac-sim/IsaacLab/commit/d7da02da62b46153da3dc3e54585eea078e0d9cb)
-- 适用边界：适用于 Isaac Lab 使用 ImplicitActuator，并期望在未设置 effort_limit_sim/effort_limit 时继承 USD Drive max effort 的版本；原环境为 Isaac Sim 4.5。
-
 ### Isaac Lab DCMotor 的峰值力矩与实际可用力矩
 
 - `problem_id`：`problem.hardware_actuator_thermal_power.isaaclab_dcmotor_saturation_vs_effort_limit_2103`
@@ -4118,32 +6700,33 @@
 - 独立核验引用：[maintainer_confirmation · 项目贡献者定义 saturation limit 为峰值、effort limit 为期望运行范围](https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2737543184)；[maintainer_confirmation · 项目贡献者给出电池 8A/驱动器 30A 示例、提高上限条件和 Spot 定制裁剪边界](https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2738166007)；[issue · 原作者确认解释已清楚](https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2739805023)
 - 适用边界：适用于 Isaac Lab DCMotor 及类似同时建模驱动器峰值包络与整机实际力矩上限的执行器模型；数值必须按本机器人实测。
 
-### Isaac Lab 显式执行器的速度限制为什么可能与 PhysX 实际限制不一致？
+### Isaac Lab articulation 的 6D 近端关节反作用 wrench 读取接口
 
-- `problem_id`：`problem.hardware_actuator_thermal_power.88761dd27f8b57d1`
+- `problem_id`：`problem.hardware_actuator_thermal_power.isaaclab_body_incoming_joint_wrench_2127`
 - 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
 - 经验数量：1（全部列出，不隐藏待验证或冲突来源）
 
-**经验 1：显式执行器 velocity_limit 未传播到 PhysX 求解器**
+**经验 1：Isaac Lab 用 body_incoming_joint_wrench_b 读取每个 body 近端关节的 6D 反作用力矩**
 
 - 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
 - 解答状态：`resolved`
-- 候选解答：原 Issue 的维护者说明：当时 ActuatorBaseCfg.velocity_limit 只有 DCMotor 用来计算扭矩—转速上限，没有写入 root_physx_view，因此导入 USD 中的求解器速度限制可能继续生效。合并的 PR #1509 将该限制传播到 PhysX，并增加对应测试。
+- 候选解答：官方合并 PR #2128 后，应读取 ArticulationData.body_incoming_joint_wrench_b。PR 文档规定其形状为 (num_instances, num_bodies, 6)，表示 parent body 向 child body 施加的 joint reaction wrench，坐标在 parent body frame，并包含 root body 到 world 的条目。它与 isaacsim.core.articulations 的 get_measured_* API 不是同一层接口，也不等同于任意安装位姿的实体 F/T sensor。
 - 证据状态：`issue_candidate`
-- 来源定位：Issue #1384 维护者讨论；merged PR #1509
-- 原帖/精确回复：[显式执行器 velocity_limit 未传播到 PhysX 求解器](https://github.com/isaac-sim/IsaacLab/issues/1384#issuecomment-2465073195)
-- 平台/作者：GitHub Issues / diegoaldarondo-fauna
-- 关键术语：显式执行器（explicit actuator）；求解器级限制（solver-level limit）；扭矩—转速限制（torque-speed limit）
-- 环境：Isaac Lab commit b9a49ca；Isaac Sim 4.0.0—4.2.0；Ubuntu 22.04；RTX 4090。
-- 症状：DCMotor 的模型速度限制可能被 PhysX/导入资产速度限制静默覆盖或截断。
-- 诊断：分别检查显式执行器的模型限制与 root_physx_view 的求解器限制。
-- 原因：ActuatorBaseCfg.velocity_limit 未传播到 root_physx_view。
-- 处理过程：维护者讨论区分模型级限制与求解器级限制。；PR #1509 实现速度限制传播。
-- 有效处理：PR #1509 将 ActuatorBaseCfg 的 velocity_limits 传播到 articulation root_physx_view。
-- 结果：PR #1509 于 2024-12-08 合并，merge commit 4ee4957e；PR 清单声明加入证明修复的测试。
-- 限制：该行为对应历史版本；新版本字段命名和模型/求解器限制分工需查当前文档。
-- 独立核验引用：[pull_request · merged PR：传播 ActuatorBaseCfg velocity_limits 到 root_physx_view；merge commit 4ee4957e；含测试声明](https://github.com/isaac-sim/IsaacLab/pull/1509)
-- 适用边界：Isaac Lab 4.0.0—4.2.0 附近版本；新版本需核对模型级与 solver-level 限制字段。
+- 来源定位：IsaacLab #2127：协作者评论 2789530049 说明新字段；PR #2128 合并提交 1393f3b，含静态 10 N/10 Nm 测试
+- 原帖/精确回复：[Isaac Lab 用 body_incoming_joint_wrench_b 读取每个 body 近端关节的 6D 反作用力矩](https://github.com/isaac-sim/IsaacLab/issues/2127#issuecomment-2789530049)
+- 平台/作者：GitHub Issues / ParlitsisG
+- 关键术语：六维力/力矩（Six-Dimensional Force/Torque, 6D F/T）；关节反作用力矩（joint reaction wrench）；父刚体坐标系（parent body frame）；近端关节（proximal joint）
+- 环境：Isaac Lab Articulation API；PR #2128 于 2025-05-03 合入官方仓库；原线程没有给 Isaac Sim/Isaac Lab release 版本。
+- 症状：不同旧 Issue 混用 isaacsim.core.articulations 与 Isaac Lab Articulation API，导致使用者无法确认哪些 get_measured_* 调用适用于当前版本。
+- 诊断：先区分 isaacsim.core.articulations API 与 Isaac Lab ArticulationData API。；核对目标版本是否包含 PR #2128，并确认 wrench 表达在 parent body frame、最后一维为 6。
+- 原因：跨 Isaac Sim/Isaac Lab 版本和 API 层复制旧调用，导致方法归属与返回语义混淆。
+- 处理过程：Issue 参与者询问 get_measured_joint_forces/efforts；协作者澄清它们属于不同 API，并指向正在加入的 PR #2128。
+- 有效处理：在包含 PR #2128 的 Isaac Lab 版本中读取 ArticulationData.body_incoming_joint_wrench_b；它从底层 get_link_incoming_joint_force 取得数据并缓存为每 body 的 6D 张量。
+- 结果：官方 PR #2128 已合入，并增加 CPU/CUDA、单/多 articulation 的静态 wrench 数值测试。
+- 限制：该字段是 parent-to-child 近端关节 reaction wrench，不等同于任意安装位置的独立 F/T sensor。；线程没有给噪声、带宽、滤波或实机传感器一致性验证。
+- 安全提示：用于碰撞/过载保护前需独立验证符号、body 顺序、坐标变换、阈值和更新延迟，不得只依赖仿真 reaction wrench 触发实机安全动作。
+- 独立核验引用：[maintainer_confirmation · 项目协作者说明新 API 将提供每个 articulation body 近端关节的 6D F/T measurement](https://github.com/isaac-sim/IsaacLab/issues/2127#issuecomment-2789530049)；[pull_request · 官方合并 PR 定义字段语义、形状和 parent body frame，并增加数值测试](https://github.com/isaac-sim/IsaacLab/pull/2128)；[source_code · 固定合并提交：ArticulationData.body_incoming_joint_wrench_b 与 test_body_incoming_joint_wrench_b_single_joint](https://github.com/isaac-sim/IsaacLab/commit/1393f3b8b2306c61bf7a67a8256036967dd58bde)
+- 适用边界：适用于包含 PR #2128 的 Isaac Lab ArticulationData；旧版本和 isaacsim.core.articulations API 需按其自身文档处理。
 
 ### Isaac Lab IdealPDActuator 的 PD 力矩误差方向应按文档还是代码？
 
@@ -4171,6 +6754,34 @@
 - 限制：线程没有给出具体文档修复 PR；不能只凭关闭状态推断所有历史文档已更新。
 - 独立核验引用：[maintainer_confirmation · Isaac Lab 贡献者确认代码正确、文档需更新](https://github.com/isaac-sim/IsaacLab/issues/1643#issuecomment-2586156271)
 - 适用边界：Isaac Lab commit 8f3b9ca / Isaac Sim 4.2.0；新版本需核对当前实现。
+
+### 区分 Isaac Lab target 与 effort 更新频率
+
+- `problem_id`：`problem.hardware_actuator_thermal_power.isaaclab_actuator_update_rate_3823`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 显式与隐式执行器在 decimation 内的更新语义**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者明确说明：显式执行器（explicit actuator）的 effort 随每次 simulation step 调用 `write_data_to_sim()` 而重新计算；通常保持到下个控制周期的是 actuator target，而不是必然保持同一 effort。隐式执行器（implicit actuator）的 PhysX 内部 PD 也会在每个 sim step 用当前关节状态重算；显式路径会把 PhysX 内部 PD gains 设为零，使显式计算的 effort 作为 pass-through 写入模拟器。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #3823 维护者回复 3446108549
+- 原帖/精确回复：[Isaac Lab 显式与隐式执行器在 decimation 内的更新语义](https://github.com/isaac-sim/IsaacLab/issues/3823#issuecomment-3446108549)
+- 平台/作者：GitHub Issues / onurulusoy7
+- 关键术语：显式执行器（explicit actuator）；隐式执行器（implicit actuator）；控制降采样（decimation）；比例微分控制（Proportional-Derivative control, PD）
+- 环境：原帖给出示例：policy 100 Hz、simulation 500 Hz、decimation 5；没有固定 Isaac Lab commit。
+- 症状：用户原先把显式路径画成同一力矩在 5 个 sim steps 内保持。
+- 诊断：沿 `Articulation.write_data_to_sim()`、`_apply_actuator_model()` 和内部 PhysX PD gains 的写入路径检查调用频率。
+- 原因：问题来自把 target update frequency 与 actuator effort compute frequency 混为一谈。
+- 处理过程：维护者直接按源码调用路径逐项回答显式与隐式两类 actuator。
+- 有效处理：建模时把 target 通常按 control frequency 更新、explicit compute 按每次 sim-step write 调用执行、implicit PhysX PD 按每 sim step 重算三件事分开。
+- 结果：维护者确认用户图中的显式力矩恒定假设不正确；隐式 PD 每 sim step 重算的理解正确。
+- 限制：回复使用当时 `main` 的源码链接，未固定 commit；自定义环境若不是每个 sim step 调 `write_data_to_sim`，必须按实际调用链核对。
+- 安全提示：真机驱动器内部电流环、速度环和 Isaac Lab actuator 不是同一层级，不能直接用此频率关系替代硬件环路说明。
+- 独立核验引用：[maintainer_confirmation · 维护者直接说明 explicit/implicit 两条更新路径](https://github.com/isaac-sim/IsaacLab/issues/3823#issuecomment-3446108549)
+- 适用边界：适用于该回复所对应的 Isaac Lab 调用链；需以目标版本和自定义 step loop 的真实 `write_data_to_sim` 调用频率复核。
 
 ## joint_mapping_frames_conventions (`joint_mapping_frames_conventions`)
 
@@ -4519,7 +7130,7 @@
 
 - `problem_id`：`problem.joint_mapping_frames_conventions.pinocchio_freeflyer_velocity_frame_1137`
 - 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
-- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+- 经验数量：2（全部列出，不隐藏待验证或冲突来源）
 
 **经验 1：Pinocchio 浮动基 q 与 v 使用不同坐标表达**
 
@@ -4541,6 +7152,28 @@
 - 限制：线程只确认 FreeFlyer q/v 的基本表达；后续关于 ccrba、centroidal momentum、JointModelSphericalZYX 和 ABA 的追问未获回答。；没有给出从具体估计器或仿真器坐标系到 body frame 的转换代码。
 - 独立核验引用：[maintainer_confirmation · 维护者确认 base translation 在 parent/world 表达，而 velocity 在 body frame 表达](https://github.com/stack-of-tasks/pinocchio/issues/1137#issuecomment-608520990)
 - 适用边界：适用于原帖 Pinocchio FreeFlyer 基本 q/v 输入；其他 root joint、centroidal API 和仿真器状态需单独核对。
+
+**经验 2：Pinocchio 浮动基位姿平移在 world 表达而广义速度在 joint local frame 表达**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不是。维护者说明 placement 的 t 在 antecedent/world frame 表达，但 generalized velocity 遵循 Featherstone 约定，在 joint local frame 表达。若需要以 base 为原点、坐标轴与 world 对齐的表示，可用当前 R 分别旋转线速度和角速度。该结论与既有 #1137 相同，作为同一工程问题的第二个独立原线程聚合。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1357：维护者评论 743988547 给出 placement/velocity frame 约定；原作者 743989277 确认理解
+- 原帖/精确回复：[Pinocchio 浮动基位姿平移在 world 表达而广义速度在 joint local frame 表达](https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743988547)
+- 平台/作者：GitHub Issues / mayataka
+- 关键术语：广义速度（generalized velocity）；局部关节坐标系（joint local frame）；世界坐标系（world frame）；浮动基（floating base）
+- 环境：Pinocchio 浮动基/FreeFlyer 约定；原帖未给版本和机器人 URDF。
+- 症状：使用者对 #1122 与 #1137 的示例产生冲突理解，无法确定模拟器间控制器应怎样转换浮动基速度。
+- 诊断：把 placement 的 translation 表达和 generalized velocity 的 twist 表达分开核对。；对接其他模拟器时分别检查 base linear velocity、angular velocity 的原点和坐标轴。
+- 原因：把 t 在 world/parent frame 表达误解为整个 generalized velocity 也在 world frame 表达。
+- 处理过程：作者对照两个旧 Issue 后直接向维护者核对 convention。
+- 有效处理：按维护者说明，将 Pinocchio 浮动基广义速度解释为 joint local frame；需要 base 原点、world 轴表达时，用当前旋转 R 旋转线速度和角速度向量。
+- 结果：原作者回复已完全理解。
+- 限制：线程没有讨论 spatial velocity 的平移作用点变换，也没有给具体版本 API；只覆盖其明确回答的旋转表达转换。
+- 安全提示：实机状态接口上线前用已知姿态/速度样例核对轴向、单位和符号，避免速度 frame 错配直接进入控制器。
+- 独立核验引用：[maintainer_confirmation · 维护者明确区分 world-frame translation 与 joint-local generalized velocity](https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743988547)；[issue · 原作者回复已完全理解](https://github.com/stack-of-tasks/pinocchio/issues/1357#issuecomment-743989277)；[issue · 既有独立原线程同样由维护者确认 FreeFlyer q/v frame 约定](https://github.com/stack-of-tasks/pinocchio/issues/1137)
+- 适用边界：适用于 Pinocchio 浮动基广义速度的原帖约定；其他模拟器的 twist 原点和 frame 需单独确认。
 
 ### Pinocchio 浮动基广义加速度的局部坐标约定
 
@@ -4705,6 +7338,202 @@
 - 安全提示：实机前必须重新核对 H1_2 的 joint order、limit、collision body 与 actuator mapping；原线程只报告仿真 walking。
 - 独立核验引用：[maintainer_confirmation · 维护者确认迁移可行、计划支持并欢迎贡献，但未给具体参数](https://github.com/isaac-sim/IsaacLab/issues/2324#issuecomment-2813752561)；[issue · 实践者报告 URDF→USD、迭代次数、碰撞集合和 acceleration reward 的实际处理及基本行走结果](https://github.com/isaac-sim/IsaacLab/issues/2324#issuecomment-2896934209)
 - 适用边界：适用于从 H1 配置派生 H1_2 的 Isaac Lab 仿真迁移排查；具体 solver 字段和 reward 权重必须结合目标版本验证。
+
+### Pinocchio/Eigen 编译选项不一致导致 URDF buildModel 段错误
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.pinocchio_eigen_compile_flag_abi_mismatch_2046`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 与 OCS2 依赖使用不一致编译选项时 buildModel 段错误**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者先从 aligned_free 回溯判断，同一进程内的库可能使用了不一致的 Eigen 向量化/CPU 编译选项，并建议所有依赖统一用 find_package(pinocchio REQUIRED) 与 pinocchio::pinocchio。作者最终找到一个库单独启用了 -march=native，移除后段错误消失。因此排查重点是跨库 ABI 与编译选项一致性；不能简单把 buildModel 或 URDF 本身判为根因。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2046：2023-08-31 维护者编译选项/CMake 诊断，2023-09-05 作者报告移除 -march=native 后恢复
+- 原帖/精确回复：[Pinocchio 与 OCS2 依赖使用不一致编译选项时 buildModel 段错误](https://github.com/stack-of-tasks/pinocchio/issues/2046)
+- 平台/作者：GitHub Issues / Czworldy
+- 关键术语：应用二进制接口（Application Binary Interface, ABI）；向量化编译选项（vectorization flags）；导入目标（imported target）；对齐分配器（aligned allocator）；段错误（segmentation fault）
+- 环境：Ubuntu Focal；Pinocchio 2.6.20 amd64；OCS2 getPinocchioInterfaceFromUrdfModel；两个间接依赖分别使用 CMake package 与 pkg-config。
+- 症状：pinocchio::urdf::buildModel 过程中在 Eigen aligned allocator 的 free 路径崩溃；GDB 回溯进入 JointModelCompositeTpl 析构。；函数在其他示例正常，只有同时链接另一个同样依赖 Pinocchio 的库时出现。
+- 诊断：比较所有链接库的编译器、Eigen 向量化选项和 -march 等 CPU 特定选项，而不是只检查 URDF 内容。；比较各库对 Pinocchio 的接入方式；维护者建议统一通过 pinocchio::pinocchio imported target 传播依赖与编译定义。
+- 原因：维护者指出不同向量化编译选项会让 Eigen 使用不同的 malloc/free 路径；作者随后发现库 A 单独启用了 -march=native。
+- 处理过程：维护者给出非 catkin 与 catkin 两种 CMake 写法，均使用 find_package(pinocchio REQUIRED) 和 target_link_libraries(... pinocchio::pinocchio)。；作者移除仅在其中一个库启用的 -march=native。
+- 有效处理：让同一进程内所有 Pinocchio/Eigen 依赖使用兼容且一致的编译选项；原帖中移除单边 -march=native 后段错误消失。；CMake 工程优先统一链接 pinocchio::pinocchio，不再由不同库分别手工拼接 Pinocchio/Eigen include、library 和编译定义。
+- 结果：作者明确报告移除库 A 的 -march=native 后 segmentation fault 消失；维护者补充这类混用问题并非 Pinocchio 独有，并将 Issue 关闭为 completed。
+- 限制：原帖没有给出统一编译后的完整 CI 或独立复现；不能把所有 buildModel 段错误都归因于 -march=native。；根因是同一进程内编译选项不一致，而不是 -march=native 在所有工程中都应禁用。
+- 安全提示：实机 WBC 部署前应在与目标 CPU 一致的构建产物上运行 URDF 加载与动力学冒烟测试，避免 ABI 问题在控制进程启动后才暴露。
+- 独立核验引用：[maintainer_confirmation · 2023-08-31 jcarpent 与 nim65s 将 aligned_free 崩溃定位到不同编译选项，并建议统一 pinocchio::pinocchio](https://github.com/stack-of-tasks/pinocchio/issues/2046)；[issue · 2023-09-05 原作者确认库 A 启用了 -march=native，移除后段错误消失](https://github.com/stack-of-tasks/pinocchio/issues/2046)；[source_code · 维护者在原线程引用的官方最小 CMake 示例](https://github.com/stack-of-tasks/pinocchio-minimal/blob/master/CMakeLists.txt)
+- 适用边界：直接适用于原帖 Ubuntu Focal/Pinocchio 2.6.20/OCS2 的混合依赖构建；其他版本或平台需先复核实际编译命令与崩溃栈。
+
+### Pinocchio 旧版本漏解析 continuous 类型 mimic joint
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.pinocchio_continuous_mimic_parse_version_2753`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 3.6.0 不会把 continuous 类型 URDF 关节全部解析为 mimic**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：原帖最小复现表明，唯一被识别的是 revolute mimic，四个 continuous mimic 均漏掉。Issue 由 PR #2756 关联关闭，Pinocchio v3.8.0 官方发布说明明确新增“continuous joint 可从 URDF 解析为 mimic”。因此该版本问题应升级到包含 #2756 的 3.8.0 或后续版本，并保持 buildModelFromUrdf(..., mimic=True)；升级后仍需核对实际 mimic 数量。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2753 的完整 URDF/数组复现；关联 PR #2756；v3.8.0 release 与 CHANGELOG 的 continuous mimic 条目
+- 原帖/精确回复：[Pinocchio 3.6.0 不会把 continuous 类型 URDF 关节全部解析为 mimic](https://github.com/stack-of-tasks/pinocchio/issues/2753)
+- 平台/作者：GitHub Issues / sea-bass
+- 关键术语：从动关节（mimic joint）；连续关节（continuous joint）；统一机器人描述格式解析器（Unified Robot Description Format parser, URDF parser）；关节映射（joint mapping）
+- 环境：Ubuntu 24.04；Pinocchio 3.6.0 Python bindings；完整 Kinova-Robotiq URDF。
+- 症状：model.mimicked_joints 只返回 \[9\]，model.mimicking_joints 只返回 \[12\]，而 URDF 中预期有 5 组 mimic。；唯一被识别的从动关节类型为 revolute，漏掉的四个类型均为 continuous。
+- 诊断：按 URDF joint type 分组核对 mimic 统计，而不是只检查 mimic=True 参数是否传入。；将运行版本与官方 v3.8.0 CHANGELOG 的 continuous mimic parser 支持边界对照。
+- 原因：Pinocchio 3.6.0 的 URDF mimic 解析没有覆盖 continuous joint；官方 v3.8.0 变更将该能力作为 #2756 新增。
+- 处理过程：原作者提供完整 URDF 和最小 Python 复现，并明确比较 revolute 与 continuous mimic 的结果。
+- 有效处理：升级到包含 PR #2756 的 Pinocchio 3.8.0 或后续版本，并继续以 mimic=True 构建模型。
+- 结果：Issue 页显示由 #2756 关联关闭；Pinocchio v3.8.0 官方 release 和 CHANGELOG 均列出 continuous joints 可从 URDF 解析为 mimic。
+- 限制：官方 release 证明解析能力已加入，但原 Issue 页没有展示作者在 3.8.0 上重新运行后的数组输出。；该修复针对 continuous mimic 的解析；不能据此推断所有 mimic 相关动力学算法在所有版本都完整可用。
+- 安全提示：控制夹爪前应比较 URDF 预期 mimic 数、Pinocchio 模型映射和实际驱动自由度，避免向从动关节错误下发独立命令。
+- 独立核验引用：[issue · Ubuntu 24.04/Pinocchio 3.6.0 的完整 URDF 与 mimicked_joints/mimicking_joints 输出](https://github.com/stack-of-tasks/pinocchio/issues/2753)；[pull_request · Issue 页关联的关闭 PR #2756](https://github.com/stack-of-tasks/pinocchio/pull/2756)；[official_documentation · v3.8.0 Added：Continuous joints can now be parsed as mimic from a urdf file (#2756)](https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.8.0)；[source_code · 3.8.0 - 2025-09-17 的 #2756 变更条目](https://github.com/stack-of-tasks/pinocchio/blob/devel/CHANGELOG.md)
+- 适用边界：直接适用于 Pinocchio 3.6.0 Python bindings 解析 continuous URDF mimic joint；其他版本仍应以发布记录和模型数组核对。
+
+### Pinocchio mimic joint 的版本与算法支持边界
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.pinocchio_mimic_algorithm_support_boundary_1290`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio mimic joint 支持需要按版本和算法核对**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：不能。原线程在 PR #2441 合并前明确提醒并非所有功能可用。Pinocchio v3.5.0 官方发布只明确列出：buildModel 的 mimic 参数（默认 false），以及 forward kinematics、Jacobians/frames、ccrba、RNEA、CRBA、reachable workspace 的 mimic 支持。工程上应传 mimic=True，并按目标版本 release 逐项核对所用算法；continuous mimic 的 URDF 解析还要到 v3.8.0/#2756。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #1290 的维护者版本边界与 #2441 闭环；v3.5.0 release 的算法清单；v3.8.0 continuous mimic 补充
+- 原帖/精确回复：[Pinocchio mimic joint 支持需要按版本和算法核对](https://github.com/stack-of-tasks/pinocchio/issues/1290)
+- 平台/作者：GitHub Issues / costashatz
+- 关键术语：从动关节（mimic joint）；参考关节（referent joint）；逆动力学（inverse dynamics, RNEA）；复合刚体算法（Composite Rigid Body Algorithm, CRBA）；质心刚体算法（centroidal composite rigid body algorithm, ccrba）
+- 环境：讨论起于 2020 年旧版本；最终闭环对应 Pinocchio 3.5.0 与 PR #2441。
+- 症状：用户无法确认 forward dynamics、FK、IK/Jacobian 等算法是否会自动遵守 referent-mimic 约束。
+- 诊断：分别核对 URDF parser 开关、模型中的 mimicking/mimicked 列表，以及目标算法是否出现在对应版本 release 支持清单。
+- 原因：历史版本对 mimic joint 的数据结构、解析入口和算法覆盖并非一次性完整交付；维护者也在合并前提醒并非所有功能可用。
+- 处理过程：维护者和用户在原线程讨论是否从最终用户状态向量中移除从动自由度，以及 FK/FD/ID 对约束的预期语义。；维护者在 2025 年指向并合并 PR #2441。
+- 有效处理：在 Pinocchio 3.5.0 或后续版本使用 buildModel(..., mimic=True) 解析 URDF mimic 字段，并只把 v3.5.0 release 明列的 FK、Jacobian/frame、ccrba、RNEA、CRBA、reachable workspace 视为该版本已声明支持。
+- 结果：维护者在 2025-03-03 说明由 #2441 解决并关闭 Issue；v3.5.0 release 列出解析 API、支持算法和新增模型数据字段。
+- 限制：原线程在 #2441 合并前明确提醒并非所有 Pinocchio 功能都可用于 mimic；未列入 v3.5.0 release 的算法不能由该线程推断为已支持。；continuous 类型 mimic 的 URDF 解析还需要 v3.8.0 的 #2756，不能只依据 v3.5.0 的通用支持声明。
+- 安全提示：进入实机 WBC 前，应对使用到的每个算法做 mimic 约束回归测试，并验证状态/力矩向量维度没有把从动关节当成独立执行器。
+- 独立核验引用：[maintainer_confirmation · 2025-02-25 维护者说明 #2441 即将合并且并非所有功能可用；2025-03-03 说明由 #2441 解决](https://github.com/stack-of-tasks/pinocchio/issues/1290)；[pull_request · 原线程用于闭环 mimic 支持的 PR #2441](https://github.com/stack-of-tasks/pinocchio/pull/2441)；[official_documentation · v3.5.0 release 中的 mimic parser 参数与 FK/Jacobian/ccrba/RNEA/CRBA/reachable workspace 支持清单](https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.5.0)；[official_documentation · continuous URDF mimic 解析由 #2756 在 v3.8.0 补充](https://github.com/stack-of-tasks/pinocchio/releases/tag/v3.8.0)
+- 适用边界：适用于用 Pinocchio 3.x/4.x 构建带 mimic joint 的 WBC 模型；具体算法仍以目标版本 release 与回归测试为准。
+
+### ROS 2 目标未链接 Pinocchio imported target 导致 Boost 模板上限错误
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.pinocchio_ros2_imported_target_2917`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ROS Jazzy 工程未链接 pinocchio::pinocchio 时触发 Boost variant 模板参数编译错误**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：不要继续靠调整 include 顺序处理。原作者的 CMakeLists 使用 ament_target_dependencies(test pinocchio ...)，没有继承 Pinocchio target 携带的 Boost 编译定义；改为 find_package(pinocchio REQUIRED) 后用 target_link_libraries(test pinocchio::pinocchio)，编译即恢复。维护者确认 imported target 会自动传播四个 Boost MPL/Fusion 上限定义，并将其认定为正确解法。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2917：维护者评论 4866469692 给出缺失定义，作者评论 4867110493 报告 imported target 修复，维护者评论 4867266136 确认
+- 原帖/精确回复：[ROS Jazzy 工程未链接 pinocchio::pinocchio 时触发 Boost variant 模板参数编译错误](https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4867110493)
+- 平台/作者：GitHub Issues / Yazkox
+- 关键术语：导入目标（imported target）；编译定义（compile definitions）；模板参数上限（template arity limit）；元编程库（Meta-Programming Library, MPL）
+- 环境：Ubuntu 24.04；ROS 2 Jazzy；通过 rosdep/apt 安装 ros-jazzy-pinocchio；Pinocchio 4.0.0；Boost 1.83；colcon、ament_cmake。
+- 症状：编译最小 include 程序时，boost::detail::variant::make_variant_list 收到 25 个模板参数，而预处理的 boost::mpl::list 只提供 20 个参数位置。；调整 include 顺序、添加 pinocchio/fwd.hpp 或尝试其他 Pinocchio 头文件都不能消除错误。
+- 诊断：检查 CMake 是否真正链接 Pinocchio 导出的 pinocchio::pinocchio target，而不是只把包名交给 ament_target_dependencies 或手工添加 include 路径。；如果不能使用 CMake target，维护者给出的诊断线索是核对 BOOST_FUSION_INVOKE_MAX_ARITY=12、BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS、BOOST_MPL_LIMIT_LIST_SIZE=30、BOOST_MPL_LIMIT_VECTOR_SIZE=30 是否被传播。
+- 原因：作者的旧 CMakeLists 使用 ament_target_dependencies(test pinocchio urdfdom_headers)，没有按 Pinocchio 项目方式链接 imported target，因此目标没有继承 Pinocchio 所需的 Boost 编译定义。
+- 处理过程：作者把依赖段改为 find_package(pinocchio REQUIRED) 与 target_link_libraries(test pinocchio::pinocchio)，并移除旧的手工 Eigen include/ament 依赖写法。
+- 有效处理：在目标上链接 pinocchio::pinocchio，让其自动传播 Pinocchio/Boost 所需的编译定义；原帖作者报告修改后编译恢复。
+- 结果：作者明确确认 target_link_libraries 方案可用；维护者说明 imported target 会自动传递上述定义，并确认这就是正确解法；Issue 以 completed 关闭。
+- 限制：该记录直接覆盖 ROS Jazzy、Pinocchio 4.0.0 和 Boost 1.83；其他发行版的 Boost 模板错误仍需先比较实际编译命令。；维护者提供了手工 -D 定义作为不用 CMake target 时的备选线索，但原线程实际验证的是 imported target 方案。
+- 安全提示：控制软件构建应把 Pinocchio target 的编译定义作为可审计依赖传播，避免各节点手工拼装 include/define 后产生不一致构建。
+- 独立核验引用：[issue · 最小 include 复现、Ubuntu 24.04/ROS Jazzy/Pinocchio 4.0.0/Boost 1.83 环境与完整编译错误](https://github.com/stack-of-tasks/pinocchio/issues/2917)；[maintainer_confirmation · 维护者列出 imported target 应传播的四个 Boost 编译定义](https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4866469692)；[maintainer_confirmation · 维护者确认 pinocchio::pinocchio 是正确解法](https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4867266136)
+- 适用边界：直接适用于 Ubuntu 24.04、ROS 2 Jazzy、Pinocchio 4.0.0、Boost 1.83 的 ament/CMake 工程；其他环境需先核对编译定义是否同样缺失。
+
+### Pinocchio 程序化追加关节时漏乘 fixed-link frame placement
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.pinocchio_fixed_frame_add_joint_2825`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Pinocchio 程序化 addJoint 时不能把固定 link frame 当成运动学树 joint**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：Fixed link 的 frame 不属于 joint kinematic chain；其惯量会合并到承载 joint，变换则折叠进后续 joint placement。程序化追加时，先取目标 body frame，再用 frame.placement * 新关节局部 placement 作为 addJoint 的静态变换；随后用 Identity 把 body frame 挂到新 joint 并附加惯量，或直接 appendBodyToJoint。原作者确认维护者的示例与解释解决了问题。
+- 证据状态：`issue_candidate`
+- 来源定位：Pinocchio #2825：维护者评论 3641336177 给出 Variant 4，评论 3641830698 解释 fixed frame/joint/inertia 语义，作者评论 3643534486 确认
+- 原帖/精确回复：[Pinocchio 程序化 addJoint 时不能把固定 link frame 当成运动学树 joint](https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3641830698)
+- 平台/作者：GitHub Issues / christophfroehlich
+- 关键术语：关节静态位姿（joint placement）；固定连杆（fixed link）；运动学树（kinematic chain）；空间惯量（spatial inertia）
+- 环境：Ubuntu Jammy；Pinocchio devel commit 7b4ae02283203f37320c70e1098204d177f07ae9；Python 最小复现；FreeFlyer 根关节。
+- 症状：URDF 直接解析得到 urdf_joint2 origin=\[1.5,0.1,0.3\]、CoM=\[0,0,0\]；程序化 q_dummy 得到 origin=\[0,0,0\]、CoM=\[0.5,0.1,0.3\]。；继续追加关节时，前序 fixed-link 的位置偏移持续缺失。
+- 诊断：分别打印 Model::jointPlacements、Model::inertias、frame placement 与 data.oMi，不要用 link/frame 列表直接推断 joint tree。；用 getBodyId 取得承载 fixed link 的 frame，检查其 placement 是否需要乘入新 joint 的静态 placement。
+- 原因：URDF fixed links 不成为独立 joint；其惯量合并到父 joint，变换用于计算后续 jointPlacements。原程序把新 joint 直接挂到 parent joint 的 Identity placement，漏掉 link_2 frame transform。
+- 处理过程：原作者分别用 addFrame 与 appendBodyToJoint 构造 q_dummy，两种写法都在 addJoint 阶段漏掉 fixed-link placement。
+- 有效处理：读取 link_2 body frame，并把 link2_frame.placement * dummy_placement 作为 addJoint 的 joint placement。；随后把 dummy body frame 以 Identity 挂到新 joint 并附加 inertia；若不需要 frame，可直接 appendBodyToJoint。
+- 结果：维护者提供可运行的 Variant 4 和结构解释；原作者回复已理解且解释符合预期，Issue 以 completed 关闭。
+- 限制：示例覆盖 fixed-link 折叠和单个新 PZ joint；更复杂的多分支、闭链或 frame 语义仍需逐级核对。；作者确认理解与示例，但线程没有贴出其完整估计器的回归结果。
+- 安全提示：模型拼接后应对总质量、CoM、关键 frame placement 和重力力矩做回归，再用于实机控制。
+- 独立核验引用：[issue · URDF/程序化三种构造对照、质量/CoM/origin 输出与完整最小脚本](https://github.com/stack-of-tasks/pinocchio/issues/2825)；[maintainer_confirmation · 维护者给出 frame placement 乘入 addJoint 的完整 Variant 4](https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3641336177)；[issue · 原作者确认已理解且详细解释解决疑惑](https://github.com/stack-of-tasks/pinocchio/issues/2825#issuecomment-3643534486)
+- 适用边界：适用于 Pinocchio 程序化组合包含 fixed links 的 URDF 子模型；原帖环境为 Jammy 与 devel commit 7b4ae02。
+
+### 为嵌套 URDF 按 body 构造 ContactSensor view
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.isaaclab_nested_contact_views_5126`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Sim 6.0 嵌套 URDF 导致 ContactSensor view 初始化失败**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：旧实现假定所有 body 都是同一 parent 下的 flat siblings，把 leaf names 拼成一个 alternation；Isaac Sim 6.0 的 link 是递归嵌套的，这个 pattern 无法表达实际路径。合并 #6378（PhysX）和 #6384（OVPhysX）均改为复用解析阶段返回的 per-body path expressions，一条 body 一条 pattern，并增加嵌套层级回归测试。PhysX 路径还必须同步处理 list-pattern 的 body-major raw ordering；公开 ContactSensor `data` 布局保持不变。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #5126 关闭说明 5174104772；合并 PR #6378/#6384
+- 原帖/精确回复：[Isaac Sim 6.0 嵌套 URDF 导致 ContactSensor view 初始化失败](https://github.com/isaac-sim/IsaacLab/issues/5126#issuecomment-5174104772)
+- 平台/作者：GitHub Issues / dolevfr
+- 关键术语：刚体视图（rigid-body view）；接触传感器（ContactSensor）；逐刚体路径表达式（per-body path expression）；刚体主序（body-major ordering）
+- 环境：IsaacLab develop 3.0.0、Isaac Sim 6.0.0 pip、Python 3.12、Ubuntu 24.04、Linux 6.17。
+- 症状：`create_articulation_view` 能找到全部 53 links，但 flat `create_rigid_body_view` pattern 只找到直接子级或完全失败，并报 pattern did not match。
+- 诊断：比较 USD 实际 nested prim paths 与由第一个 body parent 加 leaf names 构造的 view pattern。
+- 原因：嵌套 bodies 不共享同一 parent，单个 parent-level alternation 无法表达每个 body 的实际路径。
+- 处理过程：PhysX PR #6378 与 OVPhysX PR #6384 均改为从解析结果为每个 body 构造独立 path expression。
+- 有效处理：升级到包含 #6378 和 #6384 的版本；不要再用共享 parent 加 flat body names 构造嵌套 URDF 的 ContactSensor patterns。
+- 结果：两条 PR 均已合并并获维护者批准；都加入嵌套 hierarchy regression coverage。
+- 限制：#6378 的 PhysX list-pattern API 会产生 body-major raw row order，补丁已同步适配内部 consumers，但用户自写 raw-view 索引需单独审计；公开 `data` 仍保持 `(num_envs, num_bodies, ...)`。；#6384 的 fork PR 环境不能在合并前执行 OVPhysX wheelhouse 测试，PR 明确测试将在 upstream/nightly 执行。
+- 安全提示：升级后应以 body_names、data shape 和已知 body world positions 做端到端校验，避免传感器能初始化却发生 body/env 索引错位。
+- 独立核验引用：[pull_request · 已合并 PhysX per-body patterns、raw ordering 适配与嵌套回归测试](https://github.com/isaac-sim/IsaacLab/pull/6378)；[pull_request · 已合并 OVPhysX per-body binding patterns 与嵌套回归测试](https://github.com/isaac-sim/IsaacLab/pull/6384)
+- 适用边界：适用于 Isaac Sim 6.0+ URDF importer 生成的嵌套 rigid-body hierarchy，以及相同层级结构的自定义 USD。
+
+### 让 spawn 属性遍历每个嵌套刚体
+
+- `problem_id`：`problem.model_asset_and_urdf_usd.isaaclab_nested_spawn_props_5918`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab 嵌套 URDF 的 spawn 属性只落到根 link**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：根因是 `apply_nested` 在根 link 首次成功后停止下钻，跳过了嵌套子 links。合并 PR #6377 给 decorator 增加 `stop_on_success`，并让 rigid-body 与 mass property writers 使用 `stop_on_success=False`；默认仍为 true，避免无关 schema 行为变化。验收不能只看 cfg，应遍历全部 rigid bodies，逐项确认 `disableGravity`、`physics:mass` 等目标属性覆盖 N/N。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #5918 原帖 1/N 复现、关闭说明 5174104792；合并 PR #6377
+- 原帖/精确回复：[Isaac Lab 嵌套 URDF 的 spawn 属性只落到根 link](https://github.com/isaac-sim/IsaacLab/issues/5918#issuecomment-5174104792)
+- 平台/作者：GitHub Issues / AlfredMoore
+- 关键术语：嵌套刚体层级（nested rigid-body hierarchy）；生成属性（spawn properties）；遍历早停（traversal early stop）；回归测试（regression test）
+- 环境：IsaacLab a4a7602f29 v3.0.0-beta 与 8ef1bf7a8b beta2、Isaac Sim 6.0.0-rc.22、Ubuntu 24.04、RTX 5090、CUDA 13.0、driver 580.159.03。
+- 症状：29 links 中只有 1 个得到 `disable_gravity=True`，手端约下垂 0.2 m；contact report API 也是 1/N，子 link ContactSensor 报找不到 reporter API。
+- 诊断：遍历 stage，分别统计 RigidBodyAPI、disableGravity 和 PhysxContactReportAPI 的 body 覆盖数。
+- 原因：`apply_nested` 默认认为 physics schema 不会嵌套，wrapped function 在根 link 成功后停止遍历 children。
+- 处理过程：PR #6377 给 `apply_nested` 增加默认保持兼容的 `stop_on_success`，rigid-body/mass writers 显式设置为 false。
+- 有效处理：升级到包含 PR #6377、merge commit 10144da 的版本，并用 stage traversal 验证每个 nested body 的属性。
+- 结果：PR 已合并，三层嵌套刚体 regression test 同时断言 `disableGravity` 和 `physics:mass` 在 3/3 links 生效。
+- 限制：#6377 只对 rigid-body 与 mass writers 放宽早停；joint、articulation root 和 collision writers 仍保留默认行为。；对曾按旧的部分生效行为调过 baseline 的 nested asset，升级后任务行为可能变化。
+- 安全提示：不要只看 cfg；spawn 后应逐 body 审计最终 USD/PhysX 属性，尤其是 gravity、mass、contact report 和 depenetration limits。
+- 独立核验引用：[pull_request · 已合并：rigid-body/mass writers 继续遍历 nested links，并新增 3-deep regression test](https://github.com/isaac-sim/IsaacLab/pull/6377)
+- 适用边界：适用于 Isaac Sim 6.0 importer 或自定义 USD 的 body-under-body nested hierarchy。
 
 ## realtime_control_latency (`realtime_control_latency`)
 
@@ -4873,6 +7702,398 @@
 - 独立核验引用：[maintainer_confirmation · 项目协作者从安装命令定位到 eiquadprog 未显式采用 Release](https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1958893254)；[maintainer_confirmation · 项目成员确认这很可能是缺失点](https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1959212460)；[issue · 原作者确认改为 Release 后循环为 0.002 s、完整运行少于 10 s](https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1959689788)
 - 适用边界：适用于原帖 TSID Exercise 2、eiquadprog 源码构建和所述 Intel Xeon/Python 3.10 环境；其他 HQP solver 或二进制包需要分别定位。
 
+### 定位 ros_control 硬实时线程中的系统调用
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_rtai_syscall_diagnostic_6`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：用 RTAI 调度统计定位 ros_control 实时线程中的系统调用**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：该线程使用 RTAI 的 `/proc/rtai/scheduler` 观察实时线程是否发生系统调用，再通过逐段注释、重编译和复跑缩小调用点；原作者据此定位到当时的 `ros::Time::now()`。维护者只写了 `Fixed`，没有补丁或版本，因此这是一条旧 RTAI 环境的诊断经验，不能据此断言当前 ROS 版本仍有同一缺陷或已经在哪个版本修复。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #6 排查方法 10748158；维护者无定位的 Fixed 回复 10784634
+- 原帖/精确回复：[用 RTAI 调度统计定位 ros_control 实时线程中的系统调用](https://github.com/ros-controls/ros_control/issues/6#issuecomment-10748158)
+- 平台/作者：GitHub Issues / advaitjain
+- 关键术语：硬实时（hard realtime）；系统调用（system call）；软模式切换（hard-to-soft transition）；调度统计（scheduler statistics）
+- 环境：2012 年 ROS 1 ros_control；带 RTAI 的用户态硬实时线程；具体发行版和提交未给出。
+- 症状：`ros::Time::now()` 被原作者定位为会产生系统调用，意味着实时线程可能发生 hard-to-soft transition。
+- 诊断：在 RTAI 实时线程中运行控制程序，同时执行 `watch cat /proc/rtai/scheduler`；若计数变化，再逐段注释、重编译和复跑以定位来源。
+- 原因：原作者直接确认触发点是当时实现中的 `ros::Time::now()`；线程没有进一步解释内部调用链。
+- 处理过程：使用 RTAI scheduler 统计检测系统调用，并用代码二分式注释缩小范围。
+- 有效处理：原线程没有公开可定位的代码修复，只记录维护者随后回复 `Fixed`。
+- 结果：该方法让原作者定位到 `ros::Time::now()`；没有发布修复后的时延数据。
+- 限制：方法依赖旧 RTAI 接口，不能直接替代 PREEMPT_RT、Xenomai 或现代 tracing 工具；也没有对应的修复 commit。
+- 安全提示：在真机 WBC 上应先离线或在安全工装中检查系统调用和 hard-to-soft transition，避免诊断输出本身扰动实时循环。
+- 独立核验引用：[maintainer_confirmation · 维护者只确认项目侧已处理，但没有给出补丁定位](https://github.com/ros-controls/ros_control/issues/6#issuecomment-10784634)
+- 适用边界：适用于旧 ROS 1 + RTAI 硬实时排查；其他实时内核应换用对应 tracing/latency 工具。
+
+### 避免 RealtimePublisher 解锁路径触发 futex
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_realtime_publisher_unlock_futex_8`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：RealtimePublisher 解锁时的非实时等待者会破坏实时安全**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：维护者给出的直接原因是：实时线程持有发布锁时，非实时线程已经阻塞等待同一把锁；在这种状态下，实时线程随后执行 unlock 就不再是实时安全操作。原作者通过注释 `unlockAndPublish()` 和 RTAI syscall 号完成 A/B 定位。项目称默认分支已修复，但没有提供 commit 或发布版本，所以只能把该结论用于识别这种锁竞争模式。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #8 syscall 观测 10822469；维护者根因与修复说明 13088686
+- 原帖/精确回复：[RealtimePublisher 解锁时的非实时等待者会破坏实时安全](https://github.com/ros-controls/ros_control/issues/8#issuecomment-13088686)
+- 平台/作者：GitHub Issues / advaitjain
+- 关键术语：实时发布器（realtime publisher）；互斥锁（mutex）；快速用户态互斥锁（futex）；优先级反转（priority inversion）
+- 环境：2012 年 ros_control；32 位 RTAI 用户态实时循环；具体提交未给出。
+- 症状：调用 `unlockAndPublish()` 时出现 `LXRT CHANGED MODE (SYSCALL)`，syscall 号为 240；注释该调用后不再出现。
+- 诊断：重启或重新插入 RTAI 模块后查看 dmesg 中首个 hard-to-soft syscall；原作者确认机器为 32 位，因此 240 对应 futex。
+- 原因：维护者确认：实时线程持锁期间，非实时线程开始阻塞等待；此后实时线程 unlock 会进入非实时安全路径。
+- 处理过程：对 `unlockAndPublish()` 做 A/B 注释，并结合 RTAI/dmesg 的 syscall 编号确认。
+- 有效处理：项目维护者称已在当时默认分支修复该锁竞争路径。
+- 结果：根因被维护者明确说明；线程未给修复后 syscall 计数、commit 或 release。
+- 限制：结论绑定旧 ros_control/RTAI 实现；不能从该线程推断现代 `realtime_tools` 的内部实现。
+- 安全提示：对 WBC 实时发布路径应在目标内核上做锁竞争压力测试，不能只在无订阅者或低负载条件下验收。
+- 独立核验引用：[maintainer_confirmation · 维护者明确解释非实时等待者使 unlock 路径失去实时安全](https://github.com/ros-controls/ros_control/issues/8#issuecomment-13088686)
+- 适用边界：直接适用于该线程的旧 RealtimePublisher/RTAI 实现；当前版本需重新测量。
+
+### 把控制器切换容器清理移出实时路径
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_switch_vector_clear_10`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：控制器切换列表的 clear 操作应移出实时分支**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：原作者在 `please_switch_` 的实时分支发现 vector `clear()`；维护者随后确认把这些调用移动到了非实时路径。该线程没有证明某次 `clear()` 一定发生堆分配，也没有给出 commit，因此可复用原则是审计并隔离实时路径中的容器生命周期操作，而不是把所有同名调用机械判定为故障。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #10 原帖代码审查；维护者回复 13155600
+- 原帖/精确回复：[控制器切换列表的 clear 操作应移出实时分支](https://github.com/ros-controls/ros_control/issues/10#issuecomment-13155600)
+- 平台/作者：GitHub Issues / advaitjain
+- 关键术语：实时路径（realtime path）；控制器切换（controller switching）；动态分配（dynamic allocation）；容器清理（container clearing）
+- 环境：2012 年 ros_control `ControlManager.update`；具体分支和发布版本未给出。
+- 症状：代码审查发现 `please_switch_` 分支内清空 STL vector，原作者质疑实时安全。
+- 诊断：检查实时更新路径中的容器清理、析构和潜在内存管理操作。
+- 原因：原线程将实时分支内的 vector `clear()` 视为不应保留的操作。
+- 处理过程：把切换列表的 `clear()` 移到非实时切换准备阶段。
+- 有效处理：维护者确认默认分支已将 `clear()` 调用移到非实时路径。
+- 结果：维护者明确回复修复完成；没有给出 jitter 或分配次数对照。
+- 限制：没有 commit、测试或首个修复 release；不能把所有 `clear()` 一概等同为必然分配。
+- 安全提示：对实时 WBC 路径应同时做静态审查与运行时分配/系统调用检测，避免只凭 API 名称判断。
+- 独立核验引用：[maintainer_confirmation · 维护者确认 clear 调用已移到非实时部分](https://github.com/ros-controls/ros_control/issues/10#issuecomment-13155600)
+- 适用边界：适用于旧 ros_control 切换实现和同类实时容器生命周期审查。
+
+### 隔离 ROS 回调与实时控制线程的数据交接
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_callback_queue_rt_buffer_130`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：把 ros_control 的周期循环与 ROS 回调线程明确分离**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：线程建议每个组件使用自己的 `CallbackQueue`，让 `AsyncSpinner` 在非实时线程处理该组件的 ROS API；实时与非实时线程之间用 `realtime_tools::RealtimeBuffer` 等实时安全结构交接数据。回复同时明确两条边界：设置变更不能让实时线程触发系统调用，非实时线程也不应锁住实时线程需要的共享资源。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #130 callback/RealtimeBuffer 回复 52195810
+- 原帖/精确回复：[把 ros_control 的周期循环与 ROS 回调线程明确分离](https://github.com/ros-controls/ros_control/issues/130#issuecomment-52195810)
+- 平台/作者：GitHub Issues / davetcoleman
+- 关键术语：回调队列（callback queue）；异步轮询器（async spinner）；实时缓冲区（realtime buffer）；优先级反转（priority inversion）
+- 环境：ROS 1 ros_control；PREEMPT_RT/Xenomai 讨论；Orocos RTT 示例；2013–2018 年线程。
+- 症状：直接把 ROS callbacks、services 和控制周期混在同一执行模型中，会留下调度优先级、互斥锁和系统调用边界不明确的问题。
+- 诊断：明确标注 configure/read/update/write/callback 各自所在线程，并检查共享数据是否经过实时安全交换结构。
+- 原因：非实时 callback 与实时循环共享普通锁，或在实时线程触发设置变更和系统调用，会产生优先级反转与不可预测时延。
+- 处理过程：在 RTT `configureHook()` 构造 hardware interface 与 ControllerManager；在 `updateHook()` 执行 `read → update → write`。；为每个组件建立独立 `CallbackQueue`，由非实时线程 spin，并用 `RealtimeBuffer` 交接数据。
+- 有效处理：把周期调度交给 RTT/HAL 等实时执行器，同时把 ROS API 回调隔离在非实时线程。
+- 结果：线程参与者发布最小 `rtt_ros_control_example`；另一位用户明确称这些讨论帮助其开发 `hal_ros_control`。
+- 限制：示例属于旧 ROS 1/RTT；`ros::Time::now()` 在同仓库另有旧实时安全问题，不能直接照抄时间源。；线程没有给统一的 WCET、jitter 或不同内核对照。
+- 安全提示：真机 WBC 运行时参数必须经过边界检查和原子/实时安全交接；非实时 callback 不应持有实时线程所需的普通互斥锁。
+- 独立核验引用：[maintainer_confirmation · 项目贡献者给出 per-component CallbackQueue、非实时 spinner 与 RealtimeBuffer 边界](https://github.com/ros-controls/ros_control/issues/130#issuecomment-52195810)
+- 适用边界：适用于 ROS 1 ros_control 的 callback/控制周期隔离；具体无锁结构需按版本核对。
+
+### 用外部实时执行器驱动 ros_control 周期循环
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_external_rt_read_update_write_130`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：把 ros_control 的周期循环与 ROS 回调线程明确分离**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：原线程的最小结构是在 RTT `configureHook()` 中创建 hardware interface 与 `ControllerManager`，在周期 `updateHook()` 中依次执行 `robot->read()`、`controllerMgr->update(time, period)`、`robot->write()`。该模式后来被整理为 `rtt_ros_control_example`，并被另一位参与者用于实现 `hal_ros_control`。它说明的是线程组织方式，不提供现代 ROS 2 或特定硬件的实时保证。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #130 最小循环 52055471；后续例子 54360309；HAL 使用反馈 407977464
+- 原帖/精确回复：[把 ros_control 的周期循环与 ROS 回调线程明确分离](https://github.com/ros-controls/ros_control/issues/130#issuecomment-52055471)
+- 平台/作者：GitHub Issues / davetcoleman
+- 关键术语：读算写循环（read-compute-write loop）；实时执行器（realtime executor）；周期钩子（update hook）；硬件接口（hardware interface）
+- 环境：ROS 1 ros_control；PREEMPT_RT/Xenomai 讨论；Orocos RTT 示例；2013–2018 年线程。
+- 症状：直接把 ROS callbacks、services 和控制周期混在同一执行模型中，会留下调度优先级、互斥锁和系统调用边界不明确的问题。
+- 诊断：明确标注 configure/read/update/write/callback 各自所在线程，并检查共享数据是否经过实时安全交换结构。
+- 原因：非实时 callback 与实时循环共享普通锁，或在实时线程触发设置变更和系统调用，会产生优先级反转与不可预测时延。
+- 处理过程：在 RTT `configureHook()` 构造 hardware interface 与 ControllerManager；在 `updateHook()` 执行 `read → update → write`。；为每个组件建立独立 `CallbackQueue`，由非实时线程 spin，并用 `RealtimeBuffer` 交接数据。
+- 有效处理：把周期调度交给 RTT/HAL 等实时执行器，同时把 ROS API 回调隔离在非实时线程。
+- 结果：线程参与者发布最小 `rtt_ros_control_example`；另一位用户明确称这些讨论帮助其开发 `hal_ros_control`。
+- 限制：示例属于旧 ROS 1/RTT；`ros::Time::now()` 在同仓库另有旧实时安全问题，不能直接照抄时间源。；线程没有给统一的 WCET、jitter 或不同内核对照。
+- 安全提示：真机 WBC 运行时参数必须经过边界检查和原子/实时安全交接；非实时 callback 不应持有实时线程所需的普通互斥锁。
+- 独立核验引用：[maintainer_confirmation · 后续参与者说明讨论与示例帮助其实现 hal_ros_control](https://github.com/ros-controls/ros_control/issues/130#issuecomment-407977464)
+- 适用边界：适用于旧 ROS 1 ros_control + RTT/HAL 外部实时调度器架构。
+
+### 同步硬件模式与控制器切换时序
+
+- `problem_id`：`problem.realtime_control_latency.ros_control_prepare_do_switch_timing_211`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：控制器模式切换的 prepareSwitch 与 doSwitch 必须分属非实时和实时阶段**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：该线程和已合并 PR #209/#210 将职责分成两层：非实时 callback 中的 `prepareSwitch()` 负责可能耗时的准备与可行性检查；真正提交硬件模式切换的 `doSwitch()` 与 controller start/stop 一起在实时 `update()` 路径发生，并必须非阻塞。这样避免硬件模式在 controller 尚未切换时提前改变。对需多个周期确认的 CANopen 等硬件，线程没有给通用策略，驱动仍必须明确切换期间旧/新命令的处理。
+- 证据状态：`issue_candidate`
+- 来源定位：ros_control #211 原帖真机复现；PR #209 merge 57c94c0；PR #210 merge 1ae7a0b；ros_canopen 复测 157007428
+- 原帖/精确回复：[控制器模式切换的 prepareSwitch 与 doSwitch 必须分属非实时和实时阶段](https://github.com/ros-controls/ros_control/issues/211)
+- 平台/作者：GitHub Issues / adolfo-rt
+- 关键术语：模式切换（mode switching）；非实时准备（non-realtime preparation）；原子提交（atomic commit）；实时安全（realtime safe）
+- 环境：ROS 1 ros_control Indigo/Jade；作者在硬件复现；ros_canopen 参与者报告典型切换需 3–4 个周期，部分硬件 5 个以上。
+- 症状：旧实现可能先切硬件模式、后启动新 controller，导致命令落入错误模式或出现未定义行为。
+- 诊断：审计 `prepareSwitch/doSwitch/controller start-stop` 的调用线程和实际顺序，并记录硬件模式确认所需周期。
+- 原因：`doSwitch()` 错放在只负责调度切换的非实时 ROS callback，而 controller start/stop 实际在实时 update 线程发生。
+- 处理过程：PR #209/#210 保存 start/stop list，把 `doSwitch()` 移到实时 `update()`，并用非实时 `prepareSwitch()` 做可阻塞准备。
+- 有效处理：采用 `prepareSwitch()` 非实时准备 + `doSwitch()` 实时、非阻塞提交的两阶段接口。
+- 结果：PR #209 和 #210 均已合并；#209 修订后测试通过；ros_canopen 参与者确认在 Indigo 变更上按预期工作。
+- 限制：这是 ROS 1 Indigo/Jade 历史接口；慢速硬件仍需自行定义切换期间的命令保持、丢弃和同步策略。；线程对是否允许多周期切换有过争论，最终合并方案不等同于任意硬件都能单周期完成物理模式切换。
+- 安全提示：真机模式切换应先在吊架/空载和低增益条件验证，监控旧/新命令、硬件 mode acknowledgement 与急停状态；不得在实时 `doSwitch()` 中阻塞等待总线。
+- 独立核验引用：[pull_request · Indigo 修复已合并，merge commit 57c94c096796aabe59f10625cf28e839e85f6415](https://github.com/ros-controls/ros_control/pull/209)；[pull_request · Jade 修复已合并，merge commit 1ae7a0b201d1a1aea49a7fa8e6b0fee92b4775fd](https://github.com/ros-controls/ros_control/pull/210)；[independent_reproduction · ros_canopen 参与者确认 Indigo 变更按预期工作](https://github.com/ros-controls/ros_control/pull/210#issuecomment-157007428)
+- 适用边界：直接适用于 ROS 1 Indigo/Jade 历史接口；现代 ros2_control 需按当前 lifecycle/switch API 重新核对。
+
+### 建立 1 kHz WBC 的 PREEMPT_RT 延迟基线
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_preempt_rt_cyclictest_acpi_118`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：用 cyclictest 先建立 PREEMPT_RT 主机抖动基线**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：该线程使用 `cyclictest -a -t -n -p99` 记录每个实时线程的 Min/Avg/Max，并把最大延迟与 1 ms 周期、约 800 µs 计算预算比较。在作者单机上，不含 ACPI 的 Linux 5.4.47 RT 内核 Max 为 30–45 µs，而含 ACPI 时报告 7000–8000 µs。这个结果只能提示先做内核配置 A/B，不能把关闭 ACPI 当作普适修复；线程也没有完成 ros2_control 的端到端实时测试。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #118 目标与 TODO；cyclictest/ACPI 结果 656812972
+- 原帖/精确回复：[用 cyclictest 先建立 PREEMPT_RT 主机抖动基线](https://github.com/ros-controls/ros2_control/issues/118#issuecomment-656812972)
+- 平台/作者：GitHub Issues / olivier-stasse
+- 关键术语：抢占实时内核（PREEMPT_RT）；周期抖动（cycle jitter）；最坏执行时间（worst-case execution time, WCET）；长尾延迟（tail latency）
+- 环境：Linux 5.4.47 + RT_PREEMPT；四个 cyclictest 线程；作者自建机器；未给 CPU 型号和持续时长之外的完整负载矩阵。
+- 症状：保留 ACPI 的内核在该机出现 7000–8000 µs 最大延迟，远超 1 ms 周期；不编译 ACPI 时记录为 30–45 µs。
+- 诊断：运行 `sudo ./cyclictest -a -t -n -p99`，至少记录每线程 Min/Avg/Max，并与控制周期和求解预算比较。
+- 原因：原作者把该机的巨大差异与 ACPI 配置相关联；线程没有做跨主机或固件设置消融。
+- 处理过程：比较包含/不包含 ACPI 的内核配置，并配置自托管 RT runner。
+- 有效处理：该线程没有完成 ros2_control 集成测试；只得到不含 ACPI 配置下更低的单机 cyclictest 基线。
+- 结果：不含 ACPI 时四线程 Max 为 30、40、45、40 µs；含 ACPI 时作者报告 7000–8000 µs。
+- 限制：单机、旧内核、没有 CPU/BIOS/负载完整信息；关闭 ACPI 可能影响电源、温控和设备功能，不能直接用于生产机器人。；TODO 中的 ros2_control 实时测试和 CI 集成未完成。
+- 安全提示：内核配置改动应先验证温控、急停、总线和设备枚举；WBC 上线还需在真实负载下测端到端 WCET，而不是只看 cyclictest。
+- 独立核验引用：[issue · 原线程保留未完成的实时测试与 CI 集成 TODO](https://github.com/ros-controls/ros2_control/issues/118)
+- 适用边界：适用于建立 PREEMPT_RT 主机基线；数值只属于原线程机器。
+
+### 正确配置 controller_manager 的 memlock 上限
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_memlock_limit_2020`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：controller_manager 内存锁定不能沿用过小的固定 memlock 上限**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：该线程中，原作者把 memlock 改为 `unlimited` 后警告消失；第二位用户证明简单扩大到 `1024000` 只让节点先启动，随后仍可能 `std::bad_alloc`，改成 unlimited。项目成员确认 unlimited 可用，并把 `lock_memory=false` 作为明确放弃内存锁定时的备选。工程上应核对进程峰值内存和 page fault，而不是复制旧的 102400 或任意十倍值。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #2020 原帖 A/B；第二用户 bad_alloc 2660327112；项目确认 2660331588
+- 原帖/精确回复：[controller_manager 内存锁定不能沿用过小的固定 memlock 上限](https://github.com/ros-controls/ros2_control/issues/2020#issuecomment-2660331588)
+- 平台/作者：GitHub Issues / KmakD
+- 关键术语：内存锁定（memory locking）；锁定上限（memlock limit）；缺页异常（page fault）；内存分配失败（bad allocation）
+- 环境：原帖：Ubuntu、ROS 2 Humble、RPi 4、自定义 RT kernel；复现者：Ubuntu 24.04 Jazzy + PREEMPT_RT、ur_robot_driver。
+- 症状：102400 限额时报 `Unable to lock the memory`；1024000 可启动但复现者随后遇到 `std::bad_alloc`。
+- 诊断：比较当前 shell/process 的 memlock limit、controller_manager `lock_memory` 参数和进程实际虚拟内存需求；不要只看启动瞬间。
+- 原因：固定 102400 字节不足以覆盖 controller_manager 需要锁定的内存；十倍固定值对另一环境仍不足。
+- 处理过程：原作者把 soft/hard memlock 改为 unlimited；第二位用户先试 1024000，出现 bad_alloc 后改为 unlimited。
+- 有效处理：两位参与者采用 unlimited；项目成员确认该设置可用。若明确接受不锁内存，可把 `lock_memory` 设为 false。
+- 结果：原作者 unlimited 后警告消失；第二位用户确认固定十倍值不足，项目成员确认其环境 unlimited 正常。
+- 限制：`lock_memory=false` 会放弃该内存锁定保证，不是等价实时修复。；线程没有给不同机器人、DDS 和控制器组合所需的最小可审计字节数；unlimited 仍受系统和部署策略约束。
+- 安全提示：真机前应在峰值控制器/消息负载下检查 page fault、RSS、OOM 和周期抖动；不要用任意固定倍数替代容量验证。
+- 独立核验引用：[maintainer_confirmation · 项目成员确认 unlimited，并说明 lock_memory=false 的语义](https://github.com/ros-controls/ros2_control/issues/2020#issuecomment-2660331588)
+- 适用边界：适用于 Humble/Jazzy controller_manager 内存锁定；部署系统的 limits/PAM/container 配置需分别核对。
+
+### 让 Jazzy hardware interface 日志进入 rosout
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_hardware_child_logger_2113`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Jazzy 硬件组件应使用继承自 ControllerManager 的 get_logger**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：从 Jazzy 起，hardware component 提供继承自 ControllerManager 的 child logger。原作者升级 Jazzy 后把 `rclcpp::get_logger("hardware_interface")` 改为组件的 `get_logger()`，并确认 Foxglove 能看到日志；维护者链接的官方 demo 也使用该写法。该结论不包含 Iron backport，也不代表可以在实时 read/write 循环高频打印。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #2113 维护者版本说明 2735617665；作者复测 2764284744；官方 demo rrbot.cpp
+- 原帖/精确回复：[Jazzy 硬件组件应使用继承自 ControllerManager 的 get_logger](https://github.com/ros-controls/ros2_control/issues/2113#issuecomment-2764284744)
+- 平台/作者：GitHub Issues / zacharyyamaoka
+- 关键术语：子日志器（child logger）；硬件组件（hardware component）；日志聚合（log aggregation）；实时日志限频（realtime log throttling）
+- 环境：原始环境 ROS 2 Iron；作者升级到 Jazzy 后验证；自定义 Moteus hardware interface；Foxglove。
+- 症状：`RCLCPP_INFO(rclcpp::get_logger("hardware_interface"), ...)` 在终端可见，但 `/rosout`/Foxglove 不显示。
+- 诊断：确认 distro 是否提供 hardware component child logger，并比较 standalone logger 与组件 `get_logger()` 的 rosout 行为。
+- 原因：Iron 中使用的独立 logger 没有关联到 ControllerManager node 的 rosout publisher；Jazzy 提供 child logger。
+- 处理过程：升级到 Jazzy，并把宏参数改为组件 `get_logger()`。
+- 有效处理：在 Jazzy hardware component 内使用 `RCLCPP_INFO(get_logger(), ...)`。
+- 结果：原作者明确确认日志随后能在 Foxglove 中显示；官方 ros2_control demo 源码给出同一用法。
+- 限制：该接口边界从 Jazzy 起成立，Iron 不应直接假定可用；线程没有给 backport。；实时 `read/write` 高频路径中的日志仍可能破坏时序，本卡只回答 logger 归属。
+- 安全提示：故障日志应限频，并把实时状态采样与非实时发布分离；不要在高频 WBC 循环用日志代替 watchdog。
+- 独立核验引用：[source_code · 维护者直接链接的 Jazzy-era 官方 hardware demo 使用 get_logger()](https://github.com/ros-controls/ros2_control_demos/blob/5bef8b48d66b5e673bf8ef63affa94f1049963ee/example_1/hardware/rrbot.cpp#L45)
+- 适用边界：适用于 ROS 2 Jazzy 及含同一 hardware child logger API 的版本。
+
+### 定位 controller_manager 零订阅者时的 statistics 空闲开销
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_pal_statistics_idle_cpu_3356`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：零订阅者时 pal_statistics worker 仍可能消耗小型主机 CPU**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原作者依次排除 executor、controller、RT update thread 和 RMW，再在 overlay 中禁用两个 registry 的初始化、worker 启动与每周期 async publish；两个热线程消失，进程 CPU 约从 13% 降到 1%。这证明了该环境中的开销定位，但没有维护者确认或上游修复。作者 patch 会完全删除观测 topic，不能当作生产修复；subscriber-count gate 也仍只是建议。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #3356 完整 reproducer、线程排除和 overlay A/B；唯一评论为 stale bot
+- 原帖/精确回复：[零订阅者时 pal_statistics worker 仍可能消耗小型主机 CPU](https://github.com/ros-controls/ros2_control/issues/3356)
+- 平台/作者：GitHub Issues / techjoec
+- 关键术语：空闲开销（idle overhead）；上下文切换（context switch）；内省发布器（introspection publisher）；订阅者门控（subscriber-count gating）
+- 环境：ROS 2 Jazzy，ros2_control 4.44.0-1noble；Ubuntu Noble 6.8；Docker x86_64；CycloneDDS 与 Fast DDS；master 2026-05-27 也复现。
+- 症状：两个普通优先级 worker 各约 5–7% CPU、约 2000 context switches/s；RT update thread 约 0.1%。
+- 诊断：检查 topic subscription count、`ps -T`、线程调度类/CPU/wchan；分别切换 executor、controllers、RMW，再用 overlay 禁用 registry/publish sites 做 A/B。
+- 原因：作者的行为 A/B 将开销定位到两个 pal_statistics registry worker 的每周期唤醒/交接路径；没有维护者确认更细的内部根因。
+- 处理过程：SingleThreadedExecutor、停用 controllers、DDS 调优均无变化；`#if 0` 禁用两个 registry 和 async publish sites 后热线程消失。
+- 有效处理：作者的本地 workaround 会彻底关闭 introspection/statistics topics，不具备上游合入质量；建议的 subscriber-count gate 尚未实现。
+- 结果：overlay A/B 后 `ros2_control_node` 从约 13% 降到约 1%，容器总 CPU 从约 22% 降到约 9%。
+- 限制：只有原作者复现，Issue 无维护者技术回复或合并 PR；具体 CPU 百分比不能外推到其他主机。；禁用 registry 会失去观测能力，subscriber gate 仍只是作者建议。
+- 安全提示：真机若临时关闭 introspection，必须保留独立 watchdog、故障状态和关键安全遥测；CPU 优化不能以丢失安全观测为代价。
+- 独立核验引用：[source_code · 原帖固定 Jazzy/master 行号并给出完整 overlay A/B patch；尚无项目方确认](https://github.com/ros-controls/ros2_control/issues/3356)
+- 适用边界：适用于该 Jazzy/master + Docker/SBC 类环境的诊断；数值与补丁不可直接外推。
+
+### ros2_control 实时循环被 I2C IMU 读取拖慢
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_i2c_imu_jitter_1574`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 控制循环高抖动与 update period 异常必须拆开排查**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：作者在配置 realtime group limits、尝试 chrt 后仍看到抖动，随后用 A/B 确认是读取 I2C IMU 导致；停读后，即使仅使用 low-latency kernel，循环也很稳定。线程没有给异步化或驱动层最终实现，所以可执行的结论是先把该 I/O 从实时路径隔离并复测，而不是声称某种线程方案已被验证。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #1574 评论 2183981102
+- 原帖/精确回复：[ros2_control 控制循环高抖动与 update period 异常必须拆开排查](https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183981102)
+- 平台/作者：GitHub Issues / Nate711
+- 关键术语：控制循环抖动（control-loop jitter）；低延迟内核（low-latency kernel）；实时调度优先级（real-time scheduling priority）；阻塞式 I/O（blocking I/O）
+- 环境：Raspberry Pi 5；controller_manager 250 Hz；low-latency kernel；realtime group limits 后续已配置；未给 ROS 2/ros2_control 精确版本。
+- 症状：实际时间差在约 1.1-6.9 ms 之间波动，update() 的 period 参数与作者离线时间差不一致。
+- 诊断：先移除或隔离 I2C IMU 读取，观察控制周期抖动是否消失。；不要用同一现象替 period 参数定性；在 ros2_control node 同一位置同时打印 current_time、previous_time、measured_period。
+- 原因：作者确认大抖动来自 I2C IMU 读取；period 参数异常仍未定位。
+- 处理过程：配置 realtime group limits；用 chrt 调整进程及子进程优先级；停用 I2C IMU 读取；维护者建议同点打印时间变量。
+- 有效处理：针对循环抖动，移除/隔离该 I2C IMU 读取后作者观察到循环稳定。
+- 结果：I2C 引起的抖动已由作者 A/B 确认；update period 参数问题没有闭环。
+- 限制：线程没有说明采用异步 I/O、独立线程或具体驱动修复，只确认停读后稳定。；不能把低延迟内核下的结果直接外推到所有硬件和 RT kernel。
+- 安全提示：传感器读取不要无界阻塞实时控制线程；应监控 worst-case execution time 和 deadline miss。
+- 独立核验引用：[issue · 作者停用 I2C IMU 读取后循环稳定的 A/B 结果](https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183981102)
+- 适用边界：Raspberry Pi 5、250 Hz、low-latency kernel 且实时路径直接读取 I2C IMU 的场景。
+
+### ros2_control controller update 的 period 参数与实测时间差不一致
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_update_period_unresolved_1574`
+- 问题综合等级：**需要实际验证** — 现有来源主要提供问题线索或待复现经验，建议在目标系统中逐项核对。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 控制循环高抖动与 update period 异常必须拆开排查**
+
+- 独立等级：**需要实际验证** — 解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录。
+- 解答状态：`unresolved`
+- 候选解答：没有。作者在排除 I2C 抖动后仍认为 period 参数不正确；维护者无法在普通 PC 复现，并要求在 ros2_control node 内同时打印 current_time、previous_time、measured_period。线程到此结束，因此只能保留诊断步骤，不能自行给出 period 计算错误的根因或修复。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #1574 评论 2183981102、2183982425、2183984139
+- 原帖/精确回复：[ros2_control 控制循环高抖动与 update period 异常必须拆开排查](https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183984139)
+- 平台/作者：GitHub Issues / Nate711
+- 关键术语：控制器周期参数（controller period parameter）；测量周期（measured period）；当前/前一时间戳（current/previous timestamp）
+- 环境：Raspberry Pi 5；controller_manager 250 Hz；low-latency kernel；realtime group limits 后续已配置；未给 ROS 2/ros2_control 精确版本。
+- 症状：实际时间差在约 1.1-6.9 ms 之间波动，update() 的 period 参数与作者离线时间差不一致。
+- 诊断：先移除或隔离 I2C IMU 读取，观察控制周期抖动是否消失。；不要用同一现象替 period 参数定性；在 ros2_control node 同一位置同时打印 current_time、previous_time、measured_period。
+- 原因：作者确认大抖动来自 I2C IMU 读取；period 参数异常仍未定位。
+- 处理过程：配置 realtime group limits；用 chrt 调整进程及子进程优先级；停用 I2C IMU 读取；维护者建议同点打印时间变量。
+- 有效处理：针对循环抖动，移除/隔离该 I2C IMU 读取后作者观察到循环稳定。
+- 结果：I2C 引起的抖动已由作者 A/B 确认；update period 参数问题没有闭环。
+- 限制：线程没有说明采用异步 I/O、独立线程或具体驱动修复，只确认停读后稳定。；不能把低延迟内核下的结果直接外推到所有硬件和 RT kernel。
+- 安全提示：传感器读取不要无界阻塞实时控制线程；应监控 worst-case execution time 和 deadline miss。
+- 独立核验引用：[issue · 维护者无法在普通 PC 复现并继续询问时间来源](https://github.com/ros-controls/ros2_control/issues/1574#issuecomment-2183982425)
+- 适用边界：Raspberry Pi 5 上的该线程记录；缺少精确 ros2_control 版本且维护者未复现。
+
+### ros2_control 多硬件 rw_rate 抖动导致额外跳周期
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_rw_rate_skipped_cycles_2089`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 多硬件 rw_rate 应按当前执行与跳过后的时间误差择近**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：PR #2091 不再只用固定 0.99 阈值判断是否过频，而是比较现在执行与再跳一个 controller-manager 周期后执行，哪一种对目标 rw_rate 的时间误差更小。作者在多组频率、mock 组件和 UR16e+KR50 真机上测试；真机 read/write 跳过均降到 0.01% 以下。该 PR 已合并。不可整除频率仍会量化，需按目标组合验收。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #2089 评论 2695374172、2698322050；PR #2091；merge commit bfbedd2c1c7487f3c6d424c58a0b6d1c79e161c9
+- 原帖/精确回复：[ros2_control 多硬件 rw_rate 应按当前执行与跳过后的时间误差择近](https://github.com/ros-controls/ros2_control/issues/2089#issuecomment-2698322050)
+- 平台/作者：GitHub Issues / RobertWilbrandt
+- 关键术语：读写频率（read/write rate, rw_rate）；控制管理器更新率（controller-manager update rate）；周期抖动（periodicity jitter）；跳过周期（skipped cycle）
+- 环境：Ubuntu 24.04.1 LTS；ROS 2 Jazzy；ros2_control 源码构建；UR16e 500 Hz、KUKA KR50 250 Hz；另有 mock 测试。
+- 症状：慢硬件期望约 4 ms 调用，实际频繁跳到约 6 ms，表现为运动 stutter。；约 500 秒 trace 中 write 超过 5 ms 的比例 20.5%，read 为 0.74%。
+- 诊断：记录 read/write 周期分布，不只看平均频率。；比较降低固定阈值与基于 timing error 的调度。；覆盖 100/150/250/333 Hz 与 controller_manager 500/1000 Hz。
+- 原因：原逻辑只检查调用是否过频；快接口执行抖动会让慢接口落到 0.99 阈值下并额外跳过一个周期。
+- 处理过程：0.98 和 0.97 阈值只减少跳过；作者改为比较本周期执行与下周期执行的时间误差。；先 mock、多频率测试，再在 UR16e+KR50 真机测试。
+- 有效处理：采用已合并 PR #2091 的 rw_rate timing-error 选择逻辑。
+- 结果：真机 trace 中 read/write 跳过均低于 0.01%；PR #2091 获维护者审核、测试覆盖并合并。
+- 限制：150 Hz 相对 500/1000 Hz 不能整除时，线程数据显示实际频率会量化到 166.66 或 142.87 Hz；不能承诺任意目标频率精确命中。；作者认为剩余极少跳过可能与无 RT/low-latency kernel 的测试环境有关，但这是其判断，不是独立结论。
+- 安全提示：多硬件系统升级调度算法后，应在禁动力或低速模式下检查每个接口的周期分布和 missed cycles。
+- 独立核验引用：[pull_request · 合并 PR，含真实硬件结果、单元测试和 merge commit bfbedd2](https://github.com/ros-controls/ros2_control/pull/2091)
+- 适用边界：ROS 2 Jazzy、ros2_control 多硬件组件且 rw_rate 低于 controller_manager update_rate 的场景。
+
+### ros2_control RT/non-RT 共享锁的优先级继承改造
+
+- `problem_id`：`problem.realtime_control_latency.ros2_control_pi_recursive_mutex_3145`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：ros2_control 实时路径共享递归锁改用优先级继承 mutex**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：维护者没有采用 atomic flag 搬移发布，而是要求使用 realtime_tools 已有的 priority-inheritance recursive mutex。PR #3197 将 controllers_lock_ 及全部调用点迁移到 realtime_tools::prio_inherit_recursive_mutex，Windows 保留 std::recursive_mutex 回退；PR 经 review 和测试后合并。它解决的是源码层面的优先级反转风险，不应写成已经量化了 jitter 改善。
+- 证据状态：`issue_candidate`
+- 来源定位：ros2_control #3145 评论 4160585534、4191555039、4200304531；PR #3197；merge commit 308e4aab78958b730d847c0054c69f2cefabd8db
+- 原帖/精确回复：[ros2_control 实时路径共享递归锁改用优先级继承 mutex](https://github.com/ros-controls/ros2_control/issues/3145#issuecomment-4200304531)
+- 平台/作者：GitHub Issues / shlok-mehndiratta
+- 关键术语：优先级反转（priority inversion）；优先级继承互斥锁（priority-inheritance mutex）；实时线程（real-time thread）；递归互斥锁（recursive mutex）
+- 环境：ros2_control master commit a03be840 发现问题；PR 在 ROS 2 Rolling 构建验证；POSIX 使用 realtime_tools PI mutex，Windows 回退 std::recursive_mutex。
+- 症状：这是源码审计发现的潜在 priority inversion/jitter 风险，线程没有给出机器人上的实测卡顿或 benchmark。
+- 诊断：从 SCHED_FIFO update() 追踪 fallback activation 到 publish_activity()，再检查 controllers_lock_ 是否也被 executor/service 路径持有。
+- 原因：标准 recursive_mutex 不提供此处需要的优先级继承，低优先级线程持锁时可能阻塞 RT 线程。
+- 处理过程：最初 PoC 用 atomic flag 进行 RT→non-RT 触发；维护者选择更小范围的 PI recursive mutex 替换。
+- 有效处理：PR #3197 将 controllers_lock_ 迁移为 realtime_tools::prio_inherit_recursive_mutex，并保留 Windows 回退。
+- 结果：PR 获两位维护者批准、修改行测试覆盖后合并。
+- 限制：合并证明代码方案被接受，不证明原路径曾产生可测 jitter，也不提供性能改善数值。；Windows 回退路径没有 PI mutex，适用性不同。
+- 安全提示：锁替换后仍应在 fallback、服务并发和控制器切换压力场景测量最坏延迟。
+- 独立核验引用：[pull_request · 已合并 PI recursive mutex 迁移，merge commit 308e4aa，含 review 与测试覆盖](https://github.com/ros-controls/ros2_control/pull/3197)
+- 适用边界：ros2_control controller_manager 使用共享 controllers_lock_ 的 POSIX 平台；Windows 为标准 mutex 回退。
+
 ## retargeting_dataset_quality (`retargeting_dataset_quality`)
 
 ### 重定向动作回放看似正常，但 Whole Body Tracking 训练一开始就反复终止、mean episode length 卡在 1，先检查什么？
@@ -5012,6 +8233,92 @@
 - 图片分析：帖子截图只用于指出脚本中的 FK 模型；结论来自贡献者文字回复，不依赖截图推断。
 - 独立核验引用：[maintainer_confirmation · 项目贡献者确认 IK 由基于 FK 的优化实现](https://github.com/LeCAR-Lab/human2humanoid/issues/25#issuecomment-2518575224)
 - 适用边界：适用于 human2humanoid 的重定向脚本；其他项目是否采用同一形式需查其实现。
+
+### H2O 用 privileged teacher 和 0.5m 逐帧阈值过滤重定向动作
+
+- `problem_id`：`problem.retargeting_dataset_quality.h2o_teacher_motion_filter_6`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：H2O 数据清洗用无随机化 privileged teacher 逐帧筛除跟踪距离超过 0.5m 的动作**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：原项目作者给出的流程是：先完成整个 AMASS 的目标机器人重定向；训练不使用 domain randomization 和 penalty reward 的 privileged teacher；逐条评估动作，只要任一 timestep 的 reference motion distance 超过 0.5 m，就过滤整条 motion。作者同时确认公开的 amass_phc_filtered.pkl 是该流程结果。对其他机器人必须重新验证 distance 定义和阈值。
+- 证据状态：`issue_candidate`
+- 来源定位：human2humanoid #6：项目作者评论 2417970533 给出完整流程与 >0.5m 条件；2418826815 确认公开 filtered 文件
+- 原帖/精确回复：[H2O 数据清洗用无随机化 privileged teacher 逐帧筛除跟踪距离超过 0.5m 的动作](https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2417970533)
+- 平台/作者：GitHub Issues / Perkins729
+- 关键术语：特权教师策略（privileged teacher policy）；领域随机化（domain randomization）；动作可行性筛选（motion feasibility filtering）；参考动作距离（reference motion distance）
+- 环境：H2O/human2humanoid 数据清洗流程；完整 AMASS retargeting；privileged teacher；原帖未给 commit、训练步数和距离具体定义代码。
+- 症状：仅有重定向后的动作文件，无法区分目标机器人可稳定跟踪与不可跟踪的 reference motions。
+- 诊断：先保证所有 AMASS motion 已完成目标机器人重定向，再用不含随机化/惩罚的 teacher 做逐动作 rollout。；逐 timestep 计算项目定义的 reference motion distance，并记录首次超过 0.5 m 的动作。
+- 原因：动作在几何上完成重定向不代表目标机器人动力学上可跟踪，需要 privileged teacher 作为 feasibility test。
+- 处理过程：提问者询问是否直接训练 teacher，并用 teacher 输出得到 amass_phc_filtered.pkl；项目作者确认该方向。
+- 有效处理：用无 domain randomization、无 penalty reward 的 privileged teacher 评估全部动作；任一时刻 reference motion distance > 0.5 m 就剔除整条 motion。
+- 结果：项目作者确认公开 amass_phc_filtered.pkl 是上述数据处理结果。
+- 限制：0.5 m 是 H2O 线程给出的项目判据，不能不经验证直接用于不同机器人、距离定义或动作尺度。；线程没有给出 distance 所包含的 body、聚合方式、teacher 训练预算和失败率。
+- 安全提示：对新机器人应保留被过滤动作和失败轨迹用于审计，并重新标定阈值，避免只依据单一距离掩盖跌倒、力矩或接触失败。
+- 独立核验引用：[maintainer_confirmation · 项目作者给出 full-AMASS retarget、无随机化/惩罚 teacher 和任一帧 >0.5m 剔除规则](https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2417970533)；[maintainer_confirmation · 项目作者确认 amass_phc_filtered.pkl 是上述流程产物](https://github.com/LeCAR-Lab/human2humanoid/issues/6#issuecomment-2418826815)
+- 适用边界：直接适用于 H2O 原训练数据清洗；迁移到其他机器人或距离度量时需重新校准。
+
+### PHC 自定义 XML 的无-joint 中间 body 导致 rotations_world/g_rot 索引缺失
+
+- `problem_id`：`problem.retargeting_dataset_quality.phc_body_without_joint_grot_96`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：自定义机器人 PHC 重定向需分别检查 SMPL T-pose 与无 joint body 的 FK 索引**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原作者确认自定义 XML 中有许多 body 完全没有 joint，而且不只是 end effectors；PHC 的 FK population 因而没有为这些索引生成 rotation tensor。其本地 workaround 是给这些 body 添加活动范围极小、近似静止的 joint，使索引被完整填充。该方法没有上游验证且会改变模型拓扑，只能作为需实际复测的预处理经验；更稳妥的实现仍应检查 FK/parser 对 fixed bodies 的支持。
+- 证据状态：`issue_candidate`
+- 来源定位：PHC #96：评论 2469949721 打印 65 bodies/51 valid indexes；2471993047 原作者自答无-joint body 根因与 near-static joint workaround
+- 原帖/精确回复：[自定义机器人 PHC 重定向需分别检查 SMPL T-pose 与无 joint body 的 FK 索引](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2471993047)
+- 平台/作者：GitHub Issues / ghost
+- 关键术语：前向运动学（forward kinematics, FK）；旋转张量（rotation tensor）；无关节刚体（body without a joint）；近静态关节（near-static joint）
+- 环境：human2humanoid grad_fit_shape/grad_fit 与 PHC fit_smpl_shape/fit_smpl_motion；自定义 MJCF/XML 和 robot.yaml；原帖未给 commit、OS 或库版本。
+- 症状：错误渲染中机器人明显不对称，一侧手臂下垂、腿和脚交叠；Isaac Gym 对照是双臂水平、双腿分开的 T-pose。；作者报告 shape-fit loss 由 200+ 降至约 40。；J/bodies 长度为 65，但 rotations_world/g_rot 只有 51 个有效索引；某些位置出现 shape=(1,90,0,3,3) 的空 tensor。
+- 诊断：用 +vis=True 对照 SMPL 与 robot matched joints，检查 robot.yaml 的 smpl_pose_modifier 是否让 SMPL 与机器人处于同一 T-shape。；逐 body 检查 XML 是否存在非末端 body 完全没有 joint，并比较 body_names、parents、rotations_world/g_rot 的有效索引数量。
+- 原因：shape fitting 只改变 betas 和 scale，不能替错误的 SMPL base pose；smpl_pose_modifier 不对齐会让关键点初始姿态错误。；PHC FK 实现假设所遍历 body 能产生对应 rotation entry；自定义 XML 的无-joint 中间 body 打破了该假设。
+- 处理过程：作者先确认运行过 shape fitting，并检查 joint_matches；答复者引导检查 smpl_pose_modifier/T-shape。；作者继续打印 rotations_world，定位到 index 37 等位置没有 tensor。
+- 有效处理：把 robot.yaml 的 smpl_pose_modifier 调整为与目标机器人一致的 T-shape；若姿态正确再增加 fitting iterations。；原作者的 XML workaround 是给先前完全无 joint 的 body 添加活动范围极小、近似静止的 joint，使 FK 索引完整。
+- 结果：修正 pose modifier 后，作者报告可视匹配明显改善且 loss 从 200+ 降到约 40。；原作者随后明确发布无-joint body 的原因与加近静态 joint 的解决方案，并关闭 PHC Issue。
+- 限制：改进后的散点图没有图例、单位或逐 joint 数值，不能从颜色猜测哪组是 SMPL/robot，也不能证明 motion-level tracking 已通过。；给 body 添加 near-static movable joint 会改变模型拓扑，可能影响自由度、惯量、控制和导出；线程没有上游认可或动力学回归。；作者后续仍说会继续调整 robot.yaml 降低 loss，约 40 不是通用验收阈值。
+- 安全提示：重定向模型修改后必须重新核对 nq/nv、joint order、inertia、limits 和 FK，并把预处理模型与真实控制模型的差异显式记录。
+- 图片分析：三张关键图已核验：错误渲染为明显不对称灰色人形，一侧手臂下垂、双腿和脚在下方交叠；Isaac Gym 对照为双臂水平、双腿分开的近 T-pose；修正后散点图中多数红/蓝关键点成对接近。散点图没有图例、单位或误差数值，因此只支持“对齐明显改善”，不用于判定具体 joint 含义或最终 motion 精度。
+- 独立核验引用：[issue · 原作者给出 J/bodies=65、g_rot=51 和空 tensor 的具体索引诊断](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2469949721)；[issue · 原作者确认 XML 中无-joint body 是根因，并发布 near-static joint workaround](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2471993047)
+- 适用边界：适用于原作者自定义 MJCF/XML 与 PHC FK 实现；任何控制/仿真模型采用前必须重新核对拓扑和动力学。
+
+### PHC shape fitting 只调 betas/scale，SMPL pose modifier 必须先对齐 T-pose
+
+- `problem_id`：`problem.retargeting_dataset_quality.phc_smpl_pose_modifier_tpose_96`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：自定义机器人 PHC 重定向需分别检查 SMPL T-pose 与无 joint body 的 FK 索引**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`resolved`
+- 候选解答：检查 robot.yaml 的 smpl_pose_modifier，确保 SMPL 初始姿态与目标机器人同为对齐的 T-shape。线程答复者解释 shape fitting 只优化 betas 和 scale，只改变骨段长度，不能修正错误基础姿态；原作者调整后报告 loss 从 200+ 降到约 40、关键点明显更接近。姿态正确后才考虑增加 fitting iterations。
+- 证据状态：`issue_candidate`
+- 来源定位：human2humanoid #18 链接 PHC #96；PHC 评论 2469828963 解释 smpl_pose_modifier/T-shape，2469949721 原作者报告 loss 改善
+- 原帖/精确回复：[自定义机器人 PHC 重定向需分别检查 SMPL T-pose 与无 joint body 的 FK 索引](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2469828963)
+- 平台/作者：GitHub Issues / ghost
+- 关键术语：形状参数（shape parameters, betas）；尺度参数（scale parameter）；标准 T 姿态（T-pose）；姿态修饰器（pose modifier）
+- 环境：human2humanoid grad_fit_shape/grad_fit 与 PHC fit_smpl_shape/fit_smpl_motion；自定义 MJCF/XML 和 robot.yaml；原帖未给 commit、OS 或库版本。
+- 症状：错误渲染中机器人明显不对称，一侧手臂下垂、腿和脚交叠；Isaac Gym 对照是双臂水平、双腿分开的 T-pose。；作者报告 shape-fit loss 由 200+ 降至约 40。；J/bodies 长度为 65，但 rotations_world/g_rot 只有 51 个有效索引；某些位置出现 shape=(1,90,0,3,3) 的空 tensor。
+- 诊断：用 +vis=True 对照 SMPL 与 robot matched joints，检查 robot.yaml 的 smpl_pose_modifier 是否让 SMPL 与机器人处于同一 T-shape。；逐 body 检查 XML 是否存在非末端 body 完全没有 joint，并比较 body_names、parents、rotations_world/g_rot 的有效索引数量。
+- 原因：shape fitting 只改变 betas 和 scale，不能替错误的 SMPL base pose；smpl_pose_modifier 不对齐会让关键点初始姿态错误。；PHC FK 实现假设所遍历 body 能产生对应 rotation entry；自定义 XML 的无-joint 中间 body 打破了该假设。
+- 处理过程：作者先确认运行过 shape fitting，并检查 joint_matches；答复者引导检查 smpl_pose_modifier/T-shape。；作者继续打印 rotations_world，定位到 index 37 等位置没有 tensor。
+- 有效处理：把 robot.yaml 的 smpl_pose_modifier 调整为与目标机器人一致的 T-shape；若姿态正确再增加 fitting iterations。；原作者的 XML workaround 是给先前完全无 joint 的 body 添加活动范围极小、近似静止的 joint，使 FK 索引完整。
+- 结果：修正 pose modifier 后，作者报告可视匹配明显改善且 loss 从 200+ 降到约 40。；原作者随后明确发布无-joint body 的原因与加近静态 joint 的解决方案，并关闭 PHC Issue。
+- 限制：改进后的散点图没有图例、单位或逐 joint 数值，不能从颜色猜测哪组是 SMPL/robot，也不能证明 motion-level tracking 已通过。；给 body 添加 near-static movable joint 会改变模型拓扑，可能影响自由度、惯量、控制和导出；线程没有上游认可或动力学回归。；作者后续仍说会继续调整 robot.yaml 降低 loss，约 40 不是通用验收阈值。
+- 安全提示：重定向模型修改后必须重新核对 nq/nv、joint order、inertia、limits 和 FK，并把预处理模型与真实控制模型的差异显式记录。
+- 图片分析：三张关键图已核验：错误渲染为明显不对称灰色人形，一侧手臂下垂、双腿和脚在下方交叠；Isaac Gym 对照为双臂水平、双腿分开的近 T-pose；修正后散点图中多数红/蓝关键点成对接近。散点图没有图例、单位或误差数值，因此只支持“对齐明显改善”，不用于判定具体 joint 含义或最终 motion 精度。
+- 独立核验引用：[issue · human2humanoid 原作者把 74 links/34 joints 问题链接到其 PHC #96 自答](https://github.com/LeCAR-Lab/human2humanoid/issues/18#issuecomment-2471994042)；[issue · 答复者说明 shape fit 只改 betas/scale，需先保证 smpl_pose_modifier 也是 T-shape](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2469828963)；[issue · 原作者报告修正后 loss 从 200+ 降至约 40，并附关键点对照图](https://github.com/ZhengyiLuo/PHC/issues/96#issuecomment-2469949721)
+- 适用边界：适用于 PHC/human2humanoid 自定义机器人 shape fitting；具体 joint_matches 和可接受 loss 需按机器人重新验证。
 
 ## simulator_physics_numerics (`simulator_physics_numerics`)
 
@@ -5237,33 +8544,61 @@
 - 独立核验引用：[maintainer_confirmation · 提问者明确报告迁移 manager-based 后问题解决](https://github.com/isaac-sim/IsaacLab/issues/1492#issuecomment-2531772317)；[source_code · 提问者补充引用的 v2.2.0 CurriculumCfg 示例](https://github.com/isaac-sim/IsaacLab/blob/f52aa9802780e897c184684d1cbc2025fafcef4a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py#L278)
 - 适用边界：明确对应 IsaacLab v2.2.0 manager-based locomotion 示例；其他版本需核对 CurriculumCfg API。
 
-### Isaac Lab 奖励权重归零后单项 step reward 残留
+### Isaac Lab actuator gain randomization 的零增量不是当前增益 no-op
 
-- `problem_id`：`problem.training_reward_curriculum.isaaclab_zero_weight_step_reward_stale_2391`
+- `problem_id`：`problem.training_reward_curriculum.isaaclab_gain_randomization_default_reset_1604`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：Isaac Lab actuator gain randomization 加零仍会先恢复 default_joint_stiffness**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：原作者引用的实现会先把 asset.data.default_joint_stiffness 写入 actuator.stiffness，再施加随机操作；所以 add zero 保持的是 default 基线，不一定保持资产当前 actuator gains。作者用有/无事件多次复现 reward 差异，项目贡献者也认可应分离 default values 与 randomization。不过线程没有合并修复或修复后训练结果，因此当前只能把它作为配置审计结论：逐项比较 event 前后 stiffness/damping，不能宣称已有通用修复。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #1604：作者评论 2563243878 引用 events.py 的 default overwrite；贡献者评论 2565844406 认可分离设计
+- 原帖/精确回复：[Isaac Lab actuator gain randomization 加零仍会先恢复 default_joint_stiffness](https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2563243878)
+- 平台/作者：GitHub Issues / sdfzz
+- 关键术语：执行器增益随机化（actuator gain randomization）；默认关节刚度（default joint stiffness）；隐式执行器（ImplicitActuator）；零增量操作（zero-add operation）
+- 环境：Isaac Lab manager_based locomotion/velocity/config/g1/flat_env_cfg.py；startup EventTerm；joint_names=.*；原帖未给 commit、GPU、seed。
+- 症状：相同 iteration 243，启用 add-zero randomization 的 mean reward 约 -10.49，未启用时约 16.69；作者称多次运行均出现差异。
+- 诊断：比较 event 执行前后的 actuator.stiffness/damping、asset.data.default_joint_stiffness/damping 与资产配置值。；不要把 distribution=(0,0)、operation=add 自动视为对当前 actuator gains 的 no-op。
+- 原因：原帖引用的 events.py 先从 default_joint_stiffness 重建 stiffness，再调用 randomize；因此零增量保持的是 default 基线，不一定是 asset 当前 actuator 配置。
+- 处理过程：作者用有/无 EventTerm 多次对照，并阅读 events.py 定位到先加载 default_joint_stiffness 的代码。；项目贡献者认可 default values 与 randomization 应分离，并指向类似设计提案。
+- 有效处理：线程只形成设计建议：将 default 值恢复与 randomization 分开；没有合并修复、可定位正式提交或修复后训练结果，不能写成已验证方案。
+- 结果：Issue 保持 open；项目贡献者认可问题方向，但原作者没有发布最终改法或结果。
+- 限制：线程没有随机种子和完整训练曲线，16.69/-10.49 只是在指定 iteration 的对照记录。；PR #1416 讨论 reset joint state 的类似设计，并非 actuator gain randomization 的直接合并修复。
+- 安全提示：实机前必须核对随机化后的 stiffness/damping 是否落在执行器和低层控制器允许范围，不能仅依据训练 reward。
+- 独立核验引用：[issue · 原作者引用 events.py，指出 randomize 前先恢复 default_joint_stiffness](https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2563243878)；[maintainer_confirmation · 项目贡献者认可将 default values 与 randomizations 分离的方向](https://github.com/isaac-sim/IsaacLab/issues/1604#issuecomment-2565844406)；[pull_request · 贡献者所指的类似 reset/default 分离提案；该 PR 未合并且不是 actuator gain 直接修复](https://github.com/isaac-sim/IsaacLab/pull/1416)
+- 适用边界：适用于原帖所用 Isaac Lab randomize_actuator_gains 实现；目标版本代码可能变化，必须核对实际 events.py。
+
+### Isaac Lab RSL-RL 大动作反馈导致 value loss 爆炸
+
+- `problem_id`：`problem.training_reward_curriculum.isaaclab_rslrl_action_clipping_nan_1999`
 - 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
 - 经验数量：1（全部列出，不隐藏待验证或冲突来源）
 
-**经验 1：Isaac Lab 奖励权重归零后单项 step reward 残留旧值**
+**经验 1：Isaac Lab RSL-RL 大动作反馈导致 value loss 爆炸时启用 action clipping**
 
 - 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
 - 解答状态：`resolved`
-- 候选解答：原帖定位到 RewardManager.compute 的零权重分支直接 continue，没有清空 _step_reward 对应列，因此可视化和日志读到过期值。已合并 PR #2392 在 continue 前执行 self._step_reward\[:, term_idx\] = 0.0，并使用 enumerate 获得索引。这不是总奖励错误：原帖明确说 _reward_buf 一直正确。PR 没有新增回归测试，目标版本仍应复测 0 → 非 0 → 0 路径。
+- 候选解答：原线程验证的是在 RSL-RL wrapper 执行动作前启用动作裁剪（action clipping）。官方 PR #2019 说明，未裁剪的大动作既进入环境又成为上一动作观测（last-action observation），可能形成动作与 critic error 互相放大的负反馈；PR 增加 agent_cfg.clip_actions 并在 step 中用 torch.clamp。原作者合并后确认有效。线程没有公开通用裁剪阈值，因此阈值仍需按任务动作定义验证。
 - 证据状态：`issue_candidate`
-- 来源定位：Isaac Lab #2391 正文复现和影响边界；版本确认 issuecomment-2836796927；已合并 PR #2392 及合并提交 f1ba9c3
-- 原帖/精确回复：[Isaac Lab 奖励权重归零后单项 step reward 残留旧值](https://github.com/isaac-sim/IsaacLab/issues/2391)
-- 平台/作者：GitHub Issues / Bikram Pandit
-- 关键术语：单步奖励（step reward）；奖励课程（reward curriculum）；过期值（stale value）；实时可视化（live visualization）
-- 环境：Isaac Lab 2.1.0，commit 2e6946afb9b26f6949d4b1fd0a00e9f4ef733fcc；Isaac Sim 4.5；Ubuntu 22.04；RTX 3060；CUDA 12.4；GPU driver 550.120。
-- 症状：权重在 0 → 非 0 → 0 后，_reward_buf 继续正确，但 _step_reward\[:, idx\] 保留前一次的非零值。；ManagerLiveVisualizer 和依赖 _step_reward 的日志显示过期单项奖励。
-- 诊断：按原帖步骤记录同一项在 0 → 非 0 → 0 三个阶段的 weight、_step_reward 与 _reward_buf，区分单项监控缓冲和总奖励。；检查 RewardManager.compute 的 zero-weight continue 分支是否在跳过前清空对应列。
-- 原因：旧实现遇到 weight == 0.0 直接 continue，没有覆盖之前写入 _step_reward 的单项值。
-- 处理过程：原帖给出了权重往返切换的伪代码复现。；PR #2392 先引入 term_idx 并在零权重分支清零，后续提交改用 enumerate 避免在循环中搜索名称索引。
-- 有效处理：使用已合并 PR #2392 的逻辑：遇到零权重时先执行 self._step_reward\[:, term_idx\] = 0.0，再 continue。
-- 结果：PR #2392 于 2025-05-09 合并到主分支，合并提交为 f1ba9c3a30b0cef04d04dfba789f996360cd4f1c。
-- 限制：该修复只矫正单项 _step_reward 的可视化/日志值；原帖明确说明总奖励 _reward_buf 本来就正确。；PR #2392 的检查清单明确未添加证明修复有效的测试；应在目标版本重跑原帖的权重切换用例。
-- 安全提示：调试过程中不要仅依赖单项可视化判定策略实际收到的总奖励。
-- 独立核验引用：[pull_request · PR 在零权重分支清空对应 _step_reward，已合并；检查清单未新增测试](https://github.com/isaac-sim/IsaacLab/pull/2392)；[source_code · PR #2392 合并提交](https://github.com/isaac-sim/IsaacLab/commit/f1ba9c3a30b0cef04d04dfba789f996360cd4f1c)；[issue · 原作者补充确认 Isaac Lab/Isaac Sim 版本](https://github.com/isaac-sim/IsaacLab/issues/2391#issuecomment-2836796927)
-- 适用边界：适用于使用 Isaac Lab RewardManager，且运行期动态将同一奖励项权重从非零改回 0 的情况；原环境为 Isaac Lab 2.1.0/Isaac Sim 4.5。
+- 来源定位：IsaacLab #1999：协作者评论 2700385656 指向 PR #2019；原作者评论 2719617210 确认 Works；PR 合并提交 f774425
+- 原帖/精确回复：[Isaac Lab RSL-RL 大动作反馈导致 value loss 爆炸时启用 action clipping](https://github.com/isaac-sim/IsaacLab/issues/1999#issuecomment-2719617210)
+- 平台/作者：GitHub Issues / alextong1010
+- 关键术语：动作裁剪（action clipping）；上一动作观测（last-action observation）；价值函数损失（value function loss）；负反馈回路（negative feedback loop）
+- 环境：Isaac Lab 默认 Go2 rough policy、RSL-RL；约 5000–8000 iterations 后失败；原帖日志为 iteration 8391、24576×12 policy loc；未给 Isaac Lab commit 和随机种子。
+- 症状：value function loss 变成 inf，随后 torch Normal 的 loc 张量全部为 NaN，训练退出。；失败前 mean episode length 为 1000，terrain curriculum level 约 6.13；这些日志只描述当时状态，不单独证明根因。
+- 诊断：检查策略输出是否未经裁剪直接执行，同时又作为 last-action observation 回馈策略。；记录动作幅值、critic loss 和首次出现 inf/NaN 的 iteration，验证是否存在持续放大的大动作。
+- 原因：官方 PR #2019 说明，大动作直接执行并作为上一动作观测回馈，会造成 large action→large critic error→更大 sampled action 的负反馈。
+- 处理过程：协作者建议合并 PR #2019 后复测。；原作者按建议测试并回复 Works。
+- 有效处理：使用合入 PR #2019 后的 RslRlVecEnvWrapper，并通过 agent_cfg.clip_actions 启用动作裁剪；该 PR 在 wrapper step 中于执行环境动作前调用 torch.clamp。
+- 结果：原作者确认合并 PR 后有效并关闭 Issue；PR #2019 于 2025-03-13 合入官方仓库。
+- 限制：原线程没有给出所用 clip_actions 数值，不能从该帖子推导通用裁剪阈值。；该修复针对 RSL-RL wrapper 的动作反馈路径，不能把所有 PPO/RL NaN 都归因于同一问题。
+- 安全提示：动作裁剪是训练与接口防护，不替代实机的关节位置、速度、力矩和急停安全限制。
+- 独立核验引用：[issue · 原作者合并测试后回复 Works 并关闭 Issue](https://github.com/isaac-sim/IsaacLab/issues/1999#issuecomment-2719617210)；[pull_request · 官方合并 PR 解释大动作/last-action 负反馈，并增加 clip_actions 配置](https://github.com/isaac-sim/IsaacLab/pull/2019)；[source_code · 固定合并提交：RslRlVecEnvWrapper.step 在 env.step 前对 actions 执行 torch.clamp](https://github.com/isaac-sim/IsaacLab/commit/f774425b4724e3ed0352e241220a6e2b56067106)
+- 适用边界：适用于 Isaac Lab RSL-RL wrapper 中策略动作同时执行并作为上一动作观测的训练路径；具体 clip 范围需匹配任务 action space。
 
 ### RSL-RL PPO 报 Normal 分布 std 小于零时，原线程给出了什么可核对线索？
 
@@ -5288,3 +8623,60 @@
 - 结果：改变奖励权重的用户明确说问题仍会发生；sigma 裁剪建议没有后续验证。
 - 限制：没有维护者回复、复现配置、补丁或最终闭环；不能断言奖励权重是根因。
 - 适用边界：适用于出现同一 RSL-RL Normal scale/std 异常的训练；版本和策略参数需单独记录。
+
+### penalty curriculum 改变奖励尺度时不能按 mean reward 峰值选 checkpoint
+
+- `problem_id`：`problem.training_reward_curriculum.h2h_penalty_curriculum_checkpoint_17`
+- 问题综合等级：**值得参考** — 至少一条经验形成了完整工程记录，但尚未达到正式交叉核验门槛。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：human2humanoid 平均奖励下降可能来自 penalty curriculum，不能据此提前选 checkpoint**
+
+- 独立等级：**值得参考** — 环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。
+- 解答状态：`partial`
+- 候选解答：项目作者说明 OmniH2O 的 penalty curriculum 会根据 episode length 自动增减负奖励系数，因此 mean reward 的尺度会随训练改变，峰值 checkpoint 不一定已收敛。应保持默认 reward/curriculum，继续训练，并在 W&B 同时画 penalty coefficient、episode length、分项奖励和 rollout。线程建议尝试 100000 iterations，但原作者没有披露最终具体修复，所以该数值不能当成通用阈值。
+- 证据状态：`issue_candidate`
+- 来源定位：human2humanoid #17：作者评论 2455393534 建议默认配置/100000 iterations；2472060877 解释 penalty curriculum；2478802824 原作者称已解决
+- 原帖/精确回复：[human2humanoid 平均奖励下降可能来自 penalty curriculum，不能据此提前选 checkpoint](https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2472060877)
+- 平台/作者：GitHub Issues / zengweishuai
+- 关键术语：惩罚课程（penalty curriculum）；平均回合长度（average episode length）；特权策略（privileged policy）；训练检查点（training checkpoint）
+- 环境：human2humanoid privileged policy checkpoint 25000/26500，distilled policy checkpoint 18000；默认训练配置语境；原帖未给 commit、GPU 或随机种子。
+- 症状：原作者文字描述前进时一条腿跟随 reference、另一条腿落后。；奖励图显示 mean reward 从负值快速升至约 100，在约 1.2M steps 附近达到更高区间，1.5M 后总体下降并在训练末期约为 50。
+- 诊断：同时绘制 penalty coefficient/penalty scale、average episode length 与分项奖励，不只看加权后的 mean reward。；确认是否保持项目默认 reward/curriculum，并比较更后期 checkpoint 的实际跟踪和步态。
+- 原因：项目作者判断 penalty curriculum 会按 episode length 自动改变负奖励系数；reward 尺度变化后，早期 reward 峰值不等于策略已充分收敛。
+- 处理过程：原作者因总奖励在 1M-1.5M 区间后下降，选了 25000/26500 checkpoint。；项目作者建议继续到 100000 iterations、采用默认 reward/curriculum，并查看 penalty coefficient。
+- 有效处理：不要仅按 mean reward 峰值挑选；结合 curriculum coefficient、episode length 和实际 rollout 判断收敛，并按原线程建议用默认设置继续训练。
+- 结果：原作者在项目作者解释后回复问题已解决；没有公布最终 checkpoint、曲线或具体改动。
+- 限制：100000 iterations 是线程中的排查建议，不是所有任务的固定收敛步数。；原作者没有明确说明是继续训练、恢复默认配置还是其他修改解决问题，因此不能把单一动作写成已验证唯一修复。；GIF 只核验了首个可见帧，不能从单帧证明完整的单腿时序落后。
+- 安全提示：进入实机前应对多个 checkpoint 做独立 rollout、跌倒率和关节/力矩约束检查，不以训练总奖励单指标选型。
+- 图片分析：奖励曲线已核验：mean reward 从约 -100 快速升至约 100，约 1.2M steps 附近进入约 120 的高点，1.5M 后总体下降并震荡，末端约 50；图中没有 penalty coefficient 或 episode length，因此不能单靠该图判定退化。GIF 的首个可见帧显示机器人深蹲、双腿明显弯曲/交叠并叠加稀疏目标点，但本轮未读取完整动画时序，不据此证明哪条腿持续落后。
+- 独立核验引用：[maintainer_confirmation · 项目作者说明 penalty coefficient 按 policy episode length 自动增减，并建议绘图检查](https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2472060877)；[issue · 原作者确认问题已解决，但没有说明最终采取的具体动作](https://github.com/LeCAR-Lab/human2humanoid/issues/17#issuecomment-2478802824)；[source_code · 固定 commit：average_episode_length 更新与 penalty_scale 按上下阈值增减并 clip](https://github.com/LeCAR-Lab/human2humanoid/blob/fb7ed5f85c4426f7c52cc3f82e43ee4de215bee9/legged_gym/legged_gym/envs/base/legged_robot.py#L2289-L2307)
+- 适用边界：适用于启用 human2humanoid/OmniH2O penalty curriculum 的 privileged-policy 训练；其他 reward 定义需核对自身系数更新逻辑。
+
+### 动态权重归零后的分项 reward 残留
+
+- `problem_id`：`problem.training_reward_curriculum.isaaclab_zero_weight_step_reward_stale_2391`
+- 问题综合等级：**可信度很高** — 至少一条经验已有正式资料或独立复现支持，且当前没有未解决冲突。
+- 经验数量：1（全部列出，不隐藏待验证或冲突来源）
+
+**经验 1：动态 reward 权重归零后要清空 per-term step buffer**
+
+- 独立等级：**可信度很高** — 问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。
+- 解答状态：`resolved`
+- 候选解答：先用 0→非零→0 的权重序列确认只有 _step_reward 分项残留，而 _reward_buf 总 reward 正常。使用包含 PR #2392 的版本，或在 RewardManager.compute 的 zero-weight 分支按 term_idx 显式把 _step_reward\[:, term_idx\] 清零后再 continue。该修复只针对 per-term visualization/logging 的 stale value，不应解释成总 reward 算错。
+- 证据状态：`issue_candidate`
+- 来源定位：IsaacLab #2391 完整复现与环境；PR #2392
+- 原帖/精确回复：[动态 reward 权重归零后要清空 per-term step buffer](https://github.com/isaac-sim/IsaacLab/issues/2391)
+- 平台/作者：GitHub Issues / bikcrum
+- 关键术语：动态奖励权重（dynamic reward weight）；分步奖励缓冲（step reward buffer）；过期值（stale value）；实时可视化器（live visualizer）
+- 环境：Isaac Lab 2.1.0 commit 2e6946a、Isaac Sim 4.5、Ubuntu 22.04、RTX 3060、CUDA 12.4、driver 550.120。
+- 症状：_step_reward 对应 term 保留先前非零值，live visualizer/logging 显示 stale reward。；总 reward _reward_buf 仍正确。
+- 诊断：把 term weight 按 0→非零→0 顺序动态修改，并同时打印 _step_reward\[:, idx\] 与总 reward。
+- 原因：zero-weight 分支直接 continue，遗漏清空 per-term step buffer。
+- 处理过程：原帖给出最小伪代码和 acceptance criteria；PR #2392 按 term_idx 在 continue 前写 0。
+- 有效处理：升级到包含 PR #2392 / merge commit f1ba9c3 的版本，或在 weight==0 分支显式执行 _step_reward\[:, term_idx\]=0.0。
+- 结果：Issue 随 PR 合并关闭；修复针对 per-term visualization/logging，不改变原本正确的 total reward。
+- 限制：不要把该 bug 误写成总 reward 计算错误。；PR checklist 未声明新增测试；证据来自精确复现和源码修复。
+- 安全提示：调 curriculum 时应同时记录权重、per-term contribution 和 total reward，避免只凭 UI 分项判断。
+- 独立核验引用：[pull_request · 合并 PR 在 zero-weight 分支清零对应 _step_reward term；检查清单未新增测试](https://github.com/isaac-sim/IsaacLab/pull/2392)；[source_code · PR #2392 合并提交](https://github.com/isaac-sim/IsaacLab/commit/f1ba9c3a30b0cef04d04dfba789f996360cd4f1c)；[issue · 原作者确认 Isaac Lab 2.1.0 / Isaac Sim 4.5 版本](https://github.com/isaac-sim/IsaacLab/issues/2391#issuecomment-2836796927)
+- 适用边界：适用于 Isaac Lab 2.1.0 附近、允许运行时动态切换 reward term weight 的 RewardManager。

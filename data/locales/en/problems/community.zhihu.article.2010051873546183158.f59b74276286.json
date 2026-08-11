@@ -1,0 +1,26 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.2010051873546183158.f59b74276286",
+  "schema_version": 1,
+  "source_fingerprint": "e52fdd47d62b3f470ec00999a9482ad8b17c56664e7787cd3459974a17551693",
+  "translations": {
+    "answer": "The actionable steps are to verify that Python, Isaac Sim, PyTorch/CUDA, and Isaac Lab submissions are complete, check if LD_LIBRARY_PATH places the system CUDA library before the Isaac Sim bundled library in the Binary path, temporarily unset LD_LIBRARY_PATH in the Binary path and retry with create_empty.py for layered validation. Remote GUI issues still need separate verification.",
+    "applicability": "Version combinations may become outdated; no complete hardware/driver matrix provided.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Use fixed versions, execute create_empty.py and Ant/ANYmal training as layered validation; temporarily unset LD_LIBRARY_PATH when conflicts occur.",
+    "details.diagnostics.0": "Cross-verify text, visible comments, and media instructions; not independently validated by paper, source code, or official documentation.",
+    "details.environments.0": "Python 3.11; Isaac Sim 5.1.0; PyTorch 2.7.0 + CUDA 12.8; Isaac Lab 2.3.2 example submission.",
+    "details.limits.0": "Version combinations may become outdated; no complete hardware/driver matrix provided.",
+    "details.outcomes.0": "Text provides executable command chain; comments on remote GUI issues lack a unified solution.",
+    "details.problem_statements.0": "After Isaac Sim/Lab installation, what should be checked first regarding CUDA dynamic library errors?",
+    "details.safety_notes.0": "Community candidates are for hypothesis formation; involve real hardware by limiting speed, force, and personnel, and retain logs when necessary.",
+    "details.suspected_causes.0": "Conflict between system CUDA/LD_LIBRARY_PATH and Isaac Sim bundled CUDA library; remote environment lacks usable graphics stack.",
+    "details.symptoms.0": "Binary installation may report 'undefined symbol libcusparse.so.12'; remote/headless users cannot see GUI in comments.",
+    "media_summaries.0": "Text media and command blocks explain three installation paths; key executable information is version locking, _isaac_sim symbol link, and LD_LIBRARY_PATH check, with images not providing performance curves.",
+    "source.locator": "Text 'method 1/2/3' and libcusparse error segment",
+    "source.title": "Isaac Sim 5.1 / Isaac Lab 2.3.2 Three Installation Paths and CUDA Conflict Resolution",
+    "terms.0": "Unified computation device architecture (CUDA) (统一计算设备架构)",
+    "title": "Isaac Sim/Lab Installation After Shows CUDA Dynamic Library Error, What Should Be Checked First?"
+  }
+}

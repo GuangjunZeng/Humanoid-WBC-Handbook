@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2252.8d436ef44b5e",
+  "schema_version": 1,
+  "source_fingerprint": "b46eb7f1b7bc346800ba8a9b8d71b5c8328ce422565ec800c4986329241f3cdc",
+  "translations": {
+    "answer": "The team recommends using root_physx_view.get_generalized_mass_matrices(). Official OSC examples should first read this matrix, then use arm_joint_ids to extract the arm joint matrices; for floating base WBC, if the full system matrix is required, it should not be sliced as in the arm joint example. The original thread did not provide interfaces for gravity and Coriolis terms, so these parts still need to be verified in the target version API.",
+    "applicability": "Isaac Sim 4.5 PhysX articulation; other versions need to verify API names and matrix dimensions.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The team recommends using get_generalized_mass_matrices() and pointing to the Omni Physics Tensors API and OSC example.",
+    "details.diagnostics.0": "Confirm whether get_jacobians includes the last dimension of dynamics quantities to include floating base degrees of freedom.",
+    "details.diagnostics.1": "Verify that get_generalized_mass_matrices() returns values after being indexed by joint IDs in the official OSC example.",
+    "details.effective_fixes.0": "Read get_generalized_mass_matrices() in Isaac Sim 4.5; do not slice it as in the arm joint example when building the full system matrix.",
+    "details.environments.0": "Isaac Sim 4.5; floating base quadruped or humanoid robot; original post did not provide exact version of Isaac Lab.",
+    "details.limits.0": "This card only confirms the mass matrix; it cannot extrapolate the same method to full gravity or Coriolis interface.",
+    "details.limits.1": "The current document may have evolved; other Isaac Sim versions need to re-verify the API.",
+    "details.outcomes.0": "The full mass matrix entry is confirmed by the official response and cross-verification with the OSC example; the full gravity/Coriolis entry is still pending.",
+    "details.problem_statements.0": "How does a floating base robot obtain a full mass matrix including base degrees of freedom, and are gravity and Coriolis terms also addressed in the original post?",
+    "details.safety_notes.0": "Before sending the matrix to WBC/QP, assert the matrix dimension, degrees of freedom order, and floating base coordinate convention.",
+    "details.symptoms.0": "get_mass_matrices(), get_coriolis_and_centrifugal_forces(), and get_generalized_gravity_forces() only show joint dimensions, while the Jacobian includes floating base degrees of freedom.",
+    "source.locator": "IsaacLab #2252 comment 2783953307; near the run_osc.py line 317 of the current official OSC example.",
+    "source.title": "Isaac Sim 4.5: How to read the full mass matrix including floating base degrees of freedom, and are gravity/Coriolis terms also addressed in the original post?",
+    "terms.0": "Generalized mass matrix (generalized mass matrix) (广义质量矩阵)",
+    "terms.1": "Floating base (floating base) (浮动基)",
+    "terms.2": "Gravity compensation term (gravity compensation term) (重力补偿项)",
+    "terms.3": "Coriolis and centrifugal term (Coriolis and centrifugal term) (科氏与离心项)",
+    "title": "How to read the full mass matrix including floating base degrees of freedom in Isaac Sim 4.5, and are gravity/Coriolis terms also addressed in the original post?"
+  }
+}

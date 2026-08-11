@@ -1,0 +1,27 @@
+{
+  "kind": "claim",
+  "problem_id": "locomotion.pretrain-then-terrain-rl.ht2",
+  "schema_version": 1,
+  "source_fingerprint": "c584914d95bd01e81afdfc361b2bd58f994abf7a31dac7a16d0abd823411a482",
+  "translations": {
+    "answer": "In the Digit and training setup of the paper, a pre-trained Transformer is used with flat-ground trajectory data, followed by PPO fine-tuning on procedural complex terrain. This approach offers higher sample efficiency and better final performance compared to training from scratch. The conclusion does not cover discrete obstacles requiring visual preemption, and no independent public code verification has been obtained.",
+    "applicability.assumptions.0": "Flat-ground trajectory data are relevant to the target morphology.",
+    "applicability.assumptions.1": "The deployment terrain is traversable from a blind proprioceptive context.",
+    "applicability.controllers.0": "HT-2 sequence-pretrained Transformer with PPO fine-tuning",
+    "applicability.environments.0": "six procedural rigid terrain families",
+    "applicability.environments.1": "reported outdoor hikes and steep streets",
+    "applicability.robots.0": "Digit humanoid",
+    "applicability.simulators.0": "parallel physics simulation described in the paper",
+    "confidence_rationale": "Controlled ablations compare pretraining/fine-tuning with scratch under larger interaction budgets, and outdoor case studies are extensive. Confidence is capped by unavailable public code, single hardware, and missing real-world failure denominators.",
+    "evidence.0.locator": "Figure 8-11 and Tables S1-S7",
+    "evidence.0.note": "Supports the two-stage mechanism, sample-efficiency comparison, action/state interface and training conditions.",
+    "evidence.0.title": "Learning Humanoid Locomotion over Challenging Terrain",
+    "evidence.1.locator": "Official project page, accessed 2026-08-10",
+    "evidence.1.note": "Confirms author/project identity and demonstrates that no code link was exposed at capture time.",
+    "evidence.1.title": "Learning Humanoid Locomotion over Challenging Terrain official project page",
+    "terms.0": "Inverse Kinematics (IK) (逆运动学)",
+    "terms.1": "Reinforcement Learning (RL) (强化学习)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "title": "Should Zero-Reinforcement Learning Be Used for Complex Terrain Humanoid Locomotion?"
+  }
+}

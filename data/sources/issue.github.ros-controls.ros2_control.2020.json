@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "KmakD"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2020",
+  "captured_at": "2026-08-11T15:37:00+08:00",
+  "content_sha256": "182853611c00b1370f2d7d74ae4775d50499fbf6dd23bff8e357d245e7122ab6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 与全部 7 条评论；保留 1024000→bad_alloc 的失败结果，没有把临时值写成推荐。",
+    "components": [
+      "ros2_control",
+      "controller_manager",
+      "memlock",
+      "lock_memory"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者把 soft/hard memlock 改为 unlimited；第二位用户先试 1024000，出现 bad_alloc 后改为 unlimited。"
+      ],
+      "diagnostics": [
+        "比较当前 shell/process 的 memlock limit、controller_manager `lock_memory` 参数和进程实际虚拟内存需求；不要只看启动瞬间。"
+      ],
+      "effective_fixes": [
+        "两位参与者采用 unlimited；项目成员确认该设置可用。若明确接受不锁内存，可把 `lock_memory` 设为 false。"
+      ],
+      "environments": [
+        "原帖：Ubuntu、ROS 2 Humble、RPi 4、自定义 RT kernel；复现者：Ubuntu 24.04 Jazzy + PREEMPT_RT、ur_robot_driver。"
+      ],
+      "limits": [
+        "`lock_memory=false` 会放弃该内存锁定保证，不是等价实时修复。",
+        "线程没有给不同机器人、DDS 和控制器组合所需的最小可审计字节数；unlimited 仍受系统和部署策略约束。"
+      ],
+      "outcomes": [
+        "原作者 unlimited 后警告消失；第二位用户确认固定十倍值不足，项目成员确认其环境 unlimited 正常。"
+      ],
+      "problem_statements": [
+        "为什么按旧文档设置 `memlock 102400` 仍无法锁定 controller_manager 内存？"
+      ],
+      "safety_notes": [
+        "真机前应在峰值控制器/消息负载下检查 page fault、RSS、OOM 和周期抖动；不要用任意固定倍数替代容量验证。"
+      ],
+      "suspected_causes": [
+        "固定 102400 字节不足以覆盖 controller_manager 需要锁定的内存；十倍固定值对另一环境仍不足。"
+      ],
+      "symptoms": [
+        "102400 限额时报 `Unable to lock the memory`；1024000 可启动但复现者随后遇到 `std::bad_alloc`。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该线程中，原作者把 memlock 改为 `unlimited` 后警告消失；第二位用户证明简单扩大到 `1024000` 只让节点先启动，随后仍可能 `std::bad_alloc`，改成 unlimited。项目成员确认 unlimited 可用，并把 `lock_memory=false` 作为明确放弃内存锁定时的备选。工程上应核对进程峰值内存和 page fault，而不是复制旧的 102400 或任意十倍值。",
+        "applicability": "适用于 Humble/Jazzy controller_manager 内存锁定；部署系统的 limits/PAM/container 配置需分别核对。",
+        "bilingual_terms": [
+          "内存锁定（memory locking）",
+          "锁定上限（memlock limit）",
+          "缺页异常（page fault）",
+          "内存分配失败（bad allocation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_memlock_limit_2020",
+        "problem_title_zh": "正确配置 controller_manager 的 memlock 上限",
+        "question_zh": "controller_manager 按旧文档配置 `memlock 102400` 仍锁定失败时，应怎样处理？",
+        "source_locator": "ros2_control #2020 原帖 A/B；第二用户 bad_alloc 2660327112；项目确认 2660331588",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2020#issuecomment-2660331588",
+        "verification_refs": [
+          {
+            "locator": "项目成员确认 unlimited，并说明 lock_memory=false 的语义",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2020#issuecomment-2660331588"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2020",
+    "query": "ros2_control memlock 102400 unlimited bad_alloc lock_memory",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Raspberry Pi 4 PREEMPT_RT controller",
+      "Ubuntu 24.04 Jazzy robot controller"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "第二位用户推翻“扩大十倍即可”的临时结论，项目成员确认 unlimited 或明确关闭 lock_memory 的边界。"
+      }
+    ],
+    "wbc_relevance_reason": "实时 WBC 通过 `mlockall` 避免周期中 page fault；上限过小会锁定失败，随意提高到一个仍不足的固定值又可能在后续分配阶段失败。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2020",
+  "summary": "ros2_control #2020 的 Humble/RPi 4 用户按文档设置 `memlock 102400` 后仍收到无法锁内存警告，改为 `unlimited` 后消失。另一位 Jazzy/PREEMPT_RT 用户把上限扩大十倍时节点先启动、随后 `std::bad_alloc`，改成 unlimited；项目成员确认 unlimited 可用，并指出若仍有问题可设 `lock_memory=false`。评论同时确认当时 determinism 文档仍留有旧的 102400 值并请求修订。",
+  "title": "controller_manager 内存锁定不能沿用过小的固定 memlock 上限",
+  "version": null
+}

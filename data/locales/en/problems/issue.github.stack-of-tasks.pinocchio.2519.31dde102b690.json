@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.stack-of-tasks.pinocchio.2519.31dde102b690",
+  "schema_version": 1,
+  "source_fingerprint": "c82e784675e83a036181f9953347a63383bc37f41ff6df6a69388720d41d30c4",
+  "translations": {
+    "answer": "No. The maintainer only states that the JointModelComposite (Translation + SphericalZYX) is not fully supported and suggests using JointModelFreeFlyer; the original author has not returned the results of the replacement, and subsequent fixed-base joint anomalies were not addressed. Therefore, FreeFlyer is the maintainer's suggested direction, and it is not a verified universal fix.",
+    "applicability": "Original suggestion applies to Translation + SphericalZYX JointModelComposite; subsequent fixed-base joint anomalies are not within the verified scope of the original suggestion.",
+    "credibility.rationale": "No verified reproduction records have been formed.",
+    "details.attempts.0": "The maintainer suggests using JointModelFreeFlyer; the original author provides a minimal reproduction using two rotational joints; another user provides an alternative Jacobian function using CasADi (J, q) @ qdot.",
+    "details.diagnostics.0": "Identify if the root joint model is not fully supported by JointModelComposite; compare Jdot and Jdot*qdot using minimal models, analytical expectations, or automatic differentiation.",
+    "details.environments.0": "Original model uses JointModelComposite (Translation + SphericalZYX) with LOCAL_WORLD_ALIGNED; subsequent minimal reproduction uses two rotational joints; the 2026 comment uses the Pinocchio CasADi interface, but the specific version is not stated.",
+    "details.limits.0": "Cannot consider the closed state as a resolved issue; cannot treat unverified CasADi code as equivalent to all reference systems used by Pinocchio.",
+    "details.outcomes.0": "Issue was closed on 2024-12-19, but no original author confirmed the FreeFlyer solution; the CasADi approach in 2026 has not been thread-retested or confirmed by the maintainer.",
+    "details.problem_statements.0": "When getFrameJacobianTimeVariation*qdot is not equal to getFrameAcceleration's dJdq, what does each of the Composite Joint, FreeFlyer, and direct automatic differentiation paths prove?",
+    "details.suspected_causes.0": "The maintainer only explicitly states that JointModelComposite might be the root cause and is not fully supported; the cause of the subsequent fixed-base minimal reproduction is not answered.",
+    "details.symptoms.0": "In the original model, two different dJdq results are reported; after switching to a minimal reproduction with two rotational joints, the original author still reports a discrepancy between the computed dJ and the expected value.",
+    "media_summaries.0": "The original author's minimal reproduction includes screenshots, but this card only uses the text, code, and handwritten expected values, not the matrix values from the screenshots.",
+    "source.locator": "Issue #2519, with comments issuecomment-2554021580 and issuecomment-2555687851; the original author's subsequent minimal reproduction is issuecomment-2555915806.",
+    "source.title": "Two handling directions for dJdq/Jdot inconsistency in Pinocchio Composite Joint have not been verified by the original thread.",
+    "terms.0": "Jacobian time variation (雅可比时间变化率)",
+    "terms.1": "Composite joint model (复合关节模型)",
+    "terms.2": "Free-floating joint model (自由浮动关节模型)",
+    "terms.3": "Local world-aligned coordinate system (局部世界对齐坐标系)",
+    "title": "Is the transition from JointModelComposite to JointModelFreeFlyer already verified by the original thread?"
+  }
+}

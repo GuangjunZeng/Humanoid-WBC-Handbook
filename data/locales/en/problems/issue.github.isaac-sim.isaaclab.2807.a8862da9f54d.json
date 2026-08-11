@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2807.a8862da9f54d",
+  "schema_version": 1,
+  "source_fingerprint": "b2fdbdf4128f8c35881172c275f458f9305667535a86b0854a81375f752313a7",
+  "translations": {
+    "answer": "A user in IsaacLab 1.4.1 and IsaacSim 4.2.0 used stiffness=0, damping=50, effort_limit=1e9, and set JointVelocityAction scale=1 and use_default_offset=True. The user reported that direct velocity commands can be sent and suggested limiting joint velocity when fast. The original author's 2.1.0/4.5.0 environment did not retest this configuration, and the maintainer has not confirmed it as a general solution for the framework. The 1e9 is only a simulation workaround and cannot be used in real machines for limbing.",
+    "applicability": "Precisely corresponds to IsaacLab 1.4.1/IsaacSim 4.2.0 simulation PPO reach; other versions and real machines must be revalidated.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "A community user in an older version used stiffness=0, damping=50, effort_limit=1e9, JointVelocityAction scale=1, and suggested limiting joint velocity when necessary.",
+    "details.diagnostics.0": "Record the exact Isaac Lab/Isaac Sim and robot asset versions to avoid cross-version actuator configuration duplication.",
+    "details.diagnostics.1": "Check the implicit actuator's stiffness, damping, effort limit, and joint velocity limit in the velocity action.",
+    "details.effective_fixes.0": "The user reported using the above configuration to complete PPO reach training and send direct velocity commands.",
+    "details.environments.0": "Problem environment: Isaac Lab 2.1.0 commit 3d6f55b, Isaac Sim 4.5.0, Ubuntu 24.04.2, NVIDIA A10.",
+    "details.environments.1": "Workaround environment: IsaacLab 1.4.1, IsaacSim 4.2.0, PPO reach task; hardware details not provided.",
+    "details.limits.0": "effort_limit=1e9 is a simulation configuration, not a safe real machine parameter.",
+    "details.limits.1": "The configuration in older versions cannot be considered a general solution for Isaac Lab 2.1/Isaac Sim 4.5 or 5.0.",
+    "details.limits.2": "The video is not used in the conclusion; results are based on the text reports in the comments.",
+    "details.outcomes.0": "The community user's environment obtained a usable result; the original author's 2.1.0/4.5.0 environment did not retest the closed-loop.",
+    "details.problem_statements.0": "What are the versioned configurations reported by the community for Franka using JointVelocityAction when gravity is enabled?",
+    "details.safety_notes.0": "Do not transfer 1e9 effort limit to real machines; real machines should use manufacturer's torque/velocity limits, emergency stop, and graded gain testing.",
+    "details.suspected_causes.0": "The original poster believes the issue is caused by position target and gravity compensation/gain settings; the thread has no maintainer confirming this causality.",
+    "details.symptoms.0": "At zero or non-zero velocity commands, Franka joints are unstable and cannot track the expected velocity.",
+    "source.locator": "IsaacLab #2807 community result 3018405585 and precise configuration 3026762388",
+    "source.title": "Franka JointVelocityAction usable configurations depend on Isaac Lab version and actuator parameters",
+    "terms.0": "JointVelocityAction (关节速度动作)",
+    "terms.1": "Implicit actuator (隐式执行器)",
+    "terms.2": "Gravity compensation (重力补偿)",
+    "terms.3": "Effort limit (力矩上限)",
+    "title": "Franka's JointVelocityAction is unstable when gravity is enabled; which configuration actually reports a result?"
+  }
+}

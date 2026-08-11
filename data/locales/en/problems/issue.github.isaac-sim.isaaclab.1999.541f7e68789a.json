@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.1999.541f7e68789a",
+  "schema_version": 1,
+  "source_fingerprint": "9dcfb1abbe3d8ecfe735c64d2a683ac62388576c1f0a07c0a787460a4513f658",
+  "translations": {
+    "answer": "The original thread validated enabling action clipping (action clipping) before executing actions in the RSL-RL wrapper. Official PR #2019 explains that unclipped large actions both enter the environment and become the last-action observation (last-action observation), potentially forming a negative feedback loop that amplifies both action and critic errors. PR added `agent_cfg.clip_actions` and used `torch.clamp` in the step. The original author confirmed it was effective. Since the threshold is not publicly available, it still needs to be validated according to the task's action space.",
+    "applicability": "Applies to the training path in the Isaac Lab RSL-RL wrapper where actions are executed and used as the last-action observation. The specific clipping range must match the task's action space.",
+    "credibility.rationale": "The issue has been closed, the environment is clear and there is no conflict. It has been formally documented or independently reproducible with precise references.",
+    "details.attempts.0": "Collaborators suggest retesting after merging PR #2019.",
+    "details.attempts.1": "The original author tested and responded to the suggestion.",
+    "details.diagnostics.0": "Check if the policy output is executed without clipping and is also used as the last-action observation.",
+    "details.diagnostics.1": "Record the action magnitude, critic loss, and the first iteration where an inf/NaN is encountered, to validate for persistent large actions.",
+    "details.effective_fixes.0": "Use the RslRlVecEnvWrapper merged in PR #2019, and enable action clipping via `agent_cfg.clip_actions` in the step. The PR calls `torch.clamp` before executing the environment action.",
+    "details.environments.0": "Isaac Lab defaults to Go2 rough policy and RSL-RL; failure occurs after about 5000–8000 iterations. The original log shows iteration 8391, 24576×12 policy loc; no commit or random seed provided.",
+    "details.limits.0": "The original thread did not provide the value of `clip_actions`, so it is not possible to infer a general threshold from the post.",
+    "details.limits.1": "The fix is specific to the action feedback path in the RSL-RL wrapper and does not justify all PPO/RL NaNs as a single issue.",
+    "details.outcomes.0": "The original author confirmed the fix was effective and closed the issue; PR #2019 was merged into the official repository on 2025-03-13.",
+    "details.problem_statements.0": "How to block the feedback amplification caused by large actions and last-action observations when the value function loss becomes infinite (inf) and the torch Normal loc tensor becomes NaN?",
+    "details.safety_notes.0": "Action clipping is for training and interface protection; it does not replace real-time joint position, velocity, torque, and emergency stop safety limits.",
+    "details.suspected_causes.0": "Official PR #2019 explains that large actions are executed directly and used as the last-action observation, leading to a negative feedback loop.",
+    "details.symptoms.0": "The value function loss becomes inf, and the torch Normal loc tensor becomes NaN, causing training to exit.",
+    "details.symptoms.1": "Before failure, the mean episode length is 1000, and the terrain curriculum level is approximately 6.13; these logs only describe the state at that time, not necessarily proving the root cause.",
+    "source.locator": "IsaacLab #1999: Comment 2700385656 points to PR #2019; original author's comment 2719617210 confirms Works; PR merged in f774425",
+    "source.title": "Isaac Lab RSL-RL Large Action Feedback Causing Value Loss Explosion When Using Action Clipping",
+    "terms.0": "Action Clipping (Action Clipping) (动作裁剪)",
+    "terms.1": "Last-Action Observation (Last-Action Observation) (上一动作观测)",
+    "terms.2": "Value Function Loss (Value Function Loss) (价值函数损失)",
+    "terms.3": "Negative Feedback Loop (Negative Feedback Loop) (负反馈回路)",
+    "title": "What did the original thread validate regarding the fix for the value loss becoming inf and policy output becoming NaN in the Go2 rough RSL-RL training after the default rough locomotion training phase?"
+  }
+}

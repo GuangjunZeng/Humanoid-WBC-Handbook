@@ -1,0 +1,30 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086783235929870363.426018a4a4fd",
+  "schema_version": 1,
+  "source_fingerprint": "1f54e1d61c0deac9c1bb33afc4d895e2beb87bb1650613adc826bfc2eefc505f",
+  "translations": {
+    "answer": "The author's limitation is that the benefit becomes limited; simultaneously, real robots MBRL often relies on simplified dynamics, or is constrained by domain gap upper bounds. This post does not provide a data threshold, so it should be treated as an experimental design warning: perform a contrast between simulation prior with and without real data at different scales, rather than using a default prior that is always helpful.",
+    "applicability": "Applicable for evaluating whether real-robot MBRL is worth increasing simulation prior.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Use a simplified kinematic model as the model structure for real robot MBRL.",
+    "details.diagnostics.0": "Compare the benefit of having/without simulation prior at different real data scales; clearly state whether the model covers only kinematics or full dynamics.",
+    "details.environments.0": "Real robot MBRL; referenced loco-manipulation work; specific control frequency and hardware configuration not disclosed in the root post.",
+    "details.limits.0": "Cannot derive thresholds, data quantity, or conclusions applicable to all humanoid robots from this post.",
+    "details.outcomes.0": "The author only states applicable boundaries; no new performance numbers are given.",
+    "details.problem_statements.0": "Is it still worth using simulation as the model prior for real data when it is sufficiently abundant?",
+    "details.safety_notes.0": "If domain gap is not quantified, compare simulation prior with real data-driven models in restricted actions, low speed, and safe regions.",
+    "details.suspected_causes.0": "The simulation and real system domain gap exceeds the scope of the model prior; simplification of dynamics for learnability limits the benefit.",
+    "details.symptoms.0": "The benefit of simulation prior decreases as real data increases; performance improvement is limited once the domain gap exceeds the method's tolerance.",
+    "media_summaries.0": "Visible screenshot includes the root post limitation explanation and a thumbnail of the referenced work's corridor video, with the text SIM-MODEL / 1000 Samples visible; no success rate, error curve, or ablation table is present, so it cannot be used for quantitative performance evaluation.",
+    "source.locator": "Root post 'Limitations' paragraph",
+    "source.title": "Applicability of Simulation Prior in Real-robot MBRL When Real Data is Sufficient",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Reinforcement Learning (RL) (强化学习)",
+    "terms.2": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.3": "Model-Based Reinforcement Learning (MBRL) (模型式强化学习)",
+    "terms.4": "Dynamics (动力学)",
+    "title": "Is Simulation Prior Still Beneficial for Real-robot MBRL When Real Data is Sufficient?"
+  }
+}

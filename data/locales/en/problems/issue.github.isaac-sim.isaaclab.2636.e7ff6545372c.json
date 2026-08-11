@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2636.e7ff6545372c",
+  "schema_version": 1,
+  "source_fingerprint": "e20b473d85579cfbe4501fe2aa1f98eda58ea4ce01c6612ae7b95fcd612e536f",
+  "translations": {
+    "answer": "The original reply suggests separating the two processing steps: the scale and clipping of the ActionTerm should be verified on the real machine side; the clipping in the RSL-RL agent configuration may have already been included in the exported model. Since the reply contains uncertain language and no retesting, the reliable approach is not to directly copy the multiplication, but to compare the final action from the same observation in the training environment with the element-wise result after ONNX deployment. Version, export script, and ActionTerm type are unknown, so real testing is required.",
+    "applicability": "Isaac Lab + RSL-RL ONNX deployment troubleshooting entry; version, export script, and ActionTerm type are unknown, must be tested.",
+    "credibility.rationale": "No verifiable retesting records have been formed.",
+    "details.attempts.0": "The reply suggests verifying the ActionTerm post-processing on the real machine side and separately checking if the agent configuration includes clipping.",
+    "details.diagnostics.0": "List the processing in the RSL-RL agent configuration and the scale/clipping in the Isaac Lab ActionTerm separately, do not mix them.",
+    "details.diagnostics.1": "Compare the final action from the same observation in the training environment with the ONNX+deployment result.",
+    "details.environments.0": "Isaac Lab + RSL-RL + ONNX sim-to-real; original reply did not provide software version, robot, or export script submission.",
+    "details.limits.0": "The reply uses 'I think/might', and cannot be considered a definite agreement for all versions and deployers.",
+    "details.limits.1": "Cannot solely determine if the scale has been applied or not based on the ONNX output exceeding [-1, 1].",
+    "details.outcomes.0": "A troubleshooting hierarchy is obtained, but no author retesting, export script check, or target robot result is provided.",
+    "details.problem_statements.0": "Is the action scaling and clipping included in the ONNX exported by RSL-RL?",
+    "details.safety_notes.0": "Offline element-wise alignment should be performed before the first online operation, and hardware-side limiter, emergency stop, and low-gain testing should be added.",
+    "details.suspected_causes.0": "The reply suggests that the ActionTerm post-processing may not be in the ONNX, and the clipping in the agent configuration may be in the export graph.",
+    "details.symptoms.0": "The ONNX output exceeds [-1, 1], such as 1.5 or -2.0; the deployer is unsure whether the action scaling needs to be applied.",
+    "source.locator": "IsaacLab #2636 - Unique comment 2954156235",
+    "source.title": "Isaac Lab Exported ONNX Does Not Assume ActionScaling and Clipping Are Packaged",
+    "terms.0": "Action scaling (动作缩放)",
+    "terms.1": "Action clipping (动作裁剪)",
+    "terms.2": "ActionTerm (动作项)",
+    "terms.3": "Post-processing (模型后处理)",
+    "title": "How to Verify ActionScaling and Clipping in RSL-RL ONNX Deployment?"
+  }
+}

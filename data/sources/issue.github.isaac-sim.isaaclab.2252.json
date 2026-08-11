@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "JinAses"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2252",
+  "captured_at": "2026-08-11T18:12:00+08:00",
+  "content_sha256": "61a55028bb8527d00e535cd411d6e775b1416417b0d3da206f3c3af738e2fd4e",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 1 条评论和评论直链的官方 OSC 示例；没有把未回答的 gravity/Coriolis 部分补写为已解决。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim 4.5",
+      "PhysX ArticulationView",
+      "generalized mass matrix"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "团队建议改用 get_generalized_mass_matrices，并指向 Omni Physics Tensors API 与 OSC 示例。"
+      ],
+      "diagnostics": [
+        "对照 get_jacobians 与动力学量的最后一维，确认是否包含浮动基自由度。",
+        "参照官方 OSC 示例核对 get_generalized_mass_matrices 的返回后是否又被关节索引切片。"
+      ],
+      "effective_fixes": [
+        "在 Isaac Sim 4.5 读取 get_generalized_mass_matrices；需要全系统矩阵时不要像机械臂示例那样只保留 arm_joint_ids。"
+      ],
+      "environments": [
+        "Isaac Sim 4.5；浮动基四足或人形机器人；原帖未给 Isaac Lab 精确版本。"
+      ],
+      "limits": [
+        "本卡只确认质量矩阵；不能把同一方法外推为完整重力或科氏项接口。",
+        "当前文档可能已演进，其他 Isaac Sim 版本需重新核对 API。"
+      ],
+      "outcomes": [
+        "完整质量矩阵入口得到官方回复与示例交叉核对；完整 gravity/Coriolis 入口仍未回答。"
+      ],
+      "problem_statements": [
+        "浮动基机器人如何取得包含基座自由度的完整质量矩阵、重力项和科氏项？"
+      ],
+      "safety_notes": [
+        "将矩阵送入 WBC/QP 前应断言维度、自由度顺序和浮动基坐标约定。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "get_mass_matrices、get_coriolis_and_centrifugal_forces、get_generalized_gravity_forces 只出现关节维度，而 Jacobian 包含浮动基自由度。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "团队建议使用 root_physx_view.get_generalized_mass_matrices()。官方 OSC 示例也先读取该矩阵，再用 arm_joint_ids 切成机械臂子矩阵；浮动基 WBC 若要全系统矩阵，不应照抄这一步切片。原线程没有回答完整 gravity 和 Coriolis 项的对应接口，因此这两部分仍需查目标版本 API。",
+        "applicability": "Isaac Sim 4.5 的 PhysX articulation；其他版本需核对 API 名称和矩阵维度。",
+        "bilingual_terms": [
+          "广义质量矩阵（generalized mass matrix）",
+          "浮动基（floating base）",
+          "重力补偿项（gravity compensation term）",
+          "科氏与离心项（Coriolis and centrifugal term）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.dynamics_mass_inertia_actuation.isaaclab_generalized_mass_matrix_2252",
+        "problem_title_zh": "Isaac Lab 浮动基完整质量矩阵的读取接口",
+        "question_zh": "Isaac Sim 4.5 中如何读取包含浮动基自由度的完整质量矩阵，gravity/Coriolis 是否也已在原帖解决？",
+        "source_locator": "IsaacLab #2252 评论 2783953307；当前官方 OSC 示例 run_osc.py 第 317 行附近",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2252#issuecomment-2783953307",
+        "verification_refs": [
+          {
+            "locator": "当前官方 OSC 示例第 317 行读取 get_generalized_mass_matrices 后按 arm_joint_ids 切片",
+            "relation": "official_documentation",
+            "source_url": "https://isaac-sim.github.io/IsaacLab/main/source/tutorials/05_controllers/run_osc.html#the-code"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2252",
+    "query": "Isaac Lab floating base generalized mass matrix gravity coriolis full dimensions",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "floating-base quadruped or humanoid（原帖范围）"
+    ],
+    "schema_version": 2,
+    "scope_id": "dynamics_mass_inertia_actuation",
+    "selected_comments": [
+      {
+        "text": "团队明确要求 Isaac Sim 4.5，并给出 get_generalized_mass_matrices 与官方 OSC 示例。"
+      }
+    ],
+    "wbc_relevance_reason": "浮动基 WBC 的动力学约束需要包含基座自由度的质量矩阵、重力和科氏项，维度遗漏会直接破坏动力学一致性。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2252",
+  "summary": "IsaacLab #2252 指出 root_physx_view 的 mass、Coriolis 和 gravity 调用只返回关节维度，而 Jacobian 含浮动基自由度。团队回复建议在 Isaac Sim 4.5 使用 get_generalized_mass_matrices，并链接 OSC 官方示例；当前示例确实先读取 generalized mass matrix，再按机械臂关节切片。线程没有回答完整 gravity 和 Coriolis 项应调用什么接口。",
+  "title": "Isaac Sim 4.5 浮动基机器人完整质量矩阵应读取 generalized mass matrix",
+  "version": null
+}

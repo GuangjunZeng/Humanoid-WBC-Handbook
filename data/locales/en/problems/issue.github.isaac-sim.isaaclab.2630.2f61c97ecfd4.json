@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.2630.2f61c97ecfd4",
+  "schema_version": 1,
+  "source_fingerprint": "6e62e664e60a5a6f1f4d38f81b75cd6fc7c6936d668566b3104188a8fb1bd15d",
+  "translations": {
+    "answer": "Do not mix methods from different levels: the contributor states that get_measured_joint_efforts belongs to the Isaac Sim high-level Articulation class, while root_physx_view exposes a physics tensor API. The lower level can read get_link_incoming_joint_force, which is a 6D incoming wrench per DOF; the questioner believes they need get_dof_projected_joint_forces and get_dof_actuation_forces, but no testing has been completed. These names can be used as diagnostic points, but they cannot be considered as verified external force isolation solutions.",
+    "applicability": "Applies to distinguishing the Isaac Sim high-level Articulation API from the IsaacLab root_physx_view physics tensor API; specific methods may vary by version.",
+    "credibility.rationale": "No reproducible records have been formed.",
+    "details.attempts.0": "The contributor suggests using get_link_incoming_joint_force; the questioner further finds get_dof_projected_joint_forces and get_dof_actuation_forces.",
+    "details.diagnostics.0": "First distinguish the Isaac Sim high-level Articulation API from the lower-level physics tensor ArticulationView API; then clarify whether the required forces are 6D incoming wrenches, DOF projected external forces, or actuation forces.",
+    "details.environments.0": "IsaacLab Articulation/root_physx_view; specific Isaac Lab/Sim versions and robots are not mentioned.",
+    "details.limits.0": "The original thread did not verify whether get_dof_projected_joint_forces equals the target external force, nor did it clearly state whether each item includes constraint reaction forces, driving forces, or sign conventions.",
+    "details.outcomes.0": "The API level error is confirmed; the questioner believes DOF projected/actuation forces may be used, but no testing has been completed.",
+    "details.problem_statements.0": "Why is root_physx_view missing get_measured_joint_efforts, and how can we obtain the external joint force along DOF direction?",
+    "details.safety_notes.0": "Before using these APIs for actuator protection or contact detection, verify the projected external force and driving force separately with known loads.",
+    "details.suspected_causes.0": "The lower-level root_physx_view called a method only belonging to the Isaac Sim high-level Articulation class.",
+    "details.symptoms.0": "AttributeError: 'ArticulationView' object has no attribute 'get_measured_joint_efforts'.",
+    "source.locator": "Issue #2630 reply to issuecomment-2944927705 and 2945622792",
+    "source.title": "get_measured_joint_efforts belongs to the high-level Articulation API, and is not present in root_physx_view.",
+    "terms.0": "joint effort (关节力)",
+    "terms.1": "physics tensor API (物理张量接口)",
+    "terms.2": "incoming joint force (入射关节力)",
+    "terms.3": "DOF projected force (自由度投影力)",
+    "title": "When root_physx_view calls get_measured_joint_efforts and raises an AttributeError, how should one choose the correct API?"
+  }
+}

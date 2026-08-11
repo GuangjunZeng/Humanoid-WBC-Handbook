@@ -1,0 +1,167 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "egordv"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/165",
+  "captured_at": "2026-08-11T22:46:00+08:00",
+  "content_sha256": "cef6733493cadf1ec868eec387118dd4771bf651cadc30ed3147853ce169f659",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 全部 6 条评论和已合并 PR #218 的正文、完整补丁、审阅时间线与 demo；原图/GIF 不承担结论。",
+    "components": [
+      "TSID",
+      "ContactTwoFramePositions",
+      "TaskTwoFramesEquality",
+      "closed kinematic chain",
+      "passive joint",
+      "InverseDynamicsFormulation"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者实现并验证 TwoFrames contact；维护者建议在 RobotWrapper 记录 passive joints，并在 InverseDynamicsFormulation 中选择对应 M、h、J rows 构造 torque-zero equality。"
+      ],
+      "diagnostics": [
+        "先区分 loop-closure constraint 与 actuation/passive-joint selector；验证 contact 能否保持相对 frame displacement，再单独检查 passive rows 的 torque=0 equality。"
+      ],
+      "effective_fixes": [
+        "刚性闭链使用已合并 PR #218 的 `ContactTwoFramePositions`/`TaskTwoFramesEquality` 路径。",
+        "任意 passive joints 的 formulation 修改在原线程没有落地；不要把 zero torque-limit hack 或 #218 单独当成 pantograph 完整解。"
+      ],
+      "environments": [
+        "TSID devel/master 2022-2024；作者在 fully-actuated humanoid wrists 和 Talos gripper demo 上检查 TwoFrames contact；没有固定 release。"
+      ],
+      "limits": [
+        "#218 demo 证明特定闭链 contact，不证明任意 passive-joint pantograph；后续一位用户在 PAL REEM-C TwoFramesEquality 遇到 segfault，未在线程闭环。",
+        "spring-damper 的高刚度数值积分建议来自维护者设计讨论，本轮没有额外生成独立卡。"
+      ],
+      "outcomes": [
+        "PR #218 于 2024-02-02 合并；维护者复现 covariant return 的最小代码并接受 PR。",
+        "passive-joint selector/equality 方案没有关联实现或复测。"
+      ],
+      "problem_statements": [
+        "TSID 中刚性两 link 闭链应建成 task 还是 contact？",
+        "闭链实现后怎样表达浮动基之外的任意 passive joints？"
+      ],
+      "safety_notes": [
+        "闭链与 passive joint 错模会产生虚假约束力或不可执行 torque；真机前应检查 constraint residual、actuation selector、joint torque 与闭链内力。"
+      ],
+      "suspected_causes": [
+        "原 TSID formulation 只把 floating base 作为 unactuated 部分，不能声明任意 internal passive joints。"
+      ],
+      "symptoms": [
+        "TwoFrames contact 在 fully-actuated closed loop 工作；把 pantograph passive joints 伪装成 torque-limit=0 后出现 weird movements。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者明确建议使用 robot links 之间的 contact，而不是高增益 task。作者实现 `TaskTwoFramesEquality` 与 `ContactTwoFramePositions`，先在 fully-actuated 双腕闭链中报告有效，后续 PR #218 合并了实现、Python bindings 与 Talos gripper demo。它约束两 frames 的相对位置，可表达这一类 loop closure；但不自动解决任意 internal passive joints。",
+        "applicability": "适用于以两个 frame 相对位置约束表达的 rigid closed chain；需按 mask/contact 类型核对目标 joint 几何。",
+        "bilingual_terms": [
+          "闭合运动链（closed kinematic chain）",
+          "两坐标系接触（two-frame contact）",
+          "相对位姿（relative placement）",
+          "全驱动（fully actuated）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.tsid_two_frame_closed_chain_165",
+        "problem_title_zh": "用 TwoFrames contact 表达 TSID 刚性闭链",
+        "question_zh": "TSID 中两个 robot links 形成刚性闭链时，应使用高增益 task 还是 contact？",
+        "source_locator": "TSID #165 维护者 contact 建议 1178973756、作者仿真 1181695831；合并 PR #218",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1181695831",
+        "verification_refs": [
+          {
+            "locator": "已合并 TwoFramesEquality/ContactTwoFramePositions、Python bindings 与 Talos gripper closed-chain demo",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/tsid/pull/218"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "原线程不能支持这一结论。作者在 fully-actuated loop 中成功，但把 pantograph 的其他 passive joints 设为 zero torque limit 后出现异常运动。维护者说明当时 TSID 除 floating base 外不能声明任意 passive joints；建议在 `RobotWrapper` 保存 passive-joint 信息，并在 `InverseDynamicsFormulation` 中选取对应 M、h、J rows，加入 torque=0 的 dynamics equality；较不整洁的替代是实现 `TaskActuationEquality`。这些只是明确的实现方向，线程没有合并代码或结果，因此 #218 不能单独视为 pantograph 完整修复。",
+        "applicability": "适用于需要 floating base 之外 internal passive joints 的 TSID 模型；目标版本若已有新接口必须重新核对。",
+        "bilingual_terms": [
+          "被动关节（passive joint）",
+          "驱动选择矩阵（actuation selector）",
+          "逆动力学等式（inverse-dynamics equality）",
+          "零力矩约束（zero-torque constraint）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.tsid_arbitrary_passive_joints_165",
+        "problem_title_zh": "TSID 任意 internal passive joints 尚需 formulation 支持",
+        "question_zh": "TSID 的 TwoFrames contact 能否仅靠 passive joint 的 zero torque limit 完成 pantograph 腿建模？",
+        "source_locator": "TSID #165 作者失败边界 1181695831、维护者 formulation 建议 1184238644",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1184238644",
+        "verification_refs": [
+          {
+            "locator": "维护者确认当时无任意 passive-joint 接口，并给出 formulation rows/equality 实现方向",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/165#issuecomment-1184238644"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.165",
+    "query": "TSID closed kinematic chain two frame contact passive joints pantograph PR 218",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Talos gripper",
+      "humanoid two-arm closed loop",
+      "pantograph leg"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "TwoFrames contact 已由 #218 合并；作者的 passive-joint zero-limit hack 失败，维护者给出 torque-zero dynamics equality 方向但未实现。"
+      }
+    ],
+    "wbc_relevance_reason": "闭链约束与欠驱动 passive joint 是两个不同的动力学问题；只实现几何闭链 contact 不能自动得到正确的 pantograph actuation selector。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.165",
+  "summary": "TSID #165 讨论 pantograph/biarticular leg 的 closed chain、passive joints 与 spring。维护者要求 rigid loop 用两个 robot links 之间的新 contact，而不是高增益 task；作者实现 `ContactTwoFramePositions`/`TaskTwoFramesEquality`，先在 fully-actuated 双腕闭链中验证，相关 PR #218 后来合并并带 Talos gripper demo。原线程同时确认：当时 TSID 不能把浮动基之外的任意 joints 标为 passive；zero torque limit hack 在作者 pantograph 中产生异常运动。维护者只给出将 passive-joint rows 加进 inverse-dynamics equality 或用 `TaskActuationEquality` 的实现方向，没有完成结果。",
+  "title": "TSID 两 frame 闭链 contact 已合并但任意 passive joints 仍需分开处理",
+  "version": null
+}

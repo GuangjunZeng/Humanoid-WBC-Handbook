@@ -1,0 +1,122 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "bodono"
+  ],
+  "canonical_url": "https://github.com/osqp/osqp/issues/255",
+  "captured_at": "2026-08-12T00:01:00+08:00",
+  "content_sha256": "35ca3360817bebba1505de1a2857a6dff7c729d43ba1c9607e89f03ae86aa5fb",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 全部 4 条评论及 PR #256 的 diff、4 条可见讨论、批准和合并元数据；明确保留后续 #485 冲突。",
+    "components": [
+      "OSQP",
+      "infeasibility certificate",
+      "eps_prim_inf",
+      "PR #256"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "PR #256 把 primal/dual 条件换成正 epsilon，并用 `OSQP_DIVISION_TOL` 处理零范数；同步文档。"
+      ],
+      "diagnostics": [
+        "对照代码、最终论文 Section 3.4 与当前 certificate inequality；保留退化/单点可行域回归集。"
+      ],
+      "effective_fixes": [
+        "历史上升级到包含 merge commit `fad7cf2` 的 `develop-0.x` 修复旧版 non-detection；不能据此断言所有退化边界都正确。"
+      ],
+      "environments": [
+        "2020 年 `develop-0.x` 分支；Issue 给出 CVXPY 标量 MRE，PR 给出直接 OSQP Python MRE。"
+      ],
+      "limits": [
+        "PR 没有在可见 diff 中加入专门测试文件；#485 后来报告正 epsilon 对 singleton feasible region 的相反问题，本问题综合等级必须保留冲突。"
+      ],
+      "outcomes": [
+        "PR 已批准、合并；作者/维护者给出修复前失败的最小例。"
+      ],
+      "problem_statements": [
+        "旧 OSQP 为什么可能永远检测不到一个简单不可行 QP，项目当时合入了什么修复？"
+      ],
+      "safety_notes": [
+        "升级 solver 后同时测试明确 infeasible、普通 feasible 和 singleton/退化 feasible 三类 QP。"
+      ],
+      "suspected_causes": [
+        "维护者确认旧代码把 negativity test 写成负 epsilon，且用 `eps_*_inf` 自身判断 certificate 向量非零。"
+      ],
+      "symptoms": [
+        "对任意 `eps_prim_inf` 都能构造一个间隔等于该 epsilon 的不可行标量问题，使旧条件无法给出 certificate。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "Issue #255 与合并 PR #256 把旧版 certificate 判据中的负 epsilon 改为正 epsilon，并用独立的 `OSQP_DIVISION_TOL` 判断 certificate 向量非零；文档也对齐最终论文。该变更确实作为 `develop-0.x` 的正式修复合入。由于后来的 #485 报告正 epsilon 在 singleton feasible region 上可能产生反向误判，这张经验只证明历史合并与原 MRE，不证明判据覆盖所有退化边界。",
+        "applicability": "直接对应 2020 年 `develop-0.x` 修复；后续版本和 singleton feasible case 必须与 #485 一并验证。",
+        "bilingual_terms": [
+          "不可行证书（infeasibility certificate）",
+          "原始不可行容差（primal infeasibility tolerance）",
+          "严格不等式（strict inequality）",
+          "退化可行域（degenerate feasible region）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.osqp_infeasibility_epsilon_sign_255_485",
+        "problem_title_zh": "审计 OSQP 不可行证书 epsilon 符号的双向边界",
+        "question_zh": "OSQP 旧版无法识别 `x≤0, x≥1e-4` 这类不可行问题时，项目合入了什么修复？",
+        "source_locator": "OSQP #255 维护者确认 639451057/639472858；合并 PR #256",
+        "source_url": "https://github.com/osqp/osqp/issues/255#issuecomment-639472858",
+        "verification_refs": [
+          {
+            "locator": "已批准并合并；merge `fad7cf2`，修改 primal/dual certificate inequality 与文档",
+            "relation": "pull_request",
+            "source_url": "https://github.com/osqp/osqp/pull/256"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "osqp.osqp.255",
+    "query": "OSQP infeasibility certificate epsilon sign PR 256 scalar infeasible",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "constraint-critical WBC and MPC"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者确认最终论文条件与旧代码不同；PR #256 已批准并合并。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC QP 常在接触切换时短暂不可行；不可行证书判据既影响故障响应，也可能在退化可行域上产生误判。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.osqp.osqp.255",
+  "summary": "OSQP #255 给出标量不可行问题 `x≤0, x≥1e-4`，指出旧实现在 certificate 的两个位置用同一个 `eps_prim_inf` 却有相反含义，使某些 infeasible 问题无法终止。维护者确认最终论文与最新 arXiv 条件使用正 epsilon，并通过 PR #256 修改 primal/dual infeasibility inequalities、引入 `OSQP_DIVISION_TOL`、同步文档和一个最小例；PR 获批准并合并到 `develop-0.x`。后来的 #485 对这个正 epsilon 边界提出 singleton feasible false-positive 反例，因此本卡只陈述历史修复事实。",
+  "title": "OSQP 旧版不可行证书符号修复已合并但后来出现边界争议",
+  "version": null
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "claim",
+  "problem_id": "tracking.unified-masked-command-distillation.hover",
+  "schema_version": 1,
+  "source_fingerprint": "bf6dd7b907bd56cb0bb72a6feb3ffbaa59fe6d4cbce998a8ff23a02f0319c8f3",
+  "translations": {
+    "answer": "In the HOVER report's 19-DoF Unitree H1, re-directed AMASS, and same-training stack, key-points, joint-angles, and root commands are encoded into a unified space with pattern/masked sparse representations, and then distilled via DAgger from full-body motion teachers. A single policy can cover multiple interfaces, and the results are better than separately trained specialized policies and same-mask multi-mode RL in the same stack. These results do not constitute guarantees for cross-robot or safety-critical switch guarantees.",
+    "applicability.assumptions.0": "All control modes can be represented by subsets of key-body position, local joint-angle, and root commands.",
+    "applicability.assumptions.1": "A full-motion oracle and retargeted AMASS training data are available.",
+    "applicability.assumptions.2": "Deployment supplies the reported proprioceptive and action history.",
+    "applicability.controllers.0": "HOVER multi-mode student",
+    "applicability.controllers.1": "full-body motion-imitation oracle",
+    "applicability.environments.0": "retargeted AMASS simulation evaluation",
+    "applicability.environments.1": "reported 20-motion standing evaluation and qualitative locomotion switching",
+    "applicability.robots.0": "19-DoF Unitree H1 in the reported setup",
+    "applicability.simulators.0": "Isaac Gym",
+    "confidence_rationale": "The paper includes controlled specialist and same-mask multi-mode RL comparisons across five seeds plus a small real-robot evaluation, and official code exposes the corresponding mechanisms. Confidence is capped by the single robot/training family, 20 standing-motion real set, and mostly qualitative runtime switching tests.",
+    "evidence.0.locator": "Section II-B/II-E, Figure 2, Table III-IV, Figure 4, and Table V",
+    "evidence.0.note": "Defines the atomic masked command space, DAgger distillation, and the reported specialist/generalist comparisons.",
+    "evidence.0.title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
+    "evidence.1.locator": "create_mask; StudentPolicyTrainer.run, _produce_actions, _get_ground_truth_actions, and _update_student_network at commit 8088f6c",
+    "evidence.1.note": "Maps the paper mechanism to public mask sampling, teacher labels, student rollout, and action imitation loss.",
+    "evidence.1.title": "NVlabs/HOVER official implementation",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.2": "Application Programming Interface (API) (应用程序接口)",
+    "terms.3": "Motion Retargeting (动作重定向)",
+    "terms.4": "Center of Mass (CoM) (质心)",
+    "title": "Can a single low-level policy cover multiple whole-body control commands without separately training a policy for each mode?"
+  }
+}

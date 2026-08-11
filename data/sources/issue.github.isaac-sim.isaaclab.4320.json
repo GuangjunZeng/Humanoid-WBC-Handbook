@@ -1,0 +1,140 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "junshi356rl"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4320",
+  "captured_at": "2026-08-11T15:20:00+08:00",
+  "content_sha256": "5605d93dad2c053b3674005c4e268e2743a3ecc49904ff9d9519de7a927cdba6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue 与全部 8 条评论；把 UI 可见性机制与 runtime gain 是否生效分开，并保留最后未解决的直接冲突。原帖没有需要用于结论的关键图片。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim",
+      "ImplicitActuatorCfg",
+      "Fabric",
+      "USD"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议以 --device cpu env.sim.use_fabric=false 运行，便于在 UI 中查看运行时修改。",
+        "后续回复者再次给出 ImplicitActuatorCfg 的 arm/gripper 配置；原作者说明自己原帖已经使用同类配置且无效。"
+      ],
+      "diagnostics": [
+        "先把 UI/USD 可见性与 PhysX/Fabric 运行时值分开：GPU Fabric 下 UI 不显示修改是项目方明确说明的已知行为。",
+        "需要查看 USD 侧调试值时，按维护者建议使用 CPU 且关闭 Fabric；运行时是否生效则应另做受控动态响应或底层 buffer 对照。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab、Isaac Sim 5.1、Python 3.11、Ubuntu 24.04.3、RTX 5080、driver 580.95.05；manager-based PPO template，UR-with-gripper USD；原帖未给 Isaac Lab commit。"
+      ],
+      "limits": [
+        "CPU+关闭 Fabric 是显示/调试建议，原作者没有报告执行结果，不能写成已经修复 actuator gain。",
+        "线程没有读取 PhysX runtime buffer、阶跃响应、关节轨迹或独立力矩对照；仅凭 UI 和 penalty 变化不能判断实际 gain。",
+        "Issue 虽关闭，但最后一条技术回复仍是原作者称相同配置没有工作，关闭状态不能替代闭环证据。"
+      ],
+      "outcomes": [
+        "线程只解释了 GPU/Fabric 下 UI 不反映修改的机制；没有证明原作者环境中的 gripper stiffness/damping 已在运行时生效，也没有关联 PR 或最终修复。"
+      ],
+      "problem_statements": [
+        "GPU/Fabric 模式下 ImplicitActuatorCfg 的 stiffness/damping 不在 Isaac Sim UI 中显示时，参数是否真的未生效，怎样区分显示问题和运行时问题？"
+      ],
+      "safety_notes": [
+        "把策略或控制器迁移到实机前，应通过受控小幅响应识别等效 stiffness/damping，并限制力矩、速度和位置；不能依据 UI 单值直接标定。"
+      ],
+      "suspected_causes": [
+        "UI 不更新的原因由维护者解释为 GPU simulation 为提速抑制 USD read/write。",
+        "实际 stiffness/damping 是否生效没有闭环：回复者称会生效，但原作者用相同配置后仍称不工作。"
+      ],
+      "symptoms": [
+        "配置 finger_joint stiffness=280、damping=28 后，Isaac Sim UI 仍显示 USD 文件中的原值。",
+        "原作者怀疑参数未应用，因为 joint-velocity penalty 明显增大。",
+        "在获得同一 ImplicitActuatorCfg 示例后，原作者最后仍回复该配置没有工作。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "不能仅凭 UI 判断。项目维护者明确说明 GPU simulation/Fabric 会抑制 USD read/write，所以运行时属性和 transform 不会在 UI 中显示；需要观察 UI 时可用 --device cpu env.sim.use_fabric=false 调试。但线程对运行时是否实际生效没有闭环：后续回复称自定义 gain 会生效，原作者最后却说自己已经使用同样的 ImplicitActuatorCfg 仍不工作。因此应把 UI 可见性和 runtime gain 分开验证，不能把任一方的陈述当作最终修复。",
+        "applicability": "适用于 Isaac Sim 5.1/Isaac Lab GPU simulation 中 ImplicitActuatorCfg 与 Fabric/USD UI 的诊断；实际 gain 需在目标 commit 和资产上独立测量。",
+        "bilingual_terms": [
+          "隐式执行器配置（ImplicitActuatorCfg）",
+          "关节刚度（joint stiffness）",
+          "关节阻尼（joint damping）",
+          "运行时状态（runtime state）",
+          "通用场景描述（Universal Scene Description, USD）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.simulation_toolchain.isaaclab_fabric_actuator_gain_runtime_vs_ui_4320",
+        "problem_title_zh": "Isaac Lab Fabric 下 actuator gain 的 UI 显示与运行时生效状态不一致",
+        "question_zh": "Isaac Lab GPU/Fabric 模式下 UI 仍显示 USD 的旧 stiffness/damping，能否据此判断 ImplicitActuatorCfg 没有生效？",
+        "source_locator": "Isaac Lab #4320 评论 3707421315 解释 GPU/Fabric UI 行为；评论 3725503782 声称 gain 生效；评论 3914083197 原作者说明相同配置仍不工作",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3707421315",
+        "verification_refs": [
+          {
+            "locator": "回复者声称 Fabric 默认开启时自定义 stiffness/damping 会生效",
+            "relation": "conflict",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3725503782"
+          },
+          {
+            "locator": "原作者明确说明自己已使用同样的 ImplicitActuatorCfg，但仍不工作",
+            "relation": "conflict",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4320#issuecomment-3914083197"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4320",
+    "query": "Isaac Lab ImplicitActuatorCfg stiffness damping Fabric GPU USD UI not visible runtime",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "UR arm with single-joint gripper（原帖资产）"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "维护者解释 GPU simulation 为提速抑制 USD read/write，因此修改不显示在 UI。"
+      },
+      {
+        "text": "后续回复声称 Fabric 下自定义 stiffness/damping 会生效，无需复制 USD。"
+      },
+      {
+        "text": "原作者最后表示自己已经使用相同 ImplicitActuatorCfg，但仍没有工作。"
+      }
+    ],
+    "wbc_relevance_reason": "仿真中的关节刚度/阻尼直接改变控制闭环与奖励；若把 UI 的 USD 显示当作 GPU/Fabric 运行时真值，或反过来未经测量就假定配置已生效，会误判策略训练和执行器调参。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4320",
+  "summary": "Isaac Lab #4320 在 Isaac Sim 5.1、Ubuntu 24.04、RTX 5080 环境中设置 gripper 的 ImplicitActuatorCfg stiffness=280、damping=28，但 UI 仍显示 USD 原值。项目维护者说明 GPU simulation 为提速会抑制 USD read/write，因此运行时修改的属性和 transform 不会显示在 UI；调试显示可改用 --device cpu env.sim.use_fabric=false。后续回复声称 Fabric 默认开启时自定义 stiffness/damping 仍会生效，无需复制 USD，并再次给出与原帖基本相同的配置。原作者最后明确回复自己正在使用该配置但仍不工作。线程没有进一步诊断或复测，因此“UI 不更新”的显示机制说明与“运行时参数是否实际生效”必须分开，后者保持冲突。",
+  "title": "Isaac Lab GPU/Fabric 下 UI 不显示 actuator gain 与运行时是否生效不能混为一谈",
+  "version": null
+}

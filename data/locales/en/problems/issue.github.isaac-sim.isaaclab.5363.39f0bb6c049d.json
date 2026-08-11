@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.5363.39f0bb6c049d",
+  "schema_version": 1,
+  "source_fingerprint": "84bdabb59c8e06a481e81f33955abe91eb30d8da45edc06307f4a02053a44309",
+  "translations": {
+    "answer": "The reproducible handling is explicitly added in agent_cfg.to_dict() by including observation groups mapping: actor and critic both read policy group, and the dictionary is passed to OnPolicyRunner. The author reported recovery from a 16-minute initialization hang to 1 second. This is a temporary patch that needs verification on the same version combination and Isaac-Ant-v0, and is not a merged root fix.",
+    "applicability": "The original post has been validated on Isaac Lab 2.1.1, Isaac Sim 6.0.0-rc.22, Python 3.12, rsl-rl 4.0.x, and Isaac-Ant-v0; other versions and custom observation groups need re-verification.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent retesting is missing.",
+    "details.attempts.0": "Copy agent_cfg dictionary before creating OnPolicyRunner and explicitly set obs_groups={actor:[policy], critic:[policy]}.",
+    "details.diagnostics.0": "Observed warnings from rsl-rl on obs_groups, actor, and critic; check if RslRlBaseRunnerCfg.to_dict() includes observation group mapping for OnPolicyRunner.",
+    "details.effective_fixes.0": "As a temporary fix for the original post, explicitly provide actor/critic mapping for policy observation groups before passing to OnPolicyRunner.",
+    "details.environments.0": "Isaac Lab 2.1.1; Isaac Sim 6.0.0-rc.22; Python 3.12; rsl-rl 4.0.x; Isaac-Ant-v0; 4 environments; livestream=2.",
+    "details.limits.0": "Issue remains open; the patch is only verified on the original post's version combination and Isaac-Ant-v0; cannot be considered a merged upstream fix, and cannot be assumed all custom multi-observation group tasks should use the same mapping.",
+    "details.outcomes.0": "Original post reported that the runner initialized in 1 second and printed Actor Model and Critic Model as expected.",
+    "details.problem_statements.0": "After upgrading to rsl-rl 4.0.x, why does Isaac Lab play.py hang during OnPolicyRunner initialization?",
+    "details.suspected_causes.0": "The original post attributes the issue to a mismatch between Isaac Lab configuration dictionary and rsl-rl 4.0.x new observation group contract, missing obs_groups leading to downstream parsing errors.",
+    "details.symptoms.0": "Log shows obs_groups empty and actor missing; initialization hangs for over 16 minutes; CPU ~700-800%, GPU ~30% but no progress.",
+    "source.locator": "Issue #5363: Steps to reproduce, Stuck log, Working patch with System Info",
+    "source.title": "rsl-rl 4.0 Missing obs_groups when play.py is stuck during OnPolicyRunner initialization",
+    "terms.0": "Observation groups (观测组)",
+    "terms.1": "Policy observations (策略观测)",
+    "terms.2": "Actor network (执行器网络)",
+    "terms.3": "Value network (价值网络)",
+    "terms.4": "Initialization hang (初始化阻塞)",
+    "title": "rsl-rl 4.0.x: Isaac Lab's play.py is stuck during OnPolicyRunner initialization and warning obs_groups is empty - how to validate and temporarily handle?"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Decembereye"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2844",
+  "captured_at": "2026-08-11T11:25:00+08:00",
+  "content_sha256": "dde75b7b95363078111fef6e51d78eb32ac9a56450f0ee72529b84bd82148add",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取原帖两条项目回复，并把官方源码固定到 commit 031ebb1；未声称原作者已经复测。",
+    "components": [
+      "Pinocchio 4",
+      "getFrameKinematicHessian",
+      "computeJointKinematicHessians",
+      "Eigen tensor",
+      "frame Jacobian"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖引用旧 #867 中通过 joint Hessian 或重复 time-variation 调用构造结果的历史讨论。"
+      ],
+      "diagnostics": [
+        "先区分需要完整 6×nv×nv dJ/dq，还是只需要 Hessian-vector/wrench contraction；两者最合适的算法不同。",
+        "在目标安装版本的 kinematics-derivatives.hpp 中确认 getFrameKinematicHessian overload 与 binding 可用性。"
+      ],
+      "effective_fixes": [
+        "在 Pinocchio 4 先调用 computeJointKinematicHessians，再调用 getFrameKinematicHessian(model, data, frame_id, reference_frame, tensor)，或使用返回 tensor 的 overload。",
+        "无动态分配的 overload 要求调用方先把 6×nv×nv tensor 清零；返回值 overload 会创建同尺寸 tensor。"
+      ],
+      "environments": [
+        "原帖指向 Pinocchio 4；本轮源码核验固定在 devel commit 031ebb13a637babd0705ce030ce9fb2e1e9aae2c。"
+      ],
+      "limits": [
+        "原线程没有调用者复测、数值有限差分对照或 Python binding 示例，因此在目标构建上仍应核对可用 overload。",
+        "接口返回的是 frame kinematic Hessian；具体 reference frame 与张量索引约定应按同版本文档和有限差分验证。"
+      ],
+      "outcomes": [
+        "维护者在 2026-07-28 指向已实现的官方函数，Issue 以 completed 关闭；固定 commit 的头文件包含 frame_id overload。"
+      ],
+      "problem_statements": [
+        "Pinocchio 只有 joint Hessian 接口时，如何获取 end-effector frame Jacobian 对关节配置 q 的完整偏导张量？"
+      ],
+      "safety_notes": [
+        "二阶导数进入优化器前，应在小扰动下做有限差分方向导数检查，避免张量轴或 reference frame 误用。"
+      ],
+      "suspected_causes": [
+        "该能力在早期 Pinocchio 没有公开 frame 接口，而 Pinocchio 4 才补齐。"
+      ],
+      "symptoms": [
+        "旧用法能调用 getJointKinematicHessian，却找不到对 frame_id 等价的 getFrameKinematicHessian。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "Pinocchio 4 已提供 getFrameKinematicHessian。先运行 computeJointKinematicHessians 填充 data，再用 frame_id 和 reference frame 调用 getFrameKinematicHessian；官方头文件的返回值 overload 创建 6×nv×nv tensor，无动态分配 overload 则要求调用方预先清零同尺寸 tensor。原线程没有用户数值复测，因此仍应在目标版本做有限差分校验。",
+        "applicability": "适用于包含 getFrameKinematicHessian 的 Pinocchio 4 C++ 构建；具体 Python 暴露和最低发布版本需在目标环境核验。",
+        "bilingual_terms": [
+          "运动学 Hessian（kinematic Hessian）",
+          "帧雅可比导数（frame Jacobian derivative）",
+          "参考坐标系（reference frame）",
+          "三阶张量（third-order tensor）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_frame_kinematic_hessian_2844",
+        "problem_title_zh": "Pinocchio 4 获取 frame Jacobian 对 q 的 6×nv×nv Hessian",
+        "question_zh": "Pinocchio 中需要末端 frame Jacobian 对关节配置的完整偏导 dJ/dq 时，当前官方接口和前置调用是什么？",
+        "source_locator": "Pinocchio #2844：维护者评论 3846183967 说明 Pinocchio 4 已实现，评论 5103983954 指向源码；固定源码 commit 031ebb1 行 527-539、655-665",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2844#issuecomment-5103983954",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 frame kinematic Hessian 已在 Pinocchio 4 实现",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2844#issuecomment-3846183967"
+          },
+          {
+            "locator": "固定 commit 的 frame_id + output tensor overload，并转发 parentJoint/frame.placement",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/blob/031ebb13a637babd0705ce030ce9fb2e1e9aae2c/include/pinocchio/algorithm/kinematics-derivatives.hpp#L527-L539"
+          },
+          {
+            "locator": "返回值 overload 创建 6×nv×nv tensor、清零并调用填充版本",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/blob/031ebb13a637babd0705ce030ce9fb2e1e9aae2c/include/pinocchio/algorithm/kinematics-derivatives.hpp#L655-L665"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2844",
+    "query": "Pinocchio 4 getFrameKinematicHessian frame Jacobian derivative",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用刚体模型；原帖未指定机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者说明 frame Hessian 功能已在 Pinocchio 4 实现。"
+      },
+      {
+        "text": "项目成员给出 kinematics-derivatives.hpp 中 getFrameKinematicHessian 的官方源码位置。"
+      }
+    ],
+    "wbc_relevance_reason": "轨迹优化、SQP 与二阶任务空间约束需要 dJ/dq；明确官方 frame Hessian 接口可以避免用 nv 次 Jacobian time variation 或有限差分自行拼张量。"
+  },
+  "published_at": "2026-02-02T09:16:35Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2844",
+  "summary": "Pinocchio #2844 询问如何取得末端 frame Jacobian 对 q 的偏导，因为旧接口只公开 joint kinematic Hessian。维护者先说明该能力已在 Pinocchio 4 实现，随后给出官方头文件位置。对固定到 2026-08-06 devel commit 031ebb1 的源码核验显示，getFrameKinematicHessian 支持 frame_id 或 parent joint + frame placement，返回/填充 6×nv×nv tensor，并要求先运行 computeJointKinematicHessians。",
+  "title": "Pinocchio 4 已提供 frame Jacobian 对关节配置的完整 Hessian 接口",
+  "version": null
+}

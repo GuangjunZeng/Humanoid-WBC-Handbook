@@ -1,0 +1,159 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Kate88L"
+  ],
+  "canonical_url": "https://github.com/leggedrobotics/ocs2/issues/56",
+  "captured_at": "2026-08-11T11:55:00+08:00",
+  "content_sha256": "9b9167f1a9a1e001922fde380f5811d7b6475066c605285efda14d2611243dbc",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、4 条评论、原帖 PNG 和复现者 GIF；两种配置及原作者确认均保留精确评论链接。",
+    "components": [
+      "OCS2",
+      "legged_robot_raisim",
+      "ZeroVelocityConstraint",
+      "positionErrorGain",
+      "generateTerrain"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "第二位复现者询问是否需要调整 joint Kp/Kd、RaiSim 参数或实现 WBC；贡献者明确回答这些都不是必要修复。",
+        "原作者按贡献者给出的配置方案修改后复测。"
+      ],
+      "diagnostics": [
+        "检查是否同时开启 generateTerrain 且 ZeroVelocityConstraint 的 positionErrorGain 仍按平地假设工作。",
+        "在调整 Kp/Kd 或另写 WBC 前，先用线程给出的两种互斥配置验证地形假设。"
+      ],
+      "effective_fixes": [
+        "若只需平地，把 raisim.info 中 generateTerrain 设为 false。",
+        "若需要粗糙地形，把 task.info 中 ZeroVelocityConstraint 的 positionErrorGain 设为 0.0。"
+      ],
+      "environments": [
+        "OCS2 legged_robot_raisim 示例并启用 generated terrain；原帖未给 OCS2 commit、RaiSim 版本或机器人参数。"
+      ],
+      "limits": [
+        "线程没有说明原作者最终采用两种方案中的哪一种，也没有公开修改后日志。",
+        "配置链接指向当时 main 分支行号；目标版本的文件位置和参数名需要重新核对。",
+        "positionErrorGain=0.0 是该粗糙地形示例的线程建议，不能直接推广为所有足端位置误差反馈都应关闭。"
+      ],
+      "outcomes": [
+        "原作者回复 Works like a charm，并感谢快速答复。"
+      ],
+      "problem_statements": [
+        "OCS2 legged_robot_raisim 在没有任何命令时仍出现 CoM 漂移、接触力振荡和抬腿崩溃，应该调关节增益还是修改地形/接触约束配置？"
+      ],
+      "safety_notes": [
+        "实机或高保真仿真中修改接触位置反馈前，应限制力矩/速度并验证足端穿透、滑移和地形估计误差。"
+      ],
+      "suspected_causes": [
+        "项目贡献者明确指出，EE ZeroVelocityConstraint 的 positionErrorGain 当前假设地形平坦，与 generated terrain 不一致。"
+      ],
+      "symptoms": [
+        "仿真启动后机器人姿态立即改变，CoM 略向 x 移动，前腿接触力改变机身姿态并轻微振荡。",
+        "无 gait command、无 trajectory command，右后腿仍会逐渐浮起，随后计算崩溃。",
+        "第二位用户在同一线程报告相同问题。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "贡献者指出根因不是简化模型、关节 Kp/Kd 或缺少 WBC，而是 EE 的 ZeroVelocityConstraint.positionErrorGain 假设平地，与 generated terrain 冲突。平地使用者应设 generateTerrain=false；确实需要粗糙地形时应设 positionErrorGain=0.0。原作者复测后回复 Works like a charm，但没有说明具体选择哪一条。",
+        "applicability": "适用于线程所述 OCS2 legged_robot_raisim generated-terrain 配置；新版参数路径和真实地形估计方案需另行确认。",
+        "bilingual_terms": [
+          "零速度约束（ZeroVelocityConstraint）",
+          "位置误差增益（position error gain）",
+          "生成地形（generated terrain）",
+          "粗糙地形（rough terrain）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.ocs2_raisim_terrain_position_gain_56",
+        "problem_title_zh": "OCS2 RaiSim 生成地形与平地位置误差增益冲突导致静止失稳",
+        "question_zh": "OCS2 legged_robot_raisim 无命令也漂移、接触力振荡并抬腿崩溃时，原线程验证了什么配置修复？",
+        "source_locator": "OCS2 #56：贡献者评论 1304459256 给出两种配置；原作者评论 1304836921 确认有效",
+        "source_url": "https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304836921",
+        "verification_refs": [
+          {
+            "locator": "第二位用户报告相同问题并提供复现 GIF",
+            "relation": "issue",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1302022974"
+          },
+          {
+            "locator": "项目贡献者明确原因并给出 flat/rough terrain 两种配置",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304459256"
+          },
+          {
+            "locator": "贡献者引用的 generateTerrain 配置位置",
+            "relation": "source_code",
+            "source_url": "https://github.com/leggedrobotics/ocs2/blob/main/ocs2_raisim/ocs2_legged_robot_raisim/config/raisim.info#L11"
+          },
+          {
+            "locator": "贡献者引用的 positionErrorGain 配置位置",
+            "relation": "source_code",
+            "source_url": "https://github.com/leggedrobotics/ocs2/blob/main/ocs2_robotic_examples/ocs2_legged_robot/config/mpc/task.info#L12"
+          },
+          {
+            "locator": "原作者确认配置方案有效",
+            "relation": "issue",
+            "source_url": "https://github.com/leggedrobotics/ocs2/issues/56#issuecomment-1304836921"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖 PNG 已核验：RViz 画面中机器人呈现多个姿态重影，右后足有一处明显抬起，足端附近可见绿色力箭头；图中无时间、单位或配置值，只支持“静止状态姿态漂移/抬腿”的症状。",
+      "第二位用户的 GIF 已在两个时刻核验：彩色网格地形上机器人姿态发生明显变化并伴随重影；它支持独立用户遇到相似失稳，但不能从画面确定 positionErrorGain 数值。"
+    ],
+    "platform": "github_issue",
+    "post_id": "leggedrobotics.ocs2.56",
+    "query": "OCS2 legged_robot_raisim unstable generateTerrain positionErrorGain ZeroVelocityConstraint",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "OCS2 legged robot RaiSim example"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "另一位用户报告同样的问题，并询问是否应调 Kp/Kd 或实现 WBC。"
+      },
+      {
+        "text": "项目贡献者明确否定上述方向，并给出 generateTerrain/positionErrorGain 的两种配置。"
+      },
+      {
+        "text": "原作者回复配置修改后效果很好。"
+      }
+    ],
+    "wbc_relevance_reason": "接触位置误差反馈若使用错误地形假设，会直接扭曲足端约束与最优接触力，表现为静止状态也漂移、抬腿或崩溃。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.leggedrobotics.ocs2.56",
+  "summary": "OCS2 #56 报告 legged_robot_raisim 示例在没有 gait/trajectory command 时就发生 CoM 偏移、接触力振荡、右后腿抬起并最终崩溃；另一位用户复现并询问是否需要调 Kp/Kd 或实现 WBC。项目贡献者明确回复不需要调增益或新增 WBC，问题是末端 ZeroVelocityConstraint 的 positionErrorGain 假设平地，却同时启用了生成地形。平地场景建议 generateTerrain=false；需要粗糙地形时建议 positionErrorGain=0.0。原作者按建议修改后回复 Works like a charm。",
+  "title": "OCS2 RaiSim 示例因平地位置误差假设与生成地形不一致而失稳",
+  "version": null
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.loco-3d.crocoddyl.682.db8b336530f1",
+  "schema_version": 1,
+  "source_fingerprint": "b0ced8765a86dd727a7150acf84cabb6aadc86b96dace29a49cffd08bc2ecaf3",
+  "translations": {
+    "answer": "The executable old API path provided by the thread is: in contact dynamics, use a high-weighted quadratic state cost to penalize torso/joint velocities, or in impulse dynamics, use the crocoddyl::CostModelImpulseCoM to penalize CoM impact velocity. Another maintainer corrected the formulation, and the formulation itself does not prohibit acceleration costs; the restriction may have been due to the API at the time. Since there is no version lock and retesting, it should not be stated as 'acceleration cannot be penalized'—the residual or cost should be verified in the target version, or a model should be derived independently.",
+    "applicability": "This is only a design hint from the 2020 Crocoddyl development branch; the current API, robot deployment model, and impact/contact dynamics must be actually verified.",
+    "credibility.rationale": "The answer is not closed-loop or has conflicting elements; the source conclusion has unresolved conflicts; no reproducible record has been formed.",
+    "details.attempts.0": "The maintainer suggested using a high-weighted quadratic state cost in contact dynamics to penalize torso and joint velocities.",
+    "details.attempts.1": "The maintainer explained that the impulse dynamics can use the crocoddyl::CostModelImpulseCoM.",
+    "details.attempts.2": "Another maintainer pointed out that acceleration can be penalized in general formulations, and this may have been due to the API not having a ready interface at the time.",
+    "details.diagnostics.0": "Distinguish between the expressiveness of the formulation and the available API in the target version: the former allows custom acceleration costs, the latter provides only velocity/impact velocity paths.",
+    "details.diagnostics.1": "If using impulse dynamics, verify that the CostModelImpulseCoM only applies to CoM impact velocity, not the full torso/whole-body impact velocity.",
+    "details.environments.0": "Crocoddyl development branch, thread time 2020-02; no commit, Python/C++ version, or robot model provided.",
+    "details.limits.0": "The 'cannot penalize acceleration' in the thread was limited by another maintainer to be a possible limitation of the current API, and the conclusion is ambiguous.",
+    "details.limits.1": "The API name and capability come from the 2020 development branch; the current version must be checked in source code or documentation.",
+    "details.limits.2": "The latter half of the thread transitions into an unrelated quadrupedal_gaits visualization AttributeError; the card does not integrate this sub-topic into the soft landing conclusion.",
+    "details.outcomes.0": "The author states that they will continue to research, but no implementation or soft landing retesting results have been published.",
+    "details.problem_statements.0": "In Crocoddyl, should the soft landing directly penalize torso acceleration, or use velocity/impact velocity costs?",
+    "details.safety_notes.0": "Real-world robot deployment tuning must simultaneously constrain joint velocities, contact impulse, torque, and posture; a single cost term does not constitute an impact safety guarantee.",
+    "details.suspected_causes.0": "The original jumping example did not configure sufficient landing speed and impact cost for the author's required soft landing criteria.",
+    "details.symptoms.0": "The user observes that the jumping example lands too abruptly, and wants to increase the cost for minimizing torso acceleration.",
+    "source.locator": "Crocoddyl #682: maintainer comment 583300715 suggests velocity/impact velocity; 583484115 provides CostModelImpulseCoM; member comment 585627084 states the formulation can penalize acceleration, but may have been limited by the API.",
+    "source.title": "API Boundary in Crocoddyl Soft Landing: Acceleration vs. Impact Velocity Costs",
+    "terms.0": "Soft landing (soft landing) (软着陆)",
+    "terms.1": "Impact velocity (impact velocity) (冲击速度)",
+    "terms.2": "Impulse dynamics (impulse dynamics) (冲量动力学)",
+    "terms.3": "Acceleration cost (acceleration cost) (加速度代价)",
+    "title": "Should the robot in Crocoddyl be penalized for torso acceleration or impact velocity in soft landing?"
+  }
+}

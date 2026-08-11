@@ -6,6 +6,7 @@ from wbc_handbook.social_discovery import (
     evolve_query_frontier,
     frontier_queries,
     query_signature,
+    render_query_frontier_markdown,
     select_incremental_queries,
     update_discovery_state,
 )
@@ -202,6 +203,29 @@ class SocialDiscoveryTests(unittest.TestCase):
         )
         self.assertEqual(len(selected), 1)
         self.assertEqual(selected[0]["frontier_topic_id"], topic["topic_id"])
+
+    def test_frontier_report_collapses_multiline_browser_labels(self):
+        frontier = {
+            "schema_version": 2,
+            "topics": [{
+                "topic_id": "topic-multiline-label",
+                "term": "contact\n  debugging",
+                "status": "needs_more_evidence",
+                "scope_id": "simulator_physics_numerics",
+                "evidence": [{
+                    "platform": "x",
+                    "root_url": "https://x.com/robot/status/1",
+                    "source_url": "https://x.com/robot/status/2",
+                    "locator": "评论 @Robot Lab \n@robotlab\n·\n5月22日",
+                }],
+            }],
+        }
+
+        report = render_query_frontier_markdown(frontier)
+
+        self.assertIn("## 1. contact debugging", report)
+        self.assertIn("[评论 @Robot Lab @robotlab · 5月22日]", report)
+        self.assertFalse(any(line.endswith(" ") for line in report.splitlines()))
 
     def test_bounded_rounds_eventually_cover_every_ready_topic(self):
         queries = [{

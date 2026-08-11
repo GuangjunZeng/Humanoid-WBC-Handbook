@@ -56,6 +56,13 @@ def normalize_query_text(value: Any) -> str:
     return re.sub(r"\s+", " ", value.strip()).casefold()
 
 
+def _single_line_text(value: Any, default: str) -> str:
+    """Collapse browser-derived labels before embedding them in Markdown."""
+
+    normalized = re.sub(r"\s+", " ", str(value or "").strip())
+    return normalized or default
+
+
 def query_signature(platform: str, scope_id: str, query: str) -> str:
     payload = "\t".join((platform.strip().lower(), scope_id, normalize_query_text(query)))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
@@ -758,7 +765,7 @@ def render_query_frontier_markdown(
     ]
     for index, topic in enumerate(topics, start=1):
         topic_id = str(topic.get("topic_id", "unknown"))
-        term = str(topic.get("term", "未命名主题"))
+        term = _single_line_text(topic.get("term"), "未命名主题")
         raw_status = str(topic.get("status", "needs_more_evidence"))
         lines.extend([
             f"## {index}. {term}",
@@ -802,7 +809,7 @@ def render_query_frontier_markdown(
             for item in evidence:
                 root_url = str(item.get("root_url", ""))
                 source_url = str(item.get("source_url") or root_url)
-                locator = str(item.get("locator", "未定位"))
+                locator = _single_line_text(item.get("locator"), "未定位")
                 platform = str(item.get("platform", "unknown"))
                 link = f"[{locator}]({source_url})" if source_url else locator
                 lines.append(

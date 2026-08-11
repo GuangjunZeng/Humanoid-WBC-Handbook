@@ -1,0 +1,29 @@
+{
+  "kind": "qa",
+  "problem_id": "community.x.2086724387261055463.5df2a20b95f5",
+  "schema_version": 1,
+  "source_fingerprint": "1e8b656300ba8320e477f10e2cf80c1bc49925f65263cfd4c80978c4d489e3b6",
+  "translations": {
+    "answer": "The candidate process involves scanning the real deployment site using the same reconstruction to generate 3D Gaussian Splat and collision mesh, and training and incorporating domain randomization (DR) and a large visual encoder in Isaac Sim/Lab. This aims to align visual and physical geometry. Since no independent experiments were provided, this remains a pending verification scheme.",
+    "applicability": "Suitable for deployment sites that can be pre-scanned and tasks with primary RGB perception; not suitable for dynamic or large open environments.",
+    "collection.stop_reason": "no_growth_after_visible_scroll",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Perform a 360° scan to generate Gaussian Splat and collision mesh, and train an RGB strategy in the same scene.",
+    "details.diagnostics.0": "Verify that the visual reconstruction and collision mesh come from the same scene and scale; record friction, mass, ground softness, and site changes.",
+    "details.effective_fixes.0": "The original post's candidate scheme was on-site reconstruction plus a shared collision mesh, combined with domain randomization and a large visual encoder.",
+    "details.environments.0": "Real office 360° scan; measurement scale Gaussian Splat; shared collision mesh; Isaac Sim/Lab; RGB-only navigation strategy.",
+    "details.limits.0": "No disclosure of robot, task success rate, randomization parameters, failure cases, or independent replication; the response indicated that debris, ground softness, and scan frequency remain boundaries.",
+    "details.outcomes.0": "The author claims no on-site tuning is needed for deployment, and site adaptation was reduced from several months to days; the original post lacks quantitative validation.",
+    "details.problem_statements.0": "RGB strategies in general-purpose random geometry and no-texture simulations are difficult to generalize to real deployment sites.",
+    "details.safety_notes.0": "Before deploying in real sites, validate the collision mesh, depth occlusion, glass doors, and ground compliance in low-speed, limited-force, and collision-avoidance conditions.",
+    "details.suspected_causes.0": "Visual appearance and physical collision geometry are inconsistent; domain randomization does not cover debris, friction, mass, or ground softness; site changes make the previous scan outdated.",
+    "details.symptoms.0": "General pseudo-scenarios teach structure only, and cannot cover real materials, lighting, or semantics; real machine collision could cause hardware damage and long reinitializations.",
+    "media_summaries.0": "A visible screenshot shows the first half of the original text, confirming its generalization of random, no-texture scenarios to real office reconstruction; the screenshot lacks logs, physical parameters, or success rate curves, so it cannot verify the 'zero on-site tuning' conclusion.",
+    "source.locator": "Main text of the original post",
+    "source.title": "In real deployment site scanning, train RGB humanoid robot strategy",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Simulation-to-Real (Sim2Real), Sim-to-Real (仿真到现实)",
+    "terms.2": "Domain Randomization (DR) (域随机化)",
+    "title": "When the original post used what scene construction method in general simulation, RGB-only humanoid robot strategy is difficult to sim-to-real?"
+  }
+}

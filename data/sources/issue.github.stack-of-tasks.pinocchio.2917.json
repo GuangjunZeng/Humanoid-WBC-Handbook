@@ -1,0 +1,139 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Yazkox"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917",
+  "captured_at": "2026-08-11T09:40:00+08:00",
+  "content_sha256": "1b8ca1fe20ddbf64d098a85b76260fa48f3592f11a37e34e3d975937171c24d0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "核对 GitHub Issue 正文与三条完整评论；没有把 closed 状态单独当作修复证据。",
+    "components": [
+      "Pinocchio 4.0.0",
+      "ROS 2 Jazzy",
+      "ament_cmake",
+      "CMake",
+      "Boost MPL/variant"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者把依赖段改为 find_package(pinocchio REQUIRED) 与 target_link_libraries(test pinocchio::pinocchio)，并移除旧的手工 Eigen include/ament 依赖写法。"
+      ],
+      "diagnostics": [
+        "检查 CMake 是否真正链接 Pinocchio 导出的 pinocchio::pinocchio target，而不是只把包名交给 ament_target_dependencies 或手工添加 include 路径。",
+        "如果不能使用 CMake target，维护者给出的诊断线索是核对 BOOST_FUSION_INVOKE_MAX_ARITY=12、BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS、BOOST_MPL_LIMIT_LIST_SIZE=30、BOOST_MPL_LIMIT_VECTOR_SIZE=30 是否被传播。"
+      ],
+      "effective_fixes": [
+        "在目标上链接 pinocchio::pinocchio，让其自动传播 Pinocchio/Boost 所需的编译定义；原帖作者报告修改后编译恢复。"
+      ],
+      "environments": [
+        "Ubuntu 24.04；ROS 2 Jazzy；通过 rosdep/apt 安装 ros-jazzy-pinocchio；Pinocchio 4.0.0；Boost 1.83；colcon、ament_cmake。"
+      ],
+      "limits": [
+        "该记录直接覆盖 ROS Jazzy、Pinocchio 4.0.0 和 Boost 1.83；其他发行版的 Boost 模板错误仍需先比较实际编译命令。",
+        "维护者提供了手工 -D 定义作为不用 CMake target 时的备选线索，但原线程实际验证的是 imported target 方案。"
+      ],
+      "outcomes": [
+        "作者明确确认 target_link_libraries 方案可用；维护者说明 imported target 会自动传递上述定义，并确认这就是正确解法；Issue 以 completed 关闭。"
+      ],
+      "problem_statements": [
+        "ROS 2 Jazzy 中包含 Pinocchio 4.0 头文件即报 Boost variant 模板参数过多时，应如何区分 Pinocchio 代码错误与 CMake target 使用错误？"
+      ],
+      "safety_notes": [
+        "控制软件构建应把 Pinocchio target 的编译定义作为可审计依赖传播，避免各节点手工拼装 include/define 后产生不一致构建。"
+      ],
+      "suspected_causes": [
+        "作者的旧 CMakeLists 使用 ament_target_dependencies(test pinocchio urdfdom_headers)，没有按 Pinocchio 项目方式链接 imported target，因此目标没有继承 Pinocchio 所需的 Boost 编译定义。"
+      ],
+      "symptoms": [
+        "编译最小 include 程序时，boost::detail::variant::make_variant_list 收到 25 个模板参数，而预处理的 boost::mpl::list 只提供 20 个参数位置。",
+        "调整 include 顺序、添加 pinocchio/fwd.hpp 或尝试其他 Pinocchio 头文件都不能消除错误。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不要继续靠调整 include 顺序处理。原作者的 CMakeLists 使用 ament_target_dependencies(test pinocchio ...)，没有继承 Pinocchio target 携带的 Boost 编译定义；改为 find_package(pinocchio REQUIRED) 后用 target_link_libraries(test pinocchio::pinocchio)，编译即恢复。维护者确认 imported target 会自动传播四个 Boost MPL/Fusion 上限定义，并将其认定为正确解法。",
+        "applicability": "直接适用于 Ubuntu 24.04、ROS 2 Jazzy、Pinocchio 4.0.0、Boost 1.83 的 ament/CMake 工程；其他环境需先核对编译定义是否同样缺失。",
+        "bilingual_terms": [
+          "导入目标（imported target）",
+          "编译定义（compile definitions）",
+          "模板参数上限（template arity limit）",
+          "元编程库（Meta-Programming Library, MPL）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_ros2_imported_target_2917",
+        "problem_title_zh": "ROS 2 目标未链接 Pinocchio imported target 导致 Boost 模板上限错误",
+        "question_zh": "ROS 2 Jazzy 工程只要包含 Pinocchio 4.0 头文件就出现 Boost variant 的“25 个模板参数、上限 20”编译错误，原线程确认的处理方式是什么？",
+        "source_locator": "Pinocchio #2917：维护者评论 4866469692 给出缺失定义，作者评论 4867110493 报告 imported target 修复，维护者评论 4867266136 确认",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4867110493",
+        "verification_refs": [
+          {
+            "locator": "最小 include 复现、Ubuntu 24.04/ROS Jazzy/Pinocchio 4.0.0/Boost 1.83 环境与完整编译错误",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917"
+          },
+          {
+            "locator": "维护者列出 imported target 应传播的四个 Boost 编译定义",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4866469692"
+          },
+          {
+            "locator": "维护者确认 pinocchio::pinocchio 是正确解法",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2917#issuecomment-4867266136"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2917",
+    "query": "Pinocchio 4.0 ROS Jazzy Boost variant wrong number template arguments CMake imported target",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖为最小 ROS 2 C++ 包，未绑定具体机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者给出不用 target 时必须补齐的四个 Boost 编译定义。"
+      },
+      {
+        "text": "作者改用 target_link_libraries(test pinocchio::pinocchio) 后编译通过，维护者确认该方案。"
+      }
+    ],
+    "wbc_relevance_reason": "Pinocchio 是 WBC 动力学与运动学栈的常见依赖；如果 ROS 2 构建没有继承 target 的编译定义，故障会在任何算法运行前表现为大段 Boost 模板错误。"
+  },
+  "published_at": "2026-07-02T13:39:12Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2917",
+  "summary": "Pinocchio #2917 在 Ubuntu 24.04、ROS Jazzy、Pinocchio 4.0.0 与 Boost 1.83 环境中，只要包含 Pinocchio 头文件就出现 Boost MPL/variant 的 25 个模板参数超过预处理上限错误。维护者指出 Pinocchio 的 CMake target 会传播四个必要的 Boost 编译定义；作者随后发现自己使用了 ament_target_dependencies，而不是项目 README 所示的 target_link_libraries(... pinocchio::pinocchio)。改用 imported target 后编译通过，维护者确认这是正确解法并关闭 Issue。",
+  "title": "ROS Jazzy 工程未链接 pinocchio::pinocchio 时触发 Boost variant 模板参数编译错误",
+  "version": null
+}

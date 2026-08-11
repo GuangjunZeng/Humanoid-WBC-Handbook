@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.ros-controls.ros_control.130.995d4a41445d",
+  "schema_version": 1,
+  "source_fingerprint": "7ed247336f8002cad76eba503a9c4258a6112fc79b988402fcbf168219a693f1",
+  "translations": {
+    "answer": "Suggest that each component use its own `CallbackQueue` so that `AsyncSpinner` handles the component's ROS API on a non-realtime thread; real-time and non-realtime threads should use `realtime_tools::RealtimeBuffer` for safe data exchange. Clarify two boundaries: changes to the environment should not trigger system calls on the real-time thread, and non-realtime threads should not lock shared resources required by the real-time thread.",
+    "applicability": "Applicable to ROS 1 ros_control callback/control cycle isolation; specific non-locking structures must be verified per version.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-verification or independent replication is lacking.",
+    "details.attempts.0": "Construct the hardware interface and ControllerManager in the RTT `configureHook()`, and execute `read → update → write` in the `updateHook()`.",
+    "details.attempts.1": "Establish an independent `CallbackQueue` for each component, spun by a non-realtime thread, and use `RealtimeBuffer` for data exchange.",
+    "details.diagnostics.0": "Clearly mark the thread for each of `configure`, `read`, `update`, `write`, and `callback`, and verify that shared data is passed through real-time safe exchange structures.",
+    "details.effective_fixes.0": "Delegate cycle scheduling to real-time executors like RTT/HAL, and isolate ROS API callbacks on non-realtime threads.",
+    "details.environments.0": "ROS 1 ros_control; PREEMPT_RT/Xenomai discussion; Orocos RTT example; threads from 2013–2018.",
+    "details.limits.0": "The example is from an old ROS 1/RTT; `ros::Time::now()` has an old real-time safety issue in the same repository, so it cannot directly use the time source.",
+    "details.limits.1": "No unified WCET, jitter, or kernel comparison is available.",
+    "details.outcomes.0": "The thread participants publish the minimum `rtt_ros_control_example`; another user explicitly states these discussions helped develop `hal_ros_control`.",
+    "details.problem_statements.0": "How to run the ros_control read-update-write cycle with an external real-time scheduler?",
+    "details.problem_statements.1": "How to handle ROS callbacks and runtime parameters without blocking the real-time cycle?",
+    "details.safety_notes.0": "Real-time WBC must pass parameters through boundary checks and atomic/reliable real-time safe exchange; non-realtime callbacks should not hold regular mutexes required by real-time threads.",
+    "details.suspected_causes.0": "Non-realtime callbacks and real-time cycle share a regular mutex, or real-time thread triggers setting changes and system calls, leading to priority inversion and unpredictable delays.",
+    "details.symptoms.0": "Mixing ROS callbacks, services, and control cycles in a single execution model leaves unresolved scheduling priority, mutexes, and system call boundary issues.",
+    "source.locator": "ros_control #130 callback/RealtimeBuffer reply 52195810",
+    "source.title": "Separate ros_control Realtime Cycle from ROS Callbacks and Services",
+    "terms.0": "Callback Queue (回调队列)",
+    "terms.1": "Async Spinner (异步轮询器)",
+    "terms.2": "Realtime Buffer (实时缓冲区)",
+    "terms.3": "Priority Inversion (优先级反转)",
+    "title": "How to safely integrate ROS callbacks, services, and runtime settings with ros_control's real-time cycle without causing priority inversion?"
+  }
+}

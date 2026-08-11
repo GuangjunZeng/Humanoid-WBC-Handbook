@@ -1,0 +1,27 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.isaac-sim.isaaclab.4970.b1d2231c64c1",
+  "schema_version": 1,
+  "source_fingerprint": "58ed3518a7e2a82e3904f77079faa08bc91727544176827aed624967b0d4978f",
+  "translations": {
+    "answer": "Treat it as a known sequential problem related to the backend, confirm the first valid contact sample by frame-by-frame minimal reproduction. Comments indicated that Newton has been fixed, while PhysX did not have a universal workaround at the time; therefore, after reset, an observation validity check should be added, and the test should be rechecked according to the backend version.",
+    "applicability": "Applicable for immediately reading the ContactSensor after reset; Newton and PhysX must be separately evaluated.",
+    "credibility.rationale": "The environment, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "The author provides a complete minimal reproduction; the comment compares the Newton and PhysX states.",
+    "details.diagnostics.0": "A script is used to record net_forces_w before and after reset, distinguishing the backend and sensor update timing.",
+    "details.effective_fixes.0": "The Newton path has been fixed with a PR; the PhysX path was not yet universally fixed at the time of the comment.",
+    "details.environments.0": "Isaac Lab ManagerBasedRLEnv, ContactSensor, and reset process.",
+    "details.limits.0": "Cannot treat the Newton fix as a universal fix for PhysX; the test should be rechecked according to the actual backend and version.",
+    "details.outcomes.0": "The issue is partially resolved, and the available solution depends on the backend version.",
+    "details.problem_statements.0": "The ContactSensor still returns the contact force from the reset state after reset.",
+    "details.safety_notes.0": "The first contact observation after reset should have a validity threshold to prevent erroneous control or termination due to stale forces.",
+    "details.suspected_causes.0": "The sensor cache and physical backend reset/update timing are out of sync.",
+    "details.symptoms.0": "The first contact observation after reset is not the new episode's state.",
+    "source.locator": "Backend state update @ooctipus",
+    "source.title": "Isaac Lab reset after ContactSensor still returns reset data",
+    "terms.0": "Contact Sensor (接触传感器)",
+    "terms.1": "Contact Force (接触力)",
+    "terms.2": "State Estimation (状态估计)",
+    "title": "How should ContactSensor data that is stale after reset be handled?"
+  }
+}

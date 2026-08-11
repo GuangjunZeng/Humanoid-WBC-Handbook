@@ -1,0 +1,31 @@
+{
+  "kind": "qa",
+  "problem_id": "community.zhihu.article.2061931048615801633.2ef8700d4d58",
+  "schema_version": 1,
+  "source_fingerprint": "41e1f58a1c661046dc28dbce4f017578e2bdc5794dce441701274a67a754acff",
+  "translations": {
+    "answer": "It is essential to record the test load inertia, torque amplitude, temperature, and sampling rate: use a step test to measure rise time/overshoot, use a sweep to obtain the -3 dB bandwidth, and perform multiple torque point precision, forward and reverse repeat, and anti-drivability with long-term thermal drift. This post provides a validation framework rather than specific pass/fail thresholds.",
+    "applicability": "Not a industry standard; thresholds must be defined according to platform, safety level, and sensor precision.",
+    "collection.stop_reason": "no_visible_expand_controls",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Step and sweep, 10/50/100% rated torque static precision, forward and reverse repeat, sawtooth resolution, power-off/zero torque anti-drivability, long-term thermal drift.",
+    "details.diagnostics.0": "Cross-verified by the text, visible comments, and media descriptions; not independently verified by the paper, source code, or official documentation.",
+    "details.environments.0": "High sampling rate external torque sensor; unloaded and loaded; locked rotation; above 1–100 Hz sweep.",
+    "details.limits.0": "Not an industry standard; thresholds must be defined according to platform, safety level, and sensor precision.",
+    "details.outcomes.0": "Establishes a validation framework, but the post does not provide actual measured data.",
+    "details.problem_statements.0": "How to avoid misjudging force control joints based on vendor-provided '100 Hz bandwidth'?",
+    "details.safety_notes.0": "Community candidate is only for forming diagnostic hypotheses; when involving real machines, limit speed, limit force, isolate personnel, and retain logs.",
+    "details.suspected_causes.0": "Unloaded small test masking loaded bandwidth decline, hysteresis, thermal drift, and gear resistance.",
+    "details.symptoms.0": "Measured nominal torque precision/bandwidth lacks load, amplitude, and temperature conditions; real machine performance is not comparable.",
+    "media_summaries.0": "A single media entry lacks readable step or Bode curve; validation framework comes from the text, but bandwidth and precision are not shown with real-time numbers on the graph.",
+    "source.locator": "Four 'end-of-course' items in the text",
+    "source.title": "How to Avoid Misjudging Force Control Joints Based on Vendor's '100 Hz Bandwidth'?",
+    "terms.0": "Whole-Body Control (WBC) (全身控制)",
+    "terms.1": "Proportional-Derivative Control (PD Control) (比例-微分控制)",
+    "terms.2": "Joint Torque (关节力矩)",
+    "terms.3": "Effective Load (有效载荷)",
+    "terms.4": "Backdrivability (反向驱动性)",
+    "terms.5": "Thermal Drift (热漂移)",
+    "title": "How to Avoid Misjudging Force Control Joints Based on Vendor's '100 Hz Bandwidth'?"
+  }
+}

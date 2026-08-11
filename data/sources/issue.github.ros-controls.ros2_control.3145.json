@@ -1,0 +1,127 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "shlok-mehndiratta"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/3145",
+  "captured_at": "2026-08-11T18:28:00+08:00",
+  "content_sha256": "cb54de88981399557e5f2938f1b0a7bf524522a3236890b70865f39f4de93725",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "读取完整 Issue、全部 9 条评论与 PR #3197 的 diff、评论、review、测试和 merge 状态；未虚构任何 benchmark。",
+    "components": [
+      "ros2_control controller_manager",
+      "SCHED_FIFO",
+      "publish_activity",
+      "recursive mutex",
+      "priority inheritance"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "最初 PoC 用 atomic flag 进行 RT→non-RT 触发；维护者选择更小范围的 PI recursive mutex 替换。"
+      ],
+      "diagnostics": [
+        "从 SCHED_FIFO update() 追踪 fallback activation 到 publish_activity()，再检查 controllers_lock_ 是否也被 executor/service 路径持有。"
+      ],
+      "effective_fixes": [
+        "PR #3197 将 controllers_lock_ 迁移为 realtime_tools::prio_inherit_recursive_mutex，并保留 Windows 回退。"
+      ],
+      "environments": [
+        "ros2_control master commit a03be840 发现问题；PR 在 ROS 2 Rolling 构建验证；POSIX 使用 realtime_tools PI mutex，Windows 回退 std::recursive_mutex。"
+      ],
+      "limits": [
+        "合并证明代码方案被接受，不证明原路径曾产生可测 jitter，也不提供性能改善数值。",
+        "Windows 回退路径没有 PI mutex，适用性不同。"
+      ],
+      "outcomes": [
+        "PR 获两位维护者批准、修改行测试覆盖后合并。"
+      ],
+      "problem_statements": [
+        "controller_manager 的 RT update 路径与非 RT 服务共享 recursive_mutex 时，应怎样降低优先级反转风险？"
+      ],
+      "safety_notes": [
+        "锁替换后仍应在 fallback、服务并发和控制器切换压力场景测量最坏延迟。"
+      ],
+      "suspected_causes": [
+        "标准 recursive_mutex 不提供此处需要的优先级继承，低优先级线程持锁时可能阻塞 RT 线程。"
+      ],
+      "symptoms": [
+        "这是源码审计发现的潜在 priority inversion/jitter 风险，线程没有给出机器人上的实测卡顿或 benchmark。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者没有采用 atomic flag 搬移发布，而是要求使用 realtime_tools 已有的 priority-inheritance recursive mutex。PR #3197 将 controllers_lock_ 及全部调用点迁移到 realtime_tools::prio_inherit_recursive_mutex，Windows 保留 std::recursive_mutex 回退；PR 经 review 和测试后合并。它解决的是源码层面的优先级反转风险，不应写成已经量化了 jitter 改善。",
+        "applicability": "ros2_control controller_manager 使用共享 controllers_lock_ 的 POSIX 平台；Windows 为标准 mutex 回退。",
+        "bilingual_terms": [
+          "优先级反转（priority inversion）",
+          "优先级继承互斥锁（priority-inheritance mutex）",
+          "实时线程（real-time thread）",
+          "递归互斥锁（recursive mutex）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_pi_recursive_mutex_3145",
+        "problem_title_zh": "ros2_control RT/non-RT 共享锁的优先级继承改造",
+        "question_zh": "publish_activity 的 RT 路径共享 recursive_mutex 时，最终合并的缓解方案是什么？",
+        "source_locator": "ros2_control #3145 评论 4160585534、4191555039、4200304531；PR #3197；merge commit 308e4aab78958b730d847c0054c69f2cefabd8db",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/3145#issuecomment-4200304531",
+        "verification_refs": [
+          {
+            "locator": "已合并 PI recursive mutex 迁移，merge commit 308e4aa，含 review 与测试覆盖",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros2_control/pull/3197"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.3145",
+    "query": "ros2_control realtime publish_activity recursive mutex priority inheritance",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "generic ros2_control system"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "维护者否定大范围搬移，建议使用 realtime_tools 已有的 PI recursive mutex。"
+      },
+      {
+        "text": "PR #3197 按该方向实现并合并。"
+      }
+    ],
+    "wbc_relevance_reason": "实时控制线程与管理服务共享锁时，低优先级持锁者可能阻塞高优先级控制环；锁策略是 WBC 实时基础设施的重要边界。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.3145",
+  "summary": "ros2_control #3145 发现 fallback activation 会在 SCHED_FIFO update 路径调用 publish_activity，而该函数与非 RT 服务共享 recursive_mutex，存在 priority inversion/jitter 风险。提议者最初想用 atomic flag 把发布移到非 RT 线程；维护者认为无需大改，建议 priority inheritance recursive mutex，并指出 realtime_tools 已实现。PR #3197 将 controllers_lock_ 改为 realtime_tools::prio_inherit_recursive_mutex（Windows 回退标准 mutex），经 review、测试覆盖后合并，merge commit 308e4aa。",
+  "title": "ros2_control 实时路径共享递归锁改用优先级继承 mutex",
+  "version": null
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "claim",
+  "problem_id": "teleop.history-without-global-linvel.omnih2o",
+  "schema_version": 1,
+  "source_fingerprint": "8c5a6ebfb1b36189809e6bdeed83fcffd4213a73323af6c12555d3b474547133",
+  "translations": {
+    "answer": "In the OmniH2O report's Unitree H1, 19-DoF, 50 Hz strategy setup, 25-step body perception combined with previous action history through DAgger teacher-student distillation allows for implicit global linear velocity input; it outperforms the VIO, MLP, and GRU speed input variants in a real-robot standing-motion evaluation of 20 sequences, but this conclusion cannot be directly extrapolated to other robots, sensors, or dynamic actions.",
+    "applicability.assumptions.0": "The policy receives reliable joint position, joint velocity, base angular velocity, projected gravity, and previous actions.",
+    "applicability.assumptions.1": "The motion goal is a sparse three-point head-and-hands kinematic target.",
+    "applicability.assumptions.2": "Training uses a privileged teacher and DAgger-style action supervision in simulation.",
+    "applicability.controllers.0": "OmniH2O 19-DoF motion-tracking policy",
+    "applicability.controllers.1": "teacher-student DAgger distillation",
+    "applicability.environments.0": "retargeted and augmented AMASS motions",
+    "applicability.environments.1": "reported 20-sequence real-robot standing-motion evaluation",
+    "applicability.robots.0": "Unitree H1 research platform in the OmniH2O setup",
+    "applicability.simulators.0": "Isaac Gym / PhysX in the official implementation",
+    "confidence_rationale": "The paper reports a controlled simulation ablation and a real-robot comparison, and the official commit exposes the corresponding history and DAgger implementation. Confidence is capped because the real-world quantitative set contains only 20 standing motions, broader demonstrations are mainly qualitative, and no independent cross-robot replication is included.",
+    "evidence.0.locator": "Section 3 (student state and policy distillation), Table 1(a,b,d), and Table 2(a,b)",
+    "evidence.0.note": "Supports the no-global-linear-velocity design, 25-step history, DAgger ablation, and reported real-robot comparison.",
+    "evidence.0.title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
+    "evidence.1.locator": "LeggedRobot.load_expert and LeggedRobot.step; OnPolicyRunner.learn; PPO._optimize_kin; H1TeleopCfg.domain_rand/control at commit 750f1fa",
+    "evidence.1.note": "Maps the paper mechanism to teacher action labeling, history buffering, DAgger optimization, and the H1-specific training configuration.",
+    "evidence.1.title": "LeCAR-Lab/human2humanoid official OmniH2O implementation",
+    "terms.0": "Inertial Measurement Unit (IMU) (惯性测量单元)",
+    "terms.1": "Motion Retargeting (动作重定向)",
+    "terms.2": "Whole-Body Teleoperation (全身遥操作)",
+    "terms.3": "Gated Recurrent Unit (GRU) (门控循环单元)",
+    "title": "Does sparse input human-like robotic whole-body teleoperation require explicit estimation of global linear velocity of the body?"
+  }
+}

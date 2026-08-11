@@ -1,0 +1,28 @@
+{
+  "kind": "qa",
+  "problem_id": "issue.github.osqp.osqp.43.6b1c344e1144",
+  "schema_version": 1,
+  "source_fingerprint": "9cefafd940800f0fa596884612b856fc449b6d1f0587b45e36fefb552815c8ad",
+  "translations": {
+    "answer": "The direct cause of this thread is that the example used an undefined `INFINITY` macro in the OSQP project. Maintainers requested using `OSQP_INFTY` from `glob_opts.h`, and the original author confirmed that this replacement is not feasible and cannot be handled correctly. Engineering-wise, it is recommended to print the final `l/u` value, as different OSQP major versions may adjust public header files or constant positions.",
+    "applicability": "Directly applicable to the OSQP C interface; other versions should verify corresponding C API constants.",
+    "credibility.rationale": "Environmental, processing steps, and results have engineering records, but formal cross-validation or independent replication is missing.",
+    "details.attempts.0": "Replace the general `INFINITY` with `OSQP_INFTY` from `glob_opts.h`.",
+    "details.diagnostics.0": "Print the actual `l/u` value and type, confirming use of the target OSQP version's infinity constant.",
+    "details.effective_fixes.0": "Represent one-sided infinity bound using `OSQP_INFTY` in the OSQP C interface environment.",
+    "details.environments.0": "2018 OSQP C example; original post based on `examples/osqp_demo.c`, no published version number.",
+    "details.limits.0": "The macro's source header and internal representation may vary with OSQP major versions; should use the target version's C API, not hardcode old paths as a permanent interface.",
+    "details.outcomes.0": "Original author confirmed that `OSQP_INFTY` resolves the issue.",
+    "details.problem_statements.0": "How should one-sided infinity bounds be represented in the OSQP C interface? Why does using a general `INFINITY` cause infeasibility detection to reach the iteration limit?",
+    "details.safety_notes.0": "Test bounds with a known infeasible and a known feasible boundary before coding, to avoid control loop exhaustion during fault states.",
+    "details.suspected_causes.0": "Maintainers confirmed that `INFINITY` is not a macro defined by the OSQP project; the C interface should use `OSQP_INFTY`.",
+    "details.symptoms.0": "Using `INFINITY` leads to simple infeasibility QP reaching the iteration limit and increasing penalty continuously; changing the upper bound to a finite value allows immediate infeasibility detection.",
+    "source.locator": "OSQP #43 maintainer reply 364638732; author confirmed 364714680",
+    "source.title": "OSQP C Interface: One-sided Infinity Bound Must Use `OSQP_INFTY`",
+    "terms.0": "One-sided bound (单侧边界)",
+    "terms.1": "Infinity constant (无穷常量)",
+    "terms.2": "Infeasibility detection (不可行检测)",
+    "terms.3": "Iteration limit (迭代上限)",
+    "title": "Why Shouldn't We Directly Use the General `INFINITY` When Setting a One-Sided Infinity Bound in the OSQP C Interface?"
+  }
+}
