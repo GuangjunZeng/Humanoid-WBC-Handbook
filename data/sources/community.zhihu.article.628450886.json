@@ -1,0 +1,216 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "糯米词"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/628450886",
+  "captured_at": "2026-08-10T22:50:00+08:00",
+  "content_sha256": "d55e0fe8db85375b7136293ade65bbb862d661fb9fd18cd02d321566ac479fc8",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 7
+    },
+    "collector_note": "collection_completeness=partial_visible；登录态可见正文与 7 条评论已展开；社区候选未独立验证。",
+    "components": [
+      "legged_control",
+      "OCS2",
+      "Pinocchio",
+      "ROS Noetic",
+      "catkin-tools",
+      "ros_control"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "按具体错误补齐 ros-noetic-navigation、python3-catkin-tools 或 Python 模块，并用 -DPYTHON_EXECUTABLE=/usr/bin/python3 固定解释器。",
+        "评论建议用 root 启动以绕过 sched_setscheduler 权限；该做法权限过宽，只作为待验证候选，不直接升级为推荐解法。"
+      ],
+      "diagnostics": [
+        "先只编译并运行 OCS2 的 DDP/SQP 示例，再分开编译 legged_controllers、Gazebo 与真机硬件包；每个终端显式 source ROS 和工作空间环境；保留完整首个错误而非只看末尾连锁报错。",
+        "按正文、7 条可见评论与一个图像位交叉整理；社区经验尚未由官方文档、源码或 Issue 独立验证。"
+      ],
+      "effective_fixes": [
+        "正文对缺少 move_base_msgs、catkin-tools 和 empy/Python 解释器不匹配给出了对应命令；是否适用于当前发行版仍需复核。"
+      ],
+      "environments": [
+        "Ubuntu + ROS Noetic；catkin-tools；OCS2、Pinocchio、hpp-fcl；Unitree A1 Gazebo 仿真。"
+      ],
+      "limits": [
+        "文章面向 ROS Noetic 和较旧依赖组合；直接切换系统 Python 或全程使用 root 都可能污染环境或扩大权限。",
+        "评论不能单独链接，只能保留根帖链接与可见评论定位。"
+      ],
+      "outcomes": [
+        "正文形成从 OCS2 示例、控制器、仿真到真机依赖的分层启动路径；评论中的实时权限和趴地问题未获得充分闭环。"
+      ],
+      "problem_statements": [
+        "legged_control / OCS2 首次编译时出现缺包、Python 模块或 catkin 命令错误，如何按层定位？",
+        "控制器启动时报 sched_setscheduler 无权限，是否应直接用 root 运行？",
+        "机器人在仿真中趴地运动，现有帖子是否给出了足够的定因信息？"
+      ],
+      "safety_notes": [
+        "涉及实时调度时优先核对 ulimit、组权限和最小 Linux capability，不把‘sudo su 后运行整个控制栈’作为默认做法。",
+        "进入真机前先在仿真与吊装条件下限速、限力、设置急停并记录关节/接触日志。"
+      ],
+      "suspected_causes": [
+        "依赖包或 Python 模块未安装；构建工具链指向错误的 Python 解释器；终端未 source；实时调度能力或资源限制不足。",
+        "‘趴地运动’缺少控制模式、关节状态、接触力和日志，现阶段不能可靠定因。"
+      ],
+      "symptoms": [
+        "move_base_msgs、rospkg、defusedxml、empy 或 catkin 缺失；控制器调用实时调度接口时无权限；机器人趴地运动。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先固定 Ubuntu、ROS Noetic、Python 与目标提交版本，显式加载工作空间环境（Workspace Environment Sourcing），只编译并运行 OCS2 的差分动态规划（Differential Dynamic Programming, DDP）或顺序二次规划（Sequential Quadratic Programming, SQP）示例；通过后再依次加入 legged_controllers、Gazebo 和真机硬件包。对 move_base_msgs、catkin-tools、empy 等错误按首个缺失项补依赖，必要时用 -DPYTHON_EXECUTABLE=/usr/bin/python3 固定构建解释器，避免盲目反复全量编译。",
+        "applicability": "适用于 ROS Noetic + catkin-tools 的 legged_control / OCS2 栈；命令和包名需按当前发行版复核。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "应用程序接口（Application Programming Interface, API）",
+          "安全急停（Emergency Stop, E-Stop）"
+        ],
+        "question_zh": "legged_control / OCS2 首次编译出现缺包、Python 模块或 catkin 命令错误，如何按层定位？",
+        "source_locator": "正文‘编译源码/报错解决/使用’段落",
+        "source_url": "https://zhuanlan.zhihu.com/p/628450886",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.3029694f9d601191",
+        "problem_title_zh": "legged_control / OCS2 首次编译出现缺包、Python 模块或 catkin 命令错误，如何按层定位？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "评论给出的候选办法是进入 root 后重新 source ROS 与工作空间环境再启动，但这会让整个控制栈获得过宽权限。更稳妥的排查是先确认实时调度权限（Real-Time Scheduling Permission）、ulimit、用户组与进程所需的最小 capability，并只对必要组件授权；在官方文档或可复现实验确认前，本帖不能把全程 root 运行视为正式解法。",
+        "applicability": "适用于 Linux 实时调度权限类错误；具体授权方式取决于部署与安全策略。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "应用程序接口（Application Programming Interface, API）",
+          "安全急停（Emergency Stop, E-Stop）"
+        ],
+        "question_zh": "控制器启动时报 sched_setscheduler 无权限，是否应直接用 root 运行？",
+        "source_locator": "可见评论 #2–#3（sched_setscheduler 权限讨论）",
+        "source_url": "https://zhuanlan.zhihu.com/p/628450886",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.dd17da802368497a",
+        "problem_title_zh": "控制器启动时报 sched_setscheduler 无权限，是否应直接用 root 运行？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不能。该评论没有提供控制模式、关节顺序、初始姿态、重力补偿、接触状态、力矩输出或日志，帖子也没有给出回复。应先记录这些最小复现信息，再区分模型映射、控制器未成功切换、状态估计或接触约束问题；现阶段状态为未解决（unresolved）。",
+        "applicability": "仅作为信息缺口与排障顺序提示，不能当成根因判断。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "状态估计（State Estimation）",
+          "应用程序接口（Application Programming Interface, API）",
+          "关节力矩（Joint Torque）"
+        ],
+        "question_zh": "机器人在仿真中趴地运动，应该直接改 WBC 参数吗？",
+        "source_locator": "可见评论 #1",
+        "source_url": "https://zhuanlan.zhihu.com/p/628450886",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.2359199d348dacec",
+        "problem_title_zh": "机器人在仿真中趴地运动，应该直接改 WBC 参数吗？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文唯一工程图位用于展示可选步态/控制模式，需结合 load_controller.launch 的配置与 rqt 指令阅读；图片没有提供关节、接触力或优化器日志，因此不能解释评论中的‘机器人趴地’症状。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.628450886",
+    "published_display": "编辑于 2024-10-08 11:52・浙江",
+    "query": "legged_control WBC 报错 调试",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree A1",
+      "通用四足机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [
+      {
+        "text": "请问一下为什么我的机器人是趴在地上动的"
+      },
+      {
+        "text": "评论者称非 root 账户调用 sched_setscheduler 会报无权限，并建议 root 下重新 source 环境后启动。"
+      },
+      {
+        "text": "catkin：未找到命令；回复认为 ROS 可能未装好或终端没有 source。"
+      }
+    ],
+    "wbc_relevance_reason": "覆盖 NMPC-WBC 开源控制栈从依赖安装、OCS2 示例到 ros_control 控制器启动的可执行排障链，评论还能驱动实时调度权限与仿真环境两个后续子话题。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.628450886",
+  "summary": "帖子整理 Unitree Guide、legged_control、OCS2、Pinocchio、hpp-fcl 与 ROS Noetic 的依赖、编译和启动顺序，并给出缺少 move_base_msgs、rospkg、defusedxml、catkin-tools、empy 或 Python 解释器不匹配时的候选处置。评论区补充了实时调度权限（real-time scheduling permission）、ROS 环境未 source 和虚拟机运行等问题，但部分建议仍需用官方文档或源码复核。",
+  "title": "legged_control / OCS2 编译与启动的分层排障记录",
+  "version": null
+}

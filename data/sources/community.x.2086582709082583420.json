@@ -1,0 +1,139 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "noclipepe @noclipepe"
+  ],
+  "canonical_url": "https://x.com/noclipepe/status/2086582709082583420",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "1ba419f077ee8c0b689f7c861accc9df250c137a18200ddb9d65df808c52e122",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Unitree G1",
+      "emergency stop",
+      "fall safety"
+    ],
+    "domain_hints": [
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "帖子引用一项研究提出问题。"
+      ],
+      "diagnostics": [
+        "区分 power cut、受控制动、保护姿态和外部支撑；评估跌倒包络。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Unitree G1 行走；人员/物体可能在跌倒范围内。"
+      ],
+      "limits": [
+        "没有给出速度、姿态、跌倒方向或急停实现细节；需核对论文。"
+      ],
+      "outcomes": [
+        "原帖明确把安全停止标为未解决工程问题。"
+      ],
+      "problem_statements": [
+        "行走人形的断电急停可能比继续受控运动更危险。"
+      ],
+      "safety_notes": [
+        "实机急停设计必须评估受控减速、保护姿态、制动器和人员隔离，不能默认断电即安全。"
+      ],
+      "suspected_causes": [
+        "双足稳定依赖持续主动控制，断电不是静态安全态。"
+      ],
+      "symptoms": [
+        "切断动力后出现不可控跌倒风险。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "因为双足稳定依赖主动控制，直接切断动力可能造成不可控跌倒并扩大碰撞风险。该帖只确认风险并链接研究，没有提供已验证修复；应进一步设计并验证受控减速、保护姿态、制动与隔离策略。",
+        "applicability": "适用于行走或动态任务中的人形机器人急停设计。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "安全急停（Emergency Stop, E-Stop）"
+        ],
+        "question_zh": "为什么行走中的 G1 不能简单把“断电”当作安全急停？",
+        "source_locator": "根帖与 source 回复",
+        "source_url": "https://x.com/noclipepe/status/2086582709082583420",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.safety_fall_recovery.77676ba42eae8751",
+        "problem_title_zh": "为什么行走中的 G1 不能简单把“断电”当作安全急停？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图清晰展示“断电急停可能导致失控跌倒”的文字论点；未显示实验工况、跌倒轨迹或安全边界。"
+    ],
+    "platform": "x",
+    "post_id": "2086582709082583420",
+    "published_display": "2026-08-09T22:37:39.000Z",
+    "query": "Unitree G1 emergency stop uncontrolled fall",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "safety_fall_recovery",
+    "selected_comments": [
+      {
+        "author_display": "noclipepe\n@noclipepe\n·\n13h",
+        "published_display": "2026-08-09T22:39:10.000Z",
+        "text": "source:\n\nhttps://\narxiv.org/html/2608.0280\n9v1\n…"
+      },
+      {
+        "author_display": "Future Wire\n@FutureWire__\n·\n2h",
+        "published_display": "2026-08-10T10:03:30.000Z",
+        "text": "Asimov's Three Laws of Robotics have been thrown out the window for the sake of \"progress\"\n\nAmazing how we are so willing to give up our freedom of action and control for the sake of a bit of efficiency and comfort."
+      },
+      {
+        "author_display": "Saman Ahmed\n@ScaleWthAI\n·\n5h",
+        "published_display": "2026-08-10T06:14:46.000Z",
+        "text": "The emergency stop being dangerous is such a weird inversion."
+      }
+    ],
+    "wbc_relevance_reason": "急停、跌倒与残余动能是 WBC 实机安全的核心系统问题。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086582709082583420",
+  "summary": "帖子指出传统工业机器人“切断动力即安全态”的假设不适用于行走人形：Unitree G1 行走时直接断电可能导致不可控跌倒并撞向人员或物体。回复只给出论文链接，没有在帖内提供受控停车方案。",
+  "title": "G1 行走时直接断电的急停可能触发失控跌倒",
+  "version": null
+}

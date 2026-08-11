@@ -1,0 +1,129 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "秦素兵 力控模组"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/2061931048615801633",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "9a564f8b454ebc6d0a14c31d96ccc299c9b2926730f7ad63f8d43c5e3dba5952",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "torque control",
+      "bandwidth",
+      "backdrivability",
+      "thermal drift"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "阶跃与扫频、10/50/100% 额定扭矩静态精度、正反向重复、锯齿分辨率、断电/零力矩反驱、长时热漂移。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "高采样率外部力矩传感器；空载/带载；堵转；1–100 Hz 以上扫频。"
+      ],
+      "limits": [
+        "非行业标准；阈值需按平台、安全等级和传感器精度定义。"
+      ],
+      "outcomes": [
+        "形成验收框架，但帖子没有给出实测数据。"
+      ],
+      "problem_statements": [
+        "怎样避免只看厂商‘100 Hz 带宽’就误判力控关节？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "空载小幅测试掩盖带载带宽下降、滞回、温漂与减速器阻力。"
+      ],
+      "symptoms": [
+        "样本标称力矩精度/带宽缺少负载、幅值和温度条件，实机表现不可比。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "必须记录测试负载惯量、力矩幅值、温度和采样率：用阶跃测上升时间/超调，用扫频取 -3 dB 带宽，再做多力矩点精度、正反向重复、反驱与长时温漂。该帖给的是验收框架而非合格阈值。",
+        "applicability": "非行业标准；阈值需按平台、安全等级和传感器精度定义。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "比例-微分控制（Proportional-Derivative Control, PD Control）",
+          "关节力矩（Joint Torque）",
+          "有效载荷（Payload）",
+          "反向驱动性（Backdrivability）",
+          "热漂移（Thermal Drift）"
+        ],
+        "question_zh": "怎样避免只看厂商‘100 Hz 带宽’就误判力控关节？",
+        "source_locator": "正文四项‘期末考’",
+        "source_url": "https://zhuanlan.zhihu.com/p/2061931048615801633",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.force_control_manipulation.556c947d2366852b",
+        "problem_title_zh": "怎样避免只看厂商‘100 Hz 带宽’就误判力控关节？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "单个媒体位未提供可读取的阶跃或 Bode 曲线；验收框架来自正文，带宽/精度没有图上实测数字。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.2061931048615801633",
+    "published_display": "发布于 2026-07-18 21:55・江苏",
+    "query": "G1 力控 接触 抓取 震荡 调参",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用力控关节"
+    ],
+    "schema_version": 2,
+    "scope_id": "force_control_manipulation",
+    "selected_comments": [],
+    "wbc_relevance_reason": "把‘参数调好’转化为可重复的关节级验收项目，直接关联 WBC 力矩控制可信度。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.2061931048615801633",
+  "summary": "文章给出动态力矩阶跃、正弦扫频、堵转静态精度、重复性/分辨率、反向驱动和 1–2 小时温漂/耐久测试框架，并提醒带宽必须同时标注负载惯量和力矩幅值。",
+  "title": "力控关节验收：带宽、精度、反驱与热漂移四类测试",
+  "version": null
+}

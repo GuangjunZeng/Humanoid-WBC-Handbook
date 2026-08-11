@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lorepieri8"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2630",
+  "captured_at": "2026-08-11T01:25:00+08:00",
+  "content_sha256": "cb41456e14c843f0f09053cdcaa7e1965042d04a9d5ace66cd5bbb2c5c187e8e",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 3 条评论；没有把提问者的 will test/should solve 改写成已验证结果。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim Articulation",
+      "root_physx_view",
+      "physics tensor API",
+      "joint effort"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "Contributor 建议 get_link_incoming_joint_force；提问者进一步找到 get_dof_projected_joint_forces 和 get_dof_actuation_forces。"
+      ],
+      "diagnostics": [
+        "先区分 Isaac Sim 高层 Articulation 类 API 与底层 physics tensor ArticulationView API；再明确需要 6D 入射 wrench、DOF 投影外力还是执行器力。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "IsaacLab Articulation/root_physx_view；具体 Isaac Lab/Sim 版本和机器人未说明。"
+      ],
+      "limits": [
+        "原线程没有验证 get_dof_projected_joint_forces 是否等于目标外力，也没有明确各项是否包含约束反力、驱动力或符号约定。"
+      ],
+      "outcomes": [
+        "API 层级错误得到确认；提问者认为 DOF projected/actuation forces 可能合用，但承诺测试后没有回报。"
+      ],
+      "problem_statements": [
+        "为什么 root_physx_view 没有 get_measured_joint_efforts，如何获得沿 DOF 方向的外部关节力？"
+      ],
+      "safety_notes": [
+        "用于执行器保护或接触检测前，必须用已知载荷分别验证投影外力与驱动力。"
+      ],
+      "suspected_causes": [
+        "在底层 root_physx_view 上调用了只属于 Isaac Sim 高层 Articulation 类的方法。"
+      ],
+      "symptoms": [
+        "AttributeError: 'ArticulationView' object has no attribute 'get_measured_joint_efforts'。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先不要把不同层级的方法混用：原帖 contributor 说明 get_measured_joint_efforts 属于 Isaac Sim 高层 Articulation 类，而 root_physx_view 暴露的是 physics tensor API。底层可读取 get_link_incoming_joint_force，但它是每个 DOF 的 6D 入射 wrench；提问者认为自己需要 get_dof_projected_joint_forces 和 get_dof_actuation_forces，却没有完成测试。因此可用这些名称作为排查入口，但不能把它们写成已验证的外力隔离方案。",
+        "applicability": "适用于区分 Isaac Sim 高层 Articulation API 与 IsaacLab root_physx_view tensor API；具体方法随版本可能变化。",
+        "bilingual_terms": [
+          "关节力（joint effort）",
+          "物理张量接口（physics tensor API）",
+          "入射关节力（incoming joint force）",
+          "自由度投影力（DOF projected force）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.9c92734950398cc2",
+        "problem_title_zh": "root_physx_view 调用 get_measured_joint_efforts 报 AttributeError 时，应该怎样选择正确 API？",
+        "question_zh": "root_physx_view 调用 get_measured_joint_efforts 报 AttributeError 时，应该怎样选择正确 API？",
+        "source_locator": "Issue #2630 回复 issuecomment-2944927705 与 2945622792",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2630#issuecomment-2944927705",
+        "verification_refs": [
+          {
+            "locator": "contributor 明确区分高层 Articulation API 与 root_physx_view tensor API",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2630#issuecomment-2944927705"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2630",
+    "query": "IsaacLab root_physx_view get_measured_joint_efforts AttributeError projected forces",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用关节机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "Contributor：get_measured_joint_efforts 属于 Isaac Sim Articulation 类；root_physx_view 可查 tensor API。"
+      },
+      {
+        "text": "提问者：get_link_incoming_joint_force 是 6D wrench；找到 DOF projected/actuation force API，但尚待测试。"
+      }
+    ],
+    "wbc_relevance_reason": "关节外力、执行器力和入射 6D wrench 是不同物理量；混用 API 层级会导致属性错误或把错误量送入力矩监测。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2630",
+  "summary": "提问者在 self._robot.root_physx_view 调用 get_measured_joint_efforts，得到 ArticulationView 无该属性。IsaacLab contributor 说明该方法属于 Isaac Sim 高层 Articulation API；若直接访问 physics tensor view，可用 get_link_incoming_joint_force。提问者指出该方法给每个 DOF 的 6D wrench，不符合其目标，并在文档中找到 get_dof_projected_joint_forces/get_dof_actuation_forces，认为可能满足需求但尚未测试。",
+  "title": "get_measured_joint_efforts 属于高层 Articulation API，不存在于 root_physx_view",
+  "version": null
+}

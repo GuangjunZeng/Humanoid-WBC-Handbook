@@ -1,0 +1,169 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "popi"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/688c990a0000000023020d55",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "979ed3260d2ca0cb176c72d9be9f72f9e4bd16429b113de388122c1ae916df72",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 13
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "reinforcement learning",
+      "reward shaping",
+      "domain randomization"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "sports",
+      "motion_generation",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "先关 DR，删除非必要正则，仅保留任务奖励；根据可见失败行为逐项添加约束。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "人形 locomotion 强化学习，具体框架/硬件未披露。"
+      ],
+      "limits": [
+        "缺少代码、曲线和平台信息；属于方法论建议。"
+      ],
+      "outcomes": [
+        "没有作者复训结果。"
+      ],
+      "problem_statements": [
+        "人形 locomotion 一开始完全训不出来，reward 应该怎么减法排查？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "评论怀疑一开始同时启用过多奖励/正则和 domain randomization，掩盖主任务信号。"
+      ],
+      "symptoms": [
+        "训练效果一直很差，不知道如何根据行为调整 reward。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "评论给出的候选流程是先关闭 Domain Randomization，在理想环境只留最直接任务奖励；确认策略能完成基本目标后，再针对具体失败逐项加入姿态、能量、平滑等约束，最后恢复随机化。原帖没有复训结果，所以仍是 partial。",
+        "applicability": "缺少代码、曲线和平台信息；属于方法论建议。",
+        "bilingual_terms": [
+          "强化学习（Reinforcement Learning, RL）",
+          "域随机化（Domain Randomization, DR）",
+          "应用程序接口（Application Programming Interface, API）",
+          "质心（Center of Mass, CoM）"
+        ],
+        "question_zh": "人形 locomotion 一开始完全训不出来，reward 应该怎么减法排查？",
+        "source_locator": "评论“先把 domain ran 关了”与“不要一下用很多奖励”",
+        "source_url": "https://www.xiaohongshu.com/explore/688c990a0000000023020d55",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.training_instability.186e149ec8328d77",
+        "problem_title_zh": "人形 locomotion 一开始完全训不出来，reward 应该怎么减法排查？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个媒体位未给可读取的 reward 曲线或日志；有效工程信息来自高赞评论的减法排查策略。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "688c990a0000000023020d55",
+    "published_display": "2025-08-01",
+    "query": "人形机器人 训练 不收敛 摔倒 奖励函数",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_instability",
+    "selected_comments": [
+      {
+        "text": "popi作者大家别光收藏点赞，都来参与讨论呀置顶评论2025-08-05广东赞回复"
+      },
+      {
+        "text": "oooooofall先把domain ran 关了试reward2025-08-01浙江53"
+      },
+      {
+        "text": "popi作者先理想化是吗验证reward是否有效先2025-08-01广东赞回复"
+      },
+      {
+        "text": "oooooofall回复 popi : 甚至可以先把不必要的正则化奖励去掉2025-08-02浙江赞回复"
+      },
+      {
+        "text": "popi作者回复 oooooofall : 比如说？哪些是不必要的呢2025-08-02广东赞回复"
+      },
+      {
+        "text": "猫毛过敏咖啡因不耐受的猫咖旅人一灯青不要上来一下子用很多奖励，先把与任务直接相关的奖励用上，然后训出来的效果，你看需要让机器人去有哪些更多的约束，然后再去找相关的奖励2025-08-09北京21"
+      },
+      {
+        "text": "popi作者好方法get！2025-08-09广东赞回复"
+      },
+      {
+        "text": "山樵蹲2025-08-01广东赞1"
+      },
+      {
+        "text": "popi作者踢踢2025-08-01广东赞回复"
+      },
+      {
+        "text": "不懂就问～机器人有看机会不？02-05北京赞回复"
+      },
+      {
+        "text": "玉玉症犯惹蹲蹲2025-08-01广东赞回复"
+      },
+      {
+        "text": "长夏mark2025-08-04北京赞回复"
+      },
+      {
+        "text": "Bumon_蹲2025-08-01广东赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "是训练不稳定时很实用的最小化实验策略。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.688c990a0000000023020d55",
+  "summary": "求助帖评论中两条高赞建议：先关闭 domain randomization 验证 reward，在理想环境下只保留任务直接相关奖励，行为成形后再逐项加入正则和约束。",
+  "title": "Locomotion 训练效果差时先关 Domain Randomization、缩小 reward 集合",
+  "version": null
+}

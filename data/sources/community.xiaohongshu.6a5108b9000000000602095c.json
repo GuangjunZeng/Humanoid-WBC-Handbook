@@ -1,0 +1,166 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "叽叽喳喳"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a5108b9000000000602095c",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "ea123f74074a0cc70acb8b413d06db2de21ed72ccf5109be85bef8fc0aac4e3d",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 12
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Unitree G1",
+      "Sonic teleoperation",
+      "motor temperature",
+      "fault cascade"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "sports",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区建议用 App/电机状态监温、设报警后关闭程序并吊挂降温、缩短持续抬臂、外部风冷或返厂。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Sonic 全身遥操作；双臂前举持续保持；室内。"
+      ],
+      "limits": [
+        "85/90°C 阈值未由官方资料独立核验；不能用风扇替代故障诊断。"
+      ],
+      "outcomes": [
+        "没有作者修复后的结果；多位评论者称遇到类似过热。"
+      ],
+      "problem_statements": [
+        "G1 双臂前举后手臂过热下线并带倒右腿，优先怎样止损和定位？"
+      ],
+      "safety_notes": [
+        "必须先防跌落：吊挂/保护绳、人员隔离、温度预警和故障级联停机。"
+      ],
+      "suspected_causes": [
+        "评论怀疑肩关节持续力矩与散热不足；也有人建议返厂排查关节 gap，未定因。"
+      ],
+      "symptoms": [
+        "1–2 分钟右臂过热下线，随后右腿下线，机器人颠簸倒地。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "先把跌落风险隔离：保护绳/支架、人员退场，并实时记录每个电机温度、力矩、电流和 fault 时间线，在第一个热告警前主动降级/停机。再对比左右肩、手臂姿态和环境散热；评论给出的 85/90°C 只能作为待官方核验线索。",
+        "applicability": "85/90°C 阈值未由官方资料独立核验；不能用风扇替代故障诊断。",
+        "bilingual_terms": [
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "全身遥操作（Whole-Body Teleoperation）",
+          "热漂移（Thermal Drift）"
+        ],
+        "question_zh": "G1 双臂前举后手臂过热下线并带倒右腿，优先怎样止损和定位？",
+        "source_locator": "根帖复现描述与温度/停机/返厂评论",
+        "source_url": "https://www.xiaohongshu.com/explore/6a5108b9000000000602095c",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.hardware_actuator_thermal.256da6e8fc9421c3",
+        "problem_title_zh": "G1 双臂前举后手臂过热下线并带倒右腿，优先怎样止损和定位？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个媒体位展示 G1 遥操作/姿态，不包含可读取的温度时间序列；1–2 分钟、85/90°C 线索来自正文和评论，仍需官方/遥测核验。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a5108b9000000000602095c",
+    "published_display": "07-10",
+    "query": "Unitree G1 电机过热 力矩限制 故障",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal",
+    "selected_comments": [
+      {
+        "text": "叽叽喳喳作者目前是这样，遥操作打开以后，双手平举可能1-2分钟右臂就会过热下线，真的正常吗置顶评论07-11新加坡赞1"
+      },
+      {
+        "text": "小红薯6A2E930F你好，团队有4位Ai博士，对智身具能Ai领域有研究，希望合作，比方说推荐相同研究团队，投资，一起加入团队，可以加我吗？qijianuzi或私信给我您的V07-12吉林赞回复"
+      },
+      {
+        "text": "今天你打工了吗不一定是手臂，sonic部署后腰和右腿脚踝关节非常容易过热，07-11澳大利亚21"
+      },
+      {
+        "text": "Simǎ这个真经常遇到过07-11广东1回复"
+      },
+      {
+        "text": "陆地上的小蚂蚁买一台电风扇在后面一直吹就可以了。负荷主要集中在肩关节，但是热量又散不掉，设计缺陷没办法。07-11日本2回复"
+      },
+      {
+        "text": "多吃水果可以下载宇树app 看看电机温度 85度以上就会报警 90度以上就会保护了 按道理来说平举这个动作没啥问题 看看是不是肩关节过热07-12湖南1回复"
+      },
+      {
+        "text": "LC可以在运控里接一下电机状态和电机温度，开始报错了，就飞书提醒一下，关闭程序，赶紧挂起来降降温。07-11北京赞回复"
+      },
+      {
+        "text": "我吃吃吃类似的遇到过很多次了，建议返厂维修一下，关节的gap会越来越大07-11上海赞回复"
+      },
+      {
+        "text": "gloria_seven遇到过 等他凉了就好了 但是凉好几次就可以返厂了07-10北京赞回复"
+      },
+      {
+        "text": "Hedy看我视频 一模一样哈哈哈07-11河北赞回复"
+      },
+      {
+        "text": "Simǎ有没有那个大佬遇到过，G1开机进入阻尼模式后手臂就会剧烈颤抖而且声音很大，是不是阻尼太大的原因，有没有解决办法07-15广东赞回复"
+      },
+      {
+        "text": "BOB的好玩儿正常，Sonic 站 立 2 分钟都报过热，室内的环境，我把手机的那个散热加上，就是会好一些。然后胳膊一直抬着，摇操能大概三五分钟吧，你每次抬的时候拿东西，不要一次性抬太长时间。07-11北京赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "具有明确动作、时间、故障链和安全处置，是实机热管理高价值案例。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a5108b9000000000602095c",
+  "summary": "Sonic 全身遥操作下，作者可稳定复现双臂前举后右臂快速过热下线，随后右腿下线并颠簸倒地。评论提到 85°C 报警/90°C 保护、肩关节散热、实时接电机温度并在报警时停机；这些阈值需官方核验。",
+  "title": "G1 双臂前举 1–2 分钟过热下线并连锁倒地",
+  "version": null
+}

@@ -1,0 +1,185 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "廖洽源"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/567381895",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "7c071caad33425deff9960d76c872de6cc0c191ffb4bab56d8f64dd5c4f76bea",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "remaining_comments_collapsed",
+      "visible_replies_captured": 10
+    },
+    "collector_note": "collection_completeness=partial_visible；正文与部分评论已读；只把作者文与官方仓库交叉一致的内容升级。",
+    "components": [
+      "legged_control",
+      "OCS2",
+      "ros-control",
+      "NMPC",
+      "WBC",
+      "Kalman filter"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "继承 LeggedHW 并实现 read()/write()。",
+        "仿照 unitree_description 生成 URDF 并保持 joint/link 命名约定。",
+        "真机只启动真实状态估计和 legged_controller。"
+      ],
+      "diagnostics": [
+        "对照官方仓库目录检查硬件接口、描述文件、控制器和状态估计是否分层。"
+      ],
+      "effective_fixes": [
+        "通过 ros-control 硬件接口隔离平台差异；按官方启动顺序分离 simulation 与 hardware。"
+      ],
+      "environments": [
+        "ROS/ros-control；OCS2；A1；作者使用 11 代 NUC，NMPC 频率接近 200 Hz；仓库当前注明停止维护。"
+      ],
+      "limits": [
+        "仓库已停止维护；版本、依赖和安全边界需按当前 fork 重新验证。"
+      ],
+      "outcomes": [
+        "官方 README 列出多个实验室在 A1 上跑通，并给出 2 小时至 1 天的历史记录；作者文与仓库结构一致。"
+      ],
+      "problem_statements": [
+        "把 legged_control 迁移到自研机器人时，最小适配边界是什么？",
+        "仿真控制器和真机控制器为什么不能混用？"
+      ],
+      "safety_notes": [
+        "官方 README 明确真机不得启动 cheater controller；首次控制应使用吊架、低增益、限力和急停。"
+      ],
+      "suspected_causes": [
+        "硬件读写接口与关节命名未满足框架假设。",
+        "把仿真真值状态或仿真负载带到真机流程。"
+      ],
+      "symptoms": [
+        "直接修改主仓库会让硬件适配难以维护。",
+        "真机误启 cheater controller 或在机载机运行 Gazebo 会造成错误状态/资源风险。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "硬件层仿照 UnitreeHW 继承 LeggedHW，实现 read() 和 write()；模型层仿照 legged_unitree_description 编写 xacro/URDF，并满足框架使用的 joint/link 命名约定。这样可把平台差异收敛在硬件接口与模型描述，不必侵入 NMPC/WBC 主体。",
+        "applicability": "适用于该 ROS1/ros-control 框架；仓库已停止维护，现代系统需评估迁移成本。",
+        "bilingual_terms": [
+          "硬件抽象层（hardware abstraction layer）",
+          "机器人描述（URDF/xacro）",
+          "读写接口（read/write interface）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.a81b614d6edd02df",
+        "problem_title_zh": "把 legged_control 迁移到自研足式机器人，最小需要改哪两层？",
+        "question_zh": "把 legged_control 迁移到自研足式机器人，最小需要改哪两层？",
+        "source_locator": "正文‘你自己开发的机器人’；官方 README Deploy and Develop",
+        "source_url": "https://zhuanlan.zhihu.com/p/567381895",
+        "verification_refs": [
+          {
+            "locator": "README Deploy and Develop：继承 LeggedHW 实现 read/write，并保持描述文件 joint/link 命名",
+            "relation": "source_code",
+            "source_url": "https://github.com/qiayuanl/legged_control"
+          }
+        ],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不要在机载计算机上编译/运行 Gazebo 仿真模块，也不要在真实硬件启动 legged_cheater_controller，因为它依赖仿真真值状态。真机应启动硬件接口、真实状态估计和 legged_controller，并在低风险条件下逐级放开目标与增益。",
+        "applicability": "适用于 legged_control；其他框架也应明确真值状态与实测状态的边界。",
+        "bilingual_terms": [
+          "真值状态（ground-truth state）",
+          "状态估计（state estimation）",
+          "机载计算（onboard computing）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.ed9f426f438d13bd",
+        "problem_title_zh": "Legged-Control 从仿真切到真机时，哪些启动方式必须禁止？",
+        "question_zh": "Legged-Control 从仿真切到真机时，哪些启动方式必须禁止？",
+        "source_locator": "官方 README Build / Quick Start 的硬件警告，正文框架与状态估计说明",
+        "source_url": "https://zhuanlan.zhihu.com/p/567381895",
+        "verification_refs": [
+          {
+            "locator": "README 明确 simulation 不在 onboard computer 运行，real hardware 不得启动 legged_cheater_controller",
+            "relation": "source_code",
+            "source_url": "https://github.com/qiayuanl/legged_control"
+          }
+        ],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文框架图展示目标轨迹→NMPC→WBC→前馈力矩+低增益 PD，以及 IMU/电机状态→卡尔曼滤波；仓库 README 文字与此一致。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.567381895",
+    "published_display": "编辑于 2022-09-25 19:16",
+    "query": "开源 NMPC WBC legged_control 真机 部署 自研机器人",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree A1",
+      "自研足式机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "评论中有用户报告 A1 实机持续抖动，怀疑控制频率/实时性不足，尚未闭环。"
+      },
+      {
+        "text": "另有用户报告 trot 左右扭动后崩溃，未给出维护者诊断。"
+      }
+    ],
+    "wbc_relevance_reason": "这是框架作者对开源 WBC 真机适配、状态估计、硬件接口和安全启动的第一方工程记录。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.567381895",
+  "summary": "框架作者说明如何把 OCS2+ros-control 的 NMPC-WBC 栈部署到 A1 或自研机器人：硬件侧继承 LeggedHW 实现 read/write，模型侧沿用 joint/link 命名生成 URDF；官方仓库还明确仿真模块不要在机载计算机运行、真机禁止启动 cheater controller。",
+  "title": "Legged-Control 真机适配边界与 NMPC-WBC 安全启动顺序",
+  "version": null
+}

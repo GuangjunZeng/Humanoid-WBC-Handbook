@@ -1,0 +1,142 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "LeoTime"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1941080281860804637",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "3627db133781297fb690610b72355545c013bc3e8ee00307ecd4f97fffc5358b",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Humanoid-Gym",
+      "Isaac Gym",
+      "MuJoCo",
+      "terrain curriculum",
+      "domain randomization"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "sports",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "启用 trimesh/curriculum，增大崎岖地形比例和噪声，增加 command curriculum，基于旧 checkpoint 续训。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Humanoid-Gym；Isaac Gym 训练；MuJoCo sim2sim；num_envs=1024。"
+      ],
+      "limits": [
+        "单作者经验；没有多种子成功率，评论另有‘MuJoCo 关节不动’未解决。"
+      ],
+      "outcomes": [
+        "约 3000 回合后 terrain_level≈10、mean_reward≈140；平地抗外力改善，后续崎岖地形不摔但仍弱于官方策略。"
+      ],
+      "problem_statements": [
+        "Humanoid-Gym 策略在 Isaac Gym 正常、到 MuJoCo 崎岖地形就摔，先怎么缩小问题？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "初始训练只有平地，地形覆盖与噪声不足，策略鲁棒性弱。"
+      ],
+      "symptoms": [
+        "Isaac Gym 中正常，MuJoCo 平地跌跌撞撞；崎岖地形数步后摔倒。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "这篇经验先把失败归因到训练地形覆盖不足：启用 trimesh 和地形课程（terrain curriculum），增加崎岖地形比例与噪声，再加入 command curriculum 并从原 checkpoint 续训。作者报告崎岖地形由易摔改善为不摔，但仍未达到官方策略，说明这只是候选处置而非充分解法。",
+        "applicability": "单作者经验；没有多种子成功率，评论另有‘MuJoCo 关节不动’未解决。",
+        "bilingual_terms": [
+          "仿真到仿真（Simulation-to-Simulation, Sim2Sim）",
+          "域随机化（Domain Randomization, DR）",
+          "课程学习（Curriculum Learning）",
+          "比例-微分控制（Proportional-Derivative Control, PD Control）",
+          "质心（Center of Mass, CoM）",
+          "大规模并行仿真（Massively Parallel Simulation）"
+        ],
+        "question_zh": "Humanoid-Gym 策略在 Isaac Gym 正常、到 MuJoCo 崎岖地形就摔，先怎么缩小问题？",
+        "source_locator": "正文 sim2sim 两次失败与调整段落",
+        "source_url": "https://zhuanlan.zhihu.com/p/1941080281860804637",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.reward_curriculum_randomization.9c3578529240064f",
+        "problem_title_zh": "Humanoid-Gym 策略在 Isaac Gym 正常、到 MuJoCo 崎岖地形就摔，先怎么缩小问题？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个可见视频时间点分别对应平地 sim2sim、崎岖地形失败和调整后结果；它们能确认行为变化，但没有多种子曲线或逐帧状态日志。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1941080281860804637",
+    "published_display": "发布于 2025-08-19 14:44・上海",
+    "query": "humanoid reward tuning curriculum domain randomization 经验",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人（具体型号未明确）"
+    ],
+    "schema_version": 2,
+    "scope_id": "reward_curriculum_randomization",
+    "selected_comments": [
+      {
+        "text": "请问有遇到过在mujoco中给定指令但是关节不太动的情况吗，参数基本都和isaac一样"
+      },
+      {
+        "text": "是的，我的是四足，gym里训得没问题，但部署到mujoco就不太动了"
+      },
+      {
+        "text": "没遇到过这种情况，你是迁移到自己的机器人模型时遇到这个问题的吗？"
+      }
+    ],
+    "wbc_relevance_reason": "提供从失败症状到课程学习和域随机化调整的完整社区实验链。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1941080281860804637",
+  "summary": "作者记录平地策略在 MuJoCo 中跌倒，随后启用 trimesh、terrain curriculum、提高崎岖地形比例和噪声、增加 command curriculum；约 3000 回合后平地抗外力改善，进一步训练后崎岖地形不再摔倒但仍弱于官方策略。",
+  "title": "Humanoid-Gym Sim2Sim 崎岖地形失败的 curriculum 调整记录",
+  "version": null
+}

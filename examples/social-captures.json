@@ -9,7 +9,7 @@
         "universal_tracking_teleoperation"
       ],
       "query": "G1 全身遥操 延迟 抖动",
-      "retrieval_url": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567?xsec_token=example",
+      "retrieval_url": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567",
       "canonical_url": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567",
       "captured_at": "2026-08-10T12:00:00+08:00",
       "title": "合成示例：G1 遥操调试记录",
@@ -41,6 +41,10 @@
         {
           "question_zh": "全身遥操指令出现高频抖动时应先检查什么？",
           "answer_zh": "原帖候选解答建议先核对指令、观测和控制循环的时间戳；该结论是合成示例，尚未独立验证。",
+          "bilingual_terms": [
+            "全身遥操作（Whole-Body Teleoperation）",
+            "时间戳同步（Timestamp Synchronization）"
+          ],
           "answer_status": "partial",
           "source_locator": "合成正文第 2 段",
           "applicability": "仅用于展示数据契约。"
@@ -94,6 +98,11 @@
         {
           "question_zh": "WBC QP 不可行时先检查什么？",
           "answer_zh": "合成作者回复建议先检查接触约束和权重尺度。",
+          "bilingual_terms": [
+            "全身控制（Whole-Body Control, WBC）",
+            "二次规划（Quadratic Programming, QP）",
+            "接触约束（Contact Constraint）"
+          ],
           "answer_status": "partial",
           "source_locator": "合成作者回复",
           "source_url": "https://x.com/synthetic/status/101"

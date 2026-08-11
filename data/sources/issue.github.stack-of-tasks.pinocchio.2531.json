@@ -1,0 +1,131 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "hang0610"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2531",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "3932ed4b562abdd4c9e7304ff75f8441e5a26b8eac2c7890342c7c1b2f821ba1",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 3 条评论；只采用原作者明确确认的四元数顺序问题，没有扩写未说明的速度向量映射。",
+    "components": [
+      "Pinocchio",
+      "MuJoCo",
+      "centerOfMass",
+      "quaternion ordering",
+      "Meshcat"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者提供最小脚本和模型，并用 Meshcat 可视化同一配置。"
+      ],
+      "diagnostics": [
+        "在怀疑 centerOfMass 算法前，先核对两个库的浮动基 qpos 布局和四元数分量顺序；用可视化检查姿态是否正确。"
+      ],
+      "effective_fixes": [
+        "在把 MuJoCo 浮动基配置传给 Pinocchio 前按目标 API 的 xyzw 顺序重排四元数；同时核对其余 q/v 布局。"
+      ],
+      "environments": [
+        "原帖写明 Pinocchio 2.6.20、IOS（原文如此）；最小复现使用 Python 3.8、MuJoCo、NumPy、glfw 与 conda-forge Pinocchio。"
+      ],
+      "limits": [
+        "原帖只明确确认四元数顺序；没有逐项说明所有 MuJoCo qvel 与 Pinocchio tangent vector 的映射，因此不能把整段状态数组视为通用直接兼容。"
+      ],
+      "outcomes": [
+        "原作者明确回复已找到分量顺序问题，并在同一时间关闭 Issue；线程没有给出重排后的数值截图。"
+      ],
+      "problem_statements": [
+        "MuJoCo 中机器人上升时 Pinocchio 计算的质心速度 Z 分量为什么可能为负？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "MuJoCo 使用 wxyz，而 Pinocchio 使用 xyzw；原代码直接复用 qpos，未重排四元数。"
+      ],
+      "symptoms": [
+        "MuJoCo qvel[2] 为正，Pinocchio data.vcom[0][2] 为负；把原姿态交给 Meshcat 后机器人姿态异常。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先检查浮动基四元数分量顺序。原作者最终定位到 MuJoCo 使用 wxyz，而 Pinocchio 使用 xyzw；直接把 qpos 传入会给 Pinocchio 错误姿态，并使质心速度方向看似异常。传递前应按目标 API 重排四元数，并用可视化或已知运动方向再次核对。原帖没有证明其余状态分量可全部原样复制。",
+        "applicability": "适用于 MuJoCo 浮动基 qpos 与 Pinocchio 配置之间的四元数转换；具体模型的整段 q/v 映射仍需单独核对。",
+        "bilingual_terms": [
+          "质心速度（center-of-mass velocity）",
+          "四元数（quaternion）",
+          "分量顺序（component ordering）",
+          "浮动基（floating base）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.8c7a96eff6290dee",
+        "problem_title_zh": "MuJoCo 状态传给 Pinocchio 后质心速度方向异常，应先检查什么？",
+        "question_zh": "MuJoCo 状态传给 Pinocchio 后质心速度方向异常，应先检查什么？",
+        "source_locator": "Issue #2531，原作者自我定位并关闭线程的回复 issuecomment-2564969179",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2531#issuecomment-2564969179",
+        "verification_refs": [
+          {
+            "locator": "原作者明确指出 MuJoCo wxyz 与 Pinocchio xyzw 的顺序差异",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2531#issuecomment-2564969179"
+          },
+          {
+            "locator": "原作者提供最小脚本、模型与运行步骤",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2531#issuecomment-2564084659"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原作者在回复中说明：使用 wxyz 配置进行 Meshcat 可视化时机器人姿态明显错误；本卡不从图片提取额外角度或数值。"
+    ],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2531",
+    "query": "Pinocchio MuJoCo center of mass velocity quaternion wxyz xyzw",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "原作者提供可复现脚本、模型和环境安装步骤。"
+      },
+      {
+        "text": "原作者定位到 MuJoCo wxyz 与 Pinocchio xyzw 的顺序差异。"
+      }
+    ],
+    "wbc_relevance_reason": "仿真器与动力学库之间的姿态布局不一致会同时污染质心速度、加速度和 WBC 状态量，表面症状可能被误判为动力学算法符号错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2531",
+  "summary": "Pinocchio #2531 中，提问者把 MuJoCo qpos/qvel 直接传给 Pinocchio centerOfMass，观察到机器人上升时 qvel[2] 为正而 vcom[2] 为负。提交最小脚本和模型后，提问者自行定位：MuJoCo 四元数顺序是 wxyz，Pinocchio 是 xyzw；用 wxyz 在 Meshcat 可视化时机器人姿态明显错误。该自我定位回复与 Issue 关闭时间一致。",
+  "title": "MuJoCo 与 Pinocchio 四元数分量顺序不同会让质心速度方向看似相反",
+  "version": null
+}

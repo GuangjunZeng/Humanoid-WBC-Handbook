@@ -1,0 +1,172 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "未来科技"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1919018795747505440",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "b6821100bd595d1fcc10d36c9a7cef369a8e78a94e61d4fa0d572fc66b591bee",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 100,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "reply_expansion_limit",
+      "visible_replies_captured": 14
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "PBHC",
+      "SMPL",
+      "GVHMR",
+      "Mink Retarget",
+      "PHC Retarget",
+      "ONNX"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "明确 poses/trans/framerate 字段，分别给出 Mink/PHC retarget、过滤、可视化、训练、ONNX 与 MuJoCo 推理命令。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Python 3.8；Isaac Gym Preview 4；PBHC/humanoidverse；MuJoCo；G1。"
+      ],
+      "limits": [
+        "真机结果是单个评论个例；PR、版本和安全参数需独立核验。"
+      ],
+      "outcomes": [
+        "评论称 PR #22 的 ONNX 代码可在 G1 部署马步出拳示例。"
+      ],
+      "problem_statements": [
+        "PBHC 动作模仿从视频/AMASS 到 G1 部署，最容易断在哪些接口？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "数据格式、工具链和部署代码分散；模型格式与推理框架接口不一致。"
+      ],
+      "symptoms": [
+        "官方 README 对数据集处理和真机部署说明不足；评论者称重定向折腾两三天。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "帖子给出的主链是 SMPL 数据字段→Mink/PHC 重定向→接触过滤与可视化→humanoidverse 训练/评测→ONNX→MuJoCo/真机推理。工程上要固定帧率、关节映射和机器人配置；评论指向 PR #22 的 G1 代码，但仅有马步出拳个例，仍需源码和安全限制验证。",
+        "applicability": "真机结果是单个评论个例；PR、版本和安全参数需独立核验。",
+        "bilingual_terms": [
+          "开放神经网络交换格式（Open Neural Network Exchange, ONNX）",
+          "每秒帧数（Frames Per Second, FPS）",
+          "应用程序接口（Application Programming Interface, API）",
+          "动作重定向（Motion Retargeting）"
+        ],
+        "question_zh": "PBHC 动作模仿从视频/AMASS 到 G1 部署，最容易断在哪些接口？",
+        "source_locator": "正文“数据处理/retarget/训练/部署”与 PR #22 评论",
+        "source_url": "https://zhuanlan.zhihu.com/p/1919018795747505440",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.retargeting_and_dataset.9e7c3abaa6da2e6f",
+        "problem_title_zh": "PBHC 动作模仿从视频/AMASS 到 G1 部署，最容易断在哪些接口？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个媒体位配合正文展示动作数据/重定向/部署流程；可确认工具链存在，但没有逐帧接触误差或真机安全参数。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1919018795747505440",
+    "published_display": "编辑于 2025-07-24 14:51・北京",
+    "query": "G1 动作重定向 穿模 脚滑 关节限位",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1 23-DoF"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_and_dataset",
+    "selected_comments": [
+      {
+        "text": "能求一下真机代码吗"
+      },
+      {
+        "text": "有人上传了在https://github.com/TeleHuman/PBHC/pull/22"
+      },
+      {
+        "text": "真机部署咋没写了，oxxn文件如何真机部署到宇树g1， 宇树自己的开源项目unitree_rl_gym里使用的是pt格式的"
+      },
+      {
+        "text": "有人上传了部署代码，使用的是onnx文件，https://github.com/TeleHuman/PBHC/pull/22，我试过了，对于马步出拳示例可以部署到g1"
+      },
+      {
+        "text": "我也刚找到这个，准备试试看"
+      },
+      {
+        "text": "部署代码加载权重就行了，pt一般部署可以直接用或者转成通用的onnx和你的部署代码与推理框架有关"
+      },
+      {
+        "text": "感谢大佬🙏🏻"
+      },
+      {
+        "text": "刚下了，看了半天不知道哪里运行demo，还得看看文章才行吧"
+      },
+      {
+        "text": "不同的包或项目创建conda会减少不必要的配置工作，不是必须的，临时跑跑可以按官方步骤来，一个项目一个环境，要长期用可以考虑合到一个conda环境中"
+      },
+      {
+        "text": "嗯，仔细看看文档就好了，现在在做本体，等我的本体好了也来试试跳舞"
+      },
+      {
+        "text": "看readme"
+      },
+      {
+        "text": "这个readme讲的不太好，库的安装和数据集的处理讲得少，我折腾了两三天才跑完retarget"
+      },
+      {
+        "text": "这是几个项目基础上搞得，大的逻辑框架来，看着会顺当些， 数据 处理 仿真 真机"
+      },
+      {
+        "text": "论文和工程还是有gap的，看项目优先看readme  然后看代码，想了解核心算法看论文"
+      }
+    ],
+    "wbc_relevance_reason": "覆盖动作数据契约、重定向工具链与部署接口，是全身模仿项目常见断点的可查询记录。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1919018795747505440",
+  "summary": "帖子整理 PBHC 环境、SMPL 数据字段、AMASS/GVHMR/LAFAN 数据来源、Mink/PHC retarget、过滤/可视化、训练评测和 ONNX 导出；评论补充 TeleHuman/PBHC PR #22 的 G1 真机部署代码及马步出拳成功个例。",
+  "title": "PBHC 从 SMPL 数据、重定向、训练到 ONNX 部署的实践链",
+  "version": null
+}

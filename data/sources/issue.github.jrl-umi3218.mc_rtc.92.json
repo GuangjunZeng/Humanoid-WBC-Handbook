@@ -1,0 +1,135 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Taherifar"
+  ],
+  "canonical_url": "https://github.com/jrl-umi3218/mc_rtc/issues/92",
+  "captured_at": "2026-08-11T05:20:00+08:00",
+  "content_sha256": "f98b45679b7ba58f32bfc1f775c063257f3aae3d10301448d39a44f98e9feaba",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 2 条评论；数值来自正文，未依据截图补充未写出的时序数据。",
+    "components": [
+      "mc_rtc",
+      "LIPM controller",
+      "LogPolicy",
+      "CMake build type",
+      "CPU power management"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者把 LogPolicy 设为 threaded，把相关控制器及依赖按 Release/RelWithDebInfo 核对，并关闭 CPU powersaving。"
+      ],
+      "diagnostics": [
+        "检查尖峰是否与新 state 启动时的 task/state 内存分配同时发生。",
+        "核对 LogPolicy、控制器及所有依赖的构建类型和 CPU 节能状态。"
+      ],
+      "effective_fixes": [
+        "使用 threaded LogPolicy；确保 lipm_walking controller 和 lipm_walking_controller 的全部依赖采用 Release 或 RelWithDebInfo；关闭 CPU 节能。"
+      ],
+      "environments": [
+        "2020 年 mc_rtc 与 LIPM controller；ROS；实体机器人；5 ms sampling time；CPU 和软件版本未说明。"
+      ],
+      "limits": [
+        "线程没有分别量化三项措施的独立贡献，也没有给出调整后的最坏执行时间。",
+        "项目成员只说明其系统可容忍很少发生的 deadline miss；这不是硬实时或所有机器人都安全的保证。",
+        "状态开始时的 task/state allocation 尖峰仍被认为需要未来版本继续改进。"
+      ],
+      "outcomes": [
+        "作者确认三项调整对减少尖峰和整体耗时都有很大效果。"
+      ],
+      "problem_statements": [
+        "mc_rtc 和 LIPM controller 以 5 ms 周期运行时，计算时间偶发升到约 10 ms，怎样减少实时抖动？"
+      ],
+      "safety_notes": [
+        "部署到实体机器人前仍应测量最坏执行时间和 deadline miss 频率，并由目标系统的安全机制处理超时。"
+      ],
+      "suspected_causes": [
+        "默认 non-threaded 日志策略可能引入明显尖峰。",
+        "控制器或任一依赖没有以优化构建，以及 CPU powersaving，都会放大耗时；状态切换分配本身也可能产生尖峰。"
+      ],
+      "symptoms": [
+        "perf 记录出现偶发尖峰，计算时间可超过 5 ms deadline 并达到约 10 ms。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "项目成员建议同时核对三项：把 mc_rtc 的 LogPolicy 设为 threaded；确保 lipm_walking controller、lipm_walking_controller 及全部依赖以 Release 或 RelWithDebInfo 构建；关闭 CPU powersaving。作者应用三项后确认尖峰和总体耗时都明显下降。项目成员还说明 state 启动时常伴随 task/state allocation，因此仍可能出现尖峰；他们只在 deadline miss 很少发生时由系统容忍，没有宣称这是硬实时修复。",
+        "applicability": "适用于原帖 2020 年 mc_rtc/LIPM、ROS、5 ms 实体机器人控制循环；其他版本和控制器需重新测量。",
+        "bilingual_terms": [
+          "实时抖动（real-time jitter）",
+          "控制截止时间（control deadline）",
+          "线程化日志策略（threaded logging policy）",
+          "发布构建（Release build）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.mc_rtc_spikes_92",
+        "problem_title_zh": "mc_rtc 实时控制循环出现计算时间尖峰",
+        "question_zh": "mc_rtc 在 5 ms 控制周期中偶发约 10 ms 的计算尖峰，原线程验证过哪些排查措施？",
+        "source_locator": "Issue #92，项目成员三项诊断 issuecomment-730088491；作者复测 issuecomment-731432191",
+        "source_url": "https://github.com/jrl-umi3218/mc_rtc/issues/92#issuecomment-731432191",
+        "verification_refs": [
+          {
+            "locator": "项目成员说明状态分配尖峰并给出 LogPolicy、构建类型和 CPU 节能三项检查",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/jrl-umi3218/mc_rtc/issues/92#issuecomment-730088491"
+          },
+          {
+            "locator": "原作者确认应用三项后尖峰和总耗时显著降低",
+            "relation": "issue",
+            "source_url": "https://github.com/jrl-umi3218/mc_rtc/issues/92#issuecomment-731432191"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "jrl-umi3218.mc_rtc.92",
+    "query": "mc_rtc realtime computation time jitter LogPolicy threaded Release CPU powersaving",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "运行 mc_rtc/LIPM controller 的实体机器人；具体型号未说明"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "项目成员把 state 启动分配列为尖峰来源，并要求检查 threaded LogPolicy、Release/RelWithDebInfo 依赖和 CPU powersaving。"
+      },
+      {
+        "text": "作者确认三项都已应用，对尖峰和总体耗时有明显改善。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 控制循环的偶发超时会影响通信与执行稳定性；原线程给出构建、日志和 CPU 电源策略三个可核对入口，并保留状态切换分配尖峰和非硬实时限制。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.jrl-umi3218.mc_rtc.92",
+  "summary": "mc_rtc #92 的作者在机器人实验中以 5 ms 周期运行 mc_rtc 和 LIPM controller，性能记录中偶发计算时间升至约 10 ms。项目成员指出，状态开始时通常伴随 task/state 分配，因此会出现尖峰；同时建议确认 mc_rtc 的 LogPolicy 为 threaded、LIPM 控制器及其全部依赖以 Release 或 RelWithDebInfo 构建，并关闭 CPU 节能。作者应用三项后确认尖峰和总体耗时都明显下降。项目成员也明确说，他们的系统只是在漏 deadline 很少发生时容忍它，并未给出硬实时保证。",
+  "title": "mc_rtc 五毫秒控制循环出现计算时间尖峰时的三项排查",
+  "version": null
+}

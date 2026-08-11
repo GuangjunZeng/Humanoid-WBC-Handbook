@@ -1,0 +1,120 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GiulioRomualdi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/663",
+  "captured_at": "2026-08-11T01:25:00+08:00",
+  "content_sha256": "159a7b0a76bf1422a755b0dcedc33e30c7b9c397e03b05c130e5caeb3ba153f3",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与唯一评论；由于线程开放且没有版本迁移表，保持 partial/需要实际验证。",
+    "components": [
+      "Isaac Lab",
+      "USD",
+      "physics engine",
+      "joint actuator units"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者提出未来应统一为 radians。"
+      ],
+      "diagnostics": [
+        "追踪配置最终走 USD authoring 还是物理引擎/tensor API；对每个字段查目标版本源码和文档，不按统一单位猜测。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "2024-07 的 IsaacLab 迁移与 actuator 文档；具体 release/commit 未说明；Issue 当前仍 Open。"
+      ],
+      "limits": [
+        "这是一条 2024 年的开放线程；不能据此假设当前所有接口仍保持相同约定，也不能把阻尼/刚度单位简化成只有角度制差异。"
+      ],
+      "outcomes": [
+        "单位边界得到 contributor 解释，但线程没有提供统一完成的版本或字段迁移表。"
+      ],
+      "problem_statements": [
+        "IsaacLab/Isaac Sim 的关节角、速度限制、阻尼和刚度到底使用 degree 还是 radian 约定？"
+      ],
+      "safety_notes": [
+        "将增益或速度限制用于实机前，必须通过单关节小幅命令和源码字段单位核对，避免 57.3 倍量级错误。"
+      ],
+      "suspected_causes": [
+        "Contributor 解释为 USD 使用 degrees、物理引擎使用 radians 的历史边界。"
+      ],
+      "symptoms": [
+        "不同文档分别暗示 degree 与 radian，接口缺少逐字段单位说明。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖 contributor 给出的历史规则是：经过 USD 操作的路径使用度（degrees），直接进入物理引擎的其他路径使用弧度（radians）。由于 Issue 仍开放且只表达了“应统一为 radians”的意向，没有逐字段和版本迁移表，所以不能把这句话当作当前版本的统一规则。实际配置时必须追踪字段落到 USD 还是 physics/tensor API，并对照目标版本源码验证。",
+        "applicability": "适用于解释 2024 年 IsaacLab/Isaac Sim 的历史单位边界；当前版本必须重新核对。",
+        "bilingual_terms": [
+          "角度制（degrees）",
+          "弧度制（radians）",
+          "美元场景描述（USD）",
+          "物理引擎（physics engine）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_unknown",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录；适用环境未知。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.5ace538fe98a5b88",
+        "problem_title_zh": "IsaacLab 的关节执行器参数遇到 degree/radian 文档冲突时，应该采用哪套单位？",
+        "question_zh": "IsaacLab 的关节执行器参数遇到 degree/radian 文档冲突时，应该采用哪套单位？",
+        "source_locator": "Issue #663，contributor 回复 issuecomment-2255516442",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/663#issuecomment-2255516442",
+        "verification_refs": [
+          {
+            "locator": "contributor 说明 USD degrees 与 physics radians 的历史边界",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/663#issuecomment-2255516442"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.663",
+    "query": "IsaacLab actuator units USD degrees physics radians",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用关节机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "Contributor：USD 操作用 degrees，物理引擎路径用 radians，并认为未来应统一。"
+      }
+    ],
+    "wbc_relevance_reason": "角度、速度和增益单位混用会把 WBC 关节限制和 PD 参数放大约 57.3 倍，是仿真迁移中的高风险接口边界。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.663",
+  "summary": "提问者发现迁移文档写 Isaac Sim 的关节速度上限、阻尼和刚度使用 degree 相关单位，而 actuator 文档没有统一说明。IsaacLab contributor 回复：USD 操作遵循 degrees，物理引擎使用 radians，因此凡经过 USD 的操作用度，其他位置用弧度，并表示应统一为 radians。Issue 仍为 Open，没有给出已完成迁移或逐字段表。",
+  "title": "IsaacLab 旧接口的角度单位在 USD 操作与物理引擎路径间不统一",
+  "version": null
+}

@@ -1,0 +1,149 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "AndyZe"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/851",
+  "captured_at": "2026-08-11T03:34:00+08:00",
+  "content_sha256": "5e1ba986a3cb3c5ff019e71a912021e2efddcee6fed6b8ec518af83b8e2b5138",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 REST 读取 Issue 正文和全部 3 条回复。只提炼了项目成员对当时调用路径的明确解释，没有在缺少基准时声称锁完全无延迟。",
+    "components": [
+      "ros2_control",
+      "controller_manager",
+      "diagnostic_updater",
+      "recursive_mutex",
+      "controller list"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目成员引用 controller_manager 的加载路径，说明锁持有期间禁止的是加载新控制器。",
+        "作者在看到调用路径解释后回复表示问题已清楚。"
+      ],
+      "diagnostics": [
+        "沿 controllers_lock_ 查看所有读写点，确认它保护的是列表结构、控制器对象还是 update() 执行。",
+        "区分非实时的 load controller 操作与实时控制器 update 路径。"
+      ],
+      "effective_fixes": [
+        "不需要因该处代码将诊断功能整体删除；应先按保护对象和调用路径核对实际锁竞争。"
+      ],
+      "environments": [
+        "原帖对应 2022-11-07 合入的 ros2_control PR #820 和当时 master 分支的 controller_manager 实现；未指定 ROS 2 发行版。"
+      ],
+      "limits": [
+        "线程只解释锁的语义与调用路径，没有给出诊断回调下的延迟测量或最坏阻塞时间。",
+        "该结论对应 2022 年实现；后续版本必须重新检查锁的使用位置。"
+      ],
+      "outcomes": [
+        "原作者接受解释，Issue 以 completed 关闭；项目成员在关闭后补充它锁的是控制器存储列表，不是控制器本身。"
+      ],
+      "problem_statements": [
+        "diagnostic_updater 持有 controllers_lock_ 时，是否会锁住控制器执行并损害实时性？"
+      ],
+      "safety_notes": [
+        "对真机硬实时 WBC，调用路径分析只能排除误读；仍要在最坏诊断负载下测量控制周期抖动。"
+      ],
+      "suspected_causes": [
+        "注释“lock controllers”过于简略，容易把“锁定存储列表”误解为“锁定控制器执行”。"
+      ],
+      "symptoms": [
+        "代码注释写着 lock controllers，并对 controllers_lock_ 创建 std::lock_guard<std::recursive_mutex>，从字面看像是在诊断回调中锁住控制器。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按项目成员对当时实现的解释，该 mutex 固定的是存储控制器的列表，使非实时回调读取时列表不发生变化；它禁止同时加载新控制器，而加载本身不属于实时路径。因此不能从注释“lock controllers”直接推断 update 执行被锁。不过原线程没有延迟基准，目标版本仍应用调用路径审计与周期测量验证。",
+        "applicability": "适用于 ros2_control PR #820 合入后、2022 年当时 controller_manager/diagnostic_updater 的锁语义；其他版本需重新追踪调用路径。",
+        "bilingual_terms": [
+          "互斥锁（mutex）",
+          "递归互斥锁（recursive mutex）",
+          "控制器列表（controller list）",
+          "非实时回调（non-real-time callback）",
+          "锁竞争（lock contention）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_diagnostic_controller_list_mutex_851",
+        "problem_title_zh": "ros2_control 诊断互斥锁的实际保护对象",
+        "question_zh": "diagnostic_updater 对 controllers_lock_ 加锁时，会不会锁住控制器执行并破坏实时性？",
+        "source_locator": "ros2_control #851 正文的 mutex 代码；issuecomment-1306113645 的调用路径解释；issuecomment-1306115705 的作者确认；issuecomment-1306670347 的列表而非控制器本身澄清",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/851",
+        "verification_refs": [
+          {
+            "locator": "原帖指向引入该诊断锁代码的 PR",
+            "relation": "pull_request",
+            "source_url": "https://github.com/ros-controls/ros2_control/pull/820"
+          },
+          {
+            "locator": "项目成员说明锁用于读取时保持控制器列表不变，只禁止非实时的新控制器加载",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/851#issuecomment-1306113645"
+          },
+          {
+            "locator": "原作者确认该解释消除疑问",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/851#issuecomment-1306115705"
+          },
+          {
+            "locator": "项目成员再次明确：锁的是存储控制器的列表，不是控制器本身",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/851#issuecomment-1306670347"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.851",
+    "query": "ros2_control diagnostic updater mutex controllers list realtime performance",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原线程未指定机器人或 ROS 2 发行版"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "项目成员说明，该锁用于非实时读取时固定控制器列表，禁止的是同时加载新控制器。"
+      },
+      {
+        "text": "原作者回复表示解释已清楚，并指出原注释容易让人产生误解。"
+      },
+      {
+        "text": "项目成员关闭后补充：它不锁控制器，只锁存储它们的列表。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 实时路径中的互斥锁需根据具体保护对象和调用路径分析；只看变量名会误判风险，但也不应在没有测量时宣称延迟为零。"
+  },
+  "published_at": "2022-11-07T14:04:47Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.851",
+  "summary": "ros2_control #851 看到 diagnostic_updater 中对 rt_controllers_wrapper_.controllers_lock_ 加 recursive_mutex，担心“锁住控制器”影响实时性。项目成员解释，这个锁固定的是存储控制器的列表，以便非实时回调读取时列表不发生变化；它会禁止同时加载新控制器，而加载本身不属于实时操作。作者接受该解释，后续回复再次强调它不锁控制器本身。",
+  "title": "ros2_control 诊断互斥锁保护的是控制器列表而非控制器执行",
+  "version": null
+}

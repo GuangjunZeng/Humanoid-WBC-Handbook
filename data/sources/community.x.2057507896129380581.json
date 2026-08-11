@@ -1,0 +1,144 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Robots Digest  @robotsdigest"
+  ],
+  "canonical_url": "https://x.com/robotsdigest/status/2057507896129380581",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "731ff59f7c33d4ef8b4b8ac79f73811921b20310ec78825aa03a530b42dc797e",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "LeRobot Humanoid",
+      "CAD",
+      "calibration",
+      "system identification",
+      "simulation"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "发布全栈并给出 blog/code。"
+      ],
+      "diagnostics": [
+        "检查 CAD、运行时、标定、仿真、识别和训练是否版本绑定。"
+      ],
+      "effective_fixes": [
+        "候选机制是闭环版本化全栈，而非单独模型。"
+      ],
+      "environments": [
+        "约 2.5k 美元 3D 打印人形；开源软硬件栈。"
+      ],
+      "limits": [
+        "未核对实际 BOM、构建时长和控制性能。"
+      ],
+      "outcomes": [
+        "帖子宣称可构建、拆解、修复、仿真和真机训练。"
+      ],
+      "problem_statements": [
+        "低成本人形项目常只开源某一层，难以形成可复现闭环。"
+      ],
+      "safety_notes": [
+        "低成本/3D 打印结构仍需载荷、疲劳、限位和急停验证。"
+      ],
+      "suspected_causes": [
+        "缺失任一层会把系统集成成本转嫁给复现者。"
+      ],
+      "symptoms": [
+        "帖子未报告具体故障。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "线程给出 design→simulation→data collection→system identification→policy training→real deployment，并把 hardware/CAD、runtime/calibration、sim、identification 和 motion training library 一起发布。是否能直接复现仍需按版本与安全测试验收。",
+        "applicability": "适用于设计开源人形的最小复现清单。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "有效载荷（Payload）",
+          "系统辨识（System Identification）",
+          "安全急停（Emergency Stop, E-Stop）"
+        ],
+        "question_zh": "开源人形项目要形成可复现闭环，LeRobot Humanoid 线程列出了哪些环节？",
+        "source_locator": "根帖及作者闭环回复",
+        "source_url": "https://x.com/robotsdigest/status/2057507899359043871",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.deployment_firmware_sdk.568ef914364a3624",
+        "problem_title_zh": "开源人形项目要形成可复现闭环，LeRobot Humanoid 线程列出了哪些环节？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图展示 LeRobot Humanoid 论文/项目封面和全栈清单，未包含构建误差、控制频率或实机性能。"
+    ],
+    "platform": "x",
+    "post_id": "2057507896129380581",
+    "published_display": "2026-05-21T17:04:43.000Z",
+    "query": "open humanoid stack calibration simulation system identification deployment",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "LeRobot Humanoid"
+    ],
+    "schema_version": 2,
+    "scope_id": "deployment_firmware_sdk",
+    "selected_comments": [
+      {
+        "author_display": "Robots Digest \n@robotsdigest\n·\n5月22日",
+        "published_display": "2026-05-21T17:04:44.000Z",
+        "text": "LeRobot 人形机器人最重要的部分不仅仅是机器人本身——而是闭环学习系统。\n\n设计 → 仿真 → 数据收集 → 系统识别 → 策略训练 → 真实机器人部署\n\n这正是机器人技术多年来一直缺少的开放基础设施。\n\n这是可访问人形机器人研究的一个巨大进步 \n\n更多：LeRobot 人形机器人文章"
+      },
+      {
+        "author_display": "Robots Digest \n@robotsdigest\n·\n5月22日",
+        "published_display": "2026-05-21T17:04:45.000Z",
+        "text": "blog:\nhttps://\nhuggingface.co/blog/VirgileBa\ntto/lerobot-humanoid\n…\ncode:\nhttps://\ngithub.com/Virgileboat/le\nrobot-humanoid\n…"
+      },
+      {
+        "author_display": "KuphDev\n@KuphDev\n·\n5月22日",
+        "published_display": "2026-05-21T17:38:36.000Z",
+        "text": "Imagine giving my arm some legs and letting it run around on my livestreams"
+      }
+    ],
+    "wbc_relevance_reason": "把 WBC/策略部署所需的硬件、标定、仿真和系统识别放在同一可复现栈中。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2057507896129380581",
+  "summary": "帖子介绍约 2.5k 美元、3D 打印的开源人形全栈，包含硬件/CAD、runtime/calibration、仿真、识别工具和运动训练库。作者线程强调闭环：design→simulation→data collection→system identification→policy training→real deployment，并给出 blog/code 链接。",
+  "title": "LeRobot Humanoid 全栈闭环：从设计到真机部署",
+  "version": null
+}

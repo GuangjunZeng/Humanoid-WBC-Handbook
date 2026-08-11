@@ -1,0 +1,221 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "mcpocket"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/686462478",
+  "captured_at": "2026-08-10T17:11:27+08:00",
+  "content_sha256": "803092295936246ce2ca6029e0eaa49c9d053c94962b0505ff6ec37c7a61f726",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 2,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 21
+    },
+    "collector_note": "collection_completeness=partial_visible；仅分析当前登录会话可见 DOM；社区经验尚未独立验证。",
+    "components": [
+      "OCS2",
+      "NMPC",
+      "weighted-QP WBC",
+      "qpOASES",
+      "Pinocchio",
+      "MuJoCo",
+      "状态估计器"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者先完成 Cheat Controller，再加入并调稳线性卡尔曼状态估计器。",
+        "从 SolidWorks 质量属性按 link 坐标系和负张量记法重新填写惯量。"
+      ],
+      "diagnostics": [
+        "先用 OCS2 dummy 隔离 MPC，再用 Cheat Controller 直接读取仿真真值隔离状态估计器。",
+        "检查 URDF 转动惯量、足端运动学约束及 weighted-QP 的 H 矩阵权重。"
+      ],
+      "effective_fixes": [
+        "对模型迁移，采用 dummy→Cheat Controller→状态估计器的分层验证，并修正惯量参数。"
+      ],
+      "environments": [
+        "MuJoCo 仿真；OCS2 NMPC；Pinocchio 动力学；qpOASES weighted-QP WBC；SolidWorks 导出 URDF。"
+      ],
+      "limits": [
+        "主要证据来自仿真与评论区，未提供同一流程在真实人形机器人和高速运动下的独立验证。"
+      ],
+      "outcomes": [
+        "原作者报告仿真框架能够稳定运行；支撑腿约束和 SQP 线性化慢的问题没有给出复现后的最终修复。"
+      ],
+      "problem_statements": [
+        "将开源 NMPC+WBC 框架迁移到自有机器人模型时，如何降低模型和控制器同时出错的排查难度？",
+        "为什么该框架没有保留支撑腿静止约束？",
+        "更换模型后 OCS2 SQP 的 LQ Approximation 占 93.5% 运行时间且 dummy 中机器人不动。"
+      ],
+      "safety_notes": [
+        "错误惯量、接触约束或状态估计不得直接上实机，应先在 dummy 和仿真中验证力矩、接触力及限位。"
+      ],
+      "suspected_causes": [
+        "SolidWorks URDF 插件直接导出的惯量矩阵可能错误。",
+        "支撑腿静止约束在该作者调试时导致问题，因而被移除；SQP 线性化瓶颈尚无确认原因。"
+      ],
+      "symptoms": [
+        "自有模型的足端轨迹方向异常或 dummy 节点不响应指令。",
+        "一条评论测得 LQ Approximation 1528.7 ms，占 SQP 总时间 93.5049%。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "候选流程是先在 OCS2 dummy 节点验证最优控制问题（Optimal Control Problem, OCP），再用 Cheat Controller 读取仿真真值验证控制器，最后接入状态估计器；同时不要直接信任 SolidWorks URDF 插件生成的惯量矩阵，应按质量属性、link 坐标系和负张量记法重新计算。",
+        "applicability": "适用于 OCS2/Pinocchio/MuJoCo 类模型驱动双足控制框架；尚未在具体自有实机上独立复现。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "状态估计（State Estimation）",
+          "统一机器人描述格式（Unified Robot Description Format, URDF）",
+          "关节力矩（Joint Torque）"
+        ],
+        "question_zh": "迁移 OCS2 NMPC + weighted-QP WBC 到自有机器人时，推荐怎样分层调试？",
+        "source_locator": "正文“仿真环境”“MPC部分”“状态观测器”及模型迁移评论串",
+        "source_url": "https://zhuanlan.zhihu.com/p/686462478",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.open_ended_wbc_field_notes.b87fed5e4994737d",
+        "problem_title_zh": "迁移 OCS2 NMPC + weighted-QP WBC 到自有机器人时，推荐怎样分层调试？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "评论说明 Legged Control 原库除接触力跟踪外还有支撑腿不移动约束，但本框架作者在调试时加入该约束会出问题，因此将其去掉。现有内容没有证明移除后在所有接触工况都正确，也没有给出导致冲突的具体约束残差。",
+        "applicability": "只描述该仓库的工程取舍，不能推广为 WBC 通用设计结论。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "状态估计（State Estimation）",
+          "统一机器人描述格式（Unified Robot Description Format, URDF）",
+          "关节力矩（Joint Torque）"
+        ],
+        "question_zh": "该 weighted-QP WBC 为什么没有保留支撑腿静止约束？",
+        "source_locator": "评论区“为什么 wbc 中没有支撑腿约束”回复串",
+        "source_url": "https://zhuanlan.zhihu.com/p/686462478",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.open_ended_wbc_field_notes.1a729932fc089eb6",
+        "problem_title_zh": "该 weighted-QP WBC 为什么没有保留支撑腿静止约束？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "原评论仅给出性能分解：LQ Approximation 1528.7 ms、Solve QP 8.36 ms，未得到作者确认的根因或修复。可据此把排查重点放在线性化、自动微分模型、URDF 惯量/运动学与约束导数，但这些是待验证方向，不是原帖已解决方案。",
+        "applicability": "适用于出现同类 OCS2 SQP 性能分解的模型迁移案例。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "状态估计（State Estimation）",
+          "统一机器人描述格式（Unified Robot Description Format, URDF）",
+          "关节力矩（Joint Torque）"
+        ],
+        "question_zh": "更换模型后 OCS2 SQP 的 LQ Approximation 占 93.5% 且机器人不动，如何解决？",
+        "source_locator": "评论区包含 SQP Benchmarking 的提问",
+        "source_url": "https://zhuanlan.zhihu.com/p/686462478",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.open_ended_wbc_field_notes.f3b9e42ea768b51b",
+        "problem_title_zh": "更换模型后 OCS2 SQP 的 LQ Approximation 占 93.5% 且机器人不动，如何解决？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "zhihu",
+    "post_id": "article.686462478",
+    "published_display": "编辑于 2024-10-29 20:25・安徽",
+    "query": "humanoid WBC 调试 踩坑 复现",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "12-DoF 双足人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "open_ended_wbc_field_notes",
+    "selected_comments": [
+      {
+        "text": "legged control 库中除了接触力跟踪，还有一个支撑腿不发生移动的约束。"
+      },
+      {
+        "text": "作者回复：那个约束调试时候加上出问题了，然后就去掉了。"
+      },
+      {
+        "text": "更换模型后的用户报告：LQ Approximation 1528.7 ms（93.5049%），Solve QP 8.35811 ms（0.511233%），机器人在 dummy 测试中不响应。"
+      },
+      {
+        "text": "作者回复：该框架是加权 QP WBC，优先级根据 H 矩阵中的权重调节。"
+      },
+      {
+        "text": "高速接触状态估计评论串中，作者表示没有试过，并推测精度可能不高。"
+      }
+    ],
+    "wbc_relevance_reason": "覆盖从 URDF/惯量、MPC 单元测试、状态估计到 weighted-QP WBC 的完整集成路径，并包含真实调试故障。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.686462478",
+  "summary": "作者介绍了一套基于 OCS2 非线性模型预测控制（Nonlinear Model Predictive Control, NMPC）、加权二次规划全身控制（weighted-QP Whole-Body Control, WBC）和 MuJoCo 的双足控制框架。工程流程先用仿真真值构建 Cheat Controller，再加入状态估计器；用 OCS2 dummy 节点单独调试 MPC；WBC 以基座/关节加速度、接触力和关节力矩为变量。作者特别指出 SolidWorks URDF 插件导出的转动惯量可能错误，需要依据质量属性重算。评论区还暴露了支撑腿静止约束被移除、模型迁移后 SQP 线性化耗时过高和高速接触状态估计精度不足等未解决问题。",
+  "title": "【开源】基于NMPC和WBC的双足机器人控制框架简介",
+  "version": null
+}

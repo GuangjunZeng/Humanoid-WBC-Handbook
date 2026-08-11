@@ -1,0 +1,130 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2026",
+  "captured_at": "2026-08-11T04:05:00+08:00",
+  "content_sha256": "4b5a9a4547c0b4110d5d1911f3163c998a6bc2e7a2a9a4ae8977240067bbfe36",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 公开候选正文和官方公开 API 回复链核对 Issue 正文与全部 4 条评论；没有把顺序修正外推为线程安全或其他内存模型结论。",
+    "components": [
+      "Pinocchio",
+      "Model",
+      "Data",
+      "Frame",
+      "getFrameJacobian"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目成员建议把 model.createData() 移到 model.addFrame(frame) 之后；另一位贡献者同意这一诊断，原作者确认顺序错误。"
+      ],
+      "diagnostics": [
+        "按执行顺序检查 model.createData() 与 model.addFrame()：原示例在 Data 已创建后又改变了 Model 的 frame 结构。"
+      ],
+      "effective_fixes": [
+        "先完成 addFrame 等所有 Model 结构修改，再调用 model.createData()；如果 Model 之后又被修改，在运行 Jacobian/运动学算法前重新创建对应 Data。"
+      ],
+      "environments": [
+        "Pinocchio 2.6.19（pip）；Python 3.10.4；UR5 URDF；x86_64 Linux，Intel i7-8550U。"
+      ],
+      "limits": [
+        "原线程没有给出调整后的完整运行输出或回归测试。",
+        "现象与版本边界来自 Pinocchio 2.6.19；不应推断其他版本一定以同样的崩溃形式表现。"
+      ],
+      "outcomes": [
+        "原作者回复确认自己在初始化 Data 之后才添加 frames，并接受修正。Issue 随后以 completed 关闭。"
+      ],
+      "problem_statements": [
+        "Pinocchio 调用 getFrameJacobian 时随机出现段错误、总线错误或 double free，应检查哪个对象生命周期？"
+      ],
+      "safety_notes": [
+        "对实机 WBC，动力学数据结构不一致时应阻止下发力矩，不能仅依赖进程崩溃作为保护。"
+      ],
+      "suspected_causes": [
+        "项目成员定位为先创建 Pinocchio Data，后修改 Pinocchio Model；原作者确认这一顺序确实存在。"
+      ],
+      "symptoms": [
+        "同一脚本不稳定地出现 Segmentation fault、Bus error、corrupted double-linked list 或 double free or corruption。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原代码先执行 model.createData()，然后 model.addFrame(frame)，再用旧 data 计算 Jacobian。项目成员指出 Data 创建后不应再修改 Model；原作者确认这就是自己的顺序。处理方式是先完成 addFrame 等模型修改，再创建 Data；后续再改 Model 时也应重建 Data。",
+        "applicability": "适用于原帖 Pinocchio 2.6.19/Python 3.10.4 及类似的运行期 Model 结构修改流程；其他版本需重新核对 API 语义。",
+        "bilingual_terms": [
+          "模型数据生命周期（Model/Data lifecycle）",
+          "操作帧（operational frame）",
+          "帧雅可比（frame Jacobian）",
+          "段错误（segmentation fault）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_recreate_data_after_model_mutation_2026",
+        "problem_title_zh": "Pinocchio 修改 Model 后复用旧 Data 引发内存崩溃",
+        "question_zh": "Pinocchio 在添加 Frame 后计算帧雅可比（frame Jacobian）时随机段错误或 double free，原线程如何修正？",
+        "source_locator": "Pinocchio #2026，项目成员诊断 issuecomment-1664403489，作者确认 issuecomment-1664425533",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2026#issuecomment-1664425533",
+        "verification_refs": [
+          {
+            "locator": "项目成员指出先创建 Data 后修改 Model 的顺序问题，建议在修改 Model 后创建 Data",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2026#issuecomment-1664403489"
+          },
+          {
+            "locator": "原作者确认自己确实在 Data 初始化之后才添加 frames",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2026#issuecomment-1664425533"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2026",
+    "query": "Pinocchio addFrame after createData segmentation fault frame Jacobian",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "UR5 example-robot-data 模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目成员将问题定位为创建 Data 后又修改 Model，建议反转这两步的顺序。"
+      },
+      {
+        "text": "原作者确认自己是在 Data 初始化后添加 frames，并接受修正。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 常在 Pinocchio 中临时添加任务帧并计算 Jacobian；Model/Data 生命周期错位会以内存损坏而不是可读异常的形式出现。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2026",
+  "summary": "Pinocchio #2026 在 Pinocchio 2.6.19、Python 3.10.4 的 UR5 最小示例中出现随机 segmentation fault、bus error、double free 等错误。代码顺序是先 model.createData()，再 model.addFrame(frame)，然后用旧 data 计算关节与帧 Jacobian。项目成员指出不应在创建 Data 后再修改 Model，作者确认自己确实是在 Data 初始化后添加帧，并接受将 Data 创建移到模型修改之后。",
+  "title": "Pinocchio 修改 Model 后继续复用旧 Data 导致随机崩溃",
+  "version": null
+}

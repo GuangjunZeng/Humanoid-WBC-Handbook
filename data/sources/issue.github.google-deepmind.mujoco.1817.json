@@ -1,0 +1,117 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Josh00-Lu"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/1817",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "230594a60eaa676aa3597a7b92c70f303d704ad7449be7656d9641ae6ee741cd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取正文与 2 条评论；因 Issue 仍开放保持 unresolved。",
+    "components": [
+      "MuJoCo",
+      "hfield",
+      "contact margin"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者提供可直接运行的最小 XML 和视频。"
+      ],
+      "diagnostics": [
+        "对照 hfield/plane 与 margin=1/0。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "macOS 14.5；MuJoCo 3.1.6 与 3.2.0；RK4；timestep=0.002；最小 hopper XML。"
+      ],
+      "limits": [
+        "没有已合并修复；不能从回复推断当前所有新版本仍有同一问题。"
+      ],
+      "outcomes": [
+        "维护者确认问题方向并保持 Issue 开放等待修复。"
+      ],
+      "problem_statements": [
+        "平坦 hfield 设置 margin>0 后为何弹跳，而 plane 不会？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "MuJoCo 协作者确认 positive margin 支持存在问题。"
+      ],
+      "symptoms": [
+        "hfield + positive margin 出现持续异常弹跳。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "原帖用同一最小模型对照了 hfield/plane 和 margin>0/margin=0；只有 hfield 的正 margin 组合出现弹跳。MuJoCo 协作者确认当时 positive margin 总体支持不好并在修复。因此在对应版本中应先做这个接触参数消融，不能直接把弹跳归因于 WBC。线程尚无正式修复。",
+        "applicability": "MuJoCo 3.1.6/3.2.0 的 hfield positive-margin 接触；其他版本需复测。",
+        "bilingual_terms": [
+          "高度场（height field, hfield）",
+          "接触裕量（contact margin）",
+          "参数消融（parameter ablation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": false
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；关键图片尚未完成分析。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.87b0a9351706c261",
+        "problem_title_zh": "MuJoCo 平坦 hfield 设置 positive margin 后异常弹跳，应如何判断是否是控制器问题？",
+        "question_zh": "MuJoCo 平坦 hfield 设置 positive margin 后异常弹跳，应如何判断是否是控制器问题？",
+        "source_locator": "Issue #1817 最小 XML；协作者回复 issuecomment-2256481378",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/1817#issuecomment-2256481378",
+        "verification_refs": [
+          {
+            "locator": "MuJoCo 协作者确认 positive margins 支持问题，修复尚未完成",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1817#issuecomment-2256481378"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖视频显示弹跳，但未做逐帧分析；卡片只依赖最小 XML 对照和维护者确认。"
+    ],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.1817",
+    "query": "MuJoCo hfield positive margin bouncing",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "hopper 最小模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "MuJoCo 协作者确认正 margin 当时支持不好，Issue 将在修复后关闭。"
+      }
+    ],
+    "wbc_relevance_reason": "地形接触参数异常会让足式控制器表现为弹跳或不稳定，容易误判为 WBC 参数问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.1817",
+  "summary": "MuJoCo 3.1.6/3.2.0 的最小 hopper XML 中，把 plane 换为平坦 hfield 且 margin=1 后出现弹跳，margin=0 或 plane 不出现。MuJoCo 协作者确认正 margin 当时总体支持不好，团队正在修复；Issue 仍开放。",
+  "title": "MuJoCo hfield 使用正 margin 时出现异常弹跳",
+  "version": null
+}

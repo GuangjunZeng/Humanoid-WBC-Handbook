@@ -1,0 +1,134 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "花生狗"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1941592838388290457",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "1b927dc9829c9990738f2d9645ed4b0af624d421289d8d3f6a51c1b2e24bbf58",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Cyclone DDS",
+      "unitree_sdk2",
+      "ROS 2",
+      "QoS",
+      "IDL"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "逐层列出库关系，固定版本并从 C 核心库、C++/Python 绑定到 SDK 分层安装。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Linux；Cyclone DDS C/C++/Python；unitree_sdk2(_python)；示例版本 0.10.2。"
+      ],
+      "limits": [
+        "版本示例可能过时；必须对照当前 Unitree SDK 和 Cyclone DDS 官方文档。"
+      ],
+      "outcomes": [
+        "正文给出构建目录和工具；没有端到端延迟或丢包测量。"
+      ],
+      "problem_statements": [
+        "Unitree SDK2 节点都运行了却互相发现不到，先对齐哪几项？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "Domain/Topic/IDL/QoS 任一不一致，或核心 C 库与绑定版本混用。"
+      ],
+      "symptoms": [
+        "跨语言/ROS2/Unitree SDK 组合时容易出现发现失败、类型或 ABI 兼容问题。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "按帖子先核对 Domain ID、Topic 名、IDL 数据类型和 QoS，再核对 Cyclone DDS 核心 C 库、C++/Python 绑定与 unitree_sdk2 的版本是否一致。该文示例用 0.10.2，但当前项目不能盲目照搬版本，应以当前 SDK 锁定为准。",
+        "applicability": "版本示例可能过时；必须对照当前 Unitree SDK 和 Cyclone DDS 官方文档。",
+        "bilingual_terms": [
+          "机器人操作系统 2（Robot Operating System 2, ROS 2）",
+          "数据分发服务（Data Distribution Service, DDS）",
+          "服务质量（Quality of Service, QoS）",
+          "软件开发工具包（Software Development Kit, SDK）",
+          "端到端时延（End-to-End Latency）"
+        ],
+        "question_zh": "Unitree SDK2 节点都运行了却互相发现不到，先对齐哪几项？",
+        "source_locator": "正文“DDS 定义/库之间关系/安装”",
+        "source_url": "https://zhuanlan.zhihu.com/p/1941592838388290457",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.communication_and_realtime.4681f1a0cb209af8",
+        "problem_title_zh": "Unitree SDK2 节点都运行了却互相发现不到，先对齐哪几项？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "可见结构图将 Domain、Topic、IDL、QoS 映射为 DDS 通信契约；它是概念关系图，不是时延/丢包测量。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1941592838388290457",
+    "published_display": "编辑于 2025-08-21 09:12・浙江",
+    "query": "Unitree G1 SDK DDS 丢包 延迟 控制频率",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1/H1_2"
+    ],
+    "schema_version": 2,
+    "scope_id": "communication_and_realtime",
+    "selected_comments": [
+      {
+        "text": "好文章！"
+      }
+    ],
+    "wbc_relevance_reason": "可用于排查 G1/Unitree 控制程序看似启动但无法发现或互通的问题。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1941592838388290457",
+  "summary": "文章区分 DDS 标准、Cyclone DDS C/C++/Python 绑定和 Unitree SDK2 的依赖关系，强调 Domain、Topic、IDL、QoS 四个通信契约，并建议 C/C++/Python 库版本对齐到 Unitree 使用的 0.10.2。",
+  "title": "Cyclone DDS 与 Unitree SDK2 的版本、Domain、Topic、IDL、QoS 对齐清单",
+  "version": null
+}

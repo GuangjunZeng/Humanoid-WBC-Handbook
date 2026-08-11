@@ -1,0 +1,127 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Hitesh @heetezition"
+  ],
+  "canonical_url": "https://x.com/heetezition/status/2086692869734387815",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "0d1c905118d4a82b7609497b7bd9e8956b5658176d5d05b65438ebec65948ce7",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "C2Dex",
+      "contact-consistent retargeting",
+      "monocular video"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "先恢复稳定物体侧接触，再以接触约束重定向。"
+      ],
+      "diagnostics": [
+        "把物体侧 contact preservation 与纯姿态匹配分开评估。"
+      ],
+      "effective_fixes": [
+        "候选方法是在 retargeting 中显式保留 object-side contact。"
+      ],
+      "environments": [
+        "单目人类视频；灵巧手重定向；8 个实机任务。"
+      ],
+      "limits": [
+        "没有失败率、接触力误差或跨手型消融；内容是论文摘要。"
+      ],
+      "outcomes": [
+        "帖子称 24 段视频覆盖 8 个实机任务。"
+      ],
+      "problem_statements": [
+        "只匹配运动学姿态会让人手与机器人手产生不同接触。"
+      ],
+      "safety_notes": [
+        "接触重定向上实机前应限力并检查穿透、关节限位和物体滑移。"
+      ],
+      "suspected_causes": [
+        "机器人形态与人手不同，姿态相同不代表接触几何相同。"
+      ],
+      "symptoms": [
+        "动作轨迹相似但物体侧接触不稳定或错误。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "因为人手和机器人手形态不同，同一运动可能形成完全不同的接触。C2Dex 的候选解法是从单目视频恢复稳定的 object-side contacts，并在重定向时显式保留；帖子称这样可覆盖 8 个实机任务，但尚需论文和代码验证。",
+        "applicability": "适用于灵巧手和接触操作重定向；不直接等同于双足全身接触。",
+        "bilingual_terms": [
+          "接触约束（Contact Constraint）",
+          "动作重定向（Motion Retargeting）",
+          "全身遥操作（Whole-Body Teleoperation）"
+        ],
+        "question_zh": "为什么动作重定向不能只匹配姿态，还要保留 contact？",
+        "source_locator": "根帖正文",
+        "source_url": "https://x.com/heetezition/status/2086692869734387815",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.retargeting_and_dataset.9b279820f94716b4",
+        "problem_title_zh": "为什么动作重定向不能只匹配姿态，还要保留 contact？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图展示问题说明和 C2Dex 标识，未显示接触点、力曲线或重定向失败对比。"
+    ],
+    "platform": "x",
+    "post_id": "2086692869734387815",
+    "published_display": "2026-08-10T05:55:23.000Z",
+    "query": "retargeting preserve contact C2Dex",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "灵巧机器人手"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_and_dataset",
+    "selected_comments": [],
+    "wbc_relevance_reason": "接触一致性是 whole-body/手部 retargeting 能否物理可执行的关键。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086692869734387815",
+  "summary": "帖子指出人手和机器人手即便跟随同一运动，也可能产生完全不同的物体接触。C2Dex 从单目视频恢复稳定的物体侧接触，再在重定向到灵巧手时保留这些接触；帖子称 24 段人类视频覆盖 8 个实机任务，无需逐任务遥操作或策略训练。",
+  "title": "动作相同但接触不同：C2Dex 的接触一致重定向",
+  "version": null
+}

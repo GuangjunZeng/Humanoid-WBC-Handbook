@@ -1,0 +1,157 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "stash @stash_pomichter"
+  ],
+  "canonical_url": "https://x.com/stash_pomichter/status/2074911470471856133",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "ae9baf86a8c0c5e52f34c38326c09ec406ae417cd2660dfe927165763a86a5e8",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 6
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "dynamic reachability map",
+      "IK solver",
+      "trajectory sampling"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "按任务条件构建动态可达图。"
+      ],
+      "diagnostics": [
+        "用 IK solver 核对采样可达图。"
+      ],
+      "effective_fixes": [
+        "在规划前用可达图过滤候选目标是帖子暗示的方案。"
+      ],
+      "environments": [
+        "人形双臂操作框架；每臂 200 万轨迹/姿态采样。"
+      ],
+      "limits": [
+        "缺少采样范围、IK 误差、动态约束和硬件结果。"
+      ],
+      "outcomes": [
+        "完成开源实现，但无实机成功率。"
+      ],
+      "problem_statements": [
+        "操作目标可能运动学可达但动态不可执行。"
+      ],
+      "safety_notes": [
+        "可达图不能替代碰撞、力矩、速度和自碰检查。"
+      ],
+      "suspected_causes": [
+        "只看静态 IK 无法覆盖任务条件与动态到达性。"
+      ],
+      "symptoms": [
+        "原帖未给出失败案例。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "静态 IK 只说明某一姿态可能存在关节解，未必满足任务条件和动态到达过程。该帖通过每臂 200 万轨迹/姿态构建 dynamic reachability map，并与 IK solver 核对；但没有实机结果，因此只是候选方法。",
+        "applicability": "适用于双臂/全身操作目标筛选。",
+        "bilingual_terms": [
+          "逆运动学（Inverse Kinematics, IK）",
+          "关节力矩（Joint Torque）",
+          "求解器（Solver）"
+        ],
+        "question_zh": "whole-body manipulation 中，为什么静态 IK 可解还不够？",
+        "source_locator": "根帖正文",
+        "source_url": "https://x.com/stash_pomichter/status/2074911470471856133",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.force_control_manipulation.35ce923ac0cea053",
+        "problem_title_zh": "whole-body manipulation 中，为什么静态 IK 可解还不够？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图的视频帧包含场景点云和人形模型，可见彩色可达区域；没有图例、误差阈值或碰撞信息。"
+    ],
+    "platform": "x",
+    "post_id": "2074911470471856133",
+    "published_display": "2026-07-08T17:40:19.000Z",
+    "query": "humanoid task conditioned reachability IK",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人操作平台（型号未披露）"
+    ],
+    "schema_version": 2,
+    "scope_id": "force_control_manipulation",
+    "selected_comments": [
+      {
+        "author_display": "stash\n@stash_pomichter\n·\nJul 9",
+        "published_display": "2026-07-08T17:42:58.000Z",
+        "text": "Sick work from the team \n@PimVandenBosch2"
+      },
+      {
+        "author_display": "David Chen\n@chenosaurus\n·\nJul 9",
+        "published_display": "2026-07-08T20:51:11.000Z",
+        "text": "so cool"
+      },
+      {
+        "author_display": "Mourad\n@mourad_zauo\n·\nJul 9",
+        "published_display": "2026-07-08T20:45:59.000Z",
+        "text": "Fire"
+      },
+      {
+        "author_display": "DaveTheBasha\n@DaveTheBasha\n·\nJul 9",
+        "published_display": "2026-07-08T18:08:06.000Z",
+        "text": "i guess buying a decent G1 gets more valuable as time goes on"
+      },
+      {
+        "author_display": "AI Mastery Guide\n@aiseomastery\n·\nJul 9",
+        "published_display": "2026-07-09T04:43:53.000Z",
+        "text": "2 million poses sampled per arm just for reachability mapping is next level thorough."
+      },
+      {
+        "author_display": "Gigi YE\n@YJH_GIGIYE\n·\nJul 9",
+        "published_display": "2026-07-09T07:48:53.000Z",
+        "text": "well done Stash, congrats"
+      }
+    ],
+    "wbc_relevance_reason": "可达性、IK 与操作任务约束直接影响 whole-body manipulation 的目标过滤和安全规划。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2074911470471856133",
+  "summary": "作者称其人形操作框架为每条手臂采样 200 万条轨迹和姿态，构建 task-conditioned dynamic reachability map，并用 IK solver 做一致性验证；项目完全开源。帖子没有说明采样分布、误差阈值、地图分辨率或实机任务成功率。",
+  "title": "用 200 万轨迹/姿态构建任务条件动态可达图",
+  "version": null
+}

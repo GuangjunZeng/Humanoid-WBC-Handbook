@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "diracdelta7"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1423",
+  "captured_at": "2026-08-11T01:25:00+08:00",
+  "content_sha256": "1c099200d756ab2776e6b9b076dce364449bcbe7ac912e8ca1fece084a0d5d90",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文、全部 11 条评论、公开时间线与 PR #1809；记录 PR 没有勾选新增测试，不把合并状态扩写成测试全覆盖。",
+    "components": [
+      "Isaac Lab",
+      "ObservationManager",
+      "ImuCfg",
+      "ManagerBasedEnv",
+      "DirectRLEnv"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区先手工在初始化加入 scene.update；DirectRLEnv 用户把它放在 sim.reset 前时遇到 Articulation._data 不存在，交换顺序后成功。"
+      ],
+      "diagnostics": [
+        "沿初始化调用链确认 ObservationManager 在传感器第一次 scene.update 前读数据；检查 scene.update 与 sim.reset/load_managers 的相对顺序。"
+      ],
+      "effective_fixes": [
+        "在 sim.reset() 之后、load_managers() 或首次传感器观测读取之前调用 self.scene.update(dt=self.physics_dt)；或使用已包含 PR #1809 的版本。"
+      ],
+      "environments": [
+        "原帖提交 84b2d2d8849e86752aa5a948d5f818d8430eec5a；Isaac Sim 4.2.0-rc.17；Ubuntu 20.04；RTX A6000；CUDA 11.8；ManagerBasedRLEnv/ANYmal-D；后续 DirectRLEnv/ANYmal-C 复测。"
+      ],
+      "limits": [
+        "PR #1809 的测试复选框未勾选；使用旧分支手工回移时仍需对自己的传感器和环境初始化流程做回归测试。"
+      ],
+      "outcomes": [
+        "DirectRLEnv 用户确认修正顺序后工作正常；PR #1809 合并到主仓库，Issue 随合并提交 157c6b74 关闭。"
+      ],
+      "problem_statements": [
+        "把 imu_lin_acc/imu_ang_vel 加入 ObservationManager 后，为什么初始化阶段报必须先调用 update？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "环境初始化未在提取 IMU.data 前更新 scene，导致 IMU._dt 和其他场景缓冲未填充。"
+      ],
+      "symptoms": [
+        "ObservationManager 在准备 term 维度时访问 asset.data.lin_acc_b，IMU._dt 未设置，抛出 RuntimeError: The update function must be called before the data buffers are accessed the first time。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原线程和已合并 PR #1809 的处理都是：先执行 sim.reset()，再执行 scene.update(dt=physics_dt)，之后才加载 managers 或读取 IMU.data。把 scene.update 放在 sim.reset 前会访问尚未建立的 articulation 数据。包含 PR #1809 的版本已在 ManagerBasedEnv 和 DirectRLEnv 初始化中补上这一步；旧版本可按同一顺序回移并复测。",
+        "applicability": "原始问题对应 Isaac Sim 4.2/旧 IsaacLab main；修复对应包含 2025-02-14 合并 PR #1809 的版本。",
+        "bilingual_terms": [
+          "观测管理器（ObservationManager）",
+          "场景更新（scene update）",
+          "惯性测量单元（IMU）",
+          "初始化顺序（initialization order）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.state_estimation_calibration.953c3f7d50283959",
+        "problem_title_zh": "ObservationManager 首次读取 IMU 数据时报 update must be called，scene.update 应放在什么位置？",
+        "question_zh": "ObservationManager 首次读取 IMU 数据时报 update must be called，scene.update 应放在什么位置？",
+        "source_locator": "Issue #1423 复测 issuecomment-2657349510；已合并 PR #1809；合并提交 157c6b74",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1423#issuecomment-2657349510",
+        "verification_refs": [
+          {
+            "locator": "PR 明确修复 #1423，在 ManagerBasedEnv 和 DirectRLEnv 初始化时更新 scene，已合并",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1809"
+          },
+          {
+            "locator": "PR #1809 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/157c6b74ed4d9892c5e5ccc0d38d7835f27e98f9"
+          },
+          {
+            "locator": "DirectRLEnv 用户确认先 reset 后 update 时工作正常",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1423#issuecomment-2657349510"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1423",
+    "query": "IsaacLab ObservationManager IMU update before buffers scene update reset",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ANYmal-D",
+      "ANYmal-C"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "社区临时处理：sim.reset 后、load_managers 前加入 scene.update。"
+      },
+      {
+        "text": "Contributor 解释 sim.reset 已执行 dummy physics step，因此随后 scene.update 是正确顺序。"
+      },
+      {
+        "text": "DirectRLEnv 用户把 update 移到 sim.reset 后，确认一切正常。"
+      }
+    ],
+    "wbc_relevance_reason": "IMU 观测初始化顺序错误会阻断含惯性状态的学习式 WBC 环境；错误地把 scene.update 放在 sim.reset 前还会访问未初始化的 articulation 数据。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1423",
+  "summary": "原帖在 ManagerBasedRLEnv 加入 imu_lin_acc 观测后，ObservationManager 构造阶段先访问 IMU.data，而 IMU._dt 尚未设置，抛出必须先调用 update 的错误。社区临时方案是在 sim.reset() 后、load_managers() 前执行 scene.update(dt=physics_dt)；DirectRLEnv 用户一度把顺序写反而失败，改成正确顺序后确认工作。官方 PR #1809 将该更新加入 ManagerBasedEnv 和 DirectRLEnv 初始化，于 2025-02-14 合并并关闭 Issue。",
+  "title": "ObservationManager 首次读取 IMU 前必须在 sim.reset 后更新 scene",
+  "version": null
+}

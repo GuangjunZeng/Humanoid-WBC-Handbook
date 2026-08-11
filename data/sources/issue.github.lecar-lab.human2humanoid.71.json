@@ -1,0 +1,126 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Hanna-Li"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/71",
+  "captured_at": "2026-08-11T01:20:00+08:00",
+  "content_sha256": "89685d40667c766de96549172066e3f089ea0b5903d91acf836c2dbcdd047d12",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 2 条评论；只记录提问者明确列出的两个原因和处理，没有补写具体符号矩阵或关节索引。",
+    "components": [
+      "human2humanoid",
+      "vis_motion.py",
+      "torch_humanoid_batch.py",
+      "MuJoCo XML",
+      "URDF"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者先直接修改 axis 的 -1/1，但结果没有变化；随后同时处理 dof_pos 符号矩阵和关节顺序。"
+      ],
+      "diagnostics": [
+        "逐关节比较 URDF 轴符号与运行时 ROTATION_AXIS；打印导入后的关节顺序，确认 NECK_Y 是否插入右臂 DOF 之前并造成索引错位。"
+      ],
+      "effective_fixes": [
+        "为 URDF 中负轴关节建立符号矩阵，对相应 dof_pos 乘 -1；在 MuJoCo XML worldbody 中调整 NECK_Y 与右臂关节的相对顺序，并按相同顺序修改 torch_humanoid_batch.py 的 ROTATION_AXIS。"
+      ],
+      "environments": [
+        "LeCAR-Lab/human2humanoid；stable_punch.pkl；30 关节自定义机器人；vis_motion.py；MuJoCo XML/URDF；具体提交和版本未说明。"
+      ],
+      "limits": [
+        "这是单一自定义机器人的作者自测；不同导入器是否按名称排序、树结构还是 XML 顺序生成 DOF 索引，需要在目标工具链实测。"
+      ],
+      "outcomes": [
+        "提问者在原线程明确写明问题解决，并列出上述两个原因和处理。"
+      ],
+      "problem_statements": [
+        "自定义机器人重定向时左侧关键点对齐、右侧整体错位，但相同动作在 H1 上正常，如何排查？"
+      ],
+      "safety_notes": [
+        "错误轴符号或关节顺序会产生方向相反的关节命令；进入实机前应以小幅单关节命令逐轴核对。"
+      ],
+      "suspected_causes": [
+        "URDF 中负方向关节轴未在 dof_pos 中补偿符号；NECK_Y 在导入顺序中位于右臂关节之前，使右侧关节向量与 ROTATION_AXIS 顺序错位。"
+      ],
+      "symptoms": [
+        "左臂和左腿能匹配红色关键点，右侧身体不能匹配；修改单个 axis 的 -1/1 后一度没有变化。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖作者最终确认有两个同时存在的问题：URDF 的负方向关节轴需要在对应自由度位置给 dof_pos 乘负号；NECK_Y 的导入位置又打乱了右臂关节顺序，因此还要调整 MuJoCo XML 的 worldbody 顺序，并让 ROTATION_AXIS 按完全相同顺序排列。只改一个轴的正负号不足以修复索引错位。该结论由原作者在其 30 关节机器人上确认，迁移到其他模型时需重新打印实际 DOF 顺序验证。",
+        "applicability": "适用于从 URDF/MuJoCo XML 自动生成关节索引、并用独立 ROTATION_AXIS 表解释动作的自定义 humanoid 重定向。",
+        "bilingual_terms": [
+          "关节轴符号（joint-axis sign）",
+          "自由度顺序（DOF ordering）",
+          "旋转轴表（ROTATION_AXIS）",
+          "正向运动学（forward kinematics）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.retargeting_dataset_quality.6b3161828feff3fd",
+        "problem_title_zh": "自定义人形机器人重定向出现一侧正常、另一侧关键点整体错位时，如何检查轴符号和关节顺序？",
+        "question_zh": "自定义人形机器人重定向出现一侧正常、另一侧关键点整体错位时，如何检查轴符号和关节顺序？",
+        "source_locator": "Issue #71，提问者自答 issuecomment-3149818647",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/71#issuecomment-3149818647",
+        "verification_refs": [
+          {
+            "locator": "提问者明确报告问题解决并列出两项原因与处理",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/71#issuecomment-3149818647"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖以红色关键点描述左右侧差异，但根因与修复由提问者文字自答明确给出；未从未读取的截图补充额外结论。"
+    ],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.71",
+    "query": "custom robot retargeting right arm mismatch negative axis joint order",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "30 关节自定义人形机器人",
+      "Unitree H1 参考模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_dataset_quality",
+    "selected_comments": [
+      {
+        "text": "提问者自答：负轴需要在 dof_pos 中补偿；NECK_Y 又打乱右臂顺序，需同步调整 XML 和 ROTATION_AXIS。"
+      }
+    ],
+    "wbc_relevance_reason": "关节轴符号和自由度顺序错误会把正确参考姿态映射到错误关节，是自定义 humanoid 全身动作重定向的高风险静默错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.71",
+  "summary": "提问者把 stable_punch.pkl 重定向到 30 关节自定义机器人时，左侧能匹配红色关键点而右侧错位。其后在原线程自答已解决：一是 Isaac Gym 路径按正方向处理关节轴，URDF 中负轴需要给对应 dof_pos 乘负号；二是 NECK_Y 在导入顺序中插到右臂关节之前，打乱右侧映射，需要调整 MuJoCo XML 的 worldbody 顺序并同步 ROTATION_AXIS。",
+  "title": "自定义机器人重定向单侧错位：负轴符号与 XML 关节顺序同时不一致",
+  "version": null
+}

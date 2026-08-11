@@ -1,0 +1,253 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/832",
+  "captured_at": "2026-08-11T07:10:00+08:00",
+  "content_sha256": "7c17005b375ad6a87abb017cddf93bc75328906544f96c1fc78953c905a1b0b1",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 10 条回复；结论只基于维护者说明、用户原回复、官方源码与 XML 文档。未把焊接 workaround 的一方经验改写为通用修复。",
+    "components": [
+      "MuJoCo",
+      "tendon force sensor",
+      "site force sensor",
+      "sensor/tendonlimitfrc",
+      "weld constraint"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "用一个自由 mounting body 作为 tendon 附着点，将其焊接到目标体并测量 weld force。",
+        "有用户将 weld solref 调到 0.0002 1，报告伸长只是部分改善。",
+        "按维护者最后的建议分别计算 passive force 和读取 tendonlimitfrc。"
+      ],
+      "diagnostics": [
+        "先区分被动弹簧/阻尼力与 tendon limit 约束力，不把一个零值 site sensor 当成两者的总和。",
+        "对照 engine_passive.c 的 tendon spring/damper 计算，并对照 XML reference 中 tendonlimitfrc 的约束力定义。",
+        "若使用 welded mounting body，同时检查转接体质量、焊缝软性和 tendon 伸长。"
+      ],
+      "effective_fixes": [
+        "对 passive force，按官方引擎源码的 tendon spring/damper 定义计算；对 constraint force，使用 sensor/tendonlimitfrc；需总力时将两部分相加。"
+      ],
+      "environments": [
+        "MuJoCo 公开 Issue #832，2023–2025 年回复；被动 tendon、tendon limit constraint 和 site/weld force sensor。",
+        "官方源码定位到 commit 100b1a06fd8f6a184a3e495adff3ff044b1ff4f2 的 engine_passive.c 377–415 行。"
+      ],
+      "limits": [
+        "引擎源码中的 frc_spring 是局部计算变量，不应被改写成稳定公开 API 名称。",
+        "tendonlimitfrc 只表示 tendon limit 约束力，不自动包含被动弹簧与阻尼力。",
+        "焊接转接体方案未获得维护者验证，且有已知软性与质量偏差。"
+      ],
+      "outcomes": [
+        "原线程用户确认被动弹簧力计算对其模型有效。",
+        "site sensor 直接漏读 tendon force 的引擎缺口在该 Issue 中仍未标记为修复。",
+        "welded mounting-body workaround 的结果在不同用户间有冲突。"
+      ],
+      "problem_statements": [
+        "为什么放在 tendon 附着点的 force sensor 没有返回 tendon force？",
+        "如何分别获得 passive tendon force、tendon limit constraint force 和两者的总力？",
+        "通过焊接转接体测量 tendon force 是否可靠？"
+      ],
+      "safety_notes": [
+        "将仿真 tendon force 用于真机限力或保护前，应用已知负载独立校准被动力、约束力与传感器符号。"
+      ],
+      "suspected_causes": [
+        "项目协作者确认 site force sensor 的当时实现漏掉 tendon force，并将其称为缺口/缺陷。",
+        "weld workaround 的误差与额外 mounting body 的质量和软 weld constraint 有关，但原线程未给出通用误差模型。"
+      ],
+      "symptoms": [
+        "tendon 上有力时，附着点的 force sensor 仍读到零。",
+        "welded mounting-body workaround 在部分模型中产生转接体伸长和力值偏差。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不是。项目协作者检查后说，site force sensor 的引擎路径处理运动树产生的力和 constraint forces，但跳过了 tendon force，并认为这很可能是 bug。因此零读数只能说该 sensor 路径没有给出 tendon force，不能证明 tendon 无张力；该直接传感器缺口在原 Issue 中仍未闭环。",
+        "applicability": "适用于原 Issue 讨论的 MuJoCo site force sensor 与 tendon 附着点；新版本使用前仍需检查当前实现和回归测试。",
+        "bilingual_terms": [
+          "站点力传感器（site force sensor）",
+          "肌腱力（tendon force）",
+          "约束力（constraint force）",
+          "运动树（kinematic tree）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突。"
+        },
+        "problem_id": "problem.force_control_manipulation.mujoco_site_sensor_omits_tendon_force_832",
+        "problem_title_zh": "MuJoCo 站点力传感器漏掉 tendon force",
+        "question_zh": "MuJoCo 中 tendon 附着点的 force sensor 读数为零，原线程是否证明 tendon 本身没有力？",
+        "source_locator": "Issue #832，项目协作者诊断 issuecomment-1520720813；后续仍未修复 issuecomment-1794890260",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1520720813",
+        "verification_refs": [
+          {
+            "locator": "项目协作者说明 site sensor 路径漏掉 tendon force 并将其判断为可能的 bug",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1520720813"
+          },
+          {
+            "locator": "2023 年后续回复说明缺口尚未修复且文档已提及",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1794890260"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者最后将两部分分开：被动部分按 tendon 长度超出 spring-length interval 后的刚度项，再加上与 tendon velocity 相关的阻尼项；限位约束力用 sensor/tendonlimitfrc 读取；需要 total force 时再将两部分相加。官方 engine_passive.c 给出 spring/damper 实现，XML reference 明确 tendonlimitfrc 是 tendon limit constraint force sensor，原线程用户确认被动弹簧力路径对其模型有效。源码局部变量 frc_spring 不应被当作对外 API。",
+        "applicability": "适用于同时包含被动 tendon spring/damper 与 tendon limit constraint 的 MuJoCo 模型；只有其中一项时应只保留对应力分量。",
+        "bilingual_terms": [
+          "被动肌腱力（passive tendon force）",
+          "肌腱限位约束力（tendon limit constraint force）",
+          "刚度（stiffness）",
+          "阻尼（damping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.force_control_manipulation.mujoco_tendon_total_force_decomposition_832",
+        "problem_title_zh": "MuJoCo 被动 tendon force 与限位约束力的合成",
+        "question_zh": "不依赖附着点 site sensor 时，原线程如何获得 passive tendon force、tendon limit constraint force 及总力？",
+        "source_locator": "Issue #832，维护者分解方法 issuecomment-3148619744；用户确认 issuecomment-3152635424；官方源码 377–415 行与 XML tendonlimitfrc 文档",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-3148619744",
+        "verification_refs": [
+          {
+            "locator": "维护者区分 passive force、constraint force 并说明 total force 由两者相加",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-3148619744"
+          },
+          {
+            "locator": "官方源码给出 tendon spring 长度区间、刚度项、阻尼项及 Jacobian 映射",
+            "relation": "source_code",
+            "source_url": "https://github.com/google-deepmind/mujoco/blob/100b1a06fd8f6a184a3e495adff3ff044b1ff4f2/src/engine/engine_passive.c#L377-L415"
+          },
+          {
+            "locator": "官方 XML reference 将 tendonlimitfrc 定义为 tendon limit constraint force sensor",
+            "relation": "official_documentation",
+            "source_url": "https://mujoco.readthedocs.io/en/latest/XMLreference.html#sensor-tendonlimitfrc"
+          },
+          {
+            "locator": "原线程用户确认被动弹簧力计算对其模型有效",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-3152635424"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "原线程不支持把它当成通用方案。早期用户说该 workaround 看起来可用，但也说额外 mounting bodies 的质量会导致读数偏差；后来另一用户报告软 weld constraint 使 tendon 经过 mounting body 时产生伸长，solref=\"0.0002 1\" 也只能部分改善。线程没有维护者验收或统一误差界，因此必须在目标模型中与已知 tendon force 独立对比。",
+        "applicability": "仅作为 MuJoCo 模型中的试验性 workaround；必须核对 mounting-body 质量、weld solref、伸长与相位误差。",
+        "bilingual_terms": [
+          "焊接约束（weld constraint）",
+          "转接体（mounting body）",
+          "约束软性（constraint softness）",
+          "求解参考（solver reference, solref）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.force_control_manipulation.mujoco_weld_mount_tendon_workaround_conflict_832",
+        "problem_title_zh": "焊接转接体测量 tendon force 的误差与冲突",
+        "question_zh": "把 tendon 连到自由 mounting body，再把该物体焊到目标体并读取 weld force，能否作为通用 tendon force 传感器？",
+        "source_locator": "Issue #832，workaround issuecomment-1816986241；伸长反例 issuecomment-2500739225；solref 部分改善 issuecomment-2500866159",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1816986241",
+        "verification_refs": [
+          {
+            "locator": "用户提供 welded mounting-body workaround 并报告额外质量导致偏差",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-1816986241"
+          },
+          {
+            "locator": "另一用户报告软 weld constraint 导致伸长",
+            "relation": "conflict",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-2500739225"
+          },
+          {
+            "locator": "调紧 solref 只能部分改善",
+            "relation": "conflict",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/832#issuecomment-2500866159"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.832",
+    "query": "MuJoCo tendon force site sensor passive constraint tendonlimitfrc weld workaround",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "MuJoCo tendon-driven model；原帖未说明具体机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "force_control_manipulation",
+    "selected_comments": [
+      {
+        "text": "项目协作者确认 site sensor 处理路径漏掉 tendon force。"
+      },
+      {
+        "text": "用户提供 welded mounting-body workaround，同时报告 mounting-body 质量导致读数偏差。"
+      },
+      {
+        "text": "后来用户报告 weld softness 导致 tendon 伸长。"
+      },
+      {
+        "text": "维护者将 passive force 与 constraint force 分开，并说明 total force 为两者之和。"
+      },
+      {
+        "text": "用户确认被动弹簧力计算对其模型有效。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的力控制、柔顺控制与仿真验证会直接依赖 tendon force 观测；若把 site sensor 的零值误当作真实张力，会破坏力反馈和限幅验收。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.832",
+  "summary": "MuJoCo #832 报告在 tendon 附着点放置 force sensor 时读数为零。项目协作者确认这符合引擎当时的实现缺口：site force sensor 处理运动树与约束力，但漏掉 tendon force。后续线程给出两类路径：对被动 tendon 从长度、刚度与阻尼计算 passive force；对 tendon limit 约束使用 sensor/tendonlimitfrc，总力由两者相加。源码与官方 XML 文档可精确核对这两个部分，原线程用户也确认被动弹簧力计算有效。另一个通过焊接自由转接体来测焊缝力的 workaround 存在冲突：早期用户认为可用，后来用户报告焊缝软性会导致伸长，调紧 solref 也只能部分改善。",
+  "title": "MuJoCo 肌腱力测量的站点传感器缺口、力分解与焊接转接方案",
+  "version": null
+}

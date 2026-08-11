@@ -1,0 +1,128 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Praveen Kumar Verma @Alacritic_Super"
+  ],
+  "canonical_url": "https://x.com/alacritic_super/status/2081753839380861374",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "b917017261f2ccf229769059b55e8dc10ff4f8257af717cc962b08dd5054a138",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "mjlab",
+      "MuJoCo Warp",
+      "Isaac Lab API",
+      "multi-GPU"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "选择 mjlab 作为轻量候选。"
+      ],
+      "diagnostics": [
+        "比较 API 兼容、依赖数量、viewer/debugger、传感器与 terrain 功能。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "mjlab；MuJoCo Warp；Isaac Lab-style API；GPU 训练。"
+      ],
+      "limits": [
+        "无安装日志、版本矩阵、性能基准和项目迁移结果。"
+      ],
+      "outcomes": [
+        "帖子列出支持人形 locomotion、manipulation、imitation、RL、Sim2Real 和 multi-GPU。"
+      ],
+      "problem_statements": [
+        "团队希望保留 Isaac Lab 工作流，同时减少 Isaac Sim 的安装与运行负担。"
+      ],
+      "safety_notes": [
+        "更换仿真器后必须重新核对接触、关节、执行器和传感器模型再上实机。"
+      ],
+      "suspected_causes": [
+        "Isaac Sim 栈较重，但原帖未量化其依赖成本。"
+      ],
+      "symptoms": [
+        "原帖没有具体安装报错。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖候选方案是使用基于 MuJoCo Warp 的 mjlab：保留 Isaac Lab-style API，同时提供原生 MuJoCo、较少依赖、viewer/debugger、domain randomization、RGB-D、terrain 与 multi-GPU。帖子没有版本兼容和基准数据，迁移前仍需小任务验证。",
+        "applicability": "适用于评估人形 RL 仿真工具链，不能视为现有 Isaac Lab 项目的无损替换。",
+        "bilingual_terms": [
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "域随机化（Domain Randomization, DR）",
+          "图形处理器（Graphics Processing Unit, GPU）",
+          "应用程序接口（Application Programming Interface, API）",
+          "执行器（Actuator）",
+          "质心（Center of Mass, CoM）"
+        ],
+        "question_zh": "想保留 Isaac Lab 风格 API、但减少 Isaac Sim 依赖时，mjlab 提供了什么？",
+        "source_locator": "根帖功能列表",
+        "source_url": "https://x.com/alacritic_super/status/2081753839380861374",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.942f699f52388d1e",
+        "problem_title_zh": "想保留 Isaac Lab 风格 API、但减少 Isaac Sim 依赖时，mjlab 提供了什么？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图是功能清单，列出 MuJoCo Warp、Isaac Lab-style API、minimal dependencies 等；没有安装命令、错误日志或速度对比图。"
+    ],
+    "platform": "x",
+    "post_id": "2081753839380861374",
+    "published_display": "2026-07-27T14:49:27.000Z",
+    "query": "mjlab Isaac Lab API MuJoCo Warp setup",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形/机器人通用"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [],
+    "wbc_relevance_reason": "涉及人形 locomotion、motion imitation、RL 与 Sim2Real 的环境依赖和调试工具链。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2081753839380861374",
+  "summary": "帖子介绍 mjlab：保留 Isaac Lab 风格 API，底层使用 MuJoCo Warp 做 GPU 加速，并强调原生 MuJoCo、较少依赖、viewer/debugger、domain randomization、RGB-D、terrain 与 multi-GPU。它是工具推荐，不是安装成功记录或基准复现。",
+  "title": "用 mjlab 降低 Isaac Sim 依赖的候选工具链",
+  "version": null
+}

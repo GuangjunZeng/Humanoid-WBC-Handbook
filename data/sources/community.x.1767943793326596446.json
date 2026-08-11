@@ -1,0 +1,170 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "huaijiang @huaijiangzhu"
+  ],
+  "canonical_url": "https://x.com/huaijiangzhu/status/1767943793326596446",
+  "captured_at": "2026-08-10T20:01:04+08:00",
+  "content_sha256": "ed6241682817f8e2bc765dba93837a8932025981bbafbe5fcb8632c39c7a901b",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 8
+    },
+    "collector_note": "collection_completeness=partial_visible；保存了具体回复 URL；讨论为推测，未独立验证。",
+    "components": [
+      "visuomotor policy",
+      "task-space inverse dynamics",
+      "constrained QP",
+      "direct torque control",
+      "PID"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "讨论者提出 QP-based task-space inverse dynamics 作为可能结构。"
+      ],
+      "diagnostics": [
+        "区分学习策略输出的 setpoint 与实际低层跟踪器；检查是否存在任务空间加速度目标、全身动力学约束和直接力矩输出。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Figure 01 双臂操作公开演示；学习策略约 200 Hz；讨论者假设存在更高频低层控制环。"
+      ],
+      "limits": [
+        "核心结构使用 I'd guess 等推测语气；不得把它写成 Figure 01 已确认架构。"
+      ],
+      "outcomes": [
+        "形成了一个可实现的 QP 表述，但没有得到 Figure 团队确认，也没有控制日志或源码。"
+      ],
+      "problem_statements": [
+        "学习策略给出腕部/手部设定值后，低层应采用 PID 还是全身约束 QP 直接求力矩？"
+      ],
+      "safety_notes": [
+        "直接力矩控制必须同时验证动力学、接触约束、扭矩/速度限位和控制周期；不能依据社交平台推测直接上实机。"
+      ],
+      "suspected_causes": [
+        "200 Hz 学习模型可能不足以替代 1 kHz 级快速约束控制；冗余任务空间命令需要动力学和约束消解。"
+      ],
+      "symptoms": [
+        "没有报告具体故障；讨论关注 200 Hz 策略频率是否足以直接承担低层力矩控制。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该讨论给出的候选表述是：把任务写成最小化 task-space acceleration error，在约束中加入 whole-body dynamics，再由 constrained QP 求 joint torque。这个说明可作为理解 task-space inverse dynamics 的工程入口，但它只是对 Figure 01 的推测，不是官方架构说明。",
+        "applicability": "适用于需要把冗余任务空间目标映射为满足全身动力学约束力矩的控制器设计。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "应用程序接口（Application Programming Interface, API）",
+          "关节力矩（Joint Torque）",
+          "接触约束（Contact Constraint）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "学习策略给出 task-space setpoint 后，QP-based WBC 如何求关节力矩？",
+        "source_locator": "@huaijiangzhu 根回复及后续具体 QP 解释",
+        "source_url": "https://x.com/huaijiangzhu/status/1767955458055118951",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.optimization_ik_qp_mpc.dbcd76d74f91b430",
+        "problem_title_zh": "学习策略给出 task-space setpoint 后，QP-based WBC 如何求关节力矩？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "回复者推测 200 Hz 虽已很高，但仍不等价于 1 kHz 以上的快速低层控制；是否需要额外 whole-body constrained controller 取决于系统时延、执行器带宽和安全约束。原串没有测试结果，结论未解决。",
+        "applicability": "适用于低频学习策略与高频 WBC/执行器控制的多速率架构设计。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "应用程序接口（Application Programming Interface, API）",
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "接触约束（Contact Constraint）"
+        ],
+        "question_zh": "200 Hz 学习策略是否足以直接替代高频低层控制环？",
+        "source_locator": "@iandanforth 关于 200 Hz 与 1 kHz+ 的回复",
+        "source_url": "https://x.com/iandanforth/status/1767957601751302285",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.optimization_ik_qp_mpc.45d8941039d8b688",
+        "problem_title_zh": "200 Hz 学习策略是否足以直接替代高频低层控制环？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "x",
+    "post_id": "1767943793326596446",
+    "published_display": "2024-03-13T16:00:21.000Z",
+    "query": "whole body controller QP task space inverse dynamics direct torque",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Figure 01"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "author_display": "@iandanforth",
+        "text": "提问是否会采用直接力矩输出，并推测 200 Hz 模型更新仍低于 1 kHz+ 低层控制需求。"
+      },
+      {
+        "author_display": "@huaijiangzhu",
+        "text": "补充说明可最小化任务空间加速度误差，把全身动力学写入 constrained QP 后求关节力矩。"
+      }
+    ],
+    "wbc_relevance_reason": "该串直接讨论学习策略、任务空间逆动力学、受约束 QP、关节力矩输出及高低频控制环的接口。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.1767943793326596446",
+  "summary": "围绕 Figure 01 学习式双臂操作系统的讨论中，原回复推测视觉运动策略（visuomotor policy）只提供设定值，低层并非简单 PID 跟踪，而可能是直接输出关节力矩的 QP task-space inverse dynamics 全身控制器。后续回复给出更具体的候选形式：最小化任务空间加速度误差，把全身动力学写成约束，通过 constrained QP 求关节力矩。另一回复认为 200 Hz 模型更新仍可能不够承担 1 kHz 级低层控制。所有这些均为公开讨论中的推测，原系统团队没有在该串确认控制结构。",
+  "title": "关于 Figure 01 低层 WBC、QP 与直接力矩输出的技术讨论",
+  "version": null
+}

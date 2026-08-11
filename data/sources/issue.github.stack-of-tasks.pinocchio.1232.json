@@ -1,0 +1,137 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "julesser"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232",
+  "captured_at": "2026-08-11T01:41:46+08:00",
+  "content_sha256": "09f6132fb5b17d540c1054ed4b6c9c344d9c704ea10f939e82357e6952b6d010",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 10 条评论；保留用户片段中未讨论的浮动基参考配置限制，没有自行修正或宣称整段示例已测试。",
+    "components": [
+      "Pinocchio",
+      "buildReducedModel",
+      "RobotWrapper",
+      "GeometryModel",
+      "joint locking"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者贴出 Python docstring；用户按官方 C++ 示例改写 Python 代码并继续修正命名空间和 Joint ID。"
+      ],
+      "diagnostics": [
+        "确认函数在 pinocchio 命名空间；用 existJointName/getJointId 获取 Joint ID；参考配置必须用于计算锁定关节位姿；需要显示时检查 visual_model 是否同步缩减。"
+      ],
+      "effective_fixes": [
+        "调用 pin.buildReducedModel(model, joint_ids, reference_configuration)；需要显示时调用带 geometry_model 的重载并接收 model、geometry_model 两个返回值。"
+      ],
+      "environments": [
+        "robotpkg-py36-pinocchio；Python 3.6 路径；RH5 浮动基人形 URDF；RobotWrapper.BuildFromURDF。"
+      ],
+      "limits": [
+        "用户片段的浮动基前 7 个参考配置全部写为 0，线程没有讨论该四元数是否合法，也没有给出测试输出；不应把整段数值原样视为通用模板。"
+      ],
+      "outcomes": [
+        "用户确认命名空间修正正确，并分享其 working Python 片段；两位维护者建议把示例贡献到正式文档。"
+      ],
+      "problem_statements": [
+        "如何在 Pinocchio Python 中把完整人形模型的指定关节锁定在给定配置，并保持可视化几何一致？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "未使用 pinocchio.buildReducedModel 命名空间；混淆 Frame ID 与 Joint ID；未区分只缩减运动学模型和同时缩减几何模型的重载。"
+      ],
+      "symptoms": [
+        "直接调用 buildReducedModel 报 NameError；早期草稿用 getFrameId 收集待锁关节，且不清楚参考配置和几何模型重载。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "使用 pinocchio.buildReducedModel，而不是未限定命名空间的 buildReducedModel。待锁对象应通过 model.getJointId 获取 Joint ID；第三个参数 reference_configuration 用来计算锁定关节的放置。只需要运动学/动力学模型时调用 model 重载；还要显示时传入 visual_model，并接收缩减后的 model 与 visual_model。原帖用户确认命名空间修正并分享了工作片段，但其具体参考向量没有经过线程内独立验证。",
+        "applicability": "适用于线程所示 Python 绑定和 RobotWrapper 浮动基模型；目标版本的函数签名仍应通过本地 help/docstring 核对。",
+        "bilingual_terms": [
+          "缩减模型（reduced model）",
+          "参考配置（reference configuration）",
+          "关节索引（joint index）",
+          "几何模型（GeometryModel）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.bd0fa4cb8c9f23df",
+        "problem_title_zh": "Pinocchio Python 如何把指定关节固定在参考配置，并在需要显示时同步缩减几何模型？",
+        "question_zh": "Pinocchio Python 如何把指定关节固定在参考配置，并在需要显示时同步缩减几何模型？",
+        "source_locator": "Issue #1232，维护者 API 说明 issuecomment-639461045、命名空间说明 issuecomment-640721560、用户工作片段 issuecomment-641755486",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232#issuecomment-641755486",
+        "verification_refs": [
+          {
+            "locator": "维护者在原线程引用 Python 绑定 docstring 和两个重载",
+            "relation": "official_documentation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232#issuecomment-639461045"
+          },
+          {
+            "locator": "维护者确认函数位于 pinocchio 命名空间",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232#issuecomment-640721560"
+          },
+          {
+            "locator": "用户分享其 working Python 片段并区分可视化几何重载",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1232#issuecomment-641755486"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1232",
+    "query": "Pinocchio buildReducedModel lock joints specified configuration Python geometry",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "RH5 浮动基人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "维护者贴出 buildReducedModel Python docstring，说明参考配置和几何模型重载。"
+      },
+      {
+        "text": "维护者说明应调用 pin.buildReducedModel。"
+      },
+      {
+        "text": "用户确认并分享其 working Python 片段。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/最优控制常需要为特定硬件裁剪手臂、头部或其他自由度；错误使用 Frame ID、错误命名空间或遗漏几何模型会导致模型与显示/碰撞不一致。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1232",
+  "summary": "Pinocchio #1232 询问能否从完整浮动基人形 URDF 中把指定关节固定在指定值。维护者引用 Python 文档：buildReducedModel 接受模型、待锁定 joint index 列表和完整 reference_configuration；若同时传入 GeometryModel，则返回缩减后的模型和几何模型。用户随后确认函数位于 pinocchio 命名空间，给出自己称为 working 的 Python 示例，使用 existJointName/getJointId 收集关节 ID，并说明只有需要显示时才必须同时构造缩减几何模型。",
+  "title": "Pinocchio Python 可按参考配置锁定关节，并按需同时缩减几何模型",
+  "version": null
+}

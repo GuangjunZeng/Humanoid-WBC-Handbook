@@ -1,0 +1,149 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1400",
+  "captured_at": "2026-08-11T07:18:00+08:00",
+  "content_sha256": "1c1dcee2cb74f0a9821bd39d1078866984e829abbef561c8e5f73f5b06e5a031",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 9 条回复；将维护者确认的 known issue、版本复现和用户推测明确分层，没有把 MultiAssetSpawnerCfg 或 256-link 说法当成根因。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim 4.2",
+      "GPU contact pipeline",
+      "compressContactStage",
+      "CUDA memory growth"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目方曾说计划在 2.0 修复。",
+        "原作者升级到 2.0.1 并开启 CCD 后重新运行。"
+      ],
+      "diagnostics": [
+        "用版本、contact sensor 数量、触发步数、CCD 状态与内存趋势建立长时 soak-test 记录。",
+        "把维护者确认的 known issue 与用户自行怀疑的 MultiAssetSpawnerCfg/256-link 原因分开。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "首次报告：Isaac Sim 4.2、当时最新 Isaac Lab、10 个 contact sensors，约 60M 步后触发。",
+        "后续复现：Isaac Lab 2.0.1，开启 CCD，用户报告内存仍持续增长。"
+      ],
+      "limits": [
+        "原线程没有最终根因、修复 PR/commit 或作者通过复测。",
+        "不能将开启 CCD、升级到 2.0.1、减少 assets 或将 links 限制在 256 以内写成已验证修复。",
+        "首次触发约 60M 步，短时单元测试不足以否定。"
+      ],
+      "outcomes": [
+        "项目协作者确认这是 known issue，但原线程未提供已合入修复的精确链接。",
+        "原作者在 2.0.1+CCD 下仍报告问题存在且内存持续增长。"
+      ],
+      "problem_statements": [
+        "Isaac Lab 训练为什么在约 6000 万步后触发 GPU contact compression 错误并损坏 scene？",
+        "升级到 Isaac Lab 2.0.1 并开启 CCD 是否已在原线程解决？"
+      ],
+      "safety_notes": [
+        "大规模训练应保留定期 checkpoint 与显存/主存趋势，避免长时崩溃丢失全部进度。"
+      ],
+      "suspected_causes": [
+        "维护者只确认为 known issue，未在线程给出精确内存泄漏点或 contact-stage 根因。",
+        "MultiAssetSpawnerCfg 的两个 rigid objects 与 256 links 限制是用户推测，不能当作已确认原因。"
+      ],
+      "symptoms": [
+        "GPU compressContactStage1/2 失败、CUDA context 错误与 scene corrupt。",
+        "长时运行过程中 memory 持续增长，最终崩溃。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "没有。协作者确认这是 known issue，并曾说计划在 2.0 修复；但原作者后来明确报告在 Isaac Lab 2.0.1 且开启 CCD 后问题仍存在，memory 仍持续增长。线程没有精确修复 commit、根因或通过长时复测；MultiAssetSpawnerCfg 和 256 links 只是用户推测，不应写成结论。当前只能把版本、触发步数、contact sensor 数、CCD 和内存曲线纳入 soak test。",
+        "applicability": "适用于 Isaac Sim 4.2/当时 Isaac Lab 以及原作者后续 2.0.1+CCD 长时训练记录；不证明所有版本或场景必然触发。",
+        "bilingual_terms": [
+          "接触压缩阶段（contact compression stage）",
+          "连续碰撞检测（continuous collision detection, CCD）",
+          "长时稳定性测试（soak test）",
+          "内存增长（memory growth）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突。"
+        },
+        "problem_id": "problem.compute_performance_memory.isaaclab_long_run_gpu_contact_crash_1400",
+        "problem_title_zh": "Isaac Lab 长时训练的 GPU contact 崩溃与内存增长",
+        "question_zh": "Isaac Lab 在约 6000 万步后触发 compressContactStage/CUDA/scene corrupt，升级 2.0.1 并开启 CCD 是否已在原线程解决？",
+        "source_locator": "Issue #1400，known issue issuecomment-2470592676；2.0 计划 issuecomment-2590839226；2.0.1+CCD 仍复现 issuecomment-2700179359",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2700179359",
+        "verification_refs": [
+          {
+            "locator": "项目协作者确认为 known issue",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2470592676"
+          },
+          {
+            "locator": "协作者说计划在 2.0 修复，但未给精确修复定位",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2590839226"
+          },
+          {
+            "locator": "原作者报告 2.0.1+CCD 下仍复现并观察到内存持续增长",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1400#issuecomment-2700179359"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1400",
+    "query": "Isaac Lab GPU contact compression crash 60M steps memory growth CCD",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Isaac Lab 批量训练场景，10 个 contact sensors；具体机器人未在本卡归纳"
+    ],
+    "schema_version": 2,
+    "scope_id": "compute_performance_memory",
+    "selected_comments": [
+      {
+        "text": "项目协作者确认这是 known issue。"
+      },
+      {
+        "text": "原作者怀疑 MultiAssetSpawnerCfg 中的两个 rigid objects，但协作者只表示会调查。"
+      },
+      {
+        "text": "协作者曾说计划在 2.0 修复。"
+      },
+      {
+        "text": "原作者报告 2.0.1+CCD 下仍有问题，且 memory 不断增长。"
+      }
+    ],
+    "wbc_relevance_reason": "大规模 WBC/RL 训练若只在数千万步后触发 contact pipeline 与 GPU memory 失效，短回归测试无法替代长时 soak test；同时不能把未证实的资产或 link 数限制写成根因。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1400",
+  "summary": "Isaac Lab #1400 报告在 Isaac Sim 4.2、当时最新 Isaac Lab、10 个 contact sensors 的训练中，约 6000 万步后出现 GPU compressContactStage1/2、CUDA context 与 scene corrupt 错误。项目协作者确认这是 known issue，后续说计划在 2.0 修复。但原作者在 Isaac Lab 2.0.1 开启 CCD 后仍报告同类问题，并说 memory 持续增长。线程中关于 MultiAssetSpawnerCfg 两个 rigid objects 或 256 links 限制的说法都是用户推测，没有维护者确认。",
+  "title": "Isaac Lab 长时训练的 GPU contact stage 崩溃与持续复现边界",
+  "version": null
+}

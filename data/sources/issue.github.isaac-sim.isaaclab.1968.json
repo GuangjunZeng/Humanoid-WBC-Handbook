@@ -1,0 +1,119 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "kbkartik"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1968",
+  "captured_at": "2026-08-11T01:25:00+08:00",
+  "content_sha256": "06fa170da4f210f4b714038f2ba3c02eee9465e0add2c4c9c3aacd74fbb094f6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 4 条评论；原帖未闭环的公式和 joint-force 坐标系保持未解答。",
+    "components": [
+      "Isaac Lab",
+      "ContactSensor",
+      "FrameTransformer",
+      "body_state_w",
+      "track_pose"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议用 math utilities；相对位姿可由 FrameTransformer、body_state_w 或 track_pose 提供。"
+      ],
+      "diagnostics": [
+        "确认字段名后缀 _w 表示世界系；获取传感器刚体相对世界的姿态，再对力向量做坐标旋转。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab ContactSensor；Shadow Hand 指尖；具体版本未说明。"
+      ],
+      "limits": [
+        "原帖没有给出完整四元数方向、主动/被动旋转约定和复测；get_measured_joint_forces 的坐标系仍未回答。"
+      ],
+      "outcomes": [
+        "世界系输出和可用姿态来源得到 contributor 确认；精确变换代码和 joint force 坐标系问题没有在原线程闭环。"
+      ],
+      "problem_statements": [
+        "ContactSensor 的 net_forces_w/force_matrix_w 如何转到指尖局部坐标系，get_measured_joint_forces 又属于哪个坐标系？"
+      ],
+      "safety_notes": [
+        "用于力控前必须用已知方向的测试力验证旋转方向和符号。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "API 只直接提供世界系接触力，用户需要指尖局部系表达。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖 contributor 明确说明 ContactSensor 总是返回世界系（world frame）接触力。要得到局部系，应先从 body_state_w、ContactSensor.track_pose 或 FrameTransformer 获得目标刚体相对世界的姿态，再用 isaaclab.utils.math 旋转力向量。FrameTransformer 本身只给位姿变换，不直接转换力。原线程未给出完整公式和复测，也未回答 get_measured_joint_forces 的坐标系，因此实现时必须用已知方向载荷验证。",
+        "applicability": "适用于该线程版本的 IsaacLab ContactSensor 世界系字段；具体数学函数名和四元数约定需按目标版本核对。",
+        "bilingual_terms": [
+          "世界坐标系（world frame）",
+          "刚体坐标系（body frame）",
+          "接触力（contact force）",
+          "坐标变换器（FrameTransformer）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.contact_force_friction.2a6475b059053f23",
+        "problem_title_zh": "IsaacLab ContactSensor 的世界系接触力如何转换到指尖或刚体局部系？",
+        "question_zh": "IsaacLab ContactSensor 的世界系接触力如何转换到指尖或刚体局部系？",
+        "source_locator": "Issue #1968，contributor 回复 issuecomment-2692423150",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1968#issuecomment-2692423150",
+        "verification_refs": [
+          {
+            "locator": "contributor 确认 ContactSensor 始终返回世界系力，并列出姿态来源",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1968#issuecomment-2692423150"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1968",
+    "query": "IsaacLab contact sensor force world frame local body frame math utils",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Shadow Hand"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "Contributor：接触力始终是世界系；用 math utilities 转换，姿态可来自 FrameTransformer、body_state_w 或 track_pose。"
+      }
+    ],
+    "wbc_relevance_reason": "接触力反馈必须与指尖、足底或任务坐标系一致；直接把世界系向量当作局部力会产生方向错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1968",
+  "summary": "提问者希望获得 Shadow Hand 指尖 ContactSensor 在局部/刚体系的力。IsaacLab contributor 明确回复：接触力始终以世界坐标系返回，要用 isaaclab.utils.math 变换到目标系；FrameTransformer 只提供相对位姿，也可从 body_state_w 或 ContactSensor.track_pose 取得刚体姿态。线程没有给出完整旋转公式，也未回答 get_measured_joint_forces 的具体坐标系，随后转入 Discussion。",
+  "title": "ContactSensor 输出始终是世界系，局部力需要用刚体姿态自行旋转",
+  "version": null
+}

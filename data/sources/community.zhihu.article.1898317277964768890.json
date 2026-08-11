@@ -1,0 +1,169 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "非要我改用户名"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1898317277964768890",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "dc39e0d20551a7452573c54369e3f4605cdff623f21adc8da1278545b251021c",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "nested_replies_collapsed",
+      "visible_replies_captured": 8
+    },
+    "collector_note": "collection_completeness=partial_visible；正文和当前可见评论已读，评论区存在未解决质疑，按 conflicting 保留。",
+    "components": [
+      "ROS topic",
+      "Python",
+      "C++",
+      "command queue",
+      "EtherCAT"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "把每个 20 ms 命令拆成 5 份供 4 ms 执行层消费。",
+        "主动丢弃 1/5 报文降低队列增长。",
+        "计划把 Python 中间层改为 C++。"
+      ],
+      "diagnostics": [
+        "同时记录上层生产时间戳、下层消费时间戳、队列深度、丢包计数和执行目标连续性。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "上层遥操作 50 Hz/20 ms；下层 C++ 执行 250 Hz/4 ms；ROS topic；最大队列 5000，队列累计 10 条后执行。"
+      ],
+      "limits": [
+        "评论对文章部分总线事实提出质疑；没有公开时间戳曲线、丢包率或最终改写结果。"
+      ],
+      "outcomes": [
+        "第一个方案仍会队列满；第二个方案降低延时但出现欠载抖动；最终 C++ 改写方向没有公开复现结果。"
+      ],
+      "problem_statements": [
+        "50 Hz 上层命令如何稳定送入 250 Hz 下层执行环？",
+        "队列满和队列空为什么都会表现为机器人抖动？"
+      ],
+      "safety_notes": [
+        "真机测试前限制关节速度、位置增量和力矩；队列异常时保持最后安全目标或进入阻尼模式，不应把缺帧直接转成突变。"
+      ],
+      "suspected_causes": [
+        "Python 与 C++ 端时钟/调度没有对齐。",
+        "固定五等分插值没有处理网络抖动和生产消费偏差。"
+      ],
+      "symptoms": [
+        "队列满后丢弃新报文，动作出现长延时和突然大幅震荡。",
+        "主动丢弃 1/5 报文后延时减小，但队列周期耗空并持续抖动。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "平均频率相等不代表瞬时生产与消费严格同步。Python 调度、ROS 传输和插值批量写入会造成 burst；若队列满后丢弃新目标，执行层继续消费旧轨迹，于是延时不断增长，恢复时目标发生跳变。应记录双端单调时钟和队列水位，并设置有界缓冲、过期命令丢弃和目标连续性保护。",
+        "applicability": "适用于非实时上层到高频伺服层的命令桥接；具体结论需用本机时间戳验证。",
+        "bilingual_terms": [
+          "生产者—消费者（producer-consumer）",
+          "队列水位（queue depth）",
+          "时延抖动（latency jitter）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.communication_realtime_control.6536ecbd3107ee9b",
+        "problem_title_zh": "50 Hz 遥操作上层接 250 Hz 执行层时，为什么队列会越积越多并产生突发震荡？",
+        "question_zh": "50 Hz 遥操作上层接 250 Hz 执行层时，为什么队列会越积越多并产生突发震荡？",
+        "source_locator": "现象描述、队列满丢报文段及可见评论质疑",
+        "source_url": "https://zhuanlan.zhihu.com/p/1898317277964768890",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "固定丢包使平均生产率低于 250 Hz 消费率时，队列会周期耗空；如果空队列被解释成无目标、零值或突然保持，关节目标就不连续。更稳妥的是按目标时间戳重采样，在有界延迟预算内插值，并对欠载采用最后安全值、速度限制或阻尼退化，同时监控 underrun。",
+        "applicability": "适用于上层采样率低于下层控制率的遥操作链。",
+        "bilingual_terms": [
+          "队列欠载（buffer underrun）",
+          "时间戳重采样（timestamp resampling）",
+          "安全保持（safe hold）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.communication_realtime_control.74a1f28025b2c0c1",
+        "problem_title_zh": "为降低遥操作延时而固定丢弃一部分报文，为什么反而出现持续抖动？",
+        "question_zh": "为降低遥操作延时而固定丢弃一部分报文，为什么反而出现持续抖动？",
+        "source_locator": "主动丢弃 1/5 后队列执行空与抖动段",
+        "source_url": "https://zhuanlan.zhihu.com/p/1898317277964768890",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文 Mermaid 图解释了上层异步写队列、下层严格周期取队列的结构；图是概念结构，不是实测时序证据。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1898317277964768890",
+    "published_display": "编辑于 2025-04-24 13:02・上海",
+    "query": "人形机器人 遥操作 颤抖 队列 50Hz 250Hz",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人上肢"
+    ],
+    "schema_version": 2,
+    "scope_id": "communication_realtime_control",
+    "selected_comments": [
+      {
+        "text": "有评论者表示自己把 buffer 改成类似 UR servo 的无缓冲机制后改善很多。"
+      },
+      {
+        "text": "另有评论笼统指出文中信息存在多处错误，但未逐条给出证据。"
+      }
+    ],
+    "wbc_relevance_reason": "上层全身目标与下层伺服环的频率桥接、队列策略和时延直接决定 WBC/遥操作真机稳定性。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1898317277964768890",
+  "summary": "作者记录 50 Hz Python 遥操作中间层向 250 Hz C++ 执行层插值并压队列：队列满时丢新报文形成长延时和突发震荡，主动丢弃后又因队列耗空造成持续抖动。作者将根因指向跨语言时钟和通信稳定性，但评论中有人笼统质疑文章部分信息。",
+  "title": "50 Hz 遥操作到 250 Hz 执行层的队列溢出与欠载抖动",
+  "version": null
+}

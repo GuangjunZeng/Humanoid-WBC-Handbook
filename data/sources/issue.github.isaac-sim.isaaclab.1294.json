@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "jtigue-bdai"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1294",
+  "captured_at": "2026-08-11T01:25:00+08:00",
+  "content_sha256": "8047b5ccc7a1d65a12afef2efbd71ce79f087f1dc2744d6efc54942f37ee5787",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 5 条评论；把静止微小偏差与另一个未闭环的接触加速度问题严格分开。",
+    "components": [
+      "Isaac Lab",
+      "IMU",
+      "linear acceleration",
+      "angular velocity",
+      "gravity offset"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "用户采集静止方块 IMU 数据并绘图；维护者按量级和轴向解释。"
+      ],
+      "diagnostics": [
+        "先查看数值量级；把约 1e-6 的横向/角速度偏差与 Z 轴重力偏置分开；检查 IMU 配置中的 gravity offset。"
+      ],
+      "effective_fixes": [
+        "若 Z 轴偏差不符合任务定义，按目标观测约定调整 IMU 的重力偏置配置；不要为了消除 1e-6 量级浮点误差盲目增加复杂滤波。"
+      ],
+      "environments": [
+        "IsaacLab IMU 线程；提案上下文为 Isaac Sim 4.2；用户把 IMU 挂在地面静止方块上；用户具体提交未说明。"
+      ],
+      "limits": [
+        "该结论只覆盖评论中的静止、小量级偏差；原提案同时指出有限差分加速度在接触/速度噪声下会产生显著噪声且依赖采样率，两者不能混为一类。"
+      ],
+      "outcomes": [
+        "collaborator 给出明确分类，但原用户没有继续报告改配置后的结果。"
+      ],
+      "problem_statements": [
+        "静止刚体上的 IsaacLab IMU 显示微小 x/y 线加速度、角速度和非零 Z 轴时，哪些属于数值误差，哪些来自配置？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "collaborator 将 x/y 与角速度的微小偏差归为浮点误差，将 Z 偏差归为配置中添加的重力偏置。"
+      ],
+      "symptoms": [
+        "静止状态下 x/y 线加速度和角速度出现微小偏差，Z 轴也存在偏移。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖 collaborator 的判断是：x/y 线加速度约 1e-6 的偏差以及角速度的微小偏差属于浮点误差；Z 轴偏差来自实现中添加的重力偏置，可通过配置更改。应先按量级和方向分类，再决定是否改 gravity offset。这个回答不代表接触场景中的大幅加速度误差也只是浮点噪声。",
+        "applicability": "适用于静止刚体的微小偏差检查；接触、IdealPDActuator 或不同版本下的大幅异常需另行诊断。",
+        "bilingual_terms": [
+          "线加速度（linear acceleration）",
+          "角速度（angular velocity）",
+          "浮点误差（floating-point error）",
+          "重力偏置（gravity offset）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.4cc6a27b4f2a6129",
+        "problem_title_zh": "IsaacLab 静止 IMU 出现微小非零加速度和角速度时，如何区分浮点误差与重力偏置？",
+        "question_zh": "IsaacLab 静止 IMU 出现微小非零加速度和角速度时，如何区分浮点误差与重力偏置？",
+        "source_locator": "Issue #1294，collaborator 回复 issuecomment-2567861220",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1294#issuecomment-2567861220",
+        "verification_refs": [
+          {
+            "locator": "collaborator 明确区分 1e-6 浮点误差与 Z 轴重力偏置",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1294#issuecomment-2567861220"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "用户评论包含曲线截图，但本卡只采用 collaborator 在文字中明确给出的量级和原因；未从截图补读数。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1294",
+    "query": "IsaacLab static IMU small acceleration angular velocity gravity offset floating point",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "静止刚体测试"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "Collaborator：x/y 线加速度约 1e-6 和角速度偏差是浮点误差，Z 偏差来自可配置的重力偏置。"
+      }
+    ],
+    "wbc_relevance_reason": "状态估计和 WBC 常用 IMU 零偏检查；把浮点量级误差、重力补偿和真实传感器噪声混为一谈会导致错误标定。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1294",
+  "summary": "在 IsaacLab IMU 加速度实现讨论中，一位用户把 IMU 固定在地面静止方块上，看到线加速度和角速度有偏差。项目 collaborator 明确解释：x/y 线加速度约 1e-6 的偏差及角速度偏差是浮点误差，Z 轴偏差来自添加的重力偏置，可在配置中更改。该说明不能外推到接触场景中的大幅有限差分噪声。",
+  "title": "静止 IMU 的微小非零读数与 Z 轴重力偏置应分开判断",
+  "version": null
+}

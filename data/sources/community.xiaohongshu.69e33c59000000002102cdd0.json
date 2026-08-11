@@ -1,0 +1,217 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "特仑输"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/69e33c59000000002102cdd0",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "87052dc362f061249d2f7a6b64649793becaa3b1d032ac5c4dbe33496d93c57e",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 4,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 29
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "gravity compensation",
+      "MIT mode",
+      "PD damping",
+      "manipulator"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者使用 kp=0、较小 kd、tau 重力补偿；评论讨论把 J4 靠近 J3 以减轻负载。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "6 轴机械臂；MIT 控制；J2 kd=0.8，其余约 0.1/0。"
+      ],
+      "limits": [
+        "非全尺寸人形；‘前几步角度’表述含混。"
+      ],
+      "outcomes": [
+        "没有调参后的复测，也没有电流/摩擦数据。"
+      ],
+      "problem_statements": [
+        "重力补偿后机械臂不掉，但拖动很涩，为什么不能直接把 KD 调大？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "J2 kd 过大直接增加速度阻尼；近端关节负载与模型补偿误差也可能迫使用户用高 kd 压振。"
+      ],
+      "symptoms": [
+        "机械臂能稳住，但 J2/J3 阻尼感强，向下拖动不丝滑。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "高 KD 会把关节速度直接变成阻尼力矩，能压住振动却破坏反驱手感。先核对重力模型和摩擦，再在限幅/安全保护下逐轴降低 kd、记录 tau/速度/电流；结构负载过大也应单独处理。该帖没有给最终参数。",
+        "applicability": "非全尺寸人形；‘前几步角度’表述含混。",
+        "bilingual_terms": [
+          "比例-微分控制（Proportional-Derivative Control, PD Control）",
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "质心（Center of Mass, CoM）",
+          "有效载荷（Payload）",
+          "重力补偿（Gravity Compensation）"
+        ],
+        "question_zh": "重力补偿后机械臂不掉，但拖动很涩，为什么不能直接把 KD 调大？",
+        "source_locator": "根帖 J2 kd=0.8 与 MIT 参数评论",
+        "source_url": "https://www.xiaohongshu.com/explore/69e33c59000000002102cdd0",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.force_control_manipulation.80f2aae5e1c51edb",
+        "problem_title_zh": "重力补偿后机械臂不掉，但拖动很涩，为什么不能直接把 KD 调大？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "候选未发现可见媒体；J2 kd=0.8、其余 0.1/0 与 MIT 参数来自正文/评论文本。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "69e33c59000000002102cdd0",
+    "published_display": "编辑于 04-18",
+    "query": "humanoid loco manipulation payload torque limit 问题",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "TRL-C DK1 开源机械臂/达妙电机"
+    ],
+    "schema_version": 2,
+    "scope_id": "force_control_manipulation",
+    "selected_comments": [
+      {
+        "text": "吕大海这台多少钱啊04-18浙江110"
+      },
+      {
+        "text": "特仑输作者复刻了这个开源机械臂项目：trlc-dk1    6个达妙电机一共4200 钣金和cnc在嘉立创做的，差不多三百左右04-18上海3回复"
+      },
+      {
+        "text": "吕大海回复 特仑输 : 达秒简直贵出天际04-18浙江赞回复"
+      },
+      {
+        "text": "特仑输作者回复 吕大海 : 怎么说 有便宜的推荐吗？我一直苦恼达妙有点小贵，所以夹爪准备用步进电机做的04-18上海赞回复"
+      },
+      {
+        "text": "吕大海回复 特仑输 : 一直在找，达秒确实好，但是达秒太贵了搞不定，其他机器狗拆机的也要三百左右一个，步进的微型谐波减速没看到合适的，要不太长，要不就一个两个在卖的04-18浙江赞回复"
+      },
+      {
+        "text": "曾哥回复 特仑输 : J1，J4-6可以换低扭矩的吧？末端力臂小。J4是否可以放到J3近端减轻J3负载？04-19广东赞回复"
+      },
+      {
+        "text": "特仑输作者回复 曾哥 : 我之前有这么设计过，但因为不懂机械，做出来稳定性有点差，后来就干脆直接抄开源项目了，其实j4放到j3上面旋转方向和关节同轴的设计不仅能减轻负载，还满足pieper判据方便逆解来着，但是不知道为啥具身的机械臂都是目前这种设计04-19上海赞回复"
+      },
+      {
+        "text": "曾哥回复 特仑输 : 我想过把J3，J4都换成单轴的。甚至想把J4放到超过J3的小臂末端（有点像工地吊塔T型臂），这样不但能减轻J3负载，还能平衡负载。可能结构比较复杂吧。04-19广东赞回复"
+      },
+      {
+        "text": "Way回复 特仑输 : 最近不是有一个开源的 seed 1000多04-19美国赞回复"
+      },
+      {
+        "text": "Kit回复 吕大海 : 我加油上帝07-03广东赞回复"
+      },
+      {
+        "text": "做了错饭回复 特仑输 : 伺泰威04-18广东赞回复"
+      },
+      {
+        "text": "盖里阿曹什么都会请问mit控制给的参数是怎样的？04-18浙江赞3"
+      },
+      {
+        "text": "特仑输作者kp=0。 kd很小，p为前几步的角度，pd为0， tau  是角度对应的重力补偿力矩04-18上海赞回复"
+      },
+      {
+        "text": "盖里阿曹什么都会回复 特仑输 : 谢谢特老师解答，还想继续问下，p设置为前几步的角度是啥意思，kp设置成0后，输出的时候不是会乘上p嘛，这一项不就为0了，p的值是不是就没意义了04-18浙江赞回复"
+      },
+      {
+        "text": "特仑输作者回复 盖里阿曹什么都会 : 哦 口误了，我想表达的是 重力补偿是拿前几步的实际角度作为目标角度的04-18上海赞回复"
+      },
+      {
+        "text": "momo补偿在哪，都快锁死了04-18湖北赞3"
+      },
+      {
+        "text": "特仑输作者我也不太懂哦，所以做了补偿的是啥样，是那种一推就会依靠惯性继续滑动的那种嘛？04-18上海赞回复"
+      },
+      {
+        "text": "特仑输作者回复 momo : 请问下那种怎么做呢04-19上海赞回复"
+      },
+      {
+        "text": "momo回复 特仑输 : 对04-19湖北赞回复"
+      },
+      {
+        "text": "普拉托汉德的操作员这肯定算是调得很不错了，如果你想要检查你调的好不好，你就可以把位置控制器的输入关掉，只有重力补偿，看看他会不会动，如果不会的话，那其实就算不错。04-20美国11"
+      },
+      {
+        "text": "特仑输作者谢谢 谢谢你的鼓励！04-20上海赞回复"
+      },
+      {
+        "text": "十年把kd调零就知道了04-19广东赞1"
+      },
+      {
+        "text": "特仑输作者kd调0一碰就直接飞走了，可能是我重力补偿里没有考虑速度04-19上海赞回复"
+      },
+      {
+        "text": "Jenkins AI这台负载多少呀04-18浙江赞1"
+      },
+      {
+        "text": "特仑输作者没测过04-18上海赞回复"
+      },
+      {
+        "text": "Kit达妙科技发来贺电07-03广东赞回复"
+      },
+      {
+        "text": "I.W你这个机械臂玩的很好啊04-26上海赞回复"
+      },
+      {
+        "text": "谁知道这个果子叫什么支持支持，敞开交流想法，可来南京一起合作，6位数不难，看到信息交好运，交流福报++，随缘，欢迎兄弟姐妹们。04-19江苏赞回复"
+      },
+      {
+        "text": "momo搜搜论文，一大堆04-19湖北赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "是‘不掉落但不好拖’的力控/阻抗调试实例。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.69e33c59000000002102cdd0",
+  "summary": "作者机械臂重力补偿中把 J2 kd 提到 0.8、其余 0.1/0，结果 J2/J3 下压阻尼很强。评论说明 MIT 参数为 kp=0、kd 很小、tau 为重力补偿力矩；另有建议通过电机布置减轻近端关节负载。",
+  "title": "重力补偿能托住但拖动很涩：KD、MIT 模式与结构负载讨论",
+  "version": null
+}

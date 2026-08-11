@@ -1,0 +1,142 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "hushmandesmaeili"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/222",
+  "captured_at": "2026-08-11T05:21:00+08:00",
+  "content_sha256": "755914cb2f38ea806cfe8c004876647d5ab5e4441b703997ef875faa33fb5476",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 9 条评论；只采用作者贴出的分段计时、构建命令与复测，不从截图估算额外数据。",
+    "components": [
+      "TSID",
+      "hierarchical quadratic programming",
+      "eiquadprog",
+      "CMake build type"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "协作者建议把 eiquadprog 配置命令改为 cmake .. -DCMAKE_BUILD_TYPE=RELEASE，作者重新构建后复测。"
+      ],
+      "diagnostics": [
+        "先按 compute sample、HQP setup、HQP solve 和 whole loop 分段计时，确认主要瓶颈在 HQP solve。",
+        "逐项检查 TSID 及其依赖的 CMake build type，而不是只确认 TSID 主库为 Release。",
+        "从作者贴出的安装命令发现 eiquadprog 只执行 cmake ..，没有显式 Release。"
+      ],
+      "effective_fixes": [
+        "以 CMAKE_BUILD_TYPE=RELEASE 重新配置并构建 eiquadprog。"
+      ],
+      "environments": [
+        "2024 年 TSID 源码构建与 Python 3.10 路径；Intel Xeon E3-1225 v5 @ 3.30 GHz；Pinocchio/hpp-fcl 由 robotpkg 安装；eiquadprog 最初用 cmake .. 构建。"
+      ],
+      "limits": [
+        "维护者的 1 kHz TALOS 数据是另一台 Intel i7 2.8 GHz 系统的项目经验，不是原作者机器的基准。",
+        "线程没有提供修改前后同一机器的完整统计分布，也没有证明所有 TSID 应用都能达到 0.5–1 kHz。",
+        "site-packages/dist-packages 的布局建议与本次 HQP 性能根因无关。"
+      ],
+      "outcomes": [
+        "作者确认单循环恢复到期望的 0.002 s，完整运行少于 10 s。"
+      ],
+      "problem_statements": [
+        "TSID Exercise 2 的 HQP solve 占用约 23–27 ms，使 2 ms 配置周期无法达到，怎样定位构建侧瓶颈？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "eiquadprog 没有以 Release 模式编译；维护者称依赖缺少 Release 在其代码上通常可能带来约二十倍耗时增加。"
+      ],
+      "symptoms": [
+        "compute sample 约 0.00003 s、HQP setup 约 0.00020 s、HQP solve 约 0.026 s，单循环约 0.027 s，明显超过 conf.dt=0.002 s。",
+        "一个 CPU core 持续 100%，完整运行约 107–120 s，而同伴机器少于 10 s。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "作者已把 TSID 本体设为 Release，但贴出的 eiquadprog 安装命令只有 cmake ..。协作者据此指出 eiquadprog 没有显式使用 CMAKE_BUILD_TYPE=RELEASE，维护者也确认这很可能是缺失点。作者改为 cmake .. -DCMAKE_BUILD_TYPE=RELEASE 并重建后，确认单循环回到 0.002 s，完整示例少于 10 s。因此应逐个核对求解器及依赖的构建类型，而不能只检查 TSID 主库。",
+        "applicability": "适用于原帖 TSID Exercise 2、eiquadprog 源码构建和所述 Intel Xeon/Python 3.10 环境；其他 HQP solver 或二进制包需要分别定位。",
+        "bilingual_terms": [
+          "层级二次规划（hierarchical quadratic programming, HQP）",
+          "求解周期（solve cycle）",
+          "发布构建（Release build）",
+          "采样周期（sampling period）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.tsid_eiquadprog_release_222",
+        "problem_title_zh": "TSID 的 HQP 求解远慢于配置控制周期",
+        "question_zh": "TSID 的 HQP solve 约 26 ms、循环约 27 ms，而 conf.dt 为 2 ms 时，原线程最终定位到什么构建问题？",
+        "source_locator": "Issue #222，协作者定位 issuecomment-1958893254；维护者确认 issuecomment-1959212460；作者复测 issuecomment-1959689788",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1959689788",
+        "verification_refs": [
+          {
+            "locator": "项目协作者从安装命令定位到 eiquadprog 未显式采用 Release",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1958893254"
+          },
+          {
+            "locator": "项目成员确认这很可能是缺失点",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1959212460"
+          },
+          {
+            "locator": "原作者确认改为 Release 后循环为 0.002 s、完整运行少于 10 s",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/222#issuecomment-1959689788"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.222",
+    "query": "TSID HQP solve 0.027 seconds eiquadprog Release build performance",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "TSID Exercise 2 示例",
+      "维护者提及的 TALOS 30-actuator robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "维护者说明 TSID 曾在 30 actuators TALOS、Intel i7 2.8 GHz 上以 1 kHz 使用，并优先要求核对所有依赖的 Release 模式。"
+      },
+      {
+        "text": "协作者从作者命令发现 eiquadprog 没有用 CMAKE_BUILD_TYPE=RELEASE。"
+      },
+      {
+        "text": "作者重建后确认单循环为 0.002 s，整段少于 10 s。"
+      }
+    ],
+    "wbc_relevance_reason": "TSID/HQP 常位于 WBC 高频主循环；该线程用分段耗时把瓶颈定位到 QP solver，并由构建命令和复测闭环说明依赖的 Debug/未优化构建会主导周期。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.222",
+  "summary": "TSID #222 的作者运行 Exercise 2 时测得 HQP solve 约 23–27 ms、单循环约 27 ms，而配置 dt 为 2 ms；整段运行约 107–120 s。维护者首先要求检查所有依赖是否缺少 Release 构建，并给出 TALOS 30 actuators、Intel i7 2.8 GHz 上 TSID 1 kHz 的项目经验。随后协作者从作者贴出的命令发现 eiquadprog 使用了 cmake ..，没有传 CMAKE_BUILD_TYPE=RELEASE。作者以 Release 重新配置后确认循环回到 0.002 s，整段运行少于 10 s。",
+  "title": "TSID 的 HQP 循环从二十七毫秒恢复到两毫秒：检查 eiquadprog 的构建类型",
+  "version": null
+}

@@ -1,0 +1,144 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "李国宝​​"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1903761818360455378",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "2f348aba8402983875c884f13fef990c5e98fdcba0c1a0b8c249a63f8c84b1f2",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 7
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "unitree_sdk2",
+      "WSL",
+      "network bridge",
+      "Cyclone DDS"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "桥接网卡、给 WSL eth0 配同网段固定 IP、ping 机器人；用 ankle_swing 示例验证。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Ubuntu 20.04/22.04/24.04；x86_64/aarch64；Windows 11 WSL；G1 网段 192.168.123.0/24。"
+      ],
+      "limits": [
+        "网络桥接有系统与安全风险；无线可用性未确认；版本需对照官方 SDK。"
+      ],
+      "outcomes": [
+        "作者称网线直连和 WSL 桥接可用；评论中的固件问题只给出升级结论。"
+      ],
+      "problem_statements": [
+        "WSL 中 Unitree SDK2 已编译，但访问不到 G1，怎么分层验证？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "WSL 虚拟网卡与宿主物理网段隔离；库目录/CPU 架构选错；固件可能过旧。"
+      ],
+      "symptoms": [
+        "SDK 能编译但 WSL 与机器人网络隔离；评论另有 x86 误加载 aarch64 libddsc。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先确认使用与 CPU 架构匹配的库；再让 WSL 网卡真正进入 G1 的 192.168.123.0/24 网段，配置固定地址后先 ping 192.168.123.161，最后运行最小示例。帖子采用桥接方案，但具体 Windows/WSL 版本和网络安全策略需独立核验。",
+        "applicability": "网络桥接有系统与安全风险；无线可用性未确认；版本需对照官方 SDK。",
+        "bilingual_terms": [
+          "数据分发服务（Data Distribution Service, DDS）",
+          "软件开发工具包（Software Development Kit, SDK）"
+        ],
+        "question_zh": "WSL 中 Unitree SDK2 已编译，但访问不到 G1，怎么分层验证？",
+        "source_locator": "正文‘Hack 操作’及评论的架构/固件讨论",
+        "source_url": "https://zhuanlan.zhihu.com/p/1903761818360455378",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.deployment_firmware_sdk.d7082f96792c522e",
+        "problem_title_zh": "WSL 中 Unitree SDK2 已编译，但访问不到 G1，怎么分层验证？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "四个截图位用于 SDK 编译、ankle_swing 与 Windows 网桥步骤；配置重点是 CPU 架构匹配、192.168.123.x 网段和 ping 验证。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1903761818360455378",
+    "published_display": "发布于 2025-05-08 14:24・上海",
+    "query": "Unitree G1 firmware SDK 版本 部署 兼容",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "deployment_firmware_sdk",
+    "selected_comments": [
+      {
+        "text": "解决了，得把固件升级到最新版本才行"
+      },
+      {
+        "text": "你好，请问高层运动控制的例程应该怎么使用呢？"
+      },
+      {
+        "text": "example有，直接跑"
+      },
+      {
+        "text": "你好，请教一下，可以通过无线方式执行  ./bin/g1_ankle_swing_example eth0 这步操作吗？"
+      },
+      {
+        "text": "你得在他们的那个开发机跑，无线应该是不行的。"
+      },
+      {
+        "text": "专家，你好！请教个问题~你是在什么系统上运行的，arm or x86ubuntu？我在x86_64ubuntu系统上运行他们的例程，总是报错error while loading shared libraries: /home/hdl/unitree_sdk2/thirdparty/lib/aarch64/libddsc.so.0: file too short     这个aarch64/libddsc.so.0下载下来就确实很小是因为在x86上安装arm编译器没安装对吗？还是宇树提供的这个库文件有点问题"
+      },
+      {
+        "text": "x86，直接Ubuntu上搞的。"
+      }
+    ],
+    "wbc_relevance_reason": "涵盖 SDK 编译、架构库误用和机器人直连网络的常见部署断点。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1903761818360455378",
+  "summary": "作者在 Ubuntu 20.04/22.04/24.04 编译 SDK2，给出 cmake/make 与 ankle_swing 验证；在 Windows 11 WSL 场景通过桥接物理网卡与 WSL 适配器、设置 192.168.123.x 地址访问 G1 机载 192.168.123.161。评论提示某问题需升级固件。",
+  "title": "Unitree SDK2 编译与 WSL 直连 G1 的网络备忘",
+  "version": null
+}

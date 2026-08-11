@@ -1,0 +1,159 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "小红薯66D6C80D"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6899d862000000002203b228",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "eb0f95d53ae34edf32a20cb47f15da1f05efad68ccc262ab06e0aae617218913",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 12
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Legged Gym",
+      "Isaac Gym",
+      "Horovod",
+      "multi-GPU"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "社区建议先按显存提高 num_envs，并回看 Learning to Walk in Minutes。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Legged Gym/Isaac Gym；评论者称 RTX 4090；num_envs 4096→10000+。"
+      ],
+      "limits": [
+        "硬件和 batch/mini-batch 配置缺失，不能把一万环境作为通用值。"
+      ],
+      "outcomes": [
+        "单个评论称 4090 可开一万多但更高无收益；多 GPU 问题未解决。"
+      ],
+      "problem_statements": [
+        "Legged Gym 开更多环境或 Horovod 多 GPU 没变快，应该测什么？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "可能受显存、采样/优化比、同步通信和任务统计效率共同限制，但原帖未测。"
+      ],
+      "symptoms": [
+        "Horovod 打开后似乎没变化；增加 num_envs 后收益饱和。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不要只看 num_envs：记录每秒仿真步、policy update 时间、显存、GPU 利用率、跨 GPU 同步时间，并保持 batch/mini-batch 与更新比可比。社区称 4090 在一万多环境后收益饱和，但 Horovod 如何配置仍未解决。",
+        "applicability": "硬件和 batch/mini-batch 配置缺失，不能把一万环境作为通用值。",
+        "bilingual_terms": [
+          "图形处理器（Graphics Processing Unit, GPU）",
+          "大规模并行仿真（Massively Parallel Simulation）"
+        ],
+        "question_zh": "Legged Gym 开更多环境或 Horovod 多 GPU 没变快，应该测什么？",
+        "source_locator": "根帖与关于 4090/一万环境的评论",
+        "source_url": "https://www.xiaohongshu.com/explore/6899d862000000002203b228",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.compute_performance_memory.5bf7c5b9e9005cd3",
+        "problem_title_zh": "Legged Gym 开更多环境或 Horovod 多 GPU 没变快，应该测什么？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个媒体位没有显示可读取的 GPU profiler、显存或吞吐曲线；因此一万环境的说法保持为待验证评论经验。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6899d862000000002203b228",
+    "published_display": "2025-08-11",
+    "query": "人形机器人 并行训练 GPU 利用率 慢",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "腿式机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "compute_performance_memory",
+    "selected_comments": [
+      {
+        "text": "Blake Yang大gpu把numenvs开大一些，没问题，4090可以开到1w多但亲测如果再高的话，训练速度和效果就不会提高了2025-08-12新加坡21"
+      },
+      {
+        "text": "小红薯66D6C80D作者嗯呢嗯呢，和legged gym论文的内容描述的现象也比较一致2025-08-13上海赞回复"
+      },
+      {
+        "text": "荒芜好像在某个项目下某个大佬说，这是legged_gum框架下尝试出的比较好的参数2025-08-11安徽21"
+      },
+      {
+        "text": "小红薯66D6C80D作者有具体定位吗大佬2025-08-11上海赞回复"
+      },
+      {
+        "text": "猫毛过敏咖啡因不耐受的猫咖旅人一灯青因为大部分任务，并行数大的对性能提升并没有很大的效果，反而会让训练时间变长2025-08-13北京赞回复"
+      },
+      {
+        "text": "可乐加冰看learning to walk in minutes那篇2025-08-11加拿大1回复"
+      },
+      {
+        "text": "荒芜2025-08-11安徽55"
+      },
+      {
+        "text": "小红薯66D6C80D作者谢谢！2025-08-11上海赞回复"
+      },
+      {
+        "text": "荒芜回复 小红薯66D6C80D : 不用客气，我也刚开始搞这个，多多交流2025-08-11安徽赞回复"
+      },
+      {
+        "text": "我大招好了并非，你只要显卡显存够大就可以开更多2025-08-11日本赞回复"
+      },
+      {
+        "text": "小红薯66D6C80D作者回复 我大招好了 : 噢噢，那您知道这个多GPU训练的问题吗2025-08-11上海赞回复"
+      },
+      {
+        "text": "我大招好了回复 小红薯66D6C80D : 看原论文，learning to walk in minutes2025-08-11日本2回复"
+      }
+    ],
+    "wbc_relevance_reason": "记录了并行环境数不是越大越好的社区观察，并暴露缺失的性能测量。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6899d862000000002203b228",
+  "summary": "作者询问 4096 环境和 Horovod 多 GPU；评论称 4090 可到一万多环境，但继续增加后训练速度和效果不再提升，另有观点认为并行数过大会延长训练。没有给显存、吞吐或 Horovod 配置数据。",
+  "title": "Legged Gym 的 num_envs 与多 GPU 收益为什么会饱和",
+  "version": null
+}

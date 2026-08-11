@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <style>
+    .skeleton-a { animation: drift-a 24s ease-in-out infinite alternate; }
+    @keyframes drift-a { from { transform: translate(-1px, -1px); } to { transform: translate(4px, 4px); } }
+    @media (max-width: 640px), (prefers-reduced-motion: reduce) {
+      .skeleton-a { animation: none; }
+    }
+  </style>
+  <g fill="none" stroke="#5c7e9a" stroke-width="1.25" opacity="0.07">
+    <g class="skeleton-a">
+      <path d="M260 160 260 245 220 320 175 395M260 245l44 72 49 42M260 245l0 120-58 96-20 124M260 365l57 98 18 126"/>
+      <path d="M175 395l-36 50M353 359l44 48M182 585l-19 54M335 589l20 54"/>
+      <circle cx="260" cy="136" r="24"/>
+      <circle cx="260" cy="245" r="7"/><circle cx="220" cy="320" r="7"/>
+      <circle cx="175" cy="395" r="7"/><circle cx="139" cy="445" r="5"/>
+      <circle cx="304" cy="317" r="7"/><circle cx="353" cy="359" r="7"/>
+      <circle cx="397" cy="407" r="5"/><circle cx="260" cy="365" r="8"/>
+      <circle cx="202" cy="461" r="7"/><circle cx="182" cy="585" r="7"/>
+      <circle cx="163" cy="639" r="5"/><circle cx="317" cy="463" r="7"/>
+      <circle cx="335" cy="589" r="7"/><circle cx="355" cy="643" r="5"/>
+    </g>
+    <path opacity="0.42" stroke-dasharray="3 10" d="M470 232h168M964 708h-170M555 780h470M609 174h390"/>
+    <circle cx="470" cy="232" r="3"/><circle cx="638" cy="232" r="3"/>
+    <circle cx="794" cy="708" r="3"/><circle cx="964" cy="708" r="3"/>
+  </g>
+</svg>

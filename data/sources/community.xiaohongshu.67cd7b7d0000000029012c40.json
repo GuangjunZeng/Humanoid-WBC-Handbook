@@ -1,0 +1,227 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "今天又学2小时"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/67cd7b7d0000000029012c40",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "614832526ba88680b0c1dc3a9c6c4e38c19f746d0d57c2b8ffe9bc4712b93010",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 6,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 35
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Isaac Sim 4.5",
+      "Isaac Lab 2.0",
+      "asset cache",
+      "headless"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "升级 pip，下载资产包并配置本地资产目录，再分别验证 Isaac Sim 资产页和 Isaac Lab 训练。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Sim 4.5；Isaac Lab 2.0；pip；国内网络；本地或远程 Ubuntu/Windows 场景。"
+      ],
+      "limits": [
+        "图中具体配置值未逐字符导出；版本固定且会过时。"
+      ],
+      "outcomes": [
+        "作者称本地训练可正常启动；评论中的 headless 回放/远程 GUI 没有统一解法。"
+      ],
+      "problem_statements": [
+        "Isaac Sim/Lab 安装完成却在首次验证或训练时卡死，如何判断是安装还是资产问题？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "默认从 Amazon S3 拉 USD 资产；pip 未升级导致缺模块；远程环境缺可用图形/streaming。"
+      ],
+      "symptoms": [
+        "Isaac Sim/Isaac Lab 验证或 RL 训练阶段卡死，看起来像安装失败；远程服务器看不到 GUI。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先看进程是否在拉取云端 USD 资产，再把资产包离线下载并让 isaacsim.exp.base.kit、user.config.json 指向本地目录；随后把 Isaac Sim 资产加载与 Isaac Lab 训练分开验证。远程无 GUI 属于另一个问题，不能用这套资产修复代替图形栈诊断。",
+        "applicability": "图中具体配置值未逐字符导出；版本固定且会过时。",
+        "bilingual_terms": [
+          "强化学习（Reinforcement Learning, RL）"
+        ],
+        "question_zh": "Isaac Sim/Lab 安装完成却在首次验证或训练时卡死，如何判断是安装还是资产问题？",
+        "source_locator": "正文图2–图12说明及远程服务器评论",
+        "source_url": "https://www.xiaohongshu.com/explore/67cd7b7d0000000029012c40",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.8ea75a6b0d4021e4",
+        "problem_title_zh": "Isaac Sim/Lab 安装完成却在首次验证或训练时卡死，如何判断是安装还是资产问题？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "14 个图位按正文图2–12串起 pip、离线资产包、isaacsim.exp.base.kit、user.config.json 与训练验证；关键配置含本地资产路径，但未逐字符 OCR 复写图片。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "67cd7b7d0000000029012c40",
+    "published_display": "编辑于 2025-03-10",
+    "query": "Isaac Lab humanoid 安装 依赖 版本 报错",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Isaac Lab 示例机器狗"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [
+      {
+        "text": "不舔酸奶盖儿请问试过远程服务器装嘛ubuntu22.04vnc2025-07-17上海110"
+      },
+      {
+        "text": "今天又学2小时作者没有用过2025-07-17上海赞回复"
+      },
+      {
+        "text": "阳岸解决了吗最近导师让开始着手这方面的知识，部署仿真环境2025-08-14山东赞回复"
+      },
+      {
+        "text": "ninthday这个试过，可能本人比较菜，在远程服务器没有显示器的情况下无论如何都没法通过streaming看到画面2025-08-19陕西1回复"
+      },
+      {
+        "text": "冰糖雪梨🍐回复 ninthday : 我也是，租的autodl，应该是云端不支持GUI，试了各种方法看不到gazebo画面2025-09-26安徽1回复"
+      },
+      {
+        "text": "编号86757阿里云可以部署，就是有点贵贵的，我蹭了300学生券2025-10-28四川1回复"
+      },
+      {
+        "text": "isaaclab回复 阳岸 : 02-27广东赞回复"
+      },
+      {
+        "text": "isaaclab回复 ninthday : 02-27广东赞回复"
+      },
+      {
+        "text": "isaaclab回复 冰糖雪梨🍐 : 02-27广东赞回复"
+      },
+      {
+        "text": "Irene_回复 ninthday : headless完训练结束后可以看到吗，还是只是过程中看不到呀03-07北京赞回复"
+      },
+      {
+        "text": "ninthday回复 Irene_ : 训练过程中肯定是看不到的。如果是headless的话。他听说是有回放功能但是我当时调了很久也没调出来03-08北京赞回复"
+      },
+      {
+        "text": "Winter.（见过薛之谦版）新手，能请教一下isaac sim/lab/ros有啥区别吗，打算强化学习/用数据集模仿学习的话要学哪个2025-10-13北京赞3"
+      },
+      {
+        "text": "今天又学2小时作者强化学习用Isaac lab，它是在Isaac sim基础上加了强化学习要用的框架2025-10-13上海1回复"
+      },
+      {
+        "text": "Winter.（见过薛之谦版）回复 今天又学2小时 : 谢谢您，明白了，所以是先安装sim再安装lab，另外想问一下租服务器选哪个镜像架构（pytorch,miniconda等）是不是都差不多，感觉用不到，因为主要用的是sim，对这个有影响嘛2025-10-13北京赞回复"
+      },
+      {
+        "text": "今天又学2小时作者回复 Winter.（见过薛之谦版） : 服务器你也可以试着用比较纯净的环境然后直接用英伟达官方的Isaac lab镜像。 @IT修道者 看看你有啥评论2025-10-13上海1回复"
+      },
+      {
+        "text": "徒手拆高达这玩意就是个无底大坑2025-03-10新加坡53"
+      },
+      {
+        "text": "今天又学2小时作者行业还很新，工具链不会很成熟2025-03-10上海3回复"
+      },
+      {
+        "text": "捕鱼儿海实习做这玩意儿，干了俩周0产出，一堆问题，感觉天都塌了2025-07-18江苏1回复"
+      },
+      {
+        "text": "今天又学2小时作者回复 捕鱼儿海 : 实习能接触到最新的工具，也不错的2025-07-18上海赞回复"
+      },
+      {
+        "text": "Transttention神医啊，新手被资产硬控了好久，按图9方法终于解决了2025-07-29云南赞1"
+      },
+      {
+        "text": "今天又学2小时作者2025-07-29上海赞回复"
+      },
+      {
+        "text": "F.感谢博主分享这么有用的经验，接下来也打算玩Isaac Lab，真是及时雨！2025-03-09安徽赞1"
+      },
+      {
+        "text": "今天又学2小时作者加油2025-03-09上海1回复"
+      },
+      {
+        "text": "今天有课这个是不是就能解决pip安装isaaclab和isaacsim但是拉取aws云端资产很慢的问题了？就类似于二进制安装isaacsim时文档里说的配置本地下载的资产的方法？2025-10-08吉林赞2"
+      },
+      {
+        "text": "今天又学2小时作者pip应该是类似的方法，要看一下pip site package里对应的配置文件的位置2025-10-08上海赞回复"
+      },
+      {
+        "text": "今天有课回复 今天又学2小时 : 好的好的谢谢，找到这个文件了已经，等我下完asset试试2025-10-08吉林赞回复"
+      },
+      {
+        "text": "Ayanami是的，点击issac assets 会直接卡住的2025-03-13广东赞2"
+      },
+      {
+        "text": "今天又学2小时作者默认从aws拉资产，要改配置走本地路径2025-03-13上海1回复"
+      },
+      {
+        "text": "Ayanami回复 今天又学2小时 : 这上百g 下到猴年马月2025-03-13广东赞回复"
+      },
+      {
+        "text": "小熊宝宝大佬，好厉害，想请教一下，安装好了之后，可以直接用下面的代码验证吗，会不会报错2025-06-12河北赞1"
+      },
+      {
+        "text": "今天又学2小时作者可以，不过涉及到资产加载的操作容易卡2025-06-24上海赞回复"
+      },
+      {
+        "text": "Bot驿栈现在还有gym吗2025-12-29上海赞1"
+      },
+      {
+        "text": "今天又学2小时作者新的项目用的少了吧2025-12-29上海赞回复"
+      },
+      {
+        "text": "有了offer也不改名同样在用isaaclab，在看他的rl代码2025-03-09广东赞1"
+      },
+      {
+        "text": "今天又学2小时作者有经验一起分享2025-03-10上海赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "把‘安装失败’拆分为依赖问题、资产拉取和图形显示三层。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.67cd7b7d0000000029012c40",
+  "summary": "笔记以 Isaac Sim 4.5 + Isaac Lab 2.0 pip 安装为例，指出国内网络下首次启动会从 Amazon S3 拉资产而假性卡死；建议预下载三个资产包，配置 isaacsim.exp.base.kit 和 user.config.json 指向本地路径。评论显示远程服务器无 GUI/streaming 仍是独立 blocker。",
+  "title": "Isaac Lab 2.0 安装后卡死：S3 资产与本地缓存路径排查",
+  "version": null
+}

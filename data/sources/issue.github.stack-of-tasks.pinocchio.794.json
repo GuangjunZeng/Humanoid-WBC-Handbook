@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "mkatliar"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/794",
+  "captured_at": "2026-08-11T01:41:46+08:00",
+  "content_sha256": "68eb40543011dfee60ea547646905a80024b6f368e03bc47d922c0c402212e0d",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 7 条评论；没有从相关 #777 补写该线程未回答的限位映射。",
+    "components": [
+      "Pinocchio",
+      "URDF",
+      "continuous joint",
+      "SO(2)",
+      "configuration space"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者将 continuous 改为 revolute 对照；项目 contributor 解释两种配置表示和共同的单一速度维度。"
+      ],
+      "diagnostics": [
+        "分别检查 model.nq、model.nv 和关节模型类型；不要用 URDF 非固定关节数量直接推断配置向量长度。"
+      ],
+      "effective_fixes": [
+        "这不是需要修复的 bug；按关节模型的 nq/nv 布局构造配置与速度，连续角配置写成合法的 cos(theta)、sin(theta)。"
+      ],
+      "environments": [
+        "最小 C++/URDF 示例；Pinocchio 2019 年线程；具体发布版本未说明。"
+      ],
+      "limits": [
+        "原线程只解释表示法，没有给出如何把上下限映射到切空间；限位问题需单独处理。"
+      ],
+      "outcomes": [
+        "提问者确认已经理解；维护者准备把说明补入关节文档。"
+      ],
+      "problem_statements": [
+        "为什么 Pinocchio 中一个 URDF continuous 关节使 model.nq 增加 2，而 revolute 关节只增加 1？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "Pinocchio 用 cos(theta)、sin(theta) 的 SO(2) 表示承载无界角度配置，而不是直接存一个 theta。"
+      ],
+      "symptoms": [
+        "单个 continuous 关节得到 model.nq==2，原测试预期 nq==1 因而断言失败。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "这是预期设计。项目 contributor 明确说明 continuous 关节的配置使用 SO(2) 复数表示，即 cos(theta)、sin(theta)，所以配置维数 nq 为 2；关节速度仍是单一 theta_dot，所以 nv 为 1。它与球关节用四元数表示配置、但切空间维数更小的思路相同。构造状态和索引时应分别使用模型给出的 nq 与 nv。",
+        "applicability": "适用于 Pinocchio 从 URDF continuous 关节构造的无界转动关节模型；有界 revolute 关节仍使用单一角配置。",
+        "bilingual_terms": [
+          "连续关节（continuous joint）",
+          "配置空间（configuration space）",
+          "切空间（tangent space）",
+          "二维特殊正交群（two-dimensional special orthogonal group, SO2）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.438e2524f327caf6",
+        "problem_title_zh": "Pinocchio 解析 continuous 关节后为什么 nq=2、nv=1，配置和速度应怎样理解？",
+        "question_zh": "Pinocchio 解析 continuous 关节后为什么 nq=2、nv=1，配置和速度应怎样理解？",
+        "source_locator": "Issue #794，项目 contributor 回复 issuecomment-490049010 与 issuecomment-490050573",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/794#issuecomment-490050573",
+        "verification_refs": [
+          {
+            "locator": "项目 contributor 解释 continuous 的 cos/sin 配置与单一 theta_dot 速度",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/794#issuecomment-490050573"
+          },
+          {
+            "locator": "提问者确认解释清楚",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/794#issuecomment-490090729"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.794",
+    "query": "Pinocchio URDF continuous joint nq two cos sin configuration",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "包含 continuous URDF 关节的机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "Contributor：continuous 关节使用 SO(2) 的 cos(theta)、sin(theta) 表示。"
+      },
+      {
+        "text": "Contributor：continuous 配置为两个分量，但速度仍是一个 theta_dot。"
+      },
+      {
+        "text": "提问者确认已经理解。"
+      }
+    ],
+    "wbc_relevance_reason": "连续关节的配置与切空间维数不同；若 WBC、IK 或状态映射把 nq 当成关节数或 nv，会造成索引、限位和误差维度错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.794",
+  "summary": "Pinocchio #794 用最小 URDF 复现：continuous 关节使 model.nq 增加 2，而 revolute 只增加 1。两位项目 contributor 明确解释，这不是解析错误；连续关节的配置使用 SO(2) 复数表示 cos(theta)、sin(theta)，但速度仍只有 theta_dot，因此该关节 nq=2、nv=1，类似球关节以四元数表示配置。提问者确认解释清楚，并请求补充文档。",
+  "title": "Pinocchio 连续转动关节用 cosθ、sinθ 表示配置，因此 nq=2 而 nv=1",
+  "version": null
+}

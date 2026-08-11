@@ -1,0 +1,149 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Kyungmin Lee @lee_kyungmin21"
+  ],
+  "canonical_url": "https://x.com/lee_kyungmin21/status/1984335933907546567",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "abfd67d1e95ec56d8f4b2a14f7d62733cc1074ce47c740aaaeb138514fcf84fc",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 4
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "PHUMA",
+      "physical regularization",
+      "motion retargeting",
+      "AMASS"
+    ],
+    "domain_hints": [
+      "training_data_retargeting"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "加入 physical regularizing loss。"
+      ],
+      "diagnostics": [
+        "比较 unseen motion tracking 和 path following。"
+      ],
+      "effective_fixes": [
+        "候选方法是在重定向阶段施加物理正则。"
+      ],
+      "environments": [
+        "MoCap+人类视频；物理正则重定向；未见动作模仿与路径跟随评测。"
+      ],
+      "limits": [
+        "数值需论文表格确认；未说明硬件 WBC 结果。"
+      ],
+      "outcomes": [
+        "线程称规模 3× AMASS，未见视频跟踪提升约 20%。"
+      ],
+      "problem_statements": [
+        "现有数据集在规模与物理质量之间二选一。"
+      ],
+      "safety_notes": [
+        "重定向数据上实机前仍需关节限位、接触和力矩可行性验证。"
+      ],
+      "suspected_causes": [
+        "纯运动学重定向没有强制动态可行性。"
+      ],
+      "symptoms": [
+        "大规模数据可能物理不可行，小规模高质量数据泛化不足。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "它从 MoCap/视频扩展数据，并在 retargeting 中加入 physical regularizing loss，目标是同时保留规模和动态可行性。线程称达到 3× AMASS 规模、未见动作跟踪约提升 20%，但应回到论文核对指标。",
+        "applicability": "适用于人形运动跟踪数据构建。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "关节力矩（Joint Torque）",
+          "动作重定向（Motion Retargeting）",
+          "动作跟踪（Motion Tracking）"
+        ],
+        "question_zh": "大规模人类动作数据物理不可行时，PHUMA 如何处理？",
+        "source_locator": "根帖及作者 1/4–4/4 线程",
+        "source_url": "https://x.com/lee_kyungmin21/status/1984337004558238173",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.retargeting_and_dataset.66998894d913c595",
+        "problem_title_zh": "大规模人类动作数据物理不可行时，PHUMA 如何处理？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图视频缩略图展示大量人形动作网格，支持“动作集合”语境；不能单独证明 3× 规模或 20% 提升。"
+    ],
+    "platform": "x",
+    "post_id": "1984335933907546567",
+    "published_display": "2025-10-31T19:05:28.000Z",
+    "query": "PHUMA physically grounded retargeting AMASS",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_and_dataset",
+    "selected_comments": [
+      {
+        "author_display": "Kyungmin Lee\n@lee_kyungmin21\n·\nNov 1, 2025",
+        "published_display": "2025-10-31T19:08:27.000Z",
+        "text": "Existing humanoid datasets face a dilemma:\n• Small Scale + High Physical Quality (e.g., LaFAN1, Loco-Mujoco)\n• Large Scale + Low Physical Quality (e.g., Humanoid-X)\n\n Our Goal: To deliver the first dataset with Large Scale AND High Physical Quality for humanoid retargeting."
+      },
+      {
+        "author_display": "Kyungmin Lee\n@lee_kyungmin21\n·\nNov 1, 2025",
+        "published_display": "2025-10-31T19:09:43.000Z",
+        "text": "We achieved this breakthrough by proceeding in two key steps:\n\n1. Collecting Diverse Human Motion Sources (from MoCap to Videos).\n\n2. Retargeting them with an added Physical Regularizing Loss to enforce dynamic feasibility."
+      },
+      {
+        "author_display": "Kyungmin Lee\n@lee_kyungmin21\n·\nNov 1, 2025",
+        "published_display": "2025-10-31T19:11:02.000Z",
+        "text": "This process allowed us to secure a large-scale collection of physically feasible human motion sources, resulting in PHUMA.\n\n• PHUMA maximizes the physical reliability of retargeted humanoid motions compared to other datasets."
+      },
+      {
+        "author_display": "Kyungmin Lee\n@lee_kyungmin21\n·\nNov 1, 2025",
+        "published_display": "2025-10-31T19:11:42.000Z",
+        "text": "We tested PHUMA’s effectiveness in imitating unseen motions and path following.\n\n1. Motion Tracking Task:\n• The policy trained on PHUMA achieved the highest success rate when imitating unseen motions, proving its strong generalization capability."
+      }
+    ],
+    "wbc_relevance_reason": "动作数据的物理可行性决定 tracking policy 与 WBC 是否从训练阶段就带有不可执行参考。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.1984335933907546567",
+  "summary": "PHUMA 试图兼顾规模与物理质量：从 MoCap 和视频收集动作，再在重定向中加入 physical regularizing loss 以约束动态可行性。线程称数据规模约为 AMASS 的 3 倍，并在未见视频动作跟踪上提升约 20%。",
+  "title": "PHUMA：用物理正则缓解大规模动作数据的可执行性问题",
+  "version": null
+}

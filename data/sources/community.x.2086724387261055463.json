@@ -1,0 +1,169 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Lukas Ziegler @lukas_m_ziegler"
+  ],
+  "canonical_url": "https://x.com/lukas_m_ziegler/status/2086724387261055463",
+  "captured_at": "2026-08-10T20:01:04+08:00",
+  "content_sha256": "c35d89b7a9c2d597ab392a3becc0f67ea49e0ea4d7293c7db7b138e6bea2fb9d",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；可见回复 3 条，未绕过折叠或不可访问内容；社区说法尚未由论文、源码或官方文档独立验证。",
+    "components": [
+      "NVIDIA Isaac Sim/Lab",
+      "3D Gaussian Splatting",
+      "RGB-only policy",
+      "domain randomization",
+      "collision mesh"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "用一次 360° 扫描生成 Gaussian Splat 与碰撞网格，并在同一场景中训练 RGB 策略。"
+      ],
+      "diagnostics": [
+        "核对视觉重建与碰撞网格是否来自同一场地和尺度；记录摩擦、质量、地面柔顺性与现场变化。"
+      ],
+      "effective_fixes": [
+        "原帖候选方案是现场重建加同源碰撞网格，再结合 domain randomization 和大视觉编码器。"
+      ],
+      "environments": [
+        "真实办公室 360° 扫描；度量尺度 Gaussian Splat；同源碰撞网格；Isaac Sim/Lab；RGB-only 导航策略。"
+      ],
+      "limits": [
+        "未披露机器人、任务成功率、随机化参数、失败案例或独立复现；回复指出杂物、地面柔顺性和重扫描频率仍是边界。"
+      ],
+      "outcomes": [
+        "作者声称无需真机微调即可部署，并把现场适配从数月缩短到数天；原帖没有量化验证。"
+      ],
+      "problem_statements": [
+        "通用随机几何和无纹理仿真中的 RGB 策略难以泛化到真实部署场地。"
+      ],
+      "safety_notes": [
+        "真实场地部署前应在低速、限力和防碰撞条件下验证碰撞网格、深度遮挡、玻璃门与地面顺应性。"
+      ],
+      "suspected_causes": [
+        "视觉外观和物理碰撞几何不一致；域随机化未覆盖杂物、摩擦、质量或地面柔顺性；场地变化使已有扫描过期。"
+      ],
+      "symptoms": [
+        "通用假场景只教会结构，无法覆盖真实材质、照明和语义；真机碰撞会造成硬件损伤和长时间复位。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "候选流程是扫描真实部署场地，用同一重建生成度量尺度 3D Gaussian Splat 与碰撞网格，再在 Isaac Sim/Lab 中训练并加入域随机化（domain randomization）和大视觉编码器。这样试图让视觉和物理几何一致。原帖没有给出独立实验，因此只能作为待验证方案。",
+        "applicability": "适用于部署地点可预先扫描、以 RGB 感知为主的固定场地任务；动态或大范围开放环境不一定适用。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "域随机化（Domain Randomization, DR）"
+        ],
+        "question_zh": "RGB-only 人形机器人策略在通用仿真中难以 sim-to-real 时，原帖采用了什么场景构建方法？",
+        "source_locator": "根帖正文",
+        "source_url": "https://x.com/lukas_m_ziegler/status/2086724387261055463",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.748e37ecc7834601",
+        "problem_title_zh": "RGB-only 人形机器人策略在通用仿真中难以 sim-to-real 时，原帖采用了什么场景构建方法？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "可见回复并未确认。回复者指出摩擦、质量、杂物和地面柔顺性仍可能破坏迁移；现场持续变化时还需要设计重扫描 cadence（频率）。因此扫描保真度不能替代物理参数验证和运行中变更检测。",
+        "applicability": "适用于宣称无需真机微调的现场重建方案。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "域随机化（Domain Randomization, DR）"
+        ],
+        "question_zh": "现场扫描能否单独保证零微调 sim-to-real？",
+        "source_locator": "@TabDuoBao 与 @Robo_Reliance 的可见回复",
+        "source_url": "https://x.com/tabduobao/status/2086739190709199105",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.287b162284567179",
+        "problem_title_zh": "现场扫描能否单独保证零微调 sim-to-real？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "可见截图展示根帖前半段文字，确认其比较通用随机无纹理场景与真实办公室重建；截图没有日志、物理参数或成功率曲线，不能验证“零真机微调”结论。"
+    ],
+    "platform": "x",
+    "post_id": "2086724387261055463",
+    "published_display": "2026-08-10T08:00:38.000Z",
+    "query": "humanoid sim2real domain randomization deployment site scan",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人（型号未披露）"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "author_display": "@TabDuoBao",
+        "text": "回复追问究竟是扫描保真度还是摩擦/质量随机化闭合了差距，并指出杂物与地面柔顺性常破坏零微调迁移。"
+      },
+      {
+        "author_display": "@Robo_Reliance",
+        "text": "回复指出现场会持续变化，重扫描频率与首次扫描同样重要。"
+      }
+    ],
+    "wbc_relevance_reason": "现场几何、视觉外观、碰撞网格及物理参数不一致会影响感知驱动的人形导航和 WBC/RL 上层策略部署。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086724387261055463",
+  "summary": "作者描述了一条面向 RGB-only 人形机器人策略的仿真到现实（sim-to-real）流程：先用 360° 相机扫描真实部署场地，以 3D Gaussian Splatting 重建度量尺度外观，并从同一重建生成碰撞网格，使视觉和物理场景对应；随后在 NVIDIA Isaac Sim/Lab 中训练，叠加域随机化（domain randomization）和大视觉编码器后部署到硬件。原帖声称无需真机微调，但没有给出机器人型号、成功率、摩擦/质量随机化范围或对照实验。回复补充了两个重要限制：杂物与地面柔顺性常破坏零微调迁移；现场持续变化时，重扫描频率和首次扫描同样重要。",
+  "title": "在真实部署场地扫描中训练 RGB 人形机器人策略",
+  "version": null
+}

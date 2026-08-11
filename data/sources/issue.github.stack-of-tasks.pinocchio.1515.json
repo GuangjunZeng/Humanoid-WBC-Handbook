@@ -1,0 +1,155 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515",
+  "captured_at": "2026-08-11T03:12:00+08:00",
+  "content_sha256": "f3b4edda23b1561b38ec1b6cac094a2fda3cda008abbf6b69340dff69fc25528",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 12 条回复；保留原作者未提供数值复测的边界，也未把 2024 年的 Pinocchio 3x 发布状态当作当前事实。",
+    "components": [
+      "Pinocchio",
+      "Frame",
+      "frame Jacobian",
+      "parent joint frame",
+      "task-space control"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目贡献者建议用 model.addFrame 添加 Frame，并给出构造调用。",
+        "项目贡献者说明可修改 model.frames[your_frame_id].placement。"
+      ],
+      "diagnostics": [
+        "先确定承载目标点的 parent joint，再把目标点 placement 表达在该 parent joint frame 中。",
+        "区分目标点 placement 的实时变化与 parent joint 拓扑变化；原回复只明确了 placement 字段的修改。"
+      ],
+      "effective_fixes": [
+        "为目标点增加以支撑 joint 为父节点的 Frame；placement 相对 parent joint frame 表示，再通过 frame Jacobian 路径计算。",
+        "目标点位置变化时，按回复修改对应 Frame 的 placement。"
+      ],
+      "environments": [
+        "Pinocchio 模型；原帖未说明版本、具体机械臂和 Python/C++ 绑定。"
+      ],
+      "limits": [
+        "原线程没有 Jacobian 数值校验、有限差分对照或性能测量。",
+        "回复没有明确说明如何安全地改变 parent_idx，本卡不推断该操作。",
+        "2024 年旧回复所述 Pinocchio 3x 尚未发布不是当前版本状态，不能继续沿用。"
+      ],
+      "outcomes": [
+        "贡献者认为该方法足以处理提问；原作者仅表示会尝试，没有提供数值对照。"
+      ],
+      "problem_statements": [
+        "如何取得机械臂连杆上任意点的 Jacobian？",
+        "目标点实时变化时如何更新用于 Jacobian 的 Frame placement？"
+      ],
+      "safety_notes": [
+        "用于接触力或操作约束前，应以有限差分或已知刚体运动验证 Frame placement、坐标系与 Jacobian 行列顺序。"
+      ],
+      "suspected_causes": [
+        "目标点没有作为模型 Frame 表示，因此不能直接调用 frame Jacobian 接口。"
+      ],
+      "symptoms": [
+        "现有 getJointJacobian 与 getFrameJacobian 只覆盖已有 joint/frame，目标点位于连杆上的其他位置。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目贡献者给出的做法是先用 model.addFrame(Frame(name, joint_support_id, 0, placement)) 把该点加入模型，再走 Frame Jacobian 路径；其中 placement 是相对父关节坐标系（parent joint frame）的位姿。目标点实时变化时，回复明确可更新 model.frames[your_frame_id].placement。原作者没有回报数值验证，因此这是一条由项目贡献者确认、但仍需在目标模型中做有限差分校验的方法。",
+        "applicability": "适用于原帖所述 Pinocchio 模型中的连杆任意点；版本和语言绑定未说明，使用前需核对当前 API。",
+        "bilingual_terms": [
+          "坐标帧（Frame）",
+          "帧雅可比矩阵（frame Jacobian）",
+          "父关节坐标系（parent joint frame）",
+          "位姿（placement）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_arbitrary_link_point_frame_jacobian_1515",
+        "problem_title_zh": "Pinocchio 连杆任意点 Jacobian 的附加 Frame 表示",
+        "question_zh": "Pinocchio 中如何为连杆上没有现成 Frame 的任意点计算 Jacobian？",
+        "source_locator": "Pinocchio #1515，添加 Frame issuecomment-908163738；placement 参考系 issuecomment-912373797；修改 placement issuecomment-912374322；用户未复测 issuecomment-912401354",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515#issuecomment-908163738",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者给出 addFrame 调用",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515#issuecomment-908163738"
+          },
+          {
+            "locator": "项目贡献者明确 placement 相对 parent joint frame",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515#issuecomment-912373797"
+          },
+          {
+            "locator": "项目贡献者说明可修改 model.frames[your_frame_id].placement",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515#issuecomment-912374322"
+          },
+          {
+            "locator": "原作者只说会尝试，没有提供数值复测",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1515#issuecomment-912401354"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1515",
+    "query": "Pinocchio Jacobian arbitrary point manipulator link add Frame placement parent joint",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "机械臂；原帖未说明具体型号、Pinocchio 版本或语言绑定"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目贡献者建议为目标点新增 Frame。"
+      },
+      {
+        "text": "项目贡献者给出 model.addFrame(Frame(name, joint_support_id, 0, placement))。"
+      },
+      {
+        "text": "项目贡献者明确 placement 相对 parent joint frame。"
+      },
+      {
+        "text": "项目贡献者说明可修改对应 Frame 的 placement 字段。"
+      },
+      {
+        "text": "原作者只表示会尝试该方法。"
+      }
+    ],
+    "wbc_relevance_reason": "操作 WBC、接触点约束和任务空间控制经常需要关节或末端默认 Frame 之外的点 Jacobian；点位姿的参考父关节必须明确。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1515",
+  "summary": "Pinocchio #1515 询问如何获得连杆上任意位置的 Jacobian。项目贡献者建议在模型中增加 Frame，并给出 model.addFrame(Frame(name, joint_support_id, 0, placement))；随后明确 placement 是相对 parent joint frame 的位姿。对于实时变化的目标点，贡献者说明可以修改 model.frames[your_frame_id].placement，并认为此前答案足够。原作者只表示会尝试，没有报告数值验证结果。2024 年关于 Pinocchio 3x 是否发布的旧回复不作为当前版本事实。",
+  "title": "Pinocchio 任意连杆点 Jacobian 的附加 Frame 方法",
+  "version": null
+}

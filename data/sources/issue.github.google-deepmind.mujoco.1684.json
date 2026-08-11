@@ -1,0 +1,202 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/1684",
+  "captured_at": "2026-08-11T07:14:00+08:00",
+  "content_sha256": "a3309bcc414ee55b6c8db48c7ce19327bc2b9cc72eff72238b7541c62181e7e6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 20 条回复；把维护者的接口划分与明确标为未尝试/YMMV 的 workaround 拆成两张卡。",
+    "components": [
+      "MuJoCo MJX",
+      "mjx.Data",
+      "mjx.Model.geom_size",
+      "heterogeneous models",
+      "object masking"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议在 environment reset 中随机化 mjx.Data/环境 State 中的位置。",
+        "对 primitive 尺寸，维护者指向 mjx.Model.geom_size 的 domain randomization。",
+        "对不同对象数量，回复提出 host dispatch，或预加载最大数量并将未用对象移出工作区。"
+      ],
+      "diagnostics": [
+        "先判断随机量是每环境的 state（例如可动对象 qpos）、model parameter（例如 geom_size）还是编译期拓扑/静态 world geometry。",
+        "对异构模型检查 JAX pytree 形状是否一致，不只检查结构名称。"
+      ],
+      "effective_fixes": [
+        "把可动对象的位置随机化放在 environment reset 对 mjx.Data/环境 State 的初始化中，而不是为每个位置重建 model。"
+      ],
+      "environments": [
+        "MuJoCo/MJX 公开 Issue #1684，2024–2026 年回复；JAX 静态 shape 与批量模型。"
+      ],
+      "limits": [
+        "维护者说 mesh 尺寸/形状随机化比 primitive 更难。",
+        "将所有 mesh 都加载并移出未用对象的回复明确标为未尝试/YMMV。",
+        "max_contact_points/max_geom_pairs 可节省部分碰撞检测工作，但回复明确说不会省掉其他 JAX engine work。",
+        "原线程未确认所有 geom_size 变更在新版本中都无需 set_const/重编译，因此本卡不做这一外推。"
+      ],
+      "outcomes": [
+        "维护者给出 position/data 与 primitive-size/model 的接口划分。",
+        "异构 mesh/对象数的单 batch 没有官方直接支持；掩码方案没有在原线程验证。"
+      ],
+      "problem_statements": [
+        "MJX 中对象位置和 primitive 尺寸应在哪个数据结构中随机化？",
+        "如何在一个 MJX batch 中支持不同对象数量或不同 mesh 形状？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "MJX 不支持将形状/对象数不同的 heterogeneous models 直接堆叠成一个 batch。",
+        "JAX 运算的静态 shape 使不同数量的对象不能在单一 compiled batch 中自由变长。"
+      ],
+      "symptoms": [
+        "用户不确定 reset 时的位置随机化应修改 mjx.Model 还是 mjx.Data。",
+        "不同 shape/对象数的模型不能直接 stack 到同一 MJX batch。",
+        "作为 world body 的静态对象若在 reset 中改位置，线程回复说需重编译。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者的划分是：对象位置属于 mjx.Data/环境 State，在 environment reset function 中采样并传给 pipeline_init；基本几何的尺寸则通过 mjx.Model.geom_size 做 domain randomization。这个划分对 primitive 有维护者说明，但 mesh 形状更难，且原线程没有证明所有 size 变更在当前版本都不需重算模型常量，应对目标版本做数值检查。",
+        "applicability": "适用于 MJX 中可动对象位置和 primitive geom_size 的随机化；mesh、world-body 静态几何与版本相关常量需单独核对。",
+        "bilingual_terms": [
+          "环境重置（environment reset）",
+          "状态数据（mjx.Data / State）",
+          "基本几何（primitive geometry）",
+          "几何尺寸（geom_size）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reward_curriculum_randomization.mjx_data_position_model_size_randomization_1684",
+        "problem_title_zh": "MJX 随机化位置与 primitive 尺寸的接口划分",
+        "question_zh": "MJX 中可动对象的位置与 primitive 尺寸应如何分别随机化？",
+        "source_locator": "Issue #1684，primitive/geom_size 回复 issuecomment-2123601780；Data/State 位置划分 issuecomment-2123618064；reset 说明 issuecomment-2123625406",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123618064",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 primitive shape/size 可按教程随机化 geom_size，mesh 更难",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123601780"
+          },
+          {
+            "locator": "维护者区分 mjx.Data/State 中的位置与 mjx.Model 中的 geom_size",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123618064"
+          },
+          {
+            "locator": "维护者说明 reset 指环境 reset function 并给出 pipeline_init 示例方向",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123625406"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "原线程的维护者/协作者回答是，MJX 不支持直接 stack heterogeneous models。可选方向是 host 侧 dispatch，或事先加载最大对象数，再将未用对象移出工作区并持续固定 qpos。但回复对后一 mesh 技巧明确写了未尝试/YMMV；max_contact_points/max_geom_pairs 也只能节省部分碰撞检测，不会消除其他引擎运算。因此这是待实测的有界 workaround，不是已验证的变长模型支持。",
+        "applicability": "仅适用于能容忍固定最大模型 shape、额外物体开销和位置掩码风险的 MJX 环境；静态 world object 的位置变更另有重编译边界。",
+        "bilingual_terms": [
+          "异构模型（heterogeneous models）",
+          "主机侧调度（host dispatch）",
+          "对象掩码（object masking）",
+          "静态形状（static shape）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.reward_curriculum_randomization.mjx_heterogeneous_object_masking_1684",
+        "problem_title_zh": "MJX 异构模型与对象数量掩码方案",
+        "question_zh": "MJX 能否把对象数量或 mesh 形状不同的模型直接堆叠？把未用对象移出场景是否已验证？",
+        "source_locator": "Issue #1684，异构模型与最大数量方向 issuecomment-2123601780；未尝试/YMMV issuecomment-2599343381；碰撞开销边界 issuecomment-2599358830",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2599343381",
+        "verification_refs": [
+          {
+            "locator": "维护者说明不同 shape 模型不能 stack，并提出 host dispatch 或最大对象数方向",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2123601780"
+          },
+          {
+            "locator": "协作者明确说加载所有 mesh 并移出未用对象的技巧未尝试/YMMV",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2599343381"
+          },
+          {
+            "locator": "协作者限定 max_contact_points/max_geom_pairs 只节省部分碰撞检测工作",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1684#issuecomment-2599358830"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.1684",
+    "query": "MJX randomize object position geom_size heterogeneous models object count mask unused",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "MJX manipulation/domain-randomization environments；具体机器人未说明"
+    ],
+    "schema_version": 2,
+    "scope_id": "reward_curriculum_randomization",
+    "selected_comments": [
+      {
+        "text": "维护者说 primitive 的 geom_size 可随机化，但不同 shape 的模型不能 stack。"
+      },
+      {
+        "text": "维护者区分了 mjx.Data/State 的位置与 mjx.Model.geom_size。"
+      },
+      {
+        "text": "协作者说加载所有 mesh 并移出未用对象的技巧未尝试/YMMV。"
+      },
+      {
+        "text": "协作者说碰撞容量参数不会节省其他 JAX 引擎运算。"
+      },
+      {
+        "text": "协作者说可调静态对象必须是 world body，在 reset 中改位置需重编译。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/RL 环境的地形与接触对象随机化需要正确区分状态数据、模型参数和编译期拓扑，否则会把无效模型堆叠或重编译开销误当作策略训练问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.1684",
+  "summary": "MuJoCo #1684 讨论 MJX 中随机化对象位置、基本几何尺寸、mesh 形状与对象数量。维护者区分了接口：位置属于 mjx.Data/环境 State，应在环境 reset 中取样；基本几何的尺寸可在 mjx.Model.geom_size 上做 domain randomization，mesh 更难。不同形状/数量的模型无法直接 stack；维护者提过 host dispatch，或加载最大对象数后把未用对象移出场景。后者对 mesh 的建议在回复中明确标为未尝试/YMMV，静态对象若在 reset 中改位置还需重编译。",
+  "title": "MJX 位置、尺寸与异构对象随机化的数据边界",
+  "version": null
+}

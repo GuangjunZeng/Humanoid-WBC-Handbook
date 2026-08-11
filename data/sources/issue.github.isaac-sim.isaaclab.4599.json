@@ -1,0 +1,110 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "githubLeoliu"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4599",
+  "captured_at": "2026-08-10T22:17:00+08:00",
+  "content_sha256": "f32ae8e0d9ac5144ccab93f9efd8136da1b031eb4a9f21550f30fac047c747fd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim",
+      "PVD",
+      "whole_body_tracking"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "training_data_retargeting"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者比较默认平面、内置地形和自定义 USD，并记录前一百次迭代的 PVD。"
+      ],
+      "diagnostics": [
+        "对齐主机驱动，比较多随机种子分布，并检查约两千步附近是否有课程或条件触发；保留 PVD 记录。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab 2.1、Isaac Sim 4.5、RTX 4090、whole_body_tracking、自定义 USD 地形。"
+      ],
+      "limits": [
+        "该 Issue 不能证明驱动版本或自定义地形就是根因，只能确定它们是排查变量。"
+      ],
+      "outcomes": [
+        "维护者仍在调查，尚无可验证最终修复。"
+      ],
+      "problem_statements": [
+        "相同代码、容器和 GPU 型号在两台机器上得到定性不同的人形训练结果。"
+      ],
+      "safety_notes": [
+        "不要用单次训练曲线判断部署可靠性，应比较多种子统计和最终任务指标。"
+      ],
+      "suspected_causes": [
+        "自定义地形表示可能改变接触建模或接触求解，但维护者尚未确认根因。"
+      ],
+      "symptoms": [
+        "本地能学会 mimic，云端机器人甚至无法站立；默认平面和内置地形生成器不触发。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不能。维护者最初要求对齐驱动，但后续根据约两千步前结果相近、之后才分叉，认为它不像单纯驱动问题。当前应把主机驱动、该步附近的课程触发、自定义地形接触表示和 PVD 日志并列排查，原帖仍未给出最终根因。",
+        "applicability": "适用于跨机器接触丰富型训练复现；不能外推为所有 Isaac Lab 训练都不可复现。",
+        "bilingual_terms": [
+          "训练非确定性（Training Nondeterminism）",
+          "全身控制（Whole-Body Control, WBC）",
+          "物理可视化调试器（Physics Visual Debugger, PVD）"
+        ],
+        "question_zh": "自定义 USD 地形使两台相同 GPU 的人形训练结果严重分歧时，能否直接归因于驱动？",
+        "source_locator": "维护者最新调查回复 @RandomOakForest",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4599#issuecomment-3999339297",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.debugging_logging_reproducibility.c68ffe084b877e7d",
+        "problem_title_zh": "自定义 USD 地形使两台相同 GPU 的人形训练结果严重分歧时，能否直接归因于驱动？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "Issue 的训练曲线比较图用于显示两台机器后期分叉；本轮未逐像素读取坐标值，时间点判断来自维护者对约两千步附近分叉的文字分析。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4599",
+    "query": "humanoid custom USD terrain non reproducible training",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "humanoid"
+    ],
+    "schema_version": 2,
+    "scope_id": "debugging_logging_reproducibility",
+    "selected_comments": [],
+    "wbc_relevance_reason": "该案例把训练不可复现与自定义地形、接触求解和主机驱动差异联系起来，适合形成排障清单。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4599",
+  "summary": "基于 whole_body_tracking 的人形接触训练在两台 RTX 4090 上使用相同代码和官方容器，但加入自定义 USD 地形后学习结果发生定性分歧。维护者先排查驱动差异，随后认为分歧不像单纯驱动问题，并继续调查约两千步附近的触发条件。",
+  "title": "相同 RTX 4090 与容器下自定义 USD 地形训练不可复现",
+  "version": null
+}

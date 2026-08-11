@@ -1,0 +1,184 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "NahuelVilla"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/131",
+  "captured_at": "2026-08-11T06:10:00+08:00",
+  "content_sha256": "37902023d8a0da2601416c8d9864d2ea98b70725d0835b41fc05187a6ce37372",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 8 条评论；只把原作者确认的重复约束问题标为解决，未回答的 CoP constraint 另建 unresolved 卡。",
+    "components": [
+      "TSID",
+      "eiquadprog",
+      "hierarchical quadratic programming",
+      "contact force constraint",
+      "center of pressure task"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "协作者把 level_foot 设为 1 后复现问题消失；原作者随后采用同一调整。"
+      ],
+      "diagnostics": [
+        "用 HQPData.print_all() 检查各 priority level 的 equality/inequality 任务。",
+        "协作者发现 level 0 同时含 task-right-foot 与 contact_rfoot_motion_task，并对左脚存在同类重复。"
+      ],
+      "effective_fixes": [
+        "对原脚本，把重复的 foot motion task 从 level 0 移开，即设置 level_foot=1。"
+      ],
+      "environments": [
+        "2021 年 TSID Python 脚本；eiquadprog；双足接触；复现者使用 Ubuntu 16.04/Python 3.5 相关 robotpkg，但原作者系统版本未说明。"
+      ],
+      "limits": [
+        "该修改只在原脚本和 eiquadprog 配置中确认，不能当作所有负接触力的通用修复。",
+        "线程没有给修改前后的接触力数值、求解器状态或 CoP constraint 的进一步诊断。",
+        "依赖导入问题的处理不能证明 WBC 约束已经正确。"
+      ],
+      "outcomes": [
+        "原作者明确确认 level_foot=1 解决最初的负接触力问题。",
+        "CoP task 作为 constraint 时机器人消失的问题仍存在且没有答案。"
+      ],
+      "problem_statements": [
+        "TSID 在足端接触无需承担较大支撑力时为什么产生负地面接触力？",
+        "为什么把 CoP task 作为 priority level 0 constraint 后机器人直接消失或落下？"
+      ],
+      "safety_notes": [
+        "实体机器人使用前应独立验证 unilateral force、摩擦锥、CoP 和求解器可行性状态，不能只观察姿态。"
+      ],
+      "suspected_causes": [
+        "eiquadprog 不能处理原 HQP 中重复的足端运动等式约束。",
+        "CoP constraint 的后续失败原因没有在原线程确认。"
+      ],
+      "symptoms": [
+        "脚在接触中但支撑需求较小时，求解结果出现负 ground contact force。",
+        "CoP task 放在 priority level 0 作为 constraint 时，机器人在脚本中直接消失或落下。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "项目协作者打印 HQP，发现 level 0 同时存在 task-right-foot 和 contact_rfoot_motion_task，左脚也有同类重复；他指出 eiquadprog 不处理冗余 equality constraints。把 level_foot 设为 1 后，协作者复现中的问题消失，原作者也确认这解决了最初的负接触力问题。该结论只覆盖原脚本的重复约束，不能替代对摩擦锥、单侧力和其他求解器配置的检查。",
+        "applicability": "适用于原帖 2021 年 TSID/eiquadprog 双足脚本及其 priority 配置；不同求解器和任务集合需重新打印 HQP。",
+        "bilingual_terms": [
+          "层级二次规划（hierarchical quadratic programming, HQP）",
+          "冗余等式约束（redundant equality constraint）",
+          "单侧接触力（unilateral contact force）",
+          "优先级层（priority level）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.tsid_redundant_contact_equalities_131",
+        "problem_title_zh": "TSID 冗余足端等式约束导致接触力异常",
+        "question_zh": "TSID 出现负地面接触力时，原线程如何定位到重复的足端运动等式约束？",
+        "source_locator": "Issue #131，HQP 诊断 issuecomment-804188047；协作者复测 issuecomment-804190180；作者确认 issuecomment-804237029",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804237029",
+        "verification_refs": [
+          {
+            "locator": "项目协作者从 HQP 输出定位重复足端运动等式约束",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804188047"
+          },
+          {
+            "locator": "项目协作者确认 level_foot=1 后复现问题消失",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804190180"
+          },
+          {
+            "locator": "原作者确认该调整解决最初问题",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804237029"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "没有。原作者在确认 level_foot=1 解决负接触力后，明确说 CoP task 作为 constraint 时机器人仍会消失，并询问是否有相似原因；后续只有贡献者建议关闭 Issue，没有给技术诊断、参数修改或复测。因此这不能被并入已解决的重复足端约束问题，只能保留为待复现线索。",
+        "applicability": "严格限于原作者同一 TSID 脚本中的 CoP priority-0 配置；环境、日志和求解器状态均不完整。",
+        "bilingual_terms": [
+          "压力中心（center of pressure, CoP）",
+          "硬约束（hard constraint）",
+          "求解器可行性（solver feasibility）",
+          "仿真失稳（simulation instability）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.contact_force_friction.tsid_cop_level0_unresolved_131",
+        "problem_title_zh": "TSID 的 CoP task 作为硬约束时仿真失稳",
+        "question_zh": "把 TSID CoP task 作为 priority level 0 constraint 后机器人消失，原线程是否给出了原因和修复？",
+        "source_locator": "Issue #131，作者报告剩余 CoP constraint 问题 issuecomment-804237029；后续无技术回答",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804237029",
+        "verification_refs": [
+          {
+            "locator": "作者明确区分已解决的负力问题与仍存在的 CoP constraint 失败",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/131#issuecomment-804237029"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.131",
+    "query": "TSID negative ground contact force redundant equality constraint level_foot CoP",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原作者的双足 TSID 仿真脚本；机器人型号未说明"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "项目协作者打印 HQP 后指出左右足运动任务与 contact motion task 在 level 0 重复。"
+      },
+      {
+        "text": "协作者设置 level_foot=1 后问题消失。"
+      },
+      {
+        "text": "原作者确认负接触力问题解决，但 CoP task 作为 constraint 时仍会失败。"
+      }
+    ],
+    "wbc_relevance_reason": "接触力单侧性和 CoP 约束直接影响 WBC 可行性；原线程显示，HQP 中重复等式可让求解器表现为负接触力或不稳定，且一个已解决症状不能自动证明另一条 CoP 约束也已修复。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.131",
+  "summary": "TSID #131 的作者报告支撑需求较小时出现负地面接触力，并在把 CoP task 放到优先级 0 时机器人直接落下。项目协作者打印 HQP 后发现，level 0 同时包含 task-right-foot 与 contact_rfoot_motion_task 等重复足端运动等式约束；他指出 eiquadprog 不处理冗余 equality constraints，并实测把 level_foot 设为 1 后问题消失。原作者确认该修改解决了最初的负接触力问题，但随后仍报告 CoP task 作为 constraint 时机器人消失；该后续问题没有得到技术回答。线程中的 curves→ndcurves 和缺少 qpsolvers 只是复现实验的依赖问题，没有作为 WBC 根因。",
+  "title": "TSID 接触力出现负值时先检查重复的足端运动等式约束",
+  "version": null
+}

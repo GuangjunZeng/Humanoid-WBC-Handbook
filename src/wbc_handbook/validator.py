@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Mapping
+
+from .language import (
+    chinese_first_error,
+    cjk_character_count,
+    normalize_bilingual_terms,
+)
 
 from .models import (
     ClaimStatus,
@@ -15,6 +21,7 @@ from .models import (
     SourceRecord,
     parse_aware_datetime,
 )
+from .social_credibility import SocialCredibilityError, normalize_card_credibility
 
 
 @dataclass(frozen=True)
@@ -47,6 +54,75 @@ def validate_sources(sources: Iterable[SourceRecord]) -> List[ValidationIssue]:
                 "warning", "EXCERPT_LICENSE_UNKNOWN", source.source_id,
                 "stored excerpt has no recorded source license; review quotation rights",
             ))
+        if source.kind.value == "community" or (
+            source.kind.value == "issue" and source.metadata.get("platform") == "github_issue"
+        ):
+            if cjk_character_count(source.title) < 2:
+                issues.append(ValidationIssue(
+                    "error", "COMMUNITY_TITLE_NOT_CHINESE_FIRST", source.source_id,
+                    "community source title must be Chinese-first",
+                ))
+            if cjk_character_count(source.summary) < 20:
+                issues.append(ValidationIssue(
+                    "error", "COMMUNITY_SUMMARY_NOT_CHINESE_FIRST", source.source_id,
+                    "community source summary must be Chinese-first",
+                ))
+            cards = source.metadata.get("engineering_qa", [])
+            if not isinstance(cards, list):
+                issues.append(ValidationIssue(
+                    "error", "COMMUNITY_QA_INVALID", source.source_id,
+                    "community engineering_qa must be a list",
+                ))
+                continue
+            for index, card in enumerate(cards):
+                card_id = f"{source.source_id}#qa-{index + 1}"
+                if not isinstance(card, Mapping):
+                    issues.append(ValidationIssue(
+                        "error", "COMMUNITY_QA_INVALID", card_id,
+                        "community engineering Q&A card must be an object",
+                    ))
+                    continue
+                language_error = chinese_first_error(
+                    card.get("question_zh"), card.get("answer_zh")
+                )
+                if language_error:
+                    issues.append(ValidationIssue(
+                        "error", "COMMUNITY_QA_NOT_CHINESE_FIRST", card_id,
+                        language_error,
+                    ))
+                try:
+                    normalize_bilingual_terms(
+                        card.get("bilingual_terms"), "bilingual_terms"
+                    )
+                except ValueError as exc:
+                    issues.append(ValidationIssue(
+                        "error", "COMMUNITY_QA_BILINGUAL_TERMS_INVALID", card_id,
+                        str(exc),
+                    ))
+                required_credibility_fields = {
+                    "problem_id", "problem_title_zh", "credibility", "verification_refs"
+                }
+                missing = required_credibility_fields - set(card)
+                if missing:
+                    issues.append(ValidationIssue(
+                        "error", "COMMUNITY_CREDIBILITY_MISSING", card_id,
+                        "social card lacks canonical credibility fields: "
+                        + ", ".join(sorted(missing)),
+                    ))
+                    continue
+                try:
+                    normalize_card_credibility(
+                        card,
+                        scope_id=str(source.metadata.get("scope_id", "unclassified")),
+                        source_id=source.source_id,
+                        components=source.metadata.get("components", []),
+                        engineering_details=source.metadata.get("engineering_details", {}),
+                        media_summaries=source.metadata.get("media_summaries", []),
+                    )
+                except SocialCredibilityError as exc:
+                    issues.append(ValidationIssue(
+                        "error", "COMMUNITY_CREDIBILITY_INVALID", card_id, str(exc)
+                    ))
     return issues
 
 
@@ -119,6 +195,24 @@ def validate_repository(
     claim_list = list(claims)
     issues = validate_sources(source_list)
     source_map = {source.source_id: source for source in source_list}
+    for source in source_list:
+        cards = source.metadata.get("engineering_qa", [])
+        if not isinstance(cards, list):
+            continue
+        for index, card in enumerate(cards):
+            if not isinstance(card, Mapping):
+                continue
+            for ref in card.get("verification_refs", []):
+                if (
+                    isinstance(ref, Mapping)
+                    and ref.get("source_id")
+                    and ref["source_id"] not in source_map
+                ):
+                    issues.append(ValidationIssue(
+                        "error", "UNKNOWN_SOCIAL_VERIFICATION_SOURCE",
+                        f"{source.source_id}#qa-{index + 1}",
+                        f"verification_refs references unknown source {ref['source_id']}",
+                    ))
     seen_claims = set()
     for claim in claim_list:
         if claim.claim_id in seen_claims:

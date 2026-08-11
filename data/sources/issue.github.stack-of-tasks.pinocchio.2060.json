@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "XuanLin"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2060",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "abe79627db0c566216a7fb7475e04106726c9bd458026a350ba9736fe8ef6b8d",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 2 条评论；保留线程 Open 和后续问题未回答的事实，没有把机器精度残差解释成原帖未说明的具体原因。",
+    "components": [
+      "Pinocchio",
+      "computeCoriolisMatrix",
+      "JointModelFreeFlyer",
+      "quaternion normalization"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者用精确的 sin(pi/2)、cos(pi/2) 重建两组四元数并重新计算。"
+      ],
+      "diagnostics": [
+        "在判断算法或坐标系错误前检查配置向量中的四元数范数；改用严格归一化输入重复相同矩阵比较。"
+      ],
+      "effective_fixes": [
+        "确保传入 JointModelFreeFlyer 的四元数已归一化；不要用低精度截断后的四元数直接比较动力学量。"
+      ],
+      "environments": [
+        "Pinocchio Python API；JointModelFreeFlyer；原帖给出两连杆 URDF 与完整比较脚本；具体 Pinocchio/OS 版本未说明。"
+      ],
+      "limits": [
+        "线程仍未关闭，5.16e-14 的残差没有进一步解释；原作者关于是否必须固定为零位置/单位姿态的问题没有得到回答。"
+      ],
+      "outcomes": [
+        "归一化后差异范数降至 5.16e-14；提问者确认结果大幅改善。"
+      ],
+      "problem_statements": [
+        "浮动基姿态变化时 computeCoriolisMatrix 出现差异，如何排除输入四元数不合法造成的伪误差？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "维护者指出初始四元数只是从 Gazebo 截取两位小数，未满足单位范数。"
+      ],
+      "symptoms": [
+        "不同位置和姿态输入下科氏矩阵差异明显，初始示例的矩阵差范数为 0.00075。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖维护者首先指出输入四元数没有归一化。提问者改用精确 sin/cos 构造单位四元数后，矩阵差范数从约 0.00075 降到 5.16e-14。因此这类比较应先验证四元数单位范数并保留足够精度，再讨论算法或参考系问题。线程没有支持“必须始终用零位置和单位姿态”这一更强结论。",
+        "applicability": "适用于 Pinocchio JointModelFreeFlyer 配置输入和动力学量对比；具体版本未说明。",
+        "bilingual_terms": [
+          "科氏矩阵（Coriolis matrix）",
+          "四元数归一化（quaternion normalization）",
+          "浮动基（floating base）",
+          "数值误差（numerical error）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.0ce1582a1859efd0",
+        "problem_title_zh": "Pinocchio 浮动基科氏矩阵看似随位置或姿态异常变化时，为什么应先检查四元数归一化？",
+        "question_zh": "Pinocchio 浮动基科氏矩阵看似随位置或姿态异常变化时，为什么应先检查四元数归一化？",
+        "source_locator": "Issue #2060，维护者诊断 issuecomment-1723125266；原作者复测 issuecomment-1724525093",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2060#issuecomment-1724525093",
+        "verification_refs": [
+          {
+            "locator": "维护者指出输入四元数未归一化",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2060#issuecomment-1723125266"
+          },
+          {
+            "locator": "原作者使用单位四元数复测，差异范数降到 5.16e-14",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2060#issuecomment-1724525093"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2060",
+    "query": "Pinocchio Coriolis matrix numerical error quaternion normalization floating base",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "两连杆浮动基测试机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者指出两组配置的四元数部分未归一化。"
+      },
+      {
+        "text": "原作者用精确单位四元数复测后，差异范数降到 5.16e-14。"
+      }
+    ],
+    "wbc_relevance_reason": "科氏项进入全身动力学与逆动力学 QP；非法四元数会制造看似来自算法或坐标约定的数值差异。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2060",
+  "summary": "Pinocchio #2060 比较两个浮动基配置下的质量矩阵、科氏矩阵和重力项，最初观察到科氏矩阵随位置/姿态变化。维护者指出两个输入的四元数部分没有归一化。提问者改用精确 sin/cos 构造归一化四元数后，差异范数降到 5.16e-14，并说明明显改善；线程仍为 Open，也没有回答是否应始终使用零位置和单位姿态。",
+  "title": "未归一化浮动基四元数会造成 Pinocchio 科氏矩阵对姿态的伪差异",
+  "version": null
+}

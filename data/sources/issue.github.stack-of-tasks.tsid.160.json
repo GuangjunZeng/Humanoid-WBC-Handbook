@@ -1,0 +1,137 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "EtienneAr"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/160",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "604551622a78520abd3c10fd6639158908cd1fee055372caea4cb02e7ccc1834",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文、全部 12 条评论以及 PR #161 的合并状态和全部文件补丁；答案按实际合并代码的 difference 参数顺序记录，没有沿用 Issue 最初尚未修正的提案。",
+    "components": [
+      "TSID",
+      "TaskJointPosture",
+      "Pinocchio",
+      "RobotWrapper",
+      "pinocchio::difference"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "讨论先澄清姿态参考不应包含浮动基；维护者建议构造包含浮动基配置的增广参考，执行完整模型 difference 后取关节部分。"
+      ],
+      "diagnostics": [
+        "比较 model.nq、model.nv、robot.na 与关节类型；检查姿态参考是配置空间还是速度空间维数；对球关节/连续关节使用 Pinocchio 流形差分而不是逐元素相减。"
+      ],
+      "effective_fixes": [
+        "采用已合并 PR #161：RobotWrapper 显式保存 nq_actuated/is_fixed_base；用 neutral 配置构造增广参考，把关节参考写入尾部；计算 pinocchio::difference(model, ref_augmented, q) 后取末尾 na 个速度空间误差。"
+      ],
+      "environments": [
+        "TSID 旧提交 b0d6bff；问题覆盖 revolute unbounded joint 与 spherical joint；PR #161 的测试模型包含球关节，固定基测试中 nq != nv。"
+      ],
+      "limits": [
+        "PR 中 nq_actuated 对浮动基按 nq-7 处理；自定义根关节或其他配置结构仍应核对该假设和目标 TSID 版本。"
+      ],
+      "outcomes": [
+        "PR #161 于 2022-04-11 合并；补丁新增含球关节的 7-DoF 模型，并在最多 1000 步的姿态任务测试中要求误差单调下降并达到 1e-8；原作者随后以 PR 已合并关闭 Issue。"
+      ],
+      "problem_statements": [
+        "TSID 的 TaskJointPosture 在 nq != nv 的机器人上为什么不能用 q.tail(na) 和逐元素相减计算姿态误差？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "旧实现假设除根关节外所有关节均满足 nq=nv，并把关节配置裁剪长度与执行器速度维数 na 混用。"
+      ],
+      "symptoms": [
+        "配置向量按 na 裁剪时维数错误，且流形配置的 difference(q1,q2) 不等于 q2-q1，姿态任务误差计算不正确。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不能继续用 q.tail(na) 与参考逐元素相减。已合并 PR #161 的实现先区分关节配置维数 nq_actuated 与执行器速度维数 na，用 neutral 配置构造包含根部的增广参考，把关节参考写入尾部，然后调用 pinocchio::difference(model, ref_augmented, q)，最后取末尾 na 个速度空间误差。该 PR 同时加入含球关节模型的姿态收敛测试。",
+        "applicability": "适用于包含球关节、无界转动关节等 nq != nv 结构并使用包含 PR #161 的 TSID；自定义根关节需复核 nq_actuated 假设。",
+        "bilingual_terms": [
+          "配置流形（configuration manifold）",
+          "流形差分（manifold difference）",
+          "关节姿态任务（joint posture task）",
+          "浮动基（floating base）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "independent_reproduction",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.4336ee335cd76f7b",
+        "problem_title_zh": "TSID 姿态任务在 nq != nv 的球关节或连续关节机器人上，如何正确计算关节配置误差？",
+        "question_zh": "TSID 姿态任务在 nq != nv 的球关节或连续关节机器人上，如何正确计算关节配置误差？",
+        "source_locator": "Issue #160 完整讨论；关闭回复 issuecomment-1231751666；已合并 PR #161 与合并提交 4caf44f",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/160#issuecomment-1231751666",
+        "verification_refs": [
+          {
+            "locator": "PR 修复 nq != nv 的 TaskJointPosture，并加入含球关节回归测试，已合并",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/tsid/pull/161"
+          },
+          {
+            "locator": "PR #161 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/tsid/commit/4caf44f54e65067d1f4862d5114bc3af7fc40f75"
+          },
+          {
+            "locator": "维护者确认需要修复，但要求姿态参考仍只包含关节部分",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/160#issuecomment-1060381798"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.160",
+    "query": "TSID joint posture nq nv spherical unbounded joint manifold difference",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "含球关节或无界转动关节的固定基/浮动基机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者确认 nq != nv 的特殊关节场景需要修复，但姿态参考不应直接包含浮动基。"
+      },
+      {
+        "text": "维护者建议构造增广参考、执行 pinocchio::difference 后再裁剪关节误差。"
+      },
+      {
+        "text": "原作者确认 PR #161 已合并并关闭 Issue。"
+      }
+    ],
+    "wbc_relevance_reason": "TSID 姿态任务直接进入层级 QP；配置流形误差维数或差分错误会使含球关节、连续关节的 WBC 姿态目标失真。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.160",
+  "summary": "TSID #160 指出：包含无界转动关节或球关节时，配置维数 nq 与速度维数 nv 不相等，旧 TaskJointPosture 既用 na 裁剪 q，又直接逐元素相减，因此姿态误差不成立。维护者在讨论中确认该特殊关节场景，PR #161 随后引入 nq_actuated 和增广参考配置，使用 pinocchio::difference 后再裁剪速度空间误差，并加入含球关节模型的收敛测试；PR 已合并，原作者据此关闭 Issue。",
+  "title": "TSID 姿态任务在 nq 不等于 nv 时必须用流形差分计算关节误差",
+  "version": null
+}

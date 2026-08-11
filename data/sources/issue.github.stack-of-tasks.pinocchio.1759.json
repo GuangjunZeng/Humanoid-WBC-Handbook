@@ -1,0 +1,156 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759",
+  "captured_at": "2026-08-11T03:14:00+08:00",
+  "content_sha256": "8b08c56d8d4020c6737bccd1192b30f022db86f3c591711ecd667c6732f18e98",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 5 条回复，并逐张查看原帖 2 张图片；仅把原作者确认过的 LOCAL_WORLD_ALIGNED 修正用于该案例，未推断 dJ 或所有仿真器差异。",
+    "components": [
+      "Pinocchio",
+      "PyBullet",
+      "Barrett WAM",
+      "WORLD",
+      "LOCAL_WORLD_ALIGNED"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区答复者建议请求 LOCAL_WORLD_ALIGNED。",
+        "原作者按建议切换后报告似乎工作正常。"
+      ],
+      "diagnostics": [
+        "先检查 Pinocchio Jacobian/Frame velocity 的 ReferenceFrame，再与 PyBullet 返回速度的表达坐标系对齐。",
+        "同一条速度链路中的 Jacobian、速度和 dJ 应明确使用一致参考系；原线程只验证了速度切换。"
+      ],
+      "effective_fixes": [
+        "对原帖这组 PyBullet 对比，使用 LOCAL_WORLD_ALIGNED 表达 Pinocchio 末端速度/Jacobian。"
+      ],
+      "environments": [
+        "Barrett WAM，PyBullet 仿真与 Pinocchio 对比；关节 1 和 4 设为 pi/2，机械臂无 motor 驱动并自由下落；版本未说明。"
+      ],
+      "limits": [
+        "线程没有修正后的图、数值误差或软件版本。",
+        "这不能证明所有 Bullet/Pinocchio 速度差异都由 ReferenceFrame 导致。",
+        "原作者询问 dJ 是否也需相同参考系，但线程没有直接给出 dJ 的明确操作答案。"
+      ],
+      "outcomes": [
+        "原作者确认改用 LOCAL_WORLD_ALIGNED 后似乎有效。",
+        "Pinocchio 项目贡献者随后感谢答复者并认可其回答。"
+      ],
+      "problem_statements": [
+        "为什么 PyBullet 与 Pinocchio 的末端位置一致，但末端速度不同？",
+        "Pinocchio 的 WORLD 与 LOCAL_WORLD_ALIGNED Jacobian 有何工程区别？"
+      ],
+      "safety_notes": [
+        "把任务空间速度送入 WBC 前，应以统一 ReferenceFrame 记录数值，并用有限差分位置验证速度方向和尺度。"
+      ],
+      "suspected_causes": [
+        "线程回答将差异定位到 WORLD 与目标比较量的参考系不一致。"
+      ],
+      "symptoms": [
+        "原图中 Pinocchio 与 Bullet 的 Y 轴位置曲线基本重合。",
+        "原图中速度曲线明显分离，初段 Pinocchio 为正而 Bullet 为负；原代码使用 WORLD 或未明确匹配的 Jacobian。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原线程验证的是先对齐参考系（ReferenceFrame）：答复者建议将 Pinocchio 的速度/Jacobian 改为 LOCAL_WORLD_ALIGNED，原作者报告似乎工作正常，Pinocchio 项目贡献者随后认可该回答。答复还说明 WORLD 表达固定坐标系中的 spatial velocity，而 LOCAL_WORLD_ALIGNED 是将 LOCAL body Jacobian 用连杆相对世界的旋转 R 对齐到世界方向，可写成 J_lwa=[R,0;0,R]J_local。原图只证明修正前位置重合而速度不一致；没有修正后曲线和版本，因此不能外推到所有仿真器差异。",
+        "applicability": "严格适用于原帖 Barrett WAM、PyBullet/Pinocchio 速度比较和该 ReferenceFrame 误配；软件版本未说明。",
+        "bilingual_terms": [
+          "参考坐标系（ReferenceFrame）",
+          "局部世界对齐（LOCAL_WORLD_ALIGNED）",
+          "空间速度（spatial velocity）",
+          "刚体雅可比矩阵（body Jacobian）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_bullet_velocity_reference_frame_1759",
+        "problem_title_zh": "PyBullet 与 Pinocchio 末端速度的 ReferenceFrame 对齐",
+        "question_zh": "Barrett WAM 的 PyBullet 与 Pinocchio 位置一致但末端速度明显不一致，原线程验证了什么修正？",
+        "source_locator": "Pinocchio #1759，建议 issuecomment-1263820871；原作者确认 issuecomment-1263826765；参考系解释 issuecomment-1263871379；项目贡献者认可 issuecomment-1266738973",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759#issuecomment-1263820871",
+        "verification_refs": [
+          {
+            "locator": "社区答复者建议改用 LOCAL_WORLD_ALIGNED",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759#issuecomment-1263820871"
+          },
+          {
+            "locator": "原作者报告该建议似乎有效",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759#issuecomment-1263826765"
+          },
+          {
+            "locator": "答复者解释 WORLD、LOCAL 与 LOCAL_WORLD_ALIGNED 的关系",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759#issuecomment-1263871379"
+          },
+          {
+            "locator": "Pinocchio 项目贡献者认可该回答",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1759#issuecomment-1266738973"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原 Issue 的双层曲线图：上方 Pos 中 Pinocchio 与 Bullet 曲线几乎完全重合；下方 Vel 中两条曲线明显分离，初段方向相反，接近末段突变后的数值也不同。这是切换 LOCAL_WORLD_ALIGNED 之前的症状图，不是修复后验证图。",
+      "原 Issue 的第二张图显示 Barrett WAM 在棋盘地面上的初始姿态，只能辅助确认机械臂构型；图中没有可读参数、日志或坐标轴定义。"
+    ],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1759",
+    "query": "Pinocchio PyBullet velocity mismatch WORLD LOCAL_WORLD_ALIGNED Jacobian Barrett WAM",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Barrett WAM；PyBullet 与 Pinocchio，原帖未给软件版本"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "答复者建议检查 Jacobian 的参考系，并尝试 LOCAL_WORLD_ALIGNED。"
+      },
+      {
+        "text": "原作者报告改用后似乎工作正常。"
+      },
+      {
+        "text": "答复者解释 WORLD 与 LOCAL_WORLD_ALIGNED，并给出旋转变换关系。"
+      },
+      {
+        "text": "Pinocchio 项目贡献者认可该回答。"
+      }
+    ],
+    "wbc_relevance_reason": "任务空间 WBC 中把不同参考系的末端速度直接比较，会形成伪误差并错误驱动控制器；Jacobian、速度和导数必须使用一致的 ReferenceFrame。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1759",
+  "summary": "Pinocchio #1759 在 Barrett WAM 自由下落仿真中比较 PyBullet 与 Pinocchio：原图上位置曲线重合，但使用 WORLD 的速度曲线明显不同，初段甚至符号相反。社区答复建议检查 Jacobian 的表达坐标系并改用 LOCAL_WORLD_ALIGNED，原作者随后说似乎工作正常。答复者解释 WORLD 表达固定坐标系中的 spatial velocity，而 LOCAL_WORLD_ALIGNED 相当于将 LOCAL body Jacobian 旋转对齐世界坐标；Pinocchio 项目贡献者后来认可该回答。线程没有给出修正后的对比图或版本信息。",
+  "title": "PyBullet 与 Pinocchio 末端速度不一致的参考系修正",
+  "version": null
+}

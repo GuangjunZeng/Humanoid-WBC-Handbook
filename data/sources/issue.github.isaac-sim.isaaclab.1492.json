@@ -1,0 +1,129 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "H-Hisamichi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1492",
+  "captured_at": "2026-08-11T01:20:00+08:00",
+  "content_sha256": "66c4927231b9ac967b52b8ab16dc2e65dbd249f082291efba16512db421bb97f",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 5 条评论；没有把单张地形截图当作课程未运行的独立证明。",
+    "components": [
+      "Isaac Lab",
+      "TerrainGeneratorCfg",
+      "CurriculumCfg",
+      "manager-based workflow"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "迁移到 manager-based workflow，并确认 RL 配置代码定义 CurriculumCfg。"
+      ],
+      "diagnostics": [
+        "除 TerrainGeneratorCfg.curriculum 外，检查 manager-based RL 配置中是否实际定义 CurriculumCfg，以及任务是否注册了地形等级更新项。"
+      ],
+      "effective_fixes": [
+        "按 IsaacLab v2.2.0 的 manager-based locomotion 示例定义 CurriculumCfg，而不只设置 terrain generator 的 curriculum 标志。"
+      ],
+      "environments": [
+        "Isaac Lab 地形生成器；原帖自定义 15×25 地形网格；后续确认 IsaacLab v2.2.0 manager-based 示例。"
+      ],
+      "limits": [
+        "原帖没有展示迁移前后地形等级日志或课程项代码；不同 Isaac Lab 版本的配置类路径可能变化。"
+      ],
+      "outcomes": [
+        "提问者在原线程明确报告迁移后问题解决，并在后续追问中再次给出 v2.2.0 示例定位。"
+      ],
+      "problem_statements": [
+        "TerrainGeneratorCfg.curriculum=True 后，为什么训练初期仍显示困难地形，没有从平地逐步升级？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "原帖的解决说明表明旧工作流没有按 manager-based 示例接入 CurriculumCfg。"
+      ],
+      "symptoms": [
+        "RL 刚开始时渲染中已经存在困难地形，与期望的从平地/轻微台阶逐步训练不一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖作者的有效处理是迁移到管理器式工作流（manager-based workflow），并在 RL 配置中定义课程配置（CurriculumCfg）。TerrainGeneratorCfg 的 curriculum 负责地形生成布局，但任务侧还要有课程项驱动环境在难度行之间更新。作者确认 IsaacLab v2.2.0 的示例代码可工作；其他版本应对照对应分支的配置路径。",
+        "applicability": "明确对应 IsaacLab v2.2.0 manager-based locomotion 示例；其他版本需核对 CurriculumCfg API。",
+        "bilingual_terms": [
+          "地形生成器（terrain generator）",
+          "课程配置（CurriculumCfg）",
+          "管理器式工作流（manager-based workflow）",
+          "难度等级（terrain level）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.d08d86d9883750a2",
+        "problem_title_zh": "设置 TerrainGeneratorCfg(curriculum=True) 后训练仍未按难度递进，应该检查哪一层？",
+        "question_zh": "设置 TerrainGeneratorCfg(curriculum=True) 后训练仍未按难度递进，应该检查哪一层？",
+        "source_locator": "Issue #1492 自答 issuecomment-2531772317；补充 issuecomment-3395768759",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1492#issuecomment-3395768759",
+        "verification_refs": [
+          {
+            "locator": "提问者明确报告迁移 manager-based 后问题解决",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1492#issuecomment-2531772317"
+          },
+          {
+            "locator": "提问者补充引用的 v2.2.0 CurriculumCfg 示例",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/blob/f52aa9802780e897c184684d1cbc2025fafcef4a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/velocity_env_cfg.py#L278"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖有训练初期地形截图，但本卡结论来自作者迁移后的文字确认和精确示例链接，不从截图判断实际难度等级。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1492",
+    "query": "IsaacLab terrain curriculum difficult terrain from start manager based CurriculumCfg",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "足式机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "提问者：迁移到 manager-based code 后解决。"
+      },
+      {
+        "text": "提问者补充：在 RL 配置中定义 CurriculumCfg，IsaacLab v2.2.0 示例可以工作。"
+      }
+    ],
+    "wbc_relevance_reason": "地形生成器负责生成难度网格，训练任务还需要课程管理器根据表现移动环境难度；只开启生成器开关不会自动接上训练课程更新。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1492",
+  "summary": "提问者设置 TerrainGeneratorCfg(curriculum=True) 后，训练一开始仍看到困难地形。其自答通过迁移到 manager-based workflow 解决；后续补充说明应在 RL 配置中定义 CurriculumCfg，并指向 IsaacLab v2.2.0 的示例代码。",
+  "title": "只设置 TerrainGeneratorCfg.curriculum 不等于训练任务已接入地形课程",
+  "version": null
+}

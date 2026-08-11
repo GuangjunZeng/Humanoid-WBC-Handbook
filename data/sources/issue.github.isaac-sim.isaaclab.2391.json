@@ -1,0 +1,140 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Bikram Pandit"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2391",
+  "captured_at": "2026-08-11T03:04:00+08:00",
+  "content_sha256": "ab609eb4a628b38fc8731401193d5f20dc2fea427de1b3a960268aea99820ee9",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文与全部 2 条回复，并核对 PR #2392 的合并状态与全部补丁。没有把单项监控缓冲问题改写成总奖励错误，也保留了 PR 未添加测试的限制。",
+    "components": [
+      "Isaac Lab",
+      "RewardManager",
+      "ManagerLiveVisualizer",
+      "curriculum",
+      "reward logging"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖给出了权重往返切换的伪代码复现。",
+        "PR #2392 先引入 term_idx 并在零权重分支清零，后续提交改用 enumerate 避免在循环中搜索名称索引。"
+      ],
+      "diagnostics": [
+        "按原帖步骤记录同一项在 0 → 非 0 → 0 三个阶段的 weight、_step_reward 与 _reward_buf，区分单项监控缓冲和总奖励。",
+        "检查 RewardManager.compute 的 zero-weight continue 分支是否在跳过前清空对应列。"
+      ],
+      "effective_fixes": [
+        "使用已合并 PR #2392 的逻辑：遇到零权重时先执行 self._step_reward[:, term_idx] = 0.0，再 continue。"
+      ],
+      "environments": [
+        "Isaac Lab 2.1.0，commit 2e6946afb9b26f6949d4b1fd0a00e9f4ef733fcc；Isaac Sim 4.5；Ubuntu 22.04；RTX 3060；CUDA 12.4；GPU driver 550.120。"
+      ],
+      "limits": [
+        "该修复只矫正单项 _step_reward 的可视化/日志值；原帖明确说明总奖励 _reward_buf 本来就正确。",
+        "PR #2392 的检查清单明确未添加证明修复有效的测试；应在目标版本重跑原帖的权重切换用例。"
+      ],
+      "outcomes": [
+        "PR #2392 于 2025-05-09 合并到主分支，合并提交为 f1ba9c3a30b0cef04d04dfba789f996360cd4f1c。"
+      ],
+      "problem_statements": [
+        "为什么 curriculum 把奖励权重从非零调回 0 后，单项奖励可视化仍显示旧的非零值？"
+      ],
+      "safety_notes": [
+        "调试过程中不要仅依赖单项可视化判定策略实际收到的总奖励。"
+      ],
+      "suspected_causes": [
+        "旧实现遇到 weight == 0.0 直接 continue，没有覆盖之前写入 _step_reward 的单项值。"
+      ],
+      "symptoms": [
+        "权重在 0 → 非 0 → 0 后，_reward_buf 继续正确，但 _step_reward[:, idx] 保留前一次的非零值。",
+        "ManagerLiveVisualizer 和依赖 _step_reward 的日志显示过期单项奖励。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖定位到 RewardManager.compute 的零权重分支直接 continue，没有清空 _step_reward 对应列，因此可视化和日志读到过期值。已合并 PR #2392 在 continue 前执行 self._step_reward[:, term_idx] = 0.0，并使用 enumerate 获得索引。这不是总奖励错误：原帖明确说 _reward_buf 一直正确。PR 没有新增回归测试，目标版本仍应复测 0 → 非 0 → 0 路径。",
+        "applicability": "适用于使用 Isaac Lab RewardManager，且运行期动态将同一奖励项权重从非零改回 0 的情况；原环境为 Isaac Lab 2.1.0/Isaac Sim 4.5。",
+        "bilingual_terms": [
+          "单步奖励（step reward）",
+          "奖励课程（reward curriculum）",
+          "过期值（stale value）",
+          "实时可视化（live visualization）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.training_reward_curriculum.isaaclab_zero_weight_step_reward_stale_2391",
+        "problem_title_zh": "Isaac Lab 奖励权重归零后单项 step reward 残留",
+        "question_zh": "Isaac Lab 中奖励权重由非零动态调回 0 后，为什么 ManagerLiveVisualizer 仍显示旧奖励，如何修正？",
+        "source_locator": "Isaac Lab #2391 正文复现和影响边界；版本确认 issuecomment-2836796927；已合并 PR #2392 及合并提交 f1ba9c3",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2391",
+        "verification_refs": [
+          {
+            "locator": "PR 在零权重分支清空对应 _step_reward，已合并；检查清单未新增测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/2392"
+          },
+          {
+            "locator": "PR #2392 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/f1ba9c3a30b0cef04d04dfba789f996360cd4f1c"
+          },
+          {
+            "locator": "原作者补充确认 Isaac Lab/Isaac Sim 版本",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2391#issuecomment-2836796927"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2391",
+    "query": "Isaac Lab RewardManager zero weight stale step reward curriculum visualization logging",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖未说明具体机器人；Isaac Lab 2.1.0"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "项目协作者请求补齐并核对版本信息。"
+      },
+      {
+        "text": "原作者确认了 Isaac Lab 2.1.0 与 Isaac Sim 4.5。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 强化学习的 curriculum 常动态启停奖励项；单项奖励可视化和日志残留会干扰奖励调试，但不应被误读为实际总奖励错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2391",
+  "summary": "Isaac Lab #2391 在 2.1.0 中复现：某奖励项权重由 0 改为非 0、再改回 0 后，RewardManager.compute 会跳过该项计算，却没有清空 _step_reward 的对应列，因而 ManagerLiveVisualizer 和日志仍显示之前的非零值。原帖明确说明总奖励 _reward_buf 仍然正确。关联 PR #2392 在 zero-weight 分支中将对应 _step_reward 置零，并改用 enumerate 取索引；PR 已合并，但检查清单明确未新增测试。",
+  "title": "Isaac Lab 奖励权重归零后单项 step reward 残留旧值",
+  "version": null
+}

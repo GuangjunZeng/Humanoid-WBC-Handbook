@@ -1,0 +1,132 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "Vitamin0304"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4999",
+  "captured_at": "2026-08-11T04:08:00+08:00",
+  "content_sha256": "d135a23a176de80aa9c86ddac13d66d8818a6cd239255f514fc9622fac1f7a6b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 公开候选正文、公开 Issue 页与官方回复链核对正文和全部 1 条评论；明确记录 Issue 无关联 PR，未将 closed 状态当作官方修复。",
+    "components": [
+      "Isaac Lab",
+      "OperationalSpaceControllerAction",
+      "PhysX generalized mass matrix",
+      "gravity compensation",
+      "floating base"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者在本地将 mass matrix 和 gravity 的行列索引从 self._joint_ids 替换为 self._jacobi_joint_idx。"
+      ],
+      "diagnostics": [
+        "对照 __init__ 中用于 Jacobian 的 self._jacobi_joint_idx 与 _compute_dynamic_quantities() 中用于 generalized mass matrix/gravity 的 self._joint_ids。",
+        "对浮动基模型检查关节索引是否需跨过前 6 个基座广义速度维度，并同时比较修正前后控制力矩。"
+      ],
+      "effective_fixes": [
+        "对原帖提交 f4aa17f 的本地实验，在 _compute_dynamic_quantities() 中以 self._jacobi_joint_idx 同时索引 generalized mass matrices 的两个维度和 gravity compensation forces。"
+      ],
+      "environments": [
+        "Isaac Lab commit f4aa17f87e2e5db5484f0b5974918573e8918ce2；Isaac Sim 5.10；Ubuntu 22.04；RTX 3090；CUDA 12.8；driver 570.211；Galaxea R1 Pro 左臂。"
+      ],
+      "limits": [
+        "该结论是 Issue 作者的单一机器人本地修改记录；项目回复只说团队会审查，没有确认根因或修复。",
+        "Issue 页明确显示没有关联 branch/PR；关闭状态不能替代合并补丁或回归测试。",
+        "原帖没有独立复现、自动化测试、真机结果或官方发布版本；其他浮动基 articulation 必须核对自身索引布局。"
+      ],
+      "outcomes": [
+        "作者报告本地修改后 R1 Pro 恢复稳定控制，力矩不再爆炸，并且 inertial_dynamics_decoupling=True 与 gravity_compensation=True 可用。"
+      ],
+      "problem_statements": [
+        "Isaac Lab 浮动基 OperationalSpaceControllerAction 为什么会输出数百至上千 N·m 的异常力矩？"
+      ],
+      "safety_notes": [
+        "原帖异常力矩达数百至约 1500 N·m；在真机转移前必须以软件力矩夹紧、驱动器限流、低增益和急停独立阻断这类索引错位。"
+      ],
+      "suspected_causes": [
+        "作者定位为 _compute_dynamic_quantities() 用未偏移的 self._joint_ids 截取质量矩阵和重力向量，从而把底盘/轮组等动力学项错配给机械臂关节。"
+      ],
+      "symptoms": [
+        "机器人剧烈抖动；作者列出的实际力矩多次到达±600–1500 N·m，而修正后序列约为 -15.9至3.76 N·m。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "作者发现 Jacobian 路径已使用对浮动基加 6 偏移的 self._jacobi_joint_idx，但 _compute_dynamic_quantities() 仍用未偏移的 self._joint_ids 截取广义质量矩阵与重力项。他在原帖 commit f4aa17f 上将两者统一改为 self._jacobi_joint_idx，报告 R1 Pro 不再抖动，力矩回到约 -16至4 N·m 量级，惯性解耦和重力补偿也能运行。这仅是原作者的本地验证；项目未确认、无关联 PR，其他版本必须先核对索引语义。",
+        "applicability": "仅直接适用于原帖 Isaac Lab commit f4aa17f/Isaac Sim 5.10 的 Galaxea R1 Pro 浮动基 OSC 实验；其他机器人和版本需验证广义索引布局。",
+        "bilingual_terms": [
+          "操作空间控制（Operational Space Control, OSC）",
+          "浮动基（floating base）",
+          "广义质量矩阵（generalized mass matrix）",
+          "重力补偿（gravity compensation）",
+          "惯性动力学解耦（inertial dynamics decoupling）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.isaaclab_floating_base_osc_index_offset_4999",
+        "problem_title_zh": "Isaac Lab 浮动基 OSC 动力学索引错位导致异常力矩",
+        "question_zh": "Isaac Lab 浮动基操作空间控制（Operational Space Control, OSC）出现数百至上千 N·m 力矩时，#4999 的作者如何定位并本地处理？",
+        "source_locator": "Isaac Lab #4999 正文中的修正前/后力矩、索引对照和本地结果；项目评论 issuecomment-4081678102 仅说待审查",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4999",
+        "verification_refs": [
+          {
+            "locator": "原帖给出 commit/环境、修正前后力矩、完整索引修改以及作者本地结果",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4999"
+          },
+          {
+            "locator": "项目协作者只表示团队会审查；该回复不是对根因或修复的确认",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4999#issuecomment-4081678102"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4999",
+    "query": "Isaac Lab OperationalSpaceControllerAction floating base mass matrix gravity joint index offset torque explosion",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Galaxea R1 Pro 移动操作机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目协作者只表示团队会审查，未对作者的根因或本地修正给出确认。"
+      }
+    ],
+    "wbc_relevance_reason": "操作空间控制（Operational Space Control, OSC）依赖与选中关节一致的质量矩阵和重力项；浮动基 6 自由度偏移错位会直接产生危险力矩。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4999",
+  "summary": "Isaac Lab #4999 的 Galaxea R1 Pro 浮动基机械臂在 OperationalSpaceControllerAction 中出现剧烈抖动，控制力矩从预期约 -16至4 N·m 变成数百至约 1500 N·m。作者对照代码发现 Jacobian 已用加 6 的 self._jacobi_joint_idx，但 _compute_dynamic_quantities() 仍用未偏移的 self._joint_ids 截取广义质量矩阵和重力补偿项。作者本地改用 _jacobi_joint_idx 后报告控制恢复稳定，惯性解耦与重力补偿也能运行。Issue 没有关联 PR，唯一项目回复只说团队会审查。",
+  "title": "Isaac Lab 浮动基 OSC 读取错位动力学索引导致力矩爆炸",
+  "version": null
+}

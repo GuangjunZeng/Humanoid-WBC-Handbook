@@ -1,0 +1,120 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "LuminousLark"
+  ],
+  "canonical_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/44",
+  "captured_at": "2026-08-11T01:00:00+08:00",
+  "content_sha256": "ad5dfc5e7cac58c14787f16867d2e9798a4a3b4f25343ed8ff9f3d9746790ff6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 公开 Issue 页面内嵌原始 JSON：完整读取正文、唯一评论与关闭状态；没有把缺失的修复参数或复测指标补写出来。",
+    "components": [
+      "whole_body_tracking",
+      "LAFAN1",
+      "motion retargeting",
+      "timing"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者恢复训练帧率与预测帧率的一致性，并在原线程说明问题已解决。"
+      ],
+      "diagnostics": [
+        "在确认重定向 npz 的可视回放没有明显几何错位后，继续核对训练、预测和参考动作的帧率及时序参数。"
+      ],
+      "effective_fixes": [
+        "让训练帧率（training frame rate）与预测帧率（prediction frame rate）保持一致。"
+      ],
+      "environments": [
+        "HybridRobotics/whole_body_tracking；Unitree 重定向 LAFAN1 dance2_subject1.csv；4096 个 G1 环境；训练约 12 小时；具体提交和软件版本未说明。"
+      ],
+      "limits": [
+        "原帖没有给出被修改的具体参数名、原值/修正值、代码版本及修复后的量化曲线；不能把所有 episode length=1 的问题都归因于帧率。"
+      ],
+      "outcomes": [
+        "提问者将 Issue 关闭为 completed 并明确写明问题已解决；原帖未提供修复后的 episode length 或误差数值。"
+      ],
+      "problem_statements": [
+        "重定向后的动作肉眼回放看不出明显异常，但 Whole Body Tracking 训练的 mean episode length 为什么长期停在 1？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "提问者明确确认自己修改了帧率与时序相关参数，使学习过程无法推进。"
+      ],
+      "symptoms": [
+        "Mean episode length 为 1.00；error_body_pos=0.6723；error_joint_pos=0.3092；error_anchor_pos=0.3256；error_anchor_rot=0.6611；anchor_pos 与 ee_body_pos 终止项大量触发。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖提问者的实际原因是修改了帧率与时序参数，导致学习无法进行；其结论是训练帧率（training frame rate）必须与预测帧率（prediction frame rate）相同。排查时应把参考动作采样、训练环境步进和策略预测频率逐项对齐。该线程没有公开具体参数值和修复后指标，所以这是一条已由原作者确认、但仍需按目标版本核对的经验。",
+        "applicability": "适用于使用离线重定向动作训练时序敏感的全身跟踪策略，尤其是参考动作、环境和策略频率可分别配置的实现。",
+        "bilingual_terms": [
+          "训练帧率（training frame rate）",
+          "预测帧率（prediction frame rate）",
+          "平均回合长度（mean episode length）",
+          "动作重定向（motion retargeting）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.retargeting_dataset_quality.fc4d7943210bfc6b",
+        "problem_title_zh": "重定向动作回放看似正常，但 Whole Body Tracking 训练一开始就反复终止、mean episode length 卡在 1，先检查什么？",
+        "question_zh": "重定向动作回放看似正常，但 Whole Body Tracking 训练一开始就反复终止、mean episode length 卡在 1，先检查什么？",
+        "source_locator": "Issue #44，提问者自答 issuecomment-3515636113",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/44#issuecomment-3515636113",
+        "verification_refs": [
+          {
+            "locator": "提问者明确确认原因、处理原则并说明问题已解决",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/44#issuecomment-3515636113"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "hybridrobotics.whole_body_tracking.44",
+    "query": "whole body tracking retargeted motion mean episode length frame rate timing",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_dataset_quality",
+    "selected_comments": [
+      {
+        "text": "提问者自答：修改帧率和时序参数使学习无法推进；训练帧率应与预测帧率相同，问题已经解决。"
+      }
+    ],
+    "wbc_relevance_reason": "参考动作的时间离散与策略预测频率不一致会破坏运动跟踪目标的相位和速度尺度，使全身策略在起始阶段持续触发终止。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.hybridrobotics.whole_body_tracking.44",
+  "summary": "提问者用 Unitree 重定向后的 LAFAN1 dance2_subject1.csv 训练 4096 个 G1 环境约 12 小时，mean episode length 始终为 1.00，且位置与旋转误差很大。提问者随后在原线程自答：问题来自其修改了帧率和时序参数，导致学习无法进行；训练帧率应与预测帧率相同，并将 Issue 标记为已解决。",
+  "title": "重定向动作的训练帧率与预测帧率不一致导致 episode 长度停在 1",
+  "version": null
+}

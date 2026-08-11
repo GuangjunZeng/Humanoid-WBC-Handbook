@@ -30,6 +30,33 @@ from .social import (
     queries_from_config,
     render_engineering_qa_markdown,
 )
+from .social_browser import (
+    BROWSER_PLATFORMS,
+    BrowserCollectionError,
+    build_browser_collection_plan,
+    normalize_browser_collection_run,
+)
+from .social_discovery import (
+    SocialDiscoveryError,
+    evolve_query_frontier,
+    frontier_queries,
+    frontier_topic_ids,
+    render_query_frontier_markdown,
+    select_incremental_queries,
+    update_discovery_state,
+)
+from .social_github import (
+    GithubIssueApiClient,
+    GithubIssueCollectionError,
+    build_github_issue_plan,
+    collect_github_issue_candidates,
+    merge_github_connector_runs,
+)
+from .social_inventory import (
+    SocialInventoryError,
+    build_social_candidate_inventory,
+    render_pending_markdown,
+)
 from .social_x import (
     XApiClient,
     XCollectionError,
@@ -50,6 +77,14 @@ from .social_xiaohongshu import (
     build_xhs_review_queue,
 )
 from .validator import has_errors, validate_repository
+from .web_search import (
+    DEFAULT_BRANCH,
+    DEFAULT_REPOSITORY_URL,
+    WebSearchError,
+    build_web_index,
+    collect_web_problems,
+    render_problem_pages,
+)
 
 
 def _repository(path: str) -> HandbookRepository:
@@ -190,7 +225,7 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
         if not isinstance(raw, Mapping):
             raise XCollectionError("social query config must be one JSON object")
         configured_queries = _filter_social_queries(
-            queries_from_config(raw), args.scope, args.domain
+            queries_from_config(raw, platform="x"), args.scope, args.domain
         )
         ad_hoc = bool(args.query or args.post or args.conversation)
         queries = configured_queries if (not ad_hoc or args.include_config_queries) else []
@@ -213,6 +248,12 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
         direct_post_ids = list(dict.fromkeys(direct_post_ids))
         if not queries and not direct_post_ids:
             raise XCollectionError("select at least one config query, --query, or --post")
+        if not 0 <= args.max_retries <= 10:
+            raise XCollectionError("--max-retries must be in [0, 10]")
+        if not 0 <= args.max_retry_wait_seconds <= 60:
+            raise XCollectionError(
+                "--max-retry-wait-seconds must be in [0, 60]"
+            )
 
         target = Path(args.output)
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -226,6 +267,11 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
             )
             result["start_time"] = args.start_time
             result["end_time"] = args.end_time
+            result["sort_order"] = args.sort_order
+            result["retry"] = {
+                "max_retries": args.max_retries,
+                "max_retry_wait_seconds": args.max_retry_wait_seconds,
+            }
             next_state = None
         else:
             previous_state = {}
@@ -234,7 +280,11 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
                 previous_state = _read_json(str(state_path))
                 if not isinstance(previous_state, Mapping):
                     raise XCollectionError("X state file must be one JSON object")
-            client = XApiClient.from_environment(args.token_env)
+            client = XApiClient.from_environment(
+                args.token_env,
+                max_retries=args.max_retries,
+                max_retry_wait_seconds=args.max_retry_wait_seconds,
+            )
             result, next_state = collect_x_candidates(
                 queries,
                 client,
@@ -246,6 +296,7 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
                 use_state=not args.no_state,
                 start_time=args.start_time,
                 end_time=args.end_time,
+                sort_order=args.sort_order,
             )
             if not args.no_state:
                 state_path.parent.mkdir(parents=True, exist_ok=True)
@@ -254,6 +305,12 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
                     + "\n",
                     encoding="utf-8",
                 )
+        if args.conversation and args.mode == "recent":
+            result.setdefault("warnings", []).append(
+                "conversation search uses the recent endpoint and only covers "
+                "replies available in its current recent window; use --mode all "
+                "with sufficient entitlement for full-archive thread recovery"
+            )
         target.write_text(
             json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
@@ -273,6 +330,7 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
         "run_id": result["run_id"],
         "dry_run": args.dry_run,
         "mode": args.mode,
+        "sort_order": args.sort_order,
         "path": str(target),
         "queries": len(result["queries"]) if args.dry_run else len(result["query_results"]),
         "candidates": 0 if args.dry_run else len(result["candidates"]),
@@ -280,7 +338,17 @@ def command_social_collect_x(args: argparse.Namespace) -> int:
             "estimated_post_read_upper_bound"
         ),
         "state": None if args.dry_run or args.no_state else str(Path(args.state)),
+        "queries_complete": None if args.dry_run else result["stats"]["queries_complete"],
+        "queries_resume_pending": (
+            None if args.dry_run else result["stats"]["queries_resume_pending"]
+        ),
+        "api_errors": None if args.dry_run else result["stats"]["api_errors"],
+        "request_failures": (
+            None if args.dry_run else result["stats"]["request_failures"]
+        ),
     }, ensure_ascii=False, indent=2))
+    if not args.dry_run and result["stats"]["request_failures"]:
+        return 3
     return 0
 
 
@@ -292,7 +360,7 @@ def command_social_collect_zhihu(args: argparse.Namespace) -> int:
         if not isinstance(raw, Mapping):
             raise ZhihuCollectionError("social query config must be one JSON object")
         configured_queries = _filter_social_queries(
-            queries_from_config(raw), args.scope, args.domain
+            queries_from_config(raw, platform="zhihu"), args.scope, args.domain
         )
         queries = configured_queries if not args.query or args.include_config_queries else []
         for query in args.query or []:
@@ -357,6 +425,435 @@ def command_social_collect_zhihu(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_social_browser_plan(args: argparse.Namespace) -> int:
+    """Build a finite task file for a user-triggered visible-browser run."""
+
+    try:
+        raw = _read_json(args.config)
+        if not isinstance(raw, Mapping):
+            raise BrowserCollectionError("social query config must be one JSON object")
+        direct_posts = args.post or []
+        if direct_posts and args.platform and "x" not in args.platform:
+            raise BrowserCollectionError("--post requires --platform x")
+        platforms = args.platform or (["x"] if direct_posts else BROWSER_PLATFORMS)
+        configured_queries = []
+        for query_platform in platforms:
+            platform_queries = _filter_social_queries(
+                queries_from_config(raw, platform=query_platform),
+                args.scope,
+                args.domain,
+            )
+            for item in platform_queries:
+                configured_queries.append({**item, "platforms": [query_platform]})
+        frontier = None
+        dynamic_queries = []
+        frontier_path = Path(args.frontier)
+        if frontier_path.exists():
+            frontier = _read_json(str(frontier_path))
+            if args.topic:
+                missing = sorted(set(args.topic) - frontier_topic_ids(frontier))
+                if missing:
+                    raise BrowserCollectionError(
+                        "unknown frontier topic_id: " + ", ".join(missing)
+                    )
+            dynamic_queries = frontier_queries(
+                frontier, platforms, topic_ids=args.topic
+            )
+        elif args.topic:
+            raise BrowserCollectionError("--topic requires an existing query frontier")
+        ad_hoc = bool(args.query or args.post or args.topic)
+        queries = (
+            list(configured_queries)
+            if (not ad_hoc or args.include_config_queries)
+            else []
+        )
+        if not ad_hoc or args.include_config_queries or args.topic:
+            queries.extend(dynamic_queries)
+        for query in args.query or []:
+            queries.append({
+                "scope_id": "open_ended_wbc_field_notes",
+                "domain_hints": [],
+                "query": query,
+            })
+        if not queries and not direct_posts:
+            raise BrowserCollectionError(
+                "select at least one config query, --query, or X --post"
+            )
+        discovery_state = None
+        discovery_state_path = Path(args.state)
+        if discovery_state_path.exists():
+            discovery_state = _read_json(str(discovery_state_path))
+        selection = select_incremental_queries(
+            queries,
+            platforms=platforms,
+            state=discovery_state,
+            max_queries_per_platform=args.max_queries_per_platform,
+            min_repeat_hours=args.min_query_repeat_hours,
+            force=args.refresh_queries or ad_hoc,
+        )
+        queries = selection["selected"]
+        if not queries and not direct_posts:
+            raise BrowserCollectionError(
+                "no query is currently eligible; use --refresh-queries to override "
+                "the low-repeat ledger"
+            )
+        known_urls = []
+        if not args.refresh_known:
+            known_urls = [
+                source.canonical_url
+                for source in _repository(args.data_dir).load_sources()
+                if source.kind.value == "community"
+            ]
+            if isinstance(discovery_state, Mapping):
+                state_urls = discovery_state.get("known_urls", {})
+                if isinstance(state_urls, Mapping):
+                    known_urls.extend(str(value) for value in state_urls)
+        plan = build_browser_collection_plan(
+            queries,
+            platforms=platforms,
+            max_results_per_query=args.max_results_per_query,
+            max_comments_per_post=args.max_comments_per_post,
+            max_posts_per_run=args.max_posts_per_run,
+            max_reply_expansions=args.max_reply_expansions,
+            reply_depth_limit=args.reply_depth_limit,
+            post_time_budget_seconds=args.post_time_budget_seconds,
+            reply_no_growth_patience=args.reply_no_growth_patience,
+            direct_post_urls=direct_posts,
+            known_canonical_urls=known_urls,
+        )
+        plan["query_selection"] = selection
+        plan["discovery_state_path"] = str(discovery_state_path)
+        plan["query_frontier_path"] = str(frontier_path)
+        target = Path(args.output)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
+            json.dumps(plan, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (
+        OSError,
+        json.JSONDecodeError,
+        ModelError,
+        RepositoryError,
+        SocialCollectionError,
+        BrowserCollectionError,
+        ValueError,
+    ) as exc:
+        print(f"browser collection plan failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "run_id": plan["run_id"],
+        "path": str(target),
+        "platforms": plan["platforms"],
+        "tasks": len(plan["tasks"]),
+        "queries_selected": selection["counts"]["selected"],
+        "queries_deferred": selection["counts"]["skipped"],
+        "estimated_max_detail_pages": plan["limits"]["estimated_max_detail_pages"],
+        "trigger": plan["trigger"],
+        "requires_visible_browser": True,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_social_browser_ingest(args: argparse.Namespace) -> int:
+    """Normalize pages extracted by the visible-browser agent."""
+
+    try:
+        raw = _read_json(args.input)
+        if not isinstance(raw, Mapping):
+            raise BrowserCollectionError("browser input must be one JSON object")
+        result = normalize_browser_collection_run(raw)
+        target = Path(args.output)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
+            json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        ledger_summary = None
+        frontier_summary = None
+        plan_path = Path(args.plan)
+        if not args.no_state and plan_path.exists():
+            plan = _read_json(str(plan_path))
+            if not isinstance(plan, Mapping):
+                raise BrowserCollectionError("browser plan must be one JSON object")
+            state_path = Path(args.state)
+            previous_state = _read_json(str(state_path)) if state_path.exists() else None
+            next_state = update_discovery_state(
+                plan,
+                result,
+                previous_state=previous_state,
+                min_repeat_hours=args.min_query_repeat_hours,
+            )
+            state_path.parent.mkdir(parents=True, exist_ok=True)
+            state_path.write_text(
+                json.dumps(next_state, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            ledger_summary = next_state["runs"][-1]
+        if not args.no_evolve:
+            config = _read_json(args.config)
+            if not isinstance(config, Mapping):
+                raise SocialDiscoveryError("social query config must be one object")
+            existing_queries = []
+            for platform in BROWSER_PLATFORMS:
+                for item in queries_from_config(config, platform=platform):
+                    existing_queries.append({**item, "platforms": [platform]})
+            frontier_path = Path(args.frontier)
+            previous_frontier = (
+                _read_json(str(frontier_path)) if frontier_path.exists() else None
+            )
+            next_frontier = evolve_query_frontier(
+                result["candidates"],
+                existing_queries=existing_queries,
+                previous_frontier=previous_frontier,
+            )
+            frontier_path.parent.mkdir(parents=True, exist_ok=True)
+            frontier_path.write_text(
+                json.dumps(next_frontier, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            frontier_summary = next_frontier["counts"]
+    except (
+        OSError,
+        json.JSONDecodeError,
+        BrowserCollectionError,
+        SocialCollectionError,
+        ValueError,
+    ) as exc:
+        print(f"browser collection ingest failed: {exc}", file=sys.stderr)
+        return 2
+    state_counts = {}
+    for blocker in result["blockers"]:
+        state = blocker["state"]
+        state_counts[state] = state_counts.get(state, 0) + 1
+    print(json.dumps({
+        "run_id": result["run_id"],
+        "path": str(target),
+        "pages_received": result["pages_received"],
+        "candidates": len(result["candidates"]),
+        "duplicates_merged": result["stats"]["duplicates_merged"],
+        "empty_searches": result["stats"].get("unique_completed_searches", 0),
+        "blockers": state_counts,
+        "ledger": ledger_summary,
+        "query_frontier": frontier_summary,
+        "auto_published": False,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_social_evolve_queries(args: argparse.Namespace) -> int:
+    """Mine evidence-linked technical entities from candidate files."""
+
+    try:
+        candidates = []
+        for input_path in args.input:
+            raw = _read_json(input_path)
+            if isinstance(raw, Mapping):
+                values = raw.get(
+                    "candidates", raw.get("pages", raw.get("captures"))
+                )
+            else:
+                values = raw
+            if not isinstance(values, list):
+                raise SocialDiscoveryError(
+                    f"{input_path} must be a list or contain "
+                    "candidates/pages/captures[]"
+                )
+            candidates.extend(values)
+        config = _read_json(args.config)
+        if not isinstance(config, Mapping):
+            raise SocialDiscoveryError("social query config must be one object")
+        existing_queries = []
+        for platform in BROWSER_PLATFORMS:
+            for item in queries_from_config(config, platform=platform):
+                existing_queries.append({**item, "platforms": [platform]})
+        output_path = Path(args.output)
+        previous = _read_json(str(output_path)) if output_path.exists() else None
+        frontier = evolve_query_frontier(
+            candidates,
+            existing_queries=existing_queries,
+            previous_frontier=previous,
+        )
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(frontier, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (OSError, json.JSONDecodeError, SocialDiscoveryError, SocialCollectionError) as exc:
+        print(f"query frontier update failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "path": str(output_path),
+        "topics": len(frontier["topics"]),
+        "counts": frontier["counts"],
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_social_frontier_report(args: argparse.Namespace) -> int:
+    """Render every frontier topic, evidence link, and scheduling state."""
+
+    try:
+        frontier = _read_json(args.frontier)
+        if not isinstance(frontier, Mapping):
+            raise SocialDiscoveryError("query frontier must be one object")
+        state_path = Path(args.state)
+        state = _read_json(str(state_path)) if state_path.exists() else None
+        if state is not None and not isinstance(state, Mapping):
+            raise SocialDiscoveryError("discovery state must be one object")
+        markdown = render_query_frontier_markdown(
+            frontier, discovery_state=state
+        )
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(markdown, encoding="utf-8")
+    except (OSError, json.JSONDecodeError, SocialDiscoveryError) as exc:
+        print(f"query frontier report failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "path": str(output_path),
+        "topics": len(frontier.get("topics", [])),
+        "complete_catalogue": True,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_github_issue_plan(args: argparse.Namespace) -> int:
+    """Build a bounded, resumable GitHub Issues backfill plan."""
+
+    try:
+        config = _read_json(args.config)
+        if not isinstance(config, Mapping):
+            raise GithubIssueCollectionError("GitHub issue config must be one object")
+        state_path = Path(args.state)
+        previous_state = _read_json(str(state_path)) if state_path.exists() else None
+        frontier_path = Path(args.frontier)
+        frontier = _read_json(str(frontier_path)) if frontier_path.exists() else None
+        if args.topic:
+            if frontier is None:
+                raise GithubIssueCollectionError(
+                    "--topic requires an existing query frontier"
+                )
+            missing = sorted(set(args.topic) - frontier_topic_ids(frontier))
+            if missing:
+                raise GithubIssueCollectionError(
+                    "unknown frontier topic_id: " + ", ".join(missing)
+                )
+        dynamic_queries = frontier_queries(
+            frontier, ["github_issue"], topic_ids=args.topic
+        )
+        plan = build_github_issue_plan(
+            config,
+            previous_state=previous_state,
+            frontier_queries=dynamic_queries,
+            frontier_only=bool(args.topic),
+            max_tasks_per_run=args.max_tasks_per_run,
+            repositories_per_task=args.repositories_per_task,
+            max_pages_per_task=args.max_pages_per_task,
+            per_page=args.per_page,
+        )
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(plan, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (OSError, json.JSONDecodeError, GithubIssueCollectionError, SocialDiscoveryError) as exc:
+        print(f"GitHub issue plan failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "run_id": plan["run_id"],
+        "path": str(output_path),
+        "repositories": plan["coverage"]["repositories"],
+        "queries": plan["coverage"]["queries"],
+        "eligible_tasks": plan["coverage"]["eligible_tasks"],
+        "selected_tasks": plan["coverage"]["selected_tasks"],
+        "free_api": True,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_github_issue_collect(args: argparse.Namespace) -> int:
+    """Execute a GitHub Issues plan through documented free REST endpoints."""
+
+    try:
+        plan = _read_json(args.plan)
+        if not isinstance(plan, Mapping):
+            raise GithubIssueCollectionError("GitHub issue plan must be one object")
+        state_path = Path(args.state)
+        previous_state = _read_json(str(state_path)) if state_path.exists() else None
+        client = GithubIssueApiClient.from_environment()
+        result, next_state = collect_github_issue_candidates(
+            plan,
+            client,
+            previous_state=previous_state,
+            max_issues_per_run=args.max_issues_per_run,
+            max_comments_per_issue=args.max_comments_per_issue,
+            enrich_comments=not args.no_comments,
+            refresh_known=args.refresh_known,
+        )
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_path.write_text(
+            json.dumps(next_state, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (OSError, json.JSONDecodeError, GithubIssueCollectionError) as exc:
+        print(f"GitHub issue collection failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "run_id": result["run_id"],
+        "path": str(output_path),
+        "state": str(state_path),
+        "candidates": len(result["candidates"]),
+        "requests_made": result["stats"]["requests_made"],
+        "request_failures": len(result["request_failures"]),
+        "free_api": True,
+    }, ensure_ascii=False, indent=2))
+    return 3 if result["request_failures"] else 0
+
+
+def command_github_issue_ingest_connector(args: argparse.Namespace) -> int:
+    """Merge connected-app candidate/comment exports deterministically."""
+
+    try:
+        candidate_runs = []
+        for path in args.input:
+            value = _read_json(path)
+            if not isinstance(value, Mapping):
+                raise GithubIssueCollectionError(f"candidate input is not an object: {path}")
+            candidate_runs.append(value)
+        comment_runs = []
+        for path in args.comments or []:
+            value = _read_json(path)
+            if not isinstance(value, Mapping):
+                raise GithubIssueCollectionError(f"comment input is not an object: {path}")
+            comment_runs.append(value)
+        result = merge_github_connector_runs(
+            candidate_runs, comment_runs=comment_runs
+        )
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (OSError, json.JSONDecodeError, GithubIssueCollectionError) as exc:
+        print(f"GitHub connector ingest failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "run_id": result["run_id"],
+        "path": str(output_path),
+        **result["stats"],
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
 def command_social_queue_xiaohongshu(args: argparse.Namespace) -> int:
     """Build/update a no-network Xiaohongshu manual-review queue."""
 
@@ -365,7 +862,9 @@ def command_social_queue_xiaohongshu(args: argparse.Namespace) -> int:
         if not isinstance(raw, Mapping):
             raise XiaohongshuQueueError("social query config must be one JSON object")
         queries = _filter_social_queries(
-            queries_from_config(raw), args.scope, args.domain
+            queries_from_config(raw, platform="xiaohongshu"),
+            args.scope,
+            args.domain,
         )
         if not queries:
             raise XiaohongshuQueueError("select at least one configured query")
@@ -512,22 +1011,110 @@ def command_social_report(args: argparse.Namespace) -> int:
 
     try:
         sources = _repository(args.data_dir).load_sources()
-        markdown = render_engineering_qa_markdown(sources)
+        config = _read_json(args.config)
+        if not isinstance(config, Mapping) or not isinstance(config.get("scopes"), list):
+            raise ValueError("social report config must contain a scopes list")
+        markdown = render_engineering_qa_markdown(
+            sources, scope_definitions=config["scopes"]
+        )
         target = Path(args.output)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(markdown, encoding="utf-8")
+        pending_files = 0
+        inventory_stats = None
+        inventory_path = Path(args.inventory)
+        if inventory_path.exists():
+            inventory = _read_json(str(inventory_path))
+            if not isinstance(inventory, Mapping):
+                raise SocialInventoryError("social inventory must be one object")
+            pages = render_pending_markdown(
+                inventory, scope_definitions=config["scopes"]
+            )
+            pending_root = Path(args.pending_output)
+            pending_root.mkdir(parents=True, exist_ok=True)
+            for relative_name, content in pages.items():
+                (pending_root / relative_name).write_text(content, encoding="utf-8")
+            pending_files = len(pages)
+            inventory_stats = inventory.get("stats")
         card_count = sum(
             len(source.metadata.get("engineering_qa", []))
             for source in sources
-            if source.kind.value == "community"
+            if source.kind.value in {"community", "issue"}
             and isinstance(source.metadata.get("engineering_qa", []), list)
         )
-    except (OSError, ModelError, RepositoryError, ValueError) as exc:
+    except (
+        OSError, json.JSONDecodeError, ModelError, RepositoryError,
+        SocialCollectionError, SocialInventoryError, ValueError,
+    ) as exc:
         print(f"social report failed: {exc}", file=sys.stderr)
         return 2
     print(json.dumps({
         "path": str(target),
         "engineering_qa_cards": card_count,
+        "pending_files": pending_files,
+        "inventory": inventory_stats,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _inventory_candidates(raw: Any, path: str) -> list[Mapping[str, Any]]:
+    if isinstance(raw, list):
+        values = raw
+    elif isinstance(raw, Mapping):
+        values = raw.get(
+            "candidates", raw.get("pages", raw.get("items", raw.get("decisions")))
+        )
+    else:
+        values = None
+    if not isinstance(values, list):
+        raise SocialInventoryError(
+            f"{path} must be a list or contain candidates/pages/items[]"
+        )
+    if not all(isinstance(value, Mapping) for value in values):
+        raise SocialInventoryError(f"{path} candidate items must be objects")
+    return values
+
+
+def command_social_inventory(args: argparse.Namespace) -> int:
+    """Merge every candidate into the minimal triage inventory."""
+
+    try:
+        groups = [
+            _inventory_candidates(_read_json(path), path) for path in args.input
+        ]
+        output_path = Path(args.output)
+        previous = (
+            _read_json(str(output_path))
+            if output_path.exists() and not args.fresh else None
+        )
+        if previous is not None and not isinstance(previous, Mapping):
+            raise SocialInventoryError("existing inventory must be one object")
+        decisions = []
+        if args.decisions:
+            decisions = _inventory_candidates(
+                _read_json(args.decisions), args.decisions
+            )
+        sources = _repository(args.data_dir).load_sources()
+        inventory = build_social_candidate_inventory(
+            groups,
+            reviewed_sources=sources,
+            previous_inventory=previous,
+            decisions=decisions,
+        )
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            json.dumps(inventory, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+    except (
+        OSError, json.JSONDecodeError, ModelError, RepositoryError,
+        SocialInventoryError, ValueError,
+    ) as exc:
+        print(f"social inventory failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "path": str(output_path),
+        **inventory["stats"],
     }, ensure_ascii=False, indent=2))
     return 0
 
@@ -542,6 +1129,50 @@ def command_build_index(args: argparse.Namespace) -> int:
         print(f"index build failed: {exc}", file=sys.stderr)
         return 2
     print(json.dumps({"index": args.index, **counts}, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _collect_web_problems(args: argparse.Namespace):
+    repository = _repository(args.data_dir)
+    return collect_web_problems(
+        repository.load_sources(),
+        repository.load_claims(),
+        repository_url=args.repository_url,
+        branch=args.branch,
+    )
+
+
+def command_render_problems(args: argparse.Namespace) -> int:
+    """Render or check every static engineering-problem detail page."""
+
+    try:
+        problems = _collect_web_problems(args)
+        report = render_problem_pages(
+            problems, Path(args.output_dir), check=args.check
+        )
+    except (
+        OSError, ModelError, RepositoryError, ValueError, WebSearchError,
+    ) as exc:
+        print(f"problem-page render failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({"path": args.output_dir, **report}, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_build_web_index(args: argparse.Namespace) -> int:
+    """Build the metadata-free bilingual index used by the static search UI."""
+
+    try:
+        problems = _collect_web_problems(args)
+        report = build_web_index(
+            problems, Path(args.problems_dir), Path(args.output)
+        )
+    except (
+        OSError, ModelError, RepositoryError, ValueError, WebSearchError,
+    ) as exc:
+        print(f"web index build failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({"path": args.output, **report}, ensure_ascii=False, indent=2))
     return 0
 
 
@@ -662,7 +1293,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     social_x.add_argument(
         "--conversation", action="append",
-        help="look up a root post and search its conversation_id reply thread",
+        help=(
+            "look up a root post and search its conversation_id replies; recent "
+            "mode covers only the recent window, while --mode all needs entitlement"
+        ),
     )
     social_x.add_argument(
         "--include-config-queries", action="store_true",
@@ -673,7 +1307,12 @@ def build_parser() -> argparse.ArgumentParser:
     social_x.add_argument("--max-pages", type=int, default=1)
     social_x.add_argument("--start-time")
     social_x.add_argument("--end-time")
+    social_x.add_argument(
+        "--sort-order", choices=("recency", "relevancy"), default="recency"
+    )
     social_x.add_argument("--token-env", default="X_BEARER_TOKEN")
+    social_x.add_argument("--max-retries", type=int, default=3)
+    social_x.add_argument("--max-retry-wait-seconds", type=float, default=30.0)
     social_x.add_argument("--state", default="var/social-state/x.json")
     social_x.add_argument(
         "--no-state", action="store_true",
@@ -714,6 +1353,166 @@ def build_parser() -> argparse.ArgumentParser:
     )
     social_zhihu.add_argument("--output", default="var/social-candidates/zhihu.json")
     social_zhihu.set_defaults(func=command_social_collect_zhihu)
+
+    social_browser_plan = subparsers.add_parser(
+        "social-browser-plan",
+        help="build finite Xiaohongshu/Zhihu/X tasks for a signed-in visible browser",
+    )
+    social_browser_plan.add_argument("--config", default="config/social-queries.json")
+    social_browser_plan.add_argument(
+        "--platform", action="append", choices=BROWSER_PLATFORMS,
+        help="limit the plan to Xiaohongshu, Zhihu, or X; repeat as needed",
+    )
+    social_browser_plan.add_argument("--scope", action="append")
+    social_browser_plan.add_argument(
+        "--domain", action="append", choices=[item.value for item in Domain]
+    )
+    social_browser_plan.add_argument("--query", action="append")
+    social_browser_plan.add_argument(
+        "--topic", action="append",
+        help="run one stable topic_id from the complete frontier; repeat as needed",
+    )
+    social_browser_plan.add_argument(
+        "--post", action="append",
+        help="open one exact X status URL and collect bounded visible replies",
+    )
+    social_browser_plan.add_argument(
+        "--include-config-queries", action="store_true",
+        help="also include configured searches with an ad-hoc --query, --topic, or --post",
+    )
+    social_browser_plan.add_argument("--max-results-per-query", type=int, default=3)
+    social_browser_plan.add_argument("--max-comments-per-post", type=int, default=200)
+    social_browser_plan.add_argument("--max-reply-expansions", type=int, default=100)
+    social_browser_plan.add_argument("--reply-depth-limit", type=int, default=10)
+    social_browser_plan.add_argument("--post-time-budget-seconds", type=int, default=300)
+    social_browser_plan.add_argument("--reply-no-growth-patience", type=int, default=3)
+    social_browser_plan.add_argument("--max-posts-per-run", type=int, default=15)
+    social_browser_plan.add_argument("--data-dir", default="data")
+    social_browser_plan.add_argument("--refresh-known", action="store_true")
+    social_browser_plan.add_argument(
+        "--state", default="var/social-state/discovery.json",
+        help="persistent query-yield and canonical-URL ledger",
+    )
+    social_browser_plan.add_argument(
+        "--frontier", default="var/social-state/query-frontier.json",
+        help="evidence-linked technical topics discovered from prior posts/comments",
+    )
+    social_browser_plan.add_argument(
+        "--max-queries-per-platform", type=int, default=8,
+        help="round-robin query budget per platform for this on-demand run",
+    )
+    social_browser_plan.add_argument(
+        "--min-query-repeat-hours", type=int, default=24,
+        help="base cooldown; repeated zero-yield queries back off exponentially",
+    )
+    social_browser_plan.add_argument(
+        "--refresh-queries", action="store_true",
+        help="explicitly override the query cooldown for this run",
+    )
+    social_browser_plan.add_argument(
+        "--output", default="var/social-browser/plan.json"
+    )
+    social_browser_plan.set_defaults(func=command_social_browser_plan)
+
+    social_browser_ingest = subparsers.add_parser(
+        "social-browser-ingest",
+        help="normalize pages extracted by a visible-browser collection run",
+    )
+    social_browser_ingest.add_argument("input")
+    social_browser_ingest.add_argument(
+        "--output", default="var/social-browser/candidates.json"
+    )
+    social_browser_ingest.add_argument(
+        "--plan", default="var/social-browser/plan.json",
+        help="plan used for per-query yield accounting",
+    )
+    social_browser_ingest.add_argument(
+        "--config", default="config/social-queries.json"
+    )
+    social_browser_ingest.add_argument(
+        "--state", default="var/social-state/discovery.json"
+    )
+    social_browser_ingest.add_argument(
+        "--frontier", default="var/social-state/query-frontier.json"
+    )
+    social_browser_ingest.add_argument("--min-query-repeat-hours", type=int, default=24)
+    social_browser_ingest.add_argument("--no-state", action="store_true")
+    social_browser_ingest.add_argument("--no-evolve", action="store_true")
+    social_browser_ingest.set_defaults(func=command_social_browser_ingest)
+
+    social_evolve = subparsers.add_parser(
+        "social-evolve-queries",
+        help="mine evidence-linked WBC subtopics from post bodies and comments",
+    )
+    social_evolve.add_argument("input", nargs="+")
+    social_evolve.add_argument("--config", default="config/social-queries.json")
+    social_evolve.add_argument(
+        "--output", default="var/social-state/query-frontier.json"
+    )
+    social_evolve.set_defaults(func=command_social_evolve_queries)
+
+    social_frontier_report = subparsers.add_parser(
+        "social-frontier-report",
+        help="render the complete WBC social-query frontier without display caps",
+    )
+    social_frontier_report.add_argument(
+        "--frontier", default="var/social-state/query-frontier.json"
+    )
+    social_frontier_report.add_argument(
+        "--state", default="var/social-state/discovery.json"
+    )
+    social_frontier_report.add_argument(
+        "--output", default="content/social-query-frontier.md"
+    )
+    social_frontier_report.set_defaults(func=command_social_frontier_report)
+
+    github_plan = subparsers.add_parser(
+        "github-issue-plan",
+        help="build a large, resumable WBC GitHub Issues search plan",
+    )
+    github_plan.add_argument("--config", default="config/github-issue-search.json")
+    github_plan.add_argument("--state", default="var/social-state/github-issues.json")
+    github_plan.add_argument(
+        "--frontier", default="var/social-state/query-frontier.json"
+    )
+    github_plan.add_argument(
+        "--topic", action="append",
+        help="run one stable topic_id from the complete frontier; repeat as needed",
+    )
+    github_plan.add_argument("--max-tasks-per-run", type=int, default=40)
+    github_plan.add_argument("--repositories-per-task", type=int, default=5)
+    github_plan.add_argument("--max-pages-per-task", type=int, default=10)
+    github_plan.add_argument("--per-page", type=int, default=100)
+    github_plan.add_argument(
+        "--output", default="var/github-issues/plan.json"
+    )
+    github_plan.set_defaults(func=command_github_issue_plan)
+
+    github_collect = subparsers.add_parser(
+        "github-issue-collect",
+        help="collect GitHub Issue bodies/comments via the documented free REST API",
+    )
+    github_collect.add_argument("--plan", default="var/github-issues/plan.json")
+    github_collect.add_argument("--state", default="var/social-state/github-issues.json")
+    github_collect.add_argument("--max-issues-per-run", type=int, default=1000)
+    github_collect.add_argument("--max-comments-per-issue", type=int, default=100)
+    github_collect.add_argument("--no-comments", action="store_true")
+    github_collect.add_argument("--refresh-known", action="store_true")
+    github_collect.add_argument(
+        "--output", default="var/github-issues/candidates.json"
+    )
+    github_collect.set_defaults(func=command_github_issue_collect)
+
+    github_connector = subparsers.add_parser(
+        "github-issue-ingest-connector",
+        help="merge GitHub connected-app search and comment exports by original URL",
+    )
+    github_connector.add_argument("input", nargs="+")
+    github_connector.add_argument("--comments", action="append")
+    github_connector.add_argument(
+        "--output", default="var/github-issues/candidates.json"
+    )
+    github_connector.set_defaults(func=command_github_issue_ingest_connector)
 
     social_xhs = subparsers.add_parser(
         "social-queue-xiaohongshu",
@@ -758,7 +1557,60 @@ def build_parser() -> argparse.ArgumentParser:
     )
     social_report.add_argument("--data-dir", default="data")
     social_report.add_argument("--output", default="var/social-engineering-qa.md")
+    social_report.add_argument(
+        "--config", default="config/social-queries.json",
+        help="scope catalog used for the coverage matrix",
+    )
+    social_report.add_argument(
+        "--inventory", default="data/social-candidate-index.json",
+        help="minimal all-candidate inventory used for the pending appendix",
+    )
+    social_report.add_argument(
+        "--pending-output", default="content/social-engineering-pending",
+        help="directory for the complete technical-pending index and scope pages",
+    )
     social_report.set_defaults(func=command_social_report)
+
+    social_inventory = subparsers.add_parser(
+        "social-inventory",
+        help="merge and triage all social/Issue candidates without storing raw bodies",
+    )
+    social_inventory.add_argument("input", nargs="*")
+    social_inventory.add_argument("--data-dir", default="data")
+    social_inventory.add_argument(
+        "--decisions", help="review decisions list or object with candidates/items[]"
+    )
+    social_inventory.add_argument(
+        "--output", default="data/social-candidate-index.json"
+    )
+    social_inventory.add_argument(
+        "--fresh", action="store_true", help="rebuild instead of merging the prior index"
+    )
+    social_inventory.set_defaults(func=command_social_inventory)
+
+    render_problems = subparsers.add_parser(
+        "render-problems",
+        help="render or check every static engineering-problem detail page",
+    )
+    render_problems.add_argument("--data-dir", default="data")
+    render_problems.add_argument("--output-dir", default="content/problems")
+    render_problems.add_argument(
+        "--repository-url", default=DEFAULT_REPOSITORY_URL
+    )
+    render_problems.add_argument("--branch", default=DEFAULT_BRANCH)
+    render_problems.add_argument("--check", action="store_true")
+    render_problems.set_defaults(func=command_render_problems)
+
+    web_index = subparsers.add_parser(
+        "build-web-index",
+        help="build the static Chinese/English engineering-problem search index",
+    )
+    web_index.add_argument("--data-dir", default="data")
+    web_index.add_argument("--problems-dir", default="content/problems")
+    web_index.add_argument("--output", default="site/search-index.json")
+    web_index.add_argument("--repository-url", default=DEFAULT_REPOSITORY_URL)
+    web_index.add_argument("--branch", default=DEFAULT_BRANCH)
+    web_index.set_defaults(func=command_build_web_index)
 
     builder = subparsers.add_parser("build-index", help="rebuild the local SQLite index")
     builder.add_argument("--data-dir", default="data")

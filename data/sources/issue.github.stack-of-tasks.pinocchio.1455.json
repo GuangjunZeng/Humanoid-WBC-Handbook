@@ -1,0 +1,105 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "kaixqu"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1455",
+  "captured_at": "2026-08-10T22:13:00+08:00",
+  "content_sha256": "a89f2470fdd5b9cdf959dd31e726a6850658fb8105479c1d289a1eda48e797dd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Pinocchio"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "讨论用 Talos 随机构型脚本对比 frame 与 parent joint 的 WORLD 雅可比。"
+      ],
+      "diagnostics": [
+        "先检查是否调用 computeJointJacobians，再检查末端 frame 是否已定义及所选 reference frame。"
+      ],
+      "effective_fixes": [
+        "先计算全体关节雅可比；末端与关节重合时读取 joint Jacobian，否则读取 frame Jacobian。"
+      ],
+      "environments": [
+        "Pinocchio、末端执行器 frame、WORLD/LOCAL/LOCAL_WORLD_ALIGNED 参考系。"
+      ],
+      "limits": [
+        "WORLD 下的相等关系依赖 Pinocchio 对该参考系速度场的定义，不能直接套到 LOCAL 或 LOCAL_WORLD_ALIGNED。"
+      ],
+      "outcomes": [
+        "维护者给出可运行验证脚本并关闭 Issue，但后续仍有用户补充概念讨论。"
+      ],
+      "problem_statements": [
+        "无法判断应调用关节雅可比还是 frame 雅可比，以及 WORLD 下二者为何可能相等。"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "混淆了缓存计算函数与读取函数，也混淆了 Frame 类和表达参考系。"
+      ],
+      "symptoms": [
+        "API 返回的雅可比与直觉中的末端速度映射不一致。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先调用 computeJointJacobians 更新缓存。若目标末端 frame 与关节重合，可读取关节雅可比；否则应按 frame_id 读取 frame 雅可比。还必须显式核对 WORLD、LOCAL 或 LOCAL_WORLD_ALIGNED，不能只比较矩阵数值而忽略表达点和参考系定义。",
+        "applicability": "适用于 Pinocchio 的关节/frame 雅可比 API；版本升级后应以当前文档和单元测试复核。",
+        "bilingual_terms": [
+          "雅可比矩阵（Jacobian Matrix）",
+          "坐标系（Coordinate Frame）",
+          "末端执行器（End Effector, EE）"
+        ],
+        "question_zh": "Pinocchio 中何时用 getJointJacobian，何时用 getFrameJacobian？",
+        "source_locator": "维护者技术回复 @proyan",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1455#issuecomment-851466483",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.joint_mapping_frames_conventions.b9c8428a4a10de70",
+        "problem_title_zh": "Pinocchio 中何时用 getJointJacobian，何时用 getFrameJacobian？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1455",
+    "query": "Pinocchio joint frame Jacobian WORLD LOCAL",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Talos example"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [],
+    "wbc_relevance_reason": "雅可比表达坐标系和缓存调用顺序错误会直接破坏 WBC 任务误差与速度映射。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1455",
+  "summary": "Issue 讨论 computeJointJacobians、getJointJacobian 和 getFrameJacobian 的职责。维护者给出先 compute 后 get 的调用顺序，并区分 WORLD、LOCAL 与 LOCAL_WORLD_ALIGNED 表达下的几何含义。",
+  "title": "Pinocchio 关节雅可比与 frame 雅可比的调用顺序和参考系",
+  "version": null
+}

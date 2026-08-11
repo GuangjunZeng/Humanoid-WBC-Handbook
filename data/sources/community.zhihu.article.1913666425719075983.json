@@ -1,0 +1,182 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "未来科技"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1913666425719075983",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "c5e46a63a8931a53df34aec71d744529a7dfff58c789fcf9ef29f112dda41e86",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；正文已读，保留一条未闭环评论作为限制。",
+    "components": [
+      "Humanoid-Gym",
+      "Isaac Gym",
+      "MuJoCo",
+      "PyTorch",
+      "PPO"
+    ],
+    "domain_hints": [
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "按固定版本创建环境并运行 Isaac Gym 示例。",
+        "先 train，再 play 导出策略，最后把导出的 model.pt 传给 sim2sim.py。"
+      ],
+      "diagnostics": [
+        "逐项核对官方 README 的版本矩阵、训练命令、导出顺序和模型路径。"
+      ],
+      "effective_fixes": [
+        "使用官方 README 对应的依赖组合和执行顺序。"
+      ],
+      "environments": [
+        "Python 3.8；PyTorch 1.13.1；CUDA 11.7；NumPy 1.23；Isaac Gym Preview 4；Humanoid-Gym main 分支文档。"
+      ],
+      "limits": [
+        "该技术栈较旧；迁移到其他机器人仍需修改资产、关节映射、默认姿态与 PD 增益。"
+      ],
+      "outcomes": [
+        "正文命令与 roboterax/humanoid-gym 官方 README 逐项一致。"
+      ],
+      "problem_statements": [
+        "Humanoid-Gym 应使用哪套依赖组合完成最小复现？",
+        "为什么 sim2sim.py 找不到或不能正确加载训练策略？"
+      ],
+      "safety_notes": [
+        "sim2sim 通过后也不能直接无保护上真机；先核对动作尺度、关节顺序、限位和急停。"
+      ],
+      "suspected_causes": [
+        "Python/PyTorch/CUDA/NumPy 版本组合不匹配。",
+        "训练 checkpoint 未经 play.py 导出或模型路径写错。"
+      ],
+      "symptoms": [
+        "依赖漂移导致安装或运行失败。",
+        "未先运行 play.py 时缺少可供 sim2sim 加载的 JIT policy。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按该帖和官方仓库的共同配置，使用 Python 3.8、PyTorch 1.13.1、CUDA 11.7、NumPy 1.23 与 Isaac Gym Preview 4；先运行 Isaac Gym 自带示例，再以 editable 模式安装 humanoid-gym。不要混用较新的 NumPy/PyTorch 后再把错误归因于策略。",
+        "applicability": "适用于该仓库文档对应的旧版 Isaac Gym 技术栈。",
+        "bilingual_terms": [
+          "依赖锁定（dependency pinning）",
+          "可编辑安装（editable install）",
+          "版本矩阵（compatibility matrix）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.1d33e0782b8efa5f",
+        "problem_title_zh": "Humanoid-Gym 最小复现应锁定哪些依赖版本？",
+        "question_zh": "Humanoid-Gym 最小复现应锁定哪些依赖版本？",
+        "source_locator": "正文步骤 1—3；官方 README Installation",
+        "source_url": "https://zhuanlan.zhihu.com/p/1913666425719075983",
+        "verification_refs": [
+          {
+            "locator": "README Installation：Python 3.8、PyTorch 1.13.1/CUDA 11.7、NumPy 1.23、Isaac Gym Preview 4",
+            "relation": "source_code",
+            "source_url": "https://github.com/roboterax/humanoid-gym"
+          }
+        ],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先用 train.py 训练，再运行 play.py；play.py 会导出供部署使用的 JIT 模型。最后把 logs/XBot_ppo/exported/policies 下的策略路径交给 sim2sim.py。适配新机器人时还必须核对 MJCF 与 URDF 的 joint mapping，不能只替换文件名。",
+        "applicability": "适用于 Humanoid-Gym 的 PPO/JIT 导出链；其他导出格式需另查。",
+        "bilingual_terms": [
+          "即时编译模型（JIT model）",
+          "仿真到仿真（Sim2Sim）",
+          "关节映射（joint mapping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.6bfeb6202fad65e3",
+        "problem_title_zh": "Humanoid-Gym 训练后进入 MuJoCo Sim2Sim，正确的导出顺序是什么？",
+        "question_zh": "Humanoid-Gym 训练后进入 MuJoCo Sim2Sim，正确的导出顺序是什么？",
+        "source_locator": "正文步骤 4—7；官方 README Usage Guide / Sim-to-sim",
+        "source_url": "https://zhuanlan.zhihu.com/p/1913666425719075983",
+        "verification_refs": [
+          {
+            "locator": "README Usage Guide：play.py 导出 JIT，随后 sim2sim.py 加载；新机器人需检查 joint mapping",
+            "relation": "source_code",
+            "source_url": "https://github.com/roboterax/humanoid-gym"
+          }
+        ],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "页面主要以命令块表达安装与导出链；没有依赖图片才能成立的结论。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1913666425719075983",
+    "published_display": "编辑于 2025-06-06 21:37・北京",
+    "query": "humanoid-gym 部署复现 sim2sim 依赖版本",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "RobotEra XBot",
+      "OpenLoong",
+      "Adam Lite",
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [
+      {
+        "text": "可见评论报告 sim2sim 中机器人能走一段后摔倒，未给出已验证修复。"
+      }
+    ],
+    "wbc_relevance_reason": "固定依赖和先导出 JIT 再做 sim2sim 是学习式人形控制复现的关键断点。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1913666425719075983",
+  "summary": "帖子记录 Python 3.8、PyTorch 1.13.1/CUDA 11.7、NumPy 1.23 和 Isaac Gym Preview 4 的依赖组合，并给出 4096 环境训练、play 导出及 MuJoCo sim2sim 命令；官方仓库 README 与这些关键步骤一致。",
+  "title": "Humanoid-Gym 固定依赖、训练导出与 Sim2Sim 复现链",
+  "version": null
+}

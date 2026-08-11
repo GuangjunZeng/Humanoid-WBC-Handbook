@@ -1,0 +1,145 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Maurice Rahme"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3155",
+  "captured_at": "2026-08-11T03:05:00+08:00",
+  "content_sha256": "43786ac70db8e3b2f03db5198046bd2bf7d6f660e1888eff7776814b32c97a9c",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文与全部 2 条回复，并核对 PR #3163 的合并状态和全部补丁。回归测试是直接填充缓冲的软件测试，没有改写成真实执行器实验。",
+    "components": [
+      "Isaac Lab",
+      "joint_effort_out_of_limit",
+      "computed_torque",
+      "applied_torque",
+      "termination manager"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖提供单关节最小复现和两个断言。",
+        "PR #3163 反转 isclose 结果，并加入 CPU/CUDA 下的两个回归用例。"
+      ],
+      "diagnostics": [
+        "用无裁剪和有裁剪两组真值表检查终止谓词，不要仅从函数名猜测语义。",
+        "同时打印 computed_torque、applied_torque 和终止布尔值，确认不等是否来自 actuator clipping。"
+      ],
+      "effective_fixes": [
+        "使用已合并 PR #3163：out_of_limits = ~torch.isclose(computed_torque, applied_torque)，再对关节维度执行 any。"
+      ],
+      "environments": [
+        "Isaac Lab commit b5d094e5de0d35d0f6f87a0709394cbe230159d9（feature/isaacsim_5_0）；Isaac Sim 5.0；Ubuntu 22.04；RTX 5080；CUDA 12.8；GPU driver 570.144。",
+        "PR #3163 回归测试参数化覆盖 CPU 和 cuda:0、1 与 2 个 Panda articulation。"
+      ],
+      "limits": [
+        "该函数判断的是 computed 与 applied torque 是否因裁剪而不同，不会验证配置的 effort limit 是否符合真实电机、减速器和热限制。",
+        "比较仍使用 torch.isclose 的默认容差；微小差异的分类取决于该容差。",
+        "PR 测试通过直接填充 computed/applied 缓冲来模拟 clipping，不是真实电机或物理执行器裁剪实验。"
+      ],
+      "outcomes": [
+        "PR #3163 于 2025-08-21 合并，合并提交为 a60168a2dc0b7f56f76b8985d0bca2e79a4e5ef6；0.45.3 changelog 明确记录修复颠倒的 effort-limit 报告。",
+        "回归测试验证 0/0 不终止，100/50 终止。"
+      ],
+      "problem_statements": [
+        "为什么 joint_effort_out_of_limit 会在力矩未裁剪时终止，而裁剪时不终止？"
+      ],
+      "safety_notes": [
+        "真机 WBC 不应把该软件谓词当作唯一力矩安全链；仍需硬件限流、热保护与独立急停。"
+      ],
+      "suspected_causes": [
+        "旧实现直接把 torch.isclose 的结果当作 out_of_limits，但在该函数的定义中，相等恰好表示没有裁剪。"
+      ],
+      "symptoms": [
+        "computed_torque == applied_torque == 0 时，本应不终止，旧逻辑却返回 True。",
+        "computed_torque=100、applied_torque=50 模拟 actuator clipping 时，本应终止，旧逻辑却返回 False。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "旧实现把 torch.isclose(computed_torque, applied_torque) 直接当作越界标志，逻辑正好相反：两者相等表示没有裁剪，不等才表示 clipping。已合并 PR #3163 改为 ~torch.isclose，并用 CPU/CUDA、1/2 个 Panda articulation 的回归测试覆盖 0/0 与 100/50 两种情形。该检测器只识别 computed/applied torque 的差异，不能替代真实执行器限定或硬件安全保护。",
+        "applicability": "适用于使用 Isaac Lab joint_effort_out_of_limit 比较 computed/applied torque 的版本；原帖环境为 Isaac Sim 5.0 功能分支。",
+        "bilingual_terms": [
+          "力矩裁剪（torque clipping）",
+          "计算力矩（computed torque）",
+          "应用力矩（applied torque）",
+          "终止谓词（termination predicate）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.isaaclab_joint_effort_limit_predicate_inverted_3155",
+        "problem_title_zh": "Isaac Lab 关节力矩越界终止谓词颠倒",
+        "question_zh": "Isaac Lab 的 joint_effort_out_of_limit 为什么在未裁剪时报越界，在裁剪时反而不报？",
+        "source_locator": "Isaac Lab #3155 正文真值表复现；作者回复 issuecomment-3179329133；已合并 PR #3163、回归测试与 0.45.3 changelog",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3155",
+        "verification_refs": [
+          {
+            "locator": "已合并 PR 反转 isclose 结果，更新 docstring/changelog，并新增 CPU/CUDA 回归测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3163"
+          },
+          {
+            "locator": "PR #3163 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/a60168a2dc0b7f56f76b8985d0bca2e79a4e5ef6"
+          },
+          {
+            "locator": "test_joint_effort_limits 在 CPU/CUDA 和 1/2 articulation 下验证无裁剪与模拟裁剪两种真值表",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3163/files"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3155",
+    "query": "Isaac Lab joint_effort_out_of_limit computed applied torque clipping inverted termination",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原复现使用任意带 Articulation robot 的 ManagerBasedRLEnv；PR 测试使用 Panda articulation"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "项目协作者表示团队会审阅该报告。"
+      },
+      {
+        "text": "原作者表示可以提交 PR，并认为修复应是反转谓词。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 训练中的力矩限制终止逻辑如果反转，会在正常时终止 episode，而真正裁剪时放行，直接污染训练数据和安全监控语义。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3155",
+  "summary": "Isaac Lab #3155 用两个真值表用例证明 joint_effort_out_of_limit 逻辑颠倒：computed_torque 与 applied_torque 相等代表没有裁剪，旧实现却返回越界；两者不等代表发生 clipping，旧实现反而不触发。已合并 PR #3163 将条件改为 ~torch.isclose，更新注释和 0.45.3 changelog，并在 CPU/CUDA、1/2 个 articulation 组合上加入无裁剪与模拟裁剪的回归测试。",
+  "title": "Isaac Lab 关节力矩越界终止条件真假颠倒",
+  "version": null
+}

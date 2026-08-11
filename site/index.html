@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="快速查询人形机器人全身控制工程问题、排查经验与原始证据。">
+    <meta name="theme-color" content="#fafbfc">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+    <title>Humanoid WBC Engineering Handbook</title>
+    <link rel="stylesheet" href="./assets/handbook.css">
+    <script defer src="./vendor/flexsearch.bundle.min.js"></script>
+    <script defer src="./assets/search.js"></script>
+  </head>
+  <body>
+    <img class="kinematics-background" src="./assets/kinematics.svg" alt="" aria-hidden="true">
+    <main class="page-shell">
+      <section class="search-hero" aria-labelledby="page-title">
+        <header class="hero-copy">
+          <h1 id="page-title">Humanoid WBC Engineering Handbook</h1>
+          <p class="subtitle">把分散的全身控制工程经验，整理成可以直接查询的问题与排查路径。</p>
+        </header>
+
+        <div class="search-region" role="search">
+          <label class="sr-only" for="problem-search">搜索 WBC 工程问题</label>
+          <div class="search-field">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="m16 16 4 4"></path>
+            </svg>
+            <input
+              id="problem-search"
+              type="search"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-controls="search-results"
+              aria-expanded="false"
+              aria-activedescendant=""
+              aria-busy="true"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="描述你遇到的工程问题，例如：MuJoCo 正常，G1 真机乱动"
+              disabled
+            >
+          </div>
+          <p class="examples">示例：G1 真机乱动 · QP infeasible · 足端打滑 · 状态估计漂移</p>
+          <p id="search-status" class="search-status" role="status" aria-live="polite">正在加载工程问题索引…</p>
+          <ol id="search-results" class="search-results" role="listbox" hidden></ol>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

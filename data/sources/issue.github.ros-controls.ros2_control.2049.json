@@ -1,0 +1,156 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "Fufs"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/2049",
+  "captured_at": "2026-08-11T04:06:00+08:00",
+  "content_sha256": "fbe9f5a27b6caad7288b6fb5cd4a5f646cc11632b0e033d0f4f32d949235bf96",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文与全部 8 条评论；将 demo 参数 key 错写、原始串口根因和独立 MCU 案例明确分开。",
+    "components": [
+      "ros2_control",
+      "controller_manager",
+      "spawner",
+      "GenericSystem",
+      "serial hardware interface"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者运行并改写 example_2，修正试验中错写的 diff_drive_controller 参数 key，确认 demo 可加载。",
+        "在原包中加入 GenericSystem 硬件模拟，控制器恢复加载。",
+        "原作者检查硬件后发现打开了错误串口。"
+      ],
+      "diagnostics": [
+        "按维护者建议先运行 ros2_control demo example_2，并与自己的 launch/YAML 对照。",
+        "用 GenericSystem 替换自定义硬件；如果控制器恢复加载，把排查缩小到硬件 I/O。",
+        "另行核对 --param-file 内的 controller key 是否与 launch 传入的 controller name 一致，然后核对串口和 MCU 对 read/write 的响应。"
+      ],
+      "effective_fixes": [
+        "对原帖环境，改为正确的串口。对另一用户的类似现象，上传能正常响应 read/write 的正确 MCU CPP 固件。"
+      ],
+      "environments": [
+        "Ubuntu 24.04 LTS；ROS 2 Jazzy；apt 安装的 controller_manager 4.25.0；自定义 DriveBaseSystem 串口硬件接口。"
+      ],
+      "limits": [
+        "原作者在 demo 中另外发现的 --param-file key 错写只是试验配置错误，不是原始超时的根因。",
+        "日志中的 FIFO 实时调度警告没有被原线程证明为 load_controller 超时根因。",
+        "不是每个 load_controller 超时都是串口或 MCU；必须先用 demo 和 mock hardware 做分层对照。"
+      ],
+      "outcomes": [
+        "原作者明确确认是硬件问题和错误串口；维护者回复确认作者已找到原因。",
+        "另一名用户报告换成正确固件后控制器正常执行。"
+      ],
+      "problem_statements": [
+        "controller_manager/load_controller 服务存在，但 spawner 每次等待 10 s 后超时，如何区分配置与硬件接口问题？"
+      ],
+      "safety_notes": [
+        "实机上不应为让 controller 加载成功而跳过硬件读写健康检查；应在激活力矩控制前验证串口设备身份和反馈更新。"
+      ],
+      "suspected_causes": [
+        "原作者的根因是打开错误串口；GenericSystem 对照将问题从 controller 配置缩小到硬件路径。",
+        "另一名用户的类似现象来自 Arduino/ESP32 固件没有回应 Read/Write 数值；这是同类硬件 I/O 完成问题，但不是同一个具体根因。"
+      ],
+      "symptoms": [
+        "/controller_manager/load_controller 在 service list 中存在，但 joint_state_broadcaster 的 load_controller 连续三次 10 s 没有结果；list_controllers 同样超时。",
+        "gz_ros2_control 下的控制器可正常加载，原生自定义硬件路径失败。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者先要求运行官方 example_2 并对照配置；作者确认 demo 可加载后，又用通用模拟系统（GenericSystem）替换自定义硬件，控制器同样恢复，因而把问题缩小到硬件 I/O。最终作者确认打开了错误串口。同时应单独核对 --param-file 中的 controller key；该 key 错写是 demo 试验中的另一问题，不要与原始根因混为一谈。",
+        "applicability": "原帖环境为 Ubuntu 24.04/ROS 2 Jazzy/controller_manager 4.25.0 的自定义串口 SystemInterface；其他中间件或控制器需重新验证分层结果。",
+        "bilingual_terms": [
+          "控制器管理器（controller manager）",
+          "通用模拟系统（GenericSystem）",
+          "硬件接口（hardware interface）",
+          "服务超时（service timeout）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_load_controller_timeout_hardware_io_2049",
+        "problem_title_zh": "ros2_control 加载控制器时因硬件 I/O 卡住而超时",
+        "question_zh": "ros2_control 的 load_controller 服务明明存在，spawner 却连续超时，原线程验证了什么排查顺序？",
+        "source_locator": "ros2_control #2049，维护者 demo 建议 issuecomment-2657282641，GenericSystem 对照 issuecomment-2658038858，串口根因 issuecomment-2658104086，独立 MCU 案例 issuecomment-3101243782",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/2049#issuecomment-2658104086",
+        "verification_refs": [
+          {
+            "locator": "维护者要求运行官方 example_2 并对照自定义配置",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2049#issuecomment-2657282641"
+          },
+          {
+            "locator": "原作者用 GenericSystem 替换硬件后控制器可加载，将问题定位到硬件路径",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2049#issuecomment-2658038858"
+          },
+          {
+            "locator": "原作者确认根因是打开错误串口",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2049#issuecomment-2658104086"
+          },
+          {
+            "locator": "独立的类似症状而非同一根因：另一名用户的 Arduino/ESP32 固件未响应 read/write，换成正确 CPP 后恢复",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/2049#issuecomment-3101243782"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.2049",
+    "query": "ros2_control load_controller timeout GenericSystem wrong serial port hardware read write",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "自定义差速底盘 luggage_av；另一名用户使用 Arduino/ESP32"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "维护者建议先运行官方 example_2，若成功再与自定义配置对照。"
+      },
+      {
+        "text": "作者确认 GenericSystem 下控制器可加载，因此转向硬件路径。"
+      },
+      {
+        "text": "作者最终确认打开错误串口。"
+      },
+      {
+        "text": "独立用户报告 MCU 固件未回应 read/write 也会使 controller manager 无法完成加载，换成正确 CPP 后恢复。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 与底层执行器常通过 ros2_control 连接；controller 加载卡住可能是硬件 read/write 路径未完成，需要与 namespace、YAML 和实时调度问题分开。"
+  },
+  "published_at": "2025-02-13T03:15:17Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.2049",
+  "summary": "ros2_control #2049 在 Ubuntu 24.04、ROS 2 Jazzy、controller_manager 4.25.0 中表现为 load_controller 服务存在，但 spawner 连续三次 10 s 超时。维护者要求先跑官方 example_2；作者确认 demo 可加载，使用 GenericSystem 替换真实硬件后也可加载，最终定位为打开了错误串口。另一名用户报告类似超时由 Arduino/ESP32 固件没有响应 read/write 数值导致，换成正确 CPP 后恢复。",
+  "title": "ros2_control 的 load_controller 超时可由硬件 I/O 未正常返回触发",
+  "version": null
+}

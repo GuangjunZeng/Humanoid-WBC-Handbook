@@ -1,0 +1,140 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Jianfei Yang @Jianfei_AI"
+  ],
+  "canonical_url": "https://x.com/jianfei_ai/status/2086677871960236291",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "c0435a5007ab09598aede7ffc826e9c6b58ea1959e56a22d4c0af6e1b200cc1f",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "OMEGA-0",
+      "whole-body world action model",
+      "ω-HOME"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "统一模型同时生成全身动作并预测视觉 latent。"
+      ],
+      "diagnostics": [
+        "同时报告 progress、full success、任务分项与失败类型。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "40+ 小时；24 任务；4,827 片段；11 项实机评估。"
+      ],
+      "limits": [
+        "数值需论文 Table 2 核对；帖子未给控制层失败分类。"
+      ],
+      "outcomes": [
+        "根帖报告 81.8% 实机成功；回复称 ψ-0 44.5%、progress 90.3%。"
+      ],
+      "problem_statements": [
+        "全身多任务模型的单一成功率容易掩盖部分完成。"
+      ],
+      "safety_notes": [
+        "多任务成功率不能替代力矩、碰撞和跌倒安全评估。"
+      ],
+      "suspected_causes": [
+        "模型能推进任务但未满足最终判定。"
+      ],
+      "symptoms": [
+        "progress 90.3% 高于 full success 81.8%，存在未完成尾部。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该线程显示 ω-0 的 progress 约 90.3%，而完全成功约 81.8%；模型可能已推进任务却仍未满足成功标准。应同时报告两者并分类失败，而不是只看头条成功率。",
+        "applicability": "适用于全身多任务/长时序人形策略评测。",
+        "bilingual_terms": [
+          "关节力矩（Joint Torque）",
+          "质心（Center of Mass, CoM）"
+        ],
+        "question_zh": "评估统一 whole-body policy 时，为什么要把 progress 与 full success 分开？",
+        "source_locator": "根帖与 @ManpreetBola 对 Table 2 的回复",
+        "source_url": "https://x.com/manpreetbola/status/2086708892873232510",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.open_ended_wbc_field_notes.9db00d01d494f2f4",
+        "problem_title_zh": "评估统一 whole-body policy 时，为什么要把 progress 与 full success 分开？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图清楚显示 40+ 小时、24 任务、4,827 片段和 81.8% 等文本指标；没有 Table 2 或失败分布。"
+    ],
+    "platform": "x",
+    "post_id": "2086677871960236291",
+    "published_display": "2026-08-10T04:55:47.000Z",
+    "query": "humanoid whole body world action model",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "open_ended_wbc_field_notes",
+    "selected_comments": [
+      {
+        "author_display": "Manpreet Bola\n@ManpreetBola\n·\n5小时",
+        "published_display": "2026-08-10T06:59:03.000Z",
+        "text": "81.8% 是头条。表 2 也在相同的 11 个任务上列出了 ψ-0 为 44.5%。这是该排行榜上的 37.3 分差距。\n\n进展停留在 90.3%，而完全成功为 81.8%。该模型经常推进任务但仍未达到成功标准。这些是两个不同的分数。*table 2*"
+      },
+      {
+        "author_display": "Biwei Huang\n@huang_biwei\n·\n19小时",
+        "published_display": "2026-08-09T16:33:00.000Z",
+        "text": "机器人从物理世界中学习，但往往是孤立进行的。\n\n在实践中，一个机器人使用的原始动作命令通常很难转移到另一个机器人上。这是因为原始命令与硬件、控制器和校准紧密相关。相同的动作在不同机器人之间可能以不同的方式表示。\n\n在我们的新工作中，SCAR"
+      },
+      {
+        "author_display": "Zhengyi “Zen” Luo\n@zhengyiluo\n·\n5小时",
+        "published_display": "2026-08-10T06:25:09.000Z",
+        "text": "我创建了 AgentsDock 来协调我自己的训练任务——如今我大部分机器人工作都直接从手机上运行。几位研究人员朋友现在也在用它，而且它表现得很稳定，所以我也和你们分享了。希望对你们有帮助！"
+      }
+    ],
+    "wbc_relevance_reason": "统一 locomotion-manipulation 策略的评估需要区分任务进展、完全成功和控制稳定。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086677871960236291",
+  "summary": "帖子介绍 ω-0 全身世界动作模型：40+ 小时 ω-HOME、24 个家务任务、4,827 片段，在 11 个任务报告 81.8% 实机成功率。高信号回复补充同一表中的 progress 为 90.3%，说明推进任务与完全成功是不同指标，并提到基线 ψ-0 为 44.5%。",
+  "title": "ω-0 全身多任务策略：成功率与进展率必须分开",
+  "version": null
+}

@@ -1,0 +1,104 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "amirrazmjoo"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/914",
+  "captured_at": "2026-08-10T22:11:00+08:00",
+  "content_sha256": "cc0c1132ab7752085e6381f763563d00ecb0ef9b3c1a6a42a192ccb967530fe6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Crocoddyl",
+      "Pinocchio"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "用户在 cost 中直接调用 centerOfMass 和 jacobianCenterOfMass。"
+      ],
+      "diagnostics": [
+        "先确认当前 differential action model 是否按设计更新全身质心数据。"
+      ],
+      "effective_fixes": [
+        "根据任务动机选择会更新所需共享数据的模型，或显式计算并接受额外成本。"
+      ],
+      "environments": [
+        "Crocoddyl DifferentialActionModelFreeFwdDynamics 与 Pinocchio 共享数据。"
+      ],
+      "limits": [
+        "维护者同时质疑在无接触自由动力学中控制全身质心的物理动机；不能把该解释外推到接触动力学模型。"
+      ],
+      "outcomes": [
+        "维护者说明设计边界后，原作者确认问题得到解释并关闭 Issue。"
+      ],
+      "problem_statements": [
+        "加入质心位置代价后轨迹完全不变。"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "自由动力学模型默认不更新全身质心信息。"
+      ],
+      "symptoms": [
+        "data.shared.pinocchio.com[0] 和 Jcom 均为零；手动调用质心函数后生效但变慢。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "在该 Issue 使用的自由前向动力学模型中不是缓存错误：维护者说明该模型按设计不更新全身质心信息，因此共享 com 与 Jcom 保持零。应先换用与接触/质心任务匹配的 action model，或显式计算并评估实时开销。",
+        "applicability": "适用于 DifferentialActionModelFreeFwdDynamics；接触模型与新版行为需另查。",
+        "bilingual_terms": [
+          "质心（Center of Mass, CoM）",
+          "雅可比矩阵（Jacobian Matrix）",
+          "前向动力学（Forward Dynamics）"
+        ],
+        "question_zh": "Crocoddyl 中质心代价不生效且共享 Jcom 为零，是缓存错误吗？",
+        "source_locator": "维护者回复 @cmastalli",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/914#issuecomment-782208702",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.dynamics_mass_inertia_actuation.82654b27d8cd4fe9",
+        "problem_title_zh": "Crocoddyl 中质心代价不生效且共享 Jcom 为零，是缓存错误吗？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.914",
+    "query": "Crocoddyl center of mass Jcom zero",
+    "review_status": "candidate",
+    "robot_platforms": [],
+    "schema_version": 2,
+    "scope_id": "dynamics_mass_inertia_actuation",
+    "selected_comments": [],
+    "wbc_relevance_reason": "涉及质心控制、动力学模型选择以及代价项读取的数据是否由当前 action model 更新。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.914",
+  "summary": "用户在 DifferentialActionModelFreeFwdDynamics 中加入质心位置代价后轨迹不变，并观察到共享 Pinocchio 数据的质心和质心雅可比为零。维护者解释这是自由动力学模型的设计选择，并非数据缓存自动失效。",
+  "title": "Crocoddyl 自由动力学中质心代价不生效且 Jcom 为零",
+  "version": null
+}

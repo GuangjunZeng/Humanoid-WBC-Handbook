@@ -1,0 +1,112 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "100milliongold"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/5363",
+  "captured_at": "2026-08-11T01:00:00+08:00",
+  "content_sha256": "a17e3cb7d6ec4db206cd43491a946084d0ec23d8e49d064c67b81c01898e8050",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 GitHub Issue 正文；复现步骤、版本、卡死时长、工作补丁和补丁后结果均来自原作者正文。Issue 无可见解决评论且仍为 Open，因此只记为 partial。",
+    "components": [
+      "Isaac Lab",
+      "rsl-rl",
+      "OnPolicyRunner",
+      "obs_groups",
+      "play.py"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "在创建 OnPolicyRunner 前复制 agent_cfg 字典，并显式设置 obs_groups={actor:[policy], critic:[policy]}。"
+      ],
+      "diagnostics": [
+        "观察 rsl-rl 对 obs_groups、actor 和 critic 的警告；检查 RslRlBaseRunnerCfg.to_dict() 传给 OnPolicyRunner 的字典是否含观测组映射。"
+      ],
+      "effective_fixes": [
+        "作为原帖已复测的临时补丁，在传入 OnPolicyRunner 前显式提供 actor/critic 对 policy 观测组的映射。"
+      ],
+      "environments": [
+        "Isaac Lab 2.1.1；Isaac Sim 6.0.0-rc.22；Python 3.12；rsl-rl 4.0.x；Isaac-Ant-v0；4 个环境；livestream=2。"
+      ],
+      "limits": [
+        "Issue 仍为 Open，补丁只在原帖的版本组合和 Isaac-Ant-v0 上复测；不能视为已合并的上游修复，也不能直接假定所有自定义多观测组任务都应使用同一映射。"
+      ],
+      "outcomes": [
+        "原帖报告补丁后 runner 在 1 秒内完成初始化，并按预期打印 Actor Model 与 Critic Model。"
+      ],
+      "problem_statements": [
+        "升级到 rsl-rl 4.0.x 后，Isaac Lab play.py 为什么在 OnPolicyRunner 初始化阶段无报错卡死？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "原帖把问题定位为 Isaac Lab 配置字典与 rsl-rl 4.0.x 新观测组契约不匹配，缺少 obs_groups 时下游解析没有正确回退。"
+      ],
+      "symptoms": [
+        "日志提示 obs_groups 为空且缺少 actor；初始化卡住 16 分钟以上；CPU 约 700%—800%，GPU 约 30% 但没有实际推进。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖的可复现处理是在 agent_cfg.to_dict() 后显式加入观测组（observation groups）映射：actor 和 critic 都读取 policy 组，再把该字典传给 OnPolicyRunner。作者报告初始化由 16 分钟以上的卡死恢复到 1 秒内。应先核对自己的 actor/critic 实际需要哪些观测组，不能机械复制到不同观测空间；该 Issue 仍未关闭，因此这只是有完整复测记录的临时补丁，不是已合并根修复。",
+        "applicability": "原帖明确验证于 Isaac Lab 2.1.1、Isaac Sim 6.0.0-rc.22、Python 3.12、rsl-rl 4.0.x 和 Isaac-Ant-v0；其他版本与自定义观测组需重新核对。",
+        "bilingual_terms": [
+          "观测组（observation groups）",
+          "策略观测（policy observations）",
+          "执行器网络（actor）",
+          "价值网络（critic）",
+          "初始化阻塞（initialization hang）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.9a4afa2edccfefe7",
+        "problem_title_zh": "rsl-rl 4.0.x 下 Isaac Lab 的 play.py 卡在 OnPolicyRunner 初始化，并警告 obs_groups 为空，如何验证和临时处理？",
+        "question_zh": "rsl-rl 4.0.x 下 Isaac Lab 的 play.py 卡在 OnPolicyRunner 初始化，并警告 obs_groups 为空，如何验证和临时处理？",
+        "source_locator": "Issue #5363 正文的 Steps to reproduce、Stuck log、Working patch 与 System Info",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/5363",
+        "verification_refs": [],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.5363",
+    "query": "IsaacLab rsl-rl 4.0 obs_groups OnPolicyRunner play hang",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用强化学习机器人任务"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [],
+    "wbc_relevance_reason": "学习式 WBC/运动策略依赖观测组把状态送入 actor 与 critic；依赖升级后配置契约不匹配会让策略回放和部署验证在初始化阶段阻塞。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.5363",
+  "summary": "提问者在 Isaac Lab 2.1.1、Isaac Sim 6.0.0-rc.22 与 rsl-rl 4.0.x 组合中复现：play.py 把缺少 obs_groups 的配置传入 OnPolicyRunner 后持续卡住 16 分钟以上。其工作补丁在配置中明确加入 actor/critic 到 policy 观测组的映射，使 runner 在 1 秒内初始化并打印 Actor/Critic 模型。Issue 仍为 Open，尚无上游根修复。",
+  "title": "rsl-rl 4.0 缺少 obs_groups 时 play.py 卡在 OnPolicyRunner 初始化",
+  "version": null
+}

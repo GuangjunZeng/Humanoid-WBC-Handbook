@@ -1,0 +1,124 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/issues/1087",
+  "captured_at": "2026-08-11T03:10:00+08:00",
+  "content_sha256": "e46083726eb0a8f7c32305959f48337741da6d53431bc151defd3407ef8274ef",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 1 条回复；只记录项目成员明确给出的 cost/infeasibility 权衡，没有把持续发散推断为正常。",
+    "components": [
+      "Crocoddyl",
+      "SolverFDDP",
+      "optimal control",
+      "dynamic feasibility",
+      "line search"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目成员从 FDDP 的动态可行性处理和 dynamics rollout 解释该现象。"
+      ],
+      "diagnostics": [
+        "不要只看 cost；同时记录动态不可行度、接受步长和最终收敛状态。",
+        "区分维护者所说的小幅 cost/infeasibility 权衡与持续发散或无界增长。"
+      ],
+      "effective_fixes": [
+        "该线程给的是判读方法而非参数修复：联合检查 cost 与 infeasibility，而不是要求每一步 cost 单调下降。"
+      ],
+      "environments": [
+        "Crocoddyl SolverFDDP；原帖未说明版本、机器人、代价项或约束设置。"
+      ],
+      "limits": [
+        "原回复只说 cost 可以小幅增加，不能据此把持续增大、NaN 或最终不收敛判为正常。",
+        "线程没有提供可复现 OCP、版本或曲线，不能给出通用阈值。"
+      ],
+      "outcomes": [
+        "项目成员回答后关闭 Issue；原作者没有补充数值复测。"
+      ],
+      "problem_statements": [
+        "为什么 Crocoddyl SolverFDDP 在部分迭代中允许 cost 上升？"
+      ],
+      "safety_notes": [
+        "将求解器用于真机 WBC 前，应对 cost、动态不可行度、约束违反和控制量同时设置停止与回退条件。"
+      ],
+      "suspected_causes": [
+        "项目成员说明 FDDP 可能以小幅 cost 增加换取 dynamic infeasibility 减少。"
+      ],
+      "symptoms": [
+        "求解过程中个别迭代的 cost 增加。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不足以。项目成员明确解释，FDDP 还处理动态可行性（dynamic feasibility），因此可能允许 cost 小幅上升来换取不可行度（infeasibility）下降；FDDP 的 dynamics rollout 可解释为一种 nonlinear search。工程上应同时看 cost、动态不可行度和最终收敛。原帖没有给出曲线或阈值，所以这条答复不能替持续发散、NaN 或最终不收敛背书。",
+        "applicability": "适用于原帖所问的 Crocoddyl SolverFDDP 中间迭代判读；没有版本与 OCP 配置，不能外推具体数值阈值。",
+        "bilingual_terms": [
+          "动态可行性（dynamic feasibility）",
+          "不可行度（infeasibility）",
+          "动态学展开（dynamics rollout）",
+          "非线性搜索（nonlinear search）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.crocoddyl_fddp_cost_infeasibility_tradeoff_1087",
+        "problem_title_zh": "Crocoddyl FDDP 中 cost 与动态不可行度的权衡",
+        "question_zh": "Crocoddyl SolverFDDP 的某次迭代 cost 上升，是否足以说明 line search 或求解器异常？",
+        "source_locator": "Crocoddyl #1087，项目成员唯一回复 issuecomment-1231303043",
+        "source_url": "https://github.com/loco-3d/crocoddyl/issues/1087#issuecomment-1231303043",
+        "verification_refs": [
+          {
+            "locator": "项目成员说明 FDDP 可用小幅 cost 增加换取 infeasibility 下降，并解释 dynamics rollout",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/loco-3d/crocoddyl/issues/1087#issuecomment-1231303043"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "loco-3d.crocoddyl.1087",
+    "query": "Crocoddyl SolverFDDP cost increase dynamic feasibility infeasibility trade-off",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖未说明具体机器人、Crocoddyl 版本或 OCP 配置"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目成员说明 FDDP 同时处理动态可行性，可能允许小幅 cost 上升来减少 infeasibility。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的最优控制调试不能只看单一 cost 序列；FDDP 的动态可行性处理会影响对中间迭代是否异常的判断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.loco-3d.crocoddyl.1087",
+  "summary": "Crocoddyl #1087 询问 SolverFDDP 有 line search 时为何个别迭代的 cost 仍会上升。项目成员解释，FDDP 同时处理 dynamic feasibility，可能允许 cost 小幅上升来换取 infeasibility 下降；这种权衡与经典 DDP 不同。回复还说明 FDDP 执行 dynamics rollout，可解释为 nonlinear search，并指向 FDDP 论文。线程没有给出用户日志、cost 与 infeasibility 数值或复测。",
+  "title": "Crocoddyl FDDP 成本上升与动态不可行度权衡",
+  "version": null
+}

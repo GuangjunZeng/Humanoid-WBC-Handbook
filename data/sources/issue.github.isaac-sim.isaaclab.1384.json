@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "diegoaldarondo-fauna"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1384",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "2214e6c7f1dee9da8e67bc9e74ad885b67fad6c2bd15cddf0813d76b5795ceb0",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取 Issue、7 条评论和 PR #1509 元数据；合并状态与修复范围均有原始记录。",
+    "components": [
+      "Isaac Lab",
+      "ActuatorBaseCfg",
+      "DCMotor",
+      "PhysX"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者讨论区分模型级限制与求解器级限制。",
+        "PR #1509 实现速度限制传播。"
+      ],
+      "diagnostics": [
+        "分别检查显式执行器的模型限制与 root_physx_view 的求解器限制。"
+      ],
+      "effective_fixes": [
+        "PR #1509 将 ActuatorBaseCfg 的 velocity_limits 传播到 articulation root_physx_view。"
+      ],
+      "environments": [
+        "Isaac Lab commit b9a49ca；Isaac Sim 4.0.0—4.2.0；Ubuntu 22.04；RTX 4090。"
+      ],
+      "limits": [
+        "该行为对应历史版本；新版本字段命名和模型/求解器限制分工需查当前文档。"
+      ],
+      "outcomes": [
+        "PR #1509 于 2024-12-08 合并，merge commit 4ee4957e；PR 清单声明加入证明修复的测试。"
+      ],
+      "problem_statements": [
+        "显式执行器配置了 velocity_limit，为什么仿真关节仍受导入 USD 的另一组最大速度限制？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "ActuatorBaseCfg.velocity_limit 未传播到 root_physx_view。"
+      ],
+      "symptoms": [
+        "DCMotor 的模型速度限制可能被 PhysX/导入资产速度限制静默覆盖或截断。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原 Issue 的维护者说明：当时 ActuatorBaseCfg.velocity_limit 只有 DCMotor 用来计算扭矩—转速上限，没有写入 root_physx_view，因此导入 USD 中的求解器速度限制可能继续生效。合并的 PR #1509 将该限制传播到 PhysX，并增加对应测试。",
+        "applicability": "Isaac Lab 4.0.0—4.2.0 附近版本；新版本需核对模型级与 solver-level 限制字段。",
+        "bilingual_terms": [
+          "显式执行器（explicit actuator）",
+          "求解器级限制（solver-level limit）",
+          "扭矩—转速限制（torque-speed limit）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.88761dd27f8b57d1",
+        "problem_title_zh": "Isaac Lab 显式执行器的速度限制为什么可能与 PhysX 实际限制不一致？",
+        "question_zh": "Isaac Lab 显式执行器的速度限制为什么可能与 PhysX 实际限制不一致？",
+        "source_locator": "Issue #1384 维护者讨论；merged PR #1509",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1384#issuecomment-2465073195",
+        "verification_refs": [
+          {
+            "locator": "merged PR：传播 ActuatorBaseCfg velocity_limits 到 root_physx_view；merge commit 4ee4957e；含测试声明",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1509"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1384",
+    "query": "Isaac Lab explicit actuator velocity limit PhysX",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "使用显式执行器模型的机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "协作者解释当时 velocity_limit 仅由 DCMotor 用于扭矩限制，未写入 root_physx_view。"
+      },
+      {
+        "text": "贡献者提示模型级与求解器级限制需要明确区分。"
+      }
+    ],
+    "wbc_relevance_reason": "策略与电机模型使用的速度限制若被求解器另一组限制静默截断，会改变训练动力学和 Sim-to-Real 行为。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1384",
+  "summary": "Isaac Lab issue 说明显式执行器的 velocity_limit 当时只有 DCMotor 用于扭矩—转速限制，没有写入 root_physx_view；导入 USD 的隐式限制会继续生效。PR #1509 将 ActuatorBaseCfg 的速度限制传播到 PhysX，并声明增加测试，2024-12-08 合并。",
+  "title": "显式执行器 velocity_limit 未传播到 PhysX 求解器",
+  "version": null
+}

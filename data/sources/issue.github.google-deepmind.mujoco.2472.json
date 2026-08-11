@@ -1,0 +1,123 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "jjyyxx"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2472",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "e4504397e499d39008cddebd9e55b8cae2f4898ee0169e551d9371db92ed8887",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取正文、5 条评论、Issue timeline 与关闭提交；修复代码和测试均核对。",
+    "components": [
+      "MuJoCo",
+      "implicitfast",
+      "elliptic cone",
+      "contact constraint"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者测试极小 timestep、pyramid friction cone、无摩擦和 RK4。",
+        "维护者复现并确认 Euler/RK4 可避开 implicit 系列问题。"
+      ],
+      "diagnostics": [
+        "同一 MRE 对比 Euler、RK4、implicit 与 implicitfast。",
+        "检查 timestep、摩擦锥、无摩擦和 joint damping 等消融。"
+      ],
+      "effective_fixes": [
+        "官方 commit 1cda1e7 在平移/旋转 inverse weight 一项退化为零时使用另一项回退，并加入回归测试。"
+      ],
+      "environments": [
+        "MuJoCo 3.3.0；Python/C；Linux；timestep=0.001；implicitfast；elliptic cone；最小 XML。"
+      ],
+      "limits": [
+        "临时切换 Euler/RK4 与正式修复不是同一保证；使用者需确认所装版本是否包含该提交。"
+      ],
+      "outcomes": [
+        "修复提交明确 Fixes #2472；测试连续 1000 步确认无 BADQACC 警告；Issue 关闭。"
+      ],
+      "problem_statements": [
+        "低速低力模型一接触就快速发散，为什么只在 implicit/implicitfast 出现？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "维护者最终提交把根因描述为约束中的退化 body inverse weights。"
+      ],
+      "symptoms": [
+        "接触发生后接触力激增并快速数值发散。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者先用原 MRE 确认切换 Euler 或 RK4 后现象消失，随后官方提交把根因记录为约束中的退化刚体逆权重（degenerate body inverse weights）。commit 1cda1e7 为退化的平移/旋转权重加入互相回退，并增加连续 1000 步不出现 BADQACC 的回归测试。未包含该提交的版本可用 Euler/RK4 作为帖子确认的绕行方案。",
+        "applicability": "MuJoCo 3.3.0 起受影响的相关 implicit/implicitfast 约束组合；应确认安装版本含修复提交。",
+        "bilingual_terms": [
+          "隐式积分器（implicit integrator）",
+          "退化逆权重（degenerate inverse weights）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.simulator_physics_numerics.b01c692a8b2777d3",
+        "problem_title_zh": "MuJoCo 接触后只在 implicit/implicitfast 快速发散，原帖最终定位和修复是什么？",
+        "question_zh": "MuJoCo 接触后只在 implicit/implicitfast 快速发散，原帖最终定位和修复是什么？",
+        "source_locator": "Issue #2472 评论 issuecomment-2703086771；fix commit 1cda1e7",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2472#issuecomment-2703086771",
+        "verification_refs": [
+          {
+            "locator": "官方修复退化 body inverse weights，并加入 1000 步 DegenerateInertia 回归测试",
+            "relation": "source_code",
+            "source_url": "https://github.com/google-deepmind/mujoco/commit/1cda1e7a8c2094fd0a87507d0c75bc2f109588d1"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2472",
+    "query": "MuJoCo implicitfast capsule contact divergence",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "最小双 capsule 关节模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulator_physics_numerics",
+    "selected_comments": [
+      {
+        "text": "维护者复现后确认 Euler/RK4 可消除问题，implicit/implicitfast 存在异常。"
+      },
+      {
+        "text": "后续官方提交明确 Fixes #2472。"
+      }
+    ],
+    "wbc_relevance_reason": "接触后数值发散会污染基于 MuJoCo 的 WBC 验证和策略训练，且表象可能像增益或接触力过大。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2472",
+  "summary": "MuJoCo 3.3.0 的最小双 capsule 接触模型在 implicitfast/elliptic 下快速发散，提问者报告很小 timestep、pyramid、无摩擦或 RK4 有帮助。维护者复现后确认 Euler/RK4 可消除现象，定位 implicit/implicitfast；2026-01-12 官方 commit 1cda1e7 修复约束中的退化 body inverse weights，并加入 1000 步回归测试。",
+  "title": "MuJoCo implicit/implicitfast 在退化惯量接触约束下快速发散",
+  "version": null
+}

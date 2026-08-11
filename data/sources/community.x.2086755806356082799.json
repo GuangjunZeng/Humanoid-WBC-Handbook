@@ -1,0 +1,132 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "K2sus | AI @MsAll276676"
+  ],
+  "canonical_url": "https://x.com/msall276676/status/2086755806356082799",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "6b0b263a50d1cd7ea104255527082ae724df430e11548abde45ba4ccf8eed3aa",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "MotionBricks",
+      "G1",
+      "retargeting",
+      "actuator dynamics"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "回复者要求等待机器人集成并做实机重定向验证。"
+      ],
+      "diagnostics": [
+        "分离 inference latency、contact dynamics、actuator bandwidth 与 retargeting 成功率。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "MotionBricks 仿真演示；物理 G1 尚待集成。"
+      ],
+      "limits": [
+        "属于批判性回复，不是实验报告。"
+      ],
+      "outcomes": [
+        "截至该回复没有实机复现结果。"
+      ],
+      "problem_statements": [
+        "仿真/推理性能数字被误当作真实 G1 的控制性能。"
+      ],
+      "safety_notes": [
+        "生成动作部署前必须通过关节限位、速度/力矩、接触稳定性和跌倒保护检查。"
+      ],
+      "suspected_causes": [
+        "真实瓶颈在接触与执行器，而非渲染/生成帧率。"
+      ],
+      "symptoms": [
+        "没有实机结果，reproducibility 仍在进行。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不能。该回复指出物理 G1 的瓶颈可能是 contact dynamics 和 actuators，而非生成帧率；还需验证 retargeting、控制周期、关节限位和实机稳定性。当时机器人集成版本尚未发布，所以结论是 unresolved。",
+        "applicability": "适用于从动画/仿真生成器向真实人形控制栈迁移。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "每秒帧数（Frames Per Second, FPS）",
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "接触约束（Contact Constraint）",
+          "动作重定向（Motion Retargeting）"
+        ],
+        "question_zh": "15k FPS、2 ms 推理能否证明动作在 G1 实机上可用？",
+        "source_locator": "针对 MotionBricks 演示的具体回复",
+        "source_url": "https://x.com/msall276676/status/2086755806356082799",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.tracking_and_teleoperation.738bd42f58f32114",
+        "problem_title_zh": "15k FPS、2 ms 推理能否证明动作在 G1 实机上可用？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "x",
+    "post_id": "2086755806356082799",
+    "published_display": "2026-08-10T10:05:28.000Z",
+    "query": "physical G1 contact dynamics actuator latency",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1（讨论对象）"
+    ],
+    "schema_version": 2,
+    "scope_id": "tracking_and_teleoperation",
+    "selected_comments": [
+      {
+        "author_display": "How To Prompt\n@HowToPrompt__\n·\nAug 8",
+        "published_display": "2026-08-08T11:44:43.000Z",
+        "text": "NVIDIA built a AI that nukes 30 years of animation technology.\n\nThey open-sourced a model that generates 350,000 motion skills in real-time, at 15,000 fps with just 2ms latency.\n\nIt’s called MotionBricks, an AI framework built to generate real-time character and humanoid motion"
+      }
+    ],
+    "wbc_relevance_reason": "揭示生成模型、动作重定向、高频 WBC 与执行器带宽之间的验收断层。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086755806356082799",
+  "summary": "回复质疑把 MotionBricks 的 15k FPS 和 2 ms 推理指标直接当作 G1 实机能力：真实硬件瓶颈可能在接触动力学和执行器，而不是动画/推理帧率；当时机器人集成版本仍未发布。回复要求验证动作在真实硬件重定向后能否存活。",
+  "title": "仿真 15k FPS/2 ms 不等于 G1 实机可复现",
+  "version": null
+}

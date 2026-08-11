@@ -1,0 +1,116 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "WangYCheng23"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1077",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "06b8ce72daac5843bb86fa1e44953fdaf3d1fb370405916a235b8c049ab76c44",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取正文与 3 条评论；图未被当成定量证据。",
+    "components": [
+      "Isaac Lab",
+      "ALOHA",
+      "implicit actuator",
+      "domain randomization"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者使用 implicit actuator、动作率与关节速度惩罚；计划实机插值。",
+        "贡献者建议检查 Ideal PD/自定义 actuator，并扩展训练域。"
+      ],
+      "diagnostics": [
+        "贡献者建议先确认机器人调参状态和执行器模型，再考虑噪声与域随机化。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "自定义 ALOHA URDF 转 USD；自定义开关家具环境；implicit actuator；角度单位为 rad。"
+      ],
+      "limits": [
+        "没有回答 decimation/dt 的具体设置，也没有解释该 ALOHA qpos 偏差的唯一原因。"
+      ],
+      "outcomes": [
+        "Issue 被转入 Discussion；没有最终修复或对照结果。"
+      ],
+      "problem_statements": [
+        "绝对关节角动作在 Isaac Lab 中不能被 qpos 完全跟随，而实机能跟随。"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "线程只提出执行器模型和仿真校准方向，没有确认具体根因。"
+      ],
+      "symptoms": [
+        "仿真 qpos 与动作不一致；单步动作变化可超过 1 rad；实机通过插值能跟随。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "Isaac Lab 贡献者建议先从两层排查：一是调准机器人仿真并核对使用的执行器模型；二是在模型基本可信后，用动作/关节等域随机化扩大训练分布，提高对关节位置误差的鲁棒性。该线程没有解决提问者的具体 qpos 偏差，因此这只是排查顺序，不是已验证修复。",
+        "applicability": "适用于自定义资产/执行器模型导致的动作—状态偏差初筛；具体 ALOHA 问题未闭环。",
+        "bilingual_terms": [
+          "关节位置（joint position, qpos）",
+          "执行器模型（actuator model）",
+          "域随机化（domain randomization）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": false
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录；关键图片尚未完成分析。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.c3716502d45b9db5",
+        "problem_title_zh": "Isaac Lab 中策略动作与 qpos 不一致时，原线程建议先检查什么？",
+        "question_zh": "Isaac Lab 中策略动作与 qpos 不一致时，原线程建议先检查什么？",
+        "source_locator": "Issue #1077，贡献者回复 issuecomment-2389655396；后续转 Discussion",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1077#issuecomment-2389655396",
+        "verification_refs": [],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "Issue 图展示 action 与 qpos 曲线差异，但当前没有完成像素级数值读取，因此图片相关结论保持未验证。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1077",
+    "query": "Isaac Lab qpos action mismatch sim to real",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ALOHA 机械臂"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "text": "贡献者建议先调准仿真/执行器模型，再用噪声或域随机化提升鲁棒性。"
+      },
+      {
+        "text": "协作者将问题转入 Discussion，没有给出闭环。"
+      }
+    ],
+    "wbc_relevance_reason": "动作解释、执行器模型和物理步长会影响策略输出到关节状态的闭环关系。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1077",
+  "summary": "ALOHA 自定义 URDF/USD 环境中，提问者报告仿真 qpos 不能完全跟随绝对关节角动作，而实机能跟随。Isaac Lab 贡献者给出两条排查方向：先调准仿真和执行器模型，再通过动作/关节等域随机化提高策略鲁棒性；线程没有解决 qpos 不一致的具体根因。",
+  "title": "Isaac Lab 动作与 qpos 不一致的 Sim-to-Real 排查入口",
+  "version": null
+}

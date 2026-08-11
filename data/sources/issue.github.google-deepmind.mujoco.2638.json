@@ -1,0 +1,150 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2638",
+  "captured_at": "2026-08-11T07:16:00+08:00",
+  "content_sha256": "54559c3c9fa5a0cb0986bec3a84ca5ef31570df16f090d5fc8c00fc5d7721bba",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 7 条回复；只沉淀已执行的负试验和未闭环边界，没有虚构根因。",
+    "components": [
+      "MuJoCo 3.3.0",
+      "contact friction",
+      "elliptic friction cone",
+      "simulation timestep",
+      "high-frequency actuation"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "按协作者建议将 friction cone 改为 elliptic。",
+        "将 timestep 降到 1e-6 乃至 1e-7。",
+        "将 friction coefficients 设为 0 作为对照。"
+      ],
+      "diagnostics": [
+        "协作者先区分本帖的左向漂移与文档所述 friction-cone 内受力时的 slip。",
+        "对比 pyramidal/elliptic friction cone、timestep 1e-4 到 1e-7，以及摩擦系数为零的行为。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "MuJoCo 3.3.0，Linux，原始 timestep=1e-4，高频交替 motor 和摩擦接触。"
+      ],
+      "limits": [
+        "原 Issue 尚未关闭根因，没有维护者修复或回归测试。",
+        "把摩擦系数设为零只是定位对照，不是有摩擦接触任务的可用修复。",
+        "更小 timestep 只降低了幅度，不能写成解决方案。"
+      ],
+      "outcomes": [
+        "elliptic friction 没有消除漂移。",
+        "timestep=1e-7 时漂移较小，但仍存在；1e-6 也有类似结果。",
+        "friction coefficients=0 时，原作者报告行为正常。"
+      ],
+      "problem_statements": [
+        "MuJoCo 在高频交替驱动和摩擦接触下为什么产生单向漂移？"
+      ],
+      "safety_notes": [
+        "用此类模型验收真机接触控制前，需做时间步长、摩擦模型与激励频率的独立收敛检查。"
+      ],
+      "suspected_causes": [
+        "原线程只能确定现象与摩擦参数相关，且对 timestep 敏感；没有确认引擎根因。"
+      ],
+      "symptoms": [
+        "模型在交替驱动下持续向左漂移。",
+        "降低 timestep 后漂移减小但仍存在。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "没有。原作者按建议改成 elliptic friction 后仍有漂移；将 timestep 降到 1e-7 时漂移减小但未消失，1e-6 也有类似结果。只有将 friction coefficients 设为 0 时行为正常，这只能作为摩擦相关性对照，不是有摩擦任务的修复。原线程没有根因、补丁或已通过的回归测试。",
+        "applicability": "严格限于原帖 MuJoCo 3.3.0、Linux、高频交替驱动与该接触模型；不能直接外推到所有足式机器人。",
+        "bilingual_terms": [
+          "椭圆摩擦锥（elliptic friction cone）",
+          "仿真步长（simulation timestep）",
+          "接触漂移（contact drift）",
+          "负试验（negative test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.mujoco_high_frequency_contact_drift_2638",
+        "problem_title_zh": "MuJoCo 高频摩擦接触的单向漂移",
+        "question_zh": "MuJoCo 3.3.0 在高频交替 motor 下出现接触漂移，改成 elliptic friction 或显著减小 timestep 是否已在原线程解决？",
+        "source_locator": "Issue #2638，现象区分 issuecomment-2904345405；elliptic 尝试 issuecomment-2914692123；timestep/friction 对照 issuecomment-2921313334 与 2921314882",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2921313334",
+        "verification_refs": [
+          {
+            "locator": "协作者区分本帖单向漂移与文档所述 friction-cone slip",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2904345405"
+          },
+          {
+            "locator": "原作者报告 elliptic friction 后漂移仍存在",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2914692123"
+          },
+          {
+            "locator": "原作者报告 timestep=1e-7 只降低漂移，friction=0 时行为正常",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2921313334"
+          },
+          {
+            "locator": "原作者补充 timestep=1e-6 的类似结果",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/2638#issuecomment-2921314882"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2638",
+    "query": "MuJoCo high frequency alternating motor contact drift friction timestep elliptic cone",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原 Issue 的简化接触驱动模型；不是已说明的具体人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "协作者说本帖的单向漂移不同于文档记录的 friction-cone slip。"
+      },
+      {
+        "text": "原作者报告 elliptic friction 后漂移仍存在。"
+      },
+      {
+        "text": "原作者报告 1e-7 只减小漂移，friction=0 时行为正常。"
+      }
+    ],
+    "wbc_relevance_reason": "高频接触激励下的数值漂移会影响足式机器人接触稳定性和 sim-to-real 判断；该线程的价值是排除了两个常见建议能完全修复的说法，而不是已找到通用方案。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2638",
+  "summary": "MuJoCo #2638 报告在 3.3.0、Linux、timestep=1e-4 下，一个受高频交替 motor 驱动的接触模型会向左漂移。协作者明确区分了帖中漂移与文档所述摩擦锥内受力下的 slip，并先后建议测试 elliptic friction cone 和更小 timestep。原作者报告 elliptic 仍漂移；timestep 从 1e-4 降到 1e-7 后漂移减小但没有消失；将 friction coefficients 设为 0 时行为正常。原线程没有给出根因或修复。",
+  "title": "MuJoCo 高频交替驱动下的接触漂移与未闭环负试验",
+  "version": null
+}

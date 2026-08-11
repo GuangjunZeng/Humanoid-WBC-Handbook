@@ -1,0 +1,230 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "星穷碧落人归尽"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1894420366153216587",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "6c6cec35293c5378a45656fc3ea67367e81478d78b668a230dba714d83e0e14a",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_comments",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；已读正文与当前可见区域，未发现可展开评论；未把示例权重当成通用结论。",
+    "components": [
+      "Isaac Gym",
+      "reward shaping",
+      "curriculum",
+      "humanoid locomotion"
+    ],
+    "domain_hints": [
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "起身先提高高度奖励，再增加姿态和平滑性约束。",
+        "速度跟踪改用更陡或线性的误差奖励。",
+        "跳跃增加落地姿态和冲击惩罚。",
+        "添加高度变化等中间奖励并分阶段提高难度。"
+      ],
+      "diagnostics": [
+        "按主目标、辅助目标、惩罚项拆开奖励，并观察高度、姿态、关节速度、足端接触和落地阶段。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Gym 类人形强化学习环境；起身、行走、跳跃基础动作；具体机器人和代码版本未给出。"
+      ],
+      "limits": [
+        "示例权重和阈值不可直接迁移到不同机器人；代码片段偏伪代码，需核对量纲、符号和接触定义。"
+      ],
+      "outcomes": [
+        "正文给出症状—原因—调参方向表，但没有公开独立复现实验或量化前后对比。"
+      ],
+      "problem_statements": [
+        "起身策略通过高频抖动刷奖励而不真正站起。",
+        "行走策略达不到目标速度。",
+        "跳跃策略落地后无法稳定站立。",
+        "长序列动作训练收敛缓慢。"
+      ],
+      "safety_notes": [
+        "进入真机前先在仿真中检查力矩、动作变化率、接触冲击与关节限位，再采用吊架、限力和急停。"
+      ],
+      "suspected_causes": [
+        "关节速度惩罚过重。",
+        "速度奖励曲线过平。",
+        "落地阶段奖励不足。",
+        "奖励信号过于稀疏。"
+      ],
+      "symptoms": [
+        "机器人抖动不稳或停在局部最优。",
+        "速度跟踪不足。",
+        "着陆后姿态失稳。",
+        "稀疏奖励导致收敛慢。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先把任务拆成高度提升、直立姿态和稳定保持三个阶段；初期让高度进展占主导，站起后逐步提高姿态误差、关节速度和平滑性约束，并明确允许的足部接触。不要直接照搬示例权重，应记录每项奖励曲线确认是否被单项劫持。",
+        "applicability": "适用于学习式起身策略；具体权重需按机器人尺度、执行器和接触模型重调。",
+        "bilingual_terms": [
+          "奖励塑形（reward shaping）",
+          "局部最优（local optimum）",
+          "课程学习（curriculum learning）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.63c4121b1413b7d3",
+        "problem_title_zh": "起身策略通过抖动刷奖励却不真正站起，如何调整？",
+        "question_zh": "起身策略通过抖动刷奖励却不真正站起，如何调整？",
+        "source_locator": "第 2 节起身阶段设计及第 6 节调试表",
+        "source_url": "https://zhuanlan.zhihu.com/p/1894420366153216587",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "先画出速度误差到奖励的映射。如果目标附近曲线太平，策略感受不到继续加速的收益，可改用线性项或更窄的指数核；同时检查能耗、姿态和扭矩惩罚是否压过速度奖励。修改后要同时看速度、能耗和摔倒率，避免用更大冲击换速度。",
+        "applicability": "适用于基于期望速度训练的 locomotion policy。",
+        "bilingual_terms": [
+          "速度跟踪（velocity tracking）",
+          "指数核（exponential kernel）",
+          "能量惩罚（energy penalty）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.c51edad122fe0ae8",
+        "problem_title_zh": "行走策略一直达不到目标速度，先检查哪一类奖励设计？",
+        "question_zh": "行走策略一直达不到目标速度，先检查哪一类奖励设计？",
+        "source_locator": "第 3 节速度跟踪与第 6 节调试表",
+        "source_url": "https://zhuanlan.zhihu.com/p/1894420366153216587",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "不要只奖励最大高度；显式划分蓄力、飞行和落地阶段，在落地接触触发后加入身体姿态误差、膝关节缓冲轨迹和冲击力惩罚，并给成功稳定保持一个终止或完成奖励。帖子给的是设计方向，没有量化复现，必须重新标定接触阈值。",
+        "applicability": "适用于有可靠接触检测和落地姿态观测的跳跃任务。",
+        "bilingual_terms": [
+          "阶段奖励（phase-conditioned reward）",
+          "落地冲击（landing impact）",
+          "接触检测（contact detection）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.dab5d979fb13ea73",
+        "problem_title_zh": "跳跃策略能起跳但落地后站不稳，奖励应怎样补齐？",
+        "question_zh": "跳跃策略能起跳但落地后站不稳，奖励应怎样补齐？",
+        "source_locator": "第 4 节跳跃与落地缓冲控制",
+        "source_url": "https://zhuanlan.zhihu.com/p/1894420366153216587",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "先只保留能完成基本动作的主目标，再加入高度变化、相位进展等密集的中间反馈，最后逐项加入能效、对称性和安全惩罚；每次只改一组权重并记录分项奖励。这样能区分任务不会做，还是被辅助惩罚压制。",
+        "applicability": "适用于起身、跳跃和其他多阶段全身动作。",
+        "bilingual_terms": [
+          "稀疏奖励（sparse reward）",
+          "密集奖励（dense reward）",
+          "消融实验（ablation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.abc4fd5ba17bfca1",
+        "problem_title_zh": "长序列动作奖励稀疏、训练收敛慢，如何建立调试顺序？",
+        "question_zh": "长序列动作奖励稀疏、训练收敛慢，如何建立调试顺序？",
+        "source_locator": "第 5 节通用设计原则及第 6 节调试表",
+        "source_url": "https://zhuanlan.zhihu.com/p/1894420366153216587",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文关键证据主要是公式、伪代码和症状对策表；页面图片没有提供可核验的训练曲线，因此未把图片当作效果证据。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1894420366153216587",
+    "published_display": "编辑于 2025-07-07 20:29・山东",
+    "query": "人形机器人 WBC 奖励函数 抖动 局部最优 调试",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [],
+    "wbc_relevance_reason": "奖励塑形直接影响学习式 WBC/locomotion policy 是否形成可部署的平滑全身行为。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1894420366153216587",
+  "summary": "作者围绕起身、行走和跳跃训练梳理奖励设计，并给出抖动、目标速度达不到、落地不稳和收敛慢四类症状的调参入口：阶段化目标、动作平滑、接触力、落地姿态与中间奖励。",
+  "title": "人形基础动作奖励函数的局部最优与分阶段调参",
+  "version": null
+}

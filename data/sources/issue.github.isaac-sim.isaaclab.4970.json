@@ -1,0 +1,108 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "issue reporter"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4970",
+  "captured_at": "2026-08-10T22:16:00+08:00",
+  "content_sha256": "58df2cbbaf9352ff98e88112acf191548d54096995eea8b7c5bef5dd9efdbac6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Isaac Lab",
+      "ContactSensor",
+      "Newton",
+      "PhysX"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者提供完整最小复现；评论对比 Newton 与 PhysX 状态。"
+      ],
+      "diagnostics": [
+        "用最小脚本在 reset 前后逐帧记录 net_forces_w，区分后端和传感器更新时序。"
+      ],
+      "effective_fixes": [
+        "Newton 路径已有修复 PR；PhysX 路径在该评论时间点没有公认通用修复。"
+      ],
+      "environments": [
+        "Isaac Lab ManagerBasedRLEnv、ContactSensor、reset 流程。"
+      ],
+      "limits": [
+        "不能把 Newton 修复直接视为 PhysX 已修复；需按实际后端和版本复测。"
+      ],
+      "outcomes": [
+        "问题仍为部分解决，后端不同导致可用方案不同。"
+      ],
+      "problem_statements": [
+        "环境复位后接触传感器仍返回复位前的接触力。"
+      ],
+      "safety_notes": [
+        "reset 后首帧接触观测应设有效性门槛，避免陈旧力触发错误控制或终止。"
+      ],
+      "suspected_causes": [
+        "传感器缓存和物理后端 reset/update 时序不同步。"
+      ],
+      "symptoms": [
+        "复位后第一批接触观测不是新 episode 的状态。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先把它当作后端相关的已知时序问题，用逐帧最小复现确认首个有效接触样本。评论称 Newton 已有修复，而 PhysX 当时仍无通用绕行方案；因此应在 reset 后增加观测有效性检查，并按后端版本复测。",
+        "applicability": "适用于 reset 后立即读取 ContactSensor 的环境；Newton 与 PhysX 必须分开判断。",
+        "bilingual_terms": [
+          "接触传感器（Contact Sensor）",
+          "接触力（Contact Force）",
+          "状态估计（State Estimation）"
+        ],
+        "question_zh": "Isaac Lab reset 后 ContactSensor 数据陈旧，应怎样处理？",
+        "source_locator": "后端状态更新 @ooctipus",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4970#issuecomment-4190614556",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.contact_force_friction.e61af38c52293587",
+        "problem_title_zh": "Isaac Lab reset 后 ContactSensor 数据陈旧，应怎样处理？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4970",
+    "query": "IsaacLab stale contact sensor reset",
+    "review_status": "candidate",
+    "robot_platforms": [],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [],
+    "wbc_relevance_reason": "陈旧接触力会污染 reset 后观测、奖励、终止判断和 WBC 接触状态。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4970",
+  "summary": "Issue 提供最小脚本说明环境 reset 后首批 ContactSensor 数据仍来自复位前。评论确认这是已知问题：Newton 已有相关修复，而 PhysX 路径当时仍在寻找绕行方案。",
+  "title": "Isaac Lab reset 后 ContactSensor 仍返回复位前数据",
+  "version": null
+}

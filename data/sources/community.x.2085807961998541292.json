@@ -1,0 +1,134 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "harpreet @DataScienceHarp"
+  ],
+  "canonical_url": "https://x.com/datascienceharp/status/2085807961998541292",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "8ffca18f1f0c7fe545993f6e529b1b2c6c0ace9f0900c2b31be964a82ae94562",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "LiDAR-inertial SLAM",
+      "FoMo",
+      "FMCW radar",
+      "IMU",
+      "GNSS"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "发布多季节传感器数据和 FiftyOne 多模态回放。"
+      ],
+      "diagnostics": [
+        "使用 GNSS ground truth 对齐多传感器 MCAP 回放并跨季节比较。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "魁北克森林；12 次部署；-19°C 至 18°C；积雪约 1 m。"
+      ],
+      "limits": [
+        "非人形；4%/46% 定义与算法配置需查数据卡。"
+      ],
+      "outcomes": [
+        "量化了季节域偏移，但原帖未给出修复算法。"
+      ],
+      "problem_statements": [
+        "同一定位算法在季节变化后严重漂移。"
+      ],
+      "safety_notes": [
+        "定位漂移未受控时应降低自主速度，并用独立真值/失效检测限制 WBC 导航指令。"
+      ],
+      "suspected_causes": [
+        "积雪改变道路几何与 LiDAR 外观，导致长期场景不一致。"
+      ],
+      "symptoms": [
+        "同一路线漂移从 4% 升至 46%。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "原帖可操作的部分是用带 GNSS ground truth 的多季节数据按同一路线回放，并同步检查 LiDAR、radar、camera 与 IMU；它没有给出修复。应把季节域偏移作为独立测试维度，而不能只在单季节标定。",
+        "applicability": "适用于长期部署的状态估计回归测试。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "状态估计（State Estimation）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "激光雷达（Light Detection and Ranging, LiDAR）",
+          "同时定位与建图（Simultaneous Localization and Mapping, SLAM）"
+        ],
+        "question_zh": "同一 LiDAR-inertial SLAM 在积雪后漂移从 4% 升到 46%，应先如何复现问题？",
+        "source_locator": "根帖 FoMo 数据说明",
+        "source_url": "https://x.com/datascienceharp/status/2085807961998541292",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.state_estimation_calibration.f7d9563497760132",
+        "problem_title_zh": "同一 LiDAR-inertial SLAM 在积雪后漂移从 4% 升到 46%，应先如何复现问题？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图重复展示漂移 4%→46% 和传感器/温度范围，未包含轨迹图或误差定义。"
+    ],
+    "platform": "x",
+    "post_id": "2085807961998541292",
+    "published_display": "2026-08-07T19:19:05.000Z",
+    "query": "lidar inertial SLAM seasonal drift",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "森林导航机器人（非人形，状态估计邻域证据）"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "author_display": "GeoMatrix\n@GeoMatrix_Dev\n·\nAug 8",
+        "published_display": "2026-08-08T00:29:43.000Z",
+        "text": "Awesome work! Super smooth visualization. Currently working on a lightweight desktop interface to streamline this kind of GEE/Conda workflow too. Keep it up!"
+      }
+    ],
+    "wbc_relevance_reason": "状态估计漂移会直接污染 WBC 的基座状态和路径跟踪。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2085807961998541292",
+  "summary": "帖子用 FoMo 多季节数据集说明环境变化对定位的影响：同一路线从秋季到一米积雪后，同一 LiDAR-inertial SLAM 漂移由 4% 升至 46%。数据包含 2 个 LiDAR、FMCW radar、双目/单目相机、双 IMU 与 GNSS 真值，覆盖 -19°C 到 18°C 的 12 次部署。",
+  "title": "季节变化使 LiDAR-inertial SLAM 漂移从 4% 升到 46%",
+  "version": null
+}

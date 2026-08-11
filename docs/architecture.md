@@ -26,7 +26,8 @@ EngineeringClaim -- question, statement, applicability, confidence rationale
 | Component | Responsibility | Trust boundary |
 |---|---|---|
 | Manual importer | Normalize a user-supplied public/authorized record | Treat all imported text as untrusted data |
-| On-demand social collector | Build batched searches from an open WBC engineering-problem ontology; normalize, deduplicate, and render linked candidate Q&A | User-authorized session only; no cookies, hidden APIs, scheduler, CAPTCHA bypass, or bulk archive |
+| On-demand social collector | Select low-repeat queries from an open WBC ontology; run free bounded visible-browser tasks for X/知乎/小红书; mine evidence-linked subtopics from bodies/comments; normalize and render linked candidate Q&A | Explicit user trigger only; browser results are `partial_visible`; no cookies, hidden APIs, scheduler, CAPTCHA bypass, or uncontrolled bulk archive |
+| GitHub Issue collector | Split 34 WBC repositories and engineering queries into resumable date-window search tasks; merge Issue bodies/comments by canonical root and exact comment URL | Documented free API/connected app only; 1,000-result windows are partitioned; raw scale is not reviewed evidence |
 | Source adapters | Optional discovery/metadata acquisition | Must obey `docs/source-feasibility/README.md`; never required offline |
 | Domain model | Parse and serialize sources, claims, evidence, applicability, and safety case | Reject invalid IDs, URLs, timestamps, enums, and unsafe critical claims |
 | Validator | Produce stable issue codes and decide publication readiness | Deterministic; no LLM judgment |
@@ -73,6 +74,7 @@ content/papers/catalog.json -- papers-status --> coverage gaps
 - Hardware-critical guidance fails unless every safety field is present and simulation validation is recorded.
 - A network adapter failure never prevents offline validation, indexing, or querying.
 - A social platform login, CAPTCHA, risk-control, or access denial stops that platform's current task and leaves an explicit partial result.
+- Free X browser runs preserve exact post/reply links, visible media review paths, and bounded expansion/depth metadata; they never claim complete thread coverage. In optional paid API mode, an incomplete page window persists its `next_token` and old `since_id`; the high-water mark advances only after every retained page is consumed.
 - Social captures enter as `review_status=candidate`; collection never promotes them to reviewed engineering guidance.
 - Every extracted social engineering question/answer carries the stable original-post URL and a body/comment locator. Missing answers remain `unresolved`; the collector must not synthesize a fix.
 - Paper discovery failure leaves the existing catalog and deep reads unchanged.

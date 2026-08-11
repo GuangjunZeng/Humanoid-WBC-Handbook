@@ -1,0 +1,138 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "aiorbits"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/1909630787583742013",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "7a6ec4b8af9deecaf40bbd7b8056bb2993b6974f8a2f48aab38a14a6878121f8",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 5
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "MuJoCo 2.3.6",
+      "Isaac Gym",
+      "WSL",
+      "OpenGL/D3D12"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "禁用 matplotlib 线程、降低分辨率、换简单模型、对目标 XML 单独跑 5000 step。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Ubuntu 20.04；Python 3.8.20；MuJoCo 2.3.6；RTX 4080 笔记本。"
+      ],
+      "limits": [
+        "评论方案只适用于 WSL 软件渲染情形，不能外推到原作者原生 Ubuntu。"
+      ],
+      "outcomes": [
+        "问题主体仍未解决；评论者在 WSL 配置 D3D12 后约 30 FPS。"
+      ],
+      "problem_statements": [
+        "MuJoCo 完整双足项目只有 3 FPS，但单独 XML 有 102 FPS，如何继续定位？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "原帖未定因；评论中一个 WSL 案例发现渲染落到 llvmpipe。"
+      ],
+      "symptoms": [
+        "完整项目 2–3 FPS，GPU 几乎不用且 CPU 也不高；简单模型上千 FPS，单独目标 XML 约 102 FPS。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "现有对照说明不应先怪 GPU 或 MuJoCo 本体：应把 viewer/render、控制循环、日志/绘图和 mj_step 分开计时，并用 glxinfo/vulkaninfo 核查是否落到 llvmpipe。评论中的 WSL 用户改用 D3D12 后约 30 FPS，但原帖根因仍未确认，因此状态是 unresolved。",
+        "applicability": "评论方案只适用于 WSL 软件渲染情形，不能外推到原作者原生 Ubuntu。",
+        "bilingual_terms": [
+          "图形处理器（Graphics Processing Unit, GPU）",
+          "每秒帧数（Frames Per Second, FPS）"
+        ],
+        "question_zh": "MuJoCo 完整双足项目只有 3 FPS，但单独 XML 有 102 FPS，如何继续定位？",
+        "source_locator": "正文基准对比；评论中 llvmpipe→D3D12 案例",
+        "source_url": "https://zhuanlan.zhihu.com/p/1909630787583742013",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.compute_performance_memory.4e3690ce38c0cc7d",
+        "problem_title_zh": "MuJoCo 完整双足项目只有 3 FPS，但单独 XML 有 102 FPS，如何继续定位？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "两个媒体位用于展示低 FPS/运行状态；正文给出的 3 FPS、102 FPS 与上千 FPS 对照比截图像素更可检索，未见 profiler 时间线。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.1909630787583742013",
+    "published_display": "编辑于 2025-05-24 22:48・新加坡",
+    "query": "Isaac Lab humanoid OOM 显存 FPS 优化",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "LivelyBot 12-DoF 双足"
+    ],
+    "schema_version": 2,
+    "scope_id": "compute_performance_memory",
+    "selected_comments": [
+      {
+        "text": "你好请问这个问题解决了吗，我条件有限在wsl上FPS也超低"
+      },
+      {
+        "text": "cy"
+      },
+      {
+        "text": "我也遇到了这个问题，我觉得是wsl下的mujoco没有用gpu进行渲染，我用vulkaninfo和glxinfo -B 这类信息看，确实是用llvmpipe渲染的，可以参考这个文章，主要是确认用D3D12 渲染，设置好环境变量之后就有大概30帧了，nvidia-smi也能看到显卡占用。参考：https://m3ngl.github.io/wsl2/2025/09/21/WSL2-%E5%BC%80%E5%90%AFGPU%E6%B8%B2%E6%9F%93%E4%BB%BF%E7%9C%9F%E7%94%BB%E9%9D%A2/"
+      },
+      {
+        "text": "请问有解决方案了么"
+      },
+      {
+        "text": "您好，请问您有发现这是什么原因吗，我查看了我的gpu显存实际只用了160多mb，这是因为gpu没有工作的原因吗？"
+      }
+    ],
+    "wbc_relevance_reason": "保留了复现环境、对照基准与未解决状态，是性能排查的高价值负例。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.1909630787583742013",
+  "summary": "求助帖对比 Isaac Gym 流畅、完整 MuJoCo 项目 2–3 FPS、官方 humanoid 上千 FPS、单独机器人 XML 约 102 FPS。评论给出 WSL llvmpipe 软件渲染案例，切换 D3D12 后约 30 FPS，但原作者环境根因未确认。",
+  "title": "MuJoCo 双足项目只有 2–3 FPS 的分层性能排查",
+  "version": null
+}

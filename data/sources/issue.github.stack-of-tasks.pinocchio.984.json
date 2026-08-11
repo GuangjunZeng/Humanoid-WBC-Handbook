@@ -1,0 +1,107 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "micko-plz"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/984",
+  "captured_at": "2026-08-10T22:12:00+08:00",
+  "content_sha256": "5ad9db7ee13b52e49b4d7e8c45f73daf78094c485e1c8095cdc2e3d84c8e87b8",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Pinocchio",
+      "ABA"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者检查关节雅可比、速度导数和约束前向动力学接口。"
+      ],
+      "diagnostics": [
+        "逐项核对广义坐标、广义速度和广义力各分量使用的参考坐标系。"
+      ],
+      "effective_fixes": [
+        "按世界坐标系重新解释并构造基座广义力。"
+      ],
+      "environments": [
+        "Pinocchio、平面根关节、ABA、两轮差速移动操作机器人。"
+      ],
+      "limits": [
+        "维护者指出严格的等式约束力与加速度耦合仍可能需要 QP；本例最终修复的是坐标系误解。"
+      ],
+      "outcomes": [
+        "原作者明确确认修正坐标系理解后代码可以工作。"
+      ],
+      "problem_statements": [
+        "控制策略没有遵守移动基座侧向零速度约束。"
+      ],
+      "safety_notes": [
+        "实机底盘测试前应对每个广义力分量做坐标系单元测试。"
+      ],
+      "suspected_causes": [
+        "误把输入 ABA 的基座力矩分量当作机体系，实际按世界系解释。"
+      ],
+      "symptoms": [
+        "对基座侧向力和局部 y 速度的计算产生矛盾。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "最先检查基座广义力的参考坐标系。该案例的根因是把作用于基座的广义力误当作机体系，而实际按世界系解释；修正这一点后原作者确认运行正常。若还要严格联立约束力和加速度，再考虑等式约束 QP。",
+        "applicability": "适用于 Pinocchio 平面/浮动基座模型和 ABA 输入构造。",
+        "bilingual_terms": [
+          "前向动力学（Forward Dynamics）",
+          "坐标系（Coordinate Frame）",
+          "二次规划（Quadratic Programming, QP）"
+        ],
+        "question_zh": "Pinocchio ABA 中移动基座侧向约束异常时，最先检查什么？",
+        "source_locator": "原作者解决确认 @micko-plz",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/984#issuecomment-564544773",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.joint_mapping_frames_conventions.4a749f2959c209c9",
+        "problem_title_zh": "Pinocchio ABA 中移动基座侧向约束异常时，最先检查什么？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.984",
+    "query": "Pinocchio forward dynamics constrained mobile base",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "mobile manipulator"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [],
+    "wbc_relevance_reason": "这是全身动力学实现中常见的广义力、基座坐标系和非完整约束耦合问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.984",
+  "summary": "移动操作机器人用户误以为传给 ABA 的基座广义力位于机体坐标系，导致对侧向无滑移约束的判断错误。讨论澄清该向量的基座分量位于世界坐标系，原作者据此修正后确认运行正常。",
+  "title": "Pinocchio 约束前向动力学中的基座力坐标系误解",
+  "version": null
+}

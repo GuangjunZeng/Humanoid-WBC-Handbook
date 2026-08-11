@@ -1,0 +1,184 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/1607",
+  "captured_at": "2026-08-11T07:12:00+08:00",
+  "content_sha256": "633720f8451a5e3e2fa34552da3c1f7064dd75da28ce92e7692bbec062e09162",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 14 条回复；保留了预编译方案的内存与非动态限制，没有把社区 profiling 当成官方性能结论。",
+    "components": [
+      "MuJoCo MJX",
+      "domain randomization",
+      "body mass and inertia",
+      "put_model",
+      "MuJoCo Warp set_const"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议先在原生 MuJoCo 中构建多个随机模型，完成编译后逐个 put_model，再用 JAX tree map/concatenate 形成批次。",
+        "用户测试了 friction 字段批处理、body_mass 局部批处理和整个 model 批处理。"
+      ],
+      "diagnostics": [
+        "区分可直接 batching 的字段与需要 compiler/set_const 重算派生常量的字段。",
+        "分别验证单字段 batching 与整个 mjx.Model batching 的 shape 和内存成本。"
+      ],
+      "effective_fixes": [
+        "对 MJX 当时的边界，将所需质量/惯量随机组合预先在原生 MuJoCo 编译，再转换和堆叠为训练 batch。",
+        "若需要原生 set_const 能力，最终维护者给出的项目方向是 MuJoCo Warp，而不是等待 MJX 实现。"
+      ],
+      "environments": [
+        "MuJoCo/MJX 公开 Issue #1607，2024–2026 年回复；JAX 批量 model 与 environment reset。"
+      ],
+      "limits": [
+        "预编译方案只能从预先生成的随机组合中取样，不是每次 reset 任意改参并在 MJX 内重算。",
+        "整个 model 批处理的内存开销由线程用户报告，原线程没有统一 benchmark。",
+        "Toddlerbot/Brax 社区 workaround 的 1024 环境耗时只是单一用户 profiling，本批次没有把它升级为通用结论。"
+      ],
+      "outcomes": [
+        "维护者给出可保证 compiler-dependent fields 一致的预编译模型方案。",
+        "线程参与者报告完整模型 batching 可行，但存在额外内存成本。",
+        "2026 年维护者明确说 MJX 不计划该特性。"
+      ],
+      "problem_statements": [
+        "MJX 批量训练中如何随机化 body mass/inertia 并保证 dof_M0 等派生常量一致？",
+        "MJX 是否会提供与 mj_setConst 同类的 set_const？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "MJX 当时没有可在 JAX 内调用的 model compiler/set_const 路径，需重编译的字段不适合在 reset 中动态改。"
+      ],
+      "symptoms": [
+        "改动 body mass/inertia 后无法在 MJX 内重算依赖这些字段的派生常量。",
+        "只对 body_mass 字段做局部 batching 时，线程参与者报告 shape error；完整模型 batching 会增加内存使用。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "按该 Issue 的最终维护者回复，该特性不在 MJX 计划中，他直接指向 MuJoCo Warp 的 set_const。这是项目方向结论，不是对 MuJoCo Warp 所有随机化字段和性能的实测承诺；迁移前仍要核对目标版本的 set_const 文档和支持字段。",
+        "applicability": "适用于该 Issue 在 2026 年关闭时的 MJX 产品方向；后续版本仍应重新核对官方发布说明。",
+        "bilingual_terms": [
+          "派生常量（derived constants）",
+          "模型常量重算（set_const）",
+          "域随机化（domain randomization）",
+          "质量与惯量（mass and inertia）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reward_curriculum_randomization.mjx_set_const_not_planned_1607",
+        "problem_title_zh": "MJX 不计划提供动态 set_const",
+        "question_zh": "MJX 是否会加入类似 mj_setConst 的能力，以在改动质量与惯量后重算派生常量？",
+        "source_locator": "Issue #1607，维护者最终回复 issuecomment-4707873695",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/1607#issuecomment-4707873695",
+        "verification_refs": [
+          {
+            "locator": "维护者明确说特性不计划用于 MJX，并指向 MuJoCo Warp set_const",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1607#issuecomment-4707873695"
+          },
+          {
+            "locator": "维护者回复指向的 MuJoCo Warp set_const 官方 API 页面；本卡不外推其支持字段",
+            "relation": "official_documentation",
+            "source_url": "https://mujoco.readthedocs.io/en/latest/mjwarp/api.html#mujoco_warp.set_const"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者建议不在训练 reset 里现改这类字段，而是先在原生 MuJoCo 中生成多个随机模型，让每个模型完成正确编译，再逐个 put_model 到 MJX，并用 JAX tree map/concatenate 形成大 batch。线程参与者报告整模型 batching 能运行，但更占内存；body_mass 单字段批处理出现 shape error。因此这是受限的预生成工程路径，不是任意每回合重新编译。",
+        "applicability": "适用于可在训练前枚举/采样有限质量惯量组合的 MJX 环境；需同时评估 model batch 的内存容量。",
+        "bilingual_terms": [
+          "预编译模型（precompiled model）",
+          "批处理（batching）",
+          "派生字段（derived field）",
+          "树映射/拼接（tree map/concatenate）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.reward_curriculum_randomization.mjx_precompiled_model_randomization_1607",
+        "problem_title_zh": "MJX 通过预编译模型批次随机化质量与惯量",
+        "question_zh": "MJX 缺少 set_const 时，原线程如何避免 body mass/inertia 与 dof_M0 等 compiler-dependent fields 不一致？",
+        "source_locator": "Issue #1607，维护者预编译建议 issuecomment-2338654955；用户批处理结果 issuecomment-2564692501",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/1607#issuecomment-2338654955",
+        "verification_refs": [
+          {
+            "locator": "维护者建议在原生 MuJoCo 预先编译随机模型，再 put_model 并拼接",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1607#issuecomment-2338654955"
+          },
+          {
+            "locator": "参与者报告 friction 字段、body_mass 字段和整模型 batching 的不同结果与内存边界",
+            "relation": "issue",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/1607#issuecomment-2564692501"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.1607",
+    "query": "MJX body mass inertia randomization set_const put_model concat batched model",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "MJX 批量仿真环境；原帖未说明具体机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "reward_curriculum_randomization",
+    "selected_comments": [
+      {
+        "text": "维护者建议先在 MuJoCo 中编译随机模型，再 put_model 并拼接成 MJX batch。"
+      },
+      {
+        "text": "用户报告完整 model batching 可用但增加内存，body_mass 单字段 batching 出现 shape error。"
+      },
+      {
+        "text": "维护者最终说 MJX 不计划该特性，并指向 MuJoCo Warp set_const。"
+      }
+    ],
+    "wbc_relevance_reason": "域随机化若只改质量/惯量字段而没有同步派生动力学常量，会让用于 WBC/RL 的批量动力学与设定参数不一致。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.1607",
+  "summary": "MuJoCo #1607 讨论在批量 MJX 训练中随机化 body mass/inertia 时，如何重算 dof_M0 等派生常量。维护者建议在原生 MuJoCo 中先构建并编译多个随机模型，再逐个 put_model 到 MJX 并用 tree map/concatenate 形成 batch，而不是在训练 reset 中改动需重编译的字段。参与者报告单字段 friction 批处理可用，body_mass 局部批处理出现 shape error，全模型 batching 可用但更占内存。2026 年最终回复明确该 set_const 特性不会为 MJX 规划，并指向 MuJoCo Warp set_const。",
+  "title": "MJX 质量与惯量随机化的编译常量边界",
+  "version": null
+}

@@ -1,0 +1,146 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Rohan Paul @rohanpaul_ai"
+  ],
+  "canonical_url": "https://x.com/rohanpaul_ai/status/1959169753173409880",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "72f591270ccd0010571e752a81f98fa6a85f0f3fada51f83810fdd857604d61c",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Robot-Trains-Robot",
+      "domain randomization",
+      "latent adaptation",
+      "force sensing"
+    ],
+    "domain_hints": [
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "教师臂跟随、逐步降低、同步跑台、塑形奖励与自动 reset。"
+      ],
+      "diagnostics": [
+        "比较 compliant scheduling、fixed-arm baseline 和不同帮助/扰动阶段。"
+      ],
+      "effective_fixes": [
+        "只优化一个 physics latent，并由教师臂调度和保护。"
+      ],
+      "environments": [
+        "仿真预训练；力传感教师臂；行走与 swing-up。"
+      ],
+      "limits": [
+        "是论文解读，硬件边界和统计结果需核对原文。"
+      ],
+      "outcomes": [
+        "帖子称 compliant scheduling 优于 fixed arm；未给出具体数值。"
+      ],
+      "problem_statements": [
+        "真机在线适配需要大量人工保护，探索风险高。"
+      ],
+      "safety_notes": [
+        "在线学习需独立力/位姿限位、失效检测和物理支撑。"
+      ],
+      "suspected_causes": [
+        "真机动力学偏差和难度突变使在线探索不稳定。"
+      ],
+      "symptoms": [
+        "固定教师臂/无调度时学习弱或风险高。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "Robot-Trains-Robot 的候选方案是仿真中用 domain randomization 学 physics latent，上真机后冻结大部分策略，仅优化一个 latent variable；同时由力传感教师臂负责保护、curriculum、perturbation、failure detection 和 reset。",
+        "applicability": "适用于具备外部支撑/教师装置的真机适配。",
+        "bilingual_terms": [
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "域随机化（Domain Randomization, DR）",
+          "课程学习（Curriculum Learning）",
+          "应用程序接口（Application Programming Interface, API）",
+          "质心（Center of Mass, CoM）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "如何把人形真机在线适配限制在更安全、低维的搜索空间？",
+        "source_locator": "根帖方法与 walking/swing-up 段落",
+        "source_url": "https://x.com/rohanpaul_ai/status/1959169753173409880",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.reward_curriculum_randomization.264b621c4da6baa3",
+        "problem_title_zh": "如何把人形真机在线适配限制在更安全、低维的搜索空间？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图显示教师臂、力传感、奖励塑形和自动 reset 的文字说明；没有硬件控制图或安全阈值。"
+    ],
+    "platform": "x",
+    "post_id": "1959169753173409880",
+    "published_display": "2025-08-23T08:24:03.000Z",
+    "query": "Robot-Trains-Robot reward curriculum real world adaptation",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人+物理教师机械臂"
+    ],
+    "schema_version": 2,
+    "scope_id": "reward_curriculum_randomization",
+    "selected_comments": [
+      {
+        "author_display": "Rohan Paul\n@rohanpaul_ai\n·\n2025年8月23日",
+        "published_display": "2025-08-23T08:24:04.000Z",
+        "text": "https://\nrobot-trains-robot.github.io"
+      },
+      {
+        "author_display": "AI Studio\n@ai_studioxyz\n·\n2025年8月24日",
+        "published_display": "2025-08-24T11:47:55.000Z",
+        "text": "Great learning resource."
+      },
+      {
+        "author_display": "AI Studio\n@ai_studioxyz\n·\n2025年8月24日",
+        "published_display": "2025-08-24T10:58:45.000Z",
+        "text": "Insightful educational content."
+      }
+    ],
+    "wbc_relevance_reason": "覆盖人形 sim-to-real、curriculum、reward shaping、扰动与安全真机学习。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.1959169753173409880",
+  "summary": "帖子描述一条受保护的真机在线适配流程：带力传感的机械臂保护学生人形、调度难度、塑形奖励、注入扰动、检测失败并自动 reset；策略先经 domain randomization 学到物理 latent code，上真机后冻结大部分策略和仅优化一个 latent variable。",
+  "title": "Robot-Trains-Robot：用物理教师降低真机在线适配风险",
+  "version": null
+}

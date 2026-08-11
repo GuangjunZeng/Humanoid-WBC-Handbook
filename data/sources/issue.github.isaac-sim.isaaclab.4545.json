@@ -1,0 +1,107 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "issue reporter"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4545",
+  "captured_at": "2026-08-10T22:18:00+08:00",
+  "content_sha256": "f48a93fb8fc3e57c155c743ae774b73fe6e1ccbc8c2a939c0af6b702155c9311",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Isaac Lab",
+      "RSL-RL",
+      "net_forces_w"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "training_data_retargeting"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者对比即时接触力与历史缓存进入奖励/观测的行为。"
+      ],
+      "diagnostics": [
+        "逐项切换观测/奖励字段，用第一个产生分叉的字段定位非确定性输入。"
+      ],
+      "effective_fixes": [
+        "尚无根因修复；可先把字段级消融作为复现诊断方法。"
+      ],
+      "environments": [
+        "Isaac Lab 2.3.1、Isaac Sim 5.1.0、RSL-RL、Unitree G1。"
+      ],
+      "limits": [
+        "完全一致或不一致本身都不是错误证明，必须对齐版本、驱动、后端、环境数和代码。"
+      ],
+      "outcomes": [
+        "维护者给出解释和进一步排查方向，但没有确认具体底层缺陷。"
+      ],
+      "problem_statements": [
+        "不同电脑固定种子后训练完全一致，但加入即时接触力后结果分叉。"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "即时接触力路径可能包含物理求解顺序相关的非确定性。"
+      ],
+      "symptoms": [
+        "net_forces_w 触发差异，net_forces_w_history 不触发。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "把它当作字段级消融证据：先对齐版本、驱动、后端和并行环境数，再逐项比较 net_forces_w 与其历史缓存进入观测或奖励后的首个分叉时刻。它能缩小非确定性入口，但原帖尚未证明底层根因。",
+        "applicability": "适用于 Isaac Lab/RSL-RL 接触丰富型训练的复现诊断。",
+        "bilingual_terms": [
+          "训练非确定性（Training Nondeterminism）",
+          "接触力（Contact Force）",
+          "强化学习（Reinforcement Learning, RL）"
+        ],
+        "question_zh": "跨机器训练只有加入 net_forces_w 后才分叉，这个现象怎样利用？",
+        "source_locator": "维护者解释 @RandomOakForest",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4545#issuecomment-3861646985",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.debugging_logging_reproducibility.9ed592cd62bb0b48",
+        "problem_title_zh": "跨机器训练只有加入 net_forces_w 后才分叉，这个现象怎样利用？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4545",
+    "query": "G1 net_forces_w deterministic training",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "debugging_logging_reproducibility",
+    "selected_comments": [],
+    "wbc_relevance_reason": "接触力观测是否引入非确定性会影响强化学习复现、奖励设计和 WBC 状态接口。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4545",
+  "summary": "用户观察到固定种子时两台电脑的 G1 行走训练完全一致，而把 net_forces_w 加入奖励或观测后才分叉；使用历史缓存则仍一致。维护者将这一差异作为定位非确定性来源的强信号，并解释同版本与同后端下完全一致并非必然异常。",
+  "title": "G1 训练在不同电脑完全一致但加入 net_forces_w 后分叉",
+  "version": null
+}

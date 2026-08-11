@@ -1,0 +1,114 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "fan-ziqi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1698",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "74fb831d7726ada5b8f91658849f7d16c50b1ebb0c8dfbf9a65b39c33b3efae9",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 公开 Issue 与关联 PR 核对；因 PR 未合并保持 partial。",
+    "components": [
+      "Isaac Lab",
+      "base_height_l2",
+      "RayCaster",
+      "rough terrain"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "Issue 建议改用中心点实际参考地形高度；关联 PR 尝试处理传感器无效值。"
+      ],
+      "diagnostics": [
+        "展开 adjusted_target_height 公式，核对 sensor.data.pos_w 是传感器原点还是射线命中地形高度。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab rewards.py b5078de；rough terrain；RayCaster sensor。"
+      ],
+      "limits": [
+        "不能把关闭状态等同于已发布修复；需要核对当前分支 rewards.py。"
+      ],
+      "outcomes": [
+        "Issue 已关闭，但关联 PR #1727 当前页面仍为 Open，未找到已合并替代修复。"
+      ],
+      "problem_statements": [
+        "粗糙地形的 base_height_l2 为什么不随机器人/地形高度变化？"
+      ],
+      "safety_notes": [
+        "更改奖励后重新训练并检查策略行为，不能把旧 checkpoint 直接当作修复验证。"
+      ],
+      "suspected_causes": [
+        "把传感器原点世界坐标误当作地形参考高度。"
+      ],
+      "symptoms": [
+        "奖励代数化简后只剩 target_height 的常数平方，无法表达离地高度误差。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "把代码代入符号表达式：若 sensor.data.pos_w[:,2] 实际等于 root_link_pos_w[:,2]，则 root_height-(target_height+sensor_origin_height) 会相消成 -target_height，奖励成为常数。应使用射线命中的地形高度或定义明确的局部参考，并用不同地形/机身高度的单元测试确认奖励会变化。",
+        "applicability": "适用于使用 RayCaster 修正粗糙地形目标高度的 Isaac Lab 版本。",
+        "bilingual_terms": [
+          "高度奖励（base-height reward）",
+          "射线投射器（RayCaster）",
+          "常数奖励（constant reward）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.training_reward_curriculum.eb2c2cec61dda84b",
+        "problem_title_zh": "粗糙地形 base_height_l2 奖励看似正常却不提供有效梯度，如何发现公式相消？",
+        "question_zh": "粗糙地形 base_height_l2 奖励看似正常却不提供有效梯度，如何发现公式相消？",
+        "source_locator": "Issue #1698 lines 166—205；关联 PR #1727 仍为 Open",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1698",
+        "verification_refs": [
+          {
+            "locator": "关联修复 PR 当前仍为 Open；作为处理方向，不作为已发布修复证明",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1727"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1698",
+    "query": "rough terrain base_height_l2 reward wrong ray caster",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "足式机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [],
+    "wbc_relevance_reason": "错误的高度奖励会让地形课程和 locomotion policy 获得无意义信号，影响 WBC 上层参考。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1698",
+  "summary": "Issue 指出 rough terrain 的 base_height_l2 把 RayCaster 传感器原点世界高度加到目标高度，而该值等于 root_link_pos_w 的高度，代入后奖励恒化为 target_height 的平方，失去对实际地形高度的感知。关联修复 PR #1727 仍显示未合并。",
+  "title": "粗糙地形 base_height_l2 奖励因传感器原点相消而退化",
+  "version": null
+}

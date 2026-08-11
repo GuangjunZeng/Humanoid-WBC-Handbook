@@ -1,0 +1,131 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "机械行枢"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a27d9b40000000021021bdb",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "8822a061b1a411503ea77809e186f77fc1608fb8685e882e8cf6431c29c66639",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "ROS 2",
+      "DDS",
+      "QoS",
+      "zero-copy",
+      "VLAN discovery"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "建议开启共享内存/零拷贝、隔离或优先控制流量、配置跨网段发现。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "ROS2 工业组网；图像/点云与控制指令共网；多 VLAN。"
+      ],
+      "limits": [
+        "‘90%’是未经验证的宣传性数字；具体实现取决于 DDS 与网络设备。"
+      ],
+      "outcomes": [
+        "帖子未给实施后的丢包率/延迟。"
+      ],
+      "problem_statements": [
+        "ROS2 控制链丢包，QoS 已调仍无效，下一层查什么？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "用户态反复拷贝占满 CPU；无话题/网络优先级；跨网段 discovery 未配置。"
+      ],
+      "symptoms": [
+        "调 QoS 三天仍丢包、延迟或断连。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "按正文可先查三层：进程内/进程间复制是否打满 CPU，图像点云是否挤占控制通道，DDS discovery 是否跨 VLAN 可达。应以抓包、topic statistics 和端到端时延验证；帖子没有复测数据，不能把‘90%’当事实。",
+        "applicability": "‘90%’是未经验证的宣传性数字；具体实现取决于 DDS 与网络设备。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "机器人操作系统 2（Robot Operating System 2, ROS 2）",
+          "数据分发服务（Data Distribution Service, DDS）",
+          "服务质量（Quality of Service, QoS）",
+          "端到端时延（End-to-End Latency）",
+          "共享内存（Shared Memory）"
+        ],
+        "question_zh": "ROS2 控制链丢包，QoS 已调仍无效，下一层查什么？",
+        "source_locator": "根帖三项列表",
+        "source_url": "https://www.xiaohongshu.com/explore/6a27d9b40000000021021bdb",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.communication_and_realtime.d8618eaecd2ec8f0",
+        "problem_title_zh": "ROS2 控制链丢包，QoS 已调仍无效，下一层查什么？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三张信息图概括共享内存/零拷贝、话题优先级、跨 VLAN discovery；未见抓包、丢包率或端到端时延曲线。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a27d9b40000000021021bdb",
+    "published_display": "编辑于 06-12",
+    "query": "Unitree G1 SDK DDS 丢包 延迟 控制频率",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用工业机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "communication_and_realtime",
+    "selected_comments": [],
+    "wbc_relevance_reason": "为 WBC 实时通信提供 QoS 之外的三层排查清单。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a27d9b40000000021021bdb",
+  "summary": "帖子提出工业 ROS2 丢包/延迟需同时检查共享内存/零拷贝、大图像点云挤占控制带宽、以及不同 VLAN 未配置发现服务；正文没有提供数据或复测。",
+  "title": "ROS 2 丢包不只看 QoS：复制、优先级与跨网段发现",
+  "version": null
+}

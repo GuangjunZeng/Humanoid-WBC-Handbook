@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zhanggang11863976"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/4",
+  "captured_at": "2026-08-11T01:20:00+08:00",
+  "content_sha256": "f6bbe300c1572cac6e4b6a0f892cc77eea6a1e77901df3b1975ced6e1cd46d64",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 4 条评论，并核对 retargeting update 提交的报错行 diff；未把社区的未验证修改当作正式修复。",
+    "components": [
+      "human2humanoid",
+      "grad_fit_h1_shape.py",
+      "H1_ROTATION_AXIS",
+      "dof_pos"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "社区用户链接了临时修改，提问者回复 I think it works；维护者随后发布正式仓库更新。"
+      ],
+      "diagnostics": [
+        "同时核对 H1_ROTATION_AXIS 的轴数、dof_pos 最后一维自由度数和 h1_joint_names 的顺序，而不是只在 torch.cat 外层补零。"
+      ],
+      "effective_fixes": [
+        "提交 0c6fd6f 把 grad_fit_h1_shape.py 的 dof_pos 从 torch.zeros((1,27)) 改为 torch.zeros((1,19))，并同步为 19 项 H1 关节表。"
+      ],
+      "environments": [
+        "LeCAR-Lab/human2humanoid；2024-10-05 原帖所用旧版脚本；修补提交 0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd。"
+      ],
+      "limits": [
+        "19 是该 H1 模型和该脚本的维度，不是任意自定义机器人都应使用的常数；修改维度时必须同步关节顺序和旋转轴。"
+      ],
+      "outcomes": [
+        "collaborator 确认最新版已修补并关闭 Issue；提交 diff 精确覆盖报错行。"
+      ],
+      "problem_statements": [
+        "grad_fit_h1_shape.py 中 H1_ROTATION_AXIS 与 dof_pos 相乘出现 19 对 27 的维度不匹配，正确维度是什么？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "旧脚本的 H1_ROTATION_AXIS 为 19 轴，但 dof_pos 初始化为 27 维。"
+      ],
+      "symptoms": [
+        "RuntimeError: The size of tensor a (19) must match the size of tensor b (27) at non-singleton dimension 1。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该仓库已修补的 H1 路径把 dof_pos 初始化从 27 改为 19，并同步把关节名表整理为 19 项，使每个自由度与旋转轴逐项一致。应使用提交 0c6fd6f 或之后的对应实现，并检查自己的模型自由度数；对自定义机器人不能无条件改成 19，而要让 DOF 向量、ROTATION_AXIS 和关节顺序三者一致。",
+        "applicability": "直接适用于 0c6fd6f 之前的 Unitree H1 legacy retargeting 脚本；其他机器人只适用维度一致性原则。",
+        "bilingual_terms": [
+          "旋转轴表（rotation-axis table）",
+          "自由度向量（DOF vector）",
+          "维度不匹配（dimension mismatch）",
+          "动作重定向（motion retargeting）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.retargeting_dataset_quality.17ef28bd6a6bd866",
+        "problem_title_zh": "H1_ROTATION_AXIS 是 19 轴而 dof_pos 是 27 维时，应该怎样修复而不掩盖映射错误？",
+        "question_zh": "H1_ROTATION_AXIS 是 19 轴而 dof_pos 是 27 维时，应该怎样修复而不掩盖映射错误？",
+        "source_locator": "Issue #4；collaborator 回复 issuecomment-2516365741；提交 0c6fd6f 的 27→19 diff",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/4#issuecomment-2516365741",
+        "verification_refs": [
+          {
+            "locator": "grad_fit_h1_shape.py 把 dof_pos 从 (1,27) 改为 (1,19)，并同步 19 项关节名表",
+            "relation": "source_code",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/commit/0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd"
+          },
+          {
+            "locator": "collaborator 确认最新版已修补并关闭 Issue",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/4#issuecomment-2516365741"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.4",
+    "query": "human2humanoid grad_fit 19 27 dimension mismatch",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_dataset_quality",
+    "selected_comments": [
+      {
+        "text": "社区用户的临时修改被提问者认为可用，但原作者明确说尚未验证是否完全正确。"
+      },
+      {
+        "text": "Collaborator：最新提交已经修补重定向代码。"
+      }
+    ],
+    "wbc_relevance_reason": "旋转轴表与关节自由度向量必须逐项对应，否则重定向姿态无法构造，也可能在绕过报错后产生错误关节动作。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.4",
+  "summary": "原帖在 H1_ROTATION_AXIS * dof_pos 时出现 19 与 27 的维度不匹配。用户提供的临时修改被提问者认为可用但未严格验证；项目 collaborator 后来确认最新版已修补。retargeting update 提交 0c6fd6f 在同一行把 dof_pos 从 (1,27) 改为 (1,19)，并同步整理 19 项关节表。",
+  "title": "旧版 grad_fit_h1_shape 把 19 轴 H1_ROTATION_AXIS 与 27 维 dof_pos 相乘",
+  "version": null
+}

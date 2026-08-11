@@ -1,0 +1,130 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "小博爱科研（机器人版）"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6925f768000000001e037fc9",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "252de4909faa9c3c9910de783185bab2598e955ff66a6695ca6728381c0be529",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "SafeFall",
+      "GRU",
+      "fall prediction",
+      "RL mitigation"
+    ],
+    "domain_hints": [
+      "recovery_safety_force",
+      "locomotion_terrain",
+      "sports"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "GRU 预测不可避免跌倒，触发 RL 策略分散冲击并保护关键部件。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Unitree G1；IMU + 关节编码器；多方向/绊倒场景。"
+      ],
+      "limits": [
+        "这是社区论文摘要；数字、‘首个’和 arXiv 2511.18509v1 必须回原论文核验。"
+      ],
+      "outcomes": [
+        "帖子列出 410 ms、<0.1%、68.3%/78.4%/99.3% 等数字。"
+      ],
+      "problem_statements": [
+        "安全摔倒控制应在什么时候接管正常 WBC？"
+      ],
+      "safety_notes": [
+        "保护策略上线前必须在仿真、吊挂和软垫环境逐级验收，验证误触发和接管时序。"
+      ],
+      "suspected_causes": [
+        "正常控制器失去可恢复性后仍继续执行，缺少专门保护接管。"
+      ],
+      "symptoms": [
+        "不可恢复跌倒将造成峰值冲击、扭矩和脆弱部件碰撞。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该帖描述的结构是先用轻量预测器判断跌倒已不可恢复，再由专门 RL 策略接管，而非全程干扰正常控制。帖子列出的预警与减伤数字尚未独立核验，不能直接作为上线阈值；需要重点验证误报、漏报和接管延迟。",
+        "applicability": "这是社区论文摘要；数字、‘首个’和 arXiv 2511.18509v1 必须回原论文核验。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "强化学习（Reinforcement Learning, RL）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "关节力矩（Joint Torque）",
+          "端到端时延（End-to-End Latency）",
+          "门控循环单元（Gated Recurrent Unit, GRU）"
+        ],
+        "question_zh": "安全摔倒控制应在什么时候接管正常 WBC？",
+        "source_locator": "根帖 SafeFall 机制与效果段落",
+        "source_url": "https://www.xiaohongshu.com/explore/6925f768000000001e037fc9",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.safety_fall_recovery.965dc5a77c3e73c7",
+        "problem_title_zh": "安全摔倒控制应在什么时候接管正常 WBC？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "11 个媒体位用于概述 SafeFall 预测与保护动作/实验；帖子列出的 410 ms 和减伤百分比需回原论文图表核验，不能仅凭社交平台图片采信。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6925f768000000001e037fc9",
+    "published_display": "2025-11-26",
+    "query": "人形机器人 跌倒保护 冲击 硬件损坏",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "safety_fall_recovery",
+    "selected_comments": [],
+    "wbc_relevance_reason": "给出安全跌倒的预测—接管—缓冲结构和可核验数字。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6925f768000000001e037fc9",
+  "summary": "帖子摘要 SafeFall：用 GRU 依据 IMU/编码器预测不可避免跌倒，再由 RL 保护策略接管；声称约 410 ms 预警、误报低于 0.1%、峰值接触力降 68.3%、关节扭矩降 78.4%、脆弱部件碰撞降 99.3%。",
+  "title": "SafeFall：G1 不可恢复跌倒预测与保护动作的社区论文摘要",
+  "version": null
+}

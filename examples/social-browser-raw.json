@@ -1,0 +1,106 @@
+{
+  "run_id": "browser-synthetic-example",
+  "plan_run_id": "browser-plan-synthetic-example",
+  "pages": [
+    {
+      "task_id": "browser-xiaohongshu-0001",
+      "platform": "xiaohongshu",
+      "url": "https://www.xiaohongshu.com/explore/abcdef0123456789abcdef01",
+      "page_state": "ready",
+      "scope_id": "optimization_ik_qp_mpc",
+      "domain_hints": ["loco_manipulation_wbc"],
+      "query": "人形机器人 WBC QP 调试",
+      "title": "合成示例：QP 调试失败复盘",
+      "author_display": "Synthetic Author",
+      "published_display": "2026-08-10",
+      "body_text": "合成正文：接触约束冲突导致求解器不可行。该内容不是工程证据。",
+      "selected_comments": [
+        {
+          "author_display": "Synthetic Commenter",
+          "text": "合成评论：先检查接触约束和权重尺度。"
+        }
+      ],
+      "media": [
+        {
+          "index": 1,
+          "kind": "image",
+          "alt_text": "合成求解器日志截图",
+          "requires_visual_analysis": true
+        }
+      ],
+      "selector_matches": ["#detail-title", "#detail-desc"]
+    },
+    {
+      "task_id": "browser-zhihu-0001",
+      "platform": "zhihu",
+      "url": "https://zhuanlan.zhihu.com/p/123456789",
+      "page_state": "ready",
+      "scope_id": "reproducibility_and_debugging",
+      "domain_hints": ["loco_manipulation_wbc"],
+      "query": "人形机器人 WBC 调试",
+      "title": "合成示例：知乎 WBC 调试文章",
+      "author_display": "Synthetic Zhihu Author",
+      "published_display": "编辑于 2026-08-10",
+      "body_text": "合成正文：文章描述了状态估计与 WBC 接口的调试过程。该内容不是工程证据。",
+      "selected_comments": [
+        {
+          "author_display": "Synthetic Zhihu Commenter",
+          "text": "合成评论：问题在统一时间戳后缓解。"
+        }
+      ],
+      "media": [
+        {
+          "index": 1,
+          "kind": "image",
+          "alt_text": "合成控制框图",
+          "requires_visual_analysis": true
+        }
+      ],
+      "selector_matches": ["h1.Post-Title", ".Post-RichTextContainer"]
+    },
+    {
+      "task_id": "browser-zhihu-0002",
+      "platform": "zhihu",
+      "url": "https://www.zhihu.com/signin?next=%2F",
+      "visible_text": "验证码登录 密码登录"
+    },
+    {
+      "task_id": "browser-x-0001",
+      "platform": "x",
+      "url": "https://x.com/RobotExpert/status/123456/photo/1?ref=synthetic",
+      "page_state": "ready",
+      "scope_id": "optimization_ik_qp_mpc",
+      "domain_hints": ["loco_manipulation_wbc"],
+      "query": "humanoid WBC QP infeasible",
+      "author_display": "@RobotExpert",
+      "published_display": "2026-08-10",
+      "body_text": "Synthetic X post: the QP became infeasible after a stale contact remained enabled.",
+      "full_text_available": true,
+      "selected_comments": [
+        {
+          "author_display": "@RobotExpert",
+          "text": "Synthetic reply: removing the stale contact restored feasibility.",
+          "source_url": "https://x.com/RobotExpert/status/123457",
+          "post_id": "123457",
+          "parent_post_id": "123456",
+          "conversation_id": "123456",
+          "depth": 1,
+          "is_author_reply": true
+        }
+      ],
+      "media": [
+        {
+          "index": 1,
+          "kind": "image",
+          "alt_text": "Synthetic QP diagnostic plot",
+          "screenshot_path": "var/social-browser/media/123456-1.png",
+          "requires_visual_analysis": true
+        }
+      ],
+      "reply_expansion_attempts": 2,
+      "reply_depth_reached": 1,
+      "stop_reason": "no_more_visible_reply_controls",
+      "selector_matches": ["article[data-testid='tweet']", "[data-testid='tweetText']"]
+    }
+  ]
+}

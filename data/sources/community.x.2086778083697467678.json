@@ -1,0 +1,123 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "fusnail @fu_s_nail"
+  ],
+  "canonical_url": "https://x.com/fu_s_nail/status/2086778083697467678",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "0caf2d60169008bf5bc4d30c681c1808c2edee33852e67e8d67bd6e93fac445e",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Isaac Lab",
+      "MuJoCo",
+      "Sim2Real"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "将 Isaac Lab 策略部署真机并在 MuJoCo 中同步做视觉对照。"
+      ],
+      "diagnostics": [
+        "把仿真和实机画面并列比较，但没有误差曲线或状态日志。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Isaac Lab 训练；MuJoCo 实时显示；四足真机。"
+      ],
+      "limits": [
+        "非人形；没有成功率、动力学参数、控制频率或跨仿真器误差。"
+      ],
+      "outcomes": [
+        "视频称可越过约 10 mm 台阶。"
+      ],
+      "problem_statements": [
+        "如何确认 Isaac Lab 训练结果经 MuJoCo 对照后仍能在实机保持越障能力？"
+      ],
+      "safety_notes": [
+        "实机越障应先限速、限力，并记录足端接触与姿态误差。"
+      ],
+      "suspected_causes": [],
+      "symptoms": [
+        "原帖未报告失败，只展示约 10 mm 台阶通过。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该帖只提供仿真/实机并排视频和约 10 mm 越障结果，可作为演示但不足以验收。至少还应记录模型版本、控制频率、接触/姿态误差、重复成功率与失败样本；这些补充项不是原帖已给出的解答。",
+        "applicability": "适用于足式机器人跨 Isaac Lab、MuJoCo 和实机的有限验收。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "仿真到仿真（Simulation-to-Simulation, Sim2Sim）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "Isaac Lab 训练、MuJoCo 对照后，怎样的证据才足以说明 Sim2Real 成功？",
+        "source_locator": "根帖正文与并排视频",
+        "source_url": "https://x.com/fu_s_nail/status/2086778083697467678",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.simulation_toolchain.6c6a1038cefdb174",
+        "problem_title_zh": "Isaac Lab 训练、MuJoCo 对照后，怎样的证据才足以说明 Sim2Real 成功？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图显示左侧仿真四足、右侧真实台阶场景的并排视频缩略图；能确认对照形式，但看不到状态曲线、控制参数或重复次数。"
+    ],
+    "platform": "x",
+    "post_id": "2086778083697467678",
+    "published_display": "2026-08-10T11:34:00.000Z",
+    "query": "MuJoCo Isaac Lab Sim2Real hardware comparison",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "四足机器人（非人形，作为足式控制邻域证据）"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [],
+    "wbc_relevance_reason": "提供跨仿真器到实机的可见对照，适合作为 WBC/RL sim-to-sim 与 sim-to-real 验收字段的反例提醒。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086778083697467678",
+  "summary": "作者展示四足策略由 Isaac Lab 训练后部署到实机，并用 MuJoCo 做实时仿真对照；视频称实机能够越过约 10 mm 台阶。该帖只给出结果观察，没有披露策略、控制频率、动力学参数或 Isaac Lab→MuJoCo 模型一致性检查。",
+  "title": "Isaac Lab 训练、MuJoCo 对照与实机 Sim2Real 的四足案例",
+  "version": null
+}

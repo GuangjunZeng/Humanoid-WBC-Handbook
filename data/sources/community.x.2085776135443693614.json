@@ -1,0 +1,141 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "RoboHub @XRoboHub"
+  ],
+  "canonical_url": "https://x.com/xrobohub/status/2085776135443693614",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "a7c9248266672c299fa8ee4f4aa5264dbf76160b6b1aca1932747c10e80c876f",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "PaXini",
+      "foot tactile sensing",
+      "contact feedback"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "在脚底集成多维触觉。"
+      ],
+      "diagnostics": [
+        "应比较有/无触觉时接触识别、滑移和姿态误差。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "T800；足底多维触觉；不平地面。"
+      ],
+      "limits": [
+        "没有传感器参数、融合算法或实机对照。"
+      ],
+      "outcomes": [
+        "帖子只称可改善平衡和地形感知，无量化。"
+      ],
+      "problem_statements": [
+        "只依赖视觉/本体状态时，机器人难以感知脚下接触变化。"
+      ],
+      "safety_notes": [
+        "新增触觉不可替代力矩限位和接触失效保护。"
+      ],
+      "suspected_causes": [
+        "缺少直接足底压力/接触反馈。"
+      ],
+      "symptoms": [
+        "原帖未展示具体跌倒或误判。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "候选价值是直接提供压力/接触反馈，帮助识别不平地面、滑移和支撑变化；但该帖没有说明如何进入状态估计或 WBC，也无对照数据，因此效果仍待验证。",
+        "applicability": "适用于足底接触观测不足的人形平台。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "状态估计（State Estimation）",
+          "关节力矩（Joint Torque）",
+          "接触约束（Contact Constraint）"
+        ],
+        "question_zh": "足底多维触觉对人形 WBC 可能补充什么信息？",
+        "source_locator": "根帖正文",
+        "source_url": "https://x.com/xrobohub/status/2085776135443693614",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.locomotion_contact_terrain.79c948ee59fe27db",
+        "problem_title_zh": "足底多维触觉对人形 WBC 可能补充什么信息？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图视频帧显示 T800 在暗场中做动态动作，无法辨认足底传感器结构或读数。"
+    ],
+    "platform": "x",
+    "post_id": "2085776135443693614",
+    "published_display": "2026-08-07T17:12:37.000Z",
+    "query": "humanoid tactile foot sensing uneven terrain",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "EngineAI T800"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "author_display": "Mag1strY0da\n@Yuuki_Bodisan\n·\n8月8日",
+        "published_display": "2026-08-07T19:54:33.000Z",
+        "text": "Vision tells a robot what's there.\nTouch tells it what to do next"
+      },
+      {
+        "author_display": "Shubham Agarwal\n@ShubhamAg0x\n·\n8月9日",
+        "published_display": "2026-08-09T06:18:24.000Z",
+        "text": "Paxini is doing it the right way."
+      },
+      {
+        "author_display": "Eren Chen\n@ErenChenAI\n·\n8月8日",
+        "published_display": "2026-08-08T03:13:09.000Z",
+        "text": "@MarwaEldiwiny"
+      }
+    ],
+    "wbc_relevance_reason": "足底接触观测可进入 WBC 接触状态、地形估计和力分配。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2085776135443693614",
+  "summary": "帖子称 PaXini 为 EngineAI T800 加装足底多维触觉感知，希望在不平地面改善平衡和 terrain awareness。内容只说明传感器概念，没有给出量程、采样率、WBC 融合方式或对照指标。",
+  "title": "用足底多维触觉补充不平地面接触反馈",
+  "version": null
+}

@@ -1,0 +1,154 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Humanoids daily @humanoidsdaily"
+  ],
+  "canonical_url": "https://x.com/humanoidsdaily/status/2086114830075740449",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "84b8367a1e85e901c0b5f6e6b5b721d10bf7ed184140a10ceda3f30cca5968c6",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 5
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "ROBOTIS AI Sapiens",
+      "Dynamixel-Q",
+      "QDD",
+      "thermal stress"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "进行户外运动演示。"
+      ],
+      "diagnostics": [
+        "应记录绕组/驱动器温度、电流、扭矩、持续时间和降额事件；原帖缺失。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "38°C 首尔户外；1.3 m、34 kg、23 DoF 人形。"
+      ],
+      "limits": [
+        "无法从成功视频推断连续工作热安全。"
+      ],
+      "outcomes": [
+        "可见演示完成，但热性能没有量化。"
+      ],
+      "problem_statements": [
+        "38°C 户外运行时 QDD 的热余量和降额是否足够？"
+      ],
+      "safety_notes": [
+        "高温测试应设置温度/电流保护和自动降额，不能只观察是否跌倒。"
+      ],
+      "suspected_causes": [
+        "高环境温度减少散热余量。"
+      ],
+      "symptoms": [
+        "原帖未报告过热，只展示压力测试。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "不能。帖子只显示 AI Sapiens 完成户外运动，回复也在追问 QDD 如何应对高温；缺少温度、电流、持续时间和降额数据，因此热安全仍 unresolved。",
+        "applicability": "适用于 QDD 人形机器人的高温连续运行验收。",
+        "bilingual_terms": [
+          "准直接驱动（Quasi-Direct Drive, QDD）",
+          "应用程序接口（Application Programming Interface, API）",
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "热漂移（Thermal Drift）"
+        ],
+        "question_zh": "38°C 户外跑动视频能否证明 QDD 热管理安全？",
+        "source_locator": "根帖与 @stevencheng 的热管理追问",
+        "source_url": "https://x.com/stevencheng/status/2086147943976087792",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.hardware_actuator_thermal.b2ea2ebfc9009db1",
+        "problem_title_zh": "38°C 户外跑动视频能否证明 QDD 热管理安全？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图主要是平台规格和 38°C 描述，没有温度曲线、热像或执行器日志。"
+    ],
+    "platform": "x",
+    "post_id": "2086114830075740449",
+    "published_display": "2026-08-08T15:38:28.000Z",
+    "query": "humanoid 38C outdoor thermal stress",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ROBOTIS AI Sapiens"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal",
+    "selected_comments": [
+      {
+        "author_display": "Humanoids daily\n@humanoidsdaily\n·\n8月8日",
+        "published_display": "2026-08-08T15:39:04.000Z",
+        "text": "Read more about the project here:"
+      },
+      {
+        "author_display": "Humanoids daily\n@humanoidsdaily\n·\n8月8日",
+        "published_display": "2026-08-08T15:40:13.000Z",
+        "text": "Clip source:"
+      },
+      {
+        "author_display": "CancelClankers\n@cancelclankers\n·\n19小时",
+        "published_display": "2026-08-09T16:43:14.000Z",
+        "text": "Oh good think the robot wore his hat, we need to keep the sun out of his eyes."
+      },
+      {
+        "author_display": "Steven Cheng\n@stevencheng\n·\n8月9日",
+        "published_display": "2026-08-08T17:50:03.000Z",
+        "text": "How do the QDDs handle that 38C heat?"
+      },
+      {
+        "author_display": "Yejun Jang\n@mmmutantQ\n·\n19小时",
+        "published_display": "2026-08-09T16:26:03.000Z",
+        "text": "我们从今天开始开放预订！！！\n\n第一批：100 台设备，定价：$180（25% 折扣！）\n下一批：500 台设备，定价：$210（12.5% 折扣）！\n\n发货前完全可退款。\n立即预订您的名额！\n链接在回复中\n您将完全拥有设备，所以不要等到您的竞争对手抢购一空！\n\n似乎每个人都更想要实际设备，而不是远程 shell"
+      }
+    ],
+    "wbc_relevance_reason": "高温、QDD 执行器与扭矩控制直接关系人形连续运行和热保护。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086114830075740449",
+  "summary": "帖子描述 ROBOTIS AI Sapiens 在首尔 38°C 户外运行，并列出 1.3 m、34 kg、23 DoF 和 Dynamixel-Q QDD。关键回复直接追问 QDD 在 38°C 下如何处理热量，但线程没有温度、电流、降额或持续时间数据。",
+  "title": "38°C 户外人形运动测试暴露的 QDD 热管理缺口",
+  "version": null
+}

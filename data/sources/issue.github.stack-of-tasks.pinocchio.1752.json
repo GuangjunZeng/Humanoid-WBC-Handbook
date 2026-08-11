@@ -1,0 +1,143 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "stephane-caron"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1752",
+  "captured_at": "2026-08-11T01:41:46+08:00",
+  "content_sha256": "7fe0ae10fe81f18c4ce56fcd6a71d9783ba2229f4fa83a7c5e128cd3a50e39d8",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 20 条评论；只保留线程反复验证的合法流形输入边界，未把后续 runtime-limit API 讨论补成已实现方案，也未把 PR #1753 在未读取补丁时升级为正式代码核验。",
+    "components": [
+      "Pinocchio",
+      "difference",
+      "JointModelFreeFlyer",
+      "Lie group",
+      "joint limits"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议区分无界关节类型和有效输入；讨论者分别测试全 1e20 FreeFlyer 与大平移加单位四元数。"
+      ],
+      "diagnostics": [
+        "检查传给 difference 的两个向量是否都是该关节流形上的合法配置；对 FreeFlyer 单独检查旋转四元数单位范数；不要把 max-float 默认占位自动视为运行时关节界。"
+      ],
+      "effective_fixes": [
+        "确保传入 difference 的旋转部分是合法流形元素；线程示例用大平移加 [0,0,0,1] 单位四元数后得到 [1e20,1e20,1e20,0,0,0]。"
+      ],
+      "environments": [
+        "Pinocchio 2.6.4；Python 最小示例；JointModelFreeFlyer、JointModelRZ 与 JointModelRUBZ 对照。"
+      ],
+      "limits": [
+        "线程不支持把 1e20 当成通用安全限位，也没有给出所有关节类型的统一 runtime-limit API；输入极值仍可能导致数值问题。"
+      ],
+      "outcomes": [
+        "原作者表示初始 difference API 问题已由 PR #1753 处理；维护者最后确认应在 Pinocchio 中为无界关节使用合适的 neutral 边界，但运行时限位到切空间的统一映射留到后续问题。"
+      ],
+      "problem_statements": [
+        "为什么把 model.upperPositionLimit 直接传给 pin.difference 会在 FreeFlyer 上产生 NaN，IK 限位应遵守什么输入边界？"
+      ],
+      "safety_notes": [
+        "实机 IK/WBC 限位必须来自明确的硬件/URDF 约束；不要把库的默认极大占位当作安全边界。"
+      ],
+      "suspected_causes": [
+        "difference 定义在 Lie group 配置上；FreeFlyer 的 max-float 旋转分量不是合法四元数，默认界还可能来自内部占位计算，输出不能保证固定。"
+      ],
+      "symptoms": [
+        "FreeFlyer neutral 到 upperPositionLimit 的 difference 返回 6 个 NaN；不同关节类型对 max-float 默认界表现不同。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "pin.difference 的两个输入必须是关节配置流形上的合法配置。原线程中 FreeFlyer 的 upperPositionLimit 把 max-float 同时放进平移和四元数，旋转部分不是合法单位四元数，因此返回 NaN；维护者也说明 FreeFlyer 旋转界通常没有意义。线程复现表明，保留大平移但把旋转设为合法的 [0,0,0,1] 后，difference 才返回预期平移差。该做法只说明输入有效性，不等于得到了一套通用运行时限位 API。",
+        "applicability": "复现对应 Pinocchio 2.6.4 的 FreeFlyer/转动关节；其他版本和关节模型仍须检查配置流形与实际运行时限位。",
+        "bilingual_terms": [
+          "流形差分（manifold difference）",
+          "李群（Lie group）",
+          "自由浮动关节（JointModelFreeFlyer）",
+          "关节限位（joint limits）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.8e1c4cf9a514a227",
+        "problem_title_zh": "Pinocchio difference 对 FreeFlyer 默认位置上界返回 NaN 时，怎样区分非法流形输入与真实关节限位？",
+        "question_zh": "Pinocchio difference 对 FreeFlyer 默认位置上界返回 NaN 时，怎样区分非法流形输入与真实关节限位？",
+        "source_locator": "Issue #1752，维护者边界说明 issuecomment-1259556298/1259557411；有效 FreeFlyer 对照 issuecomment-1263723540",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1752#issuecomment-1263723540",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 difference 作用于 Lie group，有效输入由使用者保证",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1752#issuecomment-1259556298"
+          },
+          {
+            "locator": "维护者说明 FreeFlyer 旋转界无一般意义，NaN 来自该部分",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1752#issuecomment-1259557411"
+          },
+          {
+            "locator": "原作者对比非法全极值配置与合法单位四元数配置的实际输出",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1752#issuecomment-1263723540"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1752",
+    "query": "Pinocchio difference joint limits max float FreeFlyer NaN valid configuration manifold",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "FreeFlyer 浮动基模型",
+      "有界和无界转动关节模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者：difference 作用于 Lie group，默认极值输出不能保证固定。"
+      },
+      {
+        "text": "维护者：FreeFlyer 旋转界没有一般意义，NaN 来自无效旋转部分。"
+      },
+      {
+        "text": "讨论者用大平移加单位四元数得到正确的平移 difference，并说明全极值旋转仍非法。"
+      },
+      {
+        "text": "维护者最后表示无界关节边界应使用对应关节类型的 neutral element。"
+      }
+    ],
+    "wbc_relevance_reason": "速度型 IK 和 WBC 常用 difference(q,q_limit) 构造切空间约束；把模型默认极值直接当作流形配置会产生 NaN 或编译器相关输出。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1752",
+  "summary": "Pinocchio 2.6.4 的 #1752 展示：把 FreeFlyer upperPositionLimit（max float）直接传给 difference 得到 NaN，而有界 revolute 得到极大数。维护者解释 difference 作用于 Lie group 配置，默认极值并不保证是合法配置；FreeFlyer 旋转界本身无一般意义，NaN 来自无效旋转坐标。讨论最终达成的边界是：输入必须是 well-formed configuration；对 FreeFlyer 可保留大平移值，但旋转部分必须使用合法单位四元数，示例 [1e20,1e20,1e20,0,0,0,1] 得到预期平移差。运行时限位映射被转到独立 Issue，未在本线程形成统一 API。",
+  "title": "Pinocchio difference 只对合法流形配置有定义，不能直接把默认极值界当配置",
+  "version": null
+}

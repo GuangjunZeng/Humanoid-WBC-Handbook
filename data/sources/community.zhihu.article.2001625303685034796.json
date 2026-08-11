@@ -1,0 +1,129 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "风拂过你的头发"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/2001625303685034796",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "c076f2af6722b2fd7375d3eed170b620045d1dc5754882d23b85ba1853d45819",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "SolidWorks",
+      "sw2urdf",
+      "URDF",
+      "MuJoCo",
+      "RViz"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "手工回填 inertial 字段，核对总质量、关节坐标系和限位，简化碰撞几何，用 MuJoCo/RViz 可视化。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "SolidWorks 装配体→URDF→MuJoCo/Isaac Sim；RViz/VS Code 检查。"
+      ],
+      "limits": [
+        "个人经验；闭链结构仍需在目标仿真器中额外建约束。"
+      ],
+      "outcomes": [
+        "形成导出后验收清单；没有量化误差阈值。"
+      ],
+      "problem_statements": [
+        "CAD 转 URDF 后仿真能动，但策略真机明显跑偏，先核对哪些机械量？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "质量/重心/惯性张量导出不准，惯量非对角项符号错误，网格面数过多或碰撞体过细。"
+      ],
+      "symptoms": [
+        "策略真机跑偏、仿真加载失败或变慢、关节方向/限位错误。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先对照 SolidWorks 质量评估逐 link 核对 mass、COM 和 inertia（包括非对角项符号），再核对 joint 轴/坐标系、机械限位、effort 的 Nm 与 velocity 的 rad/s；同时简化碰撞体而不要改错视觉/惯性。该清单未给容差，需由平台测量精度定义。",
+        "applicability": "个人经验；闭链结构仍需在目标仿真器中额外建约束。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "统一机器人描述格式（Unified Robot Description Format, URDF）",
+          "关节力矩（Joint Torque）",
+          "质心（Center of Mass, CoM）"
+        ],
+        "question_zh": "CAD 转 URDF 后仿真能动，但策略真机明显跑偏，先核对哪些机械量？",
+        "source_locator": "正文 A/B/C 检查项",
+        "source_url": "https://zhuanlan.zhihu.com/p/2001625303685034796",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.mechanical_payload_integration.cb8bbd6e2846b904",
+        "problem_title_zh": "CAD 转 URDF 后仿真能动，但策略真机明显跑偏，先核对哪些机械量？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "候选未发现可见媒体；质量、惯性和碰撞体验收完全来自正文，未声称看到了图片证据。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.2001625303685034796",
+    "published_display": "编辑于 2026-05-26 16:39・辽宁",
+    "query": "G1 加装夹爪 负载 重心 控制问题",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用人形/机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "mechanical_payload_integration",
+    "selected_comments": [],
+    "wbc_relevance_reason": "直接处理 CAD 模型进入仿真/WBC 前最容易引入的机械参数误差。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.2001625303685034796",
+  "summary": "作者指出 sw2urdf 可能不能精确导出装配体质量、重心和惯性张量，建议从 SolidWorks 质量评估手工回填，并检查左右对称、关节轴、限位、扭矩/速度单位及碰撞简化。",
+  "title": "SolidWorks→URDF 后的质量、惯量、坐标系与碰撞体验收",
+  "version": null
+}

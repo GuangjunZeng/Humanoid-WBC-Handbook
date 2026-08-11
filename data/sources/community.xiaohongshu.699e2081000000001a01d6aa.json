@@ -1,0 +1,139 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "意大利在逃番茄王子🍅"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/699e2081000000001a01d6aa",
+  "captured_at": "2026-08-10T17:11:27+08:00",
+  "content_sha256": "0b56ac8e9aa6c93deba91368fcfd6ef972bf91e19644eed5178a4c64ec85fbea",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 4
+    },
+    "collector_note": "collection_completeness=partial_visible；图片来自可见页面截图；固件根因尚需官方资料验证。",
+    "components": [
+      "Unitree G1 固件",
+      "IMU 标定",
+      "电机标定",
+      "遥控步态"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "多次 IMU 调平、全身电机 Calibration、修改 pelvis 角度。"
+      ],
+      "diagnostics": [
+        "重复用水平仪校准 IMU，并进行全身电机标定；随后核对实验室固件版本。"
+      ],
+      "effective_fixes": [
+        "升级 G1 实验室固件版本。"
+      ],
+      "environments": [
+        "Unitree G1 实验室真机，遥控行走模式，设备位于标定/支撑架附近。"
+      ],
+      "limits": [
+        "没有披露旧/新固件版本号、升级步骤和是否完全恢复。"
+      ],
+      "outcomes": [
+        "作者评论称更新固件后‘好多了’，但没有量化直线误差或摇摆幅度。"
+      ],
+      "problem_statements": [
+        "Unitree G1 遥控行走突然左右晃动、机身歪且无法直线行走。"
+      ],
+      "safety_notes": [
+        "严重摇摆时应停止自由行走，在安全架或防护区域完成固件与标定检查。"
+      ],
+      "suspected_causes": [
+        "实验室设备固件版本过旧。"
+      ],
+      "symptoms": [
+        "左右摇摆明显、走不直、机身歪；修改 pelvis 角度未见即时效果。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "该案例最终把问题指向实验室固件版本过旧；更新后作者称明显改善。因此在重复标定无效时，应记录并核对控制器/机器人固件版本与兼容矩阵，再决定是否继续调 IMU 或 pelvis 参数。原帖未给出具体版本号，仍需官方文档或 Issue 验证。",
+        "applicability": "适用于症状突然出现且重复标定无效的 G1；其他型号不能直接套用。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "状态估计（State Estimation）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "软件开发工具包（Software Development Kit, SDK）",
+          "执行器（Actuator）"
+        ],
+        "question_zh": "Unitree G1 反复做 IMU/电机标定仍左右摇摆、走不直时，还应检查什么？",
+        "source_locator": "正文及评论区作者 02-26 的“破案了”更新",
+        "source_url": "https://www.xiaohongshu.com/explore/699e2081000000001a01d6aa",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.open_ended_wbc_field_notes.8168315f470015df",
+        "problem_title_zh": "Unitree G1 反复做 IMU/电机标定仍左右摇摆、走不直时，还应检查什么？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "可见图片显示 Unitree G1 位于实验室支撑/标定装置旁，说明问题发生在真机调试环境；画面没有显示固件版本、标定参数或日志，因此不能从图片确认根因。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "699e2081000000001a01d6aa",
+    "published_display": "编辑于 02-25",
+    "query": "humanoid WBC 调试 踩坑 复现",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "open_ended_wbc_field_notes",
+    "selected_comments": [
+      {
+        "author_display": "意大利在逃番茄王子🍅",
+        "text": "作者起初回复仍未解决，正在和技术支持沟通。"
+      },
+      {
+        "author_display": "意大利在逃番茄王子🍅",
+        "text": "作者更新：应该是 lab 的固件版本不够新，更新完就好多了。"
+      }
+    ],
+    "wbc_relevance_reason": "固件、IMU 与电机标定直接影响状态估计和步态控制，是 WBC 实机部署常见的系统层故障。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.699e2081000000001a01d6aa",
+  "summary": "作者记录 Unitree G1 在遥控行走时突然严重左右摇摆、无法走直线。多次用水平仪做惯性测量单元（Inertial Measurement Unit, IMU）调平和全身电机标定均无改善，修改 pelvis 角度也未即时生效。评论区后续更新称实验室固件版本过旧，升级后明显改善。",
+  "title": "被Unitree G1标定搞到崩溃的一周",
+  "version": null
+}

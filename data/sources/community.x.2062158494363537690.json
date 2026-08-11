@@ -1,0 +1,231 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "clankr (@clankrmedia)"
+  ],
+  "canonical_url": "https://x.com/clankrmedia/status/2062158494363537690",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "a212bfee5af9aa4a805d04afbab1eaef2f46c4e3f56002391626d9eedac55e9c",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_replies",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；X Article 全部可见正文已读，当前没有可见回复。",
+    "components": [
+      "Unitree G1 EDU",
+      "Jetson",
+      "unitree_sdk2",
+      "CycloneDDS",
+      "GR00T-WBC"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "保持吊架但让双脚实际接地后再启平衡。",
+        "过热时停止任务、固定吊架、回 idle，并从外部温和冷却后查根因。",
+        "保留厂商镜像，按官方文档安装 SDK。",
+        "先编译并运行只读状态示例。"
+      ],
+      "diagnostics": [
+        "先在 Explore App 检查状态、报警、温度、网络与校准。",
+        "SSH 后检查接口和 SDK2 示例，先读状态再写控制。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Unitree G1 EDU；机载 Jetson 开发计算单元；SDK2 期望 Ubuntu 20.04、GCC 9.4、CMake 3.10+。"
+      ],
+      "limits": [
+        "帖子为个人经验汇总；外部风扇只是应急措施，不能替代热源和载荷诊断。"
+      ],
+      "outcomes": [
+        "作者给出亲历性的安全与调试顺序，但未提供温度曲线或独立复现实验。"
+      ],
+      "problem_statements": [
+        "G1 吊在空中进入平衡/行走模式为什么腿会剧烈运动？",
+        "听到关节过热告警时如何先安全处置？",
+        "为什么不应随意重刷机载 Jetson？",
+        "SDK2 接入应先跑什么最小测试？"
+      ],
+      "safety_notes": [
+        "始终保留吊架、清场、急停路径和低风险初始姿态；控制示例必须在只读状态链路验证后再逐步放开。"
+      ],
+      "suspected_causes": [
+        "平衡策略的接触/状态假设不成立。",
+        "持续运动造成局部电机热积累。",
+        "Jetson 镜像与机器人内部软件栈不同步。",
+        "网卡或 DDS 配置错误。"
+      ],
+      "symptoms": [
+        "脚不接地时平衡策略仍试图找支撑并驱动腿部。",
+        "遥操作或 policy 运行中出现可听见的过热告警。",
+        "SDK 示例不通时难以区分网络、DDS 和代码问题。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "平衡策略仍会按有地面支撑的假设寻找恢复动作，脚底没有接触时可能驱动腿部大幅运动。吊架应保留用于防跌倒，但双脚需实际接触地面并留有合适松量，再进入 balance/walk policy。",
+        "applicability": "适用于 G1 EDU 的初次校准与平衡策略测试。",
+        "bilingual_terms": [
+          "支撑接触（support contact）",
+          "平衡策略（balance policy）",
+          "吊架（gantry）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.deployment_firmware_sdk.49686ebdf3dd0b36",
+        "problem_title_zh": "G1 吊在吊架上且脚离地时，为什么不能直接进入平衡或行走模式？",
+        "question_zh": "G1 吊在吊架上且脚离地时，为什么不能直接进入平衡或行走模式？",
+        "source_locator": "文章第 1 节 Expert tip",
+        "source_url": "https://x.com/clankrmedia/status/2062158494363537690",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "先停止当前动作，确保机器人受吊架保护并回到 idle；记录具体电机、负载、持续时间和温度，再检查姿态、增益与任务占空比。帖子提到可用小风扇温和外部冷却作为应急，但这不是根因修复，未确认安全温度前不要继续高负载。",
+        "applicability": "适用于 G1 EDU；温度阈值和冷却方式应以厂商要求为准。",
+        "bilingual_terms": [
+          "热保护（thermal protection）",
+          "空闲模式（idle mode）",
+          "占空比（duty cycle）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.deployment_firmware_sdk.e16ecf5ca28fe2e3",
+        "problem_title_zh": "G1 运行遥操作或策略时出现电机过热告警，第一步怎么做？",
+        "question_zh": "G1 运行遥操作或策略时出现电机过热告警，第一步怎么做？",
+        "source_locator": "文章第 2 节 overheating warning 段",
+        "source_url": "https://x.com/clankrmedia/status/2062158494363537690",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "G1 的开发计算单元与内部运动控制侧存在配套的软件和网络关系；自行重刷可能让版本、驱动或通信配置失配，把普通系统问题扩大成整机问题。应先备份现状、遵循厂商升级路径，并把业务环境放在可回滚的虚拟环境或容器中。",
+        "applicability": "适用于保修和厂商镜像约束下的 G1 EDU。",
+        "bilingual_terms": [
+          "机载计算单元（onboard computer）",
+          "软件栈一致性（software-stack consistency）",
+          "可回滚环境（rollback-safe environment）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.deployment_firmware_sdk.c7fbc801d6b7f987",
+        "problem_title_zh": "为什么不应把机载 Jetson 当普通 Linux 主机随意重刷镜像？",
+        "question_zh": "为什么不应把机载 Jetson 当普通 Linux 主机随意重刷镜像？",
+        "source_locator": "文章第 3 节 onboard Jetson",
+        "source_url": "https://x.com/clankrmedia/status/2062158494363537690",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "先让机器人和 Jetson 网络连通，确认正确网卡；编译 SDK2 官方示例；首先运行只读 robot-state 示例验证 CycloneDDS 与状态接收；成功后才尝试写控制。这样可把环境/网络问题与控制逻辑分开，并减少首次调试时的真机风险。",
+        "applicability": "适用于 Unitree SDK2/SDK2 Python 的 G1 接入。",
+        "bilingual_terms": [
+          "数据分发服务（DDS）",
+          "只读冒烟测试（read-only smoke test）",
+          "网络接口（network interface）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.deployment_firmware_sdk.be9f5d36d0a2ef41",
+        "problem_title_zh": "G1 SDK2 接入时，怎样用最小风险顺序区分网络、DDS 与控制代码问题？",
+        "question_zh": "G1 SDK2 接入时，怎样用最小风险顺序区分网络、DDS 与控制代码问题？",
+        "source_locator": "文章第 4 节 first development ritual",
+        "source_url": "https://x.com/clankrmedia/status/2062158494363537690",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "X Article 的关键内容均在可见正文；配图主要展示 G1 本体和防护，不承担日志或参数证据。"
+    ],
+    "platform": "x",
+    "post_id": "2062158494363537690",
+    "published_display": "2026-06-03 21:04",
+    "query": "\"whole-body control\" humanoid debugging",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1 EDU"
+    ],
+    "schema_version": 2,
+    "scope_id": "deployment_firmware_sdk",
+    "selected_comments": [],
+    "wbc_relevance_reason": "把 WBC 策略放到 G1 前，校准、接触条件、机载软件栈和网络/DDS 必须先完成分层验收。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2062158494363537690",
+  "summary": "帖子给出 G1 EDU 首次上机顺序：吊架与脚底接触、App 校准和状态检查、过热告警后的安全处置、不要随意重刷机载 Jetson，以及先跑 SDK2 只读状态例程再尝试控制；最后再进入 PICO 遥操作和 GR00T-WBC。",
+  "title": "Unitree G1 首次上机的校准、安全、Jetson 与 SDK 排查顺序",
+  "version": null
+}

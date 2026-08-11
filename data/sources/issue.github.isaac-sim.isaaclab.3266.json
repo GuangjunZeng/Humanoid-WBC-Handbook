@@ -1,0 +1,151 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "GiulioRomualdi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3266",
+  "captured_at": "2026-08-11T04:07:00+08:00",
+  "content_sha256": "4f272a3ddb267d67da04633486d09f6b5b2ed846b1172766bafd6bbb3a0aecde",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文与全部 3 条评论，并核对已合并 PR #3318 的审阅、测试更改与合并状态；保留 10/13 checks 的页面限制。",
+    "components": [
+      "Isaac Lab",
+      "randomize_joint_parameters",
+      "PhysX",
+      "static friction",
+      "dynamic friction",
+      "viscous friction"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者在 Issue 评论中提交一个同时生成 static/dynamic/viscous 数值、限制为非负并保持 dynamic≤static 的补丁。",
+        "PR #3318 经多轮审阅后修改测试，从只对照 Isaac Lab 内部 data 改为核对 root_physx_view 中实际写入的 buffer。"
+      ],
+      "diagnostics": [
+        "同时读取 static、dynamic 和 viscous 三类关节摩擦属性，不能只检查被随机化的 static 值。",
+        "检查连续调用 write_joint_friction_coefficient_to_sim 与 dynamic setter 时，set_dof_friction_properties 是否每次覆写整组 friction properties。"
+      ],
+      "effective_fixes": [
+        "使用包含已合并 PR #3318 的 Isaac Lab 版本，使关节参数随机化同时处理静摩擦、动摩擦（Coulomb friction）和黏性摩擦，并维持 static≥dynamic。"
+      ],
+      "environments": [
+        "Isaac Lab commit 9d6321463067c541ce1a24531ff87f99a18fd8f7；Isaac Sim 5.0；Ubuntu 22.04；NVIDIA L40S；CUDA 12.4；driver 550.107.02。"
+      ],
+      "limits": [
+        "初始提交的测试曾出现 CPU/CUDA device 不一致以及数值未写入 simulator 的失败；后续补丁对此进行修正。",
+        "PR 页合并时显示 13 项检查中 10 项通过，原页没有展示其余 3 项的具体状态；目标版本仍应运行摩擦 buffer 对照。",
+        "原 Issue 针对 Isaac Sim 5.0 的三类摩擦 API；更旧 Isaac Sim 的能力边界必须按对应版本处理。"
+      ],
+      "outcomes": [
+        "PR #3318 于 2025-09-29 合并到 main；PR 页显示合并提交 21bcb47，Issue 同日以 completed 关闭。",
+        "最终 PR 勾选了测试、文档和 changelog，并在审阅中将摩擦断言改为对照 PhysX simulator buffer。"
+      ],
+      "problem_statements": [
+        "Isaac Lab 中 randomize_joint_parameters 只改静摩擦，导致 static friction < dynamic friction 时应怎样处理？"
+      ],
+      "safety_notes": [
+        "摩擦随机化范围还需与真实关节、润滑、温度和执行器特性对照；满足 PhysX 数学约束不等于参数具有物理真实性。"
+      ],
+      "suspected_causes": [
+        "原实现只随机化 static friction，没有保持 static≥dynamic；作者在评论中还确认了分别写入时的整组属性覆写问题。"
+      ],
+      "symptoms": [
+        "static friction=10、dynamic friction=10，对 static friction 使用 0.5–1.5 scale 随机化时，PhysX 报 Static friction effort must be greater than or equal to dynamic friction effort。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原实现只改 static friction，而分开的 setter 还会通过 set_dof_friction_properties 覆写整组属性，因此 static 可低于保留的 dynamic 值。已合并 PR #3318 同时处理静、动和黏性摩擦，将系数限制为非负并维持 dynamic≤static；审阅后的测试直接核对 PhysX buffer 而不只是 Isaac Lab 内部缓存。",
+        "applicability": "适用于 Isaac Sim 5.0 与相应 Isaac Lab 关节摩擦随机化路径；更旧版本不一定支持 dynamic/viscous 分开设置。",
+        "bilingual_terms": [
+          "域随机化（Domain Randomization, DR）",
+          "静摩擦（static friction）",
+          "库仑摩擦（Coulomb friction）",
+          "黏性摩擦（viscous friction）",
+          "回归测试（regression test）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.contact_force_friction.isaaclab_joint_friction_randomization_constraint_3266",
+        "problem_title_zh": "Isaac Lab 关节摩擦随机化违反 PhysX 动静摩擦约束",
+        "question_zh": "Isaac Lab 只随机化静摩擦系数时，为什么会触发 static friction < dynamic friction 的 PhysX 错误，合并修复如何处理？",
+        "source_locator": "Isaac Lab #3266 最小复现与 issuecomment-3219603398/3219638763，已合并 PR #3318 及其 PhysX buffer 测试审阅链",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3266#issuecomment-3242776016",
+        "verification_refs": [
+          {
+            "locator": "作者说明两个 friction setter 都会调用 set_dof_friction_properties 并覆写属性",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3266#issuecomment-3219603398"
+          },
+          {
+            "locator": "2025-09-29 已合并；审阅包含 static/dynamic/viscous 同时写入、约束处理与 PhysX buffer 测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3318"
+          },
+          {
+            "locator": "PR #3318 页显示的 main 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/21bcb47"
+          },
+          {
+            "locator": "审阅后将 friction 断言改为核对 simulator/PhysX 中实际值的测试提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/445f3b2"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3266",
+    "query": "Isaac Lab randomize_joint_parameters static dynamic viscous friction PhysX constraint",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Isaac Lab articulation；原帖未指定机器人型号"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "作者指出连续调用 static/dynamic friction setter 时，每次都会覆写关节摩擦属性。"
+      },
+      {
+        "text": "作者提交了同时随机化三类摩擦并保持 static≥dynamic 的补丁。"
+      },
+      {
+        "text": "作者在 Issue 中链接了 PR #3318。"
+      }
+    ],
+    "wbc_relevance_reason": "域随机化（Domain Randomization, DR）中的关节摩擦会改变执行器和接触行为；静、动、黏性摩擦不一致既可使仿真拒绝参数，也会污染 WBC/学习的动力学分布。"
+  },
+  "published_at": "2025-08-25T09:38:32Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3266",
+  "summary": "Isaac Lab #3266 在 Isaac Sim 5.0 中给出最小复现：joint 的 static/dynamic friction 都为 10，仅对 static friction 做 0.5–1.5 倍均匀缩放，可触发 PhysX 的 static friction 必须不小于 dynamic friction 错误。作者进一步指出分别调用 friction setter 会反复覆写整组属性。关联 PR #3318 同时处理 static/dynamic/viscous coefficients，对非负与 static≥dynamic 做限制，根据审阅意见新增了直接检查 PhysX buffer 的测试，最终于 2025-09-29 合并。",
+  "title": "Isaac Lab 随机化静摩擦时会违反 PhysX 动静摩擦约束",
+  "version": null
+}

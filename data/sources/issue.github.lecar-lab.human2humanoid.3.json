@@ -1,0 +1,128 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "zhanggang11863976"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/3",
+  "captured_at": "2026-08-11T01:20:00+08:00",
+  "content_sha256": "ed16417e4a87fa33f4278e8b8e187a54f9a2ba0a9ed5f15ea1752227a2be008f",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与 6 条评论，并核对关闭前唯一 retargeting update 提交的实际 diff；没有把其他用户未验证的名单粘贴当作正式修复。",
+    "components": [
+      "human2humanoid",
+      "grad_fit_h1_shape.py",
+      "H1 joint mapping",
+      "SMPL retargeting"
+    ],
+    "domain_hints": [
+      "training_data_retargeting",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者在修补前建议先用仓库提供的 retargeted .pkl 做临时调试；随后发布 retargeting update。"
+      ],
+      "diagnostics": [
+        "对照 h1_joint_pick 和 h1_joint_names_augment，检查选择项中的 left_ankle_link/right_ankle_link 是否实际存在于 H1 关节名表。"
+      ],
+      "effective_fixes": [
+        "使用提交 0c6fd6f 或之后的对应代码；该提交把 H1 关节名表改为包含 left_ankle_link/right_ankle_link 的 19 项映射。"
+      ],
+      "environments": [
+        "LeCAR-Lab/human2humanoid；2024-10-04 原帖所用旧版重定向脚本；修补提交 0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd。"
+      ],
+      "limits": [
+        "该提交同时重写了较多 legacy retargeting 代码；自定义机器人不能只复制 H1 的 19 项表，仍需按自己的 XML/URDF 建立一致映射。"
+      ],
+      "outcomes": [
+        "collaborator 在原线程确认最新版已修补并关闭 Issue；源码 diff 精确修改了报错涉及的关节名表。"
+      ],
+      "problem_statements": [
+        "运行 grad_fit_h1_shape.py 时为什么在 h1_joint_names_augment.index('left_ankle_link') 抛出 ValueError？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "旧脚本的 H1 表列出 left_ankle_pitch_link/left_ankle_roll_link 等名称，而关键点选择使用 left_ankle_link，名称集合不一致。"
+      ],
+      "symptoms": [
+        "grad_fit_h1_shape.py 第 65 行构造 h1_joint_pick_idx 时出现 ValueError: 'left_ankle_link' is not in list。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "先比较 h1_joint_pick 与 h1_joint_names_augment。原帖旧版在选择 left_ankle_link 时，基础表仍使用 ankle_pitch/ankle_roll 名称，因此 index 必然失败。维护者关闭线程前发布的 retargeting update 提交 0c6fd6f 把表改成包含 left_ankle_link/right_ankle_link 的 19 项 H1 映射。对 H1 可更新到该提交；对自定义机器人应同步修改关节名、旋转轴和自由度顺序，不能只追加一个字符串掩盖维度不一致。",
+        "applicability": "直接适用于 0c6fd6f 之前的 H1 legacy retargeting 脚本；自定义机器人只可借用一致性检查方法。",
+        "bilingual_terms": [
+          "关节名映射（joint-name mapping）",
+          "动作重定向（motion retargeting）",
+          "关键点索引（keypoint index）",
+          "自由度顺序（DOF ordering）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.retargeting_dataset_quality.0e3f7e8e66777726",
+        "problem_title_zh": "human2humanoid 的 grad_fit_h1_shape.py 报 left_ankle_link is not in list，如何定位并使用已修补版本？",
+        "question_zh": "human2humanoid 的 grad_fit_h1_shape.py 报 left_ankle_link is not in list，如何定位并使用已修补版本？",
+        "source_locator": "Issue #3 报错；collaborator 回复 issuecomment-2516366430；提交 0c6fd6f 的 grad_fit_h1_shape.py diff",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/3#issuecomment-2516366430",
+        "verification_refs": [
+          {
+            "locator": "scripts/data_process/grad_fit_h1_shape.py 将旧 27 项名称表替换为包含 left_ankle_link/right_ankle_link 的 19 项表",
+            "relation": "source_code",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/commit/0c6fd6f2a7c0a3974cc2856db1eabb72896b88cd"
+          },
+          {
+            "locator": "collaborator 确认最新版已修补并关闭 Issue",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/3#issuecomment-2516366430"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.3",
+    "query": "human2humanoid grad_fit left_ankle_link not in list",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1"
+    ],
+    "schema_version": 2,
+    "scope_id": "retargeting_dataset_quality",
+    "selected_comments": [
+      {
+        "text": "Contributor：新版重定向代码发布前，可先用仓库提供的 retargeted .pkl 临时调试。"
+      },
+      {
+        "text": "Collaborator：最新提交已经修补重定向代码。"
+      }
+    ],
+    "wbc_relevance_reason": "重定向关节名表决定 SMPL 关键点与机器人链接的对应关系；名称不一致会在生成训练参考动作前直接中断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.3",
+  "summary": "原帖在 grad_fit_h1_shape.py 构造 h1_joint_pick_idx 时因 left_ankle_link 不在旧关节名表而失败。项目 contributor 先建议临时使用仓库提供的重定向 pkl，collaborator 随后确认最新版已修补。关闭前的 retargeting update 提交 0c6fd6f 把旧的 ankle_pitch/ankle_roll 等 27 项表改为包含 left_ankle_link/right_ankle_link 的 19 项 H1 表，精确覆盖报错位置。",
+  "title": "旧版 grad_fit_h1_shape 的 H1 关节名表与 ankle link 选择不一致",
+  "version": null
+}

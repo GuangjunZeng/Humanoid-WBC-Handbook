@@ -1,0 +1,159 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "AndyZe"
+  ],
+  "canonical_url": "https://github.com/ros-controls/ros2_control/issues/668",
+  "captured_at": "2026-08-11T03:33:00+08:00",
+  "content_sha256": "4c487a0237a68d1f96c5169d2636e77b7ebf8ae25ab38e6e3dc3887d01d30c66",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 REST 读取 Issue 正文和全部 7 条回复。明确保留整库清理未验收、Issue 由 stale bot 关闭的边界，没有将预分配计划写成已合并修复。",
+    "components": [
+      "ros2_control",
+      "realtime loop",
+      "stack allocation",
+      "heap allocation",
+      "TLSF",
+      "joint_trajectory_controller"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "motion_generation",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "线程讨论了提前预分配足够大的缓冲区，以及使用 TLSF 确定分配器。",
+        "对 joint_trajectory_controller 的具体选择是以 joint_names_.size() 作为命令长度上界，在实时循环前预分配。"
+      ],
+      "diagnostics": [
+        "对每个局部对象审计其构造、resize、string/container 成员和智能指针，而不是仅搜索局部变量声明。",
+        "单独审计 logging 与 std::make_shared 是否进入必须确定的 read/update/write 路径。",
+        "若使用确定分配器，还要确认对象初始化本身也是确定的。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "原帖引用 ros2_control commit 6b495ef86889cbfdc1ee22ac77efa2ff589727ee 的 actuator.cpp，并引用 ros2_controllers commit b9ccf04aa95203e37077f297ddcf9f933ef464fa 的 joint_trajectory_controller.cpp。"
+      ],
+      "limits": [
+        "栈上分配通常是 O(1) 的说明不等于任意类的构造都无堆分配；必须逐类审计。",
+        "TLSF 只解决分配器确定性的一部分，原回复明确提醒初始化逻辑也必须确定。",
+        "线程没有提供延迟直方图、最坏情况执行时间或硬实时验收数据。"
+      ],
+      "outcomes": [
+        "项目成员认可代码库中一些位置需要清理，但该 Issue 没有给出完成全库审计或已合并修复的证据。",
+        "Issue 在 2025 年由 stale bot 关闭，关闭原因是长期无活动，不是技术整改验收。"
+      ],
+      "problem_statements": [
+        "在实时 update/write 循环里声明局部变量是否必然破坏确定性，应如何找到真正的动态分配？"
+      ],
+      "safety_notes": [
+        "真机 WBC 不应因为“已预分配”就默认满足硬实时；还需在目标负载、调度和日志配置下测量最坏延迟。"
+      ],
+      "suspected_causes": [
+        "将“声明局部变量”与“从堆动态分配”等同，会错过两者的确定性差异。",
+        "实际风险来自对象内部容器扩容、默认堆分配、日志和共享指针构造等执行时不可预测操作。"
+      ],
+      "symptoms": [
+        "update() 中声明三个 JointTrajectoryPoint，随后根据 joint_names_.size() 调用 resize_joint_trajectory_point。",
+        "同一线程还指出确定性路径中存在日志和 std::make_shared。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原线程的核心区分是：栈上分配通常只是可确定的指针调整，并不因为出现局部变量就一定有问题；默认堆分配则不具有内在确定性。要审计对象内部的 std::string、container/resize、logging 和 std::make_shared。具体处理方向是在实时环前按已知上界预分配，或使用 TLSF 类确定分配器并同时验证初始化路径。该线程没有证明整个代码库已清理完毕，因此只能作为审计方法，不能当作实时验收结果。",
+        "applicability": "适用于 ros2_control 及其他需要确定性的 WBC read/update/write 循环；原线程对应 2022 年代码快照，当前版本需重新审计。",
+        "bilingual_terms": [
+          "实时循环（real-time loop）",
+          "栈分配（stack allocation）",
+          "堆分配（heap allocation）",
+          "确定分配器（deterministic allocator）",
+          "预分配（pre-allocation）",
+          "最坏情况执行时间（worst-case execution time, WCET）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.realtime_control_latency.ros2_control_stack_vs_heap_allocation_668",
+        "problem_title_zh": "ros2_control 实时循环中栈与堆分配的审计边界",
+        "question_zh": "实时控制循环内声明局部变量是否必然破坏确定性，哪些操作才需重点清理？",
+        "source_locator": "ros2_control #668 正文的 write()/update() 例子；issuecomment-1062676446 的栈/堆、TLSF、logging 与 make_shared 分析；issuecomment-1064190493 的项目成员确认；issuecomment-1109814018 的预分配选择",
+        "source_url": "https://github.com/ros-controls/ros2_control/issues/668",
+        "verification_refs": [
+          {
+            "locator": "原作者给出 update() 中声明并 resize 三个消息对象的具体代码",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/668#issuecomment-1062314553"
+          },
+          {
+            "locator": "详细区分栈与堆、指出 TLSF 和初始化边界，并补充 logging/make_shared 风险",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/668#issuecomment-1062676446"
+          },
+          {
+            "locator": "项目成员确认代码库中一些位置需要清理",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/668#issuecomment-1064190493"
+          },
+          {
+            "locator": "原作者决定以 joint_names_.size() 为上界预分配",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/668#issuecomment-1109814018"
+          },
+          {
+            "locator": "stale bot 明确记录 Issue 因 45 天无活动而关闭，不是修复验收",
+            "relation": "issue",
+            "source_url": "https://github.com/ros-controls/ros2_control/issues/668#issuecomment-3044884623"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "ros-controls.ros2_control.668",
+    "query": "ros2_control realtime loop stack heap allocation preallocate TLSF logging make_shared",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原线程未指定机器人或 ROS 2 发行版"
+    ],
+    "schema_version": 2,
+    "scope_id": "realtime_control_latency",
+    "selected_comments": [
+      {
+        "text": "高信息回复指出：栈上分配通常可确定地 O(1) 执行；默认堆分配不具有内在确定性，并需审计 string/container。"
+      },
+      {
+        "text": "同一回复补充，确定分配器不足以单独保证确定性，对象初始化、logging 和 std::make_shared 也要审计。"
+      },
+      {
+        "text": "项目成员确认部分代码需要清理；原作者后续选择按 joint_names_.size() 上界预分配。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 控制环的延迟抖动与最坏情况执行时间会受堆分配、容器扩容和日志的影响；不区分栈/堆会误删无害局部量，却漏掉真正非确定路径。"
+  },
+  "published_at": "2022-03-08T22:05:34Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.ros-controls.ros2_control.668",
+  "summary": "ros2_control #668 从 write()/update() 内声明局部变量和 resize 出发，讨论实时路径的动态内存。高信息回复区分了栈上分配与默认堆分配：栈指针调整通常可确定地 O(1) 执行，默认堆分配则不具有内在确定性。关键不是“有没有局部变量”，而是类的内部是否使用 string/container、resize、logging 或 make_shared。线程给出预分配与 TLSF 两类策略，但没有证明整个代码库已完成清理，Issue 最终因长期无活动而关闭。",
+  "title": "ros2_control 实时循环中栈分配与堆分配的区别",
+  "version": null
+}

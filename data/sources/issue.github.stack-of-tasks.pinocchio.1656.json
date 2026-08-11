@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "FenglongSong"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1656",
+  "captured_at": "2026-08-11T05:24:00+08:00",
+  "content_sha256": "31c1942742ba03cede71ef1b3e044df37c9f4f58d7d7e18d1690c2ad6ac5a92b",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和唯一 1 条评论；没有把线程未讨论的 acceleration transform 写入答案。",
+    "components": [
+      "Pinocchio",
+      "articulated-body algorithm",
+      "generalized acceleration",
+      "floating base"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者列出 a=[local base linear acceleration, local base angular acceleration, joint accelerations] 请维护者确认。"
+      ],
+      "diagnostics": [
+        "把 aba 输出解释为配置流形切空间中的广义加速度，并核对根关节局部坐标约定。"
+      ],
+      "effective_fixes": [
+        "按 base local frame 解释 aba 输出的前六维；需要 world-frame 量时再做与目标定义匹配的显式变换。"
+      ],
+      "environments": [
+        "2022 年 Pinocchio floating-base dynamics；具体版本和机器人未说明。"
+      ],
+      "limits": [
+        "线程没有给出 local-to-world acceleration 转换，也没有讨论 spatial acceleration、classical acceleration 与 d(v)/dt 的差别。",
+        "具体 root joint 类型和软件版本未说明。"
+      ],
+      "outcomes": [
+        "维护者明确确认作者的局部坐标解释正确。"
+      ],
+      "problem_statements": [
+        "Pinocchio aba() 返回的浮动基广义加速度前六维使用 world frame 还是 base local frame？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "将广义加速度误认为 world-frame 的普通二阶位置导数。"
+      ],
+      "symptoms": [
+        "用户已知 v 的浮动基分量在 local joint frame，但不确定 a 是否采用相同表达。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者把输出定义写为 a=[base-frame linear acceleration, base-frame angular acceleration, joint accelerations]，维护者明确确认正确。因此不能直接把 aba 输出前六维当作 world-frame base acceleration。线程没有给 local-to-world acceleration 变换，也没有澄清 classical 与 spatial acceleration 的差异；涉及这些量时必须继续依据目标 API 定义核对。",
+        "applicability": "适用于原帖 Pinocchio floating-base aba() 输出解释；不能外推到未说明的 classical acceleration 接口。",
+        "bilingual_terms": [
+          "关节体算法（articulated-body algorithm, ABA）",
+          "广义加速度（generalized acceleration）",
+          "局部关节坐标系（local joint frame）",
+          "空间加速度（spatial acceleration）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_freeflyer_acceleration_frame_1656",
+        "problem_title_zh": "Pinocchio 浮动基广义加速度的局部坐标约定",
+        "question_zh": "Pinocchio 的 aba() 返回浮动基加速度时，前六维应在哪个坐标系解释？",
+        "source_locator": "Issue #1656，问题定义与维护者确认 issuecomment-1134709342",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1656#issuecomment-1134709342",
+        "verification_refs": [
+          {
+            "locator": "维护者确认 aba 广义加速度按作者所列 base local frame 定义",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1656#issuecomment-1134709342"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1656",
+    "query": "Pinocchio floating base generalized acceleration local body frame aba",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "未指定型号的 floating-base robot"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者明确确认浮动基广义加速度按作者所列的 local-frame 形式解释。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 的 forward dynamics、状态传播和仿真器桥接必须统一广义加速度表达；把 ABA 输出直接当作 world-frame base acceleration 会造成动力学残差错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1656",
+  "summary": "Pinocchio #1656 在已知浮动基广义速度按 local joint frame 表达的基础上，进一步确认 aba(model,data,q,v,tau) 返回的广义加速度前六维也使用基座局部坐标：base linear acceleration、base angular acceleration、joint accelerations。维护者以一句明确的 Yes 确认原作者给出的定义；线程没有展开经典线加速度与空间加速度导数项的区别。",
+  "title": "Pinocchio ABA 返回的浮动基广义加速度按局部坐标表达",
+  "version": null
+}

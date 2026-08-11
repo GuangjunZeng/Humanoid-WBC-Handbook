@@ -1,0 +1,200 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "ATEMall发布"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/2060484317202191732",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "933f8093b6e9cc98c1ba6f1a991584a66b9c4b761bf3094e0e59ebaa0be252e1",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_comments",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；正文已读且确认示例数据声明；无可见评论。",
+    "components": [
+      "CANopen",
+      "TPDO",
+      "DBC",
+      "torque control",
+      "can-log-analyzer"
+    ],
+    "domain_hints": [
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "同步观察力矩和电流排除单一力矩传感器漂移。",
+        "查看 StatusWord 和原始帧区分停机与丢帧。",
+        "建议调整 TPDO 周期、改 CAN-FD、拆分总线或对缺帧保持/插值。"
+      ],
+      "diagnostics": [
+        "用 DBC 解码力矩、电流、StatusWord 和温度。",
+        "回到原始 CAN 帧检查缺帧，不把 UI 的填充值当总线原始值。",
+        "按时间窗口与报文 ID 检查 TPDO 周期。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "CANopen；演示节点 NodeID=1；目标力矩 8 N·m；允许波动 ±5%；演示周期约 40 ms。"
+      ],
+      "limits": [
+        "作者明确说明 DBC、信号数据和时间戳为演示性构造；工具仓库功能说明存在，但该案例结果不能当作真实独立复现。"
+      ],
+      "outcomes": [
+        "演示案例将定位范围收敛到周期丢帧；未提供真实产品修复后的复测数据。"
+      ],
+      "problem_statements": [
+        "恒定力矩命令下反馈周期归零并引发关节抽搐，如何区分传感器、电机和通信问题？"
+      ],
+      "safety_notes": [
+        "缺帧时不得无条件写零力矩或零位置；应使用经过安全评估的保持/插值/阻尼降级，并设置丢帧阈值和急停。"
+      ],
+      "suspected_causes": [
+        "多个节点导致总线负载过高，TPDO 在固定相位周期丢失。",
+        "上位机把未收到反馈的拍误处理为零。"
+      ],
+      "symptoms": [
+        "TorqueActual 与 MotorCurrent 同时归零后弹回。",
+        "上位机台架出现周期性抽搐。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先确认图上的零是原始帧值还是上位机在缺帧时的默认填充值；再把 TorqueActual 与 MotorCurrent 对齐。两者同时掉通常不支持单一力矩传感器漂移假设，应继续检查驱动状态和反馈帧是否存在。该帖使用构造数据演示，结论必须用目标系统原始日志复核。",
+        "applicability": "适用于能同步采集电流、力矩与原始总线帧的关节台架。",
+        "bilingual_terms": [
+          "反馈帧（feedback frame）",
+          "默认填零（zero filling）",
+          "信号相关性（signal correlation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.communication_realtime_control.24323df1c9aecb5a",
+        "problem_title_zh": "关节力矩与电流同时周期归零时，怎样快速缩小故障范围？",
+        "question_zh": "关节力矩与电流同时周期归零时，怎样快速缩小故障范围？",
+        "source_locator": "第 4.3 节力矩/电流时序与填零说明",
+        "source_url": "https://zhuanlan.zhihu.com/p/2060484317202191732",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "在异常时间窗同时查看 TPDO1/TPDO2：如果对应帧缺失，而相邻帧的 StatusWord 仍保持运行使能，优先按通信缺帧排查；如果帧存在且状态字进入故障，再转向驱动器。关键是检查帧存在性，不能只看已经经过上位机补值的曲线。",
+        "applicability": "适用于 CANopen TPDO 映射明确、能读取原始日志的系统。",
+        "bilingual_terms": [
+          "状态字（StatusWord）",
+          "过程数据对象（TPDO）",
+          "报文存在性（frame presence）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.communication_realtime_control.7d9d352bb14053c8",
+        "problem_title_zh": "如何用 StatusWord 和原始帧区分电机没出力与 CANopen TPDO 丢帧？",
+        "question_zh": "如何用 StatusWord 和原始帧区分电机没出力与 CANopen TPDO 丢帧？",
+        "source_locator": "第 4.4 节状态字与 TPDO 缺帧判断",
+        "source_url": "https://zhuanlan.zhihu.com/p/2060484317202191732",
+        "verification_refs": [],
+        "verification_status": "community_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "通信层先量化总线负载和每个 TPDO 周期，选择降低发送频率、拆分总线或迁移 CAN-FD；控制层同时定义缺帧语义，短暂缺帧可保持最近可信值或按时间戳插值，超过阈值则切入阻尼/安全停机。保持和插值都有风险，必须结合力矩变化率与 watchdog 验证。",
+        "applicability": "适用于高频关节反馈闭环；安全策略需按机器人危险分析设计。",
+        "bilingual_terms": [
+          "总线负载（bus load）",
+          "看门狗（watchdog）",
+          "降级模式（degraded mode）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.communication_realtime_control.0555df34f0b94e29",
+        "problem_title_zh": "确认反馈周期丢帧后，修复和安全兜底应分哪两层？",
+        "question_zh": "确认反馈周期丢帧后，修复和安全兜底应分哪两层？",
+        "source_locator": "第 4.5 节后续方向与第 6 节实用技巧",
+        "source_url": "https://zhuanlan.zhihu.com/p/2060484317202191732",
+        "verification_refs": [
+          {
+            "locator": "README 声明支持 DBC 解码、按 ID/时间过滤、周期/负载率和错误帧分析；不验证帖子中的构造案例数据",
+            "relation": "source_code",
+            "source_url": "https://github.com/ATEMall/can-log-analyzer"
+          }
+        ],
+        "verification_status": "community_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文表格给出 0.020/0.040/0.052 s 等演示时序；作者已注明为构造数据，因此只提炼排查流程，不把图表当真实测试证据。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.2060484317202191732",
+    "published_display": "编辑于 2026-07-14 22:03・上海",
+    "query": "人形机器人 关节 力矩震荡 CANopen 丢帧 排查",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "模组化人形膝关节"
+    ],
+    "schema_version": 2,
+    "scope_id": "communication_realtime_control",
+    "selected_comments": [],
+    "wbc_relevance_reason": "关节反馈丢帧会在高频 WBC/力控闭环中伪装成执行器或传感器故障，排查方法可迁移。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.2060484317202191732",
+  "summary": "帖子用恒定 8 N·m、允许波动 ±5% 的膝关节力控场景演示：力矩和电流约每 40 ms 同时归零，上位机实际是在缺少 TPDO 反馈时填零；继续检查 StatusWord 和原始帧后，把问题收敛到周期丢帧与总线负载。作者明确说明 DBC、数值和时间戳为演示性构造。",
+  "title": "CANopen 关节力控周期震荡的时序排查方法",
+  "version": null
+}

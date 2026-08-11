@@ -1,0 +1,162 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Axian12138"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/8",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "112305f9fb0eec67c7b96214d329f77dc1bd46740e72b5690bbacdf658cb8ced",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取正文与 3 条评论；未推测 VIO 未公开的实现细节。",
+    "components": [
+      "human2humanoid",
+      "ZED Mini",
+      "VIO",
+      "VR"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "使用 ZED Mini VIO 估计根位置。",
+        "实时遥操作前对齐 VR 与 ZED 的偏移。"
+      ],
+      "diagnostics": [
+        "检查 hardware_code/zed_odometry.py；检查 VR 与 ZED 坐标系偏移。"
+      ],
+      "effective_fixes": [
+        "项目作者使用 ZED Mini VIO，并显式进行 VR—ZED 偏移对齐。"
+      ],
+      "environments": [
+        "LeCAR-Lab/human2humanoid；ZED Mini VIO；VR 实时遥操作。"
+      ],
+      "limits": [
+        "原帖没有给出 VIO 漂移、延迟、root_rot/root_vel 具体计算和标定精度。"
+      ],
+      "outcomes": [
+        "项目贡献者两次确认上述部署实现。"
+      ],
+      "problem_statements": [
+        "没有外部 MoCap 时，学生策略如何得到实机根位置？",
+        "VR 目标与 ZED VIO 使用不同坐标系时如何接入实时遥操作？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "VR 与 ZED 原点/坐标系之间存在未对齐偏移。"
+      ],
+      "symptoms": [
+        "部署代码需要 root_pos/root_rot/root_vel，但机器人本体观测不能直接给出全局根位置。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "项目贡献者明确说明使用 ZED Mini 的视觉—惯性里程计（VIO）估计真实根位置，并指向仓库的 hardware_code/zed_odometry.py。帖子没有说明漂移、延迟以及 root_rot/root_vel 的完整生成方式，这些字段仍需以脚本为准。",
+        "applicability": "适用于 human2humanoid 的 ZED Mini 硬件部署链。",
+        "bilingual_terms": [
+          "视觉—惯性里程计（visual-inertial odometry, VIO）",
+          "根位置（root position）",
+          "动作捕捉（motion capture, MoCap）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.state_estimation_calibration.0a2a23879b4a6fa3",
+        "problem_title_zh": "Human2Humanoid 没有外部动作捕捉（MoCap）时，实机根位置从哪里获得？",
+        "question_zh": "Human2Humanoid 没有外部动作捕捉（MoCap）时，实机根位置从哪里获得？",
+        "source_locator": "Issue #8，贡献者回复 issuecomment-2417965415",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/8#issuecomment-2417965415",
+        "verification_refs": [
+          {
+            "locator": "作者回复指向的 ZED odometry 实现文件",
+            "relation": "source_code",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/blob/main/hardware_code/zed_odometry.py"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "原线程中，提问者提出 VR 与 ZED 坐标系需先对齐的理解，项目贡献者确认两者之间存在偏移，必须在实时遥操作前完成对齐。帖子没有给出标定算法或变换矩阵，不能从回复中补写具体计算步骤。",
+        "applicability": "适用于同时使用 VR 目标与 ZED VIO 世界系的 human2humanoid 遥操作。",
+        "bilingual_terms": [
+          "坐标系对齐（frame alignment）",
+          "外参偏移（extrinsic offset）",
+          "实时遥操作（real-time teleoperation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.7f4808cb820dcb51",
+        "problem_title_zh": "Human2Humanoid 实时遥操作中，VR 与 ZED VIO 的坐标系需要怎样处理？",
+        "question_zh": "Human2Humanoid 实时遥操作中，VR 与 ZED VIO 的坐标系需要怎样处理？",
+        "source_locator": "Issue #8，贡献者回复 issuecomment-2426752129",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/8#issuecomment-2426752129",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者确认实时遥操作前需对齐 VR 与 ZED 偏移",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/8#issuecomment-2426752129"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "Issue 正文截图用于指出策略所需的 p^real 字段；具体方案来自文字回复与代码链接。"
+    ],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.8",
+    "query": "human2humanoid real root position without mocap ZED VIO",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "项目贡献者说明根位置由 ZED Mini VIO 估计。"
+      },
+      {
+        "text": "项目贡献者确认 VR 与 ZED 的 offset 需在实时遥操作前对齐。"
+      }
+    ],
+    "wbc_relevance_reason": "全身遥操作和状态跟踪需要实机根状态及跨传感器坐标系一致。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.8",
+  "summary": "提问者询问学生策略在实机上如何获得 root_pos/root_rot/root_vel。项目贡献者回答使用 ZED Mini 的 VIO 模块估计真实根位置，并给出 zed_odometry.py；后续又确认实时遥操作前需要对齐 VR 与 ZED 之间的偏移。",
+  "title": "Human2Humanoid 无外部 MoCap 时的实机根位姿与 VR 对齐",
+  "version": null
+}

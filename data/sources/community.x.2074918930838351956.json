@@ -1,0 +1,146 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Fan Shi RSS 2026 @fanshi_robot"
+  ],
+  "canonical_url": "https://x.com/fanshi_robot/status/2074918930838351956",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "5e58e88df15dc30bdc09e37e13b7882627b25c22f11f505c800a5d2c08d35a53",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 3
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "RGB real2sim",
+      "MPPI",
+      "sampling MPC",
+      "RTX 4090",
+      "custom simulator"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "构建自定义模拟器并用 MPPI 精炼轨迹。"
+      ],
+      "diagnostics": [
+        "比较 rollout 吞吐、动力学稳定性和推理成功率。"
+      ],
+      "effective_fixes": [
+        "候选方案是任务专用 simulator + RGB real2sim + 256 并行 MPPI。"
+      ],
+      "environments": [
+        "单 RTX 4090；256 并行环境；H=5；RGB 状态估计。"
+      ],
+      "limits": [
+        "非 WBC/人形任务；参数不能直接迁移。"
+      ],
+      "outcomes": [
+        "作者称提升推理成功率，但线程无数值。"
+      ],
+      "problem_statements": [
+        "基础策略在推理时需要闭环精炼，但通用模拟器达不到实时 rollout 预算。"
+      ],
+      "safety_notes": [
+        "real2sim 估计误差必须进入 MPC 安全约束和失败回退。"
+      ],
+      "suspected_causes": [
+        "可变形动力学与大批量闭环 rollout 的计算需求冲突。"
+      ],
+      "symptoms": [
+        "现有模拟器无法同时提供所需速度与稳定准确的可变形动力学。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该案例采用任务专用模拟器：RGB real2sim 映射状态，单 RTX 4090 上运行 256 个并行环境、H=5 的 MPPI，对基础策略轨迹实时精炼。作者称通用模拟器未满足其速度/稳定性组合，但需论文复核基准。",
+        "applicability": "适用于高吞吐 sampling-based MPC 的工具链取舍，非直接人形结论。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "状态估计（State Estimation）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "推理时 sampling MPC 需要大量 rollout，而通用模拟器达不到实时预算时怎么办？",
+        "source_locator": "作者 1/3 与 2/3 线程",
+        "source_url": "https://x.com/fanshi_robot/status/2074920170641068157",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.sensing_and_perception.7757e87bbdd5c9fb",
+        "problem_title_zh": "推理时 sampling MPC 需要大量 rollout，而通用模拟器达不到实时预算时怎么办？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图视频帧显示双臂可变形布料任务和方法要点；没有 rollout 延迟或成功率曲线。"
+    ],
+    "platform": "x",
+    "post_id": "2074918930838351956",
+    "published_display": "2026-07-08T18:09:57.000Z",
+    "query": "RGB real2sim state estimation sampling MPC",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "可变形操作机械臂（WBC/MPC 邻域证据）"
+    ],
+    "schema_version": 2,
+    "scope_id": "sensing_and_perception",
+    "selected_comments": [
+      {
+        "author_display": "Fan Shi RSS 2026\n@fanshi_robot\n·\n7月9日",
+        "published_display": "2026-07-08T18:14:53.000Z",
+        "text": "1/3 方法概述\n\n我们的 real2sim 重建网络在我们的超大规模模拟数据上进行训练，使 RGB 观测能够映射到模拟状态中。\n\n在推理时，我们运行 256 个并行模拟环境，规划视界 H = 5。使用基于采样的 MPC（MPPI），我们在执行前实时优化由学习到的基础策略提出的轨迹。"
+      },
+      {
+        "author_display": "Fan Shi RSS 2026\n@fanshi_robot\n·\n7月9日",
+        "published_display": "2026-07-08T18:20:45.000Z",
+        "text": "2/3 为什么使用自定义模拟器？\n\n我们发现，我们的设置对模拟提出了不寻常的要求：基于采样的闭环 MPC 需要许多快速 rollout，同时仍需保持稳定且准确的可变形动力学。\n\n我们评估了几种现有的模拟器，包括 Isaac Sim、Newton 和 Genesis，但是在我们的实时计算预算下，它们无法提供所需的"
+      },
+      {
+        "author_display": "Fan Shi RSS 2026\n@fanshi_robot\n·\n7月9日",
+        "published_display": "2026-07-08T18:27:15.000Z",
+        "text": "3/3 关于我们模拟器的更多细节在上一条推文中：\nhttps://\nx.com/fanshi_robot/s\ntatus/2072369635668918671\n…\n\n这项工作深受 \n@HaoruXue\n \n@GuanyaShi\n 他们基于采样的 MPC 用于高维腿式机器人控制的启发。\n\n我们想知道这种方法是否可以扩展到可变形物体操作。\n\n它也受到了 \n@Ken_Goldberg"
+      }
+    ],
+    "wbc_relevance_reason": "虽非人形任务，但提供了 real2sim 状态估计、sampling-based MPC 和仿真吞吐取舍的具体工程参数。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2074918930838351956",
+  "summary": "线程描述可变形操作的 inference-time refinement：RGB 重建网络把观测映射到仿真状态，推理时运行 256 个并行环境、规划视界 H=5，以 MPPI 精炼基础策略轨迹；单 RTX 4090 运行。作者称 Isaac Sim、Newton、Genesis 在其实时预算下不能同时满足大量 rollout 与稳定准确的可变形动力学，因此使用自定义模拟器。",
+  "title": "RGB real2sim + 256 并行 rollout 的推理时 MPPI 精炼",
+  "version": null
+}

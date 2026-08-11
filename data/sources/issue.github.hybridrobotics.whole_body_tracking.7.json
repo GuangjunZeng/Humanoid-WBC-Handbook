@@ -1,0 +1,117 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Josh00-Lu"
+  ],
+  "canonical_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/7",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "b8cc6471b129b8106b06349c64fdc3890efddad7538e00e2dbe2a058af4be4c5",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取 Issue 正文与 2 条评论；明确保留未回答部分。",
+    "components": [
+      "whole_body_tracking",
+      "anchor_body",
+      "IMU",
+      "USD"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者说明部署链会处理所选 anchor_body。"
+      ],
+      "diagnostics": [
+        "核对 anchor_body、USD 根链接与部署观测参考系。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "HybridRobotics/whole_body_tracking；Unitree G1；USD root=pelvis；anchor_body=torso。"
+      ],
+      "limits": [
+        "帖子没有解释选择 torso 的设计原因，也没有回答 torso 与 pelvis IMU 精度差异。"
+      ],
+      "outcomes": [
+        "维护者确认 anchor_body 可选择任意 body，且该设置不是 bug。"
+      ],
+      "problem_statements": [
+        "USD 根链接是 pelvis、IMU 也靠近 pelvis 时，使用 torso 作为 anchor_body 是否会造成偏移？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [],
+      "symptoms": [
+        "提问者预期 torso/pelvis 参考系不同可能产生偏移；未报告实际失败。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖维护者表示不必：该实现允许把任意刚体设为锚定刚体（anchor body），部署时会对所选参考体进行相应处理，因此 torso 不等于 pelvis 本身不是 bug。帖子没有说明这种处理的具体变换，也没有回答不同 IMU 精度问题，迁移模型时仍需核对代码中的坐标变换。",
+        "applicability": "适用于 HybridRobotics/whole_body_tracking 的 anchor_body 机制；不能直接外推到其他状态估计实现。",
+        "bilingual_terms": [
+          "锚定刚体（anchor body）",
+          "根链接（root link）",
+          "惯性测量单元（IMU）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.state_estimation_calibration.ec77676abbf7a02f",
+        "problem_title_zh": "Whole Body Tracking 中 anchor_body 必须等于 USD 根链接或主 IMU 所在链接吗？",
+        "question_zh": "Whole Body Tracking 中 anchor_body 必须等于 USD 根链接或主 IMU 所在链接吗？",
+        "source_locator": "Issue #7，维护者回复 issuecomment-3197873848 及后续未回答追问",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/7#issuecomment-3197873848",
+        "verification_refs": [
+          {
+            "locator": "维护者确认任意 body 可作为 anchor_body 且部署时会处理",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/7#issuecomment-3197873848"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "hybridrobotics.whole_body_tracking.7",
+    "query": "G1 anchor body torso pelvis IMU deployment",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "维护者确认任意 body 都可以设为 anchor_body。"
+      },
+      {
+        "text": "提问者继续询问 torso 二级 IMU 精度，线程没有后续回答。"
+      }
+    ],
+    "wbc_relevance_reason": "锚定刚体决定全身跟踪目标和状态表达的参考系，直接影响部署坐标一致性。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.hybridrobotics.whole_body_tracking.7",
+  "summary": "提问者担心 G1 的低层 IMU 位于 pelvis，而项目把 torso 设为 anchor_body，会引入偏移。仓库成员 qiayuanl 回复这不是 bug，部署时会做相应处理，anchor_body 可以设为任意 body；但没有继续回答 torso 二级 IMU 精度和选型原因。",
+  "title": "G1 部署中 torso 与 pelvis 的 anchor_body 选择",
+  "version": null
+}

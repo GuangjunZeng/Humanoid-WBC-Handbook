@@ -1,0 +1,111 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "naivate"
+  ],
+  "canonical_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/21",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "7e1848bd5b47f90fd439526cc5c8fc60a010b7631d4cd8411db7ccfc9cfdeff5",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：Issue 正文为空，完整读取唯一评论；没有补写作者未说明的原因。",
+    "components": [
+      "human2humanoid",
+      "policy distillation",
+      "observation noise"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者团队按无观测噪声的蒸馏配置完成部署。"
+      ],
+      "diagnostics": [],
+      "effective_fixes": [],
+      "environments": [
+        "LeCAR-Lab/human2humanoid；蒸馏阶段；具体 commit 和传感器配置未说明。"
+      ],
+      "limits": [
+        "没有量化结果、对照实验、版本或适用传感器范围；不能推广为一般的“不需要噪声”。"
+      ],
+      "outcomes": [
+        "项目贡献者称该配置在其部署中运行良好。"
+      ],
+      "problem_statements": [
+        "Human2Humanoid 的策略蒸馏为什么没有加入观测噪声？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [],
+      "symptoms": [
+        "代码审阅者发现蒸馏观测没有显式加噪。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该项目贡献者只确认了一项项目事实：他们的蒸馏阶段没有加噪声，并称部署效果良好。帖子没有说明为何可行，也没有给出与加噪配置的比较，因此只能复用为 Human2Humanoid 的实现记录，不能当作其他机器人无需噪声随机化的结论。",
+        "applicability": "仅限该项目报告的蒸馏与部署流程；缺少版本和传感器环境。",
+        "bilingual_terms": [
+          "策略蒸馏（policy distillation）",
+          "观测噪声（observation noise）",
+          "域随机化（domain randomization）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.ff52500370c9eae6",
+        "problem_title_zh": "Human2Humanoid 是否必须在策略蒸馏（policy distillation）阶段加入观测噪声？",
+        "question_zh": "Human2Humanoid 是否必须在策略蒸馏（policy distillation）阶段加入观测噪声？",
+        "source_locator": "Issue #21，贡献者回复 issuecomment-2518578080",
+        "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/21#issuecomment-2518578080",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者确认蒸馏未加噪且完成部署",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/LeCAR-Lab/human2humanoid/issues/21#issuecomment-2518578080"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 5,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "lecar-lab.human2humanoid.21",
+    "query": "human2humanoid distillation observation noise sim to real",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree H1"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "text": "项目贡献者确认蒸馏阶段未加噪，并称部署运行良好。"
+      }
+    ],
+    "wbc_relevance_reason": "观测噪声与策略蒸馏会影响实机策略鲁棒性，但该线程只提供特定项目经验。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.lecar-lab.human2humanoid.21",
+  "summary": "Issue 只有标题提问为何 Sim-to-Real 策略的观测不加噪声。项目贡献者 TairanHe 回答：他们在蒸馏阶段没有加噪声，部署效果良好；没有给出评测数字、传感器条件或与加噪版本的对照。",
+  "title": "Human2Humanoid 蒸馏阶段未加入观测噪声",
+  "version": null
+}

@@ -1,0 +1,142 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "dsami2"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977",
+  "captured_at": "2026-08-11T03:14:00+08:00",
+  "content_sha256": "e41433502deacbc19625332f9a464f2398db57a99431528dfc8d6881594e2114",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 3 条回复。只记录项目贡献者明确给出的 Coriolis/Centrifugal 分类、computeCoriolisMatrix 对照方法和 neutral 构型；对原作者未获回答的转动关节追问保持部分解答，没有自行补充动力学推导。",
+    "components": [
+      "Pinocchio",
+      "RNEA",
+      "free flyer",
+      "Coriolis matrix",
+      "pin.neutral"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者用三组 qd 输出对照偏置项，又用增加一个转动自由度的模型做了追加对照。",
+        "项目贡献者把原代码中的 q=0 替换为 pin.neutral(model)，并重现相同的 y=-1 输出。"
+      ],
+      "diagnostics": [
+        "按项目贡献者回复，用 pin.computeCoriolisMatrix(model, data, q, qd) @ qd 单独计算速度相关偏置项，与 RNEA 额外项对照。",
+        "用 pin.neutral(model) 初始化 free-flyer 构型，避免全零四元数未归一化。"
+      ],
+      "effective_fixes": [
+        "这不是需要删除的数值错误；将该项识别为 Coriolis/centrifugal 速度偏置，并使用 pin.neutral(model) 初始化有效 free-flyer 构型。"
+      ],
+      "environments": [
+        "Pinocchio Python API，buildModelFromUrdf(..., JointModelFreeFlyer())，1 kg 点质量模型；版本、操作系统与硬件未说明。"
+      ],
+      "limits": [
+        "原作者没有回复是否验证 computeCoriolisMatrix @ qd 与该项一致。",
+        "追加的转动关节模型为什么不再出现同样交叉项，线程没有给出解释，本卡不自行推断。",
+        "线程未说明 Pinocchio 版本，也没有把最小例子延伸到具体人形机器人的 WBC 数值。"
+      ],
+      "outcomes": [
+        "项目贡献者给出了交叉项的分类和可单独计算路径，并用 neutral 构型重现原输出。"
+      ],
+      "problem_statements": [
+        "浮动基同时存在 z 向线速度和 x 向角速度时，RNEA 为什么额外返回 y=-1 的力？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "项目贡献者明确该 [0,-1,0] 来自科里奥利/离心（Coriolis/Centrifugal）效应。"
+      ],
+      "symptoms": [
+        "qd=[0,0,1,1,0,0]、qdd=0 时，RNEA 返回 [0,-1,9.81,0,0,0]；无速度或仅 z 向线速度时没有 y=-1 项。",
+        "把 x 向角速度改成新增转动关节的速度后，原作者的追加例子中交叉项消失。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目贡献者明确回复，[0,-1,0] 是 Coriolis/Centrifugal 效应，可用 pin.computeCoriolisMatrix(model, data, q, qd) @ qd 单独计算对照。free-flyer 的配置不应全零，应用 pin.neutral(model) 保证四元数归一化；贡献者用 neutral 构型仍重现相同交叉项，因此它不是全零 q 单独造成。原帖对“换成转动关节速度后交叉项消失”的追问没有答复，所以保留为部分解答。",
+        "applicability": "适用于 Pinocchio free-flyer 最小模型中速度相关 RNEA 偏置项的识别；版本未说明，具体人形模型需独立核对。",
+        "bilingual_terms": [
+          "递归牛顿-欧拉算法（Recursive Newton-Euler Algorithm, RNEA）",
+          "科里奥利/离心效应（Coriolis/Centrifugal effects）",
+          "中性构型（neutral configuration）",
+          "浮动基（free flyer）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.dynamics_model_validation.pinocchio_freeflyer_rnea_velocity_cross_term_1977",
+        "problem_title_zh": "Pinocchio 浮动基 RNEA 的速度交叉项",
+        "question_zh": "Pinocchio 点质量 free-flyer 同时有线速度和角速度时，RNEA 多出的 y 向力从哪里来？",
+        "source_locator": "Pinocchio #1977；Coriolis/centrifugal 解释 issuecomment-1571030718；neutral 构型与重现 issuecomment-1571032033",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977#issuecomment-1571030718",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者将 [0,-1,0] 归因于 Coriolis/Centrifugal 效应，并给出 computeCoriolisMatrix @ qd 对照方法",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977#issuecomment-1571030718"
+          },
+          {
+            "locator": "项目贡献者提醒使用 pin.neutral(model)，并在 neutral 构型下重现相同输出",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977#issuecomment-1571032033"
+          },
+          {
+            "locator": "原作者的转动关节对照例子中交叉项消失，但该追问未获回复",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1977#issuecomment-1571009804"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1977",
+    "query": "Pinocchio floating base RNEA cross term Coriolis centrifugal neutral configuration",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "1 kg 点质量 free-flyer 最小 URDF；追加对照为 free-flyer 加 1 个转动自由度"
+    ],
+    "schema_version": 2,
+    "scope_id": "dynamics_model_validation",
+    "selected_comments": [
+      {
+        "text": "原作者追加了一个用转动关节速度代替 free-flyer 角速度的对照，其交叉项消失。"
+      },
+      {
+        "text": "项目贡献者说明 [0,-1,0] 来自 Coriolis/Centrifugal 效应。"
+      },
+      {
+        "text": "项目贡献者提醒用 pin.neutral(model) 初始化 free-flyer 配置，并在该构型下重现相同交叉项。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 逆动力学调试中，浮动基广义速度会产生 Coriolis/centrifugal 偏置项；若把它当作数值错误或忽略 free-flyer 配置归一化，会误判 RNEA 输出。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1977",
+  "summary": "Pinocchio #1977 用 1 kg 点质量 free-flyer 最小模型调用 RNEA：仅 z 向线速度时输出为重力项，同时设置 z 向线速度和 x 向角速度后额外出现 y=-1 的力。项目贡献者明确该项来自 Coriolis/Centrifugal effects，可用 computeCoriolisMatrix(model,data,q,qd) @ qd 单独计算；同时指出 free-flyer 的 q 不应全零，应用 pin.neutral(model) 获得归一化中性构型。原作者追加的“改为转动关节后交叉项消失”没有获得进一步解释。",
+  "title": "Pinocchio 浮动基 RNEA 中的速度交叉项与中性构型",
+  "version": null
+}

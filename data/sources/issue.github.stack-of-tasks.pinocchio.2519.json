@@ -1,0 +1,175 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "min-dai"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "4e32c4abdf6e039ef9d2753b655fe7c1c04a6d5539b9d8a17355e3af6b633098",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 6 条评论，包括 2026-08-07 新回复；关闭状态早于未解答的固定基最小复现，故两种处理方向均未写成已验证修复。",
+    "components": [
+      "Pinocchio",
+      "JointModelComposite",
+      "JointModelFreeFlyer",
+      "getFrameJacobianTimeVariation",
+      "getFrameAcceleration",
+      "CasADi"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议 JointModelFreeFlyer；原作者补充两转动关节最小复现；另一用户提供 CasADi jacobian(J,q)@qdot 的替代函数。"
+      ],
+      "diagnostics": [
+        "先识别根关节模型是否为尚未完整支持的 JointModelComposite；同时用最小模型、解析预期或自动微分交叉比较 Jdot 和 Jdot*qdot。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "原始模型使用 JointModelComposite(Translation + SphericalZYX) 与 LOCAL_WORLD_ALIGNED；后续最小复现为两个转动关节；2026 评论使用 Pinocchio CasADi 接口，具体版本未说明。"
+      ],
+      "limits": [
+        "不能把关闭状态视为修复完成；不能把未验证的 CasADi 代码当成与 Pinocchio 所有参考系约定等价。"
+      ],
+      "outcomes": [
+        "Issue 在 2024-12-19 关闭，但没有原作者确认 FreeFlyer 解决问题；2026 的 CasADi 方案也没有线程复测或维护者确认。"
+      ],
+      "problem_statements": [
+        "getFrameJacobianTimeVariation*qdot 与 getFrameAcceleration 的 dJdq 不一致时，Composite Joint、FreeFlyer 和直接自动微分三种路径分别能证明什么？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "维护者只明确指出 JointModelComposite 可能是原始问题主因且未完整支持；后续固定基最小复现的原因没有答案。"
+      ],
+      "symptoms": [
+        "原模型中两个 dJdq 结果不同；改为两转动关节最小模型后，原作者仍报告 dJ 与手算预期存在偏差。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "没有。维护者只说明 Translation+SphericalZYX 的 JointModelComposite 尚未完整支持，并建议用 JointModelFreeFlyer；原作者没有回报该替换后的结果，随后还用两个普通转动关节构造了新的异常最小例子，但没有得到答复。因此 FreeFlyer 是维护者给出的排查方向，不是该线程已复测的通用修复。",
+        "applicability": "原始建议针对 Translation+SphericalZYX JointModelComposite；后续固定基两关节异常不在该建议的已验证范围内。",
+        "bilingual_terms": [
+          "雅可比时间变化率（Jacobian time variation）",
+          "复合关节模型（JointModelComposite）",
+          "自由浮动关节模型（JointModelFreeFlyer）",
+          "局部世界对齐坐标系（LOCAL_WORLD_ALIGNED）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_jdot_composite_joint",
+        "problem_title_zh": "Pinocchio 的 Jdot 或 dJdq 不一致时，JointModelFreeFlyer 和直接自动微分方案是否已经验证？",
+        "question_zh": "使用 JointModelComposite 时 dJdq 不一致，改用 JointModelFreeFlyer 是否已被原线程验证？",
+        "source_locator": "Issue #2519，维护者说明 issuecomment-2554021580 与建议 issuecomment-2555687851；原作者后续最小复现 issuecomment-2555915806",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519#issuecomment-2555687851",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 JointModelComposite 尚未完整支持",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519#issuecomment-2554021580"
+          },
+          {
+            "locator": "原作者给出不含 Composite Joint 的最小复现，但线程没有后续答案",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519#issuecomment-2555915806"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "没有。2026 年评论者提供的代码先计算 Frame Jacobian，将 J 展平后求 ca.jacobian(J_flat,q)@qdot，再重排成 6×nv；这只是该评论者分享的处理方法。线程没有给出与解析结果、Pinocchio 修复版本或其他参考系的数值对照，也没有维护者确认，因此只能作为待复现实验方案。",
+        "applicability": "仅适用于能够使用 Pinocchio CasADi 模型并明确 J(q)、qdot 与参考系约定的场景；尚未在原线程交叉验证。",
+        "bilingual_terms": [
+          "自动微分（automatic differentiation, AD）",
+          "雅可比时间变化率（Jacobian time variation）",
+          "卡萨迪（CasADi）",
+          "局部坐标系（LOCAL）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_jdot_composite_joint",
+        "problem_title_zh": "Pinocchio 的 Jdot 或 dJdq 不一致时，JointModelFreeFlyer 和直接自动微分方案是否已经验证？",
+        "question_zh": "用 CasADi 对 J(q) 直接求导再乘 qdot，是否已经在原线程验证为可靠 Jdot 方案？",
+        "source_locator": "Issue #2519，社区方案 issuecomment-5217419143",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519#issuecomment-5217419143",
+        "verification_refs": [
+          {
+            "locator": "评论者给出 CasADi 直接计算 Jdot 的完整函数，但没有结果对照",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2519#issuecomment-5217419143"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原作者的后续最小复现包含输出截图，但本卡只采用其文字、代码和手写预期，不从截图补读矩阵数值。"
+    ],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2519",
+    "query": "Pinocchio getFrameAcceleration Jacobian time variation Composite Joint CasADi Jdot",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基机器人",
+      "两转动关节最小模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者判断 Composite Joint 可能是主因，且尚未完整支持。"
+      },
+      {
+        "text": "维护者建议改用 JointModelFreeFlyer。"
+      },
+      {
+        "text": "原作者给出两转动关节最小复现，仍报告 dJ/dJdq 异常。"
+      },
+      {
+        "text": "另一用户分享 CasADi jacobian(J,q)@qdot 的函数，未附线程内验证结果。"
+      }
+    ],
+    "wbc_relevance_reason": "Jdot*qdot 是任务空间加速度约束的重要偏置项；错误或未经验证的替代计算会改变 WBC/IK 的任务加速度。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2519",
+  "summary": "Pinocchio #2519 报告以 Translation+SphericalZYX 组成 JointModelComposite 时，LOCAL_WORLD_ALIGNED 下 getFrameJacobianTimeVariation*qdot 与 getFrameAcceleration 不一致。维护者判断 Composite Joint 可能是主因、尚未完整支持，并建议改用 JointModelFreeFlyer；原作者随后给出不含 Composite Joint 的两转动关节最小例子，仍报告 dJ 与 dJdq 异常，但线程没有继续回答。2026 年另一位用户给出用 CasADi 对 J(q) 直接求导再乘 qdot 的函数，但没有维护者确认或结果对照。",
+  "title": "Pinocchio Composite Joint 下 dJdq/Jdot 不一致的两个处理方向都仍需复测",
+  "version": null
+}

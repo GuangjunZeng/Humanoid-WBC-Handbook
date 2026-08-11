@@ -1,0 +1,242 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "longwoo"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/446",
+  "captured_at": "2026-08-11T03:05:00+08:00",
+  "content_sha256": "1511b4a8c4a336cea2c761987848943fbb62d7cf5288b3ba91041a8714b40111",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 14 条评论；只提炼维护者明确说明和作者数值对照，不从长矩阵中自行推导未给出的通用基变换。",
+    "components": [
+      "Pinocchio",
+      "MuJoCo",
+      "center-of-mass Jacobian",
+      "CRBA",
+      "FreeFlyer frame convention"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者给出 data.oMi[1].rotation.T * Jc 对照；作者应用旋转并报告误差明显下降。",
+        "作者比较固定基与 FreeFlyer，并将两边基座姿态设为单位；单位姿态下矩阵误差降到约 1e-8 至 1e-10 量级。"
+      ],
+      "diagnostics": [
+        "先确定被比较 Jacobian 的表达坐标系和作用点；把 Pinocchio 世界系 Jcom 旋转到目标局部坐标后再比较。",
+        "分别用单位基座旋转与非单位旋转对照 CRBA，确认差异是否只随浮动基表示变化。",
+        "用 RNEA 和合适参考系下的 Jcom 交叉验证质量矩阵，而不是只逐元素比较两个库的原始矩阵。"
+      ],
+      "effective_fixes": [
+        "比较 Jcom 前把两边转换到同一坐标表达；原线程对第一个浮动刚体使用 data.oMi[1].rotation.T 乘 Pinocchio Jc。",
+        "读取关节局部速度时先 forwardKinematics(model,data,q,qdot)，再用 data.v[id]；只改变坐标表达时分别旋转 linear/angular 分量，不平移作用点。"
+      ],
+      "environments": [
+        "2018 年 Pinocchio Python/C++；MuJoCo 对照；用户提供浮动关节最小 URDF、双腿 URDF 状态与完整矩阵输出；具体发布版本未说明。"
+      ],
+      "limits": [
+        "原线程没有给出通用的 MuJoCo↔Pinocchio 质量矩阵基变换公式，也没有把所有 bias 项差异完全闭环。",
+        "data.oMi[1] 只适合该最小模型的第一目标关节，实际系统必须使用正确 joint id。"
+      ],
+      "outcomes": [
+        "作者确认 Jcom 旋转后与 MuJoCo 的差异大幅降低，并确认 WORLD/LOCAL 解释清楚。",
+        "作者在单位基座旋转实验中得到两边几乎一致的质量矩阵，并将剩余非单位旋转差异归因于浮动基表示。"
+      ],
+      "problem_statements": [
+        "为什么浮动基 Jcom 的前三列不是单位阵，且 Pinocchio 与 MuJoCo 的 Jcom/质量矩阵数值不同？",
+        "Pinocchio 的 WORLD、LOCAL Jacobian 和 data.v[id] 分别对应哪个作用点与坐标表达？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "Pinocchio Jcom 用世界坐标表达，用户的 MuJoCo 对照量按腰部局部坐标理解。",
+        "Pinocchio 的浮动基速度、加速度和力分量用第一刚体坐标表示，而 MuJoCo 对照矩阵按世界坐标表示。"
+      ],
+      "symptoms": [
+        "带非单位基座姿态时，Pinocchio Jcom 的平移块出现约 1e-2 的非对角项，而用户预期单位阵。",
+        "固定基质量矩阵两边一致，加入 FreeFlyer 且基座旋转非单位后，质量矩阵前六行明显不同。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者把首要原因定位为坐标系：Pinocchio 的 center-of-mass Jacobian 用世界坐标表达，而原帖中的 MuJoCo 量被按腰部局部坐标理解。对该最小模型，他建议用 data.oMi[1].rotation.T * Jc 把 Pinocchio 结果旋转到局部表达；作者实测后报告误差大幅下降。因此不能把前三列直接与单位阵比较，必须先明确目标坐标系和正确 joint id。",
+        "applicability": "适用于原帖的浮动基最小模型和 Pinocchio/MuJoCo Jcom 对照；其他 API 的 Jacobian 作用点与参考系需分别查明。",
+        "bilingual_terms": [
+          "质心雅可比（center-of-mass Jacobian, Jcom）",
+          "世界坐标系（world frame）",
+          "局部坐标系（local frame）",
+          "自由浮动基（FreeFlyer）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_mujoco_freeflyer_frames_446",
+        "problem_title_zh": "Pinocchio 与 MuJoCo 的浮动基动力学量参考系不一致",
+        "question_zh": "Pinocchio 浮动基 Jcom 的平移块为何不是单位阵，怎样与 MuJoCo 的局部坐标结果对齐？",
+        "source_locator": "Issue #446，维护者坐标系诊断 issuecomment-374313755；作者复测 issuecomment-374501855",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-374501855",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 Pinocchio Jcom 用世界坐标表达并给出旋转对照",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-374313755"
+          },
+          {
+            "locator": "作者应用旋转后报告与 MuJoCo 的误差大幅下降",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-374501855"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者说明，WORLD Jacobian 的 twist 用世界坐标表达，其线速度对应当前与世界原点重合、但附着于目标关节的点；LOCAL 对应目标关节中心并用关节局部坐标表达，两者通过 J_world = action(data.oMi[k]) * J_local 联系。要取关节局部速度，先调用 forwardKinematics(model,data,q,qdot)，再读 data.v[id]。若只想把同一作用点的速度改用世界坐标表达，应分别用 data.oMi[id].rotation() 旋转 linear 与 angular 分量，不能额外引入平移。Jcom 是系统质心速度向量的世界坐标表达，不套用 WORLD spatial twist 的世界原点作用点解释。",
+        "applicability": "适用于该时期 Pinocchio 的 Joint Jacobian、data.v 和 Jcom 约定；Frame API 及 LOCAL_WORLD_ALIGNED 需按对应版本文档另行核对。",
+        "bilingual_terms": [
+          "空间速度（spatial velocity, twist）",
+          "配置切空间（configuration tangent space）",
+          "特殊欧氏群（special Euclidean group, SE3）",
+          "正向运动学（forward kinematics, FK）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_mujoco_freeflyer_frames_446",
+        "problem_title_zh": "Pinocchio 与 MuJoCo 的浮动基动力学量参考系不一致",
+        "question_zh": "Pinocchio 的 WORLD 与 LOCAL Jacobian 对应什么作用点，data.v[id] 怎样只改变坐标表达？",
+        "source_locator": "Issue #446，Jacobian 定义 issuecomment-378168382；WORLD/LOCAL 作用点 issuecomment-380343908；Jcom 与 data.v 说明 issuecomment-380361182",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-380361182",
+        "verification_refs": [
+          {
+            "locator": "维护者定义 Jacobian 从配置切空间到 SE3 tangent，Jcom 到质心速度",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-378168382"
+          },
+          {
+            "locator": "维护者说明 WORLD/LOCAL 的作用点和 placement action 关系",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-380343908"
+          },
+          {
+            "locator": "维护者区分 Jcom 与 joint velocity，并给出 data.v[id] 的坐标旋转方法",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-380361182"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者说明质量矩阵把配置切空间中的加速度映射到余切空间中的力；Pinocchio 的 FreeFlyer 运动与力分量都在第一刚体坐标中表示，换一种表示会改变质量矩阵前六行的数值。作者先验证固定基矩阵完全一致、两边 FK 位姿一致，再把浮动基位置清零且姿态设为单位；此时两边矩阵误差降到约 1e-8 至 1e-10 量级。该实验支持参考系表示是主要差异，但线程没有给任意姿态下的完整矩阵变换公式。",
+        "applicability": "适用于原帖 FreeFlyer 模型的 CRBA/MuJoCo full mass matrix 对照；不能据此直接替换目标项目的广义坐标基变换。",
+        "bilingual_terms": [
+          "复合刚体算法（Composite Rigid Body Algorithm, CRBA）",
+          "质量矩阵（mass matrix）",
+          "余切空间（cotangent space）",
+          "广义力（generalized force）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_mujoco_freeflyer_frames_446",
+        "problem_title_zh": "Pinocchio 与 MuJoCo 的浮动基动力学量参考系不一致",
+        "question_zh": "Pinocchio 与 MuJoCo 的 FreeFlyer 质量矩阵数值不同，原帖如何确认是表示差异而不是模型解析错误？",
+        "source_locator": "Issue #446，维护者质量矩阵表示说明 issuecomment-380809974；作者单位姿态对照 issuecomment-381078728",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-381078728",
+        "verification_refs": [
+          {
+            "locator": "维护者解释质量矩阵映射和 Pinocchio FreeFlyer 的第一刚体坐标表示",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-380809974"
+          },
+          {
+            "locator": "作者把两边基座姿态设为单位后得到近零矩阵差，并总结表示差异",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/446#issuecomment-381078728"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.446",
+    "query": "Pinocchio MuJoCo floating base Jcom WORLD LOCAL inertia matrix frame",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基双腿测试 URDF",
+      "单刚体 floating joint 最小模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者说明 Jcom 的世界坐标表达，并给出旋转到局部坐标的对照。"
+      },
+      {
+        "text": "作者应用旋转后报告 Pinocchio/MuJoCo Jcom 误差大幅下降。"
+      },
+      {
+        "text": "维护者说明 WORLD/LOCAL Jacobian 的作用点与坐标表达。"
+      },
+      {
+        "text": "维护者区分 Jcom 与 joint velocity，并给出 data.v[id] 转世界坐标的方法。"
+      },
+      {
+        "text": "维护者解释 Pinocchio FreeFlyer 质量矩阵的第一刚体坐标表示。"
+      },
+      {
+        "text": "作者用单位基座姿态得到近零矩阵差，确认浮动基表示差异。"
+      }
+    ],
+    "wbc_relevance_reason": "跨仿真器验证 WBC 的质心 Jacobian、质量矩阵和浮动基动力学时，若混用坐标表达和作用点，会把表示差异误判为算法错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.446",
+  "summary": "Pinocchio #446 从一个单刚体浮动关节 Jcom 非单位阵问题扩展到 Pinocchio/MuJoCo 的 Jcom、关节速度和惯性矩阵对照。维护者解释 Pinocchio 的质心 Jacobian 用世界坐标表达，而作者认为 MuJoCo 对照量按腰部局部坐标表达；按 data.oMi[1].rotation.T 旋转后，作者报告 Jcom 误差大幅下降。维护者进一步区分 WORLD 与 LOCAL：WORLD 的 twist 对应当前与世界原点重合、但附着于该关节的点；LOCAL 对应关节中心并用局部坐标表达，二者通过 placement action 关联。Jcom 只表示系统质心速度的世界坐标分量。对 CRBA，维护者说明 Pinocchio 浮动基运动/力分量在第一刚体坐标中表示，因此矩阵数值可与按世界坐标表示的 MuJoCo 不同；作者把基座旋转设为单位后得到两边几乎一致，并将差异归因于表示，而不是模型姿态解析。",
+  "title": "Pinocchio 与 MuJoCo 的浮动基 Jcom 和惯性矩阵差异首先要对齐参考系表示",
+  "version": null
+}

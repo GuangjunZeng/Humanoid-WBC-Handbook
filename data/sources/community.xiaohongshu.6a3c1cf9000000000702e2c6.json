@@ -1,0 +1,144 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "阿钰"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a3c1cf9000000000702e2c6",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "456dfc3cf839d322bd76c996fce15d4085810f61b36cf1b16dc4b32089c34d13",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 5
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "whole-body teleoperation",
+      "posture",
+      "thermal load",
+      "payload"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "评论建议静止时将手臂置于腰后平衡重心。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "G1 全身遥操作，长时间站立/抱重物等场景。"
+      ],
+      "limits": [
+        "单条评论经验，机器人版本和控制器未知。"
+      ],
+      "outcomes": [
+        "没有温度曲线或复测时长。"
+      ],
+      "problem_statements": [
+        "G1 遥操作长时间站立时脚部关节过热，姿态层面可先查什么？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "评论认为手臂姿态改变质心，使脚部关节持续力矩增大。"
+      ],
+      "symptoms": [
+        "长时间站立时脚部关节过热；手臂/腿部负载可能限制遥操作任务。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先记录手臂姿态、整机 COM 与脚踝/足部关节持续扭矩和温度；该评论建议把手臂放到腰后减少静态负载，但没有 A/B 数据。应用前应设温度守卫并通过小幅姿态扫描验证。",
+        "applicability": "单条评论经验，机器人版本和控制器未知。",
+        "bilingual_terms": [
+          "关节力矩（Joint Torque）",
+          "全身遥操作（Whole-Body Teleoperation）",
+          "质心（Center of Mass, CoM）",
+          "有效载荷（Payload）",
+          "热漂移（Thermal Drift）"
+        ],
+        "question_zh": "G1 遥操作长时间站立时脚部关节过热，姿态层面可先查什么？",
+        "source_locator": "评论“长时间站立不动…脚部关节过热”",
+        "source_url": "https://www.xiaohongshu.com/explore/6a3c1cf9000000000702e2c6",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.tracking_and_teleoperation.19f2ddca0644c82d",
+        "problem_title_zh": "G1 遥操作长时间站立时脚部关节过热，姿态层面可先查什么？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三个媒体位展示全尺寸人形/遥操作场景，但没有 COM、关节扭矩或温度热图；姿态—热负载关系来自评论。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a3c1cf9000000000702e2c6",
+    "published_display": "06-25",
+    "query": "G1 全身遥操 延迟 抖动 丢帧",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "tracking_and_teleoperation",
+    "selected_comments": [
+      {
+        "text": "Jack MinG1在长时间站立不动时手臂必须放在腰后平衡重心，否则脚部关节电机力矩负载过大，很快会过热警告[抽泣R]07-10上海11"
+      },
+      {
+        "text": "阿钰作者感谢07-10江苏赞回复"
+      },
+      {
+        "text": "21不是二十一在做遥操设备吗，可以交流交流06-25北京11"
+      },
+      {
+        "text": "阿钰作者在想办法优化机器人构型06-25江苏赞回复"
+      },
+      {
+        "text": "叉车拉苹果借楼招人形摇操员6天前北京赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "把遥操作姿态设计与支撑关节热预算联系起来。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a3c1cf9000000000702e2c6",
+  "summary": "帖子征集全尺寸人形遥操作的人体工学/负载问题；评论称 G1 长时间静止时需把手臂放在腰后帮助重心，否则脚部关节力矩负载大并很快过热。",
+  "title": "G1 全身遥操作长时站立：手臂姿态与脚部关节热负载",
+  "version": null
+}

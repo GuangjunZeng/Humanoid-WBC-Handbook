@@ -1,9 +1,11 @@
-"""Compliant human-in-the-loop discovery queue for Xiaohongshu.
+"""Manual fallback queue for Xiaohongshu discovery.
 
 Xiaohongshu does not expose a public general-purpose note reader API. This
-module automates only query planning, canonical-link validation, deduplication,
-and review-state management. It performs no network access, login automation,
-DOM extraction, cookie handling, or comment collection.
+module remains the fallback when visible-browser collection is blocked. It
+automates only query planning, canonical-link validation, deduplication, and
+review-state management. The separate ``social_browser`` adapter defines the
+finite, user-triggered DOM-extraction contract. Neither module reads cookies,
+stores credentials, bypasses access controls, or performs scheduled collection.
 """
 
 from __future__ import annotations

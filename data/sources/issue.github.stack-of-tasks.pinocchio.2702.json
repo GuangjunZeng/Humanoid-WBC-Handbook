@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Zionshang"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2702",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "710e5d4c15245e33f8fbc0523e8e724b4c3c02e147c33f0ad6437182e315dd50",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 5 条评论；没有找到线程明确关联的修复 PR/commit，也没有把尚缺的 Pinocchio 4 复测补写出来。",
+    "components": [
+      "Pinocchio",
+      "getJointVelocityDerivatives",
+      "CppAD",
+      "LOCAL_WORLD_ALIGNED",
+      "JointModelFreeFlyer"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原作者在 CppAD 中通过 integrate 处理配置流形，并交叉比较三种参考系。"
+      ],
+      "diagnostics": [
+        "同时比较对 q 和 v 的导数；对 CppAD 路径先调用 integrate 满足流形约束；分别测试 LOCAL、WORLD 与 LOCAL_WORLD_ALIGNED。"
+      ],
+      "effective_fixes": [
+        "维护者表示该 LOCAL_WORLD_ALIGNED 导数已在 Pinocchio 4 修复；线程没有提供可精确定位的提交。"
+      ],
+      "environments": [
+        "Ubuntu 22.04；Pinocchio 3.3.0；Go2 URDF；JointModelFreeFlyer；CppAD；原帖完整 C++ 复现。"
+      ],
+      "limits": [
+        "在没有精确提交和升级复测的情况下，不能把任意 Pinocchio 4 构建都自动视为已验证；改用 LOCAL/WORLD 只能在任务语义允许时作为对照，不应为匹配数值而改变参考系定义。"
+      ],
+      "outcomes": [
+        "维护者确认问题已知并给出 Pinocchio 4 修复边界；原作者没有在 Pinocchio 4 上回报复测。"
+      ],
+      "problem_statements": [
+        "Pinocchio 3.3 中 LOCAL_WORLD_ALIGNED 的关节速度对配置导数为什么与 CppAD 不一致？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "项目成员说明速度、integrate 和 difference 的定义对应 LOCAL；其他参考系会加入额外修正，而原有自动微分系统不能开箱即用处理这些修正。"
+      ],
+      "symptoms": [
+        "v_partial_dq 与 CppAD djoint_vel_dq 不一致；v_partial_dv 一致；改用 WORLD 或 LOCAL 后作者观察结果正确。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖的完整复现表明，Pinocchio 3.3.0 中 LOCAL_WORLD_ALIGNED 的对 q 导数不匹配，而对 v 导数匹配，LOCAL/WORLD 对照也正常。项目成员说明 LOCAL 之外的参考系含额外修正；维护者随后明确称该问题已在 Pinocchio 4 修复。因此应先用原帖同样的 integrate+CppAD 对照确认，再在目标 Pinocchio 4 构建上复测。不能仅为了数值一致改用不同参考系，除非任务定义允许。",
+        "applicability": "已明确复现于 Ubuntu 22.04、Pinocchio 3.3.0、Go2 FreeFlyer；Pinocchio 4 的修复仍需在目标构建复测。",
+        "bilingual_terms": [
+          "局部世界对齐坐标系（LOCAL_WORLD_ALIGNED）",
+          "解析导数（analytical derivative）",
+          "自动微分（automatic differentiation, AD）",
+          "配置流形（configuration manifold）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.e7febfb8784bf534",
+        "problem_title_zh": "Pinocchio 3.3 的 LOCAL_WORLD_ALIGNED 速度配置导数与 CppAD 不一致时，应如何定位版本和参考系边界？",
+        "question_zh": "Pinocchio 3.3 的 LOCAL_WORLD_ALIGNED 速度配置导数与 CppAD 不一致时，应如何定位版本和参考系边界？",
+        "source_locator": "Issue #2702，项目成员解释 issuecomment-2973723866；维护者版本说明 issuecomment-2992232477",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2702#issuecomment-2992232477",
+        "verification_refs": [
+          {
+            "locator": "维护者说明 LOCAL_WORLD_ALIGNED 导数已在 Pinocchio 4 修复",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2702#issuecomment-2992232477"
+          },
+          {
+            "locator": "项目成员解释 LOCAL 定义与其他参考系额外修正",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2702#issuecomment-2973723866"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2702",
+    "query": "Pinocchio LOCAL_WORLD_ALIGNED velocity derivatives CppAD mismatch Pinocchio 4",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree Go2 浮动基模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "原作者发现 WORLD 或 LOCAL 对照正确。"
+      },
+      {
+        "text": "项目成员解释其他参考系包含自动微分不能直接处理的额外修正。"
+      },
+      {
+        "text": "维护者表示 LOCAL_WORLD_ALIGNED 导数已在 Pinocchio 4 修复。"
+      }
+    ],
+    "wbc_relevance_reason": "解析运动学导数常用于 IK、QP 和轨迹优化；参考系导数错误会直接污染梯度和线性化约束。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2702",
+  "summary": "Pinocchio #2702 提供完整 C++ 复现：在 Ubuntu 22.04、Pinocchio 3.3.0、Go2 浮动基模型上，getJointVelocityDerivatives 的 LOCAL_WORLD_ALIGNED 配置导数与对 integrate 后 getVelocity 做 CppAD 的结果不一致，而速度导数一致；作者进一步发现 WORLD/LOCAL 结果正确。项目成员解释相关操作按 LOCAL 定义，其他参考系包含额外修正，现有自动微分不能直接处理；维护者最终明确表示 LOCAL_WORLD_ALIGNED 导数已在 Pinocchio 4 修复，但线程没有给出具体修复提交或原作者升级复测。",
+  "title": "Pinocchio 3.3 的 LOCAL_WORLD_ALIGNED 速度配置导数与 CppAD 不一致",
+  "version": null
+}

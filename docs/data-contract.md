@@ -17,8 +17,11 @@ Optional fields include authors, publication/version timestamps, publisher, lice
 
 Platform discovery precedes capture and has three non-canonical candidate formats:
 
-- X API candidates: post ID/text, canonical status URL, author, conversation/reply
-  references, media, metrics and all matching WBC scopes. Raw candidates stay in
+- Optional paid X API candidates: post ID/text, canonical status URL, author, conversation/reply
+  references, expanded referenced-Post links/text, Article/note text, media, metrics
+  and all matching WBC scopes. Per-query state can contain an unfinished pagination
+  cursor, its original `since_id`, and the window `newest_id`; the official high-water
+  mark advances only when the window is complete. Raw candidates and state stay in
   ignored `var/`; `X_BEARER_TOKEN` is never serialized.
 - Zhihu API candidates: content ID/type, title, bounded `ContentText` summary,
   author/metrics and canonical answer/article/question URL. They explicitly record
@@ -26,6 +29,16 @@ Platform discovery precedes capture and has three non-canonical candidate format
 - Xiaohongshu review candidates: canonical note URL, query/scope, optional search
   title/snippet, discovery source and human review status. They always record
   `content_collected=false` until separate permitted material is manually supplied.
+- Visible-browser candidates for X/Xiaohongshu/Zhihu: canonical post/answer URL,
+  bounded body text, selected comments, public metadata, image-analysis queue,
+  all matching WBC scopes, page state, and extraction provenance. They record
+  `access_mode=authorized_visible_browser`, `content_collected=true`, and
+  `review_status=pending_analysis`. They also record
+  `collection_completeness.status=partial_visible`, bounded reply count/expansion/depth,
+  and stable original reply links; this is never a claim of all posts or all replies.
+  Login/CAPTCHA/risk/paywall pages become blockers,
+  never fake content candidates. Raw DOM, cookies, credentials, transient navigation
+  parameters, and signed media URLs are not part of this contract.
 
 Discovery candidates are not `SourceRecord` evidence and cannot be indexed as
 engineering guidance. Human/AI analysis produces the capture below.
@@ -35,24 +48,84 @@ engineering guidance. Human/AI analysis produces the capture below.
 time, title, original summary, WBC relevance reason, optional short excerpt,
 public author display, visible attention counters, original media summaries, and a
 small selected-comment set. Xiaohongshu/Zhihu/X tracking and access parameters are
-removed during normalization. The resulting source has `kind=community`,
+removed during normalization. The resulting social source has `kind=community`.
+GitHub captures use `platform=github_issue`, normalize the root to
+`https://github.com/<owner>/<repo>/issues/<number>`, preserve an exact
+`#issuecomment-<id>` answer locator, and produce `kind=issue` with
+`verification_status=issue_candidate`. Both paths use
 `access_mode=public_api`, `manual_import`, or `authorized_visible_browser`, and
 `metadata.review_status=candidate`.
+For `authorized_visible_browser`, the reviewed capture must carry the bounded
+`collection_completeness` object forward. Normalization rejects any claim of
+complete coverage and preserves `status=partial_visible`, visible reply count,
+expansion count, reply depth/limit, and stop reason in the community source and
+the generated engineering Q&A report.
 
 An experience capture also contains structured `engineering_details`: problem,
 environment, symptom, diagnostics, suspected cause, attempted changes, effective
 fixes, outcomes, limits, and safety notes. Unknown elements remain empty; they are
 never inferred merely to complete the form.
 
-Every `engineering_qa` card requires `question_zh`, `answer_status`,
-`source_locator`, and an answer (or an explicit unresolved marker). Normalization
+Every `engineering_qa` card requires `question_zh`, `answer_zh`, `bilingual_terms`, `answer_status`,
+`source_locator`, `problem_id`, `problem_title_zh`, `credibility`, `verification_refs`,
+and an answer (or an explicit unresolved marker). Normalization
 validates the stable `source_url` and injects
-`verification_status=community_candidate`.
+`verification_status=community_candidate` (or `issue_candidate` for GitHub Issues).
+Regardless of whether the source post is Chinese or English, the source title,
+original summary, engineering question, answer, media analysis, and limitations
+are Chinese-first. `question_zh` needs substantive Chinese text and `answer_zh`
+needs at least one complete Chinese explanation. `bilingual_terms` contains one to
+twelve canonical strings in `中文（English, ABBR）` form, for example
+`全身控制（Whole-Body Control, WBC）`. Product names, code identifiers, CLI flags,
+and mathematical symbols keep their original spelling; they do not replace the
+Chinese explanation.
 Therefore every rendered problem and candidate answer has a clickable original
 post citation. X answers may cite the exact reply URL instead of the thread root.
-A card without an original URL is invalid output.
+A card without an original URL is invalid output. The report repeats the source-level
+environment, symptom, diagnosis/cause, attempted/effective treatment, outcome,
+limits, safety notes, and available Chinese image analysis beside each problem so
+the engineering context is not separated from its citation.
 
-Raw API/manual captures belong under ignored `var/`; only normalized metadata,
+`problem_id` is stable and conservative: records merge only when scope, component,
+symptom and environment are consistent. `credibility.computed_grade` is generated by
+rules and `credibility.final_grade` is the reviewed visible grade. Both are one of
+`可信度很高 / 值得参考 / 需要实际验证`; no numeric score is used. The object also stores a
+Chinese rationale and `basis.source_basis`, `basis.reproduction`,
+`basis.applicability`, independent source IDs, conflict state, and image-analysis
+state. If final and computed grades differ, `override_rationale_zh` is mandatory.
+An experience cannot be upgraded to `可信度很高` without exact formal verification or
+independent reproduction, and cannot be upgraded while conflict, unknown applicability,
+or required-but-unverified visual evidence remains.
+
+`verification_refs` contains exact paper/document/source/PR/Issue/reproduction
+locators. Each entry has one `relation`, one precise `locator`, and exactly one of a
+repository `source_id` or an absolute `source_url`. Likes, views, saves, and author
+audience never enter this calculation. Problem-level grades are computed only when
+rendering groups of experience cards and never create or modify `EngineeringClaim`.
+
+### Minimal social candidate inventory
+
+`data/social-candidate-index.json` is a committed, minimal catalogue of every unique
+social/Issue candidate. Each record stores only `candidate_id`, canonical URL, title,
+platform, scope IDs, discovering queries, first/last seen time, related problem IDs,
+and `triage_status`. It must not contain bodies, complete comments, cookies,
+credentials, raw DOM, or transient media URLs.
+
+`triage_status` is exactly `reviewed`, `technical_pending`, or `excluded`. Uncertain
+technical candidates default to `technical_pending`; exclusions require a Chinese
+reason. Reviewed cards appear in the main engineering handbook, pending candidates
+appear with original links in `content/social-engineering-pending/`, and exclusions
+remain auditable in the JSON with their reasons. See
+`docs/social-credibility-and-inventory.md` for aggregation and display invariants.
+
+Raw cross-run identity and scheduling state is not a `SourceRecord`. Query signatures,
+canonical URL history, zero-yield backoff, the machine-readable dynamic frontier,
+GitHub pagination, and incomplete page cursors stay under ignored `var/social-state/`.
+The generated `content/social-query-frontier.md` exposes all deduplicated topics and
+all root evidence links without a display cap. Their schema and recovery invariants
+are defined in `docs/social-discovery-evolution.md`.
+
+Raw API/browser/manual captures belong under ignored `var/`; only normalized metadata,
 original summaries, short necessary excerpts, and stable citations belong in
 `data/sources/`.
 

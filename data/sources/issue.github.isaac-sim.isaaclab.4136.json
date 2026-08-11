@@ -1,0 +1,109 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "issue reporter"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/4136",
+  "captured_at": "2026-08-10T22:15:00+08:00",
+  "content_sha256": "e9e1e1b746cf03b8e1448403847e9b4a2319cf2eb93dd0fcf8eee096a9d8c3cb",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "components": [
+      "Isaac Lab",
+      "ImplicitDrive",
+      "ArticulationView"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者尝试 actuation forces 和 incoming joint force 接口。"
+      ],
+      "diagnostics": [
+        "先明确需要的是净关节力矩、关节反力还是 drive-only PD 力矩。"
+      ],
+      "effective_fixes": [
+        "需要净关节力矩时启用 DOF force sensors，并读取 measured joint forces。"
+      ],
+      "environments": [
+        "Isaac Sim/Isaac Lab、Humanoid、ImplicitDrive、关节力传感器。"
+      ],
+      "limits": [
+        "净关节力矩不能直接替代内部 PD 输出用于精确控制器分解。"
+      ],
+      "outcomes": [
+        "纯 PD 输出仍没有独立公开 API；只能获取包含约束影响的净测量量。"
+      ],
+      "problem_statements": [
+        "get_dof_actuation_forces 始终为零，无法得到 ImplicitDrive 的纯 PD 输出。"
+      ],
+      "safety_notes": [
+        "执行器保护逻辑必须标清使用的是命令、估计还是测量净力矩。"
+      ],
+      "suspected_causes": [
+        "接口语义不同：get_dof_actuation_forces 不代表内部 ImplicitDrive 输出。"
+      ],
+      "symptoms": [
+        "反力可读取，但与期望的驱动器内部输出不是同一物理量。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "如果需要每步净关节力矩，应启用关节力传感器并读取 measured joint forces；维护者同时说明，当前 API 不提供把纯 ImplicitDrive PD 输出从接触和其他约束项中单独分离的量，因此日志字段必须明确其物理语义。",
+        "applicability": "适用于该 Issue 对应的 Isaac Sim/Isaac Lab 接口；API 版本更新后需复核。",
+        "bilingual_terms": [
+          "比例微分控制（Proportional-Derivative Control, PD）",
+          "关节力矩（Joint Torque）",
+          "力传感器（Force Sensor）"
+        ],
+        "question_zh": "Isaac Lab 中怎样读取 ImplicitDrive 实际产生的关节力矩？",
+        "source_locator": "维护者回复 @RandomOakForest",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/4136#issuecomment-3619337205",
+        "verification_status": "issue_candidate",
+        "problem_id": "problem.hardware_actuator_thermal_power.2d11e2e56733ba5a",
+        "problem_title_zh": "Isaac Lab 中怎样读取 ImplicitDrive 实际产生的关节力矩？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.4136",
+    "query": "IsaacLab ImplicitDrive actual actuator torque",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "humanoid"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [],
+    "wbc_relevance_reason": "力矩日志的物理含义直接影响执行器限幅、热模型、WBC 诊断和仿真实机对齐。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.4136",
+  "summary": "用户需要区分驱动器内部 PD 输出、关节反力和最终净关节力矩。维护者回复指出可启用关节力传感器读取净关节力矩，但当前接口不能把纯 ImplicitDrive PD 力矩从其他约束项中单独分离。",
+  "title": "Isaac Lab 无法直接读取 ImplicitDrive 的纯 PD 输出力矩",
+  "version": null
+}

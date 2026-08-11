@@ -1,0 +1,134 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GiulioRomualdi"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3088",
+  "captured_at": "2026-08-11T01:00:00+08:00",
+  "content_sha256": "25c17ccccbfd01e13bb0278c9b919368e46c29fcc064a4d35a0a1e25872c6db1",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取公开 Issue 正文和搜索索引中的作者后续分析，并逐行核对关联 PR #3864 的描述、测试清单、合并状态与提交；没有把 Issue 的 Open 状态误写为已关闭。",
+    "components": [
+      "Isaac Lab",
+      "ImuCfg",
+      "UsdPhysics.RigidBodyAPI",
+      "Xform",
+      "PhysX"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者自行修改 IMU 以支持 Xform；后续官方 PR #3864 基于相关工作实现自动寻找可用父刚体，并增加测试。"
+      ],
+      "diagnostics": [
+        "检查目标 prim 是否拥有 UsdPhysics.RigidBodyAPI；沿 imu.py 的 create_rigid_body_view、get_transforms、get_velocities 和 get_coms 调用确认数据来自 PhysX 刚体缓冲。"
+      ],
+      "effective_fixes": [
+        "使用包含已合并 PR #3864 的版本，使 IMU 可指向 Xform 并自动发现可用父刚体；旧版环境不能假定任意 Xform 都可直接创建 rigid body view。"
+      ],
+      "environments": [
+        "Isaac Lab v2.1.1；Isaac Sim 4.5.0；ergoCub；目标 prim=/ergoCub/root_link/torso_1/waist_imu_0；原始实现提交 77a6498。"
+      ],
+      "limits": [
+        "原 Issue 页面当前仍显示 Open；修复是否存在于某个具体发行版需按目标安装版本核对，不能只看 main 的合并日期。"
+      ],
+      "outcomes": [
+        "PR #3864 于 2025-12-10 合并到 isaac-sim/IsaacLab main，PR 描述明确对应 #3088，并勾选已添加证明修复有效的测试。"
+      ],
+      "problem_statements": [
+        "IMU 的目标 prim 只是一个带有效 transform 的 Xform、没有 RigidBodyAPI 时，为什么 Isaac Lab 初始化失败？"
+      ],
+      "safety_notes": [
+        "更换 IMU 参考 prim 或升级实现后，应核对输出参考系、偏置和安装外参，再用于闭环 WBC。"
+      ],
+      "suspected_causes": [
+        "旧版 IMU 实现只能从 PhysX 为刚体维护的位姿、速度和质心缓冲读取数据，普通 Xform 没有这些刚体数据。"
+      ],
+      "symptoms": [
+        "ImuCfg 初始化抛出 RuntimeError: Failed to find a RigidBodyAPI for the prim paths。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "在原帖的 Isaac Lab v2.1.1/Isaac Sim 4.5.0 环境中，IMU 通过 create_rigid_body_view 读取 PhysX 刚体的位姿、速度和质心缓冲，所以目标 prim 必须具有 RigidBodyAPI；仅有 transform 的 Xform 会初始化失败。后续已合并的 PR #3864 增加了 Xform 挂载和可用父刚体自动发现，并带测试。实际处理应先判断安装版本是否包含该 PR：包含时使用新行为；不包含时必须把目标对准可用刚体或评估回移该修复，不能把新版能力假定为旧版已有。",
+        "applicability": "旧行为明确对应 Isaac Lab v2.1.1/Isaac Sim 4.5.0；新行为对应包含 2025-12-10 合并 PR #3864 的代码版本。",
+        "bilingual_terms": [
+          "惯性测量单元（IMU）",
+          "刚体 API（RigidBodyAPI）",
+          "变换节点（Xform prim）",
+          "父刚体自动发现（automatic parent-body discovery）",
+          "物理缓冲（PhysX buffers）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.state_estimation_calibration.df5def3ff483287d",
+        "problem_title_zh": "Isaac Lab 的 IMU 指向普通 Xform 时提示缺少 RigidBodyAPI，原因和版本化处理方式是什么？",
+        "question_zh": "Isaac Lab 的 IMU 指向普通 Xform 时提示缺少 RigidBodyAPI，原因和版本化处理方式是什么？",
+        "source_locator": "Issue #3088 的环境、报错与作者代码分析；已合并 PR #3864",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3088",
+        "verification_refs": [
+          {
+            "locator": "PR 描述明确实现 Xform IMU 挂载与可用父刚体自动发现，对应 #3088；2025-12-10 合并到 main，并包含测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3864"
+          },
+          {
+            "locator": "PR #3864 合并提交 df2c5c3",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/df2c5c3"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖包含目标 prim 的界面截图，但根因与修复结论均可由文字报错、源码调用链和已合并 PR 独立支撑；未从截图推断额外信息。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3088",
+    "query": "IsaacLab IMU Xform RigidBodyAPI target prim automatic parent discovery",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "ergoCub"
+    ],
+    "schema_version": 2,
+    "scope_id": "state_estimation_calibration",
+    "selected_comments": [
+      {
+        "text": "提问者核对实现后说明：旧版 IMU 直接使用 PhysX 刚体缓冲，因此普通 Xform 缺少所需物理数据。"
+      },
+      {
+        "text": "PR #3864 实现 Xform IMU 挂载及可用父刚体自动发现，加入测试并已合并。"
+      }
+    ],
+    "wbc_relevance_reason": "IMU 挂载点与刚体参考系决定基座姿态、角速度和线加速度观测；错误挂载会让状态估计接口在初始化阶段直接失败。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3088",
+  "summary": "在 Isaac Lab v2.1.1、Isaac Sim 4.5.0 中，提问者把 ImuCfg 指向 ergoCub 的 waist_imu_0 普通 Xform，触发找不到 RigidBodyAPI。提问者继续核对实现后指出：旧版 IMU 通过 create_rigid_body_view 读取 PhysX 的位姿、速度和质心缓冲，因此目标必须是刚体。关联 PR #3864 后来实现把 IMU 挂到 Xform 并自动发现可用父刚体，加入测试，于 2025-12-10 合并进 main。",
+  "title": "旧版 Isaac Lab 的 IMU 不能直接挂在普通 Xform，后续已合并自动父刚体发现",
+  "version": null
+}

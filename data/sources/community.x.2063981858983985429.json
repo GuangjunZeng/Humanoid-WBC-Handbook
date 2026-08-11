@@ -1,0 +1,138 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "clankr @clankrmedia"
+  ],
+  "canonical_url": "https://x.com/clankrmedia/status/2063981858983985429",
+  "captured_at": "2026-08-10T20:16:13+08:00",
+  "content_sha256": "f26fc70512ba236cfb16c70804845373a7c3658510a53c578edb2cb761291fcc",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 2
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "SUGAR",
+      "simulation-validated state pool",
+      "Unitree G1",
+      "motion retargeting"
+    ],
+    "domain_hints": [
+      "training_data_retargeting"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "从仿真验证状态池抽取训练种子，推理时丢弃视频参考。"
+      ],
+      "diagnostics": [
+        "识别物理损坏帧，并测试不同视频数量下成功率。"
+      ],
+      "effective_fixes": [
+        "避免从物理损坏帧 reset 是帖子给出的关键处理。"
+      ],
+      "environments": [
+        "每任务约 100 个视频；仿真验证状态池；G1 状态策略。"
+      ],
+      "limits": [
+        "仍依赖 motion capture、state-based policy，且技能粗糙；具体数字需论文核对。"
+      ],
+      "outcomes": [
+        "帖子称 20→50→100 视频时成功率逐步上升，并在 G1 上零样本运行。"
+      ],
+      "problem_statements": [
+        "人类视频含姿态漂移、猜测接触和物理不可能初始状态。"
+      ],
+      "safety_notes": [
+        "视频动作上实机前必须过滤穿透、错误接触、关节限位和恢复失败。"
+      ],
+      "suspected_causes": [
+        "视频只提供粗运动，不包含可靠机器人接触和动力学。"
+      ],
+      "symptoms": [
+        "直接重放会出现穿透、错误接触和不稳定 reset。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "帖子称不从物理损坏帧 reset，而是从持续扩大的 simulation-validated state pool 取种子；视频只作为粗草稿，推理阶段不再重放。该方法仍依赖动捕和状态输入，需论文/代码验证。",
+        "applicability": "适用于从人类视频构造 G1 操作技能训练数据。",
+        "bilingual_terms": [
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "动作重定向（Motion Retargeting）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "人类视频里存在穿模和错误接触时，SUGAR 如何避免把坏状态直接用于训练？",
+        "source_locator": "根帖细节段落",
+        "source_url": "https://x.com/clankrmedia/status/2063981858983985429",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.training_instability.d1beb94863815e31",
+        "problem_title_zh": "人类视频里存在穿模和错误接触时，SUGAR 如何避免把坏状态直接用于训练？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "截图是 SUGAR 方法文字说明，未展示 reset 状态池、成功率曲线或失败恢复画面。"
+    ],
+    "platform": "x",
+    "post_id": "2063981858983985429",
+    "published_display": "2026-06-08T13:49:56.000Z",
+    "query": "human video retargeting contact drift physical infeasibility",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_instability",
+    "selected_comments": [
+      {
+        "author_display": "clankr\n@clankrmedia\n·\n6月8日",
+        "published_display": "2026-06-08T13:50:27.000Z",
+        "text": "Github Page: \nhttps://\ntianshuwu.github.io/sugar-humanoid/"
+      },
+      {
+        "author_display": "Phil Shaw | Auki Labs\n@PhilHKG\n·\n6月9日",
+        "published_display": "2026-06-09T00:26:19.000Z",
+        "text": "How much of the stack were you able to run directly on the G1?"
+      }
+    ],
+    "wbc_relevance_reason": "训练初始状态、接触可行性和失败恢复直接影响 G1 whole-body policy 稳定性。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2063981858983985429",
+  "summary": "帖子总结 SUGAR 的数据处理观点：人类视频中的姿势会漂移、接触是估计的，甚至出现手穿物体等物理不可能帧。训练不从损坏帧重置，而从不断扩大的仿真验证状态池取种子；每任务约 100 个视频，帖子称在 G1 上可零样本运行并从失败/推挤中恢复。限制是现实姿势仍来自动捕、策略为状态输入且技能粗糙。",
+  "title": "SUGAR：把物理错误的人类视频当粗草稿而非直接参考",
+  "version": null
+}

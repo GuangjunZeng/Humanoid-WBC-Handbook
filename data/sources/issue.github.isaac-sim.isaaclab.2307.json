@@ -1,0 +1,179 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "VoytekK"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2307",
+  "captured_at": "2026-08-11T02:20:00+08:00",
+  "content_sha256": "a0c7aec15e0eaf9c6024caf38711437bd70badb0f8abc76b716d7788a11a4887",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 4 条评论；把已确认单位问题和未回答的施力超限拆成不同状态，未把关闭动作当作修复证据。",
+    "components": [
+      "Isaac Lab",
+      "Isaac Sim",
+      "RigidBodyPropertiesCfg",
+      "DCMotor",
+      "max_angular_velocity"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者把 DCMotor 输出裁为非负并清零摩擦/阻尼；之后自查单位并把剩余超限问题交给维护者。"
+      ],
+      "diagnostics": [
+        "先核对 max_angular_velocity 的单位和数量级，而不是只检查 DCMotor 的 velocity_limit/velocity_limit_sim。",
+        "把单位误配导致的回落与施力时超限行为分开记录。"
+      ],
+      "effective_fixes": [
+        "对已确认的单位问题，按度/秒解释 max_angular_velocity，并把目标物理上限换算后配置。"
+      ],
+      "environments": [
+        "Isaac Lab commit 09590912792d4421c84f053c5c13c31391bb5c30；Isaac Sim 4.5.0-rc.36；Windows 11 Pro 23H2；RTX 4060 Laptop；CUDA Toolkit 11.8。"
+      ],
+      "limits": [
+        "原帖没有给出更正后的具体 max_angular_velocity 数值或复测曲线。",
+        "不能把 Issue 关闭等同于施力时超限已修复。"
+      ],
+      "outcomes": [
+        "作者承认错误数值是自身配置问题；维护者未回答施力时超限的剩余问题，Issue 后来关闭。"
+      ],
+      "problem_statements": [
+        "为什么无摩擦飞轮在正力矩衰减时看似减速？",
+        "为什么施加力矩时角速度可超过 max_angular_velocity，撤去力矩后才遵守上限？"
+      ],
+      "safety_notes": [
+        "将仿真限速误当成 rad/s 可能让执行器约束与实机上限相差约 57.3 倍；部署前应统一单位并做独立限速测试。"
+      ],
+      "suspected_causes": [
+        "作者确认 max_angular_velocity=100 按度制解释，对该飞轮测试过低。",
+        "施力期间超限的内部原因在原线程未确定。"
+      ],
+      "symptoms": [
+        "所有显式摩擦和 damping 为 0、DCMotor 力矩被裁成非负，但飞轮在力矩下降阶段速度下降。",
+        "角速度施加力矩时超过 max_angular_velocity，滑行时才降到配置值。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖作者自行确认，max_angular_velocity=100 在这里按度/秒解释，不是他按 Isaac Sim 其他量习惯所假定的弧度/秒。该值对测试过低，飞轮撤去驱动力后会降到这个上限。因此排查顺序应先把目标角速度从 rad/s 与 deg/s 明确换算，再看摩擦、阻尼或电机模型。原帖没有给更正后的具体数值和曲线，所以本卡只保留单位结论。",
+        "applicability": "对应 Isaac Sim 4.5.0-rc.36 / Isaac Lab 指定 commit 的 RigidBodyPropertiesCfg；其他版本应查本地 schema/documentation。",
+        "bilingual_terms": [
+          "最大角速度（maximum angular velocity）",
+          "度每秒（degrees per second）",
+          "弧度每秒（radians per second）",
+          "直流电机模型（DCMotor model）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.simulation_toolchain.isaac_flywheel_angular_limit_2307",
+        "problem_title_zh": "Isaac Sim 飞轮角速度上限表现异常",
+        "question_zh": "Isaac Sim 无摩擦飞轮出现非预期减速时，max_angular_velocity 的单位陷阱是什么？",
+        "source_locator": "Issue #2307，作者自查 issuecomment-2832847910",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2307#issuecomment-2832847910",
+        "verification_refs": [
+          {
+            "locator": "作者确认 max_angular_velocity 使用度制且原值过低",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2307#issuecomment-2832847910"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "没有。作者在修正单位认识后仍明确保留这一问题，维护者只回复正在调查 Isaac Lab 的实现，随后没有给原因、补丁或验证结果就关闭了 Issue。因此该行为必须继续标为未解决，不能用“Issue 已关闭”推断成已修复。",
+        "applicability": "只说明指定 Isaac Sim/Isaac Lab 环境中的未解释行为；其他版本需最小复现。",
+        "bilingual_terms": [
+          "速度上限（velocity limit）",
+          "施加力矩（applied torque）",
+          "滑行（coasting）",
+          "待解释行为（behavior pending explanation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.simulation_toolchain.isaac_flywheel_angular_limit_2307",
+        "problem_title_zh": "Isaac Sim 飞轮角速度上限表现异常",
+        "question_zh": "该线程是否解释了为何施加力矩时速度超过 max_angular_velocity、撤去力矩后才遵守上限？",
+        "source_locator": "Issue #2307，剩余问题 issuecomment-2832847910；维护者调查回复 issuecomment-2838861298；关闭回复 issuecomment-2932416524",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2307#issuecomment-2838861298",
+        "verification_refs": [
+          {
+            "locator": "维护者仅表示正在调查施力时超过 max_angular_velocity 的行为",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2307#issuecomment-2838861298"
+          },
+          {
+            "locator": "Issue 后来关闭但没有原因、补丁或验证结果",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2307#issuecomment-2932416524"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖曲线由作者在正文逐图说明：力矩约 100 ms 后下降，速度同期下降，约 170 ms 力矩为零后速度稳定；本卡不从未做像素级读取的图片补充数值，单位结论来自作者后续文字自查。"
+    ],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2307",
+    "query": "Isaac Lab max_angular_velocity degrees radians flywheel DCMotor",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "自定义无摩擦飞轮执行器测试"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "作者确认 max_angular_velocity 使用度制，原值过低，并保留施力时超限问题。"
+      },
+      {
+        "text": "维护者仅表示正在调查施力时为何超过上限。"
+      },
+      {
+        "text": "维护者随后关闭 Issue，但没有给出超限解释。"
+      }
+    ],
+    "wbc_relevance_reason": "仿真器角速度上限的单位误配会伪装成电机、摩擦或阻尼问题；未解释的超限行为也会影响执行器约束与 sim-to-real 判断。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2307",
+  "summary": "IsaacLab #2307 最初报告无摩擦飞轮在 DCMotor 只输出正力矩时仍减速。作者随后自查发现一项已确认原因：RigidBodyPropertiesCfg 的 max_angular_velocity=100 使用度制，而 Isaac Sim 中多数其他量使用弧度制，因此 100 对该测试过低，飞轮滑行时会降到该值。作者同时保留了另一项未解决行为：施加力矩期间速度能超过配置上限，撤去力矩后才回到/遵守该上限；维护者只表示正在调查，之后关闭 Issue，没有给出解释或修复。两项在手册中分别标记。",
+  "title": "Isaac Sim 的 max_angular_velocity 单位与常见弧度量不一致，且力矩下超限仍未解释",
+  "version": null
+}

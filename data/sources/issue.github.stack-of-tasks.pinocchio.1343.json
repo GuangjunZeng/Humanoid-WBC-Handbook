@@ -1,0 +1,131 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "GitHub Issue 作者"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1343",
+  "captured_at": "2026-08-11T03:16:00+08:00",
+  "content_sha256": "a846fd676ddccb10678a9a4c4ae1cf94ef319a0a6bd2fc8876a9159b9c6cdecf",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 2 条回复；只保留项目贡献者明确给出的 TSID 路径，没有自行补写 TSID 配置或把 RNEA 能力作过度否定。",
+    "components": [
+      "Pinocchio",
+      "RNEA",
+      "TSID",
+      "floating base",
+      "underactuated inverse dynamics"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目贡献者建议转用基于 Pinocchio 的 TSID，并指出其提供 Python bindings。"
+      ],
+      "diagnostics": [
+        "先确认需求是给定 q、v、a 的 RNEA 广义力计算，还是包含接触与任务约束的欠驱动逆动力学控制问题。"
+      ],
+      "effective_fixes": [
+        "对于原帖所述浮动基欠驱动逆动力学需求，采用 TSID 处理，而不是把 RNEA 输出直接当作执行器命令。"
+      ],
+      "environments": [
+        "Pinocchio rnea 与浮动基欠驱动系统；原帖未说明版本、接触模型和机器人。"
+      ],
+      "limits": [
+        "线程没有给出 TSID 任务、接触、约束或权重配置。",
+        "不能从这两条回复推断 Pinocchio 所有约束动力学能力，也不能把 TSID 写成无需建模即可工作的通用修复。"
+      ],
+      "outcomes": [
+        "项目贡献者将问题标记为已解决；原作者没有报告实际配置或运行结果。"
+      ],
+      "problem_statements": [
+        "输入数少于状态数的 floating-base 腿式机器人如何求逆动力学？"
+      ],
+      "safety_notes": [
+        "真机使用前需单独验证执行器选择矩阵、接触约束、力矩限幅和浮动基动力学残差。"
+      ],
+      "suspected_causes": [
+        "提问把 RNEA 的广义力输出与欠驱动系统的执行器输入直接对应。"
+      ],
+      "symptoms": [
+        "rnea 返回与系统广义速度维数对应的力向量，而实际执行器输入少于系统状态/自由度。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "在原线程中，Pinocchio 项目贡献者明确建议使用 TSID（Task Space Inverse Dynamics），说明它实现了所请求的功能、提供 Python bindings，并基于 Pinocchio；随后将 Issue 判为解决。能直接沉淀的结论只有这条项目路径：不要把 RNEA 的全广义力输出直接等同于欠驱动执行器命令。线程没有提供 TSID 的接触、任务、权重或力矩限幅配置，落地仍需按目标机器人补齐并验证。",
+        "applicability": "适用于原帖所述输入少于系统状态/自由度的浮动基腿式逆动力学需求；具体 TSID 配置未提供。",
+        "bilingual_terms": [
+          "递归牛顿-欧拉算法（Recursive Newton-Euler Algorithm, RNEA）",
+          "任务空间逆动力学（Task Space Inverse Dynamics, TSID）",
+          "浮动基（floating base）",
+          "欠驱动系统（underactuated system）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.pinocchio_underactuated_inverse_dynamics_tsid_1343",
+        "problem_title_zh": "Pinocchio 浮动基欠驱动逆动力学的 TSID 路径",
+        "question_zh": "Pinocchio RNEA 返回全广义力时，腿式浮动基欠驱动逆动力学应如何处理？",
+        "source_locator": "Pinocchio #1343，TSID 建议 issuecomment-730571974；项目贡献者关闭 issuecomment-730576108",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1343#issuecomment-730571974",
+        "verification_refs": [
+          {
+            "locator": "Pinocchio 项目贡献者明确建议使用 TSID 并说明其功能与 Python bindings",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1343#issuecomment-730571974"
+          },
+          {
+            "locator": "项目贡献者随后将问题判为已解决",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1343#issuecomment-730576108"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1343",
+    "query": "Pinocchio RNEA underactuated floating base inverse dynamics legged robot TSID",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "腿式机器人示例；原帖未说明具体机器人或 Pinocchio/TSID 版本"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "Pinocchio 项目贡献者建议使用 TSID，说明其实现请求功能、提供 Python bindings 并基于 Pinocchio。"
+      },
+      {
+        "text": "项目贡献者随后将该问题判为已解决。"
+      }
+    ],
+    "wbc_relevance_reason": "腿式 WBC 的接触约束、任务与欠驱动浮动基不能仅由一次 RNEA 调用替代；项目方把该类任务导向基于 Pinocchio 的 TSID。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1343",
+  "summary": "Pinocchio #1343 询问 pinocchio.rnea 返回与系统状态维数相同的广义力时，如何处理腿式机器人这类输入少于状态的 floating-base underactuated system。项目贡献者直接建议使用 stack-of-tasks/tsid，说明 TSID（Task Space Inverse Dynamics）实现了所请求特性、有 Python bindings，并基于 Pinocchio；随后将问题判为已解决。线程没有给出具体机器人、接触约束、任务优先级、TSID 配置或用户运行结果。",
+  "title": "浮动基欠驱动逆动力学从 RNEA 转向 TSID",
+  "version": null
+}

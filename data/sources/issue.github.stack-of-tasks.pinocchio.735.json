@@ -1,0 +1,194 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "ShihaoWang"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/735",
+  "captured_at": "2026-08-11T05:22:00+08:00",
+  "content_sha256": "62a5618054e28b18d35c37f9d842bb05a340b297eea4e30795679b733c6aed1d",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 9 条评论；将 nq/nv 流形解释与遗漏 FreeFlyer 拆成两张卡，未把改 continuous 为 revolute 写成无条件通用修复。",
+    "components": [
+      "Pinocchio",
+      "configuration manifold",
+      "continuous joint",
+      "JointModelFreeFlyer",
+      "URDF parser"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者把 HRP2 中相关 joint type 从 continuous 改为 revolute 后重新查看 nq/nv。",
+        "作者按建议在 buildModel 时传入 JointModelFreeFlyer 后重新导入 TALOS。"
+      ],
+      "diagnostics": [
+        "检查模型中的 spherical、FreeFlyer 和 continuous joint 参数化；不能把 nq 直接当作物理自由度数。",
+        "检查 buildModel 调用是否显式传入 JointModelFreeFlyer root_joint。"
+      ],
+      "effective_fixes": [
+        "对配置采样、积分和差分使用 randomConfiguration、integrate 和 difference/differentiate 等流形接口，不直接 q+=v 或 q1-q0。",
+        "需要浮动基时显式调用带 JointModelFreeFlyer root_joint 的 buildModel 重载。"
+      ],
+      "environments": [
+        "2019 年 Pinocchio C++/Python；HRP2、ATLAS、TALOS URDF；具体软件版本未说明。"
+      ],
+      "limits": [
+        "continuous 与 revolute 具有不同的角度边界语义，不能仅为让维度相等而在实际模型中盲目替换。",
+        "q[0:3] 与 q[3:7] 的 base translation/quaternion 排列只适用于已显式加入 FreeFlyer 的模型。",
+        "线程基于 2019 年接口；当前版本函数命名和 overload 应另行核对。"
+      ],
+      "outcomes": [
+        "作者把 continuous 改为 revolute 后报告 HRP2 的 nq/nv 符合其预期。",
+        "作者加入 FreeFlyer 后得到 TALOS model.nq=39、model.nv=38，与维护者预期一致。"
+      ],
+      "problem_statements": [
+        "为什么 Pinocchio 的 model.nq 与 model.nv 可以不同，HRP2 又为什么出现 nq=60、nv=30？",
+        "为什么直接从 humanoid URDF 构建的模型没有基座位姿自由度？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "四元数以 4 个配置分量表示 3 维角速度，continuous joint 也使用 nq 与 nv 不同的流形参数化。",
+        "URDF 本身不包含浮动基 joint，直接 buildModel 会把 base 固定到 universe。"
+      ],
+      "symptoms": [
+        "HRP2 导入后 model.nq=60、model.nv=30，配置维度看似是速度维度两倍。",
+        "TALOS 直接 buildModel 后 model.nq=model.nv=32，没有预期的浮动基 7/6 个分量。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者解释 q 是配置向量、v 是配置流形的切向量；四元数用 4 个配置分量表示 3 维角速度，所以一般 nq≥nv，不能用 q+=v 或 q1-q0 代替 integrate/difference。对原帖 HRP2 的异常倍数，维护者指出 URDF 使用了 continuous joint 参数化；作者把相关 joint type 改为 revolute 后确认 nq/nv 符合预期。但 continuous 与 revolute 的边界语义不同，工程上应先确认模型意图，不能只为对齐维度而改类型。",
+        "applicability": "适用于原帖 2019 年 Pinocchio 和 HRP2/ATLAS/TALOS URDF；具体 joint 的 nq/nv 应从当前模型逐项确认。",
+        "bilingual_terms": [
+          "配置流形（configuration manifold）",
+          "切向量（tangent vector）",
+          "连续关节（continuous joint）",
+          "四元数（quaternion）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_nq_nv_manifold_735",
+        "problem_title_zh": "Pinocchio 配置维度 nq 与速度维度 nv 不相等",
+        "question_zh": "Pinocchio 中为什么 model.nq 可以大于 model.nv，HRP2 的 nq=60、nv=30 应从哪里检查？",
+        "source_locator": "Issue #735，流形解释 issuecomment-472342263；continuous 诊断 issuecomment-472343366；作者复测 issuecomment-472506592",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472506592",
+        "verification_refs": [
+          {
+            "locator": "维护者解释 quaternion 导致 nq 与 nv 不同，并要求使用流形 integrate/differentiate",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472342263"
+          },
+          {
+            "locator": "维护者指出原 HRP2 使用 continuous joint representation",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472343366"
+          },
+          {
+            "locator": "原作者修改 joint type 后确认 nq/nv 变化符合解释",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472506592"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "项目贡献者说明，浮动基不在普通 URDF 中，直接 buildModel(filename, model) 会把 base 固定到 universe，q 中没有 base position/orientation。需要 humanoid 浮动基时，应构造 JointModelFreeFlyer root_joint 并调用带 root_joint 的 buildModel 重载。原作者按此修改后得到 TALOS model.nq=39、model.nv=38；相较固定基的 32/32，配置增加 7、速度增加 6。",
+        "applicability": "适用于原帖 Pinocchio URDF parser 和需要 6-DoF floating base 的 humanoid；固定基任务不应加入该 root joint。",
+        "bilingual_terms": [
+          "自由浮动基（free-flyer base）",
+          "固定基（fixed base）",
+          "机器人描述格式（Unified Robot Description Format, URDF）",
+          "广义配置（generalized configuration）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_urdf_freeflyer_735",
+        "problem_title_zh": "从 URDF 构建 Pinocchio humanoid 模型时遗漏浮动基",
+        "question_zh": "为什么直接 buildModel(filename, model) 得到的 TALOS 没有基座位姿，怎样显式加入 FreeFlyer？",
+        "source_locator": "Issue #735，FreeFlyer 构建说明 issuecomment-472519415；作者复测 issuecomment-472560163",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472560163",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者说明直接 URDF 构建是 fixed-base，并给出 JointModelFreeFlyer 重载",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472519415"
+          },
+          {
+            "locator": "原作者加入 FreeFlyer 后确认 TALOS nq=39、nv=38",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/735#issuecomment-472560163"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.735",
+    "query": "Pinocchio model.nq model.nv continuous joint quaternion FreeFlyer buildModel URDF",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "HRP-2",
+      "ATLAS",
+      "TALOS"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者解释 configuration 与 tangent 维度、quaternion normalization 以及 integrate/differentiate 边界。"
+      },
+      {
+        "text": "维护者指出原 HRP2 的 continuous joint representation。"
+      },
+      {
+        "text": "项目贡献者说明默认 URDF 构建为 fixed-base，并给出 FreeFlyer 调用。"
+      },
+      {
+        "text": "作者加入 FreeFlyer 后确认 TALOS nq=39、nv=38。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 状态、决策变量和 Jacobian 维度经常直接依赖 nq/nv 与浮动基建模；误把配置流形维度当作自由度，或忘记加入 FreeFlyer，会导致整个动力学接口尺寸和基座状态错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.735",
+  "summary": "Pinocchio #735 解释配置向量 q 与切向量 v 的维度不必相等：球关节/FreeFlyer 的四元数用 4 个配置分量表示 3 个旋转自由度，连续关节的参数化也会改变 nq。原作者把 HRP2 URDF 的 continuous 关节改为 revolute 后报告 nq/nv 符合预期。线程同时指出，直接 buildModel(filename, model) 不会自动加入 URDF 中不存在的浮动基，模型会被当作 fixed-base；显式传 JointModelFreeFlyer 后，原作者的 TALOS 从 nq=nv=32 变为 nq=39、nv=38。",
+  "title": "Pinocchio 中 nq 与 nv 不等以及 URDF 默认固定基的两个常见来源",
+  "version": null
+}

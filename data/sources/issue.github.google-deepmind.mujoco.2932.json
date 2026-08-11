@@ -1,0 +1,113 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "Dcyaprogrammer"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/2932",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "b43fb292a81b4c0aa715333a37327c74cea86539d8c1b5e75da907f37c616374",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 公开 Issue 完整最小复现；截至采集时仍 Open，作为问题线索而非修复结论。",
+    "components": [
+      "MuJoCo 3.3.7",
+      "MJX",
+      "JAX",
+      "tendon actuator"
+    ],
+    "domain_hints": [
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "启用 JAX float64。",
+        "测试 Euler/RK4 和 0.005/0.002/0.001 s。",
+        "替换执行器/传动。",
+        "把 freejoint 根改为 weld。"
+      ],
+      "diagnostics": [
+        "同一 XML/初始状态并排运行 MJX 与 native MuJoCo。",
+        "分别检查 forward 与 step 后的 qpos/qvel。",
+        "对精度、积分器、步长、执行器、传动和固定基做消融。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "macOS darwin 24.3.0；Python 3.12；MuJoCo 3.3.7；bundled MJX；JAX CPU build。"
+      ],
+      "limits": [
+        "尚无维护者根因和修复；最小模型包含 tendon/约束组合，不能推断所有 MJX 腿式模型都会失败。"
+      ],
+      "outcomes": [
+        "所有消融仍在 MJX 首步 NaN，而 native MuJoCo 稳定；Issue 仍 Open。"
+      ],
+      "problem_statements": [
+        "相同模型在原生 MuJoCo 稳定、MJX 第一步 NaN，如何建立差分复现？"
+      ],
+      "safety_notes": [
+        "任何包含 NaN 的 policy/状态必须在进入执行器接口前被 watchdog 拦截。"
+      ],
+      "suspected_causes": [
+        "MJX 对该约束/传动组合的数值实现或支持差异；具体根因尚未由维护者确认。"
+      ],
+      "symptoms": [
+        "mjx.forward 无 NaN；第一次 mjx.step 的 qpos/qvel 出现 NaN；原生 mj_step 连续 5 步稳定。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "用同一 XML、同一 qpos/qvel/ctrl 初值并排运行 mjx.forward→mjx.step 与 mj_forward→mj_step，逐步打印 NaN；再对 float64、积分器、timestep、执行器/传动和根关节做单变量消融。如果这些变化都不影响 MJX 首步 NaN、native 仍稳定，就形成后端差异的高质量最小复现，但在维护者定位前不能宣称根因。",
+        "applicability": "MuJoCo 3.3.7/MJX 对应环境及类似约束/传动模型。",
+        "bilingual_terms": [
+          "最小可复现示例（minimal reproducible example）",
+          "差分测试（differential test）",
+          "数值发散（numerical divergence）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": false
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。"
+        },
+        "problem_id": "problem.simulator_physics_numerics.d0d1022c8147bb5b",
+        "problem_title_zh": "MJX 第一步就 NaN，而同一模型在原生 MuJoCo 稳定，应该怎样证明不是普通调参问题？",
+        "question_zh": "MJX 第一步就 NaN，而同一模型在原生 MuJoCo 稳定，应该怎样证明不是普通调参问题？",
+        "source_locator": "Issue #2932 setup、observations、minimal XML 与 reproduction script",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/2932",
+        "verification_refs": [],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.2932",
+    "query": "MJX first step NaN MuJoCo native stable minimal leg",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "最小四足单腿模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulator_physics_numerics",
+    "selected_comments": [],
+    "wbc_relevance_reason": "训练或验证 WBC policy 时，模拟器后端首步数值发散会被误判为奖励、控制器或模型参数问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.2932",
+  "summary": "Issue 在 MuJoCo 3.3.7、Python 3.12、MJX/JAX CPU 环境提供完整最小 XML 与脚本：mjx.forward 正常，但第一次 mjx.step 即产生 qpos/qvel NaN，而原生 MuJoCo 连续步进稳定；float64、Euler/RK4、多个 timestep、执行器/传动消融和固定基都未消除问题。",
+  "title": "MJX 单腿最小模型首步 NaN、原生 MuJoCo 稳定的差分复现",
+  "version": null
+}

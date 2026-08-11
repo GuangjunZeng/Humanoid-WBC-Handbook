@@ -1,0 +1,204 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "kelly-0919"
+  ],
+  "canonical_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42",
+  "captured_at": "2026-08-11T01:20:00+08:00",
+  "content_sha256": "96e0699bbc43c5e607c8654c07048881111a31a6172771707af8ceeb8470bf25",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 6 条评论；所有冲突经验逐条保留，未从多数票或硬件型号推断唯一根因。",
+    "components": [
+      "whole_body_tracking",
+      "Isaac Lab",
+      "Isaac Sim",
+      "rsl-rl",
+      "obs_groups"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "降级 Isaac Lab；切换 Isaac Sim/Lab 组合；按官方 pip 安装文档重装并设置项目 PYTHONPATH；固定 rsl-rl-lib 2.2.0 或 2.3.0。"
+      ],
+      "diagnostics": [
+        "同时记录 Isaac Sim、Isaac Lab、rsl-rl-lib、Python、安装方式和项目提交，不要只记录 Isaac Lab 大版本；分别在 Isaac-Ant-v0 与项目任务上复测。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "原帖：Isaac Sim 5.0.0、Isaac Lab 包显示 0.47.1、Python 3.11；评论涉及 Isaac Lab 2.1.0/2.2.0/2.2.1、Isaac Sim 4.5/5.0、rsl-rl-lib 2.2.0/2.3.0、Ubuntu 22.04、RTX 5070/5070 Ti。"
+      ],
+      "limits": [
+        "Issue 无维护者回复、无锁文件和最小复现仓库；原帖的 0.47.1 与评论中的 2.x 命名也未解释，因此不能据此发布唯一推荐版本。"
+      ],
+      "outcomes": [
+        "不同参与者在不同机器上报告了相互不完全兼容的成功/失败组合；唯一共同结论是必须把整个依赖矩阵一起核验。"
+      ],
+      "problem_statements": [
+        "Tracking-Flat-G1-v0 在 OnPolicyRunner 初始化时出现 KeyError: obs_groups，应更换 Isaac Lab/Sim 还是 rsl-rl 版本？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [],
+      "symptoms": [
+        "rsl_rl/runners/on_policy_runner.py 在访问 self.cfg['obs_groups'] 时抛出 KeyError；某些组合修复后又出现 infos['observations'] 缺少 rnd_state。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "一位用户在 Isaac Sim 5.0 下由 Lab 2.2.1 降到 2.2.0 后成功，并在 5070 Ti 上再次确认；但原提问者使用同一大版本组合仍出现 KeyError，另有用户又报告 Lab 2.2.1/Sim 5.0 可运行。因此这只能作为候选组合，必须同时核对 rsl-rl-lib、安装方式、项目提交和实际任务。",
+        "applicability": "仅适用于评论中列出的 Isaac Sim/Lab、GPU 和安装路径；结论存在同线程反例。",
+        "bilingual_terms": [
+          "观测组（observation groups）",
+          "依赖矩阵（dependency matrix）",
+          "版本回退（version downgrade）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.obs_groups_version_matrix",
+        "problem_title_zh": "whole_body_tracking 出现 obs_groups KeyError 时，版本组合经验为何不能直接照搬？",
+        "question_zh": "把 Isaac Lab 2.2.1 降到 2.2.0、同时保留 Isaac Sim 5.0，能稳定解决 obs_groups KeyError 吗？",
+        "source_locator": "Issue #42 评论 issuecomment-3456264137、3460662935、3467978265、3556476632",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3456264137",
+        "verification_refs": [
+          {
+            "locator": "原提问者报告相同 Lab 2.2.0/Sim 5.0 大版本组合仍失败",
+            "relation": "conflict",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3460662935"
+          },
+          {
+            "locator": "另一用户报告 Lab 2.2.1/Sim 5.0 可运行",
+            "relation": "conflict",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3556476632"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "原提问者报告该组合在绕过 Torch 版本问题后可以运行；但另一用户在 Ubuntu 22.04/RTX 5070 的同一 Sim/Lab 大版本上遇到 GuardOnDataDependentSymNode，无法运行该项目。因此它不是通用解法，只是一个有反例的环境快照。",
+        "applicability": "仅对应原提问者的未完整公布环境；同线程存在 Ubuntu 22.04/RTX 5070 反例。",
+        "bilingual_terms": [
+          "数据依赖符号节点（data-dependent symbolic node）",
+          "版本组合（version combination）",
+          "兼容性（compatibility）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.obs_groups_version_matrix",
+        "problem_title_zh": "whole_body_tracking 出现 obs_groups KeyError 时，版本组合经验为何不能直接照搬？",
+        "question_zh": "改用 Isaac Sim 4.5 与 Isaac Lab 2.1.0 是否是 obs_groups KeyError 的通用解法？",
+        "source_locator": "Issue #42 评论 issuecomment-3460662935 与 3556476632",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3460662935",
+        "verification_refs": [
+          {
+            "locator": "同一 Sim 4.5/Lab 2.1.0 大版本组合出现不同兼容性错误",
+            "relation": "conflict",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3556476632"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "同线程用户报告：固定 rsl-rl-lib 2.2.0 后 obs_groups 错误消失，但出现 rnd_state 缺失；改为 rsl-rl-lib 2.3.0 后两类错误都消失。该结果只来自一位用户，且与其他评论未锁定 rsl-rl 版本的环境不能直接比较，应把 rsl-rl-lib 版本作为独立变量复测。",
+        "applicability": "评论者使用 Isaac Lab 2.2.0、Isaac Sim 5.0.0、Ubuntu 22.04、RTX 5070；没有维护者或第二个独立复现。",
+        "bilingual_terms": [
+          "强化学习观测组（rsl-rl obs_groups）",
+          "随机网络蒸馏状态（rnd_state）",
+          "依赖固定（dependency pinning）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": true,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "来源结论存在未解决冲突。"
+        },
+        "problem_id": "problem.environment_setup_dependencies.obs_groups_version_matrix",
+        "problem_title_zh": "whole_body_tracking 出现 obs_groups KeyError 时，版本组合经验为何不能直接照搬？",
+        "question_zh": "obs_groups KeyError 之后又出现 rnd_state 缺失时，rsl-rl-lib 版本是否应单独核对？",
+        "source_locator": "Issue #42 评论 issuecomment-3779506470",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42#issuecomment-3779506470",
+        "verification_refs": [
+          {
+            "locator": "同线程其他成功/失败组合未记录 rsl-rl-lib 精确版本，无法归并为单一根因",
+            "relation": "conflict",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/42"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "hybridrobotics.whole_body_tracking.42",
+    "query": "whole_body_tracking KeyError obs_groups IsaacLab rsl-rl version",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [
+      {
+        "text": "用户 A：Lab 2.2.1→2.2.0、Sim 5.0 不变后问题解决。"
+      },
+      {
+        "text": "原提问者：相同大版本组合仍失败，改用 Sim 4.5/Lab 2.1.0 后成功。"
+      },
+      {
+        "text": "用户 B：Lab 2.2.1/Sim 5.0 可以运行，而 Sim 4.5/Lab 2.1.0 出现另一 Torch 兼容性错误。"
+      },
+      {
+        "text": "用户 C：rsl-rl-lib 2.2.0 只解决 obs_groups，2.3.0 进一步解决 rnd_state。"
+      }
+    ],
+    "wbc_relevance_reason": "训练栈中的 Isaac Sim、Isaac Lab、rsl-rl 与项目代码存在联合兼容性；单独归因于某一个大版本会造成错误迁移。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.hybridrobotics.whole_body_tracking.42",
+  "summary": "原帖在 Tracking-Flat-G1-v0 训练中遇到 rsl_rl OnPolicyRunner 的 KeyError: obs_groups。评论给出三条不同经验：有人在 Isaac Sim 5.0 下把 Isaac Lab 2.2.1 降为 2.2.0 后成功，原作者同组合仍失败而改用 Sim 4.5/Lab 2.1.0 后成功，另有用户在相同大版本上通过固定 rsl-rl-lib 2.3.0 解决 obs_groups 与后续 rnd_state 错误；也有人报告 Lab 2.2.1/Sim 5.0 可直接运行。线程没有维护者结论且仍为 Open。",
+  "title": "obs_groups KeyError 的版本组合经验互相冲突",
+  "version": null
+}

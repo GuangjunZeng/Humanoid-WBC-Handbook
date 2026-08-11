@@ -1,0 +1,172 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "jacqueszhong"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/138",
+  "captured_at": "2026-08-11T06:11:00+08:00",
+  "content_sha256": "b652725b1c1662347488af77b189a22de2a2a6baaa9fb2633d7344414fdc7cdd",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 2 条评论，并逐文件检查官方 commit 5a6b452 的 patch；未猜测对应 release 版本。",
+    "components": [
+      "TSID",
+      "InverseDynamicsFormulationAccForce",
+      "floating-base dynamics",
+      "Contact6D",
+      "m_eq constraint count"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目协作者复核代码后确认第二点是 bug，并提交修复。"
+      ],
+      "diagnostics": [
+        "区分 floating-base dynamics rows 与 base pose task。",
+        "比较 motionPriorityLevel 与 addRigidContact 内 m_eq 计数条件。"
+      ],
+      "effective_fixes": [
+        "commit 5a6b452 仅在 motionPriorityLevel==0 时执行 m_eq += motionConstr.rows()。"
+      ],
+      "environments": [
+        "2021 年 TSID devel；Issue 引用 commit 0969328 的 inverse-dynamics-formulation-acc-force.cpp；修复 commit 为 5a6b452。"
+      ],
+      "limits": [
+        "线程没有给发布版本号，也没有展示触发 bug 的数值控制结果。",
+        "前 6 行解释适用于该 inverse-dynamics formulation 的变量选择，不等于所有 WBC QP 都应固定使用 6 行。"
+      ],
+      "outcomes": [
+        "维护者确认 bug 已在 devel 修复；官方提交的 patch 与 Issue 描述完全对应。"
+      ],
+      "problem_statements": [
+        "InverseDynamicsFormulationAccForce 初始化时为什么给 m_eq 增加 6 行 hard equalities？",
+        "Contact6D motion task 作为 penalty 时为什么仍增加 m_eq？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "前 6 行是未驱动浮动基动力学；joint torque 不作为决策变量，所以不需要把剩余 joint dynamics 加成同类约束。",
+        "旧代码无条件累加 motionConstr.rows()，没有检查 motionPriorityLevel。"
+      ],
+      "symptoms": [
+        "用户误以为前 6 个等式约束是在 enforce base position。",
+        "soft-priority Contact6D motion task 没有进入 hard equality level，却仍被计入 m_eq。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "不是。项目协作者明确说明，这 6 行用于 enforce floating-base dynamics，而不是 base position。剩余 joint dynamics 不以同样方式加入，是因为该 formulation 没有把 joint torques 作为优化变量。这个解释依赖当前决策变量设计，不能外推为所有 WBC QP 的固定模板。",
+        "applicability": "适用于原帖 2021 年 TSID InverseDynamicsFormulationAccForce 及其不显式优化 joint torque 的变量设计。",
+        "bilingual_terms": [
+          "浮动基动力学（floating-base dynamics）",
+          "硬等式约束（hard equality constraint）",
+          "关节力矩（joint torque）",
+          "决策变量（decision variable）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.tsid_floating_base_six_equalities_138",
+        "problem_title_zh": "TSID 逆动力学 QP 中前六个硬等式的含义",
+        "question_zh": "TSID 的 InverseDynamicsFormulationAccForce 为什么初始化 6 个 hard equality constraints，它们是在固定基座位置吗？",
+        "source_locator": "Issue #138，项目协作者解释 issuecomment-887863758",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/138#issuecomment-887863758",
+        "verification_refs": [
+          {
+            "locator": "项目协作者区分 floating-base dynamics 与 base position，并说明 joint torque 不作为变量",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/138#issuecomment-887863758"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "resolved",
+        "answer_zh": "这是已确认的代码缺陷。项目协作者先表示软化为 penalty 后不应增加 equality count，随后确认已在 devel 修复。官方 commit 5a6b452 的实际补丁把无条件 m_eq += motionConstr.rows() 改为只有 motionPriorityLevel==0 时才增加，因此软优先级 contact motion task 不再被计入硬等式数量。线程没有给出包含该提交的正式 release 版本。",
+        "applicability": "适用于 commit 5a6b452 之前的 TSID InverseDynamicsFormulationAccForce::addRigidContact 计数逻辑；具体 release 需按提交包含关系核对。",
+        "bilingual_terms": [
+          "软接触运动任务（soft contact motion task）",
+          "惩罚项（penalty term）",
+          "约束数量（constraint count）",
+          "运动优先级（motion priority level）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.tsid_soft_contact_meq_bug_138",
+        "problem_title_zh": "TSID 把软接触运动任务错误计入硬等式数量",
+        "question_zh": "Contact6D motion task 作为 penalty 时仍增加 m_eq，是设计行为还是代码缺陷？",
+        "source_locator": "Issue #138，维护者确认 issuecomment-890048340；官方修复 commit 5a6b452",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/138#issuecomment-890048340",
+        "verification_refs": [
+          {
+            "locator": "项目协作者确认第二点是 bug 且已在 devel 修复",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/138#issuecomment-890048340"
+          },
+          {
+            "locator": "官方提交把 m_eq 累加置于 motionPriorityLevel==0 条件内",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/tsid/commit/5a6b452861247b44593cf6041b014edd72c059f8"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.138",
+    "query": "TSID m_eq floating base dynamics soft contact motion constraint bug",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "TSID floating-base contact formulation；具体机器人未说明"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "项目协作者解释前六行是 floating-base dynamics，不是 base position。"
+      },
+      {
+        "text": "项目协作者确认 soft contact 仍增加 m_eq 是 bug，并已在 devel 修复。"
+      }
+    ],
+    "wbc_relevance_reason": "TSID/WBC 的 QP 尺寸必须与真正的硬等式数量一致；混淆浮动基动力学和位姿约束，或把软接触运动 penalty 计入 m_eq，会导致 solver resize 与约束结构错误。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.138",
+  "summary": "TSID #138 询问 InverseDynamicsFormulationAccForce 中 m_eq 的两处计数。项目协作者解释，初始化增加的 6 个 hard equality constraints 用于 floating-base dynamics，而不是锁定 base position；joint dynamics 不需同样加入，是因为 joint torque 并非优化变量。对于 Contact6D motion task 被设置为软优先级后仍增加 m_eq 的问题，协作者确认这是 bug，并在 2021-07-30 的 devel commit 中修复。官方 commit 5a6b452 的补丁把无条件 m_eq += motionConstr.rows() 改为仅 motionPriorityLevel==0 时增加。",
+  "title": "TSID 的 m_eq 六行浮动基动力学与软接触计数缺陷",
+  "version": null
+}

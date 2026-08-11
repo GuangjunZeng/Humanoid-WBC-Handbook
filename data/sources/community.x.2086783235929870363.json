@@ -1,0 +1,132 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "Chenhao Li @breadli428"
+  ],
+  "canonical_url": "https://x.com/breadli428/status/2086783235929870363",
+  "captured_at": "2026-08-10T20:01:04+08:00",
+  "content_sha256": "3f611b5828d62075d5ac86776e57f9852b0720f19f9aab1ef5f7bede5ca05a04",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_growth_after_visible_scroll",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；可见回复 1 条；限制说明尚需论文原文独立核对。",
+    "components": [
+      "model-based reinforcement learning",
+      "simulation prior",
+      "kinematics model",
+      "domain gap"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "以简化的运动学模型作为真实机器人 MBRL 的模型结构。"
+      ],
+      "diagnostics": [
+        "比较有/无 simulation prior 在不同真实数据规模下的收益；明确模型只覆盖 kinematics 还是完整 dynamics。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "真实机器人 MBRL；引用的 loco-manipulation 工作；具体控制频率与硬件配置未在根帖披露。"
+      ],
+      "limits": [
+        "不能从这条短帖推导阈值、数据量或适用于所有人形机器人的结论。"
+      ],
+      "outcomes": [
+        "作者只陈述适用边界，没有在该帖给出新的性能数字。"
+      ],
+      "problem_statements": [
+        "在真实数据充足时，是否仍值得用仿真作为 MBRL 模型先验？"
+      ],
+      "safety_notes": [
+        "若 domain gap 未量化，应先在受限动作、低速和安全区域比较仿真先验与真实数据驱动模型。"
+      ],
+      "suspected_causes": [
+        "仿真与真实系统的 domain gap 超过模型先验可修正范围；为可学习性而简化动力学限制了收益。"
+      ],
+      "symptoms": [
+        "仿真先验的收益随真实数据增加而减小；domain gap 超过方法承受范围后性能提升有限。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "作者给出的限制是收益会变得有限；同时，真实机器人 MBRL 往往依赖简化动力学，或受可处理 domain gap 上限约束。该帖没有给出数据量阈值，因此应把它作为实验设计警告：按真实数据规模做有/无仿真先验的对照，而不是默认先验总有帮助。",
+        "applicability": "适用于评估 real-robot MBRL 是否值得增加仿真先验的项目。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "强化学习（Reinforcement Learning, RL）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "模型式强化学习（Model-Based Reinforcement Learning, MBRL）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "真实数据已经较充足时，simulation prior 对 real-robot MBRL 是否仍有明显收益？",
+        "source_locator": "根帖 Limitations 段落",
+        "source_url": "https://x.com/breadli428/status/2086783235929870363",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.00fb3539f608b903",
+        "problem_title_zh": "真实数据已经较充足时，simulation prior 对 real-robot MBRL 是否仍有明显收益？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "可见截图包含根帖限制说明及被引用工作的走廊视频缩略图，缩略图可见 SIM-MODEL / 1000 Samples 字样；没有成功率、误差曲线或消融表，不能用于量化性能。"
+    ],
+    "platform": "x",
+    "post_id": "2086783235929870363",
+    "published_display": "2026-08-10T11:54:28.000Z",
+    "query": "humanoid sim2real limitations real data domain gap model based RL",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "真实机器人 loco-manipulation（引用工作包含 Spot；根帖未限定人形型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "author_display": "@breadli428",
+        "text": "作者用 Paper 7 标记该限制条目。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC/RL 实机部署选择仿真先验、运动学模型或真实数据时，需要明确 domain gap 与模型复杂度的收益边界。"
+  },
+  "published_at": null,
+  "publisher": "X",
+  "source_id": "community.x.2086783235929870363",
+  "summary": "作者主动总结其 sample-efficient model-based reinforcement learning（MBRL）工作的限制：当真实数据已经充足时，把仿真作为模型先验的边际收益有限；现实机器人 MBRL 常需简化动力学（该工作使用运动学）或只获得有限性能提升，因为方法能够承受的最大 domain gap 有上限。该帖是限制声明，不提供新的量化数据。",
+  "title": "Real-robot MBRL 使用仿真先验的适用边界",
+  "version": null
+}

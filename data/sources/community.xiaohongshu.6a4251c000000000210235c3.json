@@ -1,0 +1,156 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "ROBOT知识观测站"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a4251c000000000210235c3",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "c80f4c53ea662456c07ca8019bb91f29a701c9e09c9f180e64d739e239772861",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 1,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 8
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "MuJoCo",
+      "Isaac Lab",
+      "PhysX",
+      "implicit PD",
+      "DC motor"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "正文做机制对比；评论建议切换 Isaac Lab 的显式/延迟电机模型。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "MuJoCo 与 Isaac Lab/PhysX 位置/PD 控制。"
+      ],
+      "limits": [
+        "框图和结论高度简化；需对照具体 actuator/solver 配置与官方文档。"
+      ],
+      "outcomes": [
+        "形成检查假设，没有给同模型定量 A/B 结果。"
+      ],
+      "problem_statements": [
+        "为什么同一组 PD 增益在 MuJoCo 和 Isaac Lab 表现差很多？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "PD 是否在 actuator 层显式生成力矩，还是与动力学约束在 solver 内联合求解。"
+      ],
+      "symptoms": [
+        "相同目标位置和 kp/kd 在两个仿真器中可能产生不同稳定性与 Sim2Real gap。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "conflicting",
+        "answer_zh": "先核对两端 actuator 语义：是否显式算 torque、是否使用 solver 内隐式 PD、力矩限幅和 delay model 是否一致。评论指出 Isaac Lab 可换 DC/delay motor，因此不能把差异一概归因于平台；应在相同时间步、限幅和关节模型下做 A/B。",
+        "applicability": "框图和结论高度简化；需对照具体 actuator/solver 配置与官方文档。",
+        "bilingual_terms": [
+          "仿真到现实（Simulation-to-Real, Sim2Real）",
+          "比例-微分控制（Proportional-Derivative Control, PD Control）",
+          "执行器（Actuator）",
+          "关节力矩（Joint Torque）",
+          "端到端时延（End-to-End Latency）",
+          "求解器（Solver）"
+        ],
+        "question_zh": "为什么同一组 PD 增益在 MuJoCo 和 Isaac Lab 表现差很多？",
+        "source_locator": "根帖机制对比与关于 DC/delay motor 的评论",
+        "source_url": "https://www.xiaohongshu.com/explore/6a4251c000000000210235c3",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.simulation_toolchain.61377c1e78305f03",
+        "problem_title_zh": "为什么同一组 PD 增益在 MuJoCo 和 Isaac Lab 表现差很多？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；来源结论存在未解决冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": true,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "三张可见图比较策略目标→PD→动力学链；结构上突出 MuJoCo actuator 显式力矩与 PhysX solver 内隐式约束，评论指出图过度简化且 Isaac Lab 可换执行器。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a4251c000000000210235c3",
+    "published_display": "06-29",
+    "query": "Isaac Gym Isaac Lab MuJoCo humanoid 仿真 差异 问题",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "通用腿式机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "simulation_toolchain",
+    "selected_comments": [
+      {
+        "text": "🎮lab不是可以选择别的执行器吗，看个人选择吧，隐式执行器确实和real有gap06-30湖南赞3"
+      },
+      {
+        "text": "Cor FortisDc motor吗06-30广东赞回复"
+      },
+      {
+        "text": "🎮回复 Cor Fortis : 对啊，还有delaymotor等等别的，lab提供了很多执行器06-30湖南赞回复"
+      },
+      {
+        "text": "好好做学术gap有没有比较小点的07-02广东赞回复"
+      },
+      {
+        "text": "momoissac lab 把torque部分移到等号右边不就和mujoco一样了吗06-29美国赞1"
+      },
+      {
+        "text": "God Chaser不完全一致，mujoco是求逆解但是phyx是optimizer（solver），精度上有差异，不过ai框图画得就06-30上海赞回复"
+      },
+      {
+        "text": "小新想睡觉AI风格的框图太熟悉了06-29安徽1回复"
+      },
+      {
+        "text": "isaaclab具身仿真平台 可提供远程图形化云开发机  可一键启动isaacGym  mujoco isaacsim isaaclab等各种仿真环境，支持3090 4090 5090 A100 按量付费 关机不收费。 还可一键复现 rekep项目 openvla 项目，pi0.5项目。如下是远程图形化效果，几乎和本地电脑的图形化效果一样[抱拳][抱拳] 大家再也不用购买昂贵的GPU电脑来进行具身智能的研究学习了 详细地址请参考我的小红书主页07-03广东赞回复"
+      }
+    ],
+    "wbc_relevance_reason": "提醒跨仿真器时不能只复制 kp/kd，需要核对 actuator 实现和 solver 语义。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a4251c000000000210235c3",
+  "summary": "帖子将 MuJoCo 的显式力矩/actuator 链与 Isaac Lab/PhysX 求解器内隐式 PD 对比，认为后者在高增益、大步长和批量训练下更稳。评论补充 Isaac Lab 也可选 DC motor、delay motor 等执行器，并质疑简化框图不能代表全部配置。",
+  "title": "MuJoCo 显式 actuator PD 与 Isaac Lab 隐式 PD 的数值差异讨论",
+  "version": null
+}

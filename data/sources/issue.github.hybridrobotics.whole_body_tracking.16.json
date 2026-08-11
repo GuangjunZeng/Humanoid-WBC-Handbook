@@ -1,0 +1,121 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "flynndong123"
+  ],
+  "canonical_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/16",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "eb0c27e06d03ae88ec7ca5f6bbf720f24e1e68e80b762987aef8ac7c691fd046",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取 Issue 正文与 4 条评论；只提炼维护者明确表述，未把社区建议写成已验证修复。",
+    "components": [
+      "whole_body_tracking",
+      "MuJoCo",
+      "PD controller"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者尝试自写 MuJoCo 部署代码；评论中另有用户建议外部 RoboJuDo 配置，但没有作者验证。"
+      ],
+      "diagnostics": [
+        "对照训练环境与部署端的 kp/kd。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "HybridRobotics/whole_body_tracking；walk_subject.csv；自写 MuJoCo 部署代码；具体版本未说明。"
+      ],
+      "limits": [
+        "原帖没有公布训练/部署增益数值、模型版本或修复后视频；不能据此判断该案例的唯一根因。"
+      ],
+      "outcomes": [
+        "维护者给出增益一致性要求；原提问者没有回报修改后的运行结果。"
+      ],
+      "problem_statements": [
+        "策略在 MuJoCo 部署后不能正常行走，是否应在部署端重新调 kp/kd？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "帖子把部署端 PD 增益不一致列为需要首先排除的问题。"
+      ],
+      "symptoms": [
+        "机器人在 MuJoCo 中不能正常行走。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该仓库成员在原帖中明确要求：部署端的比例—微分增益（kp/kd）应与训练环境保持一致，仿真和实机都不应在部署阶段任意改动。原帖没有给出修改后的复测结果，因此这条经验用于先排除增益不一致，不能证明该案例只有这一项原因。",
+        "applicability": "适用于使用同一训练策略、PD 动作解释和机器人模型的 Sim2Sim/Sim-to-Real 部署。",
+        "bilingual_terms": [
+          "比例—微分增益（PD gains）",
+          "仿真到仿真（Sim2Sim）",
+          "仿真到现实（Sim-to-Real）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.sim_to_sim_and_sim_to_real.22589929ede0d271",
+        "problem_title_zh": "Whole Body Tracking 策略在 MuJoCo 或实机部署不稳时，可以直接改部署端 kp/kd 吗？",
+        "question_zh": "Whole Body Tracking 策略在 MuJoCo 或实机部署不稳时，可以直接改部署端 kp/kd 吗？",
+        "source_locator": "Issue #16，维护者回复 issuecomment-3214861972",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/16#issuecomment-3214861972",
+        "verification_refs": [
+          {
+            "locator": "仓库成员明确要求部署 kp/kd 与训练环境一致",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/16#issuecomment-3214861972"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖包含异常视频，但本卡结论只来自文字描述和维护者回复，不把视频当作根因证据。"
+    ],
+    "platform": "github_issue",
+    "post_id": "hybridrobotics.whole_body_tracking.16",
+    "query": "whole body tracking MuJoCo deployment kp kd",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "sim_to_sim_and_sim_to_real",
+    "selected_comments": [
+      {
+        "text": "仓库成员 qiayuanl：部署 kp/kd 必须与训练环境一致。"
+      },
+      {
+        "text": "另一位用户建议 RoboJuDo 的 g1_beyondmimic_with_ctrl 配置，但只有致谢，没有复现结果，因此未作为有效修复。"
+      }
+    ],
+    "wbc_relevance_reason": "学习式全身策略的动作经过 PD 关节环执行，训练与部署增益不一致会改变闭环动力学。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.hybridrobotics.whole_body_tracking.16",
+  "summary": "提问者报告用 walk_subject.csv 和自写 MuJoCo 部署代码时机器人不能正常行走，并询问是否应调整 kp/kd。仓库成员 qiayuanl 明确回复：仿真和实机部署的 kp/kd 必须与训练环境保持一致，部署阶段调整这些参数是错误做法。",
+  "title": "Whole Body Tracking 部署时 PD 增益与训练环境不一致",
+  "version": null
+}

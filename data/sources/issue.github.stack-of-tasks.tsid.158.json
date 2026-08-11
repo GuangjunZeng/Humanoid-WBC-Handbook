@@ -1,0 +1,135 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "paulinejmaurice"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/issues/158",
+  "captured_at": "2026-08-11T01:35:52+08:00",
+  "content_sha256": "f8cc26e4a31fc43c216a2f4ae9396c31a8d2fe786d92e69991b41058f43b7a03",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文、全部 2 条评论及 PR #159 的合并状态与全部补丁；没有声称原帖实际复现过 QP 失败或 PR 添加了测试。",
+    "components": [
+      "TSID",
+      "TaskJointPosVelAccBounds",
+      "joint bounds",
+      "QP feasibility"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提问者定位到构造代码；维护者确认并请求提交 PR。"
+      ],
+      "diagnostics": [
+        "打印或检查 TaskJointPosVelAccBounds 构造后的 qMin/qMax；确认是否在使用前显式重设位置界。"
+      ],
+      "effective_fixes": [
+        "采用已合并 PR #159，把默认 qMin 改为 -1e10、qMax 改为 +1e10；旧版也可显式设置正确位置界避免依赖错误默认值。"
+      ],
+      "environments": [
+        "2022-03 的 TSID TaskJointPosVelAccBounds 旧实现；具体发行版本和机器人未说明。"
+      ],
+      "limits": [
+        "原线程没有给出一个实际 QP 失败日志或新增回归测试；影响条件是未覆盖默认位置界。"
+      ],
+      "outcomes": [
+        "PR #159 于 2022-03-02 合并，维护者后续明确回复该问题已由 #159 修复。"
+      ],
+      "problem_statements": [
+        "只配置速度限制而沿用 TaskJointPosVelAccBounds 默认位置界时，为什么 QP 可能不可行？"
+      ],
+      "safety_notes": [
+        "实机前仍应检查配置后的实际上下界，不能只依赖极大默认值作为安全限位。"
+      ],
+      "suspected_causes": [
+        "构造函数中默认上下界的正负号交换。"
+      ],
+      "symptoms": [
+        "默认 qMin=+1e10、qMax=-1e10，导致 qMin>qMax；依赖默认位置界时可能生成不可行约束。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "检查旧版构造函数是否把 qMin/qMax 写成 +1e10/-1e10。该顺序使下界大于上界；常规显式重设位置界会掩盖问题，但只设置速度界时可能触发不可行。已合并 PR #159 将默认值改为 qMin=-1e10、qMax=+1e10。旧版除回移修复外，也必须在使用前显式设置正确位置界。",
+        "applicability": "适用于包含错误默认值的 TSID 旧版本；若调用方总是显式覆盖位置界，该特定错误不会直接触发。",
+        "bilingual_terms": [
+          "关节位置界（joint position bounds）",
+          "速度界（velocity bounds）",
+          "不可行问题（infeasible problem）",
+          "二次规划（Quadratic Programming, QP）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.ee1a0c4101fa8789",
+        "problem_title_zh": "TSID 只设置速度界时出现非预期 QP 不可行，应如何检查 TaskJointPosVelAccBounds 的默认位置界？",
+        "question_zh": "TSID 只设置速度界时出现非预期 QP 不可行，应如何检查 TaskJointPosVelAccBounds 的默认位置界？",
+        "source_locator": "Issue #158，维护者确认 issuecomment-1056957094 与修复确认 issuecomment-1292023533；已合并 PR #159",
+        "source_url": "https://github.com/stack-of-tasks/tsid/issues/158#issuecomment-1292023533",
+        "verification_refs": [
+          {
+            "locator": "PR 交换 qMin/qMax 默认值并已合并",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/tsid/pull/159"
+          },
+          {
+            "locator": "PR #159 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/stack-of-tasks/tsid/commit/672de79de6ec83618b699428fc9574dbef8d5f1a"
+          },
+          {
+            "locator": "维护者确认报告正确并请求修复 PR",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/tsid/issues/158#issuecomment-1056957094"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.tsid.158",
+    "query": "TSID TaskJointPosVelAccBounds default qMin qMax infeasible",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "使用 TSID 关节位置速度加速度边界任务的机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "维护者确认默认上下界写反。"
+      },
+      {
+        "text": "维护者确认该问题已由 PR #159 修复。"
+      }
+    ],
+    "wbc_relevance_reason": "关节位置/速度/加速度约束是逆动力学 QP 的基础；默认界符号写反会制造并非由机器人状态造成的不可行约束。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.tsid.158",
+  "summary": "TSID #158 指出 TaskJointPosVelAccBounds 构造函数把默认 qMin 初始化为 +1e10、qMax 初始化为 -1e10，使 qMin 大于 qMax。常规流程会重新设置位置界，因此不一定触发；只设置速度界并依赖默认位置界时可能形成不可行问题。维护者确认错误，PR #159 把两个符号交换并于当天合并，后续评论明确以该 PR 修复。",
+  "title": "TSID 旧版位置上下界默认值写反会让仅设置速度界的任务潜在不可行",
+  "version": null
+}

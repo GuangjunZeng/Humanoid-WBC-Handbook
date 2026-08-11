@@ -1,0 +1,132 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "oliwiermelon"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1292",
+  "captured_at": "2026-08-11T06:12:00+08:00",
+  "content_sha256": "297c37518455ef8e0507f410c72338754ed23e3561bc852aad3a7c1e1042bef3",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 2 条评论；仅确认 reference-frame 修正，不补写最大接触力优化结论。",
+    "components": [
+      "Pinocchio",
+      "frame Jacobian",
+      "LOCAL_WORLD_ALIGNED",
+      "contact force mapping",
+      "joint torque limit"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者把 computeFrameJacobian 的 reference frame 从 WORLD 改为 LOCAL_WORLD_ALIGNED。"
+      ],
+      "diagnostics": [
+        "首先检查 Jacobian 的 reference frame 是否同时匹配所需作用点和坐标轴方向。"
+      ],
+      "effective_fixes": [
+        "需要足端中心、世界轴对齐的接触力映射时，使用 LOCAL_WORLD_ALIGNED。"
+      ],
+      "environments": [
+        "2020 年 Pinocchio Python；FreeFlyer quadruped；q0 为单位 base quaternion；LF_FOOT Jacobian。"
+      ],
+      "limits": [
+        "线程没有证明 3×3 截取块可逆，也没有验证 pseudoinverse、其他腿耦合、浮动基平衡或摩擦约束。",
+        "数值更合理不等于已经计算出严格的 maximum feasible contact force。"
+      ],
+      "outcomes": [
+        "作者确认修改 reference frame 后数值合理得多。"
+      ],
+      "problem_statements": [
+        "从 peak joint torques 和足端 Jacobian 估算接触力时，为什么一个力分量比预期大一个数量级？"
+      ],
+      "safety_notes": [
+        "力矩限幅和接触可行域部署前必须在完整浮动基动力学与摩擦约束下复核。"
+      ],
+      "suspected_causes": [
+        "WORLD 对应世界原点作用点，并不是以 LF_FOOT 为中心且 world-aligned 的足端坐标。"
+      ],
+      "symptoms": [
+        "使用 WORLD frame、截取 3×3 Jacobian 并对 J^T 做伪逆后，至少一个 x/y/z force 分量高一个数量级。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者指出，原帖的 WORLD Jacobian 以世界原点为作用点，好像该点附着于 LF_FOOT；它不是作者需要的足端中心量。LOCAL_WORLD_ALIGNED 则以 LF_FOOT frame 为中心、坐标轴与世界系对齐。作者改用 LOCAL_WORLD_ALIGNED 后确认力数值合理得多。原线程没有验证 3×3 截取、伪逆和 peak torque 映射的其余假设，所以只能确认参考系修正，不能把结果称为严格最大接触力。",
+        "applicability": "适用于原帖 Pinocchio FreeFlyer quadruped 的 LF_FOOT 接触力坐标解释；其他 frame、作用点和力矩分配需单独建模。",
+        "bilingual_terms": [
+          "局部世界对齐坐标系（local-world-aligned frame, LOCAL_WORLD_ALIGNED）",
+          "足端雅可比（foot-frame Jacobian）",
+          "接触力映射（contact-force mapping）",
+          "摩尔-彭若斯伪逆（Moore–Penrose pseudoinverse）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.pinocchio_foot_force_lwa_1292",
+        "problem_title_zh": "Pinocchio 足端力映射使用了错误的 Jacobian 参考系",
+        "question_zh": "从足端 Jacobian 和关节力矩估算接触力时，WORLD 与 LOCAL_WORLD_ALIGNED 应怎样选择？",
+        "source_locator": "Issue #1292，维护者参考系诊断 issuecomment-692582302；作者复测 issuecomment-692611643",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1292#issuecomment-692611643",
+        "verification_refs": [
+          {
+            "locator": "维护者解释 WORLD 作用点并建议 LOCAL_WORLD_ALIGNED",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1292#issuecomment-692582302"
+          },
+          {
+            "locator": "原作者确认改用 LOCAL_WORLD_ALIGNED 后数值更合理",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1292#issuecomment-692611643"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1292",
+    "query": "Pinocchio contact force from torque WORLD LOCAL_WORLD_ALIGNED frame Jacobian",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "floating-base quadruped；LF_FOOT frame"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "维护者区分 WORLD 与以 LF_FOOT 为中心的 LOCAL_WORLD_ALIGNED。"
+      },
+      {
+        "text": "作者确认修改后数值合理得多。"
+      }
+    ],
+    "wbc_relevance_reason": "足端接触 Jacobian 的作用点与表达坐标若选错，WBC 力映射和 torque limit 检查会出现大幅数值偏差；同时该线程提醒不能把一个参考系修正扩展成对整套最大力估算方法的证明。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1292",
+  "summary": "Pinocchio #1292 的作者从浮动基四足模型中截取 LF_FOOT Jacobian 的 3×3 关节块，并用伪逆从 peak joint torques 估算足端力，但至少一个分量比预期大一个数量级。维护者指出 computeFrameJacobian 的 WORLD 约定不适合作者想要的量：WORLD 的作用点在世界原点，好像与 LF_FOOT frame 相连；应使用 LOCAL_WORLD_ALIGNED，它以 LF_FOOT 为中心、坐标轴与 WORLD 对齐。作者修改后确认数值更合理。线程没有验证截取方阵、伪逆和 peak torque 是否真的给出最大可实现接触力。",
+  "title": "从足端 Jacobian 估算接触力时不要把 WORLD 当作足端世界对齐坐标系",
+  "version": null
+}

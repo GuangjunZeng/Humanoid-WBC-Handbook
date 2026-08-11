@@ -1,0 +1,148 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "heleiduan"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/3162",
+  "captured_at": "2026-08-11T03:06:00+08:00",
+  "content_sha256": "609d77b151fdec45bf549e669944cd5a774f818e9a93ed429b315ffd6397f90e",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文与全部 3 条回复，并核对 PR #3316 的合并元数据、全部 4 条顶层讨论和全部文件补丁。只记录补丁确认的字段移动，并明确保留未新增单元测试、未给出修复后训练结果的边界。",
+    "components": [
+      "Isaac Lab",
+      "MeshRepeatedObjectsTerrainCfg",
+      "MeshRepeatedBoxesTerrainCfg",
+      "repeated_objects_terrain",
+      "platform_height"
+    ],
+    "domain_hints": [
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖对照了调用代码和配置定义，提出应将字段放到重复物体配置的 platform_width 之后。",
+        "PR #3316 实际移动了字段，并修正了一处无关的 num_waves 整数默认值。"
+      ],
+      "diagnostics": [
+        "对照 repeated_objects_terrain 的字段读取与 MeshRepeatedObjectsTerrainCfg.ObjectCfg 定义，检查 platform_width 附近是否定义 platform_height。",
+        "区分重复物体地形配置与金字塔楼梯地形配置，避免把字段补到不会被 repeated_objects_terrain 使用的类中。"
+      ],
+      "effective_fixes": [
+        "使用已合并 PR #3316：从 MeshPyramidStairsTerrainCfg 删除 platform_height，在 MeshRepeatedObjectsTerrainCfg.ObjectCfg 中增加 platform_height: float = -1.0；负值仍表示使用 object height。"
+      ],
+      "environments": [
+        "Isaac Lab release v2.2.0，commit 46dff135f44683f031edf346e544fcfd8456b2bb；Isaac Sim 4.5；Ubuntu 22.04；RTX 5090；CUDA 12.8；GPU driver 570。"
+      ],
+      "limits": [
+        "PR #3316 检查清单明确未新增证明修复有效的测试，也未更新 changelog。",
+        "补丁同时包含 num_waves 类型和格式整理；本卡只把 platform_height 移动作为 #3162 的修复。",
+        "原帖和 PR 没有提供修复后地形截图或目标 WBC 训练结果。"
+      ],
+      "outcomes": [
+        "PR #3316 于 2025-09-04 合并到 main，关联关闭 #3162。"
+      ],
+      "problem_statements": [
+        "为什么生成 MeshRepeatedBoxesTerrain 时报 MeshRepeatedBoxesTerrainCfg 没有 platform_height？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "PR #3316 说明 platform_height 在 #2695 引入的回归中被误放到 MeshPyramidStairsTerrainCfg，而不在 MeshRepeatedObjectsTerrainCfg.ObjectCfg。"
+      ],
+      "symptoms": [
+        "repeated_objects_terrain 在读取 cfg.platform_height 时抛出 AttributeError: 'MeshRepeatedBoxesTerrainCfg' object has no attribute 'platform_height'。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖指出 repeated_objects_terrain 会读 cfg.platform_height，但相应的重复物体配置没有该字段。已合并 PR #3316 确认字段被误放在 MeshPyramidStairsTerrainCfg，并将 platform_height: float = -1.0 移到 MeshRepeatedObjectsTerrainCfg.ObjectCfg；负值代表平台高度与物体高度相同。该 PR 没有新增单元测试或 changelog，升级或回移后应亲自运行 repeated-object terrain 生成检查。",
+        "applicability": "适用于包含 #2695 回归、但尚未包含 #3316 的 Isaac Lab 重复物体 mesh terrain 配置；原帖为 v2.2.0/Isaac Sim 4.5。",
+        "bilingual_terms": [
+          "重复物体地形（repeated-objects terrain）",
+          "配置字段（configuration attribute）",
+          "平台高度（platform height）",
+          "属性错误（AttributeError）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.locomotion_contact_terrain.isaaclab_repeated_objects_missing_platform_height_3162",
+        "problem_title_zh": "Isaac Lab 重复物体地形缺少 platform_height 字段",
+        "question_zh": "Isaac Lab v2.2.0 创建 MeshRepeatedBoxesTerrain 时出现 platform_height AttributeError，应如何修复？",
+        "source_locator": "Isaac Lab #3162 正文的 AttributeError 与环境；已合并 PR #3316 的描述、检查清单和文件补丁",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3162",
+        "verification_refs": [
+          {
+            "locator": "已合并 PR 确认参数放错类，并将其移到 MeshRepeatedObjectsTerrainCfg.ObjectCfg；检查清单未加测试",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3316"
+          },
+          {
+            "locator": "PR #3316 合并提交",
+            "relation": "source_code",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/commit/e57da49397fbcde5ecee501479f048957a598c22"
+          },
+          {
+            "locator": "项目贡献者确认问题出现在 PR #2695 合并之后",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/3162#issuecomment-3206272649"
+          },
+          {
+            "locator": "PR 作者明确表示先合并，单元测试将来再做",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/3316#issuecomment-3254190994"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.3162",
+    "query": "Isaac Lab repeated objects terrain missing platform_height MeshRepeatedBoxesTerrainCfg AttributeError",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "原帖未说明具体机器人；使用 Isaac Lab 重复物体 mesh terrain 的仿真环境"
+    ],
+    "schema_version": 2,
+    "scope_id": "locomotion_contact_terrain",
+    "selected_comments": [
+      {
+        "text": "项目协作者最初询问升级 Isaac Sim 5.0 是否可能解决，没有声称已验证。"
+      },
+      {
+        "text": "原作者说明 check_mesh_subterrains.py 可直接触发错误，并认为是缺少配置字段。"
+      },
+      {
+        "text": "项目贡献者确认问题出现在 PR #2695 合并后。"
+      },
+      {
+        "text": "PR 作者在合并前明确表示暂时先合并，将来再做单元测试。"
+      }
+    ],
+    "wbc_relevance_reason": "重复方块/圆柱等程序地形是腿式与人形 WBC 训练的接触分布常用输入；配置字段放错会在环境构建阶段就中断训练。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.3162",
+  "summary": "Isaac Lab #3162 在 v2.2.0 报告：repeated_objects_terrain 读取 cfg.platform_height，但 MeshRepeatedBoxesTerrainCfg 所在的重复物体配置没有该字段，启动地形仿真时直接抛出 AttributeError。已合并 PR #3316 确认该参数误放在 MeshPyramidStairsTerrainCfg，将其移到 MeshRepeatedObjectsTerrainCfg.ObjectCfg，并保留负值表示与 object height 相同的语义。PR 明确说回归引入于 #2695，但本 PR 未新增单元测试或 changelog。",
+  "title": "Isaac Lab 重复物体地形缺少 platform_height 配置",
+  "version": null
+}

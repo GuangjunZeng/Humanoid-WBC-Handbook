@@ -1,0 +1,172 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "杨子"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/650468275",
+  "captured_at": "2026-08-10T17:11:27+08:00",
+  "content_sha256": "49a9c401315c69dfe22c0d9d3adb14e6f0dbf3d6652dc4ea18697e88f773d254",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 2
+    },
+    "collector_note": "collection_completeness=partial_visible；图片通过可见页面截图逐张分析；结论尚未用论文/源码独立验证。",
+    "components": [
+      "MPC",
+      "WBC",
+      "QP 权重",
+      "接触力"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "测试 mpc_alpha=0.1、0.0002 和约 5e-5；测试 floating_base_weight=1e-6、1e6、1e14。"
+      ],
+      "diagnostics": [
+        "比较不同权重下的足底力、基体角速度和线速度曲线。"
+      ],
+      "effective_fixes": [
+        "把 mpc_alpha 调低到能在 trot 支撑相产生接近单脚半体重的接触力，再有限度增加 floating_base_weight。"
+      ],
+      "environments": [
+        "四足机器人 trot 步态仿真；机器人质量示例约 20 kg，总重力约 200 N。"
+      ],
+      "limits": [
+        "数值来自特定四足仿真，作者明确表示结论仍待他人指正；不能直接复制到人形机器人或不同归一化代价。"
+      ],
+      "outcomes": [
+        "floating_base_weight 从 1e-6 增到 1e6 时足底力峰值约从 80 N 增至 110 N且速度波动变小；1e14 时失稳摔倒。"
+      ],
+      "problem_statements": [
+        "MPC 接触力惩罚权重过大导致支撑力不足；WBC 浮动基权重过大导致接触力失稳。"
+      ],
+      "safety_notes": [
+        "权重扫描必须设置接触力、力矩与状态限幅；1e14 量级已在仿真中导致摔倒，不能直接上实机。"
+      ],
+      "suspected_causes": [
+        "mpc_alpha 是力幅值惩罚项，过大抑制接触力；过小则可能放大实机对加速度变化的敏感性。",
+        "过大的 floating_base_weight 过度压低浮基动力学松弛代价与接触力之间的平衡。"
+      ],
+      "symptoms": [
+        "mpc_alpha=0.1 时足底力偏小。",
+        "floating_base_weight=1e14 时足底力出现稀疏大峰值并导致摔倒。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "在该仿真中，mpc_alpha 过大会强烈惩罚足端力，使支撑力不足；减小它会提高足底力。作者以 trot 支撑脚约承担半个机器人重量为经验目标。评论提醒权重过小会使实机对加速度变化敏感并可能剧烈抖动，因此不能只追求更大接触力。",
+        "applicability": "只适用于代价定义、质量和力归一化相近的 MPC；具体数值需重新标定。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "关节力矩（Joint Torque）",
+          "时延抖动（Latency Jitter）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "MPC 的接触力权重 mpc_alpha 过大或过小时会怎样？",
+        "source_locator": "正文“MPC weight param”及首条评论",
+        "source_url": "https://zhuanlan.zhihu.com/p/650468275",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.optimization_ik_qp_mpc.9f43bf1f0efb97ff",
+        "problem_title_zh": "MPC 的接触力权重 mpc_alpha 过大或过小时会怎样？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "不是。该案例从 1e-6 增到 1e6 时接触力峰值约由 80 N 到 110 N且基体速度波动减小，但增到 1e14 后出现大幅不稳定力峰并摔倒。应在有限范围内结合力、速度和约束残差扫描，而不是单调增大。",
+        "applicability": "属于单一四足仿真观察，必须在目标控制器的代价缩放下重做参数扫描。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "二次规划（Quadratic Programming, QP）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "关节力矩（Joint Torque）",
+          "时延抖动（Latency Jitter）",
+          "动力学（Dynamics）"
+        ],
+        "question_zh": "WBC 的 floating_base_weight 是否越大越好？",
+        "source_locator": "正文“wbc weight param”及 fig3/fig6/1e14 失稳图",
+        "source_url": "https://zhuanlan.zhihu.com/p/650468275",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.optimization_ik_qp_mpc.3c6db17790b54178",
+        "problem_title_zh": "WBC 的 floating_base_weight 是否越大越好？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "图像“mpc_alpha=0.1”同时展示四足仿真和足底力曲线；曲线幅值较低，与正文所述支撑力不足相符，但截图本身未给出统一坐标标定。",
+      "图像“floating_base_weight=1e6”显示较规则的周期性足底力波形，峰值约在 110 N 附近；可用于和正文所述 1e-6 时约 80 N 的结果比较。",
+      "图像“floating_base_weight=1e14”显示稀疏而幅值很大的足底力尖峰，对应正文中的接触力不稳定和摔倒现象。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.650468275",
+    "published_display": "编辑于 2023-08-17 18:53・上海",
+    "query": "humanoid WBC QP infeasible 约束 权重 调试",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "MIT Cheetah 类四足机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "text": "评论指出 alpha 是优化中的力幅值惩罚项；多数案例约在 0.001 附近，过大时力不足，过小时实机可能对加速度变化敏感并剧烈抖动。"
+      }
+    ],
+    "wbc_relevance_reason": "直接记录 MPC/WBC 权重如何改变接触力、基体速度波动与跌倒风险，属于典型工程调参证据。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.650468275",
+  "summary": "文章以四足仿真比较模型预测控制（Model Predictive Control, MPC）接触力惩罚权重 mpc_alpha 与 WBC 浮动基松弛加速度权重 floating_base_weight。作者观察到 mpc_alpha 过大会压低足底力，无法支撑机器人；减小后足底力增大。把 floating_base_weight 从 1e-6 提到 1e6 时，足底力峰值约从 80 N 增到 110 N，基体速度波动减小；提高到 1e14 时出现大幅不稳定力峰并摔倒。评论补充 mpc_alpha 常在 0.001 附近，过小会让实机对加速度变化敏感并剧烈抖动。",
+  "title": "mpc + wbc weight param 对四足机器人的影响",
+  "version": null
+}

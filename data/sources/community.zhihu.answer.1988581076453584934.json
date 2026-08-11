@@ -1,0 +1,210 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "huyoust​"
+  ],
+  "canonical_url": "https://www.zhihu.com/question/1988539129605091831/answer/1988581076453584934",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "1f5945d3f07f2ffcdce9738794441199c7f37663f23f2eb3951ab09e3286014e",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 2,
+      "reply_expansion_attempts": 2,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 28
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "whole-body teleoperation",
+      "主从映射",
+      "latency",
+      "safety envelope"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "正文对比绝对式、增量式和混合映射，并强调事故危险性。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "G1 全身遥操作；操作者与机器人面对不同方向。"
+      ],
+      "limits": [
+        "0.3–0.5 s 为视频目测；评论大量跑题，不能作为技术证据。"
+      ],
+      "outcomes": [
+        "没有给出修改后的复测结果。"
+      ],
+      "problem_statements": [
+        "全身遥操作中操作者和机器人朝向不同，怎样避免映射正确却伤到人？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "答主认为主要是朝向/主从映射策略与空间隔离不足，不是简单归因于传感器缺失。"
+      ],
+      "symptoms": [
+        "操作者抬腿时机器人向前踢中操作者；动作复刻后续仍可见延迟。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "这条事故说明必须显式定义世界系/机体系朝向语义，并在腿部大幅动作前做速度、工作空间和人机距离守卫；绝对式与增量式映射应按变量分别设计。帖子没有给出复测，且延迟只是目测，所以只能作为 unresolved 安全案例。",
+        "applicability": "0.3–0.5 s 为视频目测；评论大量跑题，不能作为技术证据。",
+        "bilingual_terms": [
+          "全身遥操作（Whole-Body Teleoperation）",
+          "端到端时延（End-to-End Latency）"
+        ],
+        "question_zh": "全身遥操作中操作者和机器人朝向不同，怎样避免映射正确却伤到人？",
+        "source_locator": "回答正文的朝向映射与延迟分析",
+        "source_url": "https://www.zhihu.com/question/1988539129605091831/answer/1988581076453584934",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.tracking_and_teleoperation.01d30991e3ad555b",
+        "problem_title_zh": "全身遥操作中操作者和机器人朝向不同，怎样避免映射正确却伤到人？",
+        "credibility": {
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索。",
+          "basis": {
+            "source_basis": "problem_signal_only",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "七个可见媒体位展示操作者抬腿、G1 朝向和命中后的动作序列；图像支持空间朝向风险，但 0.3–0.5 s 延迟仍只是作者目测。"
+    ],
+    "platform": "zhihu",
+    "post_id": "answer.1988581076453584934",
+    "published_display": "编辑于2025-12-28 12:20",
+    "query": "G1 全身遥操 延迟 抖动 丢帧",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Unitree G1"
+    ],
+    "schema_version": 2,
+    "scope_id": "tracking_and_teleoperation",
+    "selected_comments": [
+      {
+        "text": "知道了知道了，报工伤吧"
+      },
+      {
+        "text": "剧本吧，真踢可给踢坏了"
+      },
+      {
+        "text": "有一天和女儿聊天，我说将来你有宝宝妈妈给你买个机器人帮你带娃，那时候机器人一定发展到可以做各种家务了。女儿说，但是妈妈，如果他被病毒侵入了，每天在家打孩子怎么办？这个新闻看来，我女儿的担忧也不无道理嘛"
+      },
+      {
+        "text": "2025年的语速机器人，居然抄袭2030年的马斯克机器人。这种机器人也没有什么高明的，网友们都说了，这是拿遥控器指挥的。哈哈哈哈哈哈哈！"
+      },
+      {
+        "text": "这是买知乎热搜当朋友圈发吗？"
+      },
+      {
+        "text": "知乎早就如此"
+      },
+      {
+        "text": "抄袭马斯克的机器人还抄歪了"
+      },
+      {
+        "text": "没有2030年的马斯克机器人开源，就没有2025年的宇树科技"
+      },
+      {
+        "text": "马斯克的机器人才刚刚会跑。抄也是马斯克抄的宇树"
+      },
+      {
+        "text": "这是什么情况？"
+      },
+      {
+        "text": "这个应该会被机器人AI记录在其世界记录中：首个物理挑战人类生理基因传递功能的AI"
+      },
+      {
+        "text": "知道人的精细度了吧"
+      },
+      {
+        "text": "赶快上市吧 迫不及待赚钱了"
+      },
+      {
+        "text": "马斯克在哪评论的"
+      },
+      {
+        "text": "X上"
+      },
+      {
+        "text": "丢帧了吧"
+      },
+      {
+        "text": "哈库呐玛塔塔，"
+      },
+      {
+        "text": "你没看懂这个视频？机器人是在模仿，但存在延迟，所以才会踢一脚，至于为什么只能模仿动作，模仿不了发力方向，这就不得而知了"
+      },
+      {
+        "text": "机器人步伐小，加上腿上的平衡算法，在同步的时候就会跟人产生区别！比如你走一步它也走一步，那么你走一米它只走了半米，你俩的距离就不同步了。然后就是平衡算法，起跳的时候人可以很平稳的落地，但是机器人需要算法平衡，再启动就会慢半拍！朝向问题就更简单了，机器人不像人可以靠身体器官原地平衡，平衡靠跺脚，特别是单脚情况下，方向丢失太正常了！这个可以修正，但是目前阶段肯定会增加很多延迟！"
+      },
+      {
+        "text": "机器人是通过目视来模仿的，这才是这个视频的恐怖的地方。之前机器人跟随控制，要么是工作人员身上带着感应装置，要么是四周有多个摄像头实时传递信息。"
+      },
+      {
+        "text": "遥控器坏了吧？ 人形玩具终究还是玩具"
+      },
+      {
+        "text": "遥控器！遥控器！遥控器！还要我说多少遍？"
+      },
+      {
+        "text": "文明遥控器"
+      },
+      {
+        "text": "距离、防具等，都不够"
+      },
+      {
+        "text": "捂裆派"
+      },
+      {
+        "text": "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+      },
+      {
+        "text": "波士顿大狗救一下"
+      },
+      {
+        "text": "马斯克只开源了简中是吧"
+      }
+    ],
+    "wbc_relevance_reason": "是全身遥操作的人机隔离、朝向语义和延迟守卫案例。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.answer.1988581076453584934",
+  "summary": "答主将事故解释为操作者与 G1 朝向不同下的主从映射风险，并目测端到端延迟约 0.3–0.5 s；正文强调绝对式/增量式映射需按量混合。该延迟数值是目测，不是仪器测量。",
+  "title": "G1 全身遥操作踢到操作员：朝向映射与端到端延迟风险",
+  "version": null
+}

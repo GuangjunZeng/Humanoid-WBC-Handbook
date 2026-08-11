@@ -1,0 +1,138 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "OscarMrZ"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2854",
+  "captured_at": "2026-08-11T02:20:00+08:00",
+  "content_sha256": "30af4723f35c1c2abea9e364cc690b023e57ce9d1cab355da67a70b420ab201c",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 4 条评论；保留独立复现与维护者修复声明，但未读取 PR diff，也没有把缺失的 3.x workaround 自行补出。",
+    "components": [
+      "Pinocchio",
+      "buildModelsFromMJCF",
+      "MJCF",
+      "contact model",
+      "Python bindings"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目成员用 Nix 环境和原最小脚本独立复现；维护者检查后指向 Pinocchio 4 与 PR #2855。"
+      ],
+      "diagnostics": [
+        "用同一文件分别执行无 root_joint 和显式 JointModelFreeFlyer 两条加载路径，直接比较返回 contact model 数量。"
+      ],
+      "effective_fixes": [
+        "维护者明确说明升级到 Pinocchio 4 后该问题已修复。"
+      ],
+      "environments": [
+        "Ubuntu 22.04；uv/pip；pin 3.9.0；另有 Nix/nixpkgs Python Pinocchio 独立复现。"
+      ],
+      "limits": [
+        "未读取 PR #2855 的补丁细节，不能据此描述具体代码修改；升级前仍应对固定基返回列表做显式断言。"
+      ],
+      "outcomes": [
+        "原 Issue 被标记为 Pinocchio 4 已修复；线程内没有升级后输出，也没有 3.x workaround。"
+      ],
+      "problem_statements": [
+        "为什么 Pinocchio 3.9 的 buildModelsFromMJCF 在固定基 Python 调用中不返回 MJCF contact model？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "Issue 正文指出 Python shortcuts.py 的条件检查及无 root_joint/root_joint_name 时缺少返回 contact models 的绑定路径；维护者没有在评论中进一步解释内部机制。"
+      ],
+      "symptoms": [
+        "同一 MJCF 中，固定基调用输出 contact models=0，FreeFlyer 调用输出 contact models=1。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原帖用同一 MJCF 对照出固定基 0 个、FreeFlyer 1 个 contact model，另一位项目成员又在 Nix 环境复现了相同输出。维护者最终写明该问题已在 Pinocchio 4 修复并链接 PR #2855。因此可把升级 Pinocchio 4 作为线程内已确认的处理方向；但由于原帖没有贴升级复测，也没有给出 3.x 补丁，升级后仍应对返回数量和实际约束做最小测试。",
+        "applicability": "适用于 pin 3.9.0 的 Python buildModelsFromMJCF 固定基路径；Pinocchio 4 的具体最低版本和回归行为需在目标环境核对。",
+        "bilingual_terms": [
+          "接触模型（contact model）",
+          "固定基（fixed base）",
+          "自由浮动基（FreeFlyer）",
+          "语言绑定（Python bindings）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "问题现象有另一位项目成员独立复现，Pinocchio 4 修复由维护者声明；缺少升级后复测与本轮补丁核验，因此列为值得参考。"
+        },
+        "problem_id": "problem.model_asset_and_urdf_usd.pinocchio_fixed_mjcf_contacts_2854",
+        "problem_title_zh": "Pinocchio 固定基 MJCF 的 contact model 在 Python 中为空",
+        "question_zh": "Pinocchio 3.9 固定基 MJCF 加载后 contact models 为空，原线程确认到什么程度、怎样处理？",
+        "source_locator": "Issue #2854，独立复现 issuecomment-3996776812；维护者修复说明 issuecomment-4288817479",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2854#issuecomment-4288817479",
+        "verification_refs": [
+          {
+            "locator": "另一位项目成员用 Nix 运行原脚本，得到固定基 0、FreeFlyer 1",
+            "relation": "independent_reproduction",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2854#issuecomment-3996776812"
+          },
+          {
+            "locator": "维护者说明已在 Pinocchio 4 修复并链接 PR #2855",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2854#issuecomment-4288817479"
+          },
+          {
+            "locator": "维护者从 Issue 链接的 PR 评论；本轮未读取补丁 diff",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/2855#issuecomment-4236363128"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2854",
+    "query": "Pinocchio buildModelsFromMJCF fixed base contacts empty Python",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "固定基闭链 MJCF 模型",
+      "FreeFlyer 对照模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "model_asset_and_urdf_usd",
+    "selected_comments": [
+      {
+        "text": "项目成员在 Nix 中独立运行最小脚本，复现固定基 0、FreeFlyer 1。"
+      },
+      {
+        "text": "维护者先表示应在 Pinocchio 4 修复。"
+      },
+      {
+        "text": "维护者最终说明已在 Pinocchio 4 修复，并链接 PR #2855。"
+      }
+    ],
+    "wbc_relevance_reason": "闭链、接触约束和接触动力学 WBC 依赖正确加载 MJCF contact model；空列表可能让固定基系统静默丢失约束。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2854",
+  "summary": "Pinocchio #2854 给出最小 MJCF/Python 复现：pin 3.9.0 中，buildModelsFromMJCF(..., contacts=True) 对固定基模型返回 0 个 contact model，而显式加入 FreeFlyer 后返回 1 个。项目成员在 Nix 环境独立跑出同样的 0/1 结果；维护者随后两次说明该问题已在 Pinocchio 4 修复，并链接 PR #2855。原线程没有给出 Pinocchio 3.x 的安全补丁，也没有展示升级后的复测输出。",
+  "title": "Pinocchio 3.9 固定基 MJCF 的 Python 快捷接口会漏返回 contact models",
+  "version": null
+}

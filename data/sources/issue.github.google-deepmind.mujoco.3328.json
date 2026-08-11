@@ -1,0 +1,119 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "RLRK-dev"
+  ],
+  "canonical_url": "https://github.com/google-deepmind/mujoco/issues/3328",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "9326e4071481f445cb8c18a314969f9b1f212212c1b99a3bfec9796bf3ca08ad",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取包含代码和数值表的 Issue 与唯一维护者回复；所有数值均限定在原 MRE。",
+    "components": [
+      "MuJoCo 3.8.1",
+      "regularized friction",
+      "impratio",
+      "noslip_iterations"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "提高 impratio。",
+        "设置 noslip_iterations=10。",
+        "改变 cone、condim 和 solref。"
+      ],
+      "diagnostics": [
+        "测量下落速度、法向力与转动，排除滚动和夹爪 z 运动。",
+        "分别扫描 cone、impratio、condim、solref 与 noslip_iterations。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "MuJoCo 3.8.1；Python 3.12；Linux x86_64 CPU；45 g capsule；µ=0.7；timestep=0.002。"
+      ],
+      "limits": [
+        "单一最小夹持模型；数值和缩放关系不能直接外推到其他几何、质量、时间步或大规模并行环境。"
+      ],
+      "outcomes": [
+        "noslip_iterations=10 在该 MRE 中把爬移约降低 110 倍；维护者确认现象为预期行为，但没有给出通用参数建议。"
+      ],
+      "problem_statements": [
+        "夹持法向力远高于重力需求时，物体为什么仍持续缓慢下滑？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "帖子把现象归因于正则化摩擦在原点附近的有限切向力—滑移速度映射；维护者确认行为符合预期。"
+      ],
+      "symptoms": [
+        "默认 elliptic/impratio=10 下约 155 µm/s 稳态爬移；impratio=1 或 pyramidal 更快。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "在 MuJoCo 3.8.1 的 45 g capsule 最小复现里，默认 elliptic/impratio=10 的下滑约为 155 µm/s；设置 noslip_iterations=10 后降至约 1.41 µm/s，约 110 倍改善。维护者确认这种正则化摩擦爬移是预期行为。该参数只在此 MRE 有量化结果，不能据此承诺其他抓取任务完全静止。",
+        "applicability": "MuJoCo 3.8.1 的正则化摩擦抓持模型；其他模型需重新测量爬移预算。",
+        "bilingual_terms": [
+          "正则化摩擦（regularized friction）",
+          "防滑迭代（noslip iterations）",
+          "切向爬移（tangential creep）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.37d4dea7eb784f2c",
+        "problem_title_zh": "MuJoCo 夹持力充足但物体仍缓慢下滑时，noslip_iterations 在原帖中有什么实测作用？",
+        "question_zh": "MuJoCo 夹持力充足但物体仍缓慢下滑时，noslip_iterations 在原帖中有什么实测作用？",
+        "source_locator": "Issue #3328 Summary/Observed/Analysis；维护者回复 issuecomment-4735966682",
+        "source_url": "https://github.com/google-deepmind/mujoco/issues/3328#issuecomment-4735966682",
+        "verification_refs": [
+          {
+            "locator": "MuJoCo 协作者确认该行为 WAI，并建议改进文档",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/google-deepmind/mujoco/issues/3328#issuecomment-4735966682"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "google-deepmind.mujoco.3328",
+    "query": "MuJoCo regularized friction creep noslip_iterations grasp",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "双指夹持最小模型"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "MuJoCo 协作者确认现象为预期行为，并认可文档需要改进。"
+      }
+    ],
+    "wbc_relevance_reason": "抓取和接触 WBC 中的慢速滑移可能来自正则化摩擦模型，而非控制器或夹持力不足。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.google-deepmind.mujoco.3328",
+  "summary": "MuJoCo 3.8.1 的完整最小复现测得：45 g capsule 在远高于重力载荷的库仑静摩擦裕量下仍以稳定速度下滑；速度近似随 1/impratio 缩放，noslip_iterations=10 把 155 µm/s 降到 1.41 µm/s。MuJoCo 协作者确认这是预期行为（WAI），并同意文档需要集中说明。",
+  "title": "MuJoCo 正则化摩擦在抓持中产生稳定爬移",
+  "version": null
+}

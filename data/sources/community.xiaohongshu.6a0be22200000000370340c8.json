@@ -1,0 +1,128 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "以物思智能制造项目部"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a0be22200000000370340c8",
+  "captured_at": "2026-08-10T17:42:24+08:00",
+  "content_sha256": "cfe550ece5f587d0152b25756da2b5598deeaa951b4e4c843a2b999fde772ecd",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 0,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 0
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "timestamp synchronization",
+      "multimodal dataset",
+      "clock offset",
+      "offline QA"
+    ],
+    "domain_hints": [
+      "universal_tracking_teleoperation",
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "建议选主时钟、记录偏移、使用同步信号并建立离线质检指标。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "视频、动作命令和多传感器异步采集。"
+      ],
+      "limits": [
+        "缺少时钟源、采样率、漂移模型和可接受误差阈值。"
+      ],
+      "outcomes": [
+        "没有公开实现或复测数据。"
+      ],
+      "problem_statements": [
+        "模仿学习策略出现规律性‘抽搐’，怎样判断是控制问题还是采集时间戳问题？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "多个独立时钟、未记录 offset、缺同步脉冲与离线对齐质检。"
+      ],
+      "symptoms": [
+        "训练后策略像抽搐；视频与动作/传感器对齐偏移。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "先离线对齐视频事件、动作边沿和 IMU/关节状态，估计固定 offset 与随时间漂移；把主时钟、原始时间戳和同步事件都保留，再用可视化重放检查。帖子只给原则，具体阈值需由控制周期与任务带宽决定。",
+        "applicability": "缺少时钟源、采样率、漂移模型和可接受误差阈值。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "惯性测量单元（Inertial Measurement Unit, IMU）",
+          "全身遥操作（Whole-Body Teleoperation）",
+          "时间戳同步（Timestamp Synchronization）"
+        ],
+        "question_zh": "模仿学习策略出现规律性‘抽搐’，怎样判断是控制问题还是采集时间戳问题？",
+        "source_locator": "根帖正文",
+        "source_url": "https://www.xiaohongshu.com/explore/6a0be22200000000370340c8",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.sensing_and_perception.4071f254339249b0",
+        "problem_title_zh": "模仿学习策略出现规律性‘抽搐’，怎样判断是控制问题还是采集时间戳问题？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "五张信息图围绕主时钟、偏移、同步信号和离线质检；未见原始时间戳散点或 cross-correlation 曲线，不能据图确定阈值。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a0be22200000000370340c8",
+    "published_display": "05-19",
+    "query": "G1 视觉感知 坐标变换 时间戳 对齐",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "具身数据采集系统"
+    ],
+    "schema_version": 2,
+    "scope_id": "sensing_and_perception",
+    "selected_comments": [],
+    "wbc_relevance_reason": "直接关联遥操作数据质量、模仿学习与 WBC 动作执行异常。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a0be22200000000370340c8",
+  "summary": "帖子指出多模态数据采集的主时钟、偏移记录、同步信号和离线质检缺失会造成视频/动作/传感器错位，训练后表现像抽搐；正文只给原则，没有量化阈值。",
+  "title": "具身数据视频、动作与传感器时间戳错位导致策略‘抽搐’",
+  "version": null
+}

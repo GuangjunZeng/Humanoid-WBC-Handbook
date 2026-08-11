@@ -1,0 +1,112 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "dbdxnuliba"
+  ],
+  "canonical_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/33",
+  "captured_at": "2026-08-11T12:00:00+08:00",
+  "content_sha256": "6bc7148c0fa3c63f439493b13a49c8a87e1881005175c74cb86cf8c5b1952ee6",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 官方公开 API：完整读取正文与 2 条评论；按 unresolved 入库，没有补写根因。",
+    "components": [
+      "whole_body_tracking",
+      "RSL-RL",
+      "PPO",
+      "Normal distribution"
+    ],
+    "domain_hints": [
+      "motion_generation"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "一名用户改变奖励权重后问题减少但仍偶发。",
+        "另一名用户建议在训练代码中裁剪 sigma。"
+      ],
+      "diagnostics": [
+        "堆栈定位到 actor_critic.py 的 distribution.sample。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "whole_body_tracking；Isaac Lab Python 3.10 环境；RSL-RL PPO；具体 commit 未说明。"
+      ],
+      "limits": [
+        "没有维护者回复、复现配置、补丁或最终闭环；不能断言奖励权重是根因。"
+      ],
+      "outcomes": [
+        "改变奖励权重的用户明确说问题仍会发生；sigma 裁剪建议没有后续验证。"
+      ],
+      "problem_statements": [
+        "PPO 训练约一万次迭代后，Normal 分布 scale/std 变为负值并崩溃。"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [],
+      "symptoms": [
+        "RuntimeError: normal expects all elements of std >= 0.0。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "线程只提供两条待验证线索：一名复现者称修改奖励权重后能缓解但仍偶发；另一名用户建议在训练代码中裁剪策略的 sigma。原帖没有证明奖励权重导致负标准差，也没有证明裁剪后的训练质量，因此两项都只能作为复现实验入口。",
+        "applicability": "适用于出现同一 RSL-RL Normal scale/std 异常的训练；版本和策略参数需单独记录。",
+        "bilingual_terms": [
+          "标准差（standard deviation）",
+          "策略分布（policy distribution）",
+          "数值裁剪（clipping）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "problem_signal_only",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突；当前仅形成问题线索；尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.training_reward_curriculum.b2e89c8dbb053f7d",
+        "problem_title_zh": "RSL-RL PPO 报 Normal 分布 std 小于零时，原线程给出了什么可核对线索？",
+        "question_zh": "RSL-RL PPO 报 Normal 分布 std 小于零时，原线程给出了什么可核对线索？",
+        "source_locator": "Issue #33 正文栈；issuecomment-3471368600 与 issuecomment-3471370672",
+        "source_url": "https://github.com/HybridRobotics/whole_body_tracking/issues/33#issuecomment-3471368600",
+        "verification_refs": [],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "hybridrobotics.whole_body_tracking.33",
+    "query": "PPO normal expects all elements of std >= 0 sigma",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "人形机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "training_reward_curriculum",
+    "selected_comments": [
+      {
+        "text": "社区用户报告修改奖励权重后仍会偶发。"
+      },
+      {
+        "text": "另一用户建议裁剪 sigma，但没有结果反馈。"
+      }
+    ],
+    "wbc_relevance_reason": "全身运动策略训练会因动作分布标准差非法而中断，属于训练稳定性工程问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.hybridrobotics.whole_body_tracking.33",
+  "summary": "原帖给出完整栈：RSL-RL PPO 在 actor_critic.py 采样 Normal 分布时报 std 必须非负。两名社区用户分别报告改变奖励权重可暂时解决但仍偶发，以及在训练代码中裁剪 sigma；没有维护者确认、代码补丁或复测结果。",
+  "title": "PPO 训练中 Normal 分布标准差变为负值",
+  "version": null
+}

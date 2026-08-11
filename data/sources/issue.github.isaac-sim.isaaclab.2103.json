@@ -1,0 +1,147 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": [
+    "IoannisDadiotis"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/2103",
+  "captured_at": "2026-08-11T03:32:00+08:00",
+  "content_sha256": "10f9e7c268b569b02fb3d7c86fad63c2104130ded3d679bc96859bde07487134",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 REST 读取 Issue 正文和全部 4 条回复。电池、力矩与 Spot 细节都来自项目贡献者原回复；没有将实验室示例改写成通用参数。",
+    "components": [
+      "Isaac Lab",
+      "DCMotor",
+      "saturation_effort",
+      "effort_limit",
+      "torque-speed envelope"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc",
+      "recovery_safety_force"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者用零速附近的裁剪公式说明实际输出不会超过 effort_limit，并追问这是否过于保守。",
+        "维护者用 8A/40 N·m 与 30A/约 100 N·m 的电源—驱动器差异说明设计意图。"
+      ],
+      "diagnostics": [
+        "把驱动器峰值力矩、可用电流下的持续/实际力矩和速度上限分开核对，不要只从参数大小判断代码有错。",
+        "检查电池、母线、驱动器限流和传动系统的可用能力，再决定 effort_limit。"
+      ],
+      "effective_fixes": [
+        "将 saturation_effort 设为驱动器峰值能力，将 effort_limit 设为经电源、热和其他硬件约束核实后的实际可用力矩。",
+        "只有在整机确实能长时间或按所需占空比使用驱动器全能力时，才按维护者建议提高 effort_limit；Spot 的 infinity 设置依赖另一套定制裁剪，不能单独照搬。"
+      ],
+      "environments": [
+        "原帖链接到 Isaac Lab commit 91f53e2fe5702eb2fd4bc4de98ab19d320f772c9 的 DCMotor._clip_effort 实现。",
+        "维护者硬件示例：某实验室机器人板载电池 8A/约 40 N·m，驱动器 30A/约 100 N·m；未提供机器人型号和测试条件。"
+      ],
+      "limits": [
+        "8A/40 N·m 和 30A/约 100 N·m 只是维护者所在实验室的示例，不是通用参数。",
+        "原线程没有给出温度、持续时间、母线压降、减速器限制或真机复现数据。",
+        "把 effort_limit 设为 infinity 只在另有定制裁剪链路时才有该线程所述的语义。"
+      ],
+      "outcomes": [
+        "作者在最后回复中确认解释已清楚，Issue 以 completed 关闭。"
+      ],
+      "problem_statements": [
+        "DCMotor 已有 saturation_effort，为什么应用力矩仍被 effort_limit 限制，似乎永远达不到峰值？"
+      ],
+      "safety_notes": [
+        "提高 effort_limit 前必须验证电池、驱动器、电机、减速器、线束和热保护，并保留独立硬件限流与急停。"
+      ],
+      "suspected_causes": [
+        "这是两个不同物理语义的参数，不是 saturation_effort 未被使用：saturation_effort 建立驱动器峰值包络，effort_limit 再表示当前整机条件下允许的运行范围。"
+      ],
+      "symptoms": [
+        "在关节速度接近零时，速度相关的 saturation_effort 上界仍会被 torch.clip 再次限制到 effort_limit。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者将两者定义为不同层级：saturation_effort 是驱动器峰值力矩，effort_limit 是结合当前电流供应和整机硬件条件后实际允许的运行范围。因此零速附近仍被 effort_limit 限制是设计意图。只有整机能供给驱动器全能力时才提高该值；Spot 将其设为 infinity 是因为另有定制裁剪方案，不能照搬。",
+        "applicability": "适用于 Isaac Lab DCMotor 及类似同时建模驱动器峰值包络与整机实际力矩上限的执行器模型；数值必须按本机器人实测。",
+        "bilingual_terms": [
+          "峰值力矩（peak torque）",
+          "饱和力矩（saturation effort）",
+          "实际力矩上限（operating effort limit）",
+          "力矩—速度包络（torque-speed envelope）",
+          "电流供应（current supply）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.hardware_actuator_thermal_power.isaaclab_dcmotor_saturation_vs_effort_limit_2103",
+        "problem_title_zh": "Isaac Lab DCMotor 的峰值力矩与实际可用力矩",
+        "question_zh": "DCMotor 的 saturation_effort 高于 effort_limit 时，为什么最终力矩仍要被 effort_limit 裁剪？",
+        "source_locator": "Isaac Lab #2103 正文的 _clip_effort 公式、issuecomment-2737543184 的概念区分、issuecomment-2738166007 的电源示例和 issuecomment-2739805023 的作者确认",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2103",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者定义 saturation limit 为峰值、effort limit 为期望运行范围",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2737543184"
+          },
+          {
+            "locator": "项目贡献者给出电池 8A/驱动器 30A 示例、提高上限条件和 Spot 定制裁剪边界",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2738166007"
+          },
+          {
+            "locator": "原作者确认解释已清楚",
+            "relation": "issue",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/issues/2103#issuecomment-2739805023"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.2103",
+    "query": "Isaac Lab DCMotor saturation_effort effort_limit current supply clipping",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "维护者举例的实验室机器人未具名；另提到 Spot 使用定制裁剪方案"
+    ],
+    "schema_version": 2,
+    "scope_id": "hardware_actuator_thermal_power",
+    "selected_comments": [
+      {
+        "text": "项目贡献者将 saturation limit 解释为电机峰值力矩，effort limit 解释为实际期望运行的范围。"
+      },
+      {
+        "text": "项目贡献者以实验室的 8A/约 40 N·m 电池供给和 30A/约 100 N·m 驱动器能力说明两个限制为何分离。"
+      },
+      {
+        "text": "原作者最后回复表示解释已清楚。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 中的力矩限制需同时反映电机/驱动器峰值和机器人当前电源、热与传动条件；混淆两者会让策略学到真机无法输出的动作。"
+  },
+  "published_at": "2025-03-18T12:23:43Z",
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.2103",
+  "summary": "Isaac Lab #2103 询问 DCMotor 为何先用 saturation_effort 建立速度相关力矩曲线，却又用更小的 effort_limit 裁剪。项目贡献者解释：saturation limit 表示驱动器峰值能力，effort limit 表示结合当前电流供应与硬件条件后的实际运行范围。他们实验室的示例是电池仅能提供 8A（约 40 N·m），驱动器可承受 30A（约 100 N·m）。作者最后确认解释清楚。",
+  "title": "Isaac Lab DCMotor 峰值力矩与实际可用力矩的区别",
+  "version": null
+}

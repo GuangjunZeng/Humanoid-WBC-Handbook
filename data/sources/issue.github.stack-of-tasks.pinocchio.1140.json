@@ -1,0 +1,154 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "EnricoMingo"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140",
+  "captured_at": "2026-08-11T03:12:00+08:00",
+  "content_sha256": "77c7554e1285eb812dd8a12617f3c714603974b54fdf66f6f4432c0d3e134c49",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 读取 Issue 正文和全部 15 条回复，并下载逐张核对原帖两幅曲线图。线程中 getFrameVelocity 的一处早期说明已被回复者更正，本卡保留该边界，只采用原作者最终确认的根因与处理结果。",
+    "components": [
+      "Pinocchio",
+      "free flyer",
+      "LOCAL_WORLD_ALIGNED",
+      "frame Jacobian",
+      "pin.integrate"
+    ],
+    "domain_hints": [
+      "locomotion_terrain",
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "项目贡献者给出 frame velocity、Jv 以及 pin.integrate 有限差分的最小 Python 对照代码。",
+        "讨论中一度出现对 getFrameVelocity 的错误说明，后来由原回复者明确更正；本卡不沿用已更正的旧解释。"
+      ],
+      "diagnostics": [
+        "按项目贡献者代码用 q_plus = pin.integrate(model, q, v * eps) 构造流形上的邻近构型，再用 frame 世界位置差分对照 Jv。",
+        "核对 free-flyer 基座 twist 是按 Pinocchio 的局部坐标语义提供，不要把全局坐标速度直接传入。",
+        "C++ 使用带输出参数的 getFrameJacobian 时，按线程提示确保 J 预先置零。"
+      ],
+      "effective_fixes": [
+        "将浮动基速度、四元数传播和积分器与 Pinocchio 的 free-flyer 局部速度约定对齐；用 pin.integrate 而非对广义构型直接逐元 diff 做有限差分验证。"
+      ],
+      "environments": [
+        "Pinocchio C++ getFrameJacobian 与浮动基系统；原帖未说明 Pinocchio 版本、机器人型号或操作系统。"
+      ],
+      "limits": [
+        "原线程没有提供修正后曲线、Pinocchio 版本或数值误差。",
+        "原图没有图例、坐标轴名称和物理单位，无法从图中识别每条颜色对应的速度分量或计算方法。",
+        "回复中对 getFrameVelocity 的说明曾被原回复者更正；应以后续更正和当前 API 文档为准。"
+      ],
+      "outcomes": [
+        "原作者回复说问题已解决，改正坐标表达后得到开帖时期望的结果；项目贡献者随后按已解决关闭 Issue。"
+      ],
+      "problem_statements": [
+        "为什么 LOCAL_WORLD_ALIGNED frame Jacobian 计算的笛卡尔速度与 frame 位置的数值微分不一致？"
+      ],
+      "safety_notes": [
+        "将任务空间速度反馈用于真机前，应用小扰动、pin.integrate 和可视化同时验证基座 twist 的坐标表达。"
+      ],
+      "suspected_causes": [
+        "原作者最终确认：自己的浮动基速度、四元数传播和积分器使用全局坐标，与 Pinocchio 提供 Jacobian 时的局部 free-flyer 速度约定不兼容。"
+      ],
+      "symptoms": [
+        "原帖第一张图中，frame 速度的实线与虚线在多个区间明显分离。",
+        "第二张图中，部分 qdot 与差分 q 的实线/虚线基本重合，说明并非所有数值微分都失败。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "原作者最终确认，他们把浮动基速度、四元数传播和积分器都按全局坐标处理，与 Pinocchio Jacobian 所需的 free-flyer 局部速度约定不兼容。对齐局部表达后，作者得到预期结果。有限差分应用 q_plus = pin.integrate(model, q, v * eps) 在配置流形上进行，再对 frame 的世界位置做差分；C++ 输出式 Jacobian 还应核对 J 是否预先置零。",
+        "applicability": "适用于 Pinocchio 浮动基模型的 frame Jacobian 与数值微分验证；原帖未说明版本和具体机器人。",
+        "bilingual_terms": [
+          "浮动基（floating base, free flyer）",
+          "局部坐标（local coordinates）",
+          "局部坐标世界轴对齐（LOCAL_WORLD_ALIGNED）",
+          "配置流形（configuration manifold）",
+          "有限差分（finite difference）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": true,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_freeflyer_velocity_local_frame_1140",
+        "problem_title_zh": "Pinocchio 浮动基速度坐标不一致导致 Jacobian 验证失配",
+        "question_zh": "Pinocchio 的 LOCAL_WORLD_ALIGNED frame Jacobian 与位置数值微分不一致时，浮动基速度和积分应如何核对？",
+        "source_locator": "Pinocchio #1140；有限差分 issuecomment-610328052；free-flyer 局部速度 issuecomment-611878250；原作者解决确认 issuecomment-614654251",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140#issuecomment-614654251",
+        "verification_refs": [
+          {
+            "locator": "项目贡献者给出基于 pin.integrate 的 frame 位置有限差分代码",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140#issuecomment-610328052"
+          },
+          {
+            "locator": "项目贡献者明确 free-flyer joint velocity 以 free flyer 局部坐标表达",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140#issuecomment-611878250"
+          },
+          {
+            "locator": "原作者确认根因为全局速度/积分与 Pinocchio Jacobian 不兼容，修正后得到预期结果",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140#issuecomment-614654251"
+          },
+          {
+            "locator": "原回复者明确更正前面对 getFrameVelocity 的说明",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1140#issuecomment-613355302"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "原帖第一张 687×516 曲线图中，一组蓝色实线/紫色虚线在峰值和末段存在偏差，浅蓝虚线/橙色实线在约 20–60 横轴区间明显分离；红/绿零值线重合。图无图例、轴名和单位，只能确认原作者所说的速度失配，不能从颜色推断具体分量。",
+      "原帖第二张 734×612 曲线图中，非零分量的实线/虚线在大部分横轴范围基本重合，零值线也重合，与正文所述“部分 qdot 和 diff(q) 符合预期”一致。同样因无图例、轴名和单位，不记录无法确认的物理分量。"
+    ],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1140",
+    "query": "Pinocchio floating base velocity local coordinates LOCAL_WORLD_ALIGNED Jacobian finite difference integrate",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基机器人；原帖未说明具体型号和 Pinocchio 版本"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "项目贡献者给出用 pin.integrate 构造 q_plus 的有限差分代码。"
+      },
+      {
+        "text": "项目贡献者说明 free-flyer joint velocity 在 free flyer 局部坐标中表达。"
+      },
+      {
+        "text": "原作者确认是自己的浮动基速度、四元数传播和积分全部使用全局坐标，对齐后得到预期结果。"
+      }
+    ],
+    "wbc_relevance_reason": "浮动基人形 WBC 若把世界坐标与基座局部坐标的速度混用，会把坐标约定错误当成 Jacobian 或动力学错误，并污染任务空间速度反馈。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1140",
+  "summary": "Pinocchio #1140 比较 LOCAL_WORLD_ALIGNED frame Jacobian 乘关节速度与位置数值微分，原图显示 frame 速度实线/虚线不一致，但部分关节 qdot 与 diff(q) 曲线基本重合。项目成员给出用 pin.integrate 做流形有限差分的代码，并提醒自由浮动基速度在 Pinocchio 中以浮动基局部坐标表达。原作者最终确认根因是自己的浮动基速度、四元数传播和积分器全部使用全局坐标，与 Pinocchio Jacobian 不兼容；改正后得到预期结果。",
+  "title": "Pinocchio 浮动基速度坐标表达不一致导致 Jacobian 速度验证失配",
+  "version": null
+}

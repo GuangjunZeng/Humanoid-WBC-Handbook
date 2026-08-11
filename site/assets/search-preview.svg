@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Humanoid WBC Engineering Handbook 快速搜索</title>
+  <desc id="desc">浅色背景中的全身控制工程问题搜索框预览</desc>
+  <rect width="1200" height="430" rx="26" fill="#fafbfc"/>
+  <g fill="none" stroke="#6d8ca5" opacity="0.09">
+    <path d="M120 64v67l-34 61-31 52m65-113 38 61 32 33m-70-94v99l-39 73m39-73 42 73"/>
+    <circle cx="120" cy="48" r="16"/><circle cx="120" cy="131" r="5"/><circle cx="86" cy="192" r="5"/><circle cx="55" cy="244" r="4"/><circle cx="158" cy="192" r="5"/><circle cx="190" cy="225" r="4"/><circle cx="120" cy="230" r="6"/><circle cx="81" cy="303" r="5"/><circle cx="162" cy="303" r="5"/>
+    <path d="M1080 84v67l-34 61-31 52m65-113 38 61 32 33m-70-94v99l-39 73m39-73 42 73"/>
+    <circle cx="1080" cy="68" r="16"/><circle cx="1080" cy="151" r="5"/><circle cx="1046" cy="212" r="5"/><circle cx="1015" cy="264" r="4"/><circle cx="1118" cy="212" r="5"/><circle cx="1150" cy="245" r="4"/><circle cx="1080" cy="250" r="6"/><circle cx="1041" cy="323" r="5"/><circle cx="1122" cy="323" r="5"/>
+  </g>
+  <text x="600" y="105" text-anchor="middle" fill="#20364b" font-family="Georgia, 'Noto Serif SC', serif" font-size="34" font-weight="600">Humanoid WBC Engineering Handbook</text>
+  <text x="600" y="142" text-anchor="middle" fill="#748292" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="16">把分散的全身控制工程经验，整理成可以直接查询的问题与排查路径</text>
+  <rect x="235" y="187" width="730" height="76" rx="18" fill="#fff" stroke="#d6e0e8"/>
+  <circle cx="278" cy="225" r="10" fill="none" stroke="#8193a3" stroke-width="2"/>
+  <path d="m286 233 8 8" stroke="#8193a3" stroke-width="2" stroke-linecap="round"/>
+  <text x="318" y="232" fill="#8c99a5" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="17">描述你遇到的工程问题，例如：MuJoCo 正常，G1 真机乱动</text>
+  <text x="600" y="302" text-anchor="middle" fill="#9aa5af" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="13">G1 真机乱动 · QP infeasible · 足端打滑 · 状态估计漂移</text>
+  <text x="600" y="368" text-anchor="middle" fill="#315f86" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="15" font-weight="600">打开快速搜索 →</text>
+</svg>

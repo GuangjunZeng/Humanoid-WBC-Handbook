@@ -1,0 +1,250 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "FenglongSong"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650",
+  "captured_at": "2026-08-11T06:13:00+08:00",
+  "content_sha256": "da790b16f1c49ef266f946d9e2517ad679b9529c73b98b072eef366bc512c052",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和全部 13 条评论，并读取原作者明确引用的 OCS2 commit 3566993 lines 189–225；未把多接触架构讨论伪装成已复现实现。",
+    "components": [
+      "Pinocchio",
+      "recursive Newton-Euler algorithm",
+      "external wrench",
+      "OCS2 CentroidalModelRbdConversions",
+      "TSID",
+      "multi-contact holonomic constraint"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议 kMt.act(f_t)；作者随后采用 OCS2 固定提交中的 parent-joint force/wrench 构造。",
+        "另一参与者用 CRBA、nonLinearEffects 和 frame Jacobians 手写浮动基方程，原作者与 rnea 结果对比。",
+        "参与者讨论了单接触 re-root 与多接触 acceleration-level holonomic constraints 的求解边界。"
+      ],
+      "diagnostics": [
+        "先找到 contact frame 的 parent joint 和两者相对 placement，再把 wrench 转到该 joint local frame。",
+        "区分单个 Force 元素与 model.njoints 长度的 force vector。",
+        "对比手写浮动基方程与 rnea 输出，并单独评估是否利用了 kinematic-tree sparsity。"
+      ],
+      "effective_fixes": [
+        "按 contact frame 的 parent joint 建立 fext 元素，把 world-frame force 旋转到 joint frame，并用 joint-to-contact translation×force 构造 moment；6D contact 再加 joint-frame contact torque。",
+        "把变换作用于单个 pinocchio::Force，而不是 aligned_vector<Force>。"
+      ],
+      "environments": [
+        "2022 年 Pinocchio C++；floating-base quadruped；foot-tip contact frames；作者最终采用 OCS2 commit 3566993 的 CentroidalModelRbdConversions.cpp。"
+      ],
+      "limits": [
+        "原作者引用的 OCS2 代码以特定 centroidal input 和 contact metadata 为前提，复制前必须核对自己的 frame parent、wrench 顺序和表达坐标。",
+        "线程没有提供 Pinocchio 具体 release、数值误差或运行时间测量。",
+        "关于 re-root、Schur complement 和 TSID 的多接触讨论是架构建议，不是该线程完成的实现。",
+        "原作者关于忽略 rnea 前六维的表述依赖其系统解释，线程没有把它验证为所有 floating-base robot 的通用操作。"
+      ],
+      "outcomes": [
+        "原作者确认采用所引 OCS2 代码后原问题解决。",
+        "原作者报告手写浮动基方程与 rnea 的结果非常接近，但没有给误差或速度基准。",
+        "多接触 QP/TSID 设计讨论没有在该线程提供实现复测。"
+      ],
+      "problem_statements": [
+        "足端 contact frame 没有 joint 时，怎样构造 model.njoints 长度且在 joint local frame 表达的 rnea fext？",
+        "直接用 CRBA、nonLinearEffects 和 frame Jacobian 手写力矩是否与 RNEA 等价且高效？",
+        "多个固定接触点的零速度/零加速度约束能否通过把某个接触点设为 RNEA root 来处理？"
+      ],
+      "safety_notes": [
+        "在实体机器人输出力矩前，应验证 fext 正负号、力矩参考点、frame transform 和未驱动基座动力学残差。"
+      ],
+      "suspected_causes": [
+        "把 contact-frame force 直接放入 rnea，而没有转换作用点和局部表达。",
+        "错误地对整段 std::vector<Force> 调用 SE3 action。",
+        "手写 dense CRBA/Jacobian 运算没有利用 RNEA 的运动树递归稀疏结构。"
+      ],
+      "symptoms": [
+        "rnea 要求每个 joint 的 local-frame fext，但物理接触发生在没有 joint 的 foot-tip frame。",
+        "直接对 aligned_vector<Force> 调用 SE3 act 导致编译错误，提示 vector 没有 se3Action。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "维护者先给出原则：若 kMt 是 tip frame 相对 knee joint frame 的 placement，则对单个 Force 使用 kMt.act(f_t)，不能对整段 vector<Force> 调用 act。原作者最终采用其明确引用的 OCS2 commit 3566993：找到 contact frame 的 parent joint，用 data.oMi[jointIndex].rotation().transpose() 把 world-frame force 旋转到 joint frame；linear 分量为该力，angular 分量为 joint-to-contact translation×force，6-DoF contact 还加旋转后的 contact torque，然后把 model.njoints 长度的 fext 传给 rnea。作者确认原问题解决。",
+        "applicability": "适用于原帖 floating-base quadruped、foot contact frame 及原作者引用的 OCS2 3566993 实现；其他 contact metadata 和 wrench convention 必须重核。",
+        "bilingual_terms": [
+          "递归牛顿-欧拉算法（Recursive Newton–Euler Algorithm, RNEA）",
+          "外部力旋量（external wrench）",
+          "父关节（parent joint）",
+          "空间力变换（spatial force transformation）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.contact_force_friction.pinocchio_rnea_foot_wrench_1650",
+        "problem_title_zh": "足端接触 frame 没有 joint 时构造 Pinocchio RNEA 外力",
+        "question_zh": "脚端只有 contact frame、没有 joint 时，怎样把 world-frame 接触力放进 rnea 的 joint-local fext？",
+        "source_locator": "Issue #1650，维护者变换原则 issuecomment-1123785731、单 Force 边界 issuecomment-1124949067；作者确认 issuecomment-1129243412、issuecomment-1189957188；OCS2 commit 3566993 lines 189–225",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1129243412",
+        "verification_refs": [
+          {
+            "locator": "维护者给出 kMt.act(f_t) 的 joint-local force 变换原则",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1123785731"
+          },
+          {
+            "locator": "原作者确认问题解决并指向 OCS2 RNEA quadruped 示例",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1129243412"
+          },
+          {
+            "locator": "原作者引用的固定提交逐项构造 parent-joint local fext 并调用 rnea",
+            "relation": "source_code",
+            "source_url": "https://github.com/leggedrobotics/ocs2/blob/3566993b9fc5162f4c57ccb6f3d93aab92c5c2b1/ocs2_pinocchio/ocs2_centroidal_model/src/CentroidalModelRbdConversions.cpp#L189-L225"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "线程参与者用质量矩阵、非线性项和各足 Jacobian 手写浮动基方程；原作者随后说该方法与直接 rnea 的结果非常接近。项目成员同时指出，这种手写组合没有利用运动树诱导的 sparsity，CRBA 的算法复杂度也高于 RNEA，因此把它作为常规逆动力学实现会很低效。原线程没有给误差或 benchmark，所以只能把它作为交叉检查路径，不能量化速度差或保证数值等价。",
+        "applicability": "适用于原帖 quadruped 的 inverse-dynamics 交叉检查；实时 WBC 是否可接受必须在目标维度和实现上 benchmark。",
+        "bilingual_terms": [
+          "复合刚体算法（Composite Rigid Body Algorithm, CRBA）",
+          "非线性效应（nonlinear effects）",
+          "运动树稀疏性（kinematic-tree sparsity）",
+          "逆动力学（inverse dynamics）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "engineering_practice_record",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.contact_force_friction.pinocchio_manual_eom_vs_rnea_1650",
+        "problem_title_zh": "手写 CRBA 接触方程与 Pinocchio RNEA 的精度和效率边界",
+        "question_zh": "用 CRBA、nonLinearEffects 和足端 Jacobian 手写接触逆动力学，是否可以替代 rnea？",
+        "source_locator": "Issue #1650，实践者手写方法 issuecomment-1125218486；项目成员效率说明 issuecomment-1126962957；原作者结果对比 issuecomment-1129243412",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1129243412",
+        "verification_refs": [
+          {
+            "locator": "参与者给出 CRBA+nle+frame Jacobian 的手写路径",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1125218486"
+          },
+          {
+            "locator": "项目成员说明该方法未利用 kinematic-tree sparsity 且比 RNEA 低效",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1126962957"
+          },
+          {
+            "locator": "原作者报告手写方法与 rnea 结果非常接近",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1129243412"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      },
+      {
+        "answer_status": "partial",
+        "answer_zh": "项目成员说明，把系统 root 人工放到单个 contact point 可以使用 RNEA，但一个系统只有一个 root，因此不能用这一办法同时处理多个 contact；而且该做法限制极强。多个 acceleration-based holonomic constraints 应通过 TSID 或通用 QP 等优化来施加，线程还提到 Schur-complement 路径和利用惯性矩阵/接触 Jacobian 结构。原线程没有实现或复测这些方案，所以它是架构边界，不是可直接复制的多接触控制器。",
+        "applicability": "适用于需要同时满足多个加速度级 holonomic contacts 的 floating-base WBC 设计；求解器实现与稳定性未在该线程验证。",
+        "bilingual_terms": [
+          "完整约束（holonomic constraint）",
+          "多接触（multi-contact）",
+          "舒尔补（Schur complement）",
+          "任务空间逆动力学（Task-Space Inverse Dynamics, TSID）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "partially_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "not_reproduced",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "尚未形成可核对的复现记录。"
+        },
+        "problem_id": "problem.contact_force_friction.pinocchio_rnea_multicontact_boundary_1650",
+        "problem_title_zh": "简单重设 RNEA 根节点不能处理多个接触约束",
+        "question_zh": "把一个接触点设为系统 root，能否用 RNEA 强制多个接触点的零速度和零加速度？",
+        "source_locator": "Issue #1650，项目成员关于单 root、多接触和 QP/TSID 的说明 issuecomment-1127623596",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1127623596",
+        "verification_refs": [
+          {
+            "locator": "项目成员说明单 root 限制，并给出 TSID/QP/Schur-complement 架构方向",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1650#issuecomment-1127623596"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1650",
+    "query": "Pinocchio rnea fext foot contact force parent joint local frame multiple contacts TSID QP",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "floating-base quadruped with foot-tip contact frames"
+    ],
+    "schema_version": 2,
+    "scope_id": "contact_force_friction",
+    "selected_comments": [
+      {
+        "text": "维护者说明用 tip 相对 joint 的 placement 对单个 Force 做局部变换。"
+      },
+      {
+        "text": "维护者指出编译错误来自对 vector<Force> 而非单个 Force 调用变换。"
+      },
+      {
+        "text": "项目成员说明手写 CRBA/Jacobian 路径未利用运动树稀疏性。"
+      },
+      {
+        "text": "项目成员解释单 root 无法覆盖多接触，并给出 TSID/QP 架构边界。"
+      },
+      {
+        "text": "原作者确认采用 OCS2 示例后问题解决，并报告手写方法与 rnea 结果接近。"
+      },
+      {
+        "text": "原作者更正应使用 T_kf，并确认采用固定 OCS2 提交中的实现。"
+      }
+    ],
+    "wbc_relevance_reason": "足端 wrench 的作用点、坐标系与 parent joint 索引直接决定逆动力学力矩；多接触约束又不能由简单的单根 RNEA 自动强制，必须区分给定一致轨迹的 inverse dynamics 与需要求解接触一致性的 WBC/QP。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1650",
+  "summary": "Pinocchio #1650 讨论足端没有 joint 时如何构造 rnea 的 fext。维护者说明，若 kMt 是 tip frame 相对 knee joint frame 的 placement，可用 kMt.act(f_t) 把 tip-local force 变换到 knee joint local frame，并强调 act 的对象应是单个 Force 而不是 std::vector<Force>。原作者最终引用 OCS2 固定提交 3566993 的 CentroidalModelRbdConversions：代码用 contact frame 的 parent joint，旋转 world-frame force 到 joint frame，加入 translation×force 的力矩后传给 rnea；作者确认原问题解决，并说与手写浮动基方程结果很接近。项目成员同时指出，手写 CRBA+nle+Jacobian 方式没有利用运动树稀疏性，通常远低效于 RNEA；单接触 re-root 很受限，多个加速度级完整约束应使用 TSID/通用 QP 等方法。",
+  "title": "把足端接触 wrench 送入 Pinocchio RNEA 时的父关节变换与多接触边界",
+  "version": null
+}

@@ -1,0 +1,135 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "思蔚机器人"
+  ],
+  "canonical_url": "https://www.xiaohongshu.com/explore/6a2a8788000000003502e5d3",
+  "captured_at": "2026-08-10T17:11:27+08:00",
+  "content_sha256": "3fe117d85880df112777867bc425d246416ad174f24f4401889c433c6fa6bbc6",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "all_visible_comments_loaded",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；问题仍未解决；不得把候选时序解释升级为正式结论。",
+    "components": [
+      "Pi0.5",
+      "云端推理",
+      "MPC",
+      "action chunk",
+      "多速率控制"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "原帖只提出候选原因和讨论问题，未报告已实施的插值、缓冲或时间戳对齐方案。"
+      ],
+      "diagnostics": [
+        "核对策略/控制频率比、action chunk 大小、旧目标复用方式、端到端延迟和延迟抖动。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "云端 RTX 4090 运行 Pi0.5；1 Hz 策略输出；本地 100 Hz MPC；网络往返链路。"
+      ],
+      "limits": [
+        "缺少 action chunk、时延分布、目标插值、MPC horizon/代价和抖动频谱数据。"
+      ],
+      "outcomes": [
+        "截至可见内容没有固定答案或验证结果。"
+      ],
+      "problem_statements": [
+        "1 Hz 云端策略驱动 100 Hz 本地 MPC 时机械臂持续抖动、轨迹不平顺。"
+      ],
+      "safety_notes": [
+        "在抖动根因未确认前限制速度、加速度和力矩，并先在仿真或低功率模式验证多速率桥接。"
+      ],
+      "suspected_causes": [
+        "低频策略指令在 100 Hz 控制周期之间发生断层或停住。",
+        "MPC 反复跟踪陈旧目标，加上网络时延波动产生不连续纠偏。"
+      ],
+      "symptoms": [
+        "机械臂持续抖动，轨迹不平顺。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "原帖只形成候选排查方向：记录 action chunk 大小与每个样本的时间戳，确认 100 Hz 周期之间是否停住或重复陈旧目标，并测量云端往返延迟及抖动。仅做无时间语义的插值是否足够尚无结论；需要把目标保持/插值/缓冲方案与 MPC horizon 一起实验验证。",
+        "applicability": "适用于低频远端策略与高频本地 MPC/WBC 的多速率系统；不代表 Pi0.5 官方推荐架构。",
+        "bilingual_terms": [
+          "全身控制（Whole-Body Control, WBC）",
+          "模型预测控制（Model Predictive Control, MPC）",
+          "应用程序接口（Application Programming Interface, API）",
+          "关节力矩（Joint Torque）",
+          "端到端时延（End-to-End Latency）",
+          "时延抖动（Latency Jitter）"
+        ],
+        "question_zh": "1 Hz 云端 Pi0.5 指令接到 100 Hz MPC 后持续抖动，应先验证哪些接口时序问题？",
+        "source_locator": "正文四个讨论问题及唯一可见评论",
+        "source_url": "https://www.xiaohongshu.com/explore/6a2a8788000000003502e5d3",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.optimization_ik_qp_mpc.c39344a8e29643f6",
+        "problem_title_zh": "1 Hz 云端 Pi0.5 指令接到 100 Hz MPC 后持续抖动，应先验证哪些接口时序问题？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "可见图片是帖子标题和参数摘要卡片，显示 1 Hz 云端推理、100 Hz 本地 MPC 及抖动问题；未包含控制曲线、网络时延直方图或日志，不能从图片确定抖动频率和根因。"
+    ],
+    "platform": "xiaohongshu",
+    "post_id": "6a2a8788000000003502e5d3",
+    "published_display": "06-11",
+    "query": "人形机器人 IK MPC 数值不稳定 奇异位形",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "机械臂/具身机器人（未指定型号）"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [
+      {
+        "author_display": "半糖烨烨🧡",
+        "text": "1 Hz 时 action chunk 是多大？100 Hz 中间如果停住，肯定会抖动。"
+      }
+    ],
+    "wbc_relevance_reason": "高层视觉-语言-动作策略与本地 MPC/WBC 的多频率桥接、目标保持和网络时延会直接影响全身/机械臂控制平滑性。"
+  },
+  "published_at": null,
+  "publisher": "Xiaohongshu",
+  "source_id": "community.xiaohongshu.6a2a8788000000003502e5d3",
+  "summary": "帖子描述云端 RTX 4090 以 1 Hz 输出 Pi0.5 策略指令，本地模型预测控制器（Model Predictive Controller, MPC）以 100 Hz 闭环执行，经历本地采集、云端推理、回传和执行后机械臂持续抖动。作者怀疑低频命令断层、MPC 重复旧目标、云端时延与抖动共同导致时序不连续。唯一评论追问动作块（action chunk）大小，并指出 100 Hz 周期之间若动作停住会抖。没有给出最终修复。",
+  "title": "💬Pi0.5 云端推理 + 高频 MPC，抖动问题求解",
+  "version": null
+}

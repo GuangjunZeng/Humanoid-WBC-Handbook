@@ -1,0 +1,125 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "matheecs"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/2053",
+  "captured_at": "2026-08-11T05:25:00+08:00",
+  "content_sha256": "0b9baed700070cb267c2281bbb1f1597199a8dadfca4db40431e6b517127f181",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "通过 GitHub 官方公开 API 完整读取 Issue 正文和唯一 1 条评论；Issue 仍 open，未把计划修复改写为已修复。",
+    "components": [
+      "Pinocchio",
+      "JointModelComposite",
+      "JointModelSphericalZYX",
+      "Coriolis matrix",
+      "nonLinearEffects"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc",
+      "locomotion_terrain"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "作者提供可运行的最小代码和完整模型；维护者承认支持缺口并表示会尝试修复。"
+      ],
+      "diagnostics": [
+        "用最小 URDF 和固定 q/v 同时调用 computeCoriolisMatrix、nonLinearEffects、computeGeneralizedGravity 并逐分量比较。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Ubuntu 22.04 Intel x86-64；pinocchio3-preview；作者提供完整 Python code、URDF 和输出。"
+      ],
+      "limits": [
+        "Issue 截至核对时仍为 open，未链接修复 PR/commit、修复版本或回归测试。",
+        "不能据此推断当前稳定版仍有相同问题，也不能把改用其他 root joint 写成已验证修复。"
+      ],
+      "outcomes": [
+        "根因范围被维护者指向 JointModelComposite 支持不完整，但线程没有修复结果。"
+      ],
+      "problem_statements": [
+        "使用 Translation+SphericalZYX 的 JointModelComposite 时，为什么 C(q,v)v+g(q) 与 nonLinearEffects 不一致？"
+      ],
+      "safety_notes": [],
+      "suspected_causes": [
+        "维护者确认当时没有完整支持 JointModelComposite。"
+      ],
+      "symptoms": [
+        "同一 q、v 下 data.nle 与 data.C@v_home+data.g 的多个分量出现可见差异。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "unresolved",
+        "answer_zh": "作者用 Translation+SphericalZYX 的 JointModelComposite、完整 URDF 和固定 q/v 复现了不一致；维护者明确说原因是当时尚未完整支持 JointModelComposite，并表示计划修复。线程没有修复 PR、版本或复测，Issue 仍 open，所以当前只能把它作为该 preview 环境的已确认限制和排查入口，不能宣称升级或更换接口已经解决。",
+        "applicability": "严格限于原帖 Ubuntu 22.04 x86-64、pinocchio3-preview 和所给 JointModelComposite；其他版本需要重新运行相同一致性检查。",
+        "bilingual_terms": [
+          "复合关节模型（composite joint model）",
+          "科里奥利矩阵（Coriolis matrix）",
+          "广义重力（generalized gravity）",
+          "非线性效应（nonlinear effects, NLE）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "steps_and_results_complete",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "需要实际验证",
+          "final_grade": "需要实际验证",
+          "rationale_zh": "解答尚未闭环或存在冲突。"
+        },
+        "problem_id": "problem.joint_mapping_frames_conventions.pinocchio_jointmodelcomposite_nle_2053",
+        "problem_title_zh": "Pinocchio 复合根关节的非线性项一致性问题",
+        "question_zh": "pinocchio3-preview 中 JointModelComposite 下 C(q,v)v+g(q) 与 nonLinearEffects 不一致，原线程确认了什么？",
+        "source_locator": "Issue #2053，完整复现见正文；维护者原因确认 issuecomment-1713511072",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2053#issuecomment-1713511072",
+        "verification_refs": [
+          {
+            "locator": "作者提供完整 Python 复现、URDF、环境和不一致输出",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2053"
+          },
+          {
+            "locator": "维护者把原因指向 JointModelComposite 尚未完整支持",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/2053#issuecomment-1713511072"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.2053",
+    "query": "Pinocchio JointModelComposite C v g nonLinearEffects mismatch preview",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "作者提供的两腿最小 URDF"
+    ],
+    "schema_version": 2,
+    "scope_id": "joint_mapping_frames_conventions",
+    "selected_comments": [
+      {
+        "text": "维护者确认问题来自 JointModelComposite 尚未完全支持，并只表示计划修复。"
+      }
+    ],
+    "wbc_relevance_reason": "WBC 常用 C(q,v)v+g 与 nonLinearEffects 交叉检查动力学 bias；复合根关节不完整支持会让这种残差被误判为模型或公式问题。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.2053",
+  "summary": "Pinocchio #2053 提供完整 Python 最小代码、URDF、数值输出和环境，展示由 JointModelTranslation 与 JointModelSphericalZYX 组成的 JointModelComposite 下 data.C@v+data.g 与 data.nle 不一致。维护者确认问题来自 JointModelComposite 尚未完全支持，并表示计划后续修复。但截至本次核对，Issue 仍 open、只有这一条回复，没有修复 PR、版本或作者复测，因此只能作为已确认限制和复现入口，不能宣称已经修复。",
+  "title": "Pinocchio 3 preview 的 JointModelComposite 下 C v 加 g 与 nle 不一致",
+  "version": null
+}

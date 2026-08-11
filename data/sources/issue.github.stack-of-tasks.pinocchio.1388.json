@@ -1,0 +1,142 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "domire8"
+  ],
+  "canonical_url": "https://github.com/stack-of-tasks/pinocchio/issues/1388",
+  "captured_at": "2026-08-11T02:20:00+08:00",
+  "content_sha256": "33701cb6aeeaec5fd2da1c9d70d30df3ff324a453fb191ce056bed19a546fb90",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "完整读取 Issue 正文与全部 8 条评论；只写线程确认的合并语义和临时方案，未在未读 PR diff 时虚构新 API。",
+    "components": [
+      "Pinocchio",
+      "URDF",
+      "fixed joint",
+      "force/torque sensor",
+      "tool inertia"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "维护者建议通过原始 URDF tree/parser 访问信息，并讨论为 Frame 保存惯量；用户说明在等待功能期间把工具信息作为独立参数传入。"
+      ],
+      "diagnostics": [
+        "确认目标是工具自身惯量还是最后一个可动关节后的完整刚性子树；不要把 data.com 最后一项直接视为工具参数。"
+      ],
+      "effective_fixes": [
+        "旧接口下，原帖团队把工具惯量作为控制库的独立参数；另一条维护者建议是直接读取原始 URDF parser/tree 信息。",
+        "维护者后来称 PR #1415 已解决该问题，但原线程未展示具体调用方式。"
+      ],
+      "environments": [
+        "Franka Panda；URDF；法兰→固定关节 F/T 传感器→固定关节工具；2021 年 Pinocchio 线程，具体发布版本未说明。"
+      ],
+      "limits": [
+        "未读取 #1415 diff，不能声称哪个 Pinocchio 版本、Frame 字段或 API 可直接返回固定链单体惯量。"
+      ],
+      "outcomes": [
+        "团队用独立工具参数继续研究；维护者最终把线程标为由 #1415 解决。"
+      ],
+      "problem_statements": [
+        "固定关节连接的法兰、F/T 传感器和工具在 Pinocchio 中被合并后，怎样获得工具自身质量和质心用于重力补偿？"
+      ],
+      "safety_notes": [
+        "力传感器重力补偿使用错误的合并惯量会把法兰和传感器重量重复计入；实机前应逐项核对质量、质心、坐标系和安装方向。"
+      ],
+      "suspected_causes": [
+        "维护者确认算法层不需要固定链内部的分离惯量，因此解析时将其合并。"
+      ],
+      "symptoms": [
+        "固定关节只作为 frame 保留，最后一个 data.com 子树包含法兰、F/T 传感器和工具的合并惯量，无法隔离工具。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "维护者确认固定关节链的惯量会被合并，因为算法层不需要分别保留。对法兰→F/T 传感器→工具的结构，最后一个 data.com 子树包含三者，不能当成工具自身的质量与质心。原帖当时可执行的处理有两种：从原始 URDF parser/tree 读取单体信息，或像提问团队一样把工具惯量作为独立参数传给控制库。维护者最后称 #1415 已解决，但线程没有展示新 API，本卡不补写其用法。",
+        "applicability": "适用于 URDF 固定关节链和需要单独工具惯量的 F/T 重力补偿；新版本能力需结合 #1415 和本地 API 核对。",
+        "bilingual_terms": [
+          "固定关节（fixed joint）",
+          "惯量（inertia）",
+          "质心（center of mass, CoM）",
+          "力/力矩传感器（force/torque sensor）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_clear",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "maintainer_or_author_confirmed",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。"
+        },
+        "problem_id": "problem.mechanical_payload_integration.pinocchio_fixed_link_tool_inertia_1388",
+        "problem_title_zh": "Pinocchio 固定关节链中无法直接隔离工具惯量",
+        "question_zh": "Pinocchio 中固定关节后的工具惯量为何不能从 data.com 直接取出，原帖给了哪些可核对处理？",
+        "source_locator": "Issue #1388，维护者合并语义 issuecomment-773507916；用户临时方案 issuecomment-773599051；PR 状态 issuecomment-811858647",
+        "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1388#issuecomment-773507916",
+        "verification_refs": [
+          {
+            "locator": "维护者确认固定链惯量被合并并建议访问原始 URDF tree",
+            "relation": "maintainer_confirmation",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1388#issuecomment-773507916"
+          },
+          {
+            "locator": "用户说明暂时把工具信息作为独立参数传给控制库",
+            "relation": "issue",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/issues/1388#issuecomment-773599051"
+          },
+          {
+            "locator": "维护者称解决该问题的 PR；本轮未读取补丁细节",
+            "relation": "pull_request",
+            "source_url": "https://github.com/stack-of-tasks/pinocchio/pull/1415"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "stack-of-tasks.pinocchio.1388",
+    "query": "Pinocchio fixed joint link inertia tool force torque sensor URDF",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Franka Panda + F/T 传感器 + 末端工具"
+    ],
+    "schema_version": 2,
+    "scope_id": "mechanical_payload_integration",
+    "selected_comments": [
+      {
+        "text": "维护者确认固定关节链惯量被合并，并建议访问原始 URDF tree。"
+      },
+      {
+        "text": "用户解释 data.com 子树包含法兰、传感器和工具。"
+      },
+      {
+        "text": "用户说明临时把工具信息作为独立参数传入控制库。"
+      },
+      {
+        "text": "维护者最终写明由 #1415 解决。"
+      }
+    ],
+    "wbc_relevance_reason": "末端载荷、力传感器重力补偿和 manipulation WBC 需要区分机器人末端、传感器与工具惯量，合并后的子树质心不能替代工具自身参数。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.stack-of-tasks.pinocchio.1388",
+  "summary": "Pinocchio #1388 的 Franka Panda 末端依次安装 F/T 传感器和工具，用户需要独立的工具质量与质心做传感器重力偏置补偿。维护者确认 Pinocchio 会合并固定关节之间的惯量，因为算法层不需要分开；因此最后一个 data.com 子树包含法兰、传感器和工具，不能直接当成工具惯量。维护者提出可访问原始 URDF tree/parser 信息；用户在功能完成前选择把工具参数单独传给控制库。维护者最后只写“由 #1415 解决”，但本轮没有读取 PR diff，因此不能说明新接口名称或字段。",
+  "title": "Pinocchio 会把固定关节链的惯量合并，旧接口不能直接隔离末端工具惯量",
+  "version": null
+}

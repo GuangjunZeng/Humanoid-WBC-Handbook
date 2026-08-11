@@ -1,0 +1,125 @@
+{
+  "access_mode": "authorized_visible_browser",
+  "attention": {},
+  "authors": [
+    "糯米词​​"
+  ],
+  "canonical_url": "https://zhuanlan.zhihu.com/p/2010051873546183158",
+  "captured_at": "2026-08-10T17:33:08+08:00",
+  "content_sha256": "287699a402f1068403b59d5e7f65ce469ea8cff60a64042557509eb155e990ef",
+  "excerpt": null,
+  "kind": "community",
+  "license": null,
+  "metadata": {
+    "collection_completeness": {
+      "hidden_or_inaccessible_content_included": false,
+      "media_scope": "visible_media_screenshot_queue",
+      "post_text_scope": "visible_dom",
+      "reply_depth_limit": 10,
+      "reply_depth_reached": 1,
+      "reply_expansion_attempts": 0,
+      "reply_expansion_strategy": "until_exhausted_or_guardrail",
+      "reply_limit_requested": 500,
+      "reply_scope": "bounded_visible_subset",
+      "status": "partial_visible",
+      "stop_reason": "no_visible_expand_controls",
+      "visible_replies_captured": 1
+    },
+    "collector_note": "collection_completeness=partial_visible；仅采当前登录态可见 DOM；社区候选未独立验证。",
+    "components": [
+      "Isaac Sim",
+      "Isaac Lab",
+      "PyTorch",
+      "CUDA"
+    ],
+    "domain_hints": [],
+    "engineering_details": {
+      "attempts": [
+        "固定版本、执行 create_empty.py 和 Ant/ANYmal 训练作为分层验证；冲突时临时 unset LD_LIBRARY_PATH。"
+      ],
+      "diagnostics": [
+        "按正文、可见评论和媒体说明交叉整理；未经论文/源码/官方文档独立验证。"
+      ],
+      "effective_fixes": [],
+      "environments": [
+        "Python 3.11；Isaac Sim 5.1.0；PyTorch 2.7.0 + CUDA 12.8；Isaac Lab 2.3.2 示例提交。"
+      ],
+      "limits": [
+        "版本组合会过时；没有提供完整硬件/驱动矩阵。"
+      ],
+      "outcomes": [
+        "正文给出可执行命令链；评论中的远程 GUI 问题没有统一解法。"
+      ],
+      "problem_statements": [
+        "Isaac Sim/Lab 安装后出现 CUDA 动态库符号错误，应该先查什么？"
+      ],
+      "safety_notes": [
+        "社区候选只用于形成排查假设；涉及真机时先限速、限力、隔离人员并保留日志。"
+      ],
+      "suspected_causes": [
+        "系统 CUDA/LD_LIBRARY_PATH 与 Isaac Sim 自带 CUDA 库冲突；远程环境缺少可用图形栈。"
+      ],
+      "symptoms": [
+        "Binary 安装可能报 libcusparse.so.12 的 undefined symbol；远程/headless 用户评论无法看到 GUI。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "partial",
+        "answer_zh": "该帖的可操作做法是先核对 Python、Isaac Sim、PyTorch/CUDA 与 Isaac Lab 提交是否成套，再检查 LD_LIBRARY_PATH 是否把系统 CUDA 库置于 Isaac Sim 自带库之前；Binary 路径下可临时 unset LD_LIBRARY_PATH 后重试，并用 create_empty.py 分层验证。远程 GUI 问题仍需单独核对图形栈。",
+        "applicability": "版本组合会过时；没有提供完整硬件/驱动矩阵。",
+        "bilingual_terms": [
+          "统一计算设备架构（Compute Unified Device Architecture, CUDA）"
+        ],
+        "question_zh": "Isaac Sim/Lab 安装后出现 CUDA 动态库符号错误，应该先查什么？",
+        "source_locator": "正文“方式1/2/3”及 libcusparse 报错段落",
+        "source_url": "https://zhuanlan.zhihu.com/p/2010051873546183158",
+        "verification_status": "community_candidate",
+        "problem_id": "problem.environment_setup_dependencies.1b7f93e80405e892",
+        "problem_title_zh": "Isaac Sim/Lab 安装后出现 CUDA 动态库符号错误，应该先查什么？",
+        "credibility": {
+          "computed_grade": "值得参考",
+          "final_grade": "值得参考",
+          "rationale_zh": "环境、处理步骤和结果已有工程记录，但尚缺正式资料交叉核验或独立复现。",
+          "basis": {
+            "source_basis": "engineering_practice_record",
+            "reproduction": "steps_and_results_complete",
+            "applicability": "environment_clear",
+            "independent_source_ids": [],
+            "conflict_present": false,
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          }
+        },
+        "verification_refs": []
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [
+      "正文媒体位与命令块共同说明三种安装路径；关键可执行信息是版本锁定、_isaac_sim 符号链接和 LD_LIBRARY_PATH 排查，图片本身未提供性能曲线。"
+    ],
+    "platform": "zhihu",
+    "post_id": "article.2010051873546183158",
+    "published_display": "编辑于 2026-07-09 20:32・日本",
+    "query": "Isaac Lab humanoid 安装 依赖 版本 报错",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "Ant/ANYmal 示例"
+    ],
+    "schema_version": 2,
+    "scope_id": "environment_setup_dependencies",
+    "selected_comments": [
+      {
+        "text": "https://my.feishu.cn/wiki/YcvDwA3o8iwthBkAbDPcLuoinVc   大家好 isaaclab 官网样例详细使用指引和相关样例代码详细介绍 感兴趣的朋友 可以参考哈[抱拳]"
+      }
+    ],
+    "wbc_relevance_reason": "可转成环境矩阵与最小验证命令，适合定位 Isaac Sim/Lab 安装和动态库冲突。"
+  },
+  "published_at": null,
+  "publisher": "Zhihu",
+  "source_id": "community.zhihu.article.2010051873546183158",
+  "summary": "帖子给出 pip、Binary+Source 与 Full Source Build 三套安装路径，明确 Python 3.11、Isaac Sim 5.1.0、PyTorch 2.7/CUDA 12.8、Isaac Lab 固定提交，并记录 libcusparse/libnvJitLink 冲突可先排查 LD_LIBRARY_PATH。",
+  "title": "Isaac Sim 5.1 / Isaac Lab 2.3.2 三种安装路径与 CUDA 冲突处理",
+  "version": null
+}

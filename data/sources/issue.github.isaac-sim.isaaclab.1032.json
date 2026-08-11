@@ -1,0 +1,116 @@
+{
+  "access_mode": "manual_import",
+  "attention": {},
+  "authors": [
+    "lorenwel"
+  ],
+  "canonical_url": "https://github.com/isaac-sim/IsaacLab/issues/1032",
+  "captured_at": "2026-08-10T23:42:00+08:00",
+  "content_sha256": "6ec43d327efb7d0b00331a9d3429d40128194964fda1e6072de0ddef4e622fa8",
+  "excerpt": null,
+  "kind": "issue",
+  "license": null,
+  "metadata": {
+    "collector_note": "GitHub 公开 Issue 与 merged PR 交叉核验；未依赖截图。",
+    "components": [
+      "Isaac Lab",
+      "PhysX",
+      "DifferentialInverseKinematicsAction",
+      "Jacobian"
+    ],
+    "domain_hints": [
+      "loco_manipulation_wbc"
+    ],
+    "engineering_details": {
+      "attempts": [
+        "在浮动基分支索引时对 joint_ids 加 6。"
+      ],
+      "diagnostics": [
+        "检查 PhysX Jacobian 最后一维，确认前 6 列对应根位姿而非驱动关节。"
+      ],
+      "effective_fixes": [
+        "PR #1033 修改索引并合入 isaac-sim/IsaacLab main。"
+      ],
+      "environments": [
+        "Isaac Sim 4.0.0；Isaac Lab commit 9ab6b48；floating-base articulation。"
+      ],
+      "limits": [
+        "适用于该 API/版本布局；升级后应查当前张量契约，不能永远硬编码 +6。"
+      ],
+      "outcomes": [
+        "代码所有者批准，commit d282255 于 2024-09-25 合并，Issue 关闭。"
+      ],
+      "problem_statements": [
+        "固定基 IK 正常，但浮动基机器人差分 IK 行为错误，如何检查 Jacobian 索引？"
+      ],
+      "safety_notes": [
+        "部署到真机前用有限差分或可视化验证 Jacobian 方向和列映射。"
+      ],
+      "suspected_causes": [
+        "固定基系统的 joint_ids 被直接用于浮动基 Jacobian，缺少 6 列根自由度偏移。"
+      ],
+      "symptoms": [
+        "DifferentialInverseKinematicsAction 在浮动基系统不能正确工作。"
+      ]
+    },
+    "engineering_qa": [
+      {
+        "answer_status": "resolved",
+        "answer_zh": "PhysX 为浮动基 articulation 返回的 Jacobian 在关节列之前含 6 个根位姿自由度；直接用 joint_ids 会整体左移 6 列。对应版本的修复是在浮动基分支为索引加 6。升级版本应优先按当前 API 的自由度布局计算偏移，并用有限差分验证。",
+        "applicability": "Isaac Sim 4.0.0 / 当时 Isaac Lab；其他版本需核对 Jacobian tensor contract。",
+        "bilingual_terms": [
+          "浮动基（floating base）",
+          "雅可比矩阵（Jacobian）",
+          "根位姿自由度（root-pose DOFs）"
+        ],
+        "credibility": {
+          "basis": {
+            "applicability": "environment_version_match",
+            "conflict_present": false,
+            "independent_source_ids": [],
+            "reproduction": "original_thread_confirmation",
+            "source_basis": "primary_cross_checked",
+            "visual_evidence_required": false,
+            "visual_evidence_verified": true
+          },
+          "computed_grade": "可信度很高",
+          "final_grade": "可信度很高",
+          "rationale_zh": "问题已闭环、环境明确且无冲突，并有正式资料或独立复现的精确引用。"
+        },
+        "problem_id": "problem.optimization_ik_qp_mpc.6e6c26f5b03edfc2",
+        "problem_title_zh": "Isaac Lab 浮动基机器人差分 IK 异常时，为什么 joint_ids 会取错 Jacobian 列？",
+        "question_zh": "Isaac Lab 浮动基机器人差分 IK 异常时，为什么 joint_ids 会取错 Jacobian 列？",
+        "source_locator": "Issue #1032 描述；merged PR #1033 description/commit d282255",
+        "source_url": "https://github.com/isaac-sim/IsaacLab/issues/1032",
+        "verification_refs": [
+          {
+            "locator": "merged PR：浮动基 Jacobian joint indices 加 6；code owner approved；commit d282255",
+            "relation": "pull_request",
+            "source_url": "https://github.com/isaac-sim/IsaacLab/pull/1033"
+          }
+        ],
+        "verification_status": "issue_candidate"
+      }
+    ],
+    "experience_quality": "rich",
+    "experience_signal_count": 6,
+    "media_summaries": [],
+    "platform": "github_issue",
+    "post_id": "isaac-sim.isaaclab.1032",
+    "query": "floating base Jacobian inverse kinematics wrong indices",
+    "review_status": "candidate",
+    "robot_platforms": [
+      "浮动基机器人"
+    ],
+    "schema_version": 2,
+    "scope_id": "optimization_ik_qp_mpc",
+    "selected_comments": [],
+    "wbc_relevance_reason": "浮动基 Jacobian 列错位会直接破坏 IK/WBC 任务映射，是人形和足式系统常见模型接口陷阱。"
+  },
+  "published_at": null,
+  "publisher": "GitHub Issues",
+  "source_id": "issue.github.isaac-sim.isaaclab.1032",
+  "summary": "Isaac Lab 4.0.0 的 DifferentialInverseKinematicsAction 直接用关节索引切 PhysX Jacobian；浮动基系统最后一维前 6 项属于根位姿，导致所有关节列错位。修复 PR #1033 为浮动基索引加 6，经过代码所有者批准后合并。",
+  "title": "Isaac Lab 浮动基差分 IK 的 Jacobian 关节索引偏移",
+  "version": null
+}
