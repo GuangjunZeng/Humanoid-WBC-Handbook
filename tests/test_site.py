@@ -12,10 +12,13 @@ class StaticSearchSiteTests(unittest.TestCase):
     def test_readme_leads_with_the_search_entry(self):
         readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
         hero = readme.split("\n---\n", 1)[0]
+        pages_url = "https://guangjunzeng.github.io/Humanoid-WBC-Handbook/"
         self.assertIn("site/assets/search-preview.svg", hero)
         self.assertIn("打开中英文快速搜索", hero)
         self.assertIn("所有工程问题均可搜索", hero)
         self.assertIn("可信度、状态和证据边界在独立详情页查看", hero)
+        self.assertEqual(hero.count(f"]({pages_url})"), 2)
+        self.assertNotIn("](site/)", hero)
 
     def test_site_uses_only_repository_relative_assets(self):
         html = (PROJECT_ROOT / "site/index.html").read_text(encoding="utf-8")

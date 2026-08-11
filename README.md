@@ -1,8 +1,8 @@
 # Humanoid WBC Engineering Handbook
 
-[![Humanoid WBC Engineering Handbook 中英文快速搜索预览](site/assets/search-preview.svg)](site/)
+[![Humanoid WBC Engineering Handbook 中英文快速搜索预览](site/assets/search-preview.svg)](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)
 
-**[打开中英文快速搜索](site/)**：所有工程问题均可搜索；可信度、状态和证据边界在独立详情页查看。
+**[打开中英文快速搜索](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)**：所有工程问题均可搜索；可信度、状态和证据边界在独立详情页查看。
 
 ---
 
