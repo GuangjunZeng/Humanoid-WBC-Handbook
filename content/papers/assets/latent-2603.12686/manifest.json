@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2603.12686",
+  "source_pdf": "https://arxiv.org/pdf/2603.12686",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "pdf_page": 4,
+      "source_locator": "Figure 2",
+      "caption_zh": "LATENT 的动作跟踪、在线蒸馏、高层策略与 sim-to-real 四阶段管线。",
+      "sha256": "c01d54efc168d67b64f368836c81cf202aec2b956baad9a361cdbca8254afb80"
+    },
+    {
+      "asset": "figure-4-lab.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "pdf_page": 5,
+      "source_locator": "Figure 4 / Equation 4",
+      "caption_zh": "Latent Action Barrier 使用状态依赖标准差和 tanh 限制潜在动作探索。",
+      "sha256": "b31f2687e24088439a997918a16f39c932e1afaefd8aa3a1adaae1b2124c0c64"
+    },
+    {
+      "asset": "table-3-4-simulation.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "pdf_page": 7,
+      "source_locator": "Table 3-4",
+      "caption_zh": "一万次仿真试验中的基线对照与手腕修正、LAB 消融。",
+      "sha256": "5cc9d6bae9633e42482af6fb982663b33c732290d74c214a80ab2e9c85a4a0c7"
+    },
+    {
+      "asset": "table-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "pdf_page": 8,
+      "source_locator": "Table 5",
+      "caption_zh": "20 组连续人机回合中球动力学随机化和观测噪声的真机消融。",
+      "sha256": "dbccf07aab8169f1ae6ebe6653a416862427e9055e2a18b2624c6cbf172d9d93"
+    }
+  ]
+}

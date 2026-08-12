@@ -155,6 +155,86 @@
         {"file": "figure-4-training-table-2.jpg", "page": 4, "locator": "Figure 4 / Table II", "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。"},
         {"file": "table-3-4-hardware.jpg", "page": 6, "locator": "Table III-IV", "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。"}
       ]
+    },
+    {
+      "slug": "gvhmr-2409.06662",
+      "paper_id": "arxiv:2409.06662",
+      "pdf": "var/papers/2409.06662v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2409.06662",
+      "figures": [
+        {"file": "figure-3-framework.jpg", "page": 3, "locator": "Figure 3", "caption_zh": "GVHMR 从视频特征、相对相机旋转到重力对齐世界轨迹的完整框架。"},
+        {"file": "table-1-2-results.jpg", "page": 6, "locator": "Table 1-2", "caption_zh": "RICH、EMDB 与 3DPW 上的世界坐标和相机坐标定量结果。"},
+        {"file": "figure-9-orientation-drift.jpg", "page": 11, "locator": "Figure 9", "caption_zh": "GVHMR 与 WHAM 在长序列上的全局方向误差累积对照。"}
+      ]
+    },
+    {
+      "slug": "m3imic-2606.04829v1",
+      "paper_id": "arxiv:2606.04829v1",
+      "pdf": "var/papers/2606.04829v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "figures": [
+        {"file": "figure-2-framework.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "机器人关节、人体姿态与末端位姿经专用编码器进入共享潜在指令空间。"},
+        {"file": "table-3-4-generalization.jpg", "page": 5, "locator": "Table III-IV / Figure 3", "caption_zh": "训练集与未见 OMOMO 测试集上的跟踪精度—鲁棒性取舍。"},
+        {"file": "figure-7-table-5-6.jpg", "page": 7, "locator": "Figure 7 / Table V-VI", "caption_zh": "G1 真机光学动捕遥操与课程、数据量、网络规模消融。"}
+      ]
+    },
+    {
+      "slug": "learning-walk-2109.11978",
+      "paper_id": "arxiv:2109.11978",
+      "pdf": "var/papers/2109.11978v3.pdf",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "figures": [
+        {"file": "figure-3-curriculum.jpg", "page": 5, "locator": "Figure 3", "caption_zh": "4000 个并行机器人根据成功与失败在地形难度上自动升降级。"},
+        {"file": "figure-4-parallelism.jpg", "page": 6, "locator": "Figure 4", "caption_zh": "并行机器人数、batch size、收益与训练时间的实证取舍。"},
+        {"file": "figure-7-hardware.jpg", "page": 8, "locator": "Figure 7", "caption_zh": "20 分钟内训练的 ANYmal 复杂地形策略真机部署。"}
+      ]
+    },
+    {
+      "slug": "crocoddyl-1909.04947",
+      "paper_id": "arxiv:1909.04947",
+      "pdf": "var/papers/1909.04947v2.pdf",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "figures": [
+        {"file": "figure-1-contact-formulation.jpg", "page": 2, "locator": "Figure 1 / Equation 1-4", "caption_zh": "Crocoddyl 多接触最优控制任务与全身刚体接触动力学形式化。"},
+        {"file": "figure-2-gap-convergence.jpg", "page": 5, "locator": "Figure 2", "caption_zh": "FDDP 在高动态跳跃中允许早期动力学 gap 保持开放的收敛过程。"},
+        {"file": "figure-3-5-runtime.jpg", "page": 6, "locator": "Figure 3-5", "caption_zh": "高动态动作快照与不同 CPU、线程数、动作的单次迭代频率。"}
+      ]
+    },
+    {
+      "slug": "latent-2603.12686",
+      "paper_id": "arxiv:2603.12686",
+      "pdf": "var/papers/2603.12686v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "figures": [
+        {"file": "figure-2-pipeline.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "LATENT 的动作跟踪、在线蒸馏、高层策略与 sim-to-real 四阶段管线。"},
+        {"file": "figure-4-lab.jpg", "page": 5, "locator": "Figure 4 / Equation 4", "caption_zh": "Latent Action Barrier 使用状态依赖标准差和 tanh 限制潜在动作探索。"},
+        {"file": "table-3-4-simulation.jpg", "page": 7, "locator": "Table 3-4", "caption_zh": "一万次仿真试验中的基线对照与手腕修正、LAB 消融。"},
+        {"file": "table-5-hardware.jpg", "page": 8, "locator": "Table 5", "caption_zh": "20 组连续人机回合中球动力学随机化和观测噪声的真机消融。"}
+      ]
+    },
+    {
+      "slug": "meta-motivo-2504.11054",
+      "paper_id": "arxiv:2504.11054",
+      "pdf": "var/papers/2504.11054v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "figures": [
+        {"file": "figure-2-fbcpr.jpg", "page": 4, "locator": "Figure 2 / Equation 7-11", "caption_zh": "FB-CPR 用条件判别器对齐策略占用分布与无动作标注动作集。"},
+        {"file": "table-1-main-results.jpg", "page": 7, "locator": "Table 1", "caption_zh": "奖励优化、目标到达与动作跟踪三类 zero-shot 任务的主结果。"},
+        {"file": "figure-3-human-eval.jpg", "page": 8, "locator": "Figure 3", "caption_zh": "50 名人类评估者对 FB-CPR 与单任务 TD3 的成功和人类似然性评判。"},
+        {"file": "figure-4-ablations.jpg", "page": 9, "locator": "Figure 4", "caption_zh": "判别器条件化、FB 目标、数据/容量扩展与在线训练的消融。"}
+      ]
+    },
+    {
+      "slug": "prime-2605.17681",
+      "paper_id": "arxiv:2605.17681",
+      "pdf": "var/papers/2605.17681v1.pdf",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "figures": [
+        {"file": "figure-1-overview.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "PRIME 从运动学测量和关节力矩联合恢复物理一致轨迹、接触力和惯性。"},
+        {"file": "figure-3-4-reconstruction.jpg", "page": 7, "locator": "Figure 3-4", "caption_zh": "Go2 与 G1 上原始运动学和 PRIME 接触一致重建的对照。"},
+        {"file": "table-1-3-identification.jpg", "page": 8, "locator": "Table I-III / Figure 6", "caption_zh": "Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。"},
+        {"file": "figure-10-12-contact-analysis.jpg", "page": 12, "locator": "Figure 10-12 / Table VI", "caption_zh": "固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。"}
+      ]
     }
   ]
 }

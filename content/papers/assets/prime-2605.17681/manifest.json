@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2605.17681",
+  "source_pdf": "https://arxiv.org/pdf/2605.17681",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-overview.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "PRIME 从运动学测量和关节力矩联合恢复物理一致轨迹、接触力和惯性。",
+      "sha256": "b7c154aeb1c771cbfa9b36d3b1677e2886f542785e8f0b0d05003459d07a4267"
+    },
+    {
+      "asset": "figure-3-4-reconstruction.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "pdf_page": 7,
+      "source_locator": "Figure 3-4",
+      "caption_zh": "Go2 与 G1 上原始运动学和 PRIME 接触一致重建的对照。",
+      "sha256": "580cdbfe0af5582435245b611a0bbc279f60cfe07fd63aeb9c61333a41c02942"
+    },
+    {
+      "asset": "table-1-3-identification.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "pdf_page": 8,
+      "source_locator": "Table I-III / Figure 6",
+      "caption_zh": "Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。",
+      "sha256": "d0241b6c5bc2c3ffdc23bf85b9ea6f9e0ba2d27af762b3ccf93346952d9c998c"
+    },
+    {
+      "asset": "figure-10-12-contact-analysis.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "pdf_page": 12,
+      "source_locator": "Figure 10-12 / Table VI",
+      "caption_zh": "固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。",
+      "sha256": "ff79760597b1a22a3ca97073b123cb2463f1716610387f63323c94ecd4a04a85"
+    }
+  ]
+}

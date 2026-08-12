@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:1909.04947",
+  "source_pdf": "https://arxiv.org/pdf/1909.04947",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-contact-formulation.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "pdf_page": 2,
+      "source_locator": "Figure 1 / Equation 1-4",
+      "caption_zh": "Crocoddyl 多接触最优控制任务与全身刚体接触动力学形式化。",
+      "sha256": "3803bcfc2ea5b35cf989a168f70b52af82fe6aafe307fcea2e07141f49f3b0f8"
+    },
+    {
+      "asset": "figure-2-gap-convergence.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "pdf_page": 5,
+      "source_locator": "Figure 2",
+      "caption_zh": "FDDP 在高动态跳跃中允许早期动力学 gap 保持开放的收敛过程。",
+      "sha256": "99a0b0448f6a0e89d26e323e15a6260149aefb6f5905076dabb733cb0292ef6f"
+    },
+    {
+      "asset": "figure-3-5-runtime.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "pdf_page": 6,
+      "source_locator": "Figure 3-5",
+      "caption_zh": "高动态动作快照与不同 CPU、线程数、动作的单次迭代频率。",
+      "sha256": "417dc2302a479559dc7ad01585acd04f5488bd649f5681a06f4315db6b7d0a3f"
+    }
+  ]
+}

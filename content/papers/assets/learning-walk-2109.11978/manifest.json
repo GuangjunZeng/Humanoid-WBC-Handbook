@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2109.11978",
+  "source_pdf": "https://arxiv.org/pdf/2109.11978",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-3-curriculum.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "pdf_page": 5,
+      "source_locator": "Figure 3",
+      "caption_zh": "4000 个并行机器人根据成功与失败在地形难度上自动升降级。",
+      "sha256": "02ea56a505017f728a3f1e31feb7068e7cb55786c1569d63140aa8c1f4d91886"
+    },
+    {
+      "asset": "figure-4-parallelism.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "pdf_page": 6,
+      "source_locator": "Figure 4",
+      "caption_zh": "并行机器人数、batch size、收益与训练时间的实证取舍。",
+      "sha256": "310c699fdb8ffa01d2e6015e41cd25a899f778d4ae91b8c4d94fbe73625f4729"
+    },
+    {
+      "asset": "figure-7-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "pdf_page": 8,
+      "source_locator": "Figure 7",
+      "caption_zh": "20 分钟内训练的 ANYmal 复杂地形策略真机部署。",
+      "sha256": "05eab25912d4669d734aa069c26afb9f89de7b95e3a244569394eedb9878985f"
+    }
+  ]
+}

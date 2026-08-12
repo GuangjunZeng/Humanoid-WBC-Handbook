@@ -12,12 +12,14 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：20 篇，其中深度解读 2 篇，有可核验官方代码 20 篇。
+- 当前收录：20 篇，其中深度解读 4 篇，有可核验官方代码 20 篇。
 - 必要覆盖角色：领域锚点（field anchor）、潜技能（latent skill）、开源实现（open source）、机器人部署（robot deployment）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
 |---|---|---:|---|---|---|
 | 深度解读 | [BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion](../beyondmimic-2508.08241v4.md) | 2025 | 潜技能（latent skill）、开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/HybridRobotics/whole_body_tracking) | 用状态潜变量扩散与可微测试时代价将跟踪技能组合为新任务。 |
+| 深度解读 | [Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models](../meta-motivo-2504.11054.md) | 2025 | 潜技能（latent skill）、领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/facebookresearch/metamotivo) | Meta Motivo 用行为基础模型展示零样本全身控制，是高 Star 无独立页面项目转为论文—代码联合解读的关键案例。 |
+| 深度解读 | [M3imic: Learning a Versatile Whole-Body Controller for Multimodal Motion Mimicking](../m3imic-2606.04829v1.md) | 2026 | 多模式（multi-mode）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/Renforce-Dynamics/MultiModalWBC) | 统一处理多种动作条件与模态输入，是 Renforce Dynamics 开源全身控制路线中最直接的论文锚点。 |
 | 深度解读 | [TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control](../textop-2602.07439v1.md) | 2026 | 开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/TeleHuman/TextOp) | 用流式文本、自回归短动作块和独立跟踪器实现可随时改写的真机运动。 |
 | 待深读 | [DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills](https://arxiv.org/abs/1804.02717) | 2018 | 领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/xbpeng/DeepMimic) | 参考动作跟踪与任务目标联合训练的经典起点，对后续高动态动作学习影响深远。 |
 | 待深读 | [AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control](https://arxiv.org/abs/2104.02180) | 2021 | 领域锚点（field anchor）、开源实现（open source）、潜技能（latent skill） | [官方代码](https://github.com/isaac-sim/IsaacGymEnvs) | 用对抗运动先验取代繁重的逐项风格奖励，是后续动作先验控制的关键基线。 |
@@ -34,9 +36,7 @@
 | 待深读 | [SkillBlender: Towards Versatile Humanoid Whole-Body Loco-Manipulation via Skill Blending](https://arxiv.org/abs/2506.09366) | 2025 | 任务交互（task interaction）、潜技能（latent skill）、开源实现（open source） | [官方代码](https://github.com/Humanoid-SkillBlender/SkillBlender) | 通过技能混合组合全身移动操作行为，体现可复用技能比单一端到端策略更易扩展的技术路线。 |
 | 待深读 | [SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control](https://arxiv.org/abs/2512.03028) | 2025 | 潜技能（latent skill）、开源实现（open source） | [官方代码](https://github.com/xbpeng/MimicKit) | 把 score matching 动作先验做成可复用控制组件，便于比较生成先验与任务策略如何解耦。 |
 | 待深读 | [SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control](https://arxiv.org/abs/2511.07820) | 2025 | 多模式（multi-mode）、开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/NVlabs/GR00T-WholeBodyControl) | 系统扩展模型、数据和计算，用统一 token 接口连接遥操、视频与 VLA。 |
-| 待深读 | [Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models](https://arxiv.org/abs/2504.11054) | 2025 | 潜技能（latent skill）、领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/facebookresearch/metamotivo) | Meta Motivo 用行为基础模型展示零样本全身控制，是高 Star 无独立页面项目转为论文—代码联合解读的关键案例。 |
 | 待深读 | [HoloMotion-1 Technical Report](https://arxiv.org/abs/2605.15336) | 2026 | 多模式（multi-mode）、实机证据（hardware evidence）、机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/HorizonRobotics/HoloMotion) | 以统一数据与控制栈连接动作资产、全身跟踪和可部署技能，适合作为大型开源系统的架构案例。 |
-| 待深读 | [M3imic: Learning a Versatile Whole-Body Controller for Multimodal Motion Mimicking](https://arxiv.org/abs/2606.04829v1) | 2026 | 多模式（multi-mode）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/Renforce-Dynamics/MultiModalWBC) | 统一处理多种动作条件与模态输入，是 Renforce Dynamics 开源全身控制路线中最直接的论文锚点。 |
 
 更新不在后台定时运行。当用户明确要求更新该板块时，按 [论文库按需更新流程](../../../docs/on-demand-paper-update.md) 执行。
 <!-- END GENERATED PAPER CATALOG -->

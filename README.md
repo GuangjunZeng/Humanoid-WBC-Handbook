@@ -6,9 +6,25 @@
 
 ---
 
+## 论文按 7 个 Topics 浏览
+
+论文库保持 7 个固定板块；下面按主要技术路线各选一篇已完成中英文全文精读的代表作。点击论文名直接进入中文解读页，页面顶部可切换英文版；完整收录见[论文库](content/papers/README.md)。
+
+| Topic | 代表技术路线与精读入口 |
+|---|---|
+| [训练数据与动作重定向](content/papers/domains/training-data-retargeting.md) | 优化式可行重定向：[Retargeting Matters](content/papers/retargeting-matters-2510.02252v1.md) · 无机器人示范构造：[HUMI](content/papers/humi-2602.06643v2.md) · 视频世界轨迹恢复：[GVHMR](content/papers/gvhmr-2409.06662.md) |
+| [通用跟踪与全身遥操](content/papers/domains/universal-tracking-teleoperation.md) | 稀疏关键点遥操：[OmniH2O](content/papers/omnih2o-2406.08858v1.md) · 统一掩码控制：[HOVER](content/papers/hover-2410.21229v2.md) · 多模态潜在指令：[M3imic](content/papers/m3imic-2606.04829v1.md) |
+| [行走与复杂地形](content/papers/domains/locomotion-terrain.md) | 大规模并行强化学习：[Learning to Walk in Minutes](content/papers/learning-walk-2109.11978.md) · 跨仿真部署门禁：[Humanoid-Gym](content/papers/humanoid-gym-2404.05695v2.md) · 感知地形 Transformer：[Learning Humanoid Locomotion over Challenging Terrain](content/papers/challenging-terrain-2410.03654v1.md) |
+| [移动操作与末端 WBC](content/papers/domains/loco-manipulation-wbc.md) | 受力自适应双策略：[FALCON](content/papers/falcon-2505.06776v2.md) · 统一细粒度控制：[ULC](content/papers/ulc-2507.06905v2.md) · 经典多接触最优控制：[Crocoddyl](content/papers/crocoddyl-1909.04947.md) |
+| [体育与高动态技能](content/papers/domains/sports-athletic-skills.md) | 仿真—真实动力学校准：[ASAP](content/papers/asap-2502.01143v3.md) · 分阶段足步与击球：[Humanoid Badminton](content/papers/humanoid-badminton-2511.11218v3.md) · 潜在原语与末端修正：[LATENT](content/papers/latent-2603.12686.md) |
+| [动作生成与可命令行为](content/papers/domains/motion-generation.md) | 测试时代价引导扩散：[BeyondMimic](content/papers/beyondmimic-2508.08241v4.md) · 流式文本控制：[TextOp](content/papers/textop-2602.07439v1.md) · 零样本行为基础模型：[Meta Motivo](content/papers/meta-motivo-2504.11054.md) |
+| [起身恢复、跌倒与受力安全](content/papers/domains/recovery-safety-force.md) | 多姿态分阶段起身：[HoST](content/papers/host-2502.08378v2.md) · 端到端跌倒恢复：[FRASA](content/papers/frasa-2410.08655v3.md) · 物理一致运动/接触估计：[PRIME](content/papers/prime-2605.17681.md) |
+
+---
+
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (14 complete bilingual deep reads and 62 primary-source-verified queued works) plus 43 selected projects (11 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (21 complete bilingual deep reads and 55 primary-source-verified queued works) plus 43 selected projects (11 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 
@@ -130,7 +146,7 @@ PYTHONPATH=src python3 -m wbc_handbook projects-discover \
 | `config/social-queries.json` | Open WBC engineering-problem scopes shared by X, Zhihu, and Xiaohongshu; optional domain hints are not collection boundaries |
 | `content/papers/` | Paper and project catalogs, generated seven-topic indexes, quality-gated deep reads, bilingual project reviews, and key-figure manifests |
 | `content/problems/` | Generated Chinese engineering-problem pages plus matching English pages under `content/problems/en/` |
-| `data/` | 286 canonical source records, a minimal all-candidate social/Issue index, and 14 bounded, human-reviewed Engineering Claims |
+| `data/` | 293 canonical source records, a minimal all-candidate social/Issue index, and 21 bounded, human-reviewed Engineering Claims |
 | `data/locales/en/problems/` | Reviewed, versioned English problem translations with stale-source fingerprints |
 | `docs/` | Architecture, safety, source policy, clean-room record, and workflows |
 | `site/` | Dependency-free bilingual GitHub Pages search UI, vendored FlexSearch, SVG background, and generated schema-v2 index |

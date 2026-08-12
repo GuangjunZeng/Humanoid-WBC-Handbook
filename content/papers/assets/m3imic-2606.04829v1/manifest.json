@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2606.04829v1",
+  "source_pdf": "https://arxiv.org/pdf/2606.04829v1",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "机器人关节、人体姿态与末端位姿经专用编码器进入共享潜在指令空间。",
+      "sha256": "825ae54958655eedcd0b31119a9af25deb26a83d695acf6dafedfc738f471e03"
+    },
+    {
+      "asset": "table-3-4-generalization.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "pdf_page": 5,
+      "source_locator": "Table III-IV / Figure 3",
+      "caption_zh": "训练集与未见 OMOMO 测试集上的跟踪精度—鲁棒性取舍。",
+      "sha256": "4ec2560ce367b2236267766565601b11e3e13ce9f7f58ac748d3cac88298da05"
+    },
+    {
+      "asset": "figure-7-table-5-6.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "pdf_page": 7,
+      "source_locator": "Figure 7 / Table V-VI",
+      "caption_zh": "G1 真机光学动捕遥操与课程、数据量、网络规模消融。",
+      "sha256": "9acaa5daa8ad2a1b5f590378d65f004c9b2d774e151a81bb766b00edf4c7bf24"
+    }
+  ]
+}

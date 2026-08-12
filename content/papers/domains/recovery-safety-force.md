@@ -12,7 +12,7 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：16 篇，其中深度解读 3 篇，有可核验官方代码 11 篇。
+- 当前收录：16 篇，其中深度解读 4 篇，有可核验官方代码 11 篇。
 - 必要覆盖角色：恢复（recovery）、保护性跌倒（protective fall）、开源实现（open source）、实机证据（hardware evidence）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
@@ -20,6 +20,7 @@
 | 深度解读 | [FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots](../frasa-2410.08655v3.md) | 2024 | 恢复（recovery）、开源实现（open source）、实机证据（hardware evidence） | [官方代码](https://github.com/Rhoban/frasa) | 在小型真实人形上用统一策略处理抗扰、倒地恢复和快速起身。 |
 | 深度解读 | [FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation](../falcon-2505.06776v2.md) | 2025 | 学习控制（learning）、开源实现（open source）、实机证据（hardware evidence） | [官方代码](https://github.com/LeCAR-Lab/FALCON) | 用双策略分解与力矩可行外力课程学习受力移动操作。 |
 | 深度解读 | [Learning Humanoid Standing-up Control across Diverse Postures](../host-2502.08378v2.md) | 2025 | 恢复（recovery）、开源实现（open source）、实机证据（hardware evidence） | [官方代码](https://github.com/OpenRobotLab/HoST) | 从多姿态无示范探索起身，以多 critic、探索课程和平滑约束实现 G1 迁移。 |
+| 深度解读 | [PRIME: Physically-consistent Robotic Inertial and Motion Estimation for Legged and Humanoid Robots](../prime-2605.17681.md) | 2026 | 机器人数据质量（robot data quality）、优化控制（optimization）、开源实现（open source） | [官方代码](https://github.com/well-robotics/PRIME) | 物理一致的惯性与运动估计直接关系到 WBC 状态反馈、落地冲击和恢复判断，补齐感知—控制接口。 |
 | 待深读 | [Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning](https://arxiv.org/abs/2304.13653) | 2023 | 领域锚点（field anchor）、仿真到现实（sim-to-real）、恢复（recovery） | 未发现官方公开代码 | 小型人形真实 1v1 足球的代表性工作，统一了行走、踢球、策略与快速起身。 |
 | 待深读 | [Perpetual Humanoid Control for Real-time Simulated Avatars](https://arxiv.org/abs/2305.06456) | 2023 | 领域锚点（field anchor）、开源实现（open source）、恢复（recovery） | [官方代码](https://github.com/ZhengyiLuo/PHC) | 用渐进容量分配扩展到万级动作，并把失败状态恢复纳入同一物理控制器。 |
 | 待深读 | [Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning](https://arxiv.org/abs/2512.01336) | 2025 | 保护性跌倒（protective fall）、实机证据（hardware evidence） | 待核验 | 直接以冲击伤害为目标学习适合刚性人形结构的自保护跌倒行为。 |
@@ -31,7 +32,6 @@
 | 待深读 | [A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challenging Motion Dataset and Autonomous Fall-Resilient Tracking](https://arxiv.org/abs/2602.13656v1) | 2026 | 机器人数据质量（robot data quality）、任务交互（task interaction）、实机证据（hardware evidence）、恢复（recovery）、开源实现（open source） | [官方代码](https://github.com/NPCLEI/KungFuAthleteBot) | 把高动态动作数据、平衡挑战跟踪与自主跌倒恢复放在同一真机系统中，适合跨三个既有 topic 对照。 |
 | 待深读 | [AGILE: A Comprehensive Workflow for Humanoid Loco-Manipulation Learning](https://arxiv.org/abs/2603.20147v1) | 2026 | 机器人部署（robot deployment）、仿真到现实（sim-to-real）、任务交互（task interaction）、恢复（recovery）、开源实现（open source） | [官方代码](https://github.com/nvidia-isaac/WBC-AGILE) | 覆盖数据、训练、部署与恢复的完整移动操作工作流，适合用来核对单点算法在系统工程中的位置。 |
 | 待深读 | [Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids](https://arxiv.org/abs/2601.07718) | 2026 | 地形（terrain）、实机证据（hardware evidence）、仿真到现实（sim-to-real）、开源实现（open source） | [官方代码](https://github.com/project-instinct/InstinctLab) | 将感知、复杂地形跑酷与可扩展训练基础设施整合，补充实验室平地基准之外的系统证据。 |
-| 待深读 | [PRIME: Physically-consistent Robotic Inertial and Motion Estimation for Legged and Humanoid Robots](https://arxiv.org/abs/2605.17681) | 2026 | 机器人数据质量（robot data quality）、优化控制（optimization）、开源实现（open source） | [官方代码](https://github.com/well-robotics/PRIME) | 物理一致的惯性与运动估计直接关系到 WBC 状态反馈、落地冲击和恢复判断，补齐感知—控制接口。 |
 | 待深读 | [Safety-Critical Whole-Body Control for Humanoid Robots via Input-to-State Safe Control Barrier Functions](https://arxiv.org/abs/2605.25546) | 2026 | 经典控制（classical control）、保护性跌倒（protective fall）、优化控制（optimization） | 未发现官方公开代码 | 以输入到状态安全控制屏障函数约束全身控制，为社区中常见的经验性安全调参提供形式化对照。 |
 
 更新不在后台定时运行。当用户明确要求更新该板块时，按 [论文库按需更新流程](../../../docs/on-demand-paper-update.md) 执行。

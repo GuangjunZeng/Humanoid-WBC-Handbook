@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "frozen_at": "2026-08-12T00:00:00+08:00",
+  "frozen_at": "2026-08-12T12:00:00+08:00",
   "scope": "A bounded seed corpus, not an exhaustive bibliography of humanoid WBC.",
   "completion_rule": "A paper is complete only when its full-paper brief, version-pinned paper source, public-code source or explicit no-code finding, at least one bounded candidate claim, and corpus QA all exist.",
   "papers": [
@@ -143,6 +143,76 @@
       "status": "complete",
       "brief_path": "content/papers/frasa-2410.08655v3.md",
       "brief_path_en": "content/papers/en/frasa-2410.08655v3.md"
+    },
+    {
+      "paper_id": "arxiv:2409.06662",
+      "slug": "gvhmr-2409.06662",
+      "title": "World-Grounded Human Motion Recovery via Gravity-View Coordinates",
+      "primary_domain": "training_data_retargeting",
+      "coverage_role": "world_grounded_video_motion",
+      "status": "complete",
+      "brief_path": "content/papers/gvhmr-2409.06662.md",
+      "brief_path_en": "content/papers/en/gvhmr-2409.06662.md"
+    },
+    {
+      "paper_id": "arxiv:2606.04829v1",
+      "slug": "m3imic-2606.04829v1",
+      "title": "M3imic: Learning a Versatile Whole-Body Controller for Multimodal Motion Mimicking",
+      "primary_domain": "universal_tracking_teleoperation",
+      "coverage_role": "multimodal_motion_command",
+      "status": "complete",
+      "brief_path": "content/papers/m3imic-2606.04829v1.md",
+      "brief_path_en": "content/papers/en/m3imic-2606.04829v1.md"
+    },
+    {
+      "paper_id": "arxiv:2109.11978",
+      "slug": "learning-walk-2109.11978",
+      "title": "Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning",
+      "primary_domain": "locomotion_terrain",
+      "coverage_role": "massively_parallel_rl_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/learning-walk-2109.11978.md",
+      "brief_path_en": "content/papers/en/learning-walk-2109.11978.md"
+    },
+    {
+      "paper_id": "arxiv:1909.04947",
+      "slug": "crocoddyl-1909.04947",
+      "title": "Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control",
+      "primary_domain": "loco_manipulation_wbc",
+      "coverage_role": "classical_multicontact_optimization",
+      "status": "complete",
+      "brief_path": "content/papers/crocoddyl-1909.04947.md",
+      "brief_path_en": "content/papers/en/crocoddyl-1909.04947.md"
+    },
+    {
+      "paper_id": "arxiv:2603.12686",
+      "slug": "latent-2603.12686",
+      "title": "Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data",
+      "primary_domain": "sports",
+      "coverage_role": "latent_tennis_from_imperfect_motion",
+      "status": "complete",
+      "brief_path": "content/papers/latent-2603.12686.md",
+      "brief_path_en": "content/papers/en/latent-2603.12686.md"
+    },
+    {
+      "paper_id": "arxiv:2504.11054",
+      "slug": "meta-motivo-2504.11054",
+      "title": "Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models",
+      "primary_domain": "motion_generation",
+      "coverage_role": "zero_shot_behavioral_foundation_model",
+      "status": "complete",
+      "brief_path": "content/papers/meta-motivo-2504.11054.md",
+      "brief_path_en": "content/papers/en/meta-motivo-2504.11054.md"
+    },
+    {
+      "paper_id": "arxiv:2605.17681",
+      "slug": "prime-2605.17681",
+      "title": "PRIME: Physically-consistent Robotic Inertial and Motion Estimation for Legged and Humanoid Robots",
+      "primary_domain": "recovery_safety_force",
+      "coverage_role": "physical_motion_and_inertia_estimation",
+      "status": "complete",
+      "brief_path": "content/papers/prime-2605.17681.md",
+      "brief_path_en": "content/papers/en/prime-2605.17681.md"
     }
   ]
 }

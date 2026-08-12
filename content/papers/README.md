@@ -1,6 +1,6 @@
 # Humanoid WBC 论文库
 
-本目录分成三层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文；[`project-catalog.json`](project-catalog.json) 单独记录高质量开源项目。当前论文快照收录 76 篇唯一作品，其中 14 篇已有完整中英文深度解读、62 篇经主来源核验后待深读；项目快照收录 43 个仓库，其中 11 个已有固定 commit 的完整中英文代码解读页。
+本目录分成三层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文；[`project-catalog.json`](project-catalog.json) 单独记录高质量开源项目。当前论文快照收录 76 篇唯一作品，其中 21 篇已有完整中英文深度解读、55 篇经主来源核验后待深读；项目快照收录 43 个仓库，其中 11 个已有固定 commit 的完整中英文代码解读页。
 
 这个目录是可按需更新的领域地图，不声称永久穷尽所有论文。更新只在用户明确要求时执行，不定时、不订阅、不推送。
 
@@ -8,13 +8,13 @@
 
 | 板块 | 收录 | 深度解读 | 待深读 | 可核验官方代码 |
 |---|---:|---:|---:|---:|
-| [训练数据与动作重定向](domains/training-data-retargeting.md) | 16 | 2 | 14 | 15 |
-| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 22 | 3 | 19 | 20 |
-| [行走与复杂地形](domains/locomotion-terrain.md) | 20 | 2 | 18 | 17 |
-| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 15 | 2 | 13 | 12 |
-| [体育与高动态技能](domains/sports-athletic-skills.md) | 11 | 2 | 9 | 7 |
-| [动作生成与可命令行为](domains/motion-generation.md) | 20 | 2 | 18 | 20 |
-| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 16 | 3 | 13 | 11 |
+| [训练数据与动作重定向](domains/training-data-retargeting.md) | 16 | 4 | 12 | 15 |
+| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 22 | 5 | 17 | 20 |
+| [行走与复杂地形](domains/locomotion-terrain.md) | 20 | 5 | 15 | 17 |
+| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 15 | 3 | 12 | 12 |
+| [体育与高动态技能](domains/sports-athletic-skills.md) | 11 | 3 | 8 | 7 |
+| [动作生成与可命令行为](domains/motion-generation.md) | 20 | 4 | 16 | 20 |
+| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 16 | 4 | 12 | 11 |
 
 同一篇论文或项目可以属于多个 topic，所以板块行数之和大于全局去重数量；论文目录仍按 `paper_id` 与去版本的 arXiv 主键去重，项目目录按 GitHub `owner/repo` 去重。
 

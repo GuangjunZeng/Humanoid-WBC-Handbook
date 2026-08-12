@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2504.11054",
+  "source_pdf": "https://arxiv.org/pdf/2504.11054",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-fbcpr.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "pdf_page": 4,
+      "source_locator": "Figure 2 / Equation 7-11",
+      "caption_zh": "FB-CPR 用条件判别器对齐策略占用分布与无动作标注动作集。",
+      "sha256": "8d467f9985db38e9dc5bb57bdcfd08d187d07f3820a7a2b17692f3ad5830b6d2"
+    },
+    {
+      "asset": "table-1-main-results.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "pdf_page": 7,
+      "source_locator": "Table 1",
+      "caption_zh": "奖励优化、目标到达与动作跟踪三类 zero-shot 任务的主结果。",
+      "sha256": "18f934245d15da7fd124ef039143e2f02f1e12ed272e14d644a08983b793ed45"
+    },
+    {
+      "asset": "figure-3-human-eval.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "pdf_page": 8,
+      "source_locator": "Figure 3",
+      "caption_zh": "50 名人类评估者对 FB-CPR 与单任务 TD3 的成功和人类似然性评判。",
+      "sha256": "96509bd9a5e38b1b53616f1ab46d3994c368ff8c12bfd8041322bcc6d1f269c4"
+    },
+    {
+      "asset": "figure-4-ablations.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "pdf_page": 9,
+      "source_locator": "Figure 4",
+      "caption_zh": "判别器条件化、FB 目标、数据/容量扩展与在线训练的消融。",
+      "sha256": "bcbe071c33f71ea14fbbe86bda3d1e6321e22d5899ca0716f8f9b1283fced8e4"
+    }
+  ]
+}
