@@ -29,6 +29,27 @@ class KeyFigureTests(unittest.TestCase):
         for paper in self.spec["papers"]:
             self.assertEqual(key_figures.validate_paper_spec(paper), [])
             self.assertEqual(key_figures.check_paper(paper), [])
+            for figure in paper["figures"]:
+                for region in figure["regions"]:
+                    self.assertGreaterEqual(len(region["visual_review_note"].strip()), 12)
+                    self.assertIn("本体完整", region["visual_review_note"])
+                    self.assertIn("无无关正文", region["visual_review_note"])
+
+    def test_manual_caption_bbox_is_inside_crop_and_part_of_review_fingerprint(self):
+        paper = next(
+            paper for paper in self.spec["papers"]
+            if paper["slug"] == "frasa-2410.08655v3"
+        )
+        region = paper["figures"][1]["regions"][1]
+        self.assertIn("caption_bbox", region)
+        crop = region["crop"]
+        caption_bbox = region["caption_bbox"]
+        self.assertGreaterEqual(caption_bbox[0], crop[0])
+        self.assertGreaterEqual(caption_bbox[1], crop[1])
+        self.assertLessEqual(caption_bbox[2], crop[2])
+        self.assertLessEqual(caption_bbox[3], crop[3])
+        canonical = key_figures.canonical_region(region)
+        self.assertEqual(canonical["caption_bbox"], caption_bbox)
 
     def test_full_page_or_stale_review_is_rejected(self):
         paper = json.loads(json.dumps(self.spec["papers"][0]))

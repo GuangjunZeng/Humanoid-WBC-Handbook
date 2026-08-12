@@ -25,6 +25,7 @@
             0.575
           ],
           "caption_anchor": "Fig. 2: System overview",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.429406,
@@ -37,7 +38,8 @@
             0.919987,
             0.562441
           ],
-          "page_text_sha256": "1bfd047a6238c581785f5685c379a37169485d0abd4474c76641f897ec1df6bd"
+          "page_text_sha256": "1bfd047a6238c581785f5685c379a37169485d0abd4474c76641f897ec1df6bd",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "82803d1a5a8bdc0c0707166e55b3bff992b8fef99a5c7484248fd5ef3aa7a7f9",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
+        "fingerprint": "eb815d09e7604484052594e863902b4af4bf894dfd2063a1e645cbc3cdce7cde"
       },
-      "review_fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
+      "review_fingerprint": "eb815d09e7604484052594e863902b4af4bf894dfd2063a1e645cbc3cdce7cde"
     },
     {
       "asset": "figure-3-4-control.jpg",
@@ -69,6 +71,7 @@
             0.495
           ],
           "caption_anchor": "Fig. 3: Simulation results",
+          "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.50976,
             0.351555,
@@ -81,7 +84,8 @@
             0.919985,
             0.483712
           ],
-          "page_text_sha256": "a9e49420c7ea329f8980e0991bf8e7b6d695b520eac20448d85e73e25b297035"
+          "page_text_sha256": "a9e49420c7ea329f8980e0991bf8e7b6d695b520eac20448d85e73e25b297035",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 7,
@@ -92,6 +96,7 @@
             0.46
           ],
           "caption_anchor": "Fig. 4: Comparison between target-known",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.359958,
@@ -104,7 +109,8 @@
             0.490223,
             0.446828
           ],
-          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd"
+          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "f632486b976065b2be07b405aca551bccd07ab915e8c738fdf9e6709ca1e9ddd",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
+        "fingerprint": "73821fd58741e0cc91afaae0ad9609679f4a9795ae55c3dd904054566076f7ec"
       },
-      "review_fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
+      "review_fingerprint": "73821fd58741e0cc91afaae0ad9609679f4a9795ae55c3dd904054566076f7ec"
     },
     {
       "asset": "figure-5-6-hardware.jpg",
@@ -136,6 +142,7 @@
             0.325
           ],
           "caption_anchor": "Fig. 5: Virtual-target swinging",
+          "visual_review_note": "全分辨率目视确认 Fig. 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.50976,
             0.257707,
@@ -148,7 +155,8 @@
             0.919985,
             0.314389
           ],
-          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd"
+          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 8,
@@ -159,6 +167,7 @@
             0.44
           ],
           "caption_anchor": "Fig. 6: Real-world shuttle hitting",
+          "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.353927,
@@ -171,7 +180,8 @@
             0.490226,
             0.425703
           ],
-          "page_text_sha256": "a2b32c5ffee634a901f21c23eaa0a5b0a3b448511bc5da79907f5e66c41ac795"
+          "page_text_sha256": "a2b32c5ffee634a901f21c23eaa0a5b0a3b448511bc5da79907f5e66c41ac795",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -179,11 +189,11 @@
       "sha256": "276f86b89cee7e3a3ecd42ad710d9cad2f568d4197d0c90cc805f9263758f498",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
+        "fingerprint": "13bae2d515f9221d96972a5a96226c2c0a7e313f6fa5ee98fff1be5d1423db0f"
       },
-      "review_fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
+      "review_fingerprint": "13bae2d515f9221d96972a5a96226c2c0a7e313f6fa5ee98fff1be5d1423db0f"
     }
   ]
 }

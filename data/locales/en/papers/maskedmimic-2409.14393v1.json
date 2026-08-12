@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2409.14393v1",
-  "source_fingerprint": "25b8aa24b793f0b37e1af0f08b313b1662d6f5a553317c8b3ff5546b41034268",
+  "source_fingerprint": "ad31e19664bf74f6378a75b2419448fd31ca3b01b92ad94a0f7340a1ade61e51",
   "title": "MaskedMimic: Unify Control Inputs as Physics-Based Motion Inpainting",
   "content_lines": [
     "Source: [arXiv:2409.14393v1](https://arxiv.org/abs/2409.14393v1). Code mapping refers to the pinned official ProtoMotions revision linked by the Chinese page.",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "hal:hal-01136936",
-  "source_fingerprint": "f3ffb4e6f7acdc023ae115b49322cc8600cae6230e34610ddda118f0a1aafb4c",
+  "source_fingerprint": "c6af50d64556d1d051f1f16615458400c0d0f2b5c3a81a6c55dbea9869a7af60",
   "title": "HRP-2 Torque Control: The Missing Bridge from Desired Torque to Position Actuators",
   "content_lines": [
     "Source: [HAL:hal-01136936v2](https://hal.science/hal-01136936v2). The linked TSID repository verifies the modern upper-level optimization mapping, not the complete low-level controller described in this paper.",

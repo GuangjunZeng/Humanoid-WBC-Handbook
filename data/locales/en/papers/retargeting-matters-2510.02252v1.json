@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2510.02252v1",
-  "source_fingerprint": "8c332c15fa889e6e651c3bfbdbad972be09c7e7e97e3373e88e60a74d09722f0",
+  "source_fingerprint": "5fa9b93650400375beea61b383ba7ef0f956bfc2709a4be7524751a486c702f0",
   "title": "Retargeting Matters: Robot Retargeting Is an Upstream Dynamics Constraint",
   "content_lines": [
     "Source: [arXiv:2510.02252v1](https://arxiv.org/abs/2510.02252v1). The implementation notes refer to the pinned official GMR code linked by the Chinese evidence page.",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:1804.02717v3",
-  "source_fingerprint": "02325e29989269d31ba6d6c18cd9a7362ab4afb38c6bc826587ea990c9ed1299",
+  "source_fingerprint": "d4133339193ba92b2c07296ed658e624259e2378a41af9c72f3b629475d2afa6",
   "title": "DeepMimic: Separate Reference Imitation from Task Achievement",
   "content_lines": [
     "Source: [arXiv:1804.02717v3](https://arxiv.org/abs/1804.02717v3). Code facts refer to the pinned official DeepMimic repository linked by the Chinese page.",

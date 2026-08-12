@@ -28,7 +28,7 @@
 
 <至少 3 张真实图，与其解释段落交错排列，不堆在文末。>
 
-作者记录（写入 `research/key-figures.json`，不复制到正文）：`source_pdf_sha256`、`pdf_page`、`crop`、`caption_anchor`、`locator`、`selection_reason_zh`、`supports_zh`、`limits_zh`。人工查看全分辨率 contact sheet 后才记录 review fingerprint。
+作者记录（写入 `research/key-figures.json`，不复制到正文）：`source_pdf_sha256`、`pdf_page`、`crop`、`caption_anchor`、必要时的 `caption_bbox`、`visual_review_note`、`locator`、`selection_reason_zh`、`supports_zh`、`limits_zh`。人工查看全分辨率 contact sheet、确认每个 region 的目标图表本体和 caption 都完整、且没有无关正文后，才记录 review fingerprint。
 
 ## 最有说服力的实验
 
@@ -51,10 +51,6 @@
 ## 可执行但有边界的结论
 
 <说明可复用的设计思路、必做对照和不得直接照搬的硬件参数。>
-
-> **金句**：<一句可转述的方法学总结，不夸大。>
-
-<!-- “金句”可选；如果只是在改写一句话总结或制造宣传感，连同上面的引用块一起删除。 -->
 
 ## 复现与验收清单
 

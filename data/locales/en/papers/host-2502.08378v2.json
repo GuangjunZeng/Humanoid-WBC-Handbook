@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2502.08378v2",
-  "source_fingerprint": "1f24b0a22b091f2d01fdaff21da93074b7a7f42c23eebf04bf3b88d5a21313c5",
+  "source_fingerprint": "7fcf1b9cb669a41c6401525ad0f4754ef31bf93c960b87d4440ea5c4e2b08c5e",
   "title": "HoST: Remove the Training Scaffolds Before Calling Stand-Up Solved",
   "content_lines": [
     "Source: [arXiv:2502.08378v2](https://arxiv.org/abs/2502.08378v2). Code mapping refers to the pinned official HoST revision linked by the Chinese page.",

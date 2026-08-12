@@ -25,6 +25,7 @@
             0.26
           ],
           "caption_anchor": "Fig. 2: Framework overview",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.218243,
@@ -37,7 +38,8 @@
             0.490224,
             0.261325
           ],
-          "page_text_sha256": "2318e3211f22583948d31967b0cd48b60aad59e2bdf056f9b414eb0074cf3d5d"
+          "page_text_sha256": "2318e3211f22583948d31967b0cd48b60aad59e2bdf056f9b414eb0074cf3d5d",
+          "extra_text_word_count": 56
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "8b2c7d703c6462d6813cb8b1157e78a43567e5903749a263d51feb7769fce70b",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
+        "fingerprint": "85052741c6b96da51e577f7a4c29a1be7c95c7b4207b5f4534cb392304ddf431"
       },
-      "review_fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
+      "review_fingerprint": "85052741c6b96da51e577f7a4c29a1be7c95c7b4207b5f4534cb392304ddf431"
     },
     {
       "asset": "table-2-3-ablation.jpg",
@@ -69,6 +71,7 @@
             0.25
           ],
           "caption_anchor": "TABLE II: Domain randomization",
+          "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.532962,
             0.069164,
@@ -81,7 +84,8 @@
             0.896786,
             0.078281
           ],
-          "page_text_sha256": "7f25b3cd3c4d4f1bf81ca6af30a1187cca1c9eb39432a6f7c0b4de8f4ca20d1d"
+          "page_text_sha256": "7f25b3cd3c4d4f1bf81ca6af30a1187cca1c9eb39432a6f7c0b4de8f4ca20d1d",
+          "extra_text_word_count": 78
         },
         {
           "pdf_page": 5,
@@ -92,6 +96,7 @@
             0.28
           ],
           "caption_anchor": "TABLE III: Main simulation results",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.069162,
@@ -104,7 +109,8 @@
             0.919985,
             0.089602
           ],
-          "page_text_sha256": "c548e1ec763d1eab88004821d6e104aee2f9c71e88a9e8581bc9f55a33fe3283"
+          "page_text_sha256": "c548e1ec763d1eab88004821d6e104aee2f9c71e88a9e8581bc9f55a33fe3283",
+          "extra_text_word_count": 490
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "38066b2efe5af6faa5528dfe139a3ba4a1c4241482648480474940edfcadc3cd",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
+        "fingerprint": "053ea2a4e13a7adc202b14a6219762df3072e68d4f3cd01676fce9ad1af6f5b1"
       },
-      "review_fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
+      "review_fingerprint": "053ea2a4e13a7adc202b14a6219762df3072e68d4f3cd01676fce9ad1af6f5b1"
     },
     {
       "asset": "table-4-figure-7-9.jpg",
@@ -136,6 +142,7 @@
             0.33
           ],
           "caption_anchor": "Fig. 7: Snapshot of real robot motion",
+          "visual_review_note": "全分辨率目视确认 Fig. 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.294694,
@@ -148,17 +155,19 @@
             0.919984,
             0.326454
           ],
-          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6"
+          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 7,
           "crop": [
             0.08,
-            0.51,
+            0.48,
             0.92,
-            0.65
+            0.57
           ],
           "caption_anchor": "TABLE IV: Main results for real robot",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.53534,
@@ -171,7 +180,8 @@
             0.919982,
             0.55578
           ],
-          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6"
+          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6",
+          "extra_text_word_count": 39
         },
         {
           "pdf_page": 8,
@@ -182,6 +192,7 @@
             0.3
           ],
           "caption_anchor": "Fig. 9: Sim-to-real analysis",
+          "visual_review_note": "全分辨率目视确认 Fig. 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.261857,
@@ -194,19 +205,20 @@
             0.919985,
             0.293617
           ],
-          "page_text_sha256": "ef2a69f6bf87bec9d4269e7acf35898c4efbc099ca3690fd68abea8e39252fb6"
+          "page_text_sha256": "ef2a69f6bf87bec9d4269e7acf35898c4efbc099ca3690fd68abea8e39252fb6",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1813,
-      "sha256": "5b7f55b0b0d511a67d9363f20c9b50f3ff79dfa9a1de30d3c4795a376035d4e2",
+      "pixel_height": 1689,
+      "sha256": "120525324a965a65de408c69bf296e44239b8e31e73f82ab556d9e141355f6b3",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
+        "fingerprint": "ec4652944cf635bcd18c78cad84875af0a0dba4cab8f3ec534194c78535e4c19"
       },
-      "review_fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
+      "review_fingerprint": "ec4652944cf635bcd18c78cad84875af0a0dba4cab8f3ec534194c78535e4c19"
     }
   ]
 }

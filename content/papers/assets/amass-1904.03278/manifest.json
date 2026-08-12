@@ -25,6 +25,7 @@
             0.48
           ],
           "caption_anchor": "Figure 2: MoSh++ captures",
+          "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.081882,
             0.344601,
@@ -37,7 +38,8 @@
             0.467917,
             0.461511
           ],
-          "page_text_sha256": "a2d31d31a4e31f9ee3fca616de89bb1ade4e95dd7beeb71766c0bf9eca06952b"
+          "page_text_sha256": "a2d31d31a4e31f9ee3fca616de89bb1ade4e95dd7beeb71766c0bf9eca06952b",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "0cfddd7300e7953bfd34558e6df29337c64bff8b564c134eca3070b73a9167be",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
+        "fingerprint": "a83a795314e0523d7dadda50dd982793ef8ebf8c75f0df9743f49e98d12676c5"
       },
-      "review_fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
+      "review_fingerprint": "a83a795314e0523d7dadda50dd982793ef8ebf8c75f0df9743f49e98d12676c5"
     },
     {
       "asset": "figure-6-reconstruction.jpg",
@@ -69,6 +71,7 @@
             0.365
           ],
           "caption_anchor": "Figure 6: MoSh vs MoSh++",
+          "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.081882,
             0.268559,
@@ -81,7 +84,8 @@
             0.890709,
             0.355279
           ],
-          "page_text_sha256": "ae8dfe680433f0ce68d13d006c16937bf071887fb7cdb8df9d022cdd9c000b81"
+          "page_text_sha256": "ae8dfe680433f0ce68d13d006c16937bf071887fb7cdb8df9d022cdd9c000b81",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -89,11 +93,11 @@
       "sha256": "56d3422bc5c39b81e6aa565979446a510887179b71e7693defe41251cdad3b54",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
+        "fingerprint": "4df2db26ec068e388ae034332fe79952ca051c9719bb7a81018de36ea6d47a60"
       },
-      "review_fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
+      "review_fingerprint": "4df2db26ec068e388ae034332fe79952ca051c9719bb7a81018de36ea6d47a60"
     },
     {
       "asset": "figure-9-components.jpg",
@@ -113,6 +117,7 @@
             0.605
           ],
           "caption_anchor": "Figure 9: Optimal number",
+          "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.081882,
             0.522936,
@@ -125,7 +130,8 @@
             0.467917,
             0.594562
           ],
-          "page_text_sha256": "6fdfd14a934e1c4749beb8cffc22b958160c30c1babf9997293da732a741c8fd"
+          "page_text_sha256": "6fdfd14a934e1c4749beb8cffc22b958160c30c1babf9997293da732a741c8fd",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -133,11 +139,11 @@
       "sha256": "f3445c95dc3b072440fc8400dc2e1d3cbe91c5aab4365dc722dca86421253802",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
+        "fingerprint": "cd6d2cff4163782fcc3920817959258985d4c7062f23b0dce57020d2bd33c4bd"
       },
-      "review_fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
+      "review_fingerprint": "cd6d2cff4163782fcc3920817959258985d4c7062f23b0dce57020d2bd33c4bd"
     }
   ]
 }

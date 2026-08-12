@@ -25,6 +25,7 @@
             0.39
           ],
           "caption_anchor": "Fig. 2. Left: target posture",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. Left 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.362228,
@@ -37,7 +38,8 @@
             0.488238,
             0.383214
           ],
-          "page_text_sha256": "0b4c954e09a1d9fb3b21073665b6826365e3848f769e4fc11fe4db9b7f9cbdcd"
+          "page_text_sha256": "0b4c954e09a1d9fb3b21073665b6826365e3848f769e4fc11fe4db9b7f9cbdcd",
+          "extra_text_word_count": 11
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "def0d9adbe82e0a5a5b9b5da5b11a1420849154e185f80b917676d5427e1e541",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
+        "fingerprint": "3e595be8b11e36e0bbbc86784abdbe6a7ef77632eb41bcb2ddcae3c85bb9ca36"
       },
-      "review_fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
+      "review_fingerprint": "3e595be8b11e36e0bbbc86784abdbe6a7ef77632eb41bcb2ddcae3c85bb9ca36"
     },
     {
       "asset": "figure-4-table-2.jpg",
@@ -64,11 +66,18 @@
           "pdf_page": 4,
           "crop": [
             0.5,
-            0.28,
+            0.285,
             0.92,
-            0.475
+            0.47
           ],
           "caption_anchor": "Fig. 4. Reward variability",
+          "visual_review_note": "全分辨率目视确认 Fig. 4. Reward variability 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.51,
+            0.438,
+            0.915,
+            0.47
+          ],
           "caption_anchor_bbox": [
             0.511765,
             0.438191,
@@ -76,47 +85,56 @@
             0.447188
           ],
           "caption_block_bbox": [
-            0.511765,
-            0.438191,
-            0.911767,
-            0.46983
+            0.51,
+            0.438,
+            0.915,
+            0.47
           ],
-          "page_text_sha256": "6fde99ed9c83fbb82cd654bf5135264f153bbe78c25608977a857fdddfb1cc6c"
+          "page_text_sha256": "6fde99ed9c83fbb82cd654bf5135264f153bbe78c25608977a857fdddfb1cc6c",
+          "extra_text_word_count": 21
         },
         {
           "pdf_page": 5,
           "crop": [
             0.08,
-            0.12,
+            0.143,
             0.49,
-            0.29
+            0.325
           ],
-          "caption_anchor": "TABLE II",
+          "caption_anchor": "TABLE II PARAMETERS USED FOR SIM-TO-REAL",
+          "visual_review_note": "全分辨率目视确认 TABLE II PARAMETERS USED FOR SIM-TO-REAL 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.09,
+            0.143,
+            0.49,
+            0.173
+          ],
           "caption_anchor_bbox": [
-            0.261245,
-            0.146904,
-            0.315226,
-            0.155901
-          ],
-          "caption_block_bbox": [
             0.093902,
             0.146904,
-            0.482573,
+            0.315226,
             0.17092
           ],
-          "page_text_sha256": "a4bceb5aafd24d56df992b0c0f78e6cbd246521116f1986d40ea99f2a5793666"
+          "caption_block_bbox": [
+            0.09,
+            0.143,
+            0.49,
+            0.173
+          ],
+          "page_text_sha256": "a4bceb5aafd24d56df992b0c0f78e6cbd246521116f1986d40ea99f2a5793666",
+          "extra_text_word_count": 93
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1907,
-      "sha256": "8ed29dee5de43dc66506e7acb0594b695ce5414f946a3cd766875551d0f6fcb5",
+      "pixel_height": 1914,
+      "sha256": "2d8788d1a76454eee504bb363fcd4430c6812db006c0f4c408954c2f426803d2",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
+        "fingerprint": "b612db306a8d2b1bf3111674a934ac697e557288942ee1676f8061cae861cac2"
       },
-      "review_fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
+      "review_fingerprint": "b612db306a8d2b1bf3111674a934ac697e557288942ee1676f8061cae861cac2"
     },
     {
       "asset": "table-3-4-hardware.jpg",
@@ -133,14 +151,15 @@
             0.5,
             0.04,
             0.92,
-            0.29
+            0.31
           ],
-          "caption_anchor": "TABLE III",
+          "caption_anchor": "TABLE III COMPARISON OF AVERAGE STAND UP TIMES",
+          "visual_review_note": "全分辨率目视确认 TABLE III COMPARISON OF AVERAGE STAND UP TIMES 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
-            0.682606,
+            0.523531,
             0.063134,
-            0.740923,
-            0.072131
+            0.767789,
+            0.087151
           ],
           "caption_block_bbox": [
             0.523531,
@@ -148,19 +167,20 @@
             0.899994,
             0.087151
           ],
-          "page_text_sha256": "e75e827cdfaf8966b0b996824d081bc971c25b3496be3eaec3dc150787057335"
+          "page_text_sha256": "e75e827cdfaf8966b0b996824d081bc971c25b3496be3eaec3dc150787057335",
+          "extra_text_word_count": 99
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1289,
-      "sha256": "9d469092e34104fec966c494ba8748b9cd57bd3a70bcd84c61c1b4ac25bf0ae2",
+      "pixel_height": 1387,
+      "sha256": "a3adee191b726307396f61c7c71ad02e6b73b2227aa00dfdba1a0099bd6d92bf",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
+        "fingerprint": "e5d7aac355d3aa2c7c0e3c85fb449ffafc58a013a888cd8b37bc08eba0260b9e"
       },
-      "review_fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
+      "review_fingerprint": "e5d7aac355d3aa2c7c0e3c85fb449ffafc58a013a888cd8b37bc08eba0260b9e"
     }
   ]
 }

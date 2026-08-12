@@ -28,7 +28,7 @@ class PaperLocalizationTests(unittest.TestCase):
 
     def test_all_representative_papers_have_current_english_pages(self):
         report = render_paper_translations(PROJECT_ROOT, check=True)
-        self.assertEqual(report["papers"], 24)
+        self.assertEqual(report["papers"], 25)
         self.assertEqual(report["stale"], [])
 
     def test_english_pages_have_required_structure_and_bilingual_links(self):

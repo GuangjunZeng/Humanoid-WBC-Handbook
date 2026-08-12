@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2602.06643v2",
-  "source_fingerprint": "0ada747c5130c5b8879fbcd864154fd58150d7011ba3e67b425a5e93d7a01a68",
+  "source_fingerprint": "291bd0d786abcb57e25e6ebbe7cfcd4166bc4263336a36c3a4cf753513a3517f",
   "title": "HuMI: Robot-Free Demonstrations with Online Humanoid Feasibility Feedback",
   "content_lines": [
     "Source: [arXiv:2602.06643v2](https://arxiv.org/abs/2602.06643v2). No public training implementation was available at the audited point; the mapping below is therefore limited to the paper's declared system interfaces.",

@@ -25,6 +25,7 @@
             0.77
           ],
           "caption_anchor": "Figure 2 | Agent training setup",
+          "visual_review_note": "全分辨率目视确认 Figure 2 | Agent training setup 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.104761,
             0.686759,
@@ -37,7 +38,8 @@
             0.895498,
             0.7621
           ],
-          "page_text_sha256": "35fbd3ece02bed6b3b25b6d760acde713c77024663d450e3cb79c21c26954606"
+          "page_text_sha256": "35fbd3ece02bed6b3b25b6d760acde713c77024663d450e3cb79c21c26954606",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "f38a869a41e8640af3648fabf3ceecf7a7e0f6e3bc9722eaacc16b1406939426",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
+        "fingerprint": "7bc4fe8a3365543bace483b7b00ffc64e004806b1ce3e5397b71d98d03872b23"
       },
-      "review_fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
+      "review_fingerprint": "7bc4fe8a3365543bace483b7b00ffc64e004806b1ce3e5397b71d98d03872b23"
     },
     {
       "asset": "table-1-hardware.jpg",
@@ -64,11 +66,12 @@
           "pdf_page": 5,
           "crop": [
             0.1,
-            0.53,
+            0.565,
             0.9,
             0.87
           ],
           "caption_anchor": "Table 1 | Performance",
+          "visual_review_note": "全分辨率目视确认 Table 1 | Performance 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.10431,
             0.808439,
@@ -81,19 +84,20 @@
             0.895245,
             0.857726
           ],
-          "page_text_sha256": "a4e88738a3324ad2cba07706511d581907bfc475c4b01976e113359c3661da22"
+          "page_text_sha256": "a4e88738a3324ad2cba07706511d581907bfc475c4b01976e113359c3661da22",
+          "extra_text_word_count": 90
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1018,
-      "sha256": "78522b933cf677b426da11a157a21e5d84a8f779bc7ffb75d5fac364e6650af9",
+      "pixel_height": 919,
+      "sha256": "e7cd060f2dbfad58444459fb1cb6b6919a1d33aa8c8206ce320a3a1490a21fec",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
+        "fingerprint": "10a6f951fbaf7f44ee5862750a43cba4eeca351c08a8de83d51576c3e6e9767e"
       },
-      "review_fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
+      "review_fingerprint": "10a6f951fbaf7f44ee5862750a43cba4eeca351c08a8de83d51576c3e6e9767e"
     },
     {
       "asset": "figure-7-ablation.jpg",
@@ -108,11 +112,12 @@
           "pdf_page": 19,
           "crop": [
             0.1,
-            0.16,
+            0.18,
             0.9,
             0.6
           ],
           "caption_anchor": "Figure 7 | Comparison against ablations",
+          "visual_review_note": "全分辨率目视确认 Figure 7 | Comparison against ablations 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.104761,
             0.436387,
@@ -125,19 +130,20 @@
             0.897326,
             0.589831
           ],
-          "page_text_sha256": "72c1a456414a2cbb749b49c810f8345400b4aa812c30965f084e16bf17cc615a"
+          "page_text_sha256": "72c1a456414a2cbb749b49c810f8345400b4aa812c30965f084e16bf17cc615a",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1301,
-      "sha256": "d5ecc9f3867d0685137513fb5903cf151ef9ec619bf1b4c8d8c25e1207965669",
+      "pixel_height": 1245,
+      "sha256": "400501775dd0169c634afd28a5115d0ee4184698cd941498062b8bcc3715a09d",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
+        "fingerprint": "2776be1757b5332c55c6b41a41b6226ad10e79f51fd82604b6d6976a8072fdc2"
       },
-      "review_fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
+      "review_fingerprint": "2776be1757b5332c55c6b41a41b6226ad10e79f51fd82604b6d6976a8072fdc2"
     }
   ]
 }

@@ -25,6 +25,7 @@
             0.62
           ],
           "caption_anchor": "Figure 6: Preview controller gain",
+          "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.518862,
             0.591664,
@@ -37,17 +38,19 @@
             0.895512,
             0.620006
           ],
-          "page_text_sha256": "472f941472affcd1be30a10e7eb75c0453350466eaa70dfd8bdaa00784db75af"
+          "page_text_sha256": "472f941472affcd1be30a10e7eb75c0453350466eaa70dfd8bdaa00784db75af",
+          "extra_text_word_count": 11
         },
         {
           "pdf_page": 5,
           "crop": [
             0.08,
-            0.04,
+            0.075,
             0.49,
-            0.37
+            0.35
           ],
           "caption_anchor": "Figure 7: Body trajectory",
+          "visual_review_note": "全分辨率目视确认 Figure 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.103295,
             0.320663,
@@ -60,17 +63,19 @@
             0.480209,
             0.349154
           ],
-          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3",
+          "extra_text_word_count": 38
         },
         {
           "pdf_page": 5,
           "crop": [
             0.08,
-            0.32,
+            0.39,
             0.49,
-            0.62
+            0.61
           ],
           "caption_anchor": "Figure 8: With shorter previewing period",
+          "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.103295,
             0.58116,
@@ -83,19 +88,20 @@
             0.480139,
             0.607353
           ],
-          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3",
+          "extra_text_word_count": 37
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 3935,
-      "sha256": "b05911bf3e13b71381dccc6faad22c9c8b79b9102554ef21019ad33ba727f7ab",
+      "pixel_height": 3252,
+      "sha256": "73448727063af74fa09f4c6958690f2a82e5e8e97da16475ee794b0fcfdf224a",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
+        "fingerprint": "6bf88d4063a8a1bf6e82370fc738f7c7b0aa8243259f8896df16245029744f6c"
       },
-      "review_fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
+      "review_fingerprint": "6bf88d4063a8a1bf6e82370fc738f7c7b0aa8243259f8896df16245029744f6c"
     },
     {
       "asset": "figure-9-11-multibody.jpg",
@@ -110,11 +116,12 @@
           "pdf_page": 5,
           "crop": [
             0.5,
-            0.055,
+            0.135,
             0.92,
-            0.355
+            0.352
           ],
           "caption_anchor": "Figure 9: HRP-2 Prototype",
+          "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.558671,
             0.337769,
@@ -127,17 +134,19 @@
             0.855865,
             0.348956
           ],
-          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 5,
           "crop": [
             0.5,
-            0.4,
+            0.56,
             0.92,
-            0.8
+            0.79
           ],
           "caption_anchor": "Figure 10: ZMP calculated",
+          "visual_review_note": "全分辨率目视确认 Figure 10 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.518862,
             0.760627,
@@ -150,7 +159,8 @@
             0.895659,
             0.786671
           ],
-          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3",
+          "extra_text_word_count": 33
         },
         {
           "pdf_page": 6,
@@ -158,9 +168,10 @@
             0.08,
             0.04,
             0.49,
-            0.38
+            0.34
           ],
           "caption_anchor": "Figure 11: Modified ZMP",
+          "visual_review_note": "全分辨率目视确认 Figure 11 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.128928,
             0.320663,
@@ -173,19 +184,20 @@
             0.454676,
             0.33185
           ],
-          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3"
+          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3",
+          "extra_text_word_count": 34
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 5284,
-      "sha256": "7517d8a0cb1d0e528cb43c6665e1d3fe9347d0f9d331852fb1023fae09c841ae",
+      "pixel_height": 3833,
+      "sha256": "cb11bfaba69aed2ef3315967203b415f8b8de4a16273744fe1cd7e336bec376c",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
+        "fingerprint": "418315fb3319ce6c830d72f24f98991a4f95c4506d7dff10eb5343e81ae97718"
       },
-      "review_fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
+      "review_fingerprint": "418315fb3319ce6c830d72f24f98991a4f95c4506d7dff10eb5343e81ae97718"
     },
     {
       "asset": "figure-12-13-stairs.jpg",
@@ -202,9 +214,10 @@
             0.5,
             0.04,
             0.92,
-            0.36
+            0.35
           ],
           "caption_anchor": "Figure 12: Planned trajectory",
+          "visual_review_note": "全分辨率目视确认 Figure 12 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.518862,
             0.298905,
@@ -217,7 +230,8 @@
             0.896063,
             0.339953
           ],
-          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3"
+          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3",
+          "extra_text_word_count": 17
         },
         {
           "pdf_page": 7,
@@ -225,9 +239,10 @@
             0.08,
             0.04,
             0.5,
-            0.46
+            0.45
           ],
           "caption_anchor": "Figure 13: Snapshots of walking",
+          "visual_review_note": "全分辨率目视确认 Figure 13 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.103295,
             0.417749,
@@ -240,19 +255,20 @@
             0.479916,
             0.443792
           ],
-          "page_text_sha256": "25e62cff159e2ed171b45a8099a162d056275d871248d9c5456daea58910c8b8"
+          "page_text_sha256": "25e62cff159e2ed171b45a8099a162d056275d871248d9c5456daea58910c8b8",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 3733,
-      "sha256": "2216e9a85cabc57e54cf91e8f1f173ec99907b77a6e91029d0d09f1485144e0d",
+      "pixel_height": 3635,
+      "sha256": "754266c17f800d287bcf5358041d9593f0cc9992b8476deeb5b7f3b87674ee88",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
+        "fingerprint": "d14f4f37df02f12fdbc55416aedd0fcb85f79c8257df7cb7ffac5547c2a39155"
       },
-      "review_fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
+      "review_fingerprint": "d14f4f37df02f12fdbc55416aedd0fcb85f79c8257df7cb7ffac5547c2a39155"
     }
   ]
 }

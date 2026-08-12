@@ -25,6 +25,7 @@
             0.475
           ],
           "caption_anchor": "Figure 2: Overview of FALCON",
+          "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.176471,
             0.413454,
@@ -37,7 +38,8 @@
             0.823535,
             0.466021
           ],
-          "page_text_sha256": "0ee9eb697154a66ccb8866a23b2656735c5b66c77435f11ccb58fc8bb66f93a6"
+          "page_text_sha256": "0ee9eb697154a66ccb8866a23b2656735c5b66c77435f11ccb58fc8bb66f93a6",
+          "extra_text_word_count": 119
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "3e1a97f1939f8c80d85fd5812c5aae0f2b7e57bbf572d31efbf9f15f41f2049f",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
+        "fingerprint": "4b6d3abb3696866fbe1684dc5c7cf753bae1da8578121c0441dd65a5826aed43"
       },
-      "review_fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
+      "review_fingerprint": "4b6d3abb3696866fbe1684dc5c7cf753bae1da8578121c0441dd65a5826aed43"
     },
     {
       "asset": "table-1-2-force-curriculum.jpg",
@@ -69,6 +71,7 @@
             0.31
           ],
           "caption_anchor": "Table 1: Loco-Manipulation Evaluation",
+          "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.238222,
             0.280757,
@@ -81,7 +84,8 @@
             0.76178,
             0.292002
           ],
-          "page_text_sha256": "8f3dd2b7590ebb950c3bf0698a06c78acbb821bfac592015d2726b4f464b2a66"
+          "page_text_sha256": "8f3dd2b7590ebb950c3bf0698a06c78acbb821bfac592015d2726b4f464b2a66",
+          "extra_text_word_count": 121
         },
         {
           "pdf_page": 7,
@@ -92,6 +96,7 @@
             0.225
           ],
           "caption_anchor": "Table 2: Evaluation of FALCON",
+          "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.176471,
             0.176649,
@@ -104,7 +109,8 @@
             0.823535,
             0.215443
           ],
-          "page_text_sha256": "f281a2bd3abfb56ac06daf291101c9d46a84428e5f5484b7ea50787b0e35ccc2"
+          "page_text_sha256": "f281a2bd3abfb56ac06daf291101c9d46a84428e5f5484b7ea50787b0e35ccc2",
+          "extra_text_word_count": 40
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "f41786e8e972efc77f014b357c1879ea223602ca5ed99df86340e636062729eb",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
+        "fingerprint": "8f6a6d6a71b682edfcc0e40875de6ce00efa3c8e78b49ecce94f77af3d6557a4"
       },
-      "review_fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
+      "review_fingerprint": "8f6a6d6a71b682edfcc0e40875de6ce00efa3c8e78b49ecce94f77af3d6557a4"
     },
     {
       "asset": "table-4-hardware.jpg",
@@ -136,6 +142,7 @@
             0.25
           ],
           "caption_anchor": "Table 4: Real-world Tracking Errors",
+          "visual_review_note": "全分辨率目视确认 Table 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.21091,
             0.227671,
@@ -148,7 +155,8 @@
             0.452617,
             0.238917
           ],
-          "page_text_sha256": "ddaa3a260d2bc8c69618678d59e252d138e7e774ea652a975d146b56fdd8bde8"
+          "page_text_sha256": "ddaa3a260d2bc8c69618678d59e252d138e7e774ea652a975d146b56fdd8bde8",
+          "extra_text_word_count": 22
         }
       ],
       "pixel_width": 1656,
@@ -156,11 +164,11 @@
       "sha256": "9d46d56ad9c874389655e46510e1a987b0357205dd92b0867c453d7a971ce0e2",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
+        "fingerprint": "8f63e2a3f1d81c28412c8f2e9ade75cd7a2a243502823642150f559b4e12de39"
       },
-      "review_fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
+      "review_fingerprint": "8f63e2a3f1d81c28412c8f2e9ade75cd7a2a243502823642150f559b4e12de39"
     }
   ]
 }

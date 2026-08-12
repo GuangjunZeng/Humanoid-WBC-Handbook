@@ -25,6 +25,7 @@
             0.415
           ],
           "caption_anchor": "Fig. 2: Overview of the HuMI data collection system",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.334366,
@@ -37,7 +38,8 @@
             0.919983,
             0.40752
           ],
-          "page_text_sha256": "9e7ec01ffa0820af0905328f60603142e7fd2977abc898de6b0212669f70ef05"
+          "page_text_sha256": "9e7ec01ffa0820af0905328f60603142e7fd2977abc898de6b0212669f70ef05",
+          "extra_text_word_count": 43
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "24f99070dc1c99e112c566202dc670b69287c9b2b22bacdedfc0c34218cdf694",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
+        "fingerprint": "ebaf279f1311fcdece69d172d24ab588eb18050a5505741f91c08fb6e4daf1b4"
       },
-      "review_fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
+      "review_fingerprint": "ebaf279f1311fcdece69d172d24ab588eb18050a5505741f91c08fb6e4daf1b4"
     },
     {
       "asset": "figure-4-5-chunk-drift.jpg",
@@ -66,9 +68,10 @@
             0.08,
             0.04,
             0.49,
-            0.33
+            0.32
           ],
           "caption_anchor": "Fig. 4: Impact of reference frame selection",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.218543,
@@ -81,7 +84,8 @@
             0.490226,
             0.316854
           ],
-          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f"
+          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f",
+          "extra_text_word_count": 17
         },
         {
           "pdf_page": 5,
@@ -89,9 +93,10 @@
             0.08,
             0.49,
             0.49,
-            0.75
+            0.74
           ],
           "caption_anchor": "Fig. 5: Mitigating drift",
+          "visual_review_note": "全分辨率目视确认 Fig. 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.650618,
@@ -104,19 +109,20 @@
             0.49023,
             0.736349
           ],
-          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f"
+          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f",
+          "extra_text_word_count": 53
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 2864,
-      "sha256": "3dc3012d61fcb551d5979a603717ae00a5fcf90928fccd50daab97110a6aee91",
+      "pixel_height": 2762,
+      "sha256": "acc09c85cc27ce7a436afb87c3303d389311d93e4be3f3d163a52efd74071791",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
+        "fingerprint": "d5da0b0e1c97fbb13e4357021e7f27404e9c0bc73b906633fffc964a30ddfa58"
       },
-      "review_fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
+      "review_fingerprint": "d5da0b0e1c97fbb13e4357021e7f27404e9c0bc73b906633fffc964a30ddfa58"
     },
     {
       "asset": "figure-6-ablation.jpg",
@@ -136,6 +142,7 @@
             0.54
           ],
           "caption_anchor": "Fig. 6: Whole-body capability experiment results",
+          "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.507817,
@@ -148,7 +155,8 @@
             0.919983,
             0.530654
           ],
-          "page_text_sha256": "55f0f05640d1f0745bd51dc5dca74b2804a117c8f57041b1ab00612115452fd3"
+          "page_text_sha256": "55f0f05640d1f0745bd51dc5dca74b2804a117c8f57041b1ab00612115452fd3",
+          "extra_text_word_count": 47
         }
       ],
       "pixel_width": 1656,
@@ -156,11 +164,11 @@
       "sha256": "ae2f2e12e6e1a010de49bd2e97f371b45142ba6025bbf9300de70d864cc9b96c",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
+        "fingerprint": "94e587b9bae80e3f0d615fbc3e84582bad9b4174867ba86ceb371c101fc01f8a"
       },
-      "review_fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
+      "review_fingerprint": "94e587b9bae80e3f0d615fbc3e84582bad9b4174867ba86ceb371c101fc01f8a"
     }
   ]
 }

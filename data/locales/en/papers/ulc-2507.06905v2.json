@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2507.06905v2",
-  "source_fingerprint": "a894befc5942c23a211f825dee9dc7e75767f98d35146c2927dde35f9f073740",
+  "source_fingerprint": "9b4d861a7eb71ca667632c47afbf51199d4ab14f9735681033e35620915dd8c6",
   "title": "ULC: Sequentially Train One Fine-Grained Loco-Manipulation Policy",
   "content_lines": [
     "Source: [arXiv:2507.06905v2](https://arxiv.org/abs/2507.06905v2). The official project still marked code as coming soon at the audit point; no third-party repository is treated as author code.",

@@ -10,7 +10,7 @@
 4. 先建立“结论 → Figure/Table → PDF 物理页 → 原始 caption → 支持/不支持什么”的证据表，再选 3–5 张最能支持分析的原论文图/表。优先系统图、机制消融、最强实验、失败例和与代码接口有关的表；不得先猜页码再生成截图。
 5. 使用锁定 PDF 的 SHA-256 和 `research/key-figures.json` schema v2。每个 region 必须记录物理页、规范化 crop 和 caption anchor；图号、表号和完整 caption 文本块都必须落在裁剪区内。
 6. 关键图只能是“具体 Figure/Table 本体 + 该图表原始完整 caption”的紧裁剪。严禁整页论文截图、仅包含正文引用却没有图表的页、项目页截图、caption 被截断、相邻图表残片或无关正文。跨页/多图组合只能拼接分别核验的 region，中间不夹正文。
-7. 生成全分辨率 contact sheet 并逐张人工查看。审阅者确认图号、内容、caption 和详情页解释一致后，才运行 `extract_key_figures.py --record-visual-review <reviewer>`；crop、PDF、locator、支持边界或图注一变，review fingerprint 自动过期。CI 不得自动批准。
+7. 生成全分辨率 contact sheet 并逐张人工查看。每个 region 必须写 `visual_review_note`，明确所见图号/表号、图表本体与 caption 是否都完整，以及裁剪区没有无关正文、相邻图表残片或页眉页脚；只写“已看/正确”无效。Poppler 把 caption 与相邻正文合并成同一 text block 时，必须在规格中写入手工核对的 `caption_bbox`，不得通过放大 crop 把无关正文一起保留。审阅者确认所有 region 与详情页解释一致后，才运行 `extract_key_figures.py --record-visual-review <reviewer>`；crop、PDF、locator、支持边界、图注或 region 审阅说明一变，review fingerprint 自动过期。CI 不得自动批准。
 8. 对每张图说明“看什么”、“它支持哪个结论”和“不能支持什么”；不把图当装饰，不把最佳轨迹当平均表现。图里没有的分母或数值必须明确定位到正文/Table，不能把正文事实冒充图上可见内容。
 9. 选出最有说服力的实验，写清基线、自变量、指标、分母、环境和结论边界；优先保留负面结果和失败模式。
 10. 有公开代码时，只使用官方仓库并固定 commit，将至少两个论文组件映射到具体文件、函数或类；无公开代码时明确写“未公开/无法核验”，不用第三方实现填空。
@@ -25,6 +25,7 @@
 - 每段必须至少完成一项工程工作：解释机制、给出事实/定位、划清外推边界、映射实现接口、提炼失败模式或定义复现验收；删掉不承担这些作用的段落。
 - 量化陈述附带 Figure/Table/Equation 定位；不确定信息保持未知，不从 README 或视频补写论文未报告的分母。
 - 禁止用吸引眼球的故事、强行类比、产业意义和模型常识填补证据空白；“作者报告”“代码实现”“独立工程判断”必须能被读者一眼区分。
+- 禁止独立“金句”栏目。若一句话没有新增可定位事实、机制、数值、复现动作或证据边界，就删除；不以同义改写制造篇幅。
 - 依次运行 `python3 scripts/extract_key_figures.py --check` 和 `python3 scripts/check_paper_quality.py`，只有图表审阅与全文质量门都通过才能把 `analysis_status` 改为 `deep_read`。
 
 ## 官方项目/代码仓库解读
@@ -69,4 +70,4 @@ README 技术路线选中的代表作必须同时有中英文页。中文深读�
 - 已审阅英文记录位于 `data/locales/en/papers/`，完整中文页的 SHA-256 存入 `source_fingerprint`。
 - 中文事实、图表或代码边界修改后，旧英文记录必须过期，不允许 CI 继续发布。
 - 英文页只能复用中文证据页已核验的外链；不得在翻译时新增未核验代码或项目链接。
-- 运行 `PYTHONPATH=src python3 scripts/render_paper_translations.py --check`，验证 24 篇当前代表作的覆盖、指纹、章节、图片和双向语言链接。
+- 运行 `PYTHONPATH=src python3 scripts/render_paper_translations.py --check`，验证全部 25 篇深读的覆盖、指纹、章节、图片和双向语言链接。

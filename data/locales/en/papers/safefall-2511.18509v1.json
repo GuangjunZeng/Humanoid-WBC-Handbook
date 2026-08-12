@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2511.18509v1",
-  "source_fingerprint": "cecf5611c21095ae34685013ca3526d17fa08e9245c5f00f2362c387208170a4",
+  "source_fingerprint": "ca2fbe602c9a7ae1be35525da2b019382ffcea39bccd1ee6d7d66cee6989e2f7",
   "title": "SafeFall: Take Over Only After a Fall Becomes Unavoidable",
   "content_lines": [
     "Source: [arXiv:2511.18509v1](https://arxiv.org/abs/2511.18509v1). No official public SafeFall training/deployment repository was verified at the audit point.",

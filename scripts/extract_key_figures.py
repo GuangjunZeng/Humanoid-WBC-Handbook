@@ -64,12 +64,37 @@ def compact_text(value: str) -> str:
     return "".join(character for character in value.casefold() if character.isalnum())
 
 
+def validate_visual_review_note(note: object, label: str) -> str:
+    value = str(note).strip()
+    if len(value) < 24:
+        raise ValueError(f"{label}: visual_review_note is too weak")
+    required = ("本体完整", "完整 caption", "无无关正文", "无相邻图表残片", "无页眉页脚")
+    missing = [phrase for phrase in required if phrase not in value]
+    if missing:
+        raise ValueError(
+            f"{label}: visual_review_note misses visual checks {missing}"
+        )
+    if not re.search(
+        r"(?:Figure|Fig\.?|Table|TABLE|图|表)\s*[0-9IVXivx]+", value
+    ):
+        raise ValueError(f"{label}: visual_review_note has no concrete figure/table id")
+    return value
+
+
 def canonical_region(region: dict) -> dict:
-    return {
+    canonical = {
         "pdf_page": int(region["pdf_page"]),
         "crop": [round(float(value), 6) for value in region["crop"]],
         "caption_anchor": region["caption_anchor"],
+        "visual_review_note": validate_visual_review_note(
+            region["visual_review_note"], "region"
+        ),
     }
+    if "caption_bbox" in region:
+        canonical["caption_bbox"] = [
+            round(float(value), 6) for value in region["caption_bbox"]
+        ]
+    return canonical
 
 
 def canonical_figure(paper: dict, figure: dict) -> dict:
@@ -103,6 +128,16 @@ def validate_crop(crop: object, label: str) -> list[float]:
         raise ValueError(f"{label}: crop retains too much of the PDF page")
     if right - left < 0.18 or bottom - top < 0.08:
         raise ValueError(f"{label}: crop is too small to remain legible")
+    return values
+
+
+def validate_bbox(bbox: object, label: str) -> list[float]:
+    if not isinstance(bbox, list) or len(bbox) != 4:
+        raise ValueError(f"{label}: bbox must be [left, top, right, bottom]")
+    values = [float(value) for value in bbox]
+    left, top, right, bottom = values
+    if not (0 <= left < right <= 1 and 0 <= top < bottom <= 1):
+        raise ValueError(f"{label}: bbox coordinates must be normalized and ordered")
     return values
 
 
@@ -171,7 +206,8 @@ def locate_caption_anchor(
     page: int,
     crop: list[float],
     anchor: str,
-) -> tuple[list[float], list[float], str]:
+    caption_bbox: list[float] | None = None,
+) -> tuple[list[float], list[float], str, int]:
     needle = compact_text(anchor)
     if len(needle) < 5:
         raise ValueError(f"{pdf}: page {page}: caption_anchor is too weak: {anchor!r}")
@@ -217,7 +253,18 @@ def locate_caption_anchor(
         raise ValueError(
             f"{pdf}: page {page}: anchor {anchor!r} exists but falls outside crop {crop}"
         )
-    anchor_box, caption_block_box = inside[0]
+    anchor_box, inferred_caption_block_box = inside[0]
+    caption_block_box = caption_bbox or inferred_caption_block_box
+    if caption_bbox and not (
+        anchor_box[0] >= caption_bbox[0] - 0.004
+        and anchor_box[1] >= caption_bbox[1] - 0.004
+        and anchor_box[2] <= caption_bbox[2] + 0.004
+        and anchor_box[3] <= caption_bbox[3] + 0.004
+    ):
+        raise ValueError(
+            f"{pdf}: page {page}: anchor {anchor!r} falls outside manual "
+            f"caption_bbox {caption_bbox}"
+        )
     if not (
         caption_block_box[0] >= left - 0.004
         and caption_block_box[1] >= top - 0.004
@@ -231,10 +278,26 @@ def locate_caption_anchor(
     page_text_hash = hashlib.sha256(
         " ".join(word["normalized"] for word in words).encode("utf-8")
     ).hexdigest()
+    crop_word_count = sum(
+        left - 0.004 <= word["x0"] / width
+        and word["x1"] / width <= right + 0.004
+        and top - 0.004 <= word["y0"] / height
+        and word["y1"] / height <= bottom + 0.004
+        for word in words
+    )
+    caption_word_count = sum(
+        caption_block_box[0] - 0.004 <= word["x0"] / width
+        and word["x1"] / width <= caption_block_box[2] + 0.004
+        and caption_block_box[1] - 0.004 <= word["y0"] / height
+        and word["y1"] / height <= caption_block_box[3] + 0.004
+        for word in words
+    )
+    extra_text_word_count = max(0, crop_word_count - caption_word_count)
     return (
         [round(value, 6) for value in anchor_box],
         [round(value, 6) for value in caption_block_box],
         page_text_hash,
+        extra_text_word_count,
     )
 
 
@@ -381,6 +444,23 @@ def validate_paper_spec(paper: dict) -> list[str]:
                 validate_crop(region.get("crop"), f"{label}: region {index}")
                 if len(compact_text(str(region.get("caption_anchor", "")))) < 5:
                     raise ValueError("caption_anchor is too weak")
+                if "caption_bbox" in region:
+                    caption_bbox = validate_bbox(
+                        region["caption_bbox"], f"{label}: region {index}: caption_bbox"
+                    )
+                    left, top, right, bottom = validate_crop(
+                        region["crop"], f"{label}: region {index}"
+                    )
+                    if not (
+                        caption_bbox[0] >= left
+                        and caption_bbox[1] >= top
+                        and caption_bbox[2] <= right
+                        and caption_bbox[3] <= bottom
+                    ):
+                        raise ValueError("caption_bbox must be inside crop")
+                validate_visual_review_note(
+                    region.get("visual_review_note"), f"{label}: region {index}"
+                )
             except (TypeError, ValueError) as error:
                 errors.append(f"{label}: region {index}: {error}")
     return errors
@@ -413,18 +493,20 @@ def build_paper(
         audited_regions = []
         for region in figure["regions"]:
             canonical = canonical_region(region)
-            anchor_box, caption_block_box, page_text_hash = locate_caption_anchor(
+            anchor_box, caption_block_box, page_text_hash, extra_text_word_count = locate_caption_anchor(
                 pdftotext,
                 pdf,
                 canonical["pdf_page"],
                 canonical["crop"],
                 canonical["caption_anchor"],
+                canonical.get("caption_bbox"),
             )
             audited_regions.append({
                 **canonical,
                 "caption_anchor_bbox": anchor_box,
                 "caption_block_bbox": caption_block_box,
                 "page_text_sha256": page_text_hash,
+                "extra_text_word_count": extra_text_word_count,
             })
         if force or not target.is_file():
             width, height = render_excerpt(pdftoppm, pdf, figure["regions"], target, dpi)
@@ -577,6 +659,14 @@ def check_paper(paper: dict) -> list[str]:
                 errors.append(f"{slug}: full caption block outside crop: {name}")
             if not re.fullmatch(r"[0-9a-f]{64}", str(region.get("page_text_sha256", ""))):
                 errors.append(f"{slug}: missing page text fingerprint: {name}")
+            if not isinstance(region.get("extra_text_word_count"), int):
+                errors.append(f"{slug}: missing extra-text word count: {name}")
+            try:
+                validate_visual_review_note(
+                    region.get("visual_review_note"), f"{slug}/{name}"
+                )
+            except ValueError as error:
+                errors.append(str(error))
     return errors
 
 

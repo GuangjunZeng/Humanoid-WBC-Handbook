@@ -25,6 +25,7 @@
             0.465
           ],
           "caption_anchor": "Fig. 2: Overview of TextOp's framework",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.366747,
@@ -37,7 +38,8 @@
             0.919982,
             0.453619
           ],
-          "page_text_sha256": "5db66e8e861638a330fd283b801e27b2e17a20b89a7c1ad21bc9f661c32faa99"
+          "page_text_sha256": "5db66e8e861638a330fd283b801e27b2e17a20b89a7c1ad21bc9f661c32faa99",
+          "extra_text_word_count": 123
         },
         {
           "pdf_page": 4,
@@ -48,6 +50,7 @@
             0.28
           ],
           "caption_anchor": "Fig. 3: Illustration of the time-aligned data format",
+          "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.246858,
@@ -60,7 +63,8 @@
             0.490223,
             0.273262
           ],
-          "page_text_sha256": "a17d335e25120888db8e7ab90aa15391f4643c307c7fbc0cdc6833d604149ed1"
+          "page_text_sha256": "a17d335e25120888db8e7ab90aa15391f4643c307c7fbc0cdc6833d604149ed1",
+          "extra_text_word_count": 15
         }
       ],
       "pixel_width": 1656,
@@ -68,11 +72,11 @@
       "sha256": "365afdad1c91bbffe71d514aaa75d41eb233b45d4ca2f4adfe0cec59cb4085d4",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
+        "fingerprint": "5168d68ffaca78e13dd44555a6f42ce1356045c06a425bd9f6a5856fd4937dae"
       },
-      "review_fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
+      "review_fingerprint": "5168d68ffaca78e13dd44555a6f42ce1356045c06a425bd9f6a5856fd4937dae"
     },
     {
       "asset": "table-1-2-hardware.jpg",
@@ -92,6 +96,7 @@
             0.72
           ],
           "caption_anchor": "TABLE I: Quantitative evaluation",
+          "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.50976,
             0.548395,
@@ -104,7 +109,8 @@
             0.919985,
             0.605076
           ],
-          "page_text_sha256": "c6f29211090d0426bc60a576a98939afc6a76f80982e16dfc13a8110f2d7616e"
+          "page_text_sha256": "c6f29211090d0426bc60a576a98939afc6a76f80982e16dfc13a8110f2d7616e",
+          "extra_text_word_count": 55
         },
         {
           "pdf_page": 7,
@@ -115,6 +121,7 @@
             0.62
           ],
           "caption_anchor": "TABLE II: Real-time performance",
+          "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.473529,
@@ -127,7 +134,8 @@
             0.490223,
             0.499932
           ],
-          "page_text_sha256": "ffdfc2ecdeb48431f0a8be09f5839c67c591b37465d8791e6a70a6d528c5e3f8"
+          "page_text_sha256": "ffdfc2ecdeb48431f0a8be09f5839c67c591b37465d8791e6a70a6d528c5e3f8",
+          "extra_text_word_count": 22
         }
       ],
       "pixel_width": 1656,
@@ -135,11 +143,11 @@
       "sha256": "e007c79409eb5954c1d5664d5504ebecfffe73d3c789ac76c37e2e6d0ea1520d",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
+        "fingerprint": "9dc449e498b1bd86c2e827cf2ed00550fe7520ab630179139e81bee0f087154b"
       },
-      "review_fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
+      "review_fingerprint": "9dc449e498b1bd86c2e827cf2ed00550fe7520ab630179139e81bee0f087154b"
     },
     {
       "asset": "table-3-4-representation.jpg",
@@ -159,6 +167,7 @@
             0.25
           ],
           "caption_anchor": "TABLE III: Comparison of motion generation",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.070069,
@@ -171,7 +180,8 @@
             0.919982,
             0.12675
           ],
-          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164"
+          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164",
+          "extra_text_word_count": 139
         },
         {
           "pdf_page": 8,
@@ -182,6 +192,7 @@
             0.47
           ],
           "caption_anchor": "TABLE IV: Simulation evaluation",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.079998,
             0.257294,
@@ -194,7 +205,8 @@
             0.919982,
             0.329071
           ],
-          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164"
+          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164",
+          "extra_text_word_count": 173
         }
       ],
       "pixel_width": 1656,
@@ -202,11 +214,11 @@
       "sha256": "87b3399f2c5cc6324e3e3a6818e1bcc5d4f9978fca91276914a0105612607766",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
+        "fingerprint": "3187c3232c08716272c2eb9d0e956ff82d3271678a8b8a359855222d3d588990"
       },
-      "review_fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
+      "review_fingerprint": "3187c3232c08716272c2eb9d0e956ff82d3271678a8b8a359855222d3d588990"
     }
   ]
 }

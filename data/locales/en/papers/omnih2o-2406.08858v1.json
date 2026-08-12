@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2406.08858v1",
-  "source_fingerprint": "3f54a747cbc684b1be6ee5d6120bf179ba3ad63827494b9b72aca1128e4f443b",
+  "source_fingerprint": "5cc2e9add1d5d08c6b3c0a04b3d69c055820a1f825358c12ef5d6c2deec0237f",
   "title": "OmniH2O: Distilling Dense Motion into Sparse, History-Aware Humanoid Control",
   "content_lines": [
     "Source: [arXiv:2406.08858v1](https://arxiv.org/abs/2406.08858v1). Implementation references are restricted to the pinned official human2humanoid code linked on the Chinese page.",

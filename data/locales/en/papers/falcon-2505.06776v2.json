@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2505.06776v2",
-  "source_fingerprint": "be73c4cd1ddc55a43dbffd9ef61850a58ce6a2d99c0b152917cb9f25bf73ae12",
+  "source_fingerprint": "425aa07847c6a8c9bc4040a377262065ea739cc30fe9448283b1cce65b98e42c",
   "title": "FALCON: Force-Adaptive Loco-Manipulation with Feasible Disturbance Curricula",
   "content_lines": [
     "Source: [arXiv:2505.06776v2](https://arxiv.org/abs/2505.06776v2). Code mapping refers to the pinned official FALCON revision linked by the Chinese page.",

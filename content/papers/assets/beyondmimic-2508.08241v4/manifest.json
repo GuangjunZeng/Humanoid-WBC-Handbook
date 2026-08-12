@@ -25,6 +25,7 @@
             0.77
           ],
           "caption_anchor": "Figure 2: Diverse motion tracking",
+          "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.117647,
             0.725901,
@@ -37,7 +38,8 @@
             0.88235,
             0.739291
           ],
-          "page_text_sha256": "338ac7894d873da86686eee6d1445f72cfd0fc0c0c7e504ac08cfc49641e8010"
+          "page_text_sha256": "338ac7894d873da86686eee6d1445f72cfd0fc0c0c7e504ac08cfc49641e8010",
+          "extra_text_word_count": 35
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "5d7ad873c2101966324c2ba2851064b5dd4ca1c0e317028a76f1e74ea06cc31b",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
+        "fingerprint": "773544e6e0174d78fba40d2fb5c2d4f24c4c36da912ae2c9ff3c7fbdc4263fa0"
       },
-      "review_fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
+      "review_fingerprint": "773544e6e0174d78fba40d2fb5c2d4f24c4c36da912ae2c9ff3c7fbdc4263fa0"
     },
     {
       "asset": "figure-5-6-guidance.jpg",
@@ -69,6 +71,7 @@
             0.73
           ],
           "caption_anchor": "Figure 5: Command-conditioned locomotion",
+          "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.117647,
             0.700811,
@@ -81,7 +84,8 @@
             0.88235,
             0.7142
           ],
-          "page_text_sha256": "acb2b143bef43ad9663e3715e99d54acfd7f01c7020d8f197b7641e9511bd52d"
+          "page_text_sha256": "acb2b143bef43ad9663e3715e99d54acfd7f01c7020d8f197b7641e9511bd52d",
+          "extra_text_word_count": 79
         },
         {
           "pdf_page": 29,
@@ -92,6 +96,7 @@
             0.7
           ],
           "caption_anchor": "Figure 6: Task transition and composition",
+          "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.117647,
             0.662085,
@@ -104,7 +109,8 @@
             0.88235,
             0.678884
           ],
-          "page_text_sha256": "fdd4c40634f3e6f1c7eb1733e16bd6e1edd3edbc044261bee962d0269d88b28e"
+          "page_text_sha256": "fdd4c40634f3e6f1c7eb1733e16bd6e1edd3edbc044261bee962d0269d88b28e",
+          "extra_text_word_count": 74
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "ac5b043085b6c3da058ea026e829ffcb86852ba002e82ca1c2d4ed3d3dfa3431",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
+        "fingerprint": "66b078ce4add5cb2c0a27717f2bb31bd5289fe60de134e6175c6d184b5a59f89"
       },
-      "review_fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
+      "review_fingerprint": "66b078ce4add5cb2c0a27717f2bb31bd5289fe60de134e6175c6d184b5a59f89"
     },
     {
       "asset": "figure-8-ablation.jpg",
@@ -136,6 +142,7 @@
             0.76
           ],
           "caption_anchor": "Figure 8: Ablation studies",
+          "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.117647,
             0.721218,
@@ -148,7 +155,8 @@
             0.88235,
             0.734608
           ],
-          "page_text_sha256": "6f7ee5e0da8f8604c3710b419a8682c0962e73d0e8aef6f43a51451f65802995"
+          "page_text_sha256": "6f7ee5e0da8f8604c3710b419a8682c0962e73d0e8aef6f43a51451f65802995",
+          "extra_text_word_count": 185
         }
       ],
       "pixel_width": 1656,
@@ -156,11 +164,11 @@
       "sha256": "958de2f42e625ea098679f4ce46cb5c4f6ab6eecc9e0f93d4eb9daf91a65207f",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
+        "fingerprint": "88ad381d1f97fe9c46541578c88cf4552a88398bd4d3f2b5b6c38d6103006f3d"
       },
-      "review_fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
+      "review_fingerprint": "88ad381d1f97fe9c46541578c88cf4552a88398bd4d3f2b5b6c38d6103006f3d"
     }
   ]
 }

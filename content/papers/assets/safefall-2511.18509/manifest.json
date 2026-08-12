@@ -25,6 +25,7 @@
             0.385
           ],
           "caption_anchor": "Fig. 2. Overview of SafeFall",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. Overview of SafeFall 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.317332,
@@ -37,7 +38,8 @@
             0.91176,
             0.371613
           ],
-          "page_text_sha256": "6187e020e4b73e7bc9b8595e56fb36640fe733171d180d95f98ec0ed6357c464"
+          "page_text_sha256": "6187e020e4b73e7bc9b8595e56fb36640fe733171d180d95f98ec0ed6357c464",
+          "extra_text_word_count": 83
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "9bfd7fb6b56243a1ade57c6b76155e502549cbb17beeb464b1a625f82ceea814",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
+        "fingerprint": "94d26aa3361f107cc2d23c1240cc2f12fec16d5916fd17cabc73482df7e875bb"
       },
-      "review_fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
+      "review_fingerprint": "94d26aa3361f107cc2d23c1240cc2f12fec16d5916fd17cabc73482df7e875bb"
     },
     {
       "asset": "table-2-3-predictor.jpg",
@@ -64,39 +66,48 @@
           "pdf_page": 6,
           "crop": [
             0.08,
-            0.53,
+            0.535,
             0.49,
-            0.7
+            0.827
           ],
-          "caption_anchor": "TABLE II",
+          "caption_anchor": "TABLE II DOMAIN RANDOMIZATION AND OBSERVATION NOISE",
+          "visual_review_note": "全分辨率目视确认 TABLE II DOMAIN RANDOMIZATION AND OBSERVATION NOISE 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.091,
+            0.539,
+            0.486,
+            0.579
+          ],
           "caption_anchor_bbox": [
-            0.261245,
-            0.539363,
-            0.315226,
-            0.548359
-          ],
-          "caption_block_bbox": [
             0.091167,
             0.539363,
-            0.485313,
-            0.578549
+            0.38342,
+            0.563454
           ],
-          "page_text_sha256": "ad1bcab49c619c51524f71478a6b44dc033f9561abef1750395903a890ef52db"
+          "caption_block_bbox": [
+            0.091,
+            0.539,
+            0.486,
+            0.579
+          ],
+          "page_text_sha256": "ad1bcab49c619c51524f71478a6b44dc033f9561abef1750395903a890ef52db",
+          "extra_text_word_count": 83
         },
         {
           "pdf_page": 7,
           "crop": [
             0.08,
-            0.25,
+            0.258,
             0.49,
-            0.42
+            0.45
           ],
-          "caption_anchor": "TABLE III",
+          "caption_anchor": "TABLE III ABLATION OF FALL PREDICTOR DESIGN CHOICES",
+          "visual_review_note": "全分辨率目视确认 TABLE III ABLATION OF FALL PREDICTOR DESIGN CHOICES 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
-            0.259077,
+            0.152342,
             0.265373,
-            0.317394,
-            0.274369
+            0.424144,
+            0.289464
           ],
           "caption_block_bbox": [
             0.152342,
@@ -104,19 +115,20 @@
             0.424144,
             0.289464
           ],
-          "page_text_sha256": "acf0e0f004e44ed9eb198df94a6ae20aa47b0b764e6b1ce81e903ad7b5371f4b"
+          "page_text_sha256": "acf0e0f004e44ed9eb198df94a6ae20aa47b0b764e6b1ce81e903ad7b5371f4b",
+          "extra_text_word_count": 86
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1800,
-      "sha256": "da86f86911a6b97706a0732373f8f018824cef787787d0a6ddebee3d446a18f4",
+      "pixel_height": 2530,
+      "sha256": "5fdfe9ce4f8a409c448f4185055ff3ac03d72a0d79c39c00a6b75d072d168f44",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
+        "fingerprint": "35e99b2365f7e22e75c1840bcf7856ec982af38725efdbbe312421d8727d186b"
       },
-      "review_fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
+      "review_fingerprint": "35e99b2365f7e22e75c1840bcf7856ec982af38725efdbbe312421d8727d186b"
     },
     {
       "asset": "table-4-5-hardware.jpg",
@@ -133,14 +145,15 @@
             0.08,
             0.04,
             0.92,
-            0.2
+            0.19
           ],
-          "caption_anchor": "TABLE IV",
+          "caption_anchor": "TABLE IV QUALITATIVE EVALUATIONS OF SAFEFALL",
+          "visual_review_note": "全分辨率目视确认 TABLE IV QUALITATIVE EVALUATIONS OF SAFEFALL 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
-            0.470477,
+            0.149776,
             0.068081,
             0.529524,
-            0.077078
+            0.092172
           ],
           "caption_block_bbox": [
             0.149776,
@@ -148,17 +161,25 @@
             0.850241,
             0.092172
           ],
-          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc",
+          "extra_text_word_count": 79
         },
         {
           "pdf_page": 8,
           "crop": [
             0.08,
-            0.18,
+            0.19,
             0.49,
-            0.385
+            0.374
           ],
           "caption_anchor": "Fig. 6. SafeFall mitigating damages",
+          "visual_review_note": "全分辨率目视确认 Fig. 6. SafeFall mitigating damages 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.088,
+            0.341,
+            0.489,
+            0.374
+          ],
           "caption_anchor_bbox": [
             0.088235,
             0.341447,
@@ -166,27 +187,29 @@
             0.350444
           ],
           "caption_block_bbox": [
-            0.088235,
-            0.341447,
-            0.488238,
-            0.373085
+            0.088,
+            0.341,
+            0.489,
+            0.374
           ],
-          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 8,
           "crop": [
             0.08,
-            0.67,
+            0.7,
             0.49,
-            0.82
+            0.81
           ],
-          "caption_anchor": "TABLE V",
+          "caption_anchor": "TABLE V SAFEFALL GENERALIZES TO AN UNSEEN NOMINAL POLICY",
+          "visual_review_note": "全分辨率目视确认 TABLE V SAFEFALL GENERALIZES TO AN UNSEEN NOMINAL POLICY 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
-            0.260881,
+            0.122838,
             0.710979,
-            0.315591,
-            0.719975
+            0.453312,
+            0.734635
           ],
           "caption_block_bbox": [
             0.122838,
@@ -194,19 +217,20 @@
             0.453312,
             0.734635
           ],
-          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc",
+          "extra_text_word_count": 19
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 2300,
-      "sha256": "a452710ebffa4f574754a5dd7acc8c5dd538b2e17b146611c719aaa9b2eed6f0",
+      "pixel_height": 1968,
+      "sha256": "28af85e28fbd610fdcc6474790e9efd79b2bc67d6632e15d0b9e1fc8706fd3b8",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
+        "fingerprint": "d04b7c5c987d48bf82d7279fbbac8b3bd5fccf0b7ae8413025121a34c5297bf5"
       },
-      "review_fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
+      "review_fingerprint": "d04b7c5c987d48bf82d7279fbbac8b3bd5fccf0b7ae8413025121a34c5297bf5"
     }
   ]
 }

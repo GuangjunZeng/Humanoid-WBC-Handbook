@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "pdf:sentis-khatib-2006-wbc",
-  "source_fingerprint": "1865d8e985a3f14939d370c9d8921595e3abe2bb00fb9511b1102f7d22e227c3",
+  "source_fingerprint": "c28e055803cb676a9882dd04ad65c66f563a174b13a366df02da17dd5b73822a",
   "title": "Sentis-Khatib WBC: Make Task Conflict a Structural Priority",
   "content_lines": [
     "Source: [paper PDF](https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf). No official maintained implementation tied exactly to this paper was verified.",

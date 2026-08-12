@@ -20,11 +20,12 @@
           "pdf_page": 13,
           "crop": [
             0.19,
-            0.04,
+            0.24,
             0.81,
             0.7
           ],
           "caption_anchor": "Figure 1: Torque",
+          "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.197938,
             0.613802,
@@ -37,19 +38,20 @@
             0.800448,
             0.689683
           ],
-          "page_text_sha256": "53554c22c7f795a4791a6d7380dfc83a270fd81b731d379e643cf0f5ea7e2cc5"
+          "page_text_sha256": "53554c22c7f795a4791a6d7380dfc83a270fd81b731d379e643cf0f5ea7e2cc5",
+          "extra_text_word_count": 134
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 2467,
-      "sha256": "8a67932d8b1933883b293c34f351aedf1d274b10a48b8c7739eb7c25b28af54b",
+      "pixel_height": 1736,
+      "sha256": "a6de89aa6b46845d585a98daba0f1f260c45048613d272ec8e185b6dfead37db",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
+        "fingerprint": "1d8aa9dc78e00a31342ee4495b1b9e074ecd45f4111e1e25a7bfc2a646fa1172"
       },
-      "review_fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
+      "review_fingerprint": "1d8aa9dc78e00a31342ee4495b1b9e074ecd45f4111e1e25a7bfc2a646fa1172"
     },
     {
       "asset": "table-1-3-tracking.jpg",
@@ -64,11 +66,12 @@
           "pdf_page": 21,
           "crop": [
             0.19,
-            0.04,
+            0.145,
             0.81,
-            0.19
+            0.305
           ],
           "caption_anchor": "Table 1: Identified motor parameters",
+          "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.348126,
             0.15288,
@@ -81,17 +84,19 @@
             0.650249,
             0.164387
           ],
-          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3"
+          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3",
+          "extra_text_word_count": 32
         },
         {
           "pdf_page": 21,
           "crop": [
             0.19,
-            0.62,
+            0.63,
             0.81,
-            0.9
+            0.84
           ],
           "caption_anchor": "Table 2: Average squared tracking error",
+          "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.197938,
             0.643913,
@@ -104,17 +109,19 @@
             0.800447,
             0.680064
           ],
-          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3"
+          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3",
+          "extra_text_word_count": 57
         },
         {
           "pdf_page": 22,
           "crop": [
             0.19,
-            0.07,
+            0.175,
             0.81,
-            0.605
+            0.6
           ],
           "caption_anchor": "Figure 3: Friction identification",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.197938,
             0.45115,
@@ -127,17 +134,19 @@
             0.800444,
             0.591407
           ],
-          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed"
+          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed",
+          "extra_text_word_count": 97
         },
         {
           "pdf_page": 22,
           "crop": [
             0.19,
-            0.62,
+            0.645,
             0.81,
-            0.9
+            0.855
           ],
           "caption_anchor": "Table 3: Maximum tracking error",
+          "visual_review_note": "全分辨率目视确认 Table 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.197938,
             0.66052,
@@ -150,19 +159,20 @@
             0.80044,
             0.68812
           ],
-          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed"
+          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed",
+          "extra_text_word_count": 57
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 4691,
-      "sha256": "1a54d7f7bd6e0986f96cf4ae72ad2c8ca8c2221c768c34136787940f66a90b3f",
+      "pixel_height": 3812,
+      "sha256": "c6482ebe6fa9fa7756c1c5d05c38e6363870970df558543cc565d193e6c3588d",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
+        "fingerprint": "3ba32fda4f2602043929aa7f820899b2ebb206c02be2708a8e9e952deff33569"
       },
-      "review_fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
+      "review_fingerprint": "3ba32fda4f2602043929aa7f820899b2ebb206c02be2708a8e9e952deff33569"
     },
     {
       "asset": "figure-5-force-control.jpg",
@@ -177,11 +187,12 @@
           "pdf_page": 25,
           "crop": [
             0.19,
-            0.04,
+            0.12,
             0.81,
-            0.49
+            0.48
           ],
           "caption_anchor": "Figure 5: Tracking of a sinusoidal force",
+          "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.197938,
             0.412379,
@@ -194,19 +205,20 @@
             0.80045,
             0.472168
           ],
-          "page_text_sha256": "959591f98d4eec0d9dde56c3d2dc8d3d0b0f0d94c649dd421648f22cf8600294"
+          "page_text_sha256": "959591f98d4eec0d9dde56c3d2dc8d3d0b0f0d94c649dd421648f22cf8600294",
+          "extra_text_word_count": 84
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1700,
-      "sha256": "b7106fe9ced59b0e949de7ddb80a91fd211d05d27c8e0108fbdcaf5e3e5d9b1c",
+      "pixel_height": 1371,
+      "sha256": "cf6eabe084905154bceadcdca523756a326d2e707784b9b8cd805ea259ef6c03",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
+        "fingerprint": "faa1bacda31852478a603d1f2e5db019468fd5327364da4fa3b0c383020317e6"
       },
-      "review_fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
+      "review_fingerprint": "faa1bacda31852478a603d1f2e5db019468fd5327364da4fa3b0c383020317e6"
     }
   ]
 }

@@ -1,4 +1,4 @@
-"""Reviewed English localizations for representative paper deep reads."""
+"""Reviewed English localizations for every paper deep read."""
 
 from __future__ import annotations
 
@@ -41,22 +41,14 @@ def source_fingerprint(text: str) -> str:
 
 
 def representative_papers(catalog: Mapping) -> list[Mapping]:
-    by_id = {paper["paper_id"]: paper for paper in catalog.get("papers", [])}
-    ordered: list[Mapping] = []
-    seen: set[str] = set()
-    for domain in catalog.get("domains", {}).values():
-        for route in domain.get("readme_routes", []):
-            paper_id = route["paper_id"]
-            if paper_id in seen:
-                continue
-            paper = by_id.get(paper_id)
-            if paper is None:
-                raise PaperLocalizationError(f"route references unknown paper: {paper_id}")
-            if paper.get("analysis_status") != "deep_read" or not paper.get("brief_path"):
-                raise PaperLocalizationError(f"route is not a deep read: {paper_id}")
-            ordered.append(paper)
-            seen.add(paper_id)
-    return ordered
+    papers = [
+        paper for paper in catalog.get("papers", [])
+        if paper.get("analysis_status") == "deep_read" and paper.get("brief_path")
+    ]
+    ids = [paper["paper_id"] for paper in papers]
+    if len(ids) != len(set(ids)):
+        raise PaperLocalizationError("duplicate deep-read paper_id in catalog")
+    return papers
 
 
 def load_translations(root: Path) -> dict[str, PaperTranslation]:

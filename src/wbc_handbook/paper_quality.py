@@ -28,6 +28,13 @@ BANNED = (
     "具有重要意义",
     "你猜怎么着",
     "你有没有想过",
+    "**金句**",
+    "这就像",
+    "这好比",
+    "类比成",
+    "打个比方",
+    "很像：",
+    "像脚手架",
 )
 SECTION_GROUPS = {
     "problem": ("工程痛点", "问题与背景", "研究问题", "故事的起点"),
@@ -164,6 +171,16 @@ def evaluate_brief(
                     and caption_block[3] <= crop[3] + 0.004
                 ):
                     result.errors.append(f"complete caption falls outside crop: {asset}")
+                note = str(region.get("visual_review_note", "")).strip()
+                required_note_phrases = (
+                    "本体完整", "完整 caption", "无无关正文", "无相邻图表残片", "无页眉页脚"
+                )
+                if len(note) < 24 or not all(
+                    phrase in note for phrase in required_note_phrases
+                ):
+                    result.errors.append(
+                        f"crop lacks complete region-level visual review note: {asset}"
+                    )
             target = asset_root / slug / str(asset)
             if target.is_file():
                 actual_hash = hashlib.sha256(target.read_bytes()).hexdigest()

@@ -25,6 +25,7 @@
             0.355
           ],
           "caption_anchor": "Fig. 2: Pipeline of Humanoid-Gym",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.24281,
@@ -37,7 +38,8 @@
             0.488237,
             0.344625
           ],
-          "page_text_sha256": "41b402c4d240e97a1d3e963fcec25f0465e3b17b96d81efeda6e85be557bbed6"
+          "page_text_sha256": "41b402c4d240e97a1d3e963fcec25f0465e3b17b96d81efeda6e85be557bbed6",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "98c4445a074a780884794b5b4aff9079a7d5a2325fe46665dba99bb246e2184b",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
+        "fingerprint": "6a507a91a44be12b94c2aaf233da3db1b39cb4aa8f65239a80cea8a5d173e21b"
       },
-      "review_fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
+      "review_fingerprint": "6a507a91a44be12b94c2aaf233da3db1b39cb4aa8f65239a80cea8a5d173e21b"
     },
     {
       "asset": "figure-3-4-calibration.jpg",
@@ -69,6 +71,7 @@
             0.55
           ],
           "caption_anchor": "Fig. 3: Sine wave in Both MuJoCo",
+          "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.375796,
@@ -81,7 +84,8 @@
             0.911766,
             0.417231
           ],
-          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904"
+          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 3,
@@ -92,6 +96,7 @@
             0.62
           ],
           "caption_anchor": "Fig. 4: Phase Portrait for MuJoCo",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.587593,
@@ -104,7 +109,8 @@
             0.911766,
             0.613933
           ],
-          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904"
+          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "011deefe3f6e9aa76f96b102e6325342e8dc123f82a06e9c249e4df88220c435",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
+        "fingerprint": "3aada1aae5e90a00db00673c698faf4008304b248f737841261d94ca5dc21338"
       },
-      "review_fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
+      "review_fingerprint": "3aada1aae5e90a00db00673c698faf4008304b248f737841261d94ca5dc21338"
     },
     {
       "asset": "table-4-parameters.jpg",
@@ -136,6 +142,7 @@
             0.64
           ],
           "caption_anchor": "TABLE IV: In defining the reward function",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.33617,
@@ -148,7 +155,8 @@
             0.488238,
             0.407795
           ],
-          "page_text_sha256": "65d2e1e91ffdd6b05841b75c6526bd324fb4dab29c90de668d12ef412c88f293"
+          "page_text_sha256": "65d2e1e91ffdd6b05841b75c6526bd324fb4dab29c90de668d12ef412c88f293",
+          "extra_text_word_count": 103
         }
       ],
       "pixel_width": 1656,
@@ -156,11 +164,11 @@
       "sha256": "0a77bd4051b826237bf3f49e418ffb883419021e3dd5009eb8cfcb8152cb4f92",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
+        "fingerprint": "cc818f746665bf28cd1f2579a50a1d52b6c13fcc9c8827c957b8ccab0e1b4b87"
       },
-      "review_fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
+      "review_fingerprint": "cc818f746665bf28cd1f2579a50a1d52b6c13fcc9c8827c957b8ccab0e1b4b87"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2508.08241v4",
-  "source_fingerprint": "5d5cf4de4614b7ea0d668135ee1622c2cde89b5daec0d43c0a82c560b722a1c9",
+  "source_fingerprint": "398bfe6d492f87e81ddbfb9c3ccf1d120b29c2a5242d64c54c471e9488bb5728",
   "title": "BeyondMimic: Compose Humanoid Skills with Guided State-Action Latent Diffusion",
   "content_lines": [
     "Source: [arXiv:2508.08241v4](https://arxiv.org/abs/2508.08241v4). The public official repository covers the motion-tracking layer, not the complete CVAE/diffusion generator.",

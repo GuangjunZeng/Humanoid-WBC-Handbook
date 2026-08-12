@@ -25,6 +25,7 @@
             0.595
           ],
           "caption_anchor": "Fig. 1. Control primitives",
+          "visual_review_note": "全分辨率目视确认 Fig. 1. Control primitives 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.514114,
             0.516629,
@@ -37,7 +38,8 @@
             0.916582,
             0.583805
           ],
-          "page_text_sha256": "8ad1728a7842a8bddadc813da5cbf3c3cfc5950e67c1511a0df015eb06db96ab"
+          "page_text_sha256": "8ad1728a7842a8bddadc813da5cbf3c3cfc5950e67c1511a0df015eb06db96ab",
+          "extra_text_word_count": 27
         },
         {
           "pdf_page": 2,
@@ -48,6 +50,7 @@
             0.545
           ],
           "caption_anchor": "Fig. 2. Control entities",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. Control entities 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.514114,
             0.475468,
@@ -60,7 +63,8 @@
             0.916595,
             0.531315
           ],
-          "page_text_sha256": "f18be2de2889aae0e1802f7710b8f65590e18c9c6d6aaa0feb287bfebce3b906"
+          "page_text_sha256": "f18be2de2889aae0e1802f7710b8f65590e18c9c6d6aaa0feb287bfebce3b906",
+          "extra_text_word_count": 37
         }
       ],
       "pixel_width": 1656,
@@ -68,11 +72,11 @@
       "sha256": "9e18a7d4f94023fc2d40b5ad7c405e800ba73892310edfd28599b1ba4f20c2b2",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
+        "fingerprint": "68217fe257d2ac0cd9604b48cacecd25db47446130c57c255e127ed40c41764c"
       },
-      "review_fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
+      "review_fingerprint": "68217fe257d2ac0cd9604b48cacecd25db47446130c57c255e127ed40c41764c"
     },
     {
       "asset": "figure-3-hierarchy.jpg",
@@ -92,6 +96,7 @@
             0.66
           ],
           "caption_anchor": "Fig. 3. A control hierarchy",
+          "visual_review_note": "全分辨率目视确认 Fig. 3. A control hierarchy 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.089747,
             0.643672,
@@ -104,7 +109,8 @@
             0.124697,
             0.654241
           ],
-          "page_text_sha256": "05c24af217ab058c8fd38013988f4626f8f2095fff874347d833bded0bb2701a"
+          "page_text_sha256": "05c24af217ab058c8fd38013988f4626f8f2095fff874347d833bded0bb2701a",
+          "extra_text_word_count": 8
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "3c671a28428e02877e0c1ab9757525a05038c272073a0b74f90325a2fc2051a9",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
+        "fingerprint": "80020816229d5c73946b41ac4f6a32b66099217c0c4af8dba3aff552a7441936"
       },
-      "review_fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
+      "review_fingerprint": "80020816229d5c73946b41ac4f6a32b66099217c0c4af8dba3aff552a7441936"
     },
     {
       "asset": "figure-5-6-impedance.jpg",
@@ -136,6 +142,7 @@
             0.77
           ],
           "caption_anchor": "Fig. 5. Effective inertia",
+          "visual_review_note": "全分辨率目视确认 Fig. 5. Effective inertia 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.083536,
             0.687863,
@@ -148,7 +155,8 @@
             0.486004,
             0.756305
           ],
-          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186"
+          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186",
+          "extra_text_word_count": 0
         },
         {
           "pdf_page": 4,
@@ -159,6 +167,7 @@
             0.34
           ],
           "caption_anchor": "Fig. 6. Impedance control layer",
+          "visual_review_note": "全分辨率目视确认 Fig. 6. Impedance control layer 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.514114,
             0.288307,
@@ -171,7 +180,8 @@
             0.916539,
             0.310205
           ],
-          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186"
+          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -179,11 +189,11 @@
       "sha256": "e67fb9f5e62adb5e31592a945bc57ab24ef4cbe56a80b8b126286ae0d1a566b0",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
+        "fingerprint": "13004b08f06a11be998adafb001d33069122b34a377702b0d896345071bd1584"
       },
-      "review_fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
+      "review_fingerprint": "13004b08f06a11be998adafb001d33069122b34a377702b0d896345071bd1584"
     }
   ]
 }

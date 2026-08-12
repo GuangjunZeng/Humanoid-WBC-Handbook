@@ -25,6 +25,7 @@
             0.475
           ],
           "caption_anchor": "Figure 3: (a) OmniH2O retargets",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.176471,
             0.405057,
@@ -37,7 +38,8 @@
             0.823532,
             0.465495
           ],
-          "page_text_sha256": "12c9b9617cd343b7d3868a51aa395fcf0fe775fd1c1950158cb58fe22056d00d"
+          "page_text_sha256": "12c9b9617cd343b7d3868a51aa395fcf0fe775fd1c1950158cb58fe22056d00d",
+          "extra_text_word_count": 185
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "cc19efd11513e46b3efe7ec58602a81b18f98d4e8ac555db9f399e00b949f1d9",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
+        "fingerprint": "eab664c53833e8023cd35cc5ca0962cc4a64779c7e1da41820d0b147a2fc3098"
       },
-      "review_fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
+      "review_fingerprint": "eab664c53833e8023cd35cc5ca0962cc4a64779c7e1da41820d0b147a2fc3098"
     },
     {
       "asset": "table-1-2-evaluation.jpg",
@@ -69,6 +71,7 @@
             0.3
           ],
           "caption_anchor": "Table 1: Simulation motion imitation evaluation",
+          "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.235768,
             0.072357,
@@ -81,7 +84,8 @@
             0.764233,
             0.082478
           ],
-          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e"
+          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e",
+          "extra_text_word_count": 224
         },
         {
           "pdf_page": 6,
@@ -92,6 +96,7 @@
             0.88
           ],
           "caption_anchor": "Table 2: Real-world motion tracking evaluation",
+          "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.5,
             0.694082,
@@ -104,7 +109,8 @@
             0.823523,
             0.718509
           ],
-          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e"
+          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e",
+          "extra_text_word_count": 115
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "1f4b76f0ebbfbf88f7cde49070e5cec6664d24347611e789226e24ab75988e1c",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
+        "fingerprint": "552cbdbe106dbc1fc65765e97b5e0fc84f4bdbe93c06083ac88db9f6eedae747"
       },
-      "review_fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
+      "review_fingerprint": "552cbdbe106dbc1fc65765e97b5e0fc84f4bdbe93c06083ac88db9f6eedae747"
     },
     {
       "asset": "figure-9-motion-distribution.jpg",
@@ -136,6 +142,7 @@
             0.85
           ],
           "caption_anchor": "Figure 9: The ablation of data augmentation",
+          "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.368737,
             0.821863,
@@ -148,7 +155,8 @@
             0.631268,
             0.831985
           ],
-          "page_text_sha256": "99ce639507abbf09748ed34f19e401130d64038d1fb442f81c6141f38b35ca8d"
+          "page_text_sha256": "99ce639507abbf09748ed34f19e401130d64038d1fb442f81c6141f38b35ca8d",
+          "extra_text_word_count": 10
         }
       ],
       "pixel_width": 1656,
@@ -156,11 +164,11 @@
       "sha256": "5720e615e62d0ec3cc70aaaf14e8c5595f64b1f73e2f7c8b03444a8a98e99856",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
+        "fingerprint": "ef9f71e634fc84396344bb59e14939e70a6061d5e6c39f2928437e288a757427"
       },
-      "review_fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
+      "review_fingerprint": "ef9f71e634fc84396344bb59e14939e70a6061d5e6c39f2928437e288a757427"
     }
   ]
 }

@@ -25,6 +25,7 @@
             0.66
           ],
           "caption_anchor": "Figure 8: Method",
+          "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.12691,
             0.561432,
@@ -37,7 +38,8 @@
             0.867997,
             0.648066
           ],
-          "page_text_sha256": "f22201823b8fb4803901af475b08c703452706cefa6aeda745dca099c7ea5f0c"
+          "page_text_sha256": "f22201823b8fb4803901af475b08c703452706cefa6aeda745dca099c7ea5f0c",
+          "extra_text_word_count": 32
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "522d27b2c6239700aa7510e863e775f4bf1167f06324628116ae329181373c81",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
+        "fingerprint": "5b800056e9e3f70d6623f588918776f2cbc40cc7e250b7e9d36abfa91901ac98"
       },
-      "review_fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
+      "review_fingerprint": "5b800056e9e3f70d6623f588918776f2cbc40cc7e250b7e9d36abfa91901ac98"
     },
     {
       "asset": "figure-9-sample-efficiency.jpg",
@@ -69,6 +71,7 @@
             0.485
           ],
           "caption_anchor": "Figure 9: Comparison to scratch policy",
+          "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.12691,
             0.386121,
@@ -81,7 +84,8 @@
             0.867997,
             0.472757
           ],
-          "page_text_sha256": "ecad1cb8e60c32c622e27e0530f549b8d4be40f929aeae1e432358eef2d065e1"
+          "page_text_sha256": "ecad1cb8e60c32c622e27e0530f549b8d4be40f929aeae1e432358eef2d065e1",
+          "extra_text_word_count": 9
         }
       ],
       "pixel_width": 1656,
@@ -89,11 +93,11 @@
       "sha256": "2a4e6e16b7bdbd55bb12c9e5ec155178850f2aeb6d730cc4b8b73da330de732b",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
+        "fingerprint": "9834c4ed73f5a69019f5fc134981465a366780c8aa368d045d7bc9309e3525c0"
       },
-      "review_fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
+      "review_fingerprint": "9834c4ed73f5a69019f5fc134981465a366780c8aa368d045d7bc9309e3525c0"
     },
     {
       "asset": "figure-11-gait.jpg",
@@ -113,6 +117,7 @@
             0.355
           ],
           "caption_anchor": "Figure 11: Comparison of gait patterns",
+          "visual_review_note": "全分辨率目视确认 Figure 11 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.12691,
             0.295197,
@@ -125,7 +130,8 @@
             0.867996,
             0.345353
           ],
-          "page_text_sha256": "3bb5f24eac53a46eb98807d3d675614ea6063ebdcb2bc390ab1891e66ef40fa4"
+          "page_text_sha256": "3bb5f24eac53a46eb98807d3d675614ea6063ebdcb2bc390ab1891e66ef40fa4",
+          "extra_text_word_count": 20
         }
       ],
       "pixel_width": 1656,
@@ -133,11 +139,11 @@
       "sha256": "3f32c413bf5fc34c961910d0c73852588578cb8205d8d17a9ed0f39983dafe64",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
+        "fingerprint": "e7ed96cd7b0889345af5042a9020751b30a42f66e4eaa6edb08727b70db11bb7"
       },
-      "review_fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
+      "review_fingerprint": "e7ed96cd7b0889345af5042a9020751b30a42f66e4eaa6edb08727b70db11bb7"
     }
   ]
 }

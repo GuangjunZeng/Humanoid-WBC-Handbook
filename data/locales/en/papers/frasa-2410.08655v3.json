@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2410.08655v3",
-  "source_fingerprint": "7686e0ab58e2832600b41bbadaeb6cd10fdc60b3f49d03bbed330983620324a1",
+  "source_fingerprint": "1bcd55823194d235e06a827082bd6be10a8cc9b8b25c5343a77e5b483769d32d",
   "title": "FRASA: One Symmetry-Reduced Policy for Disturbance Recovery and Stand-Up",
   "content_lines": [
     "Source: [arXiv:2410.08655v3](https://arxiv.org/abs/2410.08655v3). Code mapping refers to the pinned official FRASA revision linked by the Chinese page.",

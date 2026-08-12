@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2404.05695v2",
-  "source_fingerprint": "6bf25ceacef46182ea419e8f9b65ecd529bdfc5a759c0a45dc084f291688a293",
+  "source_fingerprint": "4ed1b1d4da7f3437844055efd201c82f01db6ef425e3d424e9fafeda01ab304c",
   "title": "Humanoid-Gym: A Minimal Open Sim-to-Real Locomotion Loop",
   "content_lines": [
     "Source: [arXiv:2404.05695v2](https://arxiv.org/abs/2404.05695v2). Implementation claims are restricted to the pinned official repository linked by the Chinese page.",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2410.21229v2",
-  "source_fingerprint": "d26fa76f38cf8c77f02b0c409cd1dbe5a43bc845a47a3dfeec4f1ebe7b0f262f",
+  "source_fingerprint": "085b2b9de99240114b0665d599c06a8c809000250ffdd3e443c0b04adf6e23a4",
   "title": "HOVER: One Humanoid Controller with Explicit Command Masks",
   "content_lines": [
     "Source: [arXiv:2410.21229v2](https://arxiv.org/abs/2410.21229v2). The code mapping is tied to the pinned official HOVER repository linked by the Chinese page.",

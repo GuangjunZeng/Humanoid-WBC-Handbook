@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2502.01143v3",
-  "source_fingerprint": "310d2ee248e727057c17fd4da58ab182075f08f979e6469c39406f964c1b0395",
+  "source_fingerprint": "8e18eb8260ff03a167803c5b2f8cf6138a0de1f1e60fc5574e1bfe5a823fef7a",
   "title": "ASAP: Align Simulation to Hardware with Learned Delta Actions",
   "content_lines": [
     "Source: [arXiv:2502.01143v3](https://arxiv.org/abs/2502.01143v3). Code mapping refers to the pinned official ASAP revision linked by the Chinese page.",

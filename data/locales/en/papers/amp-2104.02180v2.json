@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2104.02180v2",
-  "source_fingerprint": "54b15efc9bc7b120cf0dc130c75ebe575190bf30590bbee030d9ab1374c89927",
+  "source_fingerprint": "ce1db2e8ca987776e4411612a0ad4adcdbe4a3ccb689f8c4d1cb46ccd54c6b1b",
   "title": "AMP: Learn a Motion-Style Reward Instead of Selecting a Reference Clip",
   "content_lines": [
     "Source: [arXiv:2104.02180v2](https://arxiv.org/abs/2104.02180v2). Code claims are tied to the pinned official IsaacGymEnvs revision linked by the Chinese page.",

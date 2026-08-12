@@ -25,6 +25,7 @@
             0.38
           ],
           "caption_anchor": "Fig. 2. Schematic overview",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. Schematic overview 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.519534,
             0.293141,
@@ -37,7 +38,8 @@
             0.915353,
             0.369632
           ],
-          "page_text_sha256": "14c1ea677f382dd231b61cc6fcda8e56f50085a7190ff22db40df3615da6d490"
+          "page_text_sha256": "14c1ea677f382dd231b61cc6fcda8e56f50085a7190ff22db40df3615da6d490",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "9e8cb1efa12c0df039ff1712ef602f2e9e305440cfa1c82c3444a5e992f18cfd",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
+        "fingerprint": "4322df846b1106f15252831bc80c2a18f8c8df9554dd1b1361db71c69ba9ea94"
       },
-      "review_fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
+      "review_fingerprint": "4322df846b1106f15252831bc80c2a18f8c8df9554dd1b1361db71c69ba9ea94"
     },
     {
       "asset": "table-1-2-tasks.jpg",
@@ -64,11 +66,12 @@
           "pdf_page": 9,
           "crop": [
             0.08,
-            0.04,
-            0.92,
-            0.31
+            0.095,
+            0.49,
+            0.435
           ],
           "caption_anchor": "Table 1. Performance statistics",
+          "visual_review_note": "全分辨率目视确认 Table 1. Performance statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.084299,
             0.09862,
@@ -81,19 +84,45 @@
             0.481903,
             0.187177
           ],
-          "page_text_sha256": "228d4c8cadd9b23649458708896763d8feb0a2eedf3355697d87d1d65f36dd9c"
+          "page_text_sha256": "228d4c8cadd9b23649458708896763d8feb0a2eedf3355697d87d1d65f36dd9c",
+          "extra_text_word_count": 63
+        },
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.51,
+            0.095,
+            0.92,
+            0.325
+          ],
+          "caption_anchor": "Table 2. Summary statistics",
+          "visual_review_note": "全分辨率目视确认 Table 2. Summary statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.519183,
+            0.09862,
+            0.664332,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.519065,
+            0.09862,
+            0.916136,
+            0.14944
+          ],
+          "page_text_sha256": "228d4c8cadd9b23649458708896763d8feb0a2eedf3355697d87d1d65f36dd9c",
+          "extra_text_word_count": 51
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 721,
-      "sha256": "fff109d816b0b1e73874fdf6c4dc88d173fa8f68f970478c2cc3920ed3914748",
+      "pixel_height": 2964,
+      "sha256": "93a22cdb540a4d9ccb6b4d52026b6f9d3840d2403a1f0efedd3ba74735eed0a7",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
+        "fingerprint": "e8744bca1150d6d54ccb6d77d9d57852b1f1155994884468cca2b3595f554901"
       },
-      "review_fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
+      "review_fingerprint": "e8744bca1150d6d54ccb6d77d9d57852b1f1155994884468cca2b3595f554901"
     },
     {
       "asset": "table-3-figure-8-imitation.jpg",
@@ -108,11 +137,12 @@
           "pdf_page": 12,
           "crop": [
             0.08,
-            0.05,
+            0.095,
             0.49,
-            0.59
+            0.51
           ],
           "caption_anchor": "Table 3. Performance statistics",
+          "visual_review_note": "全分辨率目视确认 Table 3. Performance statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.084299,
             0.09862,
@@ -125,17 +155,19 @@
             0.480471,
             0.224914
           ],
-          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569"
+          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569",
+          "extra_text_word_count": 131
         },
         {
           "pdf_page": 12,
           "crop": [
             0.5,
-            0.05,
+            0.095,
             0.92,
-            0.51
+            0.505
           ],
           "caption_anchor": "Fig. 8. Learning curves",
+          "visual_review_note": "全分辨率目视确认 Fig. 8. Learning curves 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.519534,
             0.372977,
@@ -148,19 +180,20 @@
             0.916777,
             0.499271
           ],
-          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569"
+          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 5083,
-      "sha256": "95450e565d897d6922a9aa053403bb0b2ee98da95d17a793bb3790b1a493c6dc",
+      "pixel_height": 4203,
+      "sha256": "695ecf50cfb79ef16652a369c9115a3d02502fc9570c565f2287292d26ea6b5f",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
+        "fingerprint": "e442f104184d3eca54f362cba57af967ec7bd6fdf79badc1fafd4bf56a7fd2e8"
       },
-      "review_fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
+      "review_fingerprint": "e442f104184d3eca54f362cba57af967ec7bd6fdf79badc1fafd4bf56a7fd2e8"
     }
   ]
 }

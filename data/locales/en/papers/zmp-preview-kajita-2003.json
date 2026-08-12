@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "doi:10.1109/ROBOT.2003.1241826",
-  "source_fingerprint": "3be01c1831959241ff21d6cd8982cf40b75f9c434cc6614ee713653dd4b9f058",
+  "source_fingerprint": "b59b59342a4fa6d790d4f588054d88a1a3e410c02355f8f3f3c33cc76544fd8d",
   "title": "ZMP Preview Control: Move the CoM Before the Support Transition",
   "content_lines": [
     "Source: [DOI:10.1109/ROBOT.2003.1241826](https://doi.org/10.1109/ROBOT.2003.1241826). No author-maintained code for this 2003 paper was verified in the audit.",

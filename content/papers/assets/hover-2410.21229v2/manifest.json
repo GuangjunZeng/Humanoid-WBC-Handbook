@@ -25,6 +25,7 @@
             0.27
           ],
           "caption_anchor": "Fig. 2: Overview of HOVER distillation process",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.213855,
@@ -37,7 +38,8 @@
             0.911767,
             0.261849
           ],
-          "page_text_sha256": "aefe1ea58fb05a4b8e456927b06b2eaa99ff8839aed906f7521937f0bd66874b"
+          "page_text_sha256": "aefe1ea58fb05a4b8e456927b06b2eaa99ff8839aed906f7521937f0bd66874b",
+          "extra_text_word_count": 90
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "36df6c70be742d061b4adbdceb1895d1264bb30c3768bd87f531041a002ce59d",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
+        "fingerprint": "0229f15e72ae12841bc2e5d0819276a4373062e69f3b524c0e508710e538a6e3"
       },
-      "review_fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
+      "review_fingerprint": "0229f15e72ae12841bc2e5d0819276a4373062e69f3b524c0e508710e538a6e3"
     },
     {
       "asset": "figure-4-table-3-4.jpg",
@@ -69,6 +71,7 @@
             0.39
           ],
           "caption_anchor": "TABLE III: Simulation motion imitation evaluation",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.066283,
@@ -81,7 +84,8 @@
             0.911771,
             0.088983
           ],
-          "page_text_sha256": "8521411abb84724919aa5731ab7b327b19f29aafbb293ff3d552b20e5388c990"
+          "page_text_sha256": "8521411abb84724919aa5731ab7b327b19f29aafbb293ff3d552b20e5388c990",
+          "extra_text_word_count": 367
         },
         {
           "pdf_page": 5,
@@ -92,6 +96,7 @@
             0.26
           ],
           "caption_anchor": "TABLE IV: Comparison between HOVER and specialists",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.064365,
@@ -104,17 +109,19 @@
             0.488236,
             0.087065
           ],
-          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89"
+          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89",
+          "extra_text_word_count": 109
         },
         {
           "pdf_page": 5,
           "crop": [
             0.49,
-            0.04,
+            0.18,
             0.92,
             0.4
           ],
           "caption_anchor": "Fig. 4: We assess the tracking accuracy",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.344305,
@@ -127,19 +134,20 @@
             0.911766,
             0.392164
           ],
-          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89"
+          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89",
+          "extra_text_word_count": 82
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 3792,
-      "sha256": "2f898f0ad578b05ca53381757a2779bf3e4bacef0a91069870d4d74cbd78a9cd",
+      "pixel_height": 3118,
+      "sha256": "b75b41e1675e8d4f7db9ad1cb9709c3ee192eed791ff0b8b0e53248a34ef51fc",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
+        "fingerprint": "1321cf5f2d504de50b4563c730c448236ca67621a637eddbb6b21747371f84d3"
       },
-      "review_fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
+      "review_fingerprint": "1321cf5f2d504de50b4563c730c448236ca67621a637eddbb6b21747371f84d3"
     },
     {
       "asset": "table-5-switching.jpg",
@@ -159,6 +167,7 @@
             0.29
           ],
           "caption_anchor": "TABLE V: Real-world tracking evaluation",
+          "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.064365,
@@ -171,7 +180,8 @@
             0.488236,
             0.099644
           ],
-          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec"
+          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec",
+          "extra_text_word_count": 82
         },
         {
           "pdf_page": 6,
@@ -182,6 +192,7 @@
             0.38
           ],
           "caption_anchor": "Fig. 6: HOVER shows robustness",
+          "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.352118,
@@ -194,7 +205,8 @@
             0.911766,
             0.374819
           ],
-          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec"
+          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -202,11 +214,11 @@
       "sha256": "b40ecf399f4cb5676245f0013096455656c2d109d18f4afaef99e97a14d60c96",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
+        "fingerprint": "1a8b2dd42d47fba38d1d5533e05968c497d9d311d4fc3d0e3ec18f429f0a2d39"
       },
-      "review_fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
+      "review_fingerprint": "1a8b2dd42d47fba38d1d5533e05968c497d9d311d4fc3d0e3ec18f429f0a2d39"
     }
   ]
 }

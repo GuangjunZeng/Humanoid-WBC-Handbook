@@ -25,6 +25,7 @@
             0.65
           ],
           "caption_anchor": "Fig. 1. In this work",
+          "visual_review_note": "全分辨率目视确认 Fig. 1. In this work 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.559483,
@@ -37,7 +38,8 @@
             0.91165,
             0.613763
           ],
-          "page_text_sha256": "b93796d359f1c36a9a0cb6db2c923e7d57be88bf3c10d099bf5bfa6dac4926ed"
+          "page_text_sha256": "b93796d359f1c36a9a0cb6db2c923e7d57be88bf3c10d099bf5bfa6dac4926ed",
+          "extra_text_word_count": 38
         },
         {
           "pdf_page": 2,
@@ -48,6 +50,7 @@
             0.31
           ],
           "caption_anchor": "Fig. 2. A series of images",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. A series of images 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088353,
             0.27484,
@@ -60,7 +63,8 @@
             0.911643,
             0.306479
           ],
-          "page_text_sha256": "0ad8ddc11a1cb192fa5454225315117084bc15ae636864fd46ed6416c48c243a"
+          "page_text_sha256": "0ad8ddc11a1cb192fa5454225315117084bc15ae636864fd46ed6416c48c243a",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -68,11 +72,11 @@
       "sha256": "93a940b4a65eac4cb9fec9aa968911605b8e7134853b1b4296e5a30f3db33b02",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
+        "fingerprint": "69757b8bdb85aad47b60290a01fee4d49dd68fdf03b9aacff78ac4e898cce3ee"
       },
-      "review_fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
+      "review_fingerprint": "69757b8bdb85aad47b60290a01fee4d49dd68fdf03b9aacff78ac4e898cce3ee"
     },
     {
       "asset": "figure-3-4-phase.jpg",
@@ -92,6 +96,7 @@
             0.32
           ],
           "caption_anchor": "Fig. 3. The circular intervals",
+          "visual_review_note": "全分辨率目视确认 Fig. 3. The circular intervals 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.276519,
@@ -104,7 +109,8 @@
             0.91165,
             0.309301
           ],
-          "page_text_sha256": "e036d6dc85e07b8a2503bf741fa0f17c17e38b614a6404b580acf108e9041817"
+          "page_text_sha256": "e036d6dc85e07b8a2503bf741fa0f17c17e38b614a6404b580acf108e9041817",
+          "extra_text_word_count": 11
         },
         {
           "pdf_page": 4,
@@ -115,6 +121,7 @@
             0.575
           ],
           "caption_anchor": "Fig. 4. Plot of the expected value",
+          "visual_review_note": "全分辨率目视确认 Fig. 4. Plot of the expected value 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.485901,
@@ -127,7 +134,8 @@
             0.91165,
             0.562824
           ],
-          "page_text_sha256": "0cc253f8d6ce30dc6f8a1c27016b0be3ed669b081065ef88fa9c6985f9d737e8"
+          "page_text_sha256": "0cc253f8d6ce30dc6f8a1c27016b0be3ed669b081065ef88fa9c6985f9d737e8",
+          "extra_text_word_count": 18
         }
       ],
       "pixel_width": 1656,
@@ -135,11 +143,11 @@
       "sha256": "49a7574cae04ab73b7a71f602da4ff7814a3bfb25e15008f723b669c4fcd79c9",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
+        "fingerprint": "b8fe00b72938341f38090baa2e9bf36ae9d1db313a6a6321ab3dd6e739cf32cd"
       },
-      "review_fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
+      "review_fingerprint": "b8fe00b72938341f38090baa2e9bf36ae9d1db313a6a6321ab3dd6e739cf32cd"
     },
     {
       "asset": "table-1-figure-5-transfer.jpg",
@@ -159,6 +167,7 @@
             0.81
           ],
           "caption_anchor": "TABLE I. The ranges for randomization",
+          "visual_review_note": "全分辨率目视确认 TABLE I. The ranges for randomization 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.093178,
             0.751551,
@@ -171,7 +180,8 @@
             0.483414,
             0.790737
           ],
-          "page_text_sha256": "da8c8f676d8a2ae3df8e4a0ab5a2096f73b9705ea4d3b0697b1f35db8e445261"
+          "page_text_sha256": "da8c8f676d8a2ae3df8e4a0ab5a2096f73b9705ea4d3b0697b1f35db8e445261",
+          "extra_text_word_count": 32
         },
         {
           "pdf_page": 6,
@@ -182,6 +192,7 @@
             0.35
           ],
           "caption_anchor": "Fig. 5. Comparison between",
+          "visual_review_note": "全分辨率目视确认 Fig. 5. Comparison between 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088353,
             0.28672,
@@ -194,7 +205,8 @@
             0.488238,
             0.341002
           ],
-          "page_text_sha256": "607c9a54bf40327348874e7749c3c074b8cadc836ef92789c9527572120f35d7"
+          "page_text_sha256": "607c9a54bf40327348874e7749c3c074b8cadc836ef92789c9527572120f35d7",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -202,11 +214,11 @@
       "sha256": "e38acba3540f14b2222e041a40d8f583ec02837b2ab73a648afe0d03e68a4b65",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
+        "fingerprint": "2609ff8c9f5835fafa46698085cbd1130587d538d1d657fb88f55e131d76185f"
       },
-      "review_fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
+      "review_fingerprint": "2609ff8c9f5835fafa46698085cbd1130587d538d1d657fb88f55e131d76185f"
     }
   ]
 }

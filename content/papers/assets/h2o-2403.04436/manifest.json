@@ -25,6 +25,7 @@
             0.51
           ],
           "caption_anchor": "Fig. 4: Overview of H2O",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.088235,
             0.411191,
@@ -37,7 +38,8 @@
             0.911773,
             0.497912
           ],
-          "page_text_sha256": "ac205d49b270b7bf1a39f00133398d7bffd5c22a9ccc35fc279de10610b90796"
+          "page_text_sha256": "ac205d49b270b7bf1a39f00133398d7bffd5c22a9ccc35fc279de10610b90796",
+          "extra_text_word_count": 88
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "e41c77a2809dbf0215205cd57c513b93a0763b232fcae543a437d89532702bd4",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
+        "fingerprint": "a315ff16e46b87a9abe914a170b224ff558e9a908b88ec5e234e8c0939bfa30f"
       },
-      "review_fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
+      "review_fingerprint": "a315ff16e46b87a9abe914a170b224ff558e9a908b88ec5e234e8c0939bfa30f"
     },
     {
       "asset": "table-1-2-training.jpg",
@@ -69,6 +71,7 @@
             0.34
           ],
           "caption_anchor": "TABLE I: Reward components",
+          "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.065273,
@@ -81,7 +84,8 @@
             0.911766,
             0.121804
           ],
-          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84"
+          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84",
+          "extra_text_word_count": 120
         },
         {
           "pdf_page": 5,
@@ -92,6 +96,7 @@
             0.6
           ],
           "caption_anchor": "TABLE II: The range of dynamics randomization",
+          "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.404359,
@@ -104,7 +109,8 @@
             0.911766,
             0.460889
           ],
-          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84"
+          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84",
+          "extra_text_word_count": 89
         }
       ],
       "pixel_width": 1656,
@@ -112,11 +118,11 @@
       "sha256": "83e99f045a62a4005e79c2521e53205c131aace501f216bd324543b4addc6cd7",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
+        "fingerprint": "907e3a5f7611529eafdc0f516c13b9f244be2be9738220dd8fa5d5e7fcfc7ab4"
       },
-      "review_fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
+      "review_fingerprint": "907e3a5f7611529eafdc0f516c13b9f244be2be9738220dd8fa5d5e7fcfc7ab4"
     },
     {
       "asset": "table-3-4-filtering.jpg",
@@ -136,6 +142,7 @@
             0.205
           ],
           "caption_anchor": "TABLE III: Quantitative motion",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.166379,
             0.066482,
@@ -148,7 +155,8 @@
             0.833622,
             0.077727
           ],
-          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be"
+          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be",
+          "extra_text_word_count": 78
         },
         {
           "pdf_page": 6,
@@ -156,9 +164,10 @@
             0.5,
             0.21,
             0.92,
-            0.32
+            0.37
           ],
           "caption_anchor": "TABLE IV: Quantitative results",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.511765,
             0.210055,
@@ -171,19 +180,20 @@
             0.911766,
             0.25149
           ],
-          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be"
+          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be",
+          "extra_text_word_count": 49
         }
       ],
       "pixel_width": 1656,
-      "pixel_height": 1033,
-      "sha256": "582569eda8fe16967770c0fed3ea752d9eb0c8305644025b7adb244514bd3c09",
+      "pixel_height": 1280,
+      "sha256": "21445c7ba1cb14c2eaac5b88c61d55bc5f7c7589994fd378ce7ca2f404c1fb7f",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
+        "fingerprint": "453be0a072e1b3ba7344643f79d55fa3aba59e381614d87f17e83e5843d3fe9a"
       },
-      "review_fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
+      "review_fingerprint": "453be0a072e1b3ba7344643f79d55fa3aba59e381614d87f17e83e5843d3fe9a"
     }
   ]
 }

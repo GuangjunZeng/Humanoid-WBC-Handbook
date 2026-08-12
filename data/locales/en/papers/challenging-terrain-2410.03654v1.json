@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2410.03654v1",
-  "source_fingerprint": "cb64aeb395765d3534aa54175ef2398656de9b833cc71203d47f6af169489ee4",
+  "source_fingerprint": "89e3b56f90768ef24ed079cb2bb388fe1f6732bf257192c023ffcdc41a1cc6b3",
   "title": "HT-2: Learn a Walking Trajectory Prior Before Challenging-Terrain Fine-Tuning",
   "content_lines": [
     "Source: [arXiv:2410.03654v1](https://arxiv.org/abs/2410.03654v1). Official training code was not public at the audited point, so no source symbols are asserted.",

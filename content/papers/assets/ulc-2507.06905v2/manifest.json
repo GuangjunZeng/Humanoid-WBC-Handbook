@@ -25,6 +25,7 @@
             0.67
           ],
           "caption_anchor": "Fig. 2: Method overview",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.080007,
             0.587571,
@@ -37,7 +38,8 @@
             0.91999,
             0.659197
           ],
-          "page_text_sha256": "a00b189608a2792bd28a7b7e304df1d207f25737070246ec32059ba2cee72f42"
+          "page_text_sha256": "a00b189608a2792bd28a7b7e304df1d207f25737070246ec32059ba2cee72f42",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -45,11 +47,11 @@
       "sha256": "6557790a6018ac3e9a4075fec82507a13dc434ce5f2afd66809d00cf43d06336",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
+        "fingerprint": "194a3706e1e2f3b205ef6bdaae4b7504425b51ab0ed216f8b059719078fc97bf"
       },
-      "review_fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
+      "review_fingerprint": "194a3706e1e2f3b205ef6bdaae4b7504425b51ab0ed216f8b059719078fc97bf"
     },
     {
       "asset": "table-3-4-figure-3.jpg",
@@ -69,6 +71,7 @@
             0.35
           ],
           "caption_anchor": "TABLE III: Tracking accuracy comparison",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.080007,
             0.268458,
@@ -81,7 +84,8 @@
             0.919997,
             0.32514
           ],
-          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09"
+          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09",
+          "extra_text_word_count": 398
         },
         {
           "pdf_page": 6,
@@ -92,6 +96,7 @@
             0.45
           ],
           "caption_anchor": "TABLE IV: Reachable command ranges",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.509768,
             0.432381,
@@ -104,7 +109,8 @@
             0.919993,
             0.443626
           ],
-          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09"
+          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09",
+          "extra_text_word_count": 54
         },
         {
           "pdf_page": 7,
@@ -115,6 +121,7 @@
             0.39
           ],
           "caption_anchor": "Fig. 3: Time-series visualization",
+          "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.080007,
             0.354273,
@@ -127,7 +134,8 @@
             0.91999,
             0.380615
           ],
-          "page_text_sha256": "d10e958c9c284ea47fbc4d60428e5766f6a904931eb05f4db01e305cc0f2ff64"
+          "page_text_sha256": "d10e958c9c284ea47fbc4d60428e5766f6a904931eb05f4db01e305cc0f2ff64",
+          "extra_text_word_count": 0
         }
       ],
       "pixel_width": 1656,
@@ -135,11 +143,11 @@
       "sha256": "ffbba5f9f1d983c8195e8cb0cc7c6783d39fd60e9f611b3c23c390d3758ac692",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
+        "fingerprint": "4a9fccb56432b55ff768975608565562cd4f0914a286291921259c19b3eb30a4"
       },
-      "review_fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
+      "review_fingerprint": "4a9fccb56432b55ff768975608565562cd4f0914a286291921259c19b3eb30a4"
     },
     {
       "asset": "table-5-ablation.jpg",
@@ -159,6 +167,7 @@
             0.72
           ],
           "caption_anchor": "TABLE V: Ablation study",
+          "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
           "caption_anchor_bbox": [
             0.080007,
             0.681478,
@@ -171,7 +180,8 @@
             0.490231,
             0.707819
           ],
-          "page_text_sha256": "8490fa75280c128d13dea6a30cb7d69c21e216b892ceb86416bec49f18ed39da"
+          "page_text_sha256": "8490fa75280c128d13dea6a30cb7d69c21e216b892ceb86416bec49f18ed39da",
+          "extra_text_word_count": 85
         }
       ],
       "pixel_width": 1656,
@@ -179,11 +189,11 @@
       "sha256": "99dc7a30da1bb65aed9c12ead2854ca3564b375828c3f74dddcd88f120647e10",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
         "reviewed_on": "2026-08-12",
-        "fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
+        "fingerprint": "bb60d493a1f1c65dd1f2a96cad07b6ae694d2d7058ac76b9105f8784a0041045"
       },
-      "review_fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
+      "review_fingerprint": "bb60d493a1f1c65dd1f2a96cad07b6ae694d2d7058ac76b9105f8784a0041045"
     }
   ]
 }

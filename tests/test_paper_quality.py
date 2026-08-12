@@ -51,7 +51,7 @@ class PaperQualityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             result = evaluate_brief(
                 "filler",
-                "具有重要意义。进一步研究将深入探讨。",
+                "具有重要意义。进一步研究将深入探讨。**金句**这就像打个比方类比成故事，很像：像脚手架。",
                 Path(tmp),
                 "unknown",
                 minimum_cjk=0,
@@ -59,6 +59,12 @@ class PaperQualityTests(unittest.TestCase):
         self.assertIn("banned generic phrase: 具有重要意义", result.errors)
         self.assertIn("banned generic phrase: 进一步研究", result.errors)
         self.assertIn("banned generic phrase: 深入探讨", result.errors)
+        self.assertIn("banned generic phrase: **金句**", result.errors)
+        self.assertIn("banned generic phrase: 这就像", result.errors)
+        self.assertIn("banned generic phrase: 打个比方", result.errors)
+        self.assertIn("banned generic phrase: 类比成", result.errors)
+        self.assertIn("banned generic phrase: 很像：", result.errors)
+        self.assertIn("banned generic phrase: 像脚手架", result.errors)
 
 
 if __name__ == "__main__":

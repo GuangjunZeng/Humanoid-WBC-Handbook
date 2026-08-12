@@ -24,14 +24,15 @@
                 0.92,
                 0.495
               ],
-              "caption_anchor": "Fig. 2: General Motion Retargeting"
+              "caption_anchor": "Fig. 2: General Motion Retargeting",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "bc34c96621d79253fb9e72ec1e6f7bbfe6b12ded7a416f761a3a966b914a6c8a"
+            "fingerprint": "094bb4430e55a026e4f2860140c42c87b2946687db7d43bf2f836df87313bd3e"
           }
         },
         {
@@ -50,7 +51,8 @@
                 0.92,
                 0.37
               ],
-              "caption_anchor": "TABLE I: Evaluation success rates"
+              "caption_anchor": "TABLE I: Evaluation success rates",
+              "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -60,14 +62,15 @@
                 0.92,
                 0.54
               ],
-              "caption_anchor": "TABLE II: Tracking errors"
+              "caption_anchor": "TABLE II: Tracking errors",
+              "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "84dd41e5079c94ab11b960ce390f8003515fea41e282bb4a5b63bc95606ad940"
+            "fingerprint": "86d22de45ac584dcd970a841ae1cadfd55f9d9b212f3b929a677c1f6523c1cf8"
           }
         },
         {
@@ -86,7 +89,8 @@
                 0.92,
                 0.17
               ],
-              "caption_anchor": "TABLE III: Evaluation success rates"
+              "caption_anchor": "TABLE III: Evaluation success rates",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -96,14 +100,15 @@
                 0.49,
                 0.525
               ],
-              "caption_anchor": "Fig. 3: Example artifacts"
+              "caption_anchor": "Fig. 3: Example artifacts",
+              "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "1386419e60ecf128dbd5aabbc9be76ee2d208346ddef1c1e201911127fa3df6b"
+            "fingerprint": "7fa660eedcd15ab10a9a38c7cdefa0935367ecc41e004d104b5c8590c49f1f01"
           }
         }
       ],
@@ -131,14 +136,15 @@
                 0.95,
                 0.415
               ],
-              "caption_anchor": "Fig. 2: Overview of the HuMI data collection system"
+              "caption_anchor": "Fig. 2: Overview of the HuMI data collection system",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
+            "fingerprint": "ebaf279f1311fcdece69d172d24ab588eb18050a5505741f91c08fb6e4daf1b4"
           }
         },
         {
@@ -155,9 +161,10 @@
                 0.08,
                 0.04,
                 0.49,
-                0.33
+                0.32
               ],
-              "caption_anchor": "Fig. 4: Impact of reference frame selection"
+              "caption_anchor": "Fig. 4: Impact of reference frame selection",
+              "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
@@ -165,16 +172,17 @@
                 0.08,
                 0.49,
                 0.49,
-                0.75
+                0.74
               ],
-              "caption_anchor": "Fig. 5: Mitigating drift"
+              "caption_anchor": "Fig. 5: Mitigating drift",
+              "visual_review_note": "全分辨率目视确认 Fig. 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
+            "fingerprint": "d5da0b0e1c97fbb13e4357021e7f27404e9c0bc73b906633fffc964a30ddfa58"
           }
         },
         {
@@ -193,14 +201,15 @@
                 0.92,
                 0.54
               ],
-              "caption_anchor": "Fig. 6: Whole-body capability experiment results"
+              "caption_anchor": "Fig. 6: Whole-body capability experiment results",
+              "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
+            "fingerprint": "94e587b9bae80e3f0d615fbc3e84582bad9b4174867ba86ceb371c101fc01f8a"
           }
         }
       ],
@@ -228,14 +237,15 @@
                 0.83,
                 0.475
               ],
-              "caption_anchor": "Figure 3: (a) OmniH2O retargets"
+              "caption_anchor": "Figure 3: (a) OmniH2O retargets",
+              "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
+            "fingerprint": "eab664c53833e8023cd35cc5ca0962cc4a64779c7e1da41820d0b147a2fc3098"
           }
         },
         {
@@ -254,7 +264,8 @@
                 0.82,
                 0.3
               ],
-              "caption_anchor": "Table 1: Simulation motion imitation evaluation"
+              "caption_anchor": "Table 1: Simulation motion imitation evaluation",
+              "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -264,14 +275,15 @@
                 0.83,
                 0.88
               ],
-              "caption_anchor": "Table 2: Real-world motion tracking evaluation"
+              "caption_anchor": "Table 2: Real-world motion tracking evaluation",
+              "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
+            "fingerprint": "552cbdbe106dbc1fc65765e97b5e0fc84f4bdbe93c06083ac88db9f6eedae747"
           }
         },
         {
@@ -290,14 +302,15 @@
                 0.82,
                 0.85
               ],
-              "caption_anchor": "Figure 9: The ablation of data augmentation"
+              "caption_anchor": "Figure 9: The ablation of data augmentation",
+              "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
+            "fingerprint": "ef9f71e634fc84396344bb59e14939e70a6061d5e6c39f2928437e288a757427"
           }
         }
       ],
@@ -325,14 +338,15 @@
                 0.92,
                 0.27
               ],
-              "caption_anchor": "Fig. 2: Overview of HOVER distillation process"
+              "caption_anchor": "Fig. 2: Overview of HOVER distillation process",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
+            "fingerprint": "0229f15e72ae12841bc2e5d0819276a4373062e69f3b524c0e508710e538a6e3"
           }
         },
         {
@@ -351,7 +365,8 @@
                 0.92,
                 0.39
               ],
-              "caption_anchor": "TABLE III: Simulation motion imitation evaluation"
+              "caption_anchor": "TABLE III: Simulation motion imitation evaluation",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
@@ -361,24 +376,26 @@
                 0.5,
                 0.26
               ],
-              "caption_anchor": "TABLE IV: Comparison between HOVER and specialists"
+              "caption_anchor": "TABLE IV: Comparison between HOVER and specialists",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
               "crop": [
                 0.49,
-                0.04,
+                0.18,
                 0.92,
                 0.4
               ],
-              "caption_anchor": "Fig. 4: We assess the tracking accuracy"
+              "caption_anchor": "Fig. 4: We assess the tracking accuracy",
+              "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
+            "fingerprint": "1321cf5f2d504de50b4563c730c448236ca67621a637eddbb6b21747371f84d3"
           }
         },
         {
@@ -397,7 +414,8 @@
                 0.5,
                 0.29
               ],
-              "caption_anchor": "TABLE V: Real-world tracking evaluation"
+              "caption_anchor": "TABLE V: Real-world tracking evaluation",
+              "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -407,14 +425,15 @@
                 0.92,
                 0.38
               ],
-              "caption_anchor": "Fig. 6: HOVER shows robustness"
+              "caption_anchor": "Fig. 6: HOVER shows robustness",
+              "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
+            "fingerprint": "1a8b2dd42d47fba38d1d5533e05968c497d9d311d4fc3d0e3ec18f429f0a2d39"
           }
         }
       ],
@@ -442,14 +461,15 @@
                 0.5,
                 0.355
               ],
-              "caption_anchor": "Fig. 2: Pipeline of Humanoid-Gym"
+              "caption_anchor": "Fig. 2: Pipeline of Humanoid-Gym",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
+            "fingerprint": "6a507a91a44be12b94c2aaf233da3db1b39cb4aa8f65239a80cea8a5d173e21b"
           }
         },
         {
@@ -468,7 +488,8 @@
                 0.92,
                 0.55
               ],
-              "caption_anchor": "Fig. 3: Sine wave in Both MuJoCo"
+              "caption_anchor": "Fig. 3: Sine wave in Both MuJoCo",
+              "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 3,
@@ -478,14 +499,15 @@
                 0.92,
                 0.62
               ],
-              "caption_anchor": "Fig. 4: Phase Portrait for MuJoCo"
+              "caption_anchor": "Fig. 4: Phase Portrait for MuJoCo",
+              "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
+            "fingerprint": "3aada1aae5e90a00db00673c698faf4008304b248f737841261d94ca5dc21338"
           }
         },
         {
@@ -504,14 +526,15 @@
                 0.5,
                 0.64
               ],
-              "caption_anchor": "TABLE IV: In defining the reward function"
+              "caption_anchor": "TABLE IV: In defining the reward function",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
+            "fingerprint": "cc818f746665bf28cd1f2579a50a1d52b6c13fcc9c8827c957b8ccab0e1b4b87"
           }
         }
       ],
@@ -539,14 +562,15 @@
                 0.88,
                 0.66
               ],
-              "caption_anchor": "Figure 8: Method"
+              "caption_anchor": "Figure 8: Method",
+              "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
+            "fingerprint": "5b800056e9e3f70d6623f588918776f2cbc40cc7e250b7e9d36abfa91901ac98"
           }
         },
         {
@@ -565,14 +589,15 @@
                 0.88,
                 0.485
               ],
-              "caption_anchor": "Figure 9: Comparison to scratch policy"
+              "caption_anchor": "Figure 9: Comparison to scratch policy",
+              "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
+            "fingerprint": "9834c4ed73f5a69019f5fc134981465a366780c8aa368d045d7bc9309e3525c0"
           }
         },
         {
@@ -591,14 +616,15 @@
                 0.88,
                 0.355
               ],
-              "caption_anchor": "Figure 11: Comparison of gait patterns"
+              "caption_anchor": "Figure 11: Comparison of gait patterns",
+              "visual_review_note": "全分辨率目视确认 Figure 11 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
+            "fingerprint": "e7ed96cd7b0889345af5042a9020751b30a42f66e4eaa6edb08727b70db11bb7"
           }
         }
       ],
@@ -626,14 +652,15 @@
                 0.83,
                 0.475
               ],
-              "caption_anchor": "Figure 2: Overview of FALCON"
+              "caption_anchor": "Figure 2: Overview of FALCON",
+              "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
+            "fingerprint": "4b6d3abb3696866fbe1684dc5c7cf753bae1da8578121c0441dd65a5826aed43"
           }
         },
         {
@@ -652,7 +679,8 @@
                 0.82,
                 0.31
               ],
-              "caption_anchor": "Table 1: Loco-Manipulation Evaluation"
+              "caption_anchor": "Table 1: Loco-Manipulation Evaluation",
+              "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -662,14 +690,15 @@
                 0.82,
                 0.225
               ],
-              "caption_anchor": "Table 2: Evaluation of FALCON"
+              "caption_anchor": "Table 2: Evaluation of FALCON",
+              "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
+            "fingerprint": "8f6a6d6a71b682edfcc0e40875de6ce00efa3c8e78b49ecce94f77af3d6557a4"
           }
         },
         {
@@ -688,14 +717,15 @@
                 0.5,
                 0.25
               ],
-              "caption_anchor": "Table 4: Real-world Tracking Errors"
+              "caption_anchor": "Table 4: Real-world Tracking Errors",
+              "visual_review_note": "全分辨率目视确认 Table 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
+            "fingerprint": "8f63e2a3f1d81c28412c8f2e9ade75cd7a2a243502823642150f559b4e12de39"
           }
         }
       ],
@@ -723,14 +753,15 @@
                 0.92,
                 0.67
               ],
-              "caption_anchor": "Fig. 2: Method overview"
+              "caption_anchor": "Fig. 2: Method overview",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
+            "fingerprint": "194a3706e1e2f3b205ef6bdaae4b7504425b51ab0ed216f8b059719078fc97bf"
           }
         },
         {
@@ -749,7 +780,8 @@
                 0.92,
                 0.35
               ],
-              "caption_anchor": "TABLE III: Tracking accuracy comparison"
+              "caption_anchor": "TABLE III: Tracking accuracy comparison",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -759,7 +791,8 @@
                 0.92,
                 0.45
               ],
-              "caption_anchor": "TABLE IV: Reachable command ranges"
+              "caption_anchor": "TABLE IV: Reachable command ranges",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -769,14 +802,15 @@
                 0.92,
                 0.39
               ],
-              "caption_anchor": "Fig. 3: Time-series visualization"
+              "caption_anchor": "Fig. 3: Time-series visualization",
+              "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
+            "fingerprint": "4a9fccb56432b55ff768975608565562cd4f0914a286291921259c19b3eb30a4"
           }
         },
         {
@@ -795,14 +829,15 @@
                 0.5,
                 0.72
               ],
-              "caption_anchor": "TABLE V: Ablation study"
+              "caption_anchor": "TABLE V: Ablation study",
+              "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
+            "fingerprint": "bb60d493a1f1c65dd1f2a96cad07b6ae694d2d7058ac76b9105f8784a0041045"
           }
         }
       ],
@@ -830,14 +865,15 @@
                 0.92,
                 0.44
               ],
-              "caption_anchor": "Fig. 2. Overview of ASAP"
+              "caption_anchor": "Fig. 2. Overview of ASAP",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Overview of ASAP 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "15e27d8e347eb9bf4dd9d3dd24654d01126cb774351c749d875c23aadc2d8a53"
+            "fingerprint": "2e927d0ae274ad10575c13bc02ae7ae08bebe029226632c42425cf385021cb2c"
           }
         },
         {
@@ -856,7 +892,8 @@
                 0.92,
                 0.21
               ],
-              "caption_anchor": "Fig. 4. Baselines of ASAP"
+              "caption_anchor": "Fig. 4. Baselines of ASAP",
+              "visual_review_note": "全分辨率目视确认 Fig. 4. Baselines of ASAP 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -864,26 +901,28 @@
                 0.08,
                 0.04,
                 0.92,
-                0.485
+                0.475
               ],
-              "caption_anchor": "Fig. 5. Replaying IsaacSim State-Action"
+              "caption_anchor": "Fig. 5. Replaying IsaacSim State-Action",
+              "visual_review_note": "全分辨率目视确认 Fig. 5. Replaying IsaacSim State-Action 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
               "crop": [
                 0.5,
-                0.45,
+                0.48,
                 0.92,
-                0.62
+                0.64
               ],
-              "caption_anchor": "TABLE III"
+              "caption_anchor": "TABLE III: OPEN-LOOP PERFORMANCE COMPARISON",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "12eabbebcb542fd3881bc9251bf0565b3a554034005ebe3f741cd85505333be2"
+            "fingerprint": "fb442a69faf41553329099bff310813c17a2828055e30d8c7eff40d478e650c3"
           }
         },
         {
@@ -900,26 +939,28 @@
                 0.08,
                 0.04,
                 0.92,
-                0.35
+                0.355
               ],
-              "caption_anchor": "Fig. 8. Visualization of LeBron James"
+              "caption_anchor": "Fig. 8. Visualization of LeBron James",
+              "visual_review_note": "全分辨率目视确认 Fig. 8. Visualization of LeBron James 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 9,
               "crop": [
                 0.5,
-                0.35,
+                0.36,
                 0.92,
-                0.51
+                0.49
               ],
-              "caption_anchor": "TABLE V"
+              "caption_anchor": "TABLE V: REAL-WORLD CLOSED-LOOP PERFORMANCE",
+              "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "d1e5d5ec461b895927b58b0ec64e686ef874e2f4e09b17996b0a17633b494fe3"
+            "fingerprint": "02d8207a2be0432819af817a304554e6796ef413db2f97d3d8a064e34ebc77e9"
           }
         }
       ],
@@ -947,14 +988,15 @@
                 0.92,
                 0.575
               ],
-              "caption_anchor": "Fig. 2: System overview"
+              "caption_anchor": "Fig. 2: System overview",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
+            "fingerprint": "eb815d09e7604484052594e863902b4af4bf894dfd2063a1e645cbc3cdce7cde"
           }
         },
         {
@@ -973,7 +1015,8 @@
                 0.92,
                 0.495
               ],
-              "caption_anchor": "Fig. 3: Simulation results"
+              "caption_anchor": "Fig. 3: Simulation results",
+              "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -983,14 +1026,15 @@
                 0.49,
                 0.46
               ],
-              "caption_anchor": "Fig. 4: Comparison between target-known"
+              "caption_anchor": "Fig. 4: Comparison between target-known",
+              "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
+            "fingerprint": "73821fd58741e0cc91afaae0ad9609679f4a9795ae55c3dd904054566076f7ec"
           }
         },
         {
@@ -1009,7 +1053,8 @@
                 0.92,
                 0.325
               ],
-              "caption_anchor": "Fig. 5: Virtual-target swinging"
+              "caption_anchor": "Fig. 5: Virtual-target swinging",
+              "visual_review_note": "全分辨率目视确认 Fig. 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 8,
@@ -1019,14 +1064,15 @@
                 0.49,
                 0.44
               ],
-              "caption_anchor": "Fig. 6: Real-world shuttle hitting"
+              "caption_anchor": "Fig. 6: Real-world shuttle hitting",
+              "visual_review_note": "全分辨率目视确认 Fig. 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
+            "fingerprint": "13bae2d515f9221d96972a5a96226c2c0a7e313f6fa5ee98fff1be5d1423db0f"
           }
         }
       ],
@@ -1054,14 +1100,15 @@
                 0.88,
                 0.77
               ],
-              "caption_anchor": "Figure 2: Diverse motion tracking"
+              "caption_anchor": "Figure 2: Diverse motion tracking",
+              "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
+            "fingerprint": "773544e6e0174d78fba40d2fb5c2d4f24c4c36da912ae2c9ff3c7fbdc4263fa0"
           }
         },
         {
@@ -1080,7 +1127,8 @@
                 0.88,
                 0.73
               ],
-              "caption_anchor": "Figure 5: Command-conditioned locomotion"
+              "caption_anchor": "Figure 5: Command-conditioned locomotion",
+              "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 29,
@@ -1090,14 +1138,15 @@
                 0.88,
                 0.7
               ],
-              "caption_anchor": "Figure 6: Task transition and composition"
+              "caption_anchor": "Figure 6: Task transition and composition",
+              "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
+            "fingerprint": "66b078ce4add5cb2c0a27717f2bb31bd5289fe60de134e6175c6d184b5a59f89"
           }
         },
         {
@@ -1116,14 +1165,15 @@
                 0.88,
                 0.76
               ],
-              "caption_anchor": "Figure 8: Ablation studies"
+              "caption_anchor": "Figure 8: Ablation studies",
+              "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
+            "fingerprint": "88ad381d1f97fe9c46541578c88cf4552a88398bd4d3f2b5b6c38d6103006f3d"
           }
         }
       ],
@@ -1151,7 +1201,8 @@
                 0.92,
                 0.465
               ],
-              "caption_anchor": "Fig. 2: Overview of TextOp's framework"
+              "caption_anchor": "Fig. 2: Overview of TextOp's framework",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 4,
@@ -1161,14 +1212,15 @@
                 0.5,
                 0.28
               ],
-              "caption_anchor": "Fig. 3: Illustration of the time-aligned data format"
+              "caption_anchor": "Fig. 3: Illustration of the time-aligned data format",
+              "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
+            "fingerprint": "5168d68ffaca78e13dd44555a6f42ce1356045c06a425bd9f6a5856fd4937dae"
           }
         },
         {
@@ -1187,7 +1239,8 @@
                 0.92,
                 0.72
               ],
-              "caption_anchor": "TABLE I: Quantitative evaluation"
+              "caption_anchor": "TABLE I: Quantitative evaluation",
+              "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -1197,14 +1250,15 @@
                 0.49,
                 0.62
               ],
-              "caption_anchor": "TABLE II: Real-time performance"
+              "caption_anchor": "TABLE II: Real-time performance",
+              "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
+            "fingerprint": "9dc449e498b1bd86c2e827cf2ed00550fe7520ab630179139e81bee0f087154b"
           }
         },
         {
@@ -1223,7 +1277,8 @@
                 0.92,
                 0.25
               ],
-              "caption_anchor": "TABLE III: Comparison of motion generation"
+              "caption_anchor": "TABLE III: Comparison of motion generation",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 8,
@@ -1233,14 +1288,15 @@
                 0.92,
                 0.47
               ],
-              "caption_anchor": "TABLE IV: Simulation evaluation"
+              "caption_anchor": "TABLE IV: Simulation evaluation",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
+            "fingerprint": "3187c3232c08716272c2eb9d0e956ff82d3271678a8b8a359855222d3d588990"
           }
         }
       ],
@@ -1268,14 +1324,15 @@
                 0.5,
                 0.26
               ],
-              "caption_anchor": "Fig. 2: Framework overview"
+              "caption_anchor": "Fig. 2: Framework overview",
+              "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
+            "fingerprint": "85052741c6b96da51e577f7a4c29a1be7c95c7b4207b5f4534cb392304ddf431"
           }
         },
         {
@@ -1294,7 +1351,8 @@
                 0.92,
                 0.25
               ],
-              "caption_anchor": "TABLE II: Domain randomization"
+              "caption_anchor": "TABLE II: Domain randomization",
+              "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
@@ -1304,14 +1362,15 @@
                 0.92,
                 0.28
               ],
-              "caption_anchor": "TABLE III: Main simulation results"
+              "caption_anchor": "TABLE III: Main simulation results",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
+            "fingerprint": "053ea2a4e13a7adc202b14a6219762df3072e68d4f3cd01676fce9ad1af6f5b1"
           }
         },
         {
@@ -1330,17 +1389,19 @@
                 0.92,
                 0.33
               ],
-              "caption_anchor": "Fig. 7: Snapshot of real robot motion"
+              "caption_anchor": "Fig. 7: Snapshot of real robot motion",
+              "visual_review_note": "全分辨率目视确认 Fig. 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
               "crop": [
                 0.08,
-                0.51,
+                0.48,
                 0.92,
-                0.65
+                0.57
               ],
-              "caption_anchor": "TABLE IV: Main results for real robot"
+              "caption_anchor": "TABLE IV: Main results for real robot",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 8,
@@ -1350,14 +1411,15 @@
                 0.92,
                 0.3
               ],
-              "caption_anchor": "Fig. 9: Sim-to-real analysis"
+              "caption_anchor": "Fig. 9: Sim-to-real analysis",
+              "visual_review_note": "全分辨率目视确认 Fig. 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
+            "fingerprint": "ec4652944cf635bcd18c78cad84875af0a0dba4cab8f3ec534194c78535e4c19"
           }
         }
       ],
@@ -1385,14 +1447,15 @@
                 0.5,
                 0.39
               ],
-              "caption_anchor": "Fig. 2. Left: target posture"
+              "caption_anchor": "Fig. 2. Left: target posture",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Left 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
+            "fingerprint": "3e595be8b11e36e0bbbc86784abdbe6a7ef77632eb41bcb2ddcae3c85bb9ca36"
           }
         },
         {
@@ -1407,28 +1470,42 @@
               "pdf_page": 4,
               "crop": [
                 0.5,
-                0.28,
+                0.285,
                 0.92,
-                0.475
+                0.47
               ],
-              "caption_anchor": "Fig. 4. Reward variability"
+              "caption_anchor": "Fig. 4. Reward variability",
+              "caption_bbox": [
+                0.51,
+                0.438,
+                0.915,
+                0.47
+              ],
+              "visual_review_note": "全分辨率目视确认 Fig. 4. Reward variability 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
               "crop": [
                 0.08,
-                0.12,
+                0.143,
                 0.49,
-                0.29
+                0.325
               ],
-              "caption_anchor": "TABLE II"
+              "caption_anchor": "TABLE II PARAMETERS USED FOR SIM-TO-REAL",
+              "caption_bbox": [
+                0.09,
+                0.143,
+                0.49,
+                0.173
+              ],
+              "visual_review_note": "全分辨率目视确认 TABLE II PARAMETERS USED FOR SIM-TO-REAL 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
+            "fingerprint": "b612db306a8d2b1bf3111674a934ac697e557288942ee1676f8061cae861cac2"
           }
         },
         {
@@ -1445,16 +1522,17 @@
                 0.5,
                 0.04,
                 0.92,
-                0.29
+                0.31
               ],
-              "caption_anchor": "TABLE III"
+              "caption_anchor": "TABLE III COMPARISON OF AVERAGE STAND UP TIMES",
+              "visual_review_note": "全分辨率目视确认 TABLE III COMPARISON OF AVERAGE STAND UP TIMES 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
+            "fingerprint": "e5d7aac355d3aa2c7c0e3c85fb449ffafc58a013a888cd8b37bc08eba0260b9e"
           }
         }
       ],
@@ -1482,14 +1560,15 @@
                 0.49,
                 0.48
               ],
-              "caption_anchor": "Figure 2: MoSh++ captures"
+              "caption_anchor": "Figure 2: MoSh++ captures",
+              "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
+            "fingerprint": "a83a795314e0523d7dadda50dd982793ef8ebf8c75f0df9743f49e98d12676c5"
           }
         },
         {
@@ -1508,14 +1587,15 @@
                 0.92,
                 0.365
               ],
-              "caption_anchor": "Figure 6: MoSh vs MoSh++"
+              "caption_anchor": "Figure 6: MoSh vs MoSh++",
+              "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
+            "fingerprint": "4df2db26ec068e388ae034332fe79952ca051c9719bb7a81018de36ea6d47a60"
           }
         },
         {
@@ -1534,14 +1614,15 @@
                 0.49,
                 0.605
               ],
-              "caption_anchor": "Figure 9: Optimal number"
+              "caption_anchor": "Figure 9: Optimal number",
+              "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
+            "fingerprint": "cd6d2cff4163782fcc3920817959258985d4c7062f23b0dce57020d2bd33c4bd"
           }
         }
       ],
@@ -1569,14 +1650,15 @@
                 0.92,
                 0.51
               ],
-              "caption_anchor": "Fig. 4: Overview of H2O"
+              "caption_anchor": "Fig. 4: Overview of H2O",
+              "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
+            "fingerprint": "a315ff16e46b87a9abe914a170b224ff558e9a908b88ec5e234e8c0939bfa30f"
           }
         },
         {
@@ -1595,7 +1677,8 @@
                 0.92,
                 0.34
               ],
-              "caption_anchor": "TABLE I: Reward components"
+              "caption_anchor": "TABLE I: Reward components",
+              "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
@@ -1605,14 +1688,15 @@
                 0.92,
                 0.6
               ],
-              "caption_anchor": "TABLE II: The range of dynamics randomization"
+              "caption_anchor": "TABLE II: The range of dynamics randomization",
+              "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
+            "fingerprint": "907e3a5f7611529eafdc0f516c13b9f244be2be9738220dd8fa5d5e7fcfc7ab4"
           }
         },
         {
@@ -1631,7 +1715,8 @@
                 0.92,
                 0.205
               ],
-              "caption_anchor": "TABLE III: Quantitative motion"
+              "caption_anchor": "TABLE III: Quantitative motion",
+              "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -1639,16 +1724,17 @@
                 0.5,
                 0.21,
                 0.92,
-                0.32
+                0.37
               ],
-              "caption_anchor": "TABLE IV: Quantitative results"
+              "caption_anchor": "TABLE IV: Quantitative results",
+              "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
+            "fingerprint": "453be0a072e1b3ba7344643f79d55fa3aba59e381614d87f17e83e5843d3fe9a"
           }
         }
       ],
@@ -1676,34 +1762,37 @@
                 0.92,
                 0.62
               ],
-              "caption_anchor": "Figure 6: Preview controller gain"
+              "caption_anchor": "Figure 6: Preview controller gain",
+              "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
               "crop": [
                 0.08,
-                0.04,
+                0.075,
                 0.49,
-                0.37
+                0.35
               ],
-              "caption_anchor": "Figure 7: Body trajectory"
+              "caption_anchor": "Figure 7: Body trajectory",
+              "visual_review_note": "全分辨率目视确认 Figure 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
               "crop": [
                 0.08,
-                0.32,
+                0.39,
                 0.49,
-                0.62
+                0.61
               ],
-              "caption_anchor": "Figure 8: With shorter previewing period"
+              "caption_anchor": "Figure 8: With shorter previewing period",
+              "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
+            "fingerprint": "6bf88d4063a8a1bf6e82370fc738f7c7b0aa8243259f8896df16245029744f6c"
           }
         },
         {
@@ -1718,21 +1807,23 @@
               "pdf_page": 5,
               "crop": [
                 0.5,
-                0.055,
+                0.135,
                 0.92,
-                0.355
+                0.352
               ],
-              "caption_anchor": "Figure 9: HRP-2 Prototype"
+              "caption_anchor": "Figure 9: HRP-2 Prototype",
+              "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 5,
               "crop": [
                 0.5,
-                0.4,
+                0.56,
                 0.92,
-                0.8
+                0.79
               ],
-              "caption_anchor": "Figure 10: ZMP calculated"
+              "caption_anchor": "Figure 10: ZMP calculated",
+              "visual_review_note": "全分辨率目视确认 Figure 10 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -1740,16 +1831,17 @@
                 0.08,
                 0.04,
                 0.49,
-                0.38
+                0.34
               ],
-              "caption_anchor": "Figure 11: Modified ZMP"
+              "caption_anchor": "Figure 11: Modified ZMP",
+              "visual_review_note": "全分辨率目视确认 Figure 11 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
+            "fingerprint": "418315fb3319ce6c830d72f24f98991a4f95c4506d7dff10eb5343e81ae97718"
           }
         },
         {
@@ -1766,9 +1858,10 @@
                 0.5,
                 0.04,
                 0.92,
-                0.36
+                0.35
               ],
-              "caption_anchor": "Figure 12: Planned trajectory"
+              "caption_anchor": "Figure 12: Planned trajectory",
+              "visual_review_note": "全分辨率目视确认 Figure 12 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
@@ -1776,16 +1869,17 @@
                 0.08,
                 0.04,
                 0.5,
-                0.46
+                0.45
               ],
-              "caption_anchor": "Figure 13: Snapshots of walking"
+              "caption_anchor": "Figure 13: Snapshots of walking",
+              "visual_review_note": "全分辨率目视确认 Figure 13 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
+            "fingerprint": "d14f4f37df02f12fdbc55416aedd0fcb85f79c8257df7cb7ffac5547c2a39155"
           }
         }
       ],
@@ -1813,7 +1907,8 @@
                 0.92,
                 0.65
               ],
-              "caption_anchor": "Fig. 1. In this work"
+              "caption_anchor": "Fig. 1. In this work",
+              "visual_review_note": "全分辨率目视确认 Fig. 1. In this work 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 2,
@@ -1823,14 +1918,15 @@
                 0.92,
                 0.31
               ],
-              "caption_anchor": "Fig. 2. A series of images"
+              "caption_anchor": "Fig. 2. A series of images",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. A series of images 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
+            "fingerprint": "69757b8bdb85aad47b60290a01fee4d49dd68fdf03b9aacff78ac4e898cce3ee"
           }
         },
         {
@@ -1849,7 +1945,8 @@
                 0.92,
                 0.32
               ],
-              "caption_anchor": "Fig. 3. The circular intervals"
+              "caption_anchor": "Fig. 3. The circular intervals",
+              "visual_review_note": "全分辨率目视确认 Fig. 3. The circular intervals 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 4,
@@ -1859,14 +1956,15 @@
                 0.92,
                 0.575
               ],
-              "caption_anchor": "Fig. 4. Plot of the expected value"
+              "caption_anchor": "Fig. 4. Plot of the expected value",
+              "visual_review_note": "全分辨率目视确认 Fig. 4. Plot of the expected value 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
+            "fingerprint": "b8fe00b72938341f38090baa2e9bf36ae9d1db313a6a6321ab3dd6e739cf32cd"
           }
         },
         {
@@ -1885,7 +1983,8 @@
                 0.49,
                 0.81
               ],
-              "caption_anchor": "TABLE I. The ranges for randomization"
+              "caption_anchor": "TABLE I. The ranges for randomization",
+              "visual_review_note": "全分辨率目视确认 TABLE I. The ranges for randomization 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 6,
@@ -1895,14 +1994,15 @@
                 0.5,
                 0.35
               ],
-              "caption_anchor": "Fig. 5. Comparison between"
+              "caption_anchor": "Fig. 5. Comparison between",
+              "visual_review_note": "全分辨率目视确认 Fig. 5. Comparison between 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
+            "fingerprint": "2609ff8c9f5835fafa46698085cbd1130587d538d1d657fb88f55e131d76185f"
           }
         }
       ],
@@ -1930,7 +2030,8 @@
                 0.92,
                 0.595
               ],
-              "caption_anchor": "Fig. 1. Control primitives"
+              "caption_anchor": "Fig. 1. Control primitives",
+              "visual_review_note": "全分辨率目视确认 Fig. 1. Control primitives 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 2,
@@ -1940,14 +2041,15 @@
                 0.92,
                 0.545
               ],
-              "caption_anchor": "Fig. 2. Control entities"
+              "caption_anchor": "Fig. 2. Control entities",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Control entities 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
+            "fingerprint": "68217fe257d2ac0cd9604b48cacecd25db47446130c57c255e127ed40c41764c"
           }
         },
         {
@@ -1966,14 +2068,15 @@
                 0.49,
                 0.66
               ],
-              "caption_anchor": "Fig. 3. A control hierarchy"
+              "caption_anchor": "Fig. 3. A control hierarchy",
+              "visual_review_note": "全分辨率目视确认 Fig. 3. A control hierarchy 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
+            "fingerprint": "80020816229d5c73946b41ac4f6a32b66099217c0c4af8dba3aff552a7441936"
           }
         },
         {
@@ -1992,7 +2095,8 @@
                 0.49,
                 0.77
               ],
-              "caption_anchor": "Fig. 5. Effective inertia"
+              "caption_anchor": "Fig. 5. Effective inertia",
+              "visual_review_note": "全分辨率目视确认 Fig. 5. Effective inertia 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 4,
@@ -2002,14 +2106,15 @@
                 0.92,
                 0.34
               ],
-              "caption_anchor": "Fig. 6. Impedance control layer"
+              "caption_anchor": "Fig. 6. Impedance control layer",
+              "visual_review_note": "全分辨率目视确认 Fig. 6. Impedance control layer 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
+            "fingerprint": "13004b08f06a11be998adafb001d33069122b34a377702b0d896345071bd1584"
           }
         }
       ],
@@ -2033,18 +2138,19 @@
               "pdf_page": 13,
               "crop": [
                 0.19,
-                0.04,
+                0.24,
                 0.81,
                 0.7
               ],
-              "caption_anchor": "Figure 1: Torque"
+              "caption_anchor": "Figure 1: Torque",
+              "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
+            "fingerprint": "1d8aa9dc78e00a31342ee4495b1b9e074ecd45f4111e1e25a7bfc2a646fa1172"
           }
         },
         {
@@ -2059,48 +2165,52 @@
               "pdf_page": 21,
               "crop": [
                 0.19,
-                0.04,
+                0.145,
                 0.81,
-                0.19
+                0.305
               ],
-              "caption_anchor": "Table 1: Identified motor parameters"
+              "caption_anchor": "Table 1: Identified motor parameters",
+              "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 21,
               "crop": [
                 0.19,
-                0.62,
+                0.63,
                 0.81,
-                0.9
+                0.84
               ],
-              "caption_anchor": "Table 2: Average squared tracking error"
+              "caption_anchor": "Table 2: Average squared tracking error",
+              "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 22,
               "crop": [
                 0.19,
-                0.07,
+                0.175,
                 0.81,
-                0.605
+                0.6
               ],
-              "caption_anchor": "Figure 3: Friction identification"
+              "caption_anchor": "Figure 3: Friction identification",
+              "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 22,
               "crop": [
                 0.19,
-                0.62,
+                0.645,
                 0.81,
-                0.9
+                0.855
               ],
-              "caption_anchor": "Table 3: Maximum tracking error"
+              "caption_anchor": "Table 3: Maximum tracking error",
+              "visual_review_note": "全分辨率目视确认 Table 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
+            "fingerprint": "3ba32fda4f2602043929aa7f820899b2ebb206c02be2708a8e9e952deff33569"
           }
         },
         {
@@ -2115,18 +2225,19 @@
               "pdf_page": 25,
               "crop": [
                 0.19,
-                0.04,
+                0.12,
                 0.81,
-                0.49
+                0.48
               ],
-              "caption_anchor": "Figure 5: Tracking of a sinusoidal force"
+              "caption_anchor": "Figure 5: Tracking of a sinusoidal force",
+              "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
+            "fingerprint": "faa1bacda31852478a603d1f2e5db019468fd5327364da4fa3b0c383020317e6"
           }
         }
       ],
@@ -2154,14 +2265,15 @@
                 0.92,
                 0.9
               ],
-              "caption_anchor": "Fig. 2. Schematic illustration"
+              "caption_anchor": "Fig. 2. Schematic illustration",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Schematic illustration 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "196c54b3c142265e088f69f5dfc4f6d48409f86542a2d534fead94e048982c0a"
+            "fingerprint": "a903a08a9cffd4cf9ab0b281676d4d39e6edd46ce9fa632ecb82bf470824d396"
           }
         },
         {
@@ -2176,18 +2288,19 @@
               "pdf_page": 8,
               "crop": [
                 0.08,
-                0.04,
+                0.095,
                 0.49,
-                0.35
+                0.65
               ],
-              "caption_anchor": "Table 2. Performance statistics"
+              "caption_anchor": "Table 2. Performance statistics",
+              "visual_review_note": "全分辨率目视确认 Table 2. Performance statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "935df4fd96214dfdd77fae1c315d24647fd3d9902821034d267ae20270f326de"
+            "fingerprint": "fad4e0d4dcac840d3111263970d550883304d3c5c0e59925aabc8034958fe841"
           }
         },
         {
@@ -2206,14 +2319,15 @@
                 0.49,
                 0.31
               ],
-              "caption_anchor": "Table 4. Success rate"
+              "caption_anchor": "Table 4. Success rate",
+              "visual_review_note": "全分辨率目视确认 Table 4. Success rate 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "a1e099a58370af91e250f9bfcfc3df9d6235844693661589cfd617999d23a51f"
+            "fingerprint": "0ebd515b7cd9ae2a5cac09c08830ff826ed05da2002eba717a82db89844a477f"
           }
         }
       ],
@@ -2241,14 +2355,15 @@
                 0.9,
                 0.77
               ],
-              "caption_anchor": "Figure 2 | Agent training setup"
+              "caption_anchor": "Figure 2 | Agent training setup",
+              "visual_review_note": "全分辨率目视确认 Figure 2 | Agent training setup 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
+            "fingerprint": "7bc4fe8a3365543bace483b7b00ffc64e004806b1ce3e5397b71d98d03872b23"
           }
         },
         {
@@ -2263,18 +2378,19 @@
               "pdf_page": 5,
               "crop": [
                 0.1,
-                0.53,
+                0.565,
                 0.9,
                 0.87
               ],
-              "caption_anchor": "Table 1 | Performance"
+              "caption_anchor": "Table 1 | Performance",
+              "visual_review_note": "全分辨率目视确认 Table 1 | Performance 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
+            "fingerprint": "10a6f951fbaf7f44ee5862750a43cba4eeca351c08a8de83d51576c3e6e9767e"
           }
         },
         {
@@ -2289,18 +2405,19 @@
               "pdf_page": 19,
               "crop": [
                 0.1,
-                0.16,
+                0.18,
                 0.9,
                 0.6
               ],
-              "caption_anchor": "Figure 7 | Comparison against ablations"
+              "caption_anchor": "Figure 7 | Comparison against ablations",
+              "visual_review_note": "全分辨率目视确认 Figure 7 | Comparison against ablations 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
+            "fingerprint": "2776be1757b5332c55c6b41a41b6226ad10e79f51fd82604b6d6976a8072fdc2"
           }
         }
       ],
@@ -2328,14 +2445,15 @@
                 0.92,
                 0.38
               ],
-              "caption_anchor": "Fig. 2. Schematic overview"
+              "caption_anchor": "Fig. 2. Schematic overview",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Schematic overview 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
+            "fingerprint": "4322df846b1106f15252831bc80c2a18f8c8df9554dd1b1361db71c69ba9ea94"
           }
         },
         {
@@ -2350,18 +2468,30 @@
               "pdf_page": 9,
               "crop": [
                 0.08,
-                0.04,
-                0.92,
-                0.31
+                0.095,
+                0.49,
+                0.435
               ],
-              "caption_anchor": "Table 1. Performance statistics"
+              "caption_anchor": "Table 1. Performance statistics",
+              "visual_review_note": "全分辨率目视确认 Table 1. Performance statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
+            },
+            {
+              "pdf_page": 9,
+              "crop": [
+                0.51,
+                0.095,
+                0.92,
+                0.325
+              ],
+              "caption_anchor": "Table 2. Summary statistics",
+              "visual_review_note": "全分辨率目视确认 Table 2. Summary statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
+            "fingerprint": "e8744bca1150d6d54ccb6d77d9d57852b1f1155994884468cca2b3595f554901"
           }
         },
         {
@@ -2376,28 +2506,30 @@
               "pdf_page": 12,
               "crop": [
                 0.08,
-                0.05,
+                0.095,
                 0.49,
-                0.59
+                0.51
               ],
-              "caption_anchor": "Table 3. Performance statistics"
+              "caption_anchor": "Table 3. Performance statistics",
+              "visual_review_note": "全分辨率目视确认 Table 3. Performance statistics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 12,
               "crop": [
                 0.5,
-                0.05,
+                0.095,
                 0.92,
-                0.51
+                0.505
               ],
-              "caption_anchor": "Fig. 8. Learning curves"
+              "caption_anchor": "Fig. 8. Learning curves",
+              "visual_review_note": "全分辨率目视确认 Fig. 8. Learning curves 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
+            "fingerprint": "e442f104184d3eca54f362cba57af967ec7bd6fdf79badc1fafd4bf56a7fd2e8"
           }
         }
       ],
@@ -2425,14 +2557,15 @@
                 0.49,
                 0.875
               ],
-              "caption_anchor": "Fig. 3. The MaskedMimic framework"
+              "caption_anchor": "Fig. 3. The MaskedMimic framework",
+              "visual_review_note": "全分辨率目视确认 Fig. 3. The MaskedMimic framework 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "fd9ca48ec62dffdf82c094b2a0bb49a6ae54a00de3ce4f44aab50f206e9c8920"
+            "fingerprint": "5f3f6a86736449f1150a227967a00209c1ead433bd9679d9cbdd54f4e37b8ffe"
           }
         },
         {
@@ -2451,14 +2584,15 @@
                 0.49,
                 0.69
               ],
-              "caption_anchor": "Table 1. Full-body tracking"
+              "caption_anchor": "Table 1. Full-body tracking",
+              "visual_review_note": "全分辨率目视确认 Table 1. Full-body tracking 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b48decb1e1fa0342ca2fe82ef341de227f3ee28eeb76a79e0a6df6b11f16f99f"
+            "fingerprint": "c04d4abf95b4b00236e1551b54dc0192dc74ed97830e8d9f3d466237c53ca3fa"
           }
         },
         {
@@ -2473,38 +2607,41 @@
               "pdf_page": 12,
               "crop": [
                 0.08,
-                0.04,
+                0.095,
                 0.49,
-                0.23
+                0.255
               ],
-              "caption_anchor": "Table 3. MaskedMimic"
+              "caption_anchor": "Table 3. MaskedMimic, joint sparsity",
+              "visual_review_note": "全分辨率目视确认 Table 3. MaskedMimic, joint sparsity 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 12,
               "crop": [
                 0.08,
-                0.23,
+                0.275,
                 0.49,
-                0.49
+                0.42
               ],
-              "caption_anchor": "Table 4. MaskedMimic"
+              "caption_anchor": "Table 4. MaskedMimic, irregular terrain",
+              "visual_review_note": "全分辨率目视确认 Table 4. MaskedMimic, irregular terrain 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 12,
               "crop": [
                 0.5,
-                0.04,
+                0.095,
                 0.92,
-                0.25
+                0.255
               ],
-              "caption_anchor": "Table 5. Tasks"
+              "caption_anchor": "Table 5. Tasks: MaskedMimic",
+              "visual_review_note": "全分辨率目视确认 Table 5. Tasks 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "b8fe88dae315b0869de8ba4a2d9d248ed3f01f77f7788ce54bd00efc8b56c4ee"
+            "fingerprint": "f15621d5f14a39242fc646b27a649fe71d646f0f9f7bc2cf4d4200faf3cfee3a"
           }
         }
       ],
@@ -2532,14 +2669,15 @@
                 0.92,
                 0.385
               ],
-              "caption_anchor": "Fig. 2. Overview of SafeFall"
+              "caption_anchor": "Fig. 2. Overview of SafeFall",
+              "visual_review_note": "全分辨率目视确认 Fig. 2. Overview of SafeFall 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
+            "fingerprint": "94d26aa3361f107cc2d23c1240cc2f12fec16d5916fd17cabc73482df7e875bb"
           }
         },
         {
@@ -2554,28 +2692,36 @@
               "pdf_page": 6,
               "crop": [
                 0.08,
-                0.53,
+                0.535,
                 0.49,
-                0.7
+                0.827
               ],
-              "caption_anchor": "TABLE II"
+              "caption_anchor": "TABLE II DOMAIN RANDOMIZATION AND OBSERVATION NOISE",
+              "caption_bbox": [
+                0.091,
+                0.539,
+                0.486,
+                0.579
+              ],
+              "visual_review_note": "全分辨率目视确认 TABLE II DOMAIN RANDOMIZATION AND OBSERVATION NOISE 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 7,
               "crop": [
                 0.08,
-                0.25,
+                0.258,
                 0.49,
-                0.42
+                0.45
               ],
-              "caption_anchor": "TABLE III"
+              "caption_anchor": "TABLE III ABLATION OF FALL PREDICTOR DESIGN CHOICES",
+              "visual_review_note": "全分辨率目视确认 TABLE III ABLATION OF FALL PREDICTOR DESIGN CHOICES 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
+            "fingerprint": "35e99b2365f7e22e75c1840bcf7856ec982af38725efdbbe312421d8727d186b"
           }
         },
         {
@@ -2592,36 +2738,45 @@
                 0.08,
                 0.04,
                 0.92,
-                0.2
+                0.19
               ],
-              "caption_anchor": "TABLE IV"
+              "caption_anchor": "TABLE IV QUALITATIVE EVALUATIONS OF SAFEFALL",
+              "visual_review_note": "全分辨率目视确认 TABLE IV QUALITATIVE EVALUATIONS OF SAFEFALL 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 8,
               "crop": [
                 0.08,
-                0.18,
+                0.19,
                 0.49,
-                0.385
+                0.374
               ],
-              "caption_anchor": "Fig. 6. SafeFall mitigating damages"
+              "caption_anchor": "Fig. 6. SafeFall mitigating damages",
+              "caption_bbox": [
+                0.088,
+                0.341,
+                0.489,
+                0.374
+              ],
+              "visual_review_note": "全分辨率目视确认 Fig. 6. SafeFall mitigating damages 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             },
             {
               "pdf_page": 8,
               "crop": [
                 0.08,
-                0.67,
+                0.7,
                 0.49,
-                0.82
+                0.81
               ],
-              "caption_anchor": "TABLE V"
+              "caption_anchor": "TABLE V SAFEFALL GENERALIZES TO AN UNSEEN NOMINAL POLICY",
+              "visual_review_note": "全分辨率目视确认 TABLE V SAFEFALL GENERALIZES TO AN UNSEEN NOMINAL POLICY 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。"
             }
           ],
           "review": {
             "status": "approved",
-            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
             "reviewed_on": "2026-08-12",
-            "fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
+            "fingerprint": "d04b7c5c987d48bf82d7279fbbac8b3bd5fccf0b7ae8413025121a34c5297bf5"
           }
         }
       ],
