@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2506.12851",
+  "source_pdf": "https://arxiv.org/pdf/2506.12851",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "pdf_page": 3,
+      "source_locator": "Figure 1",
+      "caption_zh": "视频动作提取、物理过滤、接触修正、IK 重定向与自适应跟踪全流程。",
+      "sha256": "d66b6a463360c16a33e4fec42b96cd45e69f02cbfd9e34163a9ebc7208e74df4"
+    },
+    {
+      "asset": "figure-3-4-adaptive.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "pdf_page": 5,
+      "source_locator": "Figure 3-4",
+      "caption_zh": "跟踪误差 EMA 驱动容差因子单调收紧的闭环及拳击手部误差演化。",
+      "sha256": "260d2c0f83d854bb0a04f5436e81716072e743b825f8482f147511bd2f610883"
+    },
+    {
+      "asset": "table-1-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "pdf_page": 8,
+      "source_locator": "Table 1",
+      "caption_zh": "按动作难度比较 PBHC、OmniH2O、ExBody2 和 oracle 基线的六项误差。",
+      "sha256": "51c80fed36a45a2a30cde673c519c5a0f6e64377187c062511673f469e9aa1b7"
+    },
+    {
+      "asset": "figure-8-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "pdf_page": 9,
+      "source_locator": "Figure 7-8",
+      "caption_zh": "固定/自适应跟踪因子消融与 G1 高动态真机动作序列。",
+      "sha256": "5045dd0bbb902f0fc90934fe479594e4dce61db76cb0167a0e04186905b48f55"
+    },
+    {
+      "asset": "table-2-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "pdf_page": 10,
+      "source_locator": "Table 2 / Figure 9",
+      "caption_zh": "太极动作十次实机试验的仿真—现实误差及三类动作训练收敛曲线。",
+      "sha256": "21f2f8b92bb9d2b613bc4fbab5cbb893150e79d435014d8729b3833fdd67bf25"
+    }
+  ]
+}

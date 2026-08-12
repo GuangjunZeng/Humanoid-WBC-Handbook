@@ -319,6 +319,92 @@
         {"file": "table-1-simulation.jpg", "page": 6, "locator": "Table I / Figure 4", "caption_zh": "完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。"},
         {"file": "figure-3-hardware.jpg", "page": 7, "locator": "Figure 3-4", "caption_zh": "六类真实地面上的重复试验成功数及单阶段训练失败曲线。"}
       ]
+    },
+    {
+      "slug": "phc-2305.06456",
+      "paper_id": "arxiv:2305.06456",
+      "pdf": "var/papers/2305.06456.pdf",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "figures": [
+        {"file": "figure-1-perpetual-control.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "PHC 在仿真人体形状上连续跟踪、跌倒恢复并追赶远处参考动作的目标。"},
+        {"file": "figure-2-3-pmcp.jpg", "page": 4, "locator": "Figure 2-3", "caption_zh": "渐进式多控制原语 PMCP、composer 与目标条件策略的训练结构。"},
+        {"file": "table-1-2-tracking.jpg", "page": 7, "locator": "Table 1-2", "caption_zh": "AMASS/H36M 高质量与视频噪声动作跟踪成功率和误差对照。"},
+        {"file": "table-3-4-recovery.jpg", "page": 8, "locator": "Table 3-4", "caption_zh": "组件消融以及倒地、远离参考和组合失败状态的恢复统计。"}
+      ]
+    },
+    {
+      "slug": "humanplus-2406.10454",
+      "paper_id": "arxiv:2406.10454",
+      "pdf": "var/papers/2406.10454.pdf",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "figures": [
+        {"file": "figure-1-full-stack.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "HumanPlus 从真人动作影子跟踪、第一视角数据采集到自主模仿任务的全栈目标。"},
+        {"file": "figure-3-retargeting.jpg", "page": 4, "locator": "Figure 3", "caption_zh": "单目身体与手部估计、固定关节映射和全身 shadowing 数据链路。"},
+        {"file": "figure-4-models.jpg", "page": 5, "locator": "Figure 4 / Table 1-2", "caption_zh": "HST 历史 Transformer 与 HIT 动作块/未来视觉特征预测架构。"},
+        {"file": "table-3-user-study.jpg", "page": 7, "locator": "Table 3", "caption_zh": "六名参与者在装仓与脱鞋任务上的遥操时间与全身能力对照。"},
+        {"file": "table-4-5-hardware.jpg", "page": 9, "locator": "Table 4-5", "caption_zh": "扰动恢复、动作范围与六类自主模仿任务的真实试验统计。"}
+      ]
+    },
+    {
+      "slug": "fast-humanoid-locomotion-2512.01996",
+      "paper_id": "arxiv:2512.01996",
+      "pdf": "var/papers/2512.01996.pdf",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "figures": [
+        {"file": "figure-1-summary.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "FastSAC/FastTD3 在 G1、T1 行走和全身动作跟踪上的训练时间与实机概览。"},
+        {"file": "figure-2-recipe-ablation.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "平均双 Q、更新次数、LayerNorm、折扣与熵目标等离策略配方消融。"},
+        {"file": "figure-3-locomotion.jpg", "page": 4, "locator": "Figure 3", "caption_zh": "单张 RTX 4090 上 G1/T1 速度跟踪的墙钟训练曲线与 PPO 对照。"},
+        {"file": "figure-5-6-tracking.jpg", "page": 7, "locator": "Figure 5-6", "caption_zh": "多 GPU 全身跟踪曲线与舞蹈、拳击、抗推的仿真到实机展示。"}
+      ]
+    },
+    {
+      "slug": "torque-control-high-ratio-gearboxes-2016",
+      "paper_id": "hal:hal-01136936",
+      "pdf": "var/papers/hal-01136936.pdf",
+      "source_url": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+      "figures": [
+        {"file": "figure-1-actuator-model.jpg", "page": 13, "locator": "Figure 1", "caption_zh": "HRP-2 膝关节位置误差到估计力矩的分段线性、速度符号相关映射。"},
+        {"file": "figure-2-table-1-setup.jpg", "page": 21, "locator": "Figure 2 / Table 1", "caption_zh": "悬挂运动/双足受力实验装置与六个右腿电机参数辨识结果。"},
+        {"file": "table-2-3-figure-4-motion.jpg", "page": 23, "locator": "Figure 4", "caption_zh": "楼梯参考轨迹下位置控制与两档反馈增益逆动力学力矩控制的跟踪误差时序。"},
+        {"file": "figure-5-force.jpg", "page": 25, "locator": "Figure 5", "caption_zh": "右脚 z 向正弦接触力参考的测量、估计与跟踪结果。"}
+      ]
+    },
+    {
+      "slug": "kungfubot-2506.12851",
+      "paper_id": "arxiv:2506.12851",
+      "pdf": "var/papers/2506.12851.pdf",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "figures": [
+        {"file": "figure-1-pipeline.jpg", "page": 3, "locator": "Figure 1", "caption_zh": "视频动作提取、物理过滤、接触修正、IK 重定向与自适应跟踪全流程。"},
+        {"file": "figure-3-4-adaptive.jpg", "page": 5, "locator": "Figure 3-4", "caption_zh": "跟踪误差 EMA 驱动容差因子单调收紧的闭环及拳击手部误差演化。"},
+        {"file": "table-1-tracking.jpg", "page": 8, "locator": "Table 1", "caption_zh": "按动作难度比较 PBHC、OmniH2O、ExBody2 和 oracle 基线的六项误差。"},
+        {"file": "figure-8-hardware.jpg", "page": 9, "locator": "Figure 7-8", "caption_zh": "固定/自适应跟踪因子消融与 G1 高动态真机动作序列。"},
+        {"file": "table-2-hardware.jpg", "page": 10, "locator": "Table 2 / Figure 9", "caption_zh": "太极动作十次实机试验的仿真—现实误差及三类动作训练收敛曲线。"}
+      ]
+    },
+    {
+      "slug": "ase-2205.01906",
+      "paper_id": "arxiv:2205.01906",
+      "pdf": "var/papers/2205.01906.pdf",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "figures": [
+        {"file": "figure-2-framework.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "对抗式动作分布匹配、技能互信息预训练和高层任务迁移两阶段框架。"},
+        {"file": "figure-5-architecture.jpg", "page": 8, "locator": "Figure 4-5", "caption_zh": "37-DoF 持剑盾角色以及策略、判别器和 von Mises-Fisher encoder 网络。"},
+        {"file": "table-1-transitions.jpg", "page": 12, "locator": "Table 1 / Figure 9-11", "caption_zh": "技能发现/多样性消融的任务回报、数据覆盖和跨技能转移。"},
+        {"file": "figure-13-14-recovery.jpg", "page": 13, "locator": "Figure 13-14", "caption_zh": "500 次仿真扰动后的起身序列与恢复时间分布。"}
+      ]
+    },
+    {
+      "slug": "safefall-2511.18509",
+      "paper_id": "arxiv:2511.18509",
+      "pdf": "var/papers/2511.18509.pdf",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "figures": [
+        {"file": "figure-1-protective-falls.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "G1 前后侧向、高速跑动和台阶跌落中的卸力、分散冲击与脆弱部件保护。"},
+        {"file": "figure-2-table-1-system.jpg", "page": 4, "locator": "Figure 2 / Table I", "caption_zh": "故障轨迹生成、GRU 预测、两阶段保护策略训练和六类跌倒诱因。"},
+        {"file": "table-3-predictor.jpg", "page": 7, "locator": "Table III / Figure 5", "caption_zh": "预测器架构、时间分段与课程对准确率、误报和提前量的消融。"},
+        {"file": "table-4-5-hardware.jpg", "page": 8, "locator": "Table IV-V / Figure 6", "caption_zh": "仿真损伤指标、跨 nominal policy 泛化与真实 G1 保护动作及冲量统计。"}
+      ]
     }
   ]
 }

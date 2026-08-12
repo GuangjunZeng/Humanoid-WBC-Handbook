@@ -1,0 +1,24 @@
+{
+  "kind": "claim",
+  "problem_id": "wbc.tsid-position-interface-torque-estimation-boundary",
+  "schema_version": 1,
+  "source_fingerprint": "fa5023403d926ba60b694b3f0266f2fa45dba498d119b714174166971c88de31",
+  "translations": {
+    "answer": "The method avoids joint-torque sensors by estimating torque from position-servo error and feeding it to TSID. It still uses wrist/ankle six-axis force sensors, an IMU, and encoders, while the paper's experiments cover only six joints of HRP-2's right leg in controlled free-motion and contact settings. It is therefore neither sensorless nor a plug-and-play cross-platform whole-body torque controller.",
+    "applicability.assumptions.0": "The mapping from position error to torque for each high-ratio joint has been identified on the target hardware.",
+    "applicability.assumptions.1": "Wrist/ankle force sensors, encoders, and the IMU remain available and calibrated.",
+    "applicability.controllers.0": "Position-interface torque estimation and Task-Space Inverse Dynamics (TSID)",
+    "applicability.environments.0": "Controlled HRP-2 single-leg free motion and rigid-contact experiments",
+    "applicability.robots.0": "HRP-2; transfer to another actuator requires new identification",
+    "confidence_rationale": "The paper provides a detailed identification derivation and HRP-2 experiments, while public TSID code supports inspection of the inverse-dynamics layer. Tests cover only six right-leg joints and still rely on wrist/ankle F/T sensing, an IMU, and encoders; the repository does not reproduce the complete actuator-identification pipeline.",
+    "evidence.0.locator": "Chapters 2-5, Figures 3-12, and the experimental appendix",
+    "evidence.0.note": "Derives position-error torque estimation, friction compensation, and TSID task constraints, then evaluates them in bounded HRP-2 settings.",
+    "evidence.0.title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+    "terms.0": "Inertial Measurement Unit (IMU, 惯性测量单元)",
+    "terms.1": "Application Programming Interface (API, 应用程序接口)",
+    "terms.2": "Actuator (执行器)",
+    "terms.3": "Joint Torque (关节力矩)",
+    "terms.4": "Dynamics (动力学)",
+    "title": "Does this TSID work prove that whole-body torque control can run directly on any high-ratio humanoid without using any force sensor?"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2406.10454",
+  "source_pdf": "https://arxiv.org/pdf/2406.10454",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-full-stack.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "HumanPlus 从真人动作影子跟踪、第一视角数据采集到自主模仿任务的全栈目标。",
+      "sha256": "455668f4d62ae29769c22d9f649cc57ce59ac46b47ef0b6078af80d5df14b6a6"
+    },
+    {
+      "asset": "figure-3-retargeting.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "pdf_page": 4,
+      "source_locator": "Figure 3",
+      "caption_zh": "单目身体与手部估计、固定关节映射和全身 shadowing 数据链路。",
+      "sha256": "8f9f43aaca9b0b206e4ced93a396ee88dbcf0822f14a9e98c1e4187d66c3ff45"
+    },
+    {
+      "asset": "figure-4-models.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "pdf_page": 5,
+      "source_locator": "Figure 4 / Table 1-2",
+      "caption_zh": "HST 历史 Transformer 与 HIT 动作块/未来视觉特征预测架构。",
+      "sha256": "b3f89d7489650fb93510d022c2acfbd032d92020b52f1c73c7b15e01fc82f6a6"
+    },
+    {
+      "asset": "table-3-user-study.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "pdf_page": 7,
+      "source_locator": "Table 3",
+      "caption_zh": "六名参与者在装仓与脱鞋任务上的遥操时间与全身能力对照。",
+      "sha256": "99ca9973b97371a26415d9be27fdb0c01e16af1650314cb7aeb24dce60f6c24e"
+    },
+    {
+      "asset": "table-4-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "pdf_page": 9,
+      "source_locator": "Table 4-5",
+      "caption_zh": "扰动恢复、动作范围与六类自主模仿任务的真实试验统计。",
+      "sha256": "74766f7247f6a03c90df34395855e26bdea6b4530609a2dcc617105c5e0187e9"
+    }
+  ]
+}

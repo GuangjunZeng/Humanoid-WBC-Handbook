@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["下游任务分布能由预训练动作数据中的技能组合覆盖。", "有足够算力训练对抗技能先验并稳定高层策略。"],
+    "controllers": ["Adversarial Skill Embeddings (ASE) 与层级高层策略"],
+    "environments": ["剑盾角色的模拟导航、攻击与恢复任务"],
+    "robots": ["37-DoF simulated character；没有真实机器人证据"],
+    "simulators": ["Isaac Gym"]
+  },
+  "claim_id": "motion-generation.ase-latent-skills-simulation-boundary",
+  "confidence": 0.85,
+  "confidence_rationale": "论文给出多任务、消融和恢复仿真实验，官方代码可核对技能编码与高层训练；所有结果均为模拟角色且预训练代价约十天，未证明真机可迁移。",
+  "domain": "motion_generation",
+  "evidence": [{
+    "locator": "Sections 3-6, Figures 2-12, Tables 1-2 and appendix",
+    "note": "定义对抗技能嵌入、潜变量先验与高层任务训练，并报告多项模拟实验。",
+    "role": "support",
+    "source_id": "paper.ase.2205.01906",
+    "strength": "primary"
+  }],
+  "question": "ASE 的可重用技能嵌入是否已证明可以直接作为真实人形机器人的通用动作生成器？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "ASE 能从无结构动作集合中学习可重用 latent skill embedding，并显著简化多个下游模拟任务；论文对象是带剑盾的 37-DoF 模拟角色，训练约需十天且没有机器人硬件实验，因此应作为动作先验方法基线而非现成真机控制器。",
+  "status": "reviewed",
+  "tags": ["ASE", "latent skill", "adversarial learning", "motion generation", "simulation"]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2511.18509",
+  "source_pdf": "https://arxiv.org/pdf/2511.18509",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-protective-falls.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "G1 前后侧向、高速跑动和台阶跌落中的卸力、分散冲击与脆弱部件保护。",
+      "sha256": "fb439e67d5ef2062ad1da4d52e2b025b0dc379e4cddeed1c1472de0289bbb3e9"
+    },
+    {
+      "asset": "figure-2-table-1-system.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 4,
+      "source_locator": "Figure 2 / Table I",
+      "caption_zh": "故障轨迹生成、GRU 预测、两阶段保护策略训练和六类跌倒诱因。",
+      "sha256": "1b50db0959160b70a023267c8d84fac6ddb16cb10ba47b628a6cc5034f9734db"
+    },
+    {
+      "asset": "table-3-predictor.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 7,
+      "source_locator": "Table III / Figure 5",
+      "caption_zh": "预测器架构、时间分段与课程对准确率、误报和提前量的消融。",
+      "sha256": "d36460952a6c4e75af78a052526677de325c2a3b731af4e731474214bce1f8d9"
+    },
+    {
+      "asset": "table-4-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 8,
+      "source_locator": "Table IV-V / Figure 6",
+      "caption_zh": "仿真损伤指标、跨 nominal policy 泛化与真实 G1 保护动作及冲量统计。",
+      "sha256": "1dcd8a5ff9063590f7b530fa59074a663428414f4203648aefc5144028b2be36"
+    }
+  ]
+}

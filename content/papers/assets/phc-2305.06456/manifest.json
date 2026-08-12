@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2305.06456",
+  "source_pdf": "https://arxiv.org/pdf/2305.06456",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-perpetual-control.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "PHC 在仿真人体形状上连续跟踪、跌倒恢复并追赶远处参考动作的目标。",
+      "sha256": "66e0a55d9df2fb16ca12b3549e80b24606665b354bfa000b5864f5c7f5317791"
+    },
+    {
+      "asset": "figure-2-3-pmcp.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "pdf_page": 4,
+      "source_locator": "Figure 2-3",
+      "caption_zh": "渐进式多控制原语 PMCP、composer 与目标条件策略的训练结构。",
+      "sha256": "c751f885abd2ef5d244b526fcb9ede5466f825e0ae4066b26a7b7d78459f5811"
+    },
+    {
+      "asset": "table-1-2-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "pdf_page": 7,
+      "source_locator": "Table 1-2",
+      "caption_zh": "AMASS/H36M 高质量与视频噪声动作跟踪成功率和误差对照。",
+      "sha256": "a18bb1dac089d6a830c8710b5438546c71ec361fad58fe5dd0594e2dd24fd2e7"
+    },
+    {
+      "asset": "table-3-4-recovery.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "pdf_page": 8,
+      "source_locator": "Table 3-4",
+      "caption_zh": "组件消融以及倒地、远离参考和组合失败状态的恢复统计。",
+      "sha256": "7670ab1a6a69f6a5e266914416f54df51d309cc1e1a2496ea8276ec55f0c797a"
+    }
+  ]
+}

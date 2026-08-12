@@ -12,19 +12,19 @@
 
 | Topic | 代表技术路线与精读入口 |
 |---|---|
-| [训练数据与动作重定向](content/papers/domains/training-data-retargeting.md) | 统一人体动作库：[AMASS](content/papers/amass-1904.03278.md) · 优化式可行重定向：[Retargeting Matters](content/papers/retargeting-matters-2510.02252v1.md) · 视频世界轨迹恢复：[GVHMR](content/papers/gvhmr-2409.06662.md) |
-| [通用跟踪与全身遥操](content/papers/domains/universal-tracking-teleoperation.md) | 人体到人形全身遥操：[Human2Humanoid（H2O）](content/papers/human2humanoid-2403.04436.md) · 稀疏关键点遥操：[OmniH2O](content/papers/omnih2o-2406.08858v1.md) · 统一掩码控制：[HOVER](content/papers/hover-2410.21229v2.md) |
-| [行走与复杂地形](content/papers/domains/locomotion-terrain.md) | 周期奖励多步态：[APEX](content/papers/apex-2011.01387.md) · 大规模并行强化学习：[Learning to Walk in Minutes](content/papers/learning-walk-2109.11978.md) · 感知复杂地形：[Learning Humanoid Locomotion over Challenging Terrain](content/papers/challenging-terrain-2410.03654v1.md) |
-| [移动操作与末端 WBC](content/papers/domains/loco-manipulation-wbc.md) | 经典层级操作空间控制：[Sentis–Khatib WBC](content/papers/sentis-khatib-wbc-2006.md) · 多接触最优控制：[Crocoddyl](content/papers/crocoddyl-1909.04947.md) · 受力自适应双策略：[FALCON](content/papers/falcon-2505.06776v2.md) |
-| [体育与高动态技能](content/papers/domains/sports-athletic-skills.md) | 示例引导技能学习：[DeepMimic](content/papers/deepmimic-1804.02717.md) · 仿真—真实动力学校准：[ASAP](content/papers/asap-2502.01143v3.md) · 潜在原语与末端修正：[LATENT](content/papers/latent-2603.12686.md) |
-| [动作生成与可命令行为](content/papers/domains/motion-generation.md) | 对抗运动先验：[AMP](content/papers/amp-2104.02180.md) · 测试时代价引导扩散：[BeyondMimic](content/papers/beyondmimic-2508.08241v4.md) · 零样本行为基础模型：[Meta Motivo](content/papers/meta-motivo-2504.11054.md) |
-| [起身恢复、跌倒与受力安全](content/papers/domains/recovery-safety-force.md) | 发现—跟踪两阶段起身：[HumanUP](content/papers/humanup-2502.12152.md) · 多姿态分阶段起身：[HoST](content/papers/host-2502.08378v2.md) · 端到端跌倒恢复：[FRASA](content/papers/frasa-2410.08655v3.md) |
+| [训练数据与动作重定向](content/papers/domains/training-data-retargeting.md) | 统一人体动作库：[AMASS](content/papers/amass-1904.03278.md) · 优化式可行重定向：[Retargeting Matters](content/papers/retargeting-matters-2510.02252v1.md) · 视频世界轨迹恢复：[GVHMR](content/papers/gvhmr-2409.06662.md) · 万级动作渐进跟踪：[PHC](content/papers/phc-2305.06456.md) |
+| [通用跟踪与全身遥操](content/papers/domains/universal-tracking-teleoperation.md) | 人体到人形全身遥操：[Human2Humanoid（H2O）](content/papers/human2humanoid-2403.04436.md) · 稀疏关键点遥操：[OmniH2O](content/papers/omnih2o-2406.08858v1.md) · 统一掩码控制：[HOVER](content/papers/hover-2410.21229v2.md) · 影子模仿到视觉技能：[HumanPlus](content/papers/humanplus-2406.10454.md) |
+| [行走与复杂地形](content/papers/domains/locomotion-terrain.md) | 周期奖励多步态：[APEX](content/papers/apex-2011.01387.md) · 大规模并行强化学习：[Learning to Walk in Minutes](content/papers/learning-walk-2109.11978.md) · 感知复杂地形：[Learning Humanoid Locomotion over Challenging Terrain](content/papers/challenging-terrain-2410.03654v1.md) · 单卡离策略快速训练：[Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](content/papers/fast-humanoid-locomotion-2512.01996.md) |
+| [移动操作与末端 WBC](content/papers/domains/loco-manipulation-wbc.md) | 经典层级操作空间控制：[Sentis–Khatib WBC](content/papers/sentis-khatib-wbc-2006.md) · 多接触最优控制：[Crocoddyl](content/papers/crocoddyl-1909.04947.md) · 位置接口力矩估计：[TSID 高减速比实现](content/papers/torque-control-high-ratio-gearboxes-2016.md) · 受力自适应双策略：[FALCON](content/papers/falcon-2505.06776v2.md) |
+| [体育与高动态技能](content/papers/domains/sports-athletic-skills.md) | 示例引导技能学习：[DeepMimic](content/papers/deepmimic-1804.02717.md) · 仿真—真实动力学校准：[ASAP](content/papers/asap-2502.01143v3.md) · 潜在原语与末端修正：[LATENT](content/papers/latent-2603.12686.md) · 动作修正与自适应跟踪：[KungfuBot](content/papers/kungfubot-2506.12851.md) |
+| [动作生成与可命令行为](content/papers/domains/motion-generation.md) | 对抗运动先验：[AMP](content/papers/amp-2104.02180.md) · 可复用潜技能空间：[ASE](content/papers/ase-2205.01906.md) · 测试时代价引导扩散：[BeyondMimic](content/papers/beyondmimic-2508.08241v4.md) · 零样本行为基础模型：[Meta Motivo](content/papers/meta-motivo-2504.11054.md) |
+| [起身恢复、跌倒与受力安全](content/papers/domains/recovery-safety-force.md) | 发现—跟踪两阶段起身：[HumanUP](content/papers/humanup-2502.12152.md) · 多姿态分阶段起身：[HoST](content/papers/host-2502.08378v2.md) · 端到端跌倒恢复：[FRASA](content/papers/frasa-2410.08655v3.md) · 跌倒预测与保护切换：[SafeFall](content/papers/safefall-2511.18509.md) |
 
 ---
 
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (28 complete bilingual deep reads and 48 primary-source-verified queued works) plus 43 selected projects (11 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (35 complete bilingual deep reads and 41 primary-source-verified queued works) plus 43 selected projects (11 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 
@@ -146,7 +146,7 @@ PYTHONPATH=src python3 -m wbc_handbook projects-discover \
 | `config/social-queries.json` | Open WBC engineering-problem scopes shared by X, Zhihu, and Xiaohongshu; optional domain hints are not collection boundaries |
 | `content/papers/` | Paper and project catalogs, generated seven-topic indexes, quality-gated deep reads, bilingual project reviews, and key-figure manifests |
 | `content/problems/` | Generated Chinese engineering-problem pages plus matching English pages under `content/problems/en/` |
-| `data/` | 300 canonical source records, a minimal all-candidate social/Issue index, and 28 bounded, human-reviewed Engineering Claims |
+| `data/` | 307 canonical source records, a minimal all-candidate social/Issue index, and 35 bounded, human-reviewed Engineering Claims |
 | `data/locales/en/problems/` | Reviewed, versioned English problem translations with stale-source fingerprints |
 | `docs/` | Architecture, safety, source policy, clean-room record, and workflows |
 | `site/` | Dependency-free bilingual GitHub Pages search UI, vendored FlexSearch, SVG background, and generated schema-v2 index |

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2512.01996",
+  "source_pdf": "https://arxiv.org/pdf/2512.01996",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-summary.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "FastSAC/FastTD3 在 G1、T1 行走和全身动作跟踪上的训练时间与实机概览。",
+      "sha256": "145c98c92411d2227da79d8e7ee604af5c1a2f69d6e428f957c7f6f9b40c1fd7"
+    },
+    {
+      "asset": "figure-2-recipe-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "平均双 Q、更新次数、LayerNorm、折扣与熵目标等离策略配方消融。",
+      "sha256": "0fb48f038da854fbf14fdbbbdc2d4854a1da2dc34ec2dc425880cde0f75fd75e"
+    },
+    {
+      "asset": "figure-3-locomotion.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "pdf_page": 4,
+      "source_locator": "Figure 3",
+      "caption_zh": "单张 RTX 4090 上 G1/T1 速度跟踪的墙钟训练曲线与 PPO 对照。",
+      "sha256": "617e351be6c6c9f9cf8318c2ddd4098ea0ab07bba452338b69471efcfd6d1393"
+    },
+    {
+      "asset": "figure-5-6-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "pdf_page": 7,
+      "source_locator": "Figure 5-6",
+      "caption_zh": "多 GPU 全身跟踪曲线与舞蹈、拳击、抗推的仿真到实机展示。",
+      "sha256": "6b987d261129cc7a06af41ab3064aec9dba9d07519e599c3ab91608ab9138ed5"
+    }
+  ]
+}

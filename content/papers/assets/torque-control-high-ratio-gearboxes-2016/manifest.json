@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "hal:hal-01136936",
+  "source_pdf": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-actuator-model.jpg",
+      "source_url": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+      "pdf_page": 13,
+      "source_locator": "Figure 1",
+      "caption_zh": "HRP-2 膝关节位置误差到估计力矩的分段线性、速度符号相关映射。",
+      "sha256": "7a0f6b618f425689cdce9d67d7242b0cf39bc153d35f7a009b5b5bfab9b3ad20"
+    },
+    {
+      "asset": "figure-2-table-1-setup.jpg",
+      "source_url": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+      "pdf_page": 21,
+      "source_locator": "Figure 2 / Table 1",
+      "caption_zh": "悬挂运动/双足受力实验装置与六个右腿电机参数辨识结果。",
+      "sha256": "ead5376b91c1f95f306a435b000e447ba12bfb5f1c5af1adc401b487e5c4fcd5"
+    },
+    {
+      "asset": "table-2-3-figure-4-motion.jpg",
+      "source_url": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+      "pdf_page": 23,
+      "source_locator": "Figure 4",
+      "caption_zh": "楼梯参考轨迹下位置控制与两档反馈增益逆动力学力矩控制的跟踪误差时序。",
+      "sha256": "3ee41206f18ba870ec60aef92c4c48e8cd80a1772208d5fdf9f7aa813965eaa7"
+    },
+    {
+      "asset": "figure-5-force.jpg",
+      "source_url": "https://homepages.laas.fr/ostasse/hugo/publication/journals/delprete-ijhr-2015/delprete-ijhr-2015.pdf",
+      "pdf_page": 25,
+      "source_locator": "Figure 5",
+      "caption_zh": "右脚 z 向正弦接触力参考的测量、估计与跟踪结果。",
+      "sha256": "99fa734687ab46beb118f4defb8056586d81043fd04e375325a871bc0d9adb75"
+    }
+  ]
+}

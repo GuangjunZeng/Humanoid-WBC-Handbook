@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2205.01906",
+  "source_pdf": "https://arxiv.org/pdf/2205.01906",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "pdf_page": 4,
+      "source_locator": "Figure 2",
+      "caption_zh": "对抗式动作分布匹配、技能互信息预训练和高层任务迁移两阶段框架。",
+      "sha256": "424795f5d6bf3326be07b6e72f91cf299aab00c08c70d622d82d51f88345cbbc"
+    },
+    {
+      "asset": "figure-5-architecture.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "pdf_page": 8,
+      "source_locator": "Figure 4-5",
+      "caption_zh": "37-DoF 持剑盾角色以及策略、判别器和 von Mises-Fisher encoder 网络。",
+      "sha256": "8af30038e871c9f92532b455adbd8a4a6a88388bbef6bcd59232911a279b1117"
+    },
+    {
+      "asset": "table-1-transitions.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "pdf_page": 12,
+      "source_locator": "Table 1 / Figure 9-11",
+      "caption_zh": "技能发现/多样性消融的任务回报、数据覆盖和跨技能转移。",
+      "sha256": "526cdbbe3cddd09665125e74cdd335b41e2082bbe9dede53376181a928a52018"
+    },
+    {
+      "asset": "figure-13-14-recovery.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "pdf_page": 13,
+      "source_locator": "Figure 13-14",
+      "caption_zh": "500 次仿真扰动后的起身序列与恢复时间分布。",
+      "sha256": "da356382ee90d12e83fd116ee06bfdb3b57c7f1ecddd56d2564c8a9971450926"
+    }
+  ]
+}

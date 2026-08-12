@@ -283,6 +283,76 @@
       "status": "complete",
       "brief_path": "content/papers/humanup-2502.12152.md",
       "brief_path_en": "content/papers/en/humanup-2502.12152.md"
+    },
+    {
+      "paper_id": "arxiv:2305.06456",
+      "slug": "phc-2305.06456",
+      "title": "Perpetual Humanoid Control for Real-time Simulated Avatars",
+      "primary_domain": "training_data_retargeting",
+      "coverage_role": "progressive_large_scale_tracking",
+      "status": "complete",
+      "brief_path": "content/papers/phc-2305.06456.md",
+      "brief_path_en": "content/papers/en/phc-2305.06456.md"
+    },
+    {
+      "paper_id": "arxiv:2406.10454",
+      "slug": "humanplus-2406.10454",
+      "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
+      "primary_domain": "universal_tracking_teleoperation",
+      "coverage_role": "shadowing_to_egocentric_imitation",
+      "status": "complete",
+      "brief_path": "content/papers/humanplus-2406.10454.md",
+      "brief_path_en": "content/papers/en/humanplus-2406.10454.md"
+    },
+    {
+      "paper_id": "arxiv:2512.01996",
+      "slug": "fast-humanoid-locomotion-2512.01996",
+      "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "primary_domain": "locomotion_terrain",
+      "coverage_role": "wall_clock_off_policy_locomotion",
+      "status": "complete",
+      "brief_path": "content/papers/fast-humanoid-locomotion-2512.01996.md",
+      "brief_path_en": "content/papers/en/fast-humanoid-locomotion-2512.01996.md"
+    },
+    {
+      "paper_id": "hal:hal-01136936",
+      "slug": "torque-control-high-ratio-gearboxes-2016",
+      "title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+      "primary_domain": "loco_manipulation_wbc",
+      "coverage_role": "position_interface_torque_control",
+      "status": "complete",
+      "brief_path": "content/papers/torque-control-high-ratio-gearboxes-2016.md",
+      "brief_path_en": "content/papers/en/torque-control-high-ratio-gearboxes-2016.md"
+    },
+    {
+      "paper_id": "arxiv:2506.12851",
+      "slug": "kungfubot-2506.12851",
+      "title": "KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills",
+      "primary_domain": "sports",
+      "coverage_role": "adaptive_high_dynamic_tracking",
+      "status": "complete",
+      "brief_path": "content/papers/kungfubot-2506.12851.md",
+      "brief_path_en": "content/papers/en/kungfubot-2506.12851.md"
+    },
+    {
+      "paper_id": "arxiv:2205.01906",
+      "slug": "ase-2205.01906",
+      "title": "ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters",
+      "primary_domain": "motion_generation",
+      "coverage_role": "adversarial_reusable_skill_embedding",
+      "status": "complete",
+      "brief_path": "content/papers/ase-2205.01906.md",
+      "brief_path_en": "content/papers/en/ase-2205.01906.md"
+    },
+    {
+      "paper_id": "arxiv:2511.18509",
+      "slug": "safefall-2511.18509",
+      "title": "SafeFall: Learning Protective Control for Humanoid Robots",
+      "primary_domain": "recovery_safety_force",
+      "coverage_role": "protective_fall_prediction_and_mitigation",
+      "status": "complete",
+      "brief_path": "content/papers/safefall-2511.18509.md",
+      "brief_path_en": "content/papers/en/safefall-2511.18509.md"
     }
   ]
 }

@@ -83,7 +83,9 @@
       "coverage_roles": ["field_anchor", "open_source", "recovery"],
       "paper_url": "https://arxiv.org/abs/2305.06456",
       "code": {"status": "verified_official", "url": "https://github.com/ZhengyiLuo/PHC"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/phc-2305.06456.md",
+      "brief_path_en": "content/papers/en/phc-2305.06456.md",
       "why_zh": "用渐进容量分配扩展到万级动作，并把失败状态恢复纳入同一物理控制器。"
     },
     {
@@ -157,7 +159,9 @@
       "coverage_roles": ["field_anchor", "open_source", "sparse_command"],
       "paper_url": "https://arxiv.org/abs/2406.10454",
       "code": {"status": "verified_official", "url": "https://github.com/MarkFzp/humanplus"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/humanplus-2406.10454.md",
+      "brief_path_en": "content/papers/en/humanplus-2406.10454.md",
       "why_zh": "把真人影子模仿、全身数据采集与自主视觉模仿连成完整系统。"
     },
     {
@@ -296,8 +300,10 @@
       "topics": ["locomotion_terrain"],
       "coverage_roles": ["open_source", "learning_anchor", "robot_deployment"],
       "paper_url": "https://arxiv.org/abs/2512.01996",
-      "code": {"status": "verified_official", "url": "https://github.com/younggyoseo/FastTD3"},
-      "analysis_status": "queued",
+      "code": {"status": "verified_official", "url": "https://github.com/amazon-far/holosoma"},
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/fast-humanoid-locomotion-2512.01996.md",
+      "brief_path_en": "content/papers/en/fast-humanoid-locomotion-2512.01996.md",
       "why_zh": "用大规模并行离策略 RL 将 G1/T1 实机行走训练缩短到分钟级。"
     },
     {
@@ -321,7 +327,9 @@
       "coverage_roles": ["optimization", "open_source", "classical_control"],
       "paper_url": "https://hal.science/hal-01136936",
       "code": {"status": "verified_official", "url": "https://github.com/stack-of-tasks/tsid"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/torque-control-high-ratio-gearboxes-2016.md",
+      "brief_path_en": "content/papers/en/torque-control-high-ratio-gearboxes-2016.md",
       "why_zh": "TSID 的工程实现锚点，说明高减速比、无关节力矩传感时如何落地任务空间逆动力学。"
     },
     {
@@ -404,7 +412,9 @@
       "coverage_roles": ["open_source", "sim_to_real", "task_interaction"],
       "paper_url": "https://arxiv.org/abs/2506.12851",
       "code": {"status": "verified_official", "url": "https://github.com/TeleHuman/PBHC"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/kungfubot-2506.12851.md",
+      "brief_path_en": "content/papers/en/kungfubot-2506.12851.md",
       "why_zh": "面向武术类高动态动作的多阶段运动处理、自适应跟踪与真机开源基线。"
     },
     {
@@ -463,7 +473,9 @@
       "coverage_roles": ["latent_skill", "open_source"],
       "paper_url": "https://arxiv.org/abs/2205.01906",
       "code": {"status": "verified_official", "url": "https://github.com/nv-tlabs/ASE"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/ase-2205.01906.md",
+      "brief_path_en": "content/papers/en/ase-2205.01906.md",
       "why_zh": "将大规模动作数据压入可重用技能嵌入，为下游分层任务提供动作基元。"
     },
     {
@@ -583,7 +595,9 @@
       "coverage_roles": ["protective_fall", "hardware_evidence"],
       "paper_url": "https://arxiv.org/abs/2511.18509",
       "code": {"status": "unknown", "url": ""},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/safefall-2511.18509.md",
+      "brief_path_en": "content/papers/en/safefall-2511.18509.md",
       "why_zh": "用跌倒预测器触发伤害缓解策略，显式保护头、手等脆弱部件。"
     },
     {

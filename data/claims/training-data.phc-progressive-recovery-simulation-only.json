@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["参考动作已转换到论文的模拟人形体型与关节定义。", "策略容量、训练样本量与失败状态覆盖达到论文量级。"],
+    "controllers": ["PHC 渐进式动作跟踪与恢复策略"],
+    "environments": ["大规模人体动作库中的物理模拟跟踪"],
+    "robots": ["论文中的 simulated humanoid avatars；不直接代表真实机器人"],
+    "simulators": ["Isaac Gym"]
+  },
+  "claim_id": "training-data.phc-progressive-recovery-simulation-only",
+  "confidence": 0.86,
+  "confidence_rationale": "论文报告大规模 AMASS 测试与恢复消融，官方代码可核对关键实现；但全部证据来自 simulated avatars，不能外推为人形机器人真机部署结果。",
+  "domain": "training_data_retargeting",
+  "evidence": [{
+    "locator": "Sections 3-5, Tables 1-3, Figures 2-6 and appendix",
+    "note": "定义 progressive multiplicative control、失败状态恢复和大规模动作评估，并给出训练成本与仿真结果。",
+    "role": "support",
+    "source_id": "paper.phc.2305.06456",
+    "strength": "primary"
+  }],
+  "question": "PHC 是否已经证明单一策略能在真实人形机器人上永久跟踪万级动作并自动恢复？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "PHC 通过渐进式容量扩展覆盖大规模参考动作，并用专门恢复模块把跌倒或偏离状态拉回跟踪域；论文在 AMASS 模拟测试上报告很高覆盖率，但没有真实机器人实验，因此它是数据规模化和恢复训练的强基线，不是已验证的真机永久控制方案。",
+  "status": "reviewed",
+  "tags": ["PHC", "motion tracking", "progressive learning", "recovery", "simulation"]
+}

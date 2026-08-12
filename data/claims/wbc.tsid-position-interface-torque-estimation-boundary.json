@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["高减速比关节的位置误差到力矩映射已在目标硬件上辨识。", "腕踝力传感器、编码器与 IMU 仍然可用且已校准。"],
+    "controllers": ["位置接口上的力矩估计与 Task-Space Inverse Dynamics (TSID)"],
+    "environments": ["HRP-2 单腿悬空运动与刚性接触受控实验"],
+    "robots": ["HRP-2；迁移到其他执行器需要重新辨识"],
+    "simulators": []
+  },
+  "claim_id": "wbc.tsid-position-interface-torque-estimation-boundary",
+  "confidence": 0.8,
+  "confidence_rationale": "论文有完整辨识推导与 HRP-2 实验，TSID 公开代码能核对逆动力学层；实验仅覆盖右腿六关节且仍依赖腕踝 F/T、IMU 和编码器，公开仓库不等于完整复现执行器辨识。",
+  "domain": "loco_manipulation_wbc",
+  "evidence": [{
+    "locator": "Chapters 2-5, Figures 3-12 and experimental appendix",
+    "note": "推导位置误差力矩估计、摩擦补偿和 TSID 任务约束，并在 HRP-2 的受限场景验证。",
+    "role": "support",
+    "source_id": "paper.torque-control-high-ratio-gearboxes.hal-01136936",
+    "strength": "primary"
+  }],
+  "question": "TSID 的这项工作是否证明完全不使用任何力传感器，也能在任意高减速比人形机器人上直接实现全身力矩控制？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "该方法不使用关节力矩传感器，而是从位置伺服误差估计关节力矩并送入 TSID；但系统仍使用腕踝六维力传感器、IMU 和编码器，且论文实验只覆盖 HRP-2 右腿六关节的受控动作与接触，不能解读为无传感器、跨平台即插即用的全身力矩控制。",
+  "status": "reviewed",
+  "tags": ["TSID", "torque estimation", "high-ratio gearbox", "inverse dynamics", "HRP-2"]
+}

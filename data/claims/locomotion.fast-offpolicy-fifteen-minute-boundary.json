@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["训练硬件、并行环境数、网络和超参数与论文 locomotion 配方接近。", "机器人动力学、执行器和域随机化已完成平台专属辨识。"],
+    "controllers": ["FastTD3/FastSAC 离策略强化学习 locomotion policy"],
+    "environments": ["G1/T1 速度指令行走；全身跟踪属于另一套更昂贵实验"],
+    "robots": ["Unitree G1 与 Booster T1"],
+    "simulators": ["GPU 并行 MuJoCo/Holosoma 工作流"]
+  },
+  "claim_id": "locomotion.fast-offpolicy-fifteen-minute-boundary",
+  "confidence": 0.84,
+  "confidence_rationale": "论文给出 wall-clock 曲线、跨机器人真机展示和公开实现；标题的十五分钟只对应单张 RTX 4090 上的 locomotion 设置，论文没有给出大规模重复真机成功率。",
+  "domain": "locomotion_terrain",
+  "evidence": [{
+    "locator": "Sections 3-5, Figures 1-7, Tables 1-2 and appendix",
+    "note": "区分单卡十五分钟 locomotion 与多卡 whole-body tracking 的训练预算，并报告 sim-to-real 部署。",
+    "role": "support",
+    "source_id": "paper.fast-humanoid-locomotion.2512.01996",
+    "strength": "primary"
+  }],
+  "question": "“15 分钟训练”是否意味着任何人形全身控制任务都能在一张消费级显卡上十五分钟完成并稳定真机部署？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "论文把大规模并行 off-policy RL 的单卡 locomotion 训练压缩到约十五分钟，并展示 G1/T1 真机部署；该数字不覆盖更昂贵的 whole-body tracking，也不替代机器人辨识、域随机化和重复硬件验收。",
+  "status": "reviewed",
+  "tags": ["FastTD3", "FastSAC", "locomotion", "sim-to-real", "wall-clock training"]
+}

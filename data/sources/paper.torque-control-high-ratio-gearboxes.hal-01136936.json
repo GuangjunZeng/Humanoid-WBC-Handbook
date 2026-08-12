@@ -1,0 +1,23 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://hal.science/hal-01136936",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "e3fdd4b6eecb138dd056487e0ae63dcc1df3b25c4ecde1902ea8f7e8ba55de50",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "full_paper_reviewed": true,
+    "hal_id": "hal-01136936",
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 32
+  },
+  "published_at": null,
+  "publisher": "HAL",
+  "source_id": "paper.torque-control-high-ratio-gearboxes.hal-01136936",
+  "summary": "The paper estimates joint torque from position-control errors and embeds the estimate in task-space inverse dynamics for a limited HRP-2 experiment.",
+  "title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+  "version": "HAL:hal-01136936"
+}

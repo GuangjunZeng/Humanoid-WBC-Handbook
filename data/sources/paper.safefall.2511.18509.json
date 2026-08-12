@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://arxiv.org/abs/2511.18509",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "68e984f51b0646485a8101402ad176d273c34eb6949cfadff461d26830437692",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2511.18509",
+    "code_status": "No official public implementation was found during the review.",
+    "full_paper_reviewed": true,
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 9
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.safefall.2511.18509",
+  "summary": "SafeFall predicts imminent failures and hands control to a protective mitigation policy, with simulation evidence and a bounded real-robot impulse experiment.",
+  "title": "SafeFall: Learning Protective Control for Humanoid Robots",
+  "version": "arXiv:2511.18509"
+}
