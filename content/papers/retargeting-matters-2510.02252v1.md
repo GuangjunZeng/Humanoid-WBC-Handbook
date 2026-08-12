@@ -1,5 +1,7 @@
 # GMR：重定向不是数据清洗尾活，而是跟踪策略的上游动力学约束
 
+[English version](en/retargeting-matters-2510.02252v1.md)
+
 来源：[arXiv:2510.02252v1](https://arxiv.org/abs/2510.02252v1) · [版本固定的官方代码](https://github.com/YanjieZe/GMR/tree/bb1bbe40774794fceb2a7c579a3464a28e68c844)
 
 解读范围：完整 9 页论文、实验与参考文献，以及官方仓库中 `GeneralMotionRetargeting` 与 LAFAN1→G1 配置。本文只保存原创分析、定位信息和链接。

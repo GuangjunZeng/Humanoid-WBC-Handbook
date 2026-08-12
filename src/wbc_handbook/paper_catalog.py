@@ -89,6 +89,8 @@ def validate_catalog(catalog: Mapping, registry: Optional[Mapping] = None) -> Li
             deep_ids.add(paper_id)
             if not paper.get("brief_path"):
                 errors.append(f"{paper_id}: deep_read entry needs brief_path")
+            if not paper.get("brief_path_en"):
+                errors.append(f"{paper_id}: deep_read entry needs brief_path_en")
 
     for domain, config in domains.items():
         missing = set(config.get("required_roles", [])) - roles_by_domain.get(domain, set())
@@ -98,13 +100,26 @@ def validate_catalog(catalog: Mapping, registry: Optional[Mapping] = None) -> Li
             errors.append(f"{domain}: discovery_query and keywords are required")
 
     if registry is not None:
-        registry_ids = {paper.get("paper_id") for paper in registry.get("papers", [])}
+        registry_by_id = {
+            paper.get("paper_id"): paper for paper in registry.get("papers", [])
+        }
+        registry_ids = set(registry_by_id)
         if deep_ids != registry_ids:
             errors.append(
                 "deep_read catalog entries must exactly match registry papers; "
                 f"catalog_only={sorted(deep_ids - registry_ids)}, "
                 f"registry_only={sorted(registry_ids - deep_ids)}"
             )
+        catalog_by_id = {
+            paper.get("paper_id"): paper for paper in papers
+            if paper.get("analysis_status") == "deep_read"
+        }
+        for paper_id in sorted(deep_ids & registry_ids):
+            for field in ("brief_path", "brief_path_en"):
+                if catalog_by_id[paper_id].get(field) != registry_by_id[paper_id].get(field):
+                    errors.append(
+                        f"{paper_id}: catalog and registry disagree on {field}"
+                    )
     return errors
 
 

@@ -13,7 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from wbc_handbook.paper_catalog import validate_catalog  # noqa: E402
-from wbc_handbook.paper_quality import evaluate_registry  # noqa: E402
+from wbc_handbook.paper_quality import (  # noqa: E402
+    evaluate_registry,
+    evaluate_registry_english,
+)
 
 
 CATALOG = ROOT / "content" / "papers" / "catalog.json"
@@ -60,8 +63,14 @@ def main() -> int:
     for result in evaluate_registry(ROOT, catalog, registry):
         for error in result.errors:
             errors.append(f"{result.slug}: {error}")
+    for result in evaluate_registry_english(ROOT, catalog, registry):
+        for error in result.errors:
+            errors.append(f"{result.slug} [en]: {error}")
 
     domain_root = ROOT / "content" / "papers" / "domains"
+    paper_readme = (ROOT / "content" / "papers" / "README.md").read_text(
+        encoding="utf-8"
+    )
     for domain, filename in DOMAINS.items():
         path = domain_root / filename
         if not path.is_file():
@@ -73,6 +82,18 @@ def main() -> int:
         for paper in catalog_papers:
             if domain in paper.get("topics", []) and paper.get("title") not in text:
                 errors.append(f"domain index omits catalog paper {paper.get('paper_id')}: {filename}")
+        selected = [
+            paper for paper in catalog_papers if domain in paper.get("topics", [])
+        ]
+        expected_readme_row = (
+            f"| [{catalog['domains'][domain]['title_zh']}](domains/{filename}) | "
+            f"{len(selected)} | "
+            f"{sum(paper.get('analysis_status') == 'deep_read' for paper in selected)} | "
+            f"{sum(paper.get('analysis_status') == 'queued' for paper in selected)} | "
+            f"{sum(paper.get('code', {}).get('status') == 'verified_official' for paper in selected)} |"
+        )
+        if expected_readme_row not in paper_readme:
+            errors.append(f"paper README has stale coverage row: {domain}")
 
     source_records = [load_json(path) for path in sorted(SOURCES.glob("*.json"))]
     paper_sources = [source for source in source_records if source.get("kind") == "paper"]

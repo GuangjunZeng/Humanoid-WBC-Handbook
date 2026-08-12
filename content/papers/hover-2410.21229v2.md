@@ -1,5 +1,7 @@
 # HOVER：把多种全身控制接口蒸馏进一个可切换策略
 
+[English version](en/hover-2410.21229v2.md)
+
 来源：[arXiv:2410.21229v2](https://arxiv.org/abs/2410.21229v2) · [版本固定的官方代码](https://github.com/NVlabs/HOVER/tree/8088f6cfb42a8f307dc614735197796a86ce8490)
 
 解读范围：完整 8 页论文；本文只保存原创分析、定位信息和链接，不保存论文全文或代码。

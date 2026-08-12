@@ -30,7 +30,7 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 
 `--topic` 可重复使用；省略时才扫描全部七个板块。当用户只点名一个板块时，命令也必须给出对应 `--topic`，不应用全库扫描代替。
 
-发现命令只查询 arXiv 主记录，自动去除已知版本，根据 topic 关键词排序，并写入忽略的 `var/`。输出固定为 `mode=manual_on_demand` 和 `auto_accepted=false`：发现结果不能仅凭关键词自动进入正式目录。
+发现命令只查询 arXiv 主记录，自动去除已知版本，根据 topic 关键词排序，并写入忽略的 `var/`。输出固定为 `mode=manual_on_demand` 和 `auto_accepted=false`：发现结果不能仅凭关键词自动进入正式目录。用户指定的聚合仓库也可作为候选发现源，但不能覆盖下面的主来源核验；聚合仓库的文字、表格与图片不复制到本项目。
 
 执行更新的 agent 随后自主完成有限候选的主来源核验：
 
@@ -38,6 +38,7 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 - 使用作者项目页或作者/实验室 GitHub 确认官方代码、许可证和开源范围；
 - 查看引用谱系与后续方法对它的定位，判断是否属于经典锚点；
 - 只收录与 Humanoid WBC 控制链有明确关系的工作，不因标题含“humanoid”就纳入。
+- 若聚合清单中的编号与 arXiv 标题、作者项目页或官方仓库不一致，拒绝该编号并写入 `content/papers/discovery-audit.json`；不得用“看起来像同一工作”放宽匹配。
 
 ## 阶段 C：更新目录
 
@@ -50,7 +51,7 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 
 ## 阶段 D：升级为深度解读
 
-根据板块缺口和用户范围，选择有限数量的高优先级论文。对每篇执行 [`paper-interpretation.md`](paper-interpretation.md)：完整 PDF、官方代码映射、3–5 张关键图、中文为主的 3000+ 汉字解读、最强实验、作者/独立局限与安全边界。
+根据板块缺口和用户范围，选择有限数量的高优先级论文。对每篇执行 [`paper-interpretation.md`](paper-interpretation.md)：完整 PDF、官方代码映射、3–5 张关键图、中文为主的 3000+ 汉字解读、最强实验、作者/独立局限与安全边界，并同步完成内容等价、非摘要式的英文伴随页。中文与英文页复用同一锁定 PDF 图证，路径、量化结果、代码 commit 和安全边界必须一致。
 
 只有以下检查全部通过才能更新 `registry.json`、深度 source 和 claim：
 
@@ -65,3 +66,16 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 ## 更新完成的报告
 
 交付时报告：新发现数、因重复/非官方代码/与 WBC 无关而排除的数量、每个 topic 新增条目、新增深度解读、仍存在的覆盖缺口和所有质量检查结果。一次更新结束后不保留后台任务。
+
+## 高质量开源项目的同轮更新
+
+用户要求补充高 Star 项目时，使用独立项目目录和证据链，不把仓库 stars 写进论文可信度：
+
+```bash
+PYTHONPATH=src python3 -m wbc_handbook projects-status
+PYTHONPATH=src python3 -m wbc_handbook projects-discover \
+  --query "humanoid whole-body control" \
+  --out var/paper-update/project-candidates.json
+```
+
+候选始终 `auto_accepted=false`。默认 80 stars，60–79 只能在官方归属、现有 topic 缺口与论文关系都可核验时书面例外，低于 60 拒收。没有对应论文的高质量仓库仍可建立独立项目页，但必须固定 40 位 commit、提供中英文完整解释、至少两个源码定位、最小复现路径和硬件安全边界。完整标准见 [`project-interpretation.md`](project-interpretation.md)。

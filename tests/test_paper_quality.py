@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from wbc_handbook.paper_quality import evaluate_brief
+from wbc_handbook.paper_quality import evaluate_brief, evaluate_english_brief
 
 
 class PaperQualityTests(unittest.TestCase):
@@ -29,6 +29,15 @@ class PaperQualityTests(unittest.TestCase):
             text = "## 关键图解\n\n![a](assets/paper/a.jpg)"
             result = evaluate_brief("paper", text, root, "not_public", minimum_cjk=0)
         self.assertTrue(any("manifest figures not embedded" in error for error in result.errors))
+
+    def test_thin_english_companion_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = evaluate_english_brief(
+                "thin", "# Thin\n\n[中文版](../thin.md)", Path(tmp), "unknown"
+            )
+        self.assertFalse(result.ok)
+        self.assertIn("English depth below 900 words", result.errors)
+        self.assertIn("fewer than 3 embedded key figures in English page", result.errors)
 
 
 if __name__ == "__main__":

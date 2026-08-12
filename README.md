@@ -8,7 +8,7 @@
 
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and a quality-gated deep-read corpus. The current snapshot contains 46 unique papers (14 complete Chinese deep reads and 32 queued classics/open-source works). Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (14 complete bilingual deep reads and 62 primary-source-verified queued works) plus 43 selected projects (11 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 
@@ -113,13 +113,22 @@ Paper discovery never runs on a schedule and never auto-accepts candidates. When
 user asks for an update, follow the [on-demand paper update runbook](docs/on-demand-paper-update.md),
 which uses only the single-paper analysis part of `paper-daily` and has no push/digest workflow.
 
+Inspect the separate high-quality open-source project inventory or run an official
+GitHub discovery pass. Stars are only a discovery floor, never technical confidence:
+
+```bash
+PYTHONPATH=src python3 -m wbc_handbook projects-status
+PYTHONPATH=src python3 -m wbc_handbook projects-discover \
+  --query "humanoid whole-body control" --out var/project-candidates.json
+```
+
 ## Repository map
 
 | Path | Purpose |
 |---|---|
 | `src/wbc_handbook/` | Original models, validation, import, paper coverage, on-demand social collection, index, answer, and CLI code |
 | `config/social-queries.json` | Open WBC engineering-problem scopes shared by X, Zhihu, and Xiaohongshu; optional domain hints are not collection boundaries |
-| `content/papers/` | Coverage catalog, quality-gated deep-read registry, generated topic indexes, Chinese interpretations, and key-figure manifests |
+| `content/papers/` | Paper and project catalogs, generated seven-topic indexes, quality-gated deep reads, bilingual project reviews, and key-figure manifests |
 | `content/problems/` | Generated Chinese engineering-problem pages plus matching English pages under `content/problems/en/` |
 | `data/` | 286 canonical source records, a minimal all-candidate social/Issue index, and 14 bounded, human-reviewed Engineering Claims |
 | `data/locales/en/problems/` | Reviewed, versioned English problem translations with stale-source fingerprints |
@@ -131,7 +140,7 @@ which uses only the single-paper analysis part of `paper-daily` and has no push/
 
 Start with the [paper corpus](content/papers/README.md), [on-demand paper update workflow](docs/on-demand-paper-update.md), [paper interpretation standard](docs/paper-interpretation.md), [architecture](docs/architecture.md), [data contract](docs/data-contract.md), [source gate](docs/source-feasibility/README.md), [safety policy](docs/safety.md), [Git commit conventions](docs/git-conventions.md), and [clean-room study](docs/clean-room-study.md).
 
-Every deep-read registry paper has a version-pinned paper record, a commit-pinned official implementation or explicit public-code status, at least one bounded claim, a full-paper interpretation, and three source-traceable key figures. The larger catalog records classic anchors, verified official-code papers, hardware evidence, and current topic gaps without pretending every queued item has already been deeply interpreted.
+Every deep-read registry paper has a version-pinned paper record, a commit-pinned official implementation or explicit public-code status, at least one bounded claim, complete Chinese and English interpretations, and three source-traceable key figures shared across both languages. The larger catalog records classic anchors, verified official-code papers, hardware evidence, and current topic gaps without pretending every queued item has already been deeply interpreted.
 
 ## Scope boundary
 

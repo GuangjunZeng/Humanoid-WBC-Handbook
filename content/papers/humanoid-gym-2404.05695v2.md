@@ -1,5 +1,7 @@
 # Humanoid-Gym：把训练、跨仿真校准与实机部署做成最小开源闭环
 
+[English version](en/humanoid-gym-2404.05695v2.md)
+
 来源：[arXiv:2404.05695v2](https://arxiv.org/abs/2404.05695v2) · [固定提交的官方代码](https://github.com/roboterax/humanoid-gym/tree/ae46e201c85a2b17e7f2cea59a441dae7ea88a8f)
 
 解读范围：完整 6 页正文和附录。

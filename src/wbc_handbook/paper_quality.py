@@ -11,6 +11,7 @@ from typing import Iterable, List, Mapping
 
 CJK = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
 LATIN = re.compile(r"[A-Za-z]")
+ENGLISH_WORD = re.compile(r"\b[A-Za-z][A-Za-z0-9'’.-]*\b")
 BILINGUAL = re.compile(
     r"(?:[\u3400-\u4dbf\u4e00-\u9fff]{2,}\s*[\(（][A-Za-z][^\)）\n]{1,80}[\)）])"
     r"|(?:[A-Za-z][A-Za-z0-9 -]{1,50}\s*[\(（][\u3400-\u4dbf\u4e00-\u9fff]{2,}[^\)）\n]{0,30}[\)）])"
@@ -53,6 +54,32 @@ class BriefQuality:
             "chinese_ratio": round(self.chinese_ratio, 3),
             "paragraphs": self.paragraphs,
             "bilingual_terms": self.bilingual_terms,
+            "images": self.images,
+            "locators": self.locators,
+            "errors": self.errors,
+        }
+
+
+@dataclass
+class EnglishBriefQuality:
+    slug: str
+    words: int
+    paragraphs: int
+    images: int
+    locators: int
+    errors: List[str] = field(default_factory=list)
+
+    @property
+    def ok(self) -> bool:
+        return not self.errors
+
+    def to_dict(self) -> dict:
+        return {
+            "slug": self.slug,
+            "language": "en",
+            "ok": self.ok,
+            "words": self.words,
+            "paragraphs": self.paragraphs,
             "images": self.images,
             "locators": self.locators,
             "errors": self.errors,
@@ -137,6 +164,83 @@ def evaluate_brief(
     return result
 
 
+def evaluate_english_brief(
+    slug: str,
+    text: str,
+    asset_root: Path,
+    code_status: str,
+    minimum_words: int = 900,
+) -> EnglishBriefQuality:
+    """Check a complete English companion without weakening the evidence gate."""
+
+    image_paths = IMAGE.findall(text)
+    result = EnglishBriefQuality(
+        slug=slug,
+        words=len(ENGLISH_WORD.findall(text)),
+        paragraphs=_paragraphs(text),
+        images=len(image_paths),
+        locators=len(LOCATOR.findall(text)),
+    )
+    if result.words < minimum_words:
+        result.errors.append(f"English depth below {minimum_words} words")
+    if result.paragraphs < 15:
+        result.errors.append("fewer than 15 English prose paragraphs")
+    if result.images < 3:
+        result.errors.append("fewer than 3 embedded key figures in English page")
+    if result.locators < 3:
+        result.errors.append("fewer than 3 Figure/Table/Equation locators in English page")
+    required_headings = (
+        "Engineering problem",
+        "Core insight",
+        "Method",
+        "How to read the key figures",
+        "Strongest experiment",
+        "Limitations and safety boundary",
+        "Bounded engineering takeaway",
+        "Reproduction and acceptance checklist",
+    )
+    headings = re.findall(r"^##\s+(.+)$", text, flags=re.M)
+    lower_text = text.lower()
+    for required in required_headings:
+        if not any(heading.startswith(required) for heading in headings):
+            result.errors.append(f"missing English required section: {required}")
+    if f"[中文版](../{slug}.md)" not in text:
+        result.errors.append("missing exact Chinese companion link")
+    if "author-stated" not in lower_text and "authors explicitly" not in lower_text:
+        result.errors.append("author-stated limitations are not identified")
+    if "independent" not in lower_text:
+        result.errors.append("independent engineering limitations are not identified")
+
+    manifest_path = asset_root / slug / "manifest.json"
+    if not manifest_path.is_file():
+        result.errors.append("missing figure manifest")
+    else:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        required_assets = {entry.get("asset") for entry in manifest.get("figures", [])}
+        referenced = {Path(path).name for path in image_paths}
+        missing_refs = required_assets - referenced
+        if missing_refs:
+            result.errors.append(
+                f"manifest figures not embedded in English page: {sorted(missing_refs)}"
+            )
+        for asset in required_assets:
+            if asset and not (asset_root / slug / asset).is_file():
+                result.errors.append(f"missing figure asset: {asset}")
+
+    mapping_start = max(text.find("## Paper-to-code mapping"), text.find("## Paper-to-implementation status"))
+    mapping_text = text[mapping_start:] if mapping_start >= 0 else text
+    if code_status == "verified_official" and len(re.findall(r"`[^`\n]+`", mapping_text)) < 2:
+        result.errors.append("official-code English page needs at least two code symbols")
+    if code_status in {"not_public", "unknown", "announced"} and not re.search(
+        r"no (?:unique |uniquely )?(?:auditable |verifiable )?official code|"
+        r"no uniquely verifiable official code|Coming Soon|no public code",
+        mapping_text,
+        flags=re.I,
+    ):
+        result.errors.append("non-verified code status must be explicit in English page")
+    return result
+
+
 def evaluate_registry(root: Path, catalog: Mapping, registry: Mapping) -> List[BriefQuality]:
     by_id = {paper["paper_id"]: paper for paper in catalog.get("papers", [])}
     results = []
@@ -144,6 +248,44 @@ def evaluate_registry(root: Path, catalog: Mapping, registry: Mapping) -> List[B
         path = root / paper["brief_path"]
         catalog_entry = by_id[paper["paper_id"]]
         results.append(evaluate_brief(
+            paper["slug"],
+            path.read_text(encoding="utf-8"),
+            root / "content" / "papers" / "assets",
+            catalog_entry.get("code", {}).get("status", "unknown"),
+        ))
+    return results
+
+
+def evaluate_registry_english(
+    root: Path, catalog: Mapping, registry: Mapping
+) -> List[EnglishBriefQuality]:
+    by_id = {paper["paper_id"]: paper for paper in catalog.get("papers", [])}
+    results = []
+    for paper in registry.get("papers", []):
+        path_value = paper.get("brief_path_en")
+        if not path_value:
+            results.append(EnglishBriefQuality(
+                slug=paper.get("slug", "unknown"),
+                words=0,
+                paragraphs=0,
+                images=0,
+                locators=0,
+                errors=["registry entry is missing brief_path_en"],
+            ))
+            continue
+        path = root / path_value
+        if not path.is_file():
+            results.append(EnglishBriefQuality(
+                slug=paper.get("slug", "unknown"),
+                words=0,
+                paragraphs=0,
+                images=0,
+                locators=0,
+                errors=[f"missing English brief: {path_value}"],
+            ))
+            continue
+        catalog_entry = by_id[paper["paper_id"]]
+        results.append(evaluate_english_brief(
             paper["slug"],
             path.read_text(encoding="utf-8"),
             root / "content" / "papers" / "assets",

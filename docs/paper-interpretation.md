@@ -22,4 +22,11 @@
 - 量化陈述附带 Figure/Table/Equation 定位；不确定信息保持未知，不从 README 或视频补写论文未报告的分母。
 - 运行 `python3 scripts/check_paper_quality.py`，只有全部质量门通过才能把 `analysis_status` 改为 `deep_read`。
 
+## 双语伴随页
+
+- 每个 `deep_read` 必须同时提供 `content/papers/<slug>.md` 中文页与 `content/papers/en/<slug>.md` 英文页；既有中文 URL 不迁移。
+- 中文页以中文为主、术语中英结合；英文页不是摘要，必须完整覆盖工程问题、方法链、决定性公式/接口、关键图、最强实验、论文—代码映射或未开源边界、作者明确局限、独立工程判断、硬件安全和复现清单。
+- 两种语言复用同一组从锁定 PDF 提取的 3–5 张关键图与 manifest，量化结论、分母、版本、代码 commit、许可证和证据边界必须一致。
+- 两页顶部互相链接。`catalog.json` 与 `registry.json` 中的 `brief_path` / `brief_path_en` 必须完全一致；任一语言缺失或质量不足都会使 corpus 检查失败。
+
 完整解读只是证据输入，不会自动成为已评审 `EngineeringClaim`。

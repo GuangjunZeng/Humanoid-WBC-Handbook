@@ -1,5 +1,7 @@
 # TextOp：把可随时修改的文字流变成连续人形运动
 
+[English version](en/textop-2602.07439v1.md)
+
 来源：[arXiv:2602.07439v1](https://arxiv.org/abs/2602.07439v1) · [固定提交官方代码](https://github.com/TeleHuman/TextOp/tree/ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22)
 
 解读范围：完整 20 页正文与附录。

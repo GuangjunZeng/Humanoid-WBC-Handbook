@@ -11,9 +11,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "content" / "papers" / "catalog.json"
+PROJECT_CATALOG = ROOT / "content" / "papers" / "project-catalog.json"
 DOMAIN_ROOT = ROOT / "content" / "papers" / "domains"
 BEGIN = "<!-- BEGIN GENERATED PAPER CATALOG -->"
 END = "<!-- END GENERATED PAPER CATALOG -->"
+PROJECT_BEGIN = "<!-- BEGIN GENERATED PROJECT CATALOG -->"
+PROJECT_END = "<!-- END GENERATED PROJECT CATALOG -->"
 
 DOMAIN_FILES = {
     "training_data_retargeting": "training-data-retargeting.md",
@@ -43,6 +46,12 @@ ROLE_ZH = {
     "sparse_command": "稀疏命令（sparse command）",
     "task_interaction": "任务交互（task interaction）",
     "terrain": "地形（terrain）",
+}
+
+RELATION_ZH = {
+    "project_only": "独立项目（无对应论文）",
+    "official_paper_code": "论文官方实现",
+    "infrastructure": "基础设施",
 }
 
 
@@ -107,28 +116,92 @@ def _generated_section(domain: str, catalog: dict) -> str:
     return "\n".join(lines)
 
 
-def render_page(path: Path, domain: str, catalog: dict) -> str:
-    current = path.read_text(encoding="utf-8").rstrip() + "\n"
-    section = _generated_section(domain, catalog)
-    if BEGIN in current:
-        prefix, remainder = current.split(BEGIN, 1)
-        if END not in remainder:
+def _project_link(project: dict) -> str:
+    name = str(project["name"]).replace("|", "\\|")
+    if project.get("analysis_status") == "deep_review":
+        detail = Path(project["detail_path_zh"])
+        return f"[{name}](../projects/{detail.name})"
+    return f"[{name}]({project['repo_url']})"
+
+
+def _generated_project_section(domain: str, project_catalog: dict) -> str:
+    projects = [
+        project for project in project_catalog.get("projects", [])
+        if domain in project.get("topics", [])
+    ]
+    projects.sort(key=lambda project: (
+        0 if project.get("analysis_status") == "deep_review" else 1,
+        -int(project.get("stars", 0)),
+        project.get("name", "").lower(),
+    ))
+    reviewed = sum(project.get("analysis_status") == "deep_review" for project in projects)
+    project_only = sum(project.get("relation") == "project_only" for project in projects)
+    lines = [
+        PROJECT_BEGIN,
+        "## 高质量开源项目",
+        "",
+        "项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。",
+        "",
+        f"- 当前收录：{len(projects)} 个项目，其中已审代码 {reviewed} 个、无对应论文的独立项目 {project_only} 个。",
+        f"- stars 快照：{project_catalog.get('updated_at', 'unknown')}；后续只在用户要求更新时刷新。",
+        "",
+        "| 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |",
+        "|---|---|---|---:|---|---|",
+    ]
+    for project in projects:
+        status = "已审代码" if project.get("analysis_status") == "deep_review" else "待审代码"
+        relation = RELATION_ZH.get(project.get("relation"), project.get("relation", ""))
+        reason = str(project.get("selection_reason_zh", "")).replace("|", "\\|").replace("\n", " ")
+        license_name = str(project.get("license", "")).replace("|", "\\|")
+        lines.append(
+            f"| {status} | {_project_link(project)} | {relation} | "
+            f"{project.get('stars', '')} | {license_name} | {reason} |"
+        )
+    lines.extend([
+        "",
+        "项目解读规则见 [开源项目独立解读规范](../../../docs/project-interpretation.md)。候选发现不会自动收录，且不在后台定时运行。",
+        PROJECT_END,
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def _replace_or_append(current: str, begin: str, end: str, section: str, path: Path) -> str:
+    if begin in current:
+        prefix, remainder = current.split(begin, 1)
+        if end not in remainder:
             raise ValueError(f"{path}: generated section has no end marker")
-        _, suffix = remainder.split(END, 1)
+        _, suffix = remainder.split(end, 1)
         return prefix.rstrip() + "\n\n" + section + suffix.lstrip("\n")
     return current.rstrip() + "\n\n" + section
+
+
+def render_page(path: Path, domain: str, catalog: dict, project_catalog: dict) -> str:
+    current = path.read_text(encoding="utf-8").rstrip() + "\n"
+    current = _replace_or_append(
+        current, BEGIN, END, _generated_section(domain, catalog), path
+    )
+    return _replace_or_append(
+        current,
+        PROJECT_BEGIN,
+        PROJECT_END,
+        _generated_project_section(domain, project_catalog),
+        path,
+    )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--catalog", type=Path, default=CATALOG)
+    parser.add_argument("--project-catalog", type=Path, default=PROJECT_CATALOG)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     catalog = json.loads(args.catalog.read_text(encoding="utf-8"))
+    project_catalog = json.loads(args.project_catalog.read_text(encoding="utf-8"))
     stale = []
     for domain, filename in DOMAIN_FILES.items():
         path = DOMAIN_ROOT / filename
-        rendered = render_page(path, domain, catalog)
+        rendered = render_page(path, domain, catalog, project_catalog)
         current = path.read_text(encoding="utf-8")
         if current != rendered:
             stale.append(path)

@@ -1,5 +1,7 @@
 # FALCON：用双策略与力矩可行力课程学习受力移动操作
 
+[English version](en/falcon-2505.06776v2.md)
+
 来源：[arXiv:2505.06776v2](https://arxiv.org/abs/2505.06776v2) · [固定提交官方代码](https://github.com/LeCAR-Lab/FALCON/tree/a967a6d8494f57777cf8d266a644ac8e45833301)
 
 解读范围：完整 17 页正文与附录。

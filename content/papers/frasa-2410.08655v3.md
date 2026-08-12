@@ -1,5 +1,7 @@
 # FRASA：用一个端到端策略统一抗扰、倒地恢复与起身
 
+[English version](en/frasa-2410.08655v3.md)
+
 来源：[arXiv:2410.08655v3](https://arxiv.org/abs/2410.08655v3) · [固定提交官方代码](https://github.com/Rhoban/frasa/tree/78457df8fb1533b9bbda60a345c015c87cdf9732)
 
 解读范围：完整 7 页正文与全部实验表格。

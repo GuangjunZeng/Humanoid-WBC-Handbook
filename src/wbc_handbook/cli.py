@@ -20,6 +20,12 @@ from .paper_catalog import (
     validate_catalog,
     write_candidate_run,
 )
+from .project_catalog import (
+    discover_github_projects,
+    project_coverage_report,
+    validate_project_catalog,
+    write_project_candidate_run,
+)
 from .repository import HandbookRepository, RepositoryError
 from .social import (
     MANUAL_REVIEW_PLATFORMS,
@@ -1230,6 +1236,61 @@ def command_papers_discover(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_projects_status(args: argparse.Namespace) -> int:
+    try:
+        paper_catalog = load_json(Path(args.paper_catalog))
+        project_catalog = load_json(Path(args.catalog))
+        errors = validate_project_catalog(
+            project_catalog,
+            paper_catalog.get("domains", {}),
+            root=Path(args.root),
+            paper_ids={paper.get("paper_id") for paper in paper_catalog.get("papers", [])},
+        )
+        report = project_coverage_report(
+            project_catalog, paper_catalog.get("domains", {})
+        )
+        report["ok"] = not errors
+        report["errors"] = errors
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"project status failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps(report, ensure_ascii=False, indent=2, default=dict))
+    return 0 if report["ok"] else 2
+
+
+def command_projects_discover(args: argparse.Namespace) -> int:
+    try:
+        paper_catalog = load_json(Path(args.paper_catalog))
+        project_catalog = load_json(Path(args.catalog))
+        errors = validate_project_catalog(
+            project_catalog,
+            paper_catalog.get("domains", {}),
+            root=Path(args.root),
+            paper_ids={paper.get("paper_id") for paper in paper_catalog.get("papers", [])},
+        )
+        if errors:
+            raise ValueError("; ".join(errors))
+        candidates = discover_github_projects(
+            args.query,
+            project_catalog,
+            min_stars=args.min_stars,
+            max_results_per_query=args.max_results_per_query,
+            token_env=args.token_env,
+        )
+        target = write_project_candidate_run(Path(args.out), candidates)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"project discovery failed: {exc}", file=sys.stderr)
+        return 2
+    print(json.dumps({
+        "mode": "manual_on_demand",
+        "source": "github_official_search_api",
+        "candidates": len(candidates),
+        "output": str(target),
+        "auto_accepted": False,
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="wbc-handbook")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1646,6 +1707,41 @@ def build_parser() -> argparse.ArgumentParser:
     paper_discover.add_argument("--max-per-topic", type=int, default=8)
     paper_discover.add_argument("--out", default="var/paper-update/candidates.json")
     paper_discover.set_defaults(func=command_papers_discover)
+
+    project_status = subparsers.add_parser(
+        "projects-status", help="validate high-star WBC project coverage"
+    )
+    project_status.add_argument(
+        "--catalog", default="content/papers/project-catalog.json"
+    )
+    project_status.add_argument(
+        "--paper-catalog", default="content/papers/catalog.json"
+    )
+    project_status.add_argument("--root", default=".")
+    project_status.set_defaults(func=command_projects_status)
+
+    project_discover = subparsers.add_parser(
+        "projects-discover",
+        help="run a bounded, user-triggered GitHub search for high-star WBC projects",
+    )
+    project_discover.add_argument(
+        "--query", action="append", required=True,
+        help="GitHub repository search terms; repeat for multiple existing topics",
+    )
+    project_discover.add_argument("--min-stars", type=int, default=80)
+    project_discover.add_argument("--max-results-per-query", type=int, default=30)
+    project_discover.add_argument("--token-env", default="GITHUB_TOKEN")
+    project_discover.add_argument(
+        "--catalog", default="content/papers/project-catalog.json"
+    )
+    project_discover.add_argument(
+        "--paper-catalog", default="content/papers/catalog.json"
+    )
+    project_discover.add_argument("--root", default=".")
+    project_discover.add_argument(
+        "--out", default="var/paper-update/project-candidates.json"
+    )
+    project_discover.set_defaults(func=command_projects_discover)
     return parser
 
 

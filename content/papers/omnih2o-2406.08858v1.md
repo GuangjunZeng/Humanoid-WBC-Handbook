@@ -1,5 +1,7 @@
 # OmniH2O：用历史与教师蒸馏把稀疏人体目标变成可部署的全身控制
 
+[English version](en/omnih2o-2406.08858v1.md)
+
 来源：[arXiv:2406.08858v1](https://arxiv.org/abs/2406.08858v1) · [版本固定的官方代码](https://github.com/LeCAR-Lab/human2humanoid/tree/750f1fa052641f0fde43669d50cb4e407dabe6c8)
 
 解读范围：完整 25 页正文与附录 A-M；本文只保存原创分析、定位信息和链接，不保存论文全文或代码。
