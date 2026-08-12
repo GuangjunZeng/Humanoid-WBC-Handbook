@@ -42,7 +42,7 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：13 个项目，其中已审代码 3 个、无对应论文的独立项目 1 个。
+- 当前收录：13 个项目，其中已审代码 4 个、无对应论文的独立项目 1 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
@@ -50,6 +50,7 @@
 | 已审代码 | [PHC](../projects/phc.md) | 论文官方实现 | 1275 | NOASSERTION | 大规模动作跟踪、容量扩展与失败恢复的经典物理人形控制实现。 |
 | 已审代码 | [beyondAMP](../projects/beyondamp.md) | 独立项目（无对应论文） | 281 | NOASSERTION | 面向任意 Isaac Lab 本体接入 AMP 的模块化实现，适合隔离运动先验与任务奖励的贡献。 |
 | 已审代码 | [KungFuAthleteBot](../projects/kungfu-athlete-bot.md) | 论文官方实现 | 259 | MIT | 公开功夫动作数据、GMR 重定向、强化学习训练、跌倒恢复与 G1 部署链，适合项目级复核。 |
+| 已审代码 | [HumanUP](../projects/humanup.md) | 论文官方实现 | 231 | Apache-2.0 | 真实人形起身策略的官方代码，突出起身初始化、策略切换和实机安全边界。 |
 | 待审代码 | [MuJoCo](https://github.com/google-deepmind/mujoco) | 基础设施 | 14525 | Apache-2.0 | WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。 |
 | 待审代码 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | 基础设施 | 7883 | BSD-3-Clause | 多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。 |
 | 待审代码 | [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | 基础设施 | 2879 | NOASSERTION | 腿式与人形项目广泛使用的强化学习训练库，策略、存储和对称性等实现会影响复现结果。 |
@@ -58,7 +59,6 @@
 | 待审代码 | [InstinctLab](https://github.com/project-instinct/InstinctLab) | 基础设施 | 766 | NOASSERTION | Project Instinct 的人形训练任务底座，覆盖感知跑酷、动作编辑、板载部署与恢复相关能力。 |
 | 待审代码 | [HoST](https://github.com/InternRobotics/HoST) | 论文官方实现 | 616 | MIT | 多初始姿态起身策略的官方实现，包含姿态课程、训练配置和实机结果。 |
 | 待审代码 | [PULSE](https://github.com/ZhengyiLuo/PULSE) | 论文官方实现 | 365 | NOASSERTION | 学习可复用人形潜在动作表示，使高层任务组合与低层物理控制分离。 |
-| 待审代码 | [HumanUP](https://github.com/RunpeiDong/HumanUP) | 论文官方实现 | 231 | Apache-2.0 | 真实人形起身策略的官方代码，突出起身初始化、策略切换和实机安全边界。 |
 | 待审代码 | [Humanoid Goalkeeper](https://github.com/InternRobotics/Humanoid-Goalkeeper) | 论文官方实现 | 187 | NOASSERTION | 守门任务把位置条件、扑救动作、倒地和恢复纳入同一高动态技能链。 |
 
 项目解读规则见 [开源项目独立解读规范](../../../docs/project-interpretation.md)。候选发现不会自动收录，且不在后台定时运行。

@@ -37,19 +37,19 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：10 个项目，其中已审代码 2 个、无对应论文的独立项目 0 个。
+- 当前收录：10 个项目，其中已审代码 3 个、无对应论文的独立项目 0 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
 | 已审代码 | [PBHC / KungfuBot](../projects/pbhc.md) | 论文官方实现 | 1052 | CC-BY-NC-4.0 | 高动态功夫全身技能的官方训练与部署实现，是体育类 WBC 的高星代表。 |
+| 已审代码 | [LATENT](../projects/latent.md) | 论文官方实现 | 678 | NOASSERTION | 从不完美人体动作学习人形网球技能，覆盖运动数据修正、击球时序和真机体育交互。 |
 | 已审代码 | [KungFuAthleteBot](../projects/kungfu-athlete-bot.md) | 论文官方实现 | 259 | MIT | 公开功夫动作数据、GMR 重定向、强化学习训练、跌倒恢复与 G1 部署链，适合项目级复核。 |
 | 待审代码 | [MuJoCo](https://github.com/google-deepmind/mujoco) | 基础设施 | 14525 | Apache-2.0 | WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。 |
 | 待审代码 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | 基础设施 | 7883 | BSD-3-Clause | 多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。 |
 | 待审代码 | [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | 基础设施 | 2879 | NOASSERTION | 腿式与人形项目广泛使用的强化学习训练库，策略、存储和对称性等实现会影响复现结果。 |
 | 待审代码 | [ASAP](https://github.com/LeCAR-Lab/ASAP) | 论文官方实现 | 2088 | MIT | 把实机状态转移残差带回仿真训练，是高动态技能 Sim2Real 对齐的高星官方实现。 |
 | 待审代码 | [InstinctLab](https://github.com/project-instinct/InstinctLab) | 基础设施 | 766 | NOASSERTION | Project Instinct 的人形训练任务底座，覆盖感知跑酷、动作编辑、板载部署与恢复相关能力。 |
-| 待审代码 | [LATENT](https://github.com/GalaxyGeneralRobotics/LATENT) | 论文官方实现 | 678 | NOASSERTION | 从不完美人体动作学习人形网球技能，覆盖运动数据修正、击球时序和真机体育交互。 |
 | 待审代码 | [HUSKY Humanoid Skateboarding](https://github.com/TeleHuman/humanoid_skateboarding) | 论文官方实现 | 271 | NOASSERTION | 滑板上的动态平衡与推进控制要求持续接触和高动态全身协调，区别于普通平地行走。 |
 | 待审代码 | [Humanoid Goalkeeper](https://github.com/InternRobotics/Humanoid-Goalkeeper) | 论文官方实现 | 187 | NOASSERTION | 守门任务把位置条件、扑救动作、倒地和恢复纳入同一高动态技能链。 |
 
