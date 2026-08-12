@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2511.18509v1",
   "source_pdf": "https://arxiv.org/pdf/2511.18509",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "68e984f51b0646485a8101402ad176d273c34eb6949cfadff461d26830437692",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-framework.jpg",
       "source_url": "https://arxiv.org/pdf/2511.18509",
-      "pdf_page": 3,
-      "source_locator": "Figure 2 / Table I",
+      "source_locator": "Figure 2",
       "caption_zh": "从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。",
-      "sha256": "fd51b3dc48663d20f810343fa6bb9e8eacd4cb750b59bf242f1b7d8e9c323916"
+      "selection_reason_zh": "该摘录直接对应详情页对“从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.385
+          ],
+          "caption_anchor": "Fig. 2. Overview of SafeFall",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.317332,
+            0.271548,
+            0.326329
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.317332,
+            0.91176,
+            0.371613
+          ],
+          "page_text_sha256": "6187e020e4b73e7bc9b8595e56fb36640fe733171d180d95f98ec0ed6357c464"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 907,
+      "sha256": "9bfd7fb6b56243a1ade57c6b76155e502549cbb17beeb464b1a625f82ceea814",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
+      },
+      "review_fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
     },
     {
       "asset": "table-2-3-predictor.jpg",
       "source_url": "https://arxiv.org/pdf/2511.18509",
-      "pdf_page": 6,
       "source_locator": "Table II-III",
-      "caption_zh": "随机化范围和预测器在不同提前量下的漏报、误报与准确率。",
-      "sha256": "3985b9293a28c3d62406bbcfd37db52d319ee3ea9d695c40dd33314a1496bb45"
+      "caption_zh": "训练随机化范围，以及预测器在不同提前量下的误报率与提前时间。",
+      "selection_reason_zh": "该摘录直接对应详情页对“随机化范围和预测器在不同提前量下的漏报、误报与准确率。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“随机化范围和预测器在不同提前量下的漏报、误报与准确率。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.53,
+            0.49,
+            0.7
+          ],
+          "caption_anchor": "TABLE II",
+          "caption_anchor_bbox": [
+            0.261245,
+            0.539363,
+            0.315226,
+            0.548359
+          ],
+          "caption_block_bbox": [
+            0.091167,
+            0.539363,
+            0.485313,
+            0.578549
+          ],
+          "page_text_sha256": "ad1bcab49c619c51524f71478a6b44dc033f9561abef1750395903a890ef52db"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.25,
+            0.49,
+            0.42
+          ],
+          "caption_anchor": "TABLE III",
+          "caption_anchor_bbox": [
+            0.259077,
+            0.265373,
+            0.317394,
+            0.274369
+          ],
+          "caption_block_bbox": [
+            0.152342,
+            0.265373,
+            0.424144,
+            0.289464
+          ],
+          "page_text_sha256": "acf0e0f004e44ed9eb198df94a6ae20aa47b0b764e6b1ce81e903ad7b5371f4b"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1800,
+      "sha256": "da86f86911a6b97706a0732373f8f018824cef787787d0a6ddebee3d446a18f4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
+      },
+      "review_fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
     },
     {
       "asset": "table-4-5-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2511.18509",
-      "pdf_page": 8,
       "source_locator": "Table IV-V / Figure 6",
-      "caption_zh": "仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。",
-      "sha256": "1dcd8a5ff9063590f7b530fa59074a663428414f4203648aefc5144028b2be36"
+      "caption_zh": "仿真量化消融、G1 真机保护动作序列和未见名义策略下的峰值力对照。",
+      "selection_reason_zh": "该摘录直接对应详情页对“仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.2
+          ],
+          "caption_anchor": "TABLE IV",
+          "caption_anchor_bbox": [
+            0.470477,
+            0.068081,
+            0.529524,
+            0.077078
+          ],
+          "caption_block_bbox": [
+            0.149776,
+            0.068081,
+            0.850241,
+            0.092172
+          ],
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.18,
+            0.49,
+            0.385
+          ],
+          "caption_anchor": "Fig. 6. SafeFall mitigating damages",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.341447,
+            0.317102,
+            0.350444
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.341447,
+            0.488238,
+            0.373085
+          ],
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.67,
+            0.49,
+            0.82
+          ],
+          "caption_anchor": "TABLE V",
+          "caption_anchor_bbox": [
+            0.260881,
+            0.710979,
+            0.315591,
+            0.719975
+          ],
+          "caption_block_bbox": [
+            0.122838,
+            0.710979,
+            0.453312,
+            0.734635
+          ],
+          "page_text_sha256": "f4b7944217e39348ec3f4e106df55d77d6d3b8399fabf15a20b4f66f3543aabc"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2300,
+      "sha256": "a452710ebffa4f574754a5dd7acc8c5dd538b2e17b146611c719aaa9b2eed6f0",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
+      },
+      "review_fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
     }
   ]
 }

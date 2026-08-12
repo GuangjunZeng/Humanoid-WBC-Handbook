@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2011.01387v2",
   "source_pdf": "https://arxiv.org/pdf/2011.01387",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "8a463e21e5e59bdbc8a3a8bf1c078e4daebcec4f07c803fe846924416b28bddb",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-1-2-gaits.jpg",
       "source_url": "https://arxiv.org/pdf/2011.01387",
-      "pdf_page": 2,
       "source_locator": "Figure 1-2",
       "caption_zh": "Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。",
-      "sha256": "976efee05ae482dcc1b99d7ba33c95979cb19640aaa2d93ae7c44d9ba8e6418f"
+      "selection_reason_zh": "该摘录直接对应详情页对“Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.5,
+            0.27,
+            0.92,
+            0.65
+          ],
+          "caption_anchor": "Fig. 1. In this work",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.559483,
+            0.627435,
+            0.568479
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.559483,
+            0.91165,
+            0.613763
+          ],
+          "page_text_sha256": "b93796d359f1c36a9a0cb6db2c923e7d57be88bf3c10d099bf5bfa6dac4926ed"
+        },
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.31
+          ],
+          "caption_anchor": "Fig. 2. A series of images",
+          "caption_anchor_bbox": [
+            0.088353,
+            0.27484,
+            0.236594,
+            0.283837
+          ],
+          "caption_block_bbox": [
+            0.088353,
+            0.27484,
+            0.911643,
+            0.306479
+          ],
+          "page_text_sha256": "0ad8ddc11a1cb192fa5454225315117084bc15ae636864fd46ed6416c48c243a"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2624,
+      "sha256": "93a940b4a65eac4cb9fec9aa968911605b8e7134853b1b4296e5a30f3db33b02",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
+      },
+      "review_fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
     },
     {
       "asset": "figure-3-4-phase.jpg",
       "source_url": "https://arxiv.org/pdf/2011.01387",
-      "pdf_page": 4,
       "source_locator": "Figure 3-4",
       "caption_zh": "用周期相位、接触力与足端速度系数组合不同双足步态。",
-      "sha256": "d9b16daa301141a794c4df601cd9fe16bd8eece484e21717e56ee4ab1e062867"
+      "selection_reason_zh": "该摘录直接对应详情页对“用周期相位、接触力与足端速度系数组合不同双足步态。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“用周期相位、接触力与足端速度系数组合不同双足步态。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.32
+          ],
+          "caption_anchor": "Fig. 3. The circular intervals",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.276519,
+            0.666062,
+            0.285516
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.276519,
+            0.91165,
+            0.309301
+          ],
+          "page_text_sha256": "e036d6dc85e07b8a2503bf741fa0f17c17e38b614a6404b580acf108e9041817"
+        },
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.35,
+            0.92,
+            0.575
+          ],
+          "caption_anchor": "Fig. 4. Plot of the expected value",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.485901,
+            0.688852,
+            0.494897
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.485901,
+            0.91165,
+            0.562824
+          ],
+          "page_text_sha256": "0cc253f8d6ce30dc6f8a1c27016b0be3ed669b081065ef88fa9c6985f9d737e8"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2575,
+      "sha256": "49a7574cae04ab73b7a71f602da4ff7814a3bfb25e15008f723b669c4fcd79c9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
+      },
+      "review_fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
     },
     {
       "asset": "table-1-figure-5-transfer.jpg",
       "source_url": "https://arxiv.org/pdf/2011.01387",
-      "pdf_page": 6,
       "source_locator": "Table I / Figure 5",
       "caption_zh": "动力学随机化范围及仿真和实机地面反力的对照。",
-      "sha256": "f49a15f7636fb18d2471919a8495a2de11d533ea15bb5bffa1dad46a16aa2091"
+      "selection_reason_zh": "该摘录直接对应详情页对“动力学随机化范围及仿真和实机地面反力的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“动力学随机化范围及仿真和实机地面反力的对照。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.64,
+            0.49,
+            0.81
+          ],
+          "caption_anchor": "TABLE I. The ranges for randomization",
+          "caption_anchor_bbox": [
+            0.093178,
+            0.751551,
+            0.310924,
+            0.760547
+          ],
+          "caption_block_bbox": [
+            0.093178,
+            0.749845,
+            0.483414,
+            0.790737
+          ],
+          "page_text_sha256": "da8c8f676d8a2ae3df8e4a0ab5a2096f73b9705ea4d3b0697b1f35db8e445261"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.35
+          ],
+          "caption_anchor": "Fig. 5. Comparison between",
+          "caption_anchor_bbox": [
+            0.088353,
+            0.28672,
+            0.241517,
+            0.295717
+          ],
+          "caption_block_bbox": [
+            0.088353,
+            0.28672,
+            0.488238,
+            0.341002
+          ],
+          "page_text_sha256": "607c9a54bf40327348874e7749c3c074b8cadc836ef92789c9527572120f35d7"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2471,
+      "sha256": "e38acba3540f14b2222e041a40d8f583ec02837b2ab73a648afe0d03e68a4b65",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
+      },
+      "review_fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
     }
   ]
 }

@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2409.14393v1",
   "source_pdf": "https://arxiv.org/pdf/2409.14393",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "31e79502e14262b6c9cec33eb4531e4f2f611e9d277a7d243b6f61c5d714b37d",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-3-framework.jpg",
       "source_url": "https://arxiv.org/pdf/2409.14393",
-      "pdf_page": 5,
       "source_locator": "Figure 3",
       "caption_zh": "全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。",
-      "sha256": "1b5a521e3fbfda9c2ba07c2c5d22af1771c4df4fb55cf9bac628af5fab6012b1"
+      "selection_reason_zh": "该摘录直接对应详情页对“全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.875
+          ],
+          "caption_anchor": "Fig. 3. The MaskedMimic framework",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.737071,
+            0.305619,
+            0.750153
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.737071,
+            0.482644,
+            0.863364
+          ],
+          "page_text_sha256": "cc6893fedc132aec9cbd4b28bd154f1aeddecec397458ef49543e6e3be73bc49"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 4277,
+      "sha256": "be12891d464ca91bf44a1231b148fc94dd788a8edeeb784cd15f26f0902f5cb2",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "fd9ca48ec62dffdf82c094b2a0bb49a6ae54a00de3ce4f44aab50f206e9c8920"
+      },
+      "review_fingerprint": "fd9ca48ec62dffdf82c094b2a0bb49a6ae54a00de3ce4f44aab50f206e9c8920"
     },
     {
       "asset": "table-1-2-tracking.jpg",
       "source_url": "https://arxiv.org/pdf/2409.14393",
-      "pdf_page": 10,
       "source_locator": "Table 1-2",
       "caption_zh": "全身和 VR 稀疏信号跟踪的成功率与误差对照。",
-      "sha256": "c05b2816d5ee185e9af87df153e0438b8bdeb1d0d0605fe29d140f08ee90afff"
+      "selection_reason_zh": "该摘录直接对应详情页对“全身和 VR 稀疏信号跟踪的成功率与误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“全身和 VR 稀疏信号跟踪的成功率与误差对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 11,
+          "crop": [
+            0.08,
+            0.36,
+            0.49,
+            0.69
+          ],
+          "caption_anchor": "Table 1. Full-body tracking",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.366591,
+            0.247352,
+            0.379674
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.366591,
+            0.480464,
+            0.404831
+          ],
+          "page_text_sha256": "cff8bf0a3bf05da0735851345628267edca903890fc22f8845331128320c47bf"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1725,
+      "sha256": "69b6b79da51fea0baa2ead6369a097c641d84be15f731091c825f1c007cc8386",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b48decb1e1fa0342ca2fe82ef341de227f3ee28eeb76a79e0a6df6b11f16f99f"
+      },
+      "review_fingerprint": "b48decb1e1fa0342ca2fe82ef341de227f3ee28eeb76a79e0a6df6b11f16f99f"
     },
     {
       "asset": "table-3-5-sparsity-tasks.jpg",
       "source_url": "https://arxiv.org/pdf/2409.14393",
-      "pdf_page": 12,
       "source_locator": "Table 3-5",
       "caption_zh": "关节稀疏度、复杂地形与新任务目标工程的量化边界。",
-      "sha256": "b3f2d5e1ea7da7ef73d215b70f34da805a8f9f6865a950047b210989cb3557e4"
+      "selection_reason_zh": "该摘录直接对应详情页对“关节稀疏度、复杂地形与新任务目标工程的量化边界。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“关节稀疏度、复杂地形与新任务目标工程的量化边界。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.23
+          ],
+          "caption_anchor": "Table 3. MaskedMimic",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.09862,
+            0.215691,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.09862,
+            0.48047,
+            0.124281
+          ],
+          "page_text_sha256": "43431e997237722b2aa3e310f16c8772eea3b486116aea12e0784028606a83ff"
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.08,
+            0.23,
+            0.49,
+            0.49
+          ],
+          "caption_anchor": "Table 4. MaskedMimic",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.280346,
+            0.217899,
+            0.293429
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.280346,
+            0.480459,
+            0.318587
+          ],
+          "page_text_sha256": "43431e997237722b2aa3e310f16c8772eea3b486116aea12e0784028606a83ff"
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.25
+          ],
+          "caption_anchor": "Table 5. Tasks",
+          "caption_anchor_bbox": [
+            0.519183,
+            0.09862,
+            0.603383,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.519183,
+            0.09862,
+            0.915356,
+            0.136861
+          ],
+          "page_text_sha256": "43431e997237722b2aa3e310f16c8772eea3b486116aea12e0784028606a83ff"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3422,
+      "sha256": "8f6271df8ee419bae2353ee7955c406095c6fd96ca038ffd2b2c1bd761d105ed",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b8fe88dae315b0869de8ba4a2d9d248ed3f01f77f7788ce54bd00efc8b56c4ee"
+      },
+      "review_fingerprint": "b8fe88dae315b0869de8ba4a2d9d248ed3f01f77f7788ce54bd00efc8b56c4ee"
     }
   ]
 }

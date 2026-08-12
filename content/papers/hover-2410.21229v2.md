@@ -37,7 +37,7 @@ HOVER 的核心洞察是先在完整参考下学一个运动先验，再训练�
 
 ## 关键图解
 
-![Figure 2：HOVER 教师-学生蒸馏与命令掩码](assets/hover-2410.21229v2/figure-1-2-command-masks.jpg)
+![Figure 2：HOVER 教师-学生蒸馏与命令掩码](assets/hover-2410.21229v2/figure-2-command-masks.jpg)
 
 Figure 2 的重点是信息不对称：教师看完整全身参考与特权状态，学生只看 25 步历史和被掩码的命令。学生不是在离线教师轨迹上做一次监督学习，而是自己轮转到偏离状态后继续请教师给出动作，这正是 DAgger 降低闭环误差累积的地方。
 

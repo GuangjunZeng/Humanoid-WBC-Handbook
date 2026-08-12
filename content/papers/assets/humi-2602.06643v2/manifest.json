@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2602.06643v2",
   "source_pdf": "https://arxiv.org/pdf/2602.06643v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "7d73380b98fccd23e69206db2ec0d875634396c62fba24ee277b6679fd2f5e45",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-interface.jpg",
       "source_url": "https://arxiv.org/pdf/2602.06643v2",
-      "pdf_page": 3,
       "source_locator": "Figure 2",
       "caption_zh": "传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。",
-      "sha256": "e226e852f5e8278a7a533a88d2ef378f9413413c443dd4c751420ae53e67509d"
+      "selection_reason_zh": "该摘录直接对应详情页对“传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.02,
+            0.03,
+            0.95,
+            0.415
+          ],
+          "caption_anchor": "Fig. 2: Overview of the HuMI data collection system",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.334366,
+            0.41388,
+            0.344623
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.334366,
+            0.919983,
+            0.40752
+          ],
+          "page_text_sha256": "9e7ec01ffa0820af0905328f60603142e7fd2977abc898de6b0212669f70ef05"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 913,
+      "sha256": "24f99070dc1c99e112c566202dc670b69287c9b2b22bacdedfc0c34218cdf694",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
+      },
+      "review_fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
     },
     {
       "asset": "figure-4-5-chunk-drift.jpg",
       "source_url": "https://arxiv.org/pdf/2602.06643v2",
-      "pdf_page": 5,
       "source_locator": "Figure 4-5",
       "caption_zh": "动作块边界不连续与盲部位开环漂移的问题定位。",
-      "sha256": "1800988dda7782654ad232c108af3d95ebb8eefb36b25c7f8fd85a4fda8a1148"
+      "selection_reason_zh": "该摘录直接对应详情页对“动作块边界不连续与盲部位开环漂移的问题定位。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“动作块边界不连续与盲部位开环漂移的问题定位。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.33
+          ],
+          "caption_anchor": "Fig. 4: Impact of reference frame selection",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.218543,
+            0.371304,
+            0.2288
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.218543,
+            0.490226,
+            0.316854
+          ],
+          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.49,
+            0.49,
+            0.75
+          ],
+          "caption_anchor": "Fig. 5: Mitigating drift",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.650618,
+            0.227973,
+            0.660875
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.650618,
+            0.49023,
+            0.736349
+          ],
+          "page_text_sha256": "12a26e6ef905b659a8a226a2fe47676738350c137b466fd55f9599afaf578e3f"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2864,
+      "sha256": "3dc3012d61fcb551d5979a603717ae00a5fcf90928fccd50daab97110a6aee91",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
+      },
+      "review_fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
     },
     {
       "asset": "figure-6-ablation.jpg",
       "source_url": "https://arxiv.org/pdf/2602.06643v2",
-      "pdf_page": 6,
       "source_locator": "Figure 6",
       "caption_zh": "人在环预览、变速回放和块锚定方式的任务消融。",
-      "sha256": "b9e5688421ca8e424202ed2bffad33920feb89a10b6376da94b23a2b94f1bfec"
+      "selection_reason_zh": "该摘录直接对应详情页对“人在环预览、变速回放和块锚定方式的任务消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“人在环预览、变速回放和块锚定方式的任务消融。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.54
+          ],
+          "caption_anchor": "Fig. 6: Whole-body capability experiment results",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.507817,
+            0.390892,
+            0.518074
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.507817,
+            0.919983,
+            0.530654
+          ],
+          "page_text_sha256": "55f0f05640d1f0745bd51dc5dca74b2804a117c8f57041b1ab00612115452fd3"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1289,
+      "sha256": "ae2f2e12e6e1a010de49bd2e97f371b45142ba6025bbf9300de70d864cc9b96c",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
+      },
+      "review_fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
     }
   ]
 }

@@ -17,6 +17,8 @@
 6. For papers, follow `docs/paper-interpretation.md` and `docs/on-demand-paper-update.md` before marking a paper-backed claim reviewed.
 7. For hardware-critical material, complete every safety field and obtain qualified human review.
 
+Paper figures must be tight crops of the named Figure/Table plus its complete original caption—never a full PDF page. Record the locked PDF digest, crop, caption anchor, support/limit boundary, and an explicit post-contact-sheet visual review. CI verifies the review fingerprint but never creates it.
+
 ## Social engineering experience
 
 - Social discovery uses open engineering `scope_id` values; the seven paper/claim domains are optional hints and must not limit collection coverage.

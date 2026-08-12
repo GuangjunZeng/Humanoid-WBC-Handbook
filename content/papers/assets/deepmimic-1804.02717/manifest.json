@@ -1,33 +1,143 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:1804.02717v3",
   "source_pdf": "https://arxiv.org/pdf/1804.02717",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "4bd4cc353bd2dc19da99bb21a254cbfdb9840e49940ce69d484eb6d45bfa348f",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-policy.jpg",
       "source_url": "https://arxiv.org/pdf/1804.02717",
-      "pdf_page": 4,
       "source_locator": "Figure 2",
       "caption_zh": "相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。",
-      "sha256": "6c3d7042a124080b21e66a24a1384d116c3adffb336769a8faf1b638ad045351"
+      "selection_reason_zh": "该摘录直接对应详情页对“相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.68,
+            0.92,
+            0.9
+          ],
+          "caption_anchor": "Fig. 2. Schematic illustration",
+          "caption_anchor_bbox": [
+            0.519534,
+            0.788245,
+            0.68429,
+            0.801328
+          ],
+          "caption_block_bbox": [
+            0.519235,
+            0.788245,
+            0.91735,
+            0.889381
+          ],
+          "page_text_sha256": "2d400fc95cc564fadeeac3fb21837873f15cee0c7555d8759359fae0bcb44c6f"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1140,
+      "sha256": "df3d8b36020e47d045e922c5977f8316371408391cfa5e5fe2b7fbc9491aa2de",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "196c54b3c142265e088f69f5dfc4f6d48409f86542a2d534fead94e048982c0a"
+      },
+      "review_fingerprint": "196c54b3c142265e088f69f5dfc4f6d48409f86542a2d534fead94e048982c0a"
     },
     {
       "asset": "table-2-tracking.jpg",
       "source_url": "https://arxiv.org/pdf/1804.02717",
-      "pdf_page": 8,
       "source_locator": "Table 2",
       "caption_zh": "跨角色和高动态动作的跟踪回报、周期数与训练样本统计。",
-      "sha256": "60bcfb9941238e3712ca8ac1848b96709743ce876b408fce2194bdc12194f015"
+      "selection_reason_zh": "该摘录直接对应详情页对“跨角色和高动态动作的跟踪回报、周期数与训练样本统计。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“跨角色和高动态动作的跟踪回报、周期数与训练样本统计。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.35
+          ],
+          "caption_anchor": "Table 2. Performance statistics",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.09862,
+            0.256453,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.09862,
+            0.48047,
+            0.199991
+          ],
+          "page_text_sha256": "e96f646fc365d7a9eed45a6a1c2e72de2e358ba5ee084661e9c8ac3a75578d6b"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1623,
+      "sha256": "df6527d316ba2a3b20178cee1712fc1d8fa722348c1ecbfb9737d3deac751b02",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "935df4fd96214dfdd77fae1c315d24647fd3d9902821034d267ae20270f326de"
+      },
+      "review_fingerprint": "935df4fd96214dfdd77fae1c315d24647fd3d9902821034d267ae20270f326de"
     },
     {
       "asset": "table-4-task-imitation.jpg",
       "source_url": "https://arxiv.org/pdf/1804.02717",
-      "pdf_page": 11,
       "source_locator": "Table 4",
       "caption_zh": "去掉模仿目标或任务目标后的 100 次成功率对照。",
-      "sha256": "8bd146ca64defe7cd24806acd3015ef81a4eddff1fdabfd6cf307666b9919a46"
+      "selection_reason_zh": "该摘录直接对应详情页对“去掉模仿目标或任务目标后的 100 次成功率对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“去掉模仿目标或任务目标后的 100 次成功率对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 11,
+          "crop": [
+            0.08,
+            0.2,
+            0.49,
+            0.31
+          ],
+          "caption_anchor": "Table 4. Success rate",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.202489,
+            0.193853,
+            0.215571
+          ],
+          "caption_block_bbox": [
+            0.084181,
+            0.202489,
+            0.482639,
+            0.265888
+          ],
+          "page_text_sha256": "199c2777065f50f2a63532e33cf5c1c40fad7641408280998c43aa16e78fc51b"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 612,
+      "sha256": "05e88729d298110bcaf27c554adc52bf3c7831e3b2b559099104f0ba96deecaa",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "a1e099a58370af91e250f9bfcfc3df9d6235844693661589cfd617999d23a51f"
+      },
+      "review_fingerprint": "a1e099a58370af91e250f9bfcfc3df9d6235844693661589cfd617999d23a51f"
     }
   ]
 }

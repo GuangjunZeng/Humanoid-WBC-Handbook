@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2510.02252v1",
   "source_pdf": "https://arxiv.org/pdf/2510.02252v1",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "cc910a8606c2de1d87c5f34a9e1753165f3cdbefe2b1d61f1bf608dbd419f0a5",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-pipeline.jpg",
       "source_url": "https://arxiv.org/pdf/2510.02252v1",
-      "pdf_page": 4,
       "source_locator": "Figure 2",
       "caption_zh": "GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。",
-      "sha256": "1a7ff7cd6c4a79ad1a0fb1d404011077852a254c07117c96fd2341680675e49e"
+      "selection_reason_zh": "该摘录直接对应详情页对“GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.35,
+            0.92,
+            0.495
+          ],
+          "caption_anchor": "Fig. 2: General Motion Retargeting",
+          "caption_anchor_bbox": [
+            0.535206,
+            0.479269,
+            0.771573,
+            0.490515
+          ],
+          "caption_block_bbox": [
+            0.535206,
+            0.479269,
+            0.888325,
+            0.490515
+          ],
+          "page_text_sha256": "5ccb804971b032f786bee96ccdae5e6c271ad47e8e0ccc898225263949698069"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 771,
+      "sha256": "9d7757309a3019a8694f9d145d3504a64b819171370cc9b4a6520b33cf785024",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "bc34c96621d79253fb9e72ec1e6f7bbfe6b12ded7a416f761a3a966b914a6c8a"
+      },
+      "review_fingerprint": "bc34c96621d79253fb9e72ec1e6f7bbfe6b12ded7a416f761a3a966b914a6c8a"
     },
     {
       "asset": "table-1-2-tracking.jpg",
       "source_url": "https://arxiv.org/pdf/2510.02252v1",
-      "pdf_page": 6,
       "source_locator": "Table I-II",
       "caption_zh": "21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。",
-      "sha256": "578a893afd43195e812b3a3f4aad0a34d7b794e207b5f64f3b7b42128cfdb707"
+      "selection_reason_zh": "该摘录直接对应详情页对“21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.37
+          ],
+          "caption_anchor": "TABLE I: Evaluation success rates",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.065273,
+            0.321038,
+            0.076519
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.065273,
+            0.911761,
+            0.106708
+          ],
+          "page_text_sha256": "32300955737edb30b42888475edff22367fe8ff54bd4caf18dc92d6da78cd730"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.38,
+            0.92,
+            0.54
+          ],
+          "caption_anchor": "TABLE II: Tracking errors",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.406761,
+            0.268441,
+            0.418006
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.40661,
+            0.911761,
+            0.433101
+          ],
+          "page_text_sha256": "32300955737edb30b42888475edff22367fe8ff54bd4caf18dc92d6da78cd730"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1291,
+      "sha256": "ae1083db296d4541b4d716d2bacd2283d31d4e3a6f4826be7eccf293a93c1cd5",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "84dd41e5079c94ab11b960ce390f8003515fea41e282bb4a5b63bc95606ad940"
+      },
+      "review_fingerprint": "84dd41e5079c94ab11b960ce390f8003515fea41e282bb4a5b63bc95606ad940"
     },
     {
       "asset": "figure-3-table-3-artifacts.jpg",
       "source_url": "https://arxiv.org/pdf/2510.02252v1",
-      "pdf_page": 7,
       "source_locator": "Figure 3 / Table III",
       "caption_zh": "穿地、自交和腰部突跳伪影，以及起始帧敏感性。",
-      "sha256": "4256a21d150203f8b3fcd608f4d21dab2dbc6a42f55e64fa706ed8b060684834"
+      "selection_reason_zh": "该摘录直接对应详情页对“穿地、自交和腰部突跳伪影，以及起始帧敏感性。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“穿地、自交和腰部突跳伪影，以及起始帧敏感性。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.17
+          ],
+          "caption_anchor": "TABLE III: Evaluation success rates",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.065273,
+            0.758713,
+            0.076519
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.065122,
+            0.911766,
+            0.106708
+          ],
+          "page_text_sha256": "544da7dd5b994851202f7d6d8643f6df29052af18b2505abb83aec96086c4f6c"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.27,
+            0.49,
+            0.525
+          ],
+          "caption_anchor": "Fig. 3: Example artifacts",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.488211,
+            0.255288,
+            0.499457
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.488211,
+            0.488237,
+            0.514552
+          ],
+          "page_text_sha256": "544da7dd5b994851202f7d6d8643f6df29052af18b2505abb83aec96086c4f6c"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2013,
+      "sha256": "fbd75c1bcb9936f3ea68fd2b35850a9ed026eb653a65631813089a39cc386f95",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "1386419e60ecf128dbd5aabbc9be76ee2d208346ddef1c1e201911127fa3df6b"
+      },
+      "review_fingerprint": "1386419e60ecf128dbd5aabbc9be76ee2d208346ddef1c1e201911127fa3df6b"
     }
   ]
 }

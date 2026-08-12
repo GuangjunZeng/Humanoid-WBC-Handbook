@@ -15,7 +15,7 @@ Five actions are mirrored to left/right joints. Velocity actions integrate into 
 ## Key figures
 ![Figure 2: symmetric state/action contract](../assets/frasa-2410.08655v3/figure-2-state-action.jpg)
 The unified claim is explicitly limited to a five-DoF sagittal subspace.
-![Figure 4 and Table II: training and randomization](../assets/frasa-2410.08655v3/figure-4-training-table-2.jpg)
+![Figure 4 and Table II: training and randomization](../assets/frasa-2410.08655v3/figure-4-table-2.jpg)
 Fast training depends on the reduced problem, 16 MuJoCo environments, and the reported randomization/latency contract.
 ![Tables III-IV: hardware stand-up and pendulum tests](../assets/frasa-2410.08655v3/table-3-4-hardware.jpg)
 Prone/supine trials use 20 repetitions each; pendulum conditions use 10, with a same-platform KFB baseline.

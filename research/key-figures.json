@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "note": "Pages are 1-based PDF pages in the pinned arXiv version. Assets are rendered locally from the ignored PDF cache.",
+  "schema_version": 2,
+  "note": "Every asset is a tight, normalized crop of the named Figure/Table plus its original caption. Source PDFs are digest-locked; multi-region evidence is composed without intervening prose. Approved review fingerprints become stale whenever crop, locator, claim boundary, or PDF changes.",
   "papers": [
     {
       "slug": "retargeting-matters-2510.02252v1",
@@ -8,10 +8,106 @@
       "pdf": "var/papers/2510.02252v1.pdf",
       "source_url": "https://arxiv.org/pdf/2510.02252v1",
       "figures": [
-        {"file": "figure-2-pipeline.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。"},
-        {"file": "table-1-2-tracking.jpg", "page": 6, "locator": "Table I-II", "caption_zh": "21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。"},
-        {"file": "figure-3-table-3-artifacts.jpg", "page": 7, "locator": "Figure 3 / Table III", "caption_zh": "穿地、自交和腰部突跳伪影，以及起始帧敏感性。"}
-      ]
+        {
+          "file": "figure-2-pipeline.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。",
+          "selection_reason_zh": "该摘录直接对应详情页对“GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“GMR 五步重定向管线：坐标对齐、局部缩放、两阶段 IK 与地面修正。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.35,
+                0.92,
+                0.495
+              ],
+              "caption_anchor": "Fig. 2: General Motion Retargeting"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "bc34c96621d79253fb9e72ec1e6f7bbfe6b12ded7a416f761a3a966b914a6c8a"
+          }
+        },
+        {
+          "file": "table-1-2-tracking.jpg",
+          "locator": "Table I-II",
+          "caption_zh": "21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“21 条 LAFAN1 动作的跟踪成功率与刚体误差对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.37
+              ],
+              "caption_anchor": "TABLE I: Evaluation success rates"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.38,
+                0.92,
+                0.54
+              ],
+              "caption_anchor": "TABLE II: Tracking errors"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "84dd41e5079c94ab11b960ce390f8003515fea41e282bb4a5b63bc95606ad940"
+          }
+        },
+        {
+          "file": "figure-3-table-3-artifacts.jpg",
+          "locator": "Figure 3 / Table III",
+          "caption_zh": "穿地、自交和腰部突跳伪影，以及起始帧敏感性。",
+          "selection_reason_zh": "该摘录直接对应详情页对“穿地、自交和腰部突跳伪影，以及起始帧敏感性。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“穿地、自交和腰部突跳伪影，以及起始帧敏感性。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.17
+              ],
+              "caption_anchor": "TABLE III: Evaluation success rates"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.27,
+                0.49,
+                0.525
+              ],
+              "caption_anchor": "Fig. 3: Example artifacts"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "1386419e60ecf128dbd5aabbc9be76ee2d208346ddef1c1e201911127fa3df6b"
+          }
+        }
+      ],
+      "source_pdf_sha256": "cc910a8606c2de1d87c5f34a9e1753165f3cdbefe2b1d61f1bf608dbd419f0a5"
     },
     {
       "slug": "humi-2602.06643v2",
@@ -19,10 +115,96 @@
       "pdf": "var/papers/2602.06643v2.pdf",
       "source_url": "https://arxiv.org/pdf/2602.06643v2",
       "figures": [
-        {"file": "figure-2-interface.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。"},
-        {"file": "figure-4-5-chunk-drift.jpg", "page": 5, "locator": "Figure 4-5", "caption_zh": "动作块边界不连续与盲部位开环漂移的问题定位。"},
-        {"file": "figure-6-ablation.jpg", "page": 6, "locator": "Figure 6", "caption_zh": "人在环预览、变速回放和块锚定方式的任务消融。"}
-      ]
+        {
+          "file": "figure-2-interface.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。",
+          "selection_reason_zh": "该摘录直接对应详情页对“传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“传感夹爪、五点跟踪与在线 IK 可行性预览的采集接口。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.02,
+                0.03,
+                0.95,
+                0.415
+              ],
+              "caption_anchor": "Fig. 2: Overview of the HuMI data collection system"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "948e6e3b18456e4a66016c40c5025e18ff3bc89cf30b2e04a62e2ff3c5ef6894"
+          }
+        },
+        {
+          "file": "figure-4-5-chunk-drift.jpg",
+          "locator": "Figure 4-5",
+          "caption_zh": "动作块边界不连续与盲部位开环漂移的问题定位。",
+          "selection_reason_zh": "该摘录直接对应详情页对“动作块边界不连续与盲部位开环漂移的问题定位。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“动作块边界不连续与盲部位开环漂移的问题定位。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.33
+              ],
+              "caption_anchor": "Fig. 4: Impact of reference frame selection"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.49,
+                0.49,
+                0.75
+              ],
+              "caption_anchor": "Fig. 5: Mitigating drift"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "98a7e764b936979913192c0b42a521593d0679ef882ced5c646c11609cfa8f71"
+          }
+        },
+        {
+          "file": "figure-6-ablation.jpg",
+          "locator": "Figure 6",
+          "caption_zh": "人在环预览、变速回放和块锚定方式的任务消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“人在环预览、变速回放和块锚定方式的任务消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“人在环预览、变速回放和块锚定方式的任务消融。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.54
+              ],
+              "caption_anchor": "Fig. 6: Whole-body capability experiment results"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "7b4658b89c54945266ebe574ffcd82f7fcc4fe86a821f13b40f62a1ca85ac729"
+          }
+        }
+      ],
+      "source_pdf_sha256": "7d73380b98fccd23e69206db2ec0d875634396c62fba24ee277b6679fd2f5e45"
     },
     {
       "slug": "omnih2o-2406.08858v1",
@@ -30,10 +212,96 @@
       "pdf": "var/papers/2406.08858v1.pdf",
       "source_url": "https://arxiv.org/pdf/2406.08858v1",
       "figures": [
-        {"file": "figure-2-system.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "从人体动作、特权教师到头手稀疏输入学生的全链路。"},
-        {"file": "table-1-2-evaluation.jpg", "page": 6, "locator": "Table 1-2", "caption_zh": "仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。"},
-        {"file": "figure-9-motion-distribution.jpg", "page": 22, "locator": "Figure 9", "caption_zh": "固定下肢动作分布对稳定上肢任务的影响。"}
-      ]
+        {
+          "file": "figure-3-system.jpg",
+          "locator": "Figure 3",
+          "caption_zh": "从人体动作、特权教师到头手稀疏输入学生的全链路。",
+          "selection_reason_zh": "该摘录直接对应详情页对“从人体动作、特权教师到头手稀疏输入学生的全链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“从人体动作、特权教师到头手稀疏输入学生的全链路。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.17,
+                0.04,
+                0.83,
+                0.475
+              ],
+              "caption_anchor": "Figure 3: (a) OmniH2O retargets"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
+          }
+        },
+        {
+          "file": "table-1-2-evaluation.jpg",
+          "locator": "Table 1-2",
+          "caption_zh": "仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.18,
+                0.04,
+                0.82,
+                0.3
+              ],
+              "caption_anchor": "Table 1: Simulation motion imitation evaluation"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.49,
+                0.68,
+                0.83,
+                0.88
+              ],
+              "caption_anchor": "Table 2: Real-world motion tracking evaluation"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
+          }
+        },
+        {
+          "file": "figure-9-motion-distribution.jpg",
+          "locator": "Figure 9",
+          "caption_zh": "固定下肢动作分布对稳定上肢任务的影响。",
+          "selection_reason_zh": "该摘录直接对应详情页对“固定下肢动作分布对稳定上肢任务的影响。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“固定下肢动作分布对稳定上肢任务的影响。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 22,
+              "crop": [
+                0.18,
+                0.72,
+                0.82,
+                0.85
+              ],
+              "caption_anchor": "Figure 9: The ablation of data augmentation"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
+          }
+        }
+      ],
+      "source_pdf_sha256": "bedce4c95c9776d64cd29587029c1f4d8171ad20f45017493627b27eb6b3138e"
     },
     {
       "slug": "hover-2410.21229v2",
@@ -41,10 +309,116 @@
       "pdf": "var/papers/2410.21229v2.pdf",
       "source_url": "https://arxiv.org/pdf/2410.21229v2",
       "figures": [
-        {"file": "figure-1-2-command-masks.jpg", "page": 2, "locator": "Figure 2", "caption_zh": "统一命令向量、控制模式掩码与教师-学生训练框架。"},
-        {"file": "figure-4-table-3-4.jpg", "page": 5, "locator": "Figure 4 / Table III-IV", "caption_zh": "多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。"},
-        {"file": "table-5-switching.jpg", "page": 6, "locator": "Table V", "caption_zh": "历史长度、掩码策略与运行时模式切换相关实验。"}
-      ]
+        {
+          "file": "figure-2-command-masks.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "统一命令向量、控制模式掩码与教师-学生训练框架。",
+          "selection_reason_zh": "该摘录直接对应详情页对“统一命令向量、控制模式掩码与教师-学生训练框架。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“统一命令向量、控制模式掩码与教师-学生训练框架。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.27
+              ],
+              "caption_anchor": "Fig. 2: Overview of HOVER distillation process"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
+          }
+        },
+        {
+          "file": "figure-4-table-3-4.jpg",
+          "locator": "Figure 4 / Table III-IV",
+          "caption_zh": "多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.39
+              ],
+              "caption_anchor": "TABLE III: Simulation motion imitation evaluation"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.26
+              ],
+              "caption_anchor": "TABLE IV: Comparison between HOVER and specialists"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.49,
+                0.04,
+                0.92,
+                0.4
+              ],
+              "caption_anchor": "Fig. 4: We assess the tracking accuracy"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
+          }
+        },
+        {
+          "file": "table-5-switching.jpg",
+          "locator": "Table V / Figure 6",
+          "caption_zh": "历史长度、掩码策略与运行时模式切换相关实验。",
+          "selection_reason_zh": "该摘录直接对应详情页对“历史长度、掩码策略与运行时模式切换相关实验。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“历史长度、掩码策略与运行时模式切换相关实验。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.29
+              ],
+              "caption_anchor": "TABLE V: Real-world tracking evaluation"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.38
+              ],
+              "caption_anchor": "Fig. 6: HOVER shows robustness"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
+          }
+        }
+      ],
+      "source_pdf_sha256": "13bb4bf03727efbda45b5e0f051279ba14b8763d8fd16e7d6881aa60d831303d"
     },
     {
       "slug": "humanoid-gym-2404.05695v2",
@@ -52,10 +426,96 @@
       "pdf": "var/papers/2404.05695v2.pdf",
       "source_url": "https://arxiv.org/pdf/2404.05695v2",
       "figures": [
-        {"file": "figure-2-pipeline.jpg", "page": 2, "locator": "Figure 2", "caption_zh": "Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。"},
-        {"file": "figure-3-rewards.jpg", "page": 3, "locator": "Figure 3", "caption_zh": "人形步态周期、奖励组成与域随机化设计。"},
-        {"file": "table-4-parameters.jpg", "page": 6, "locator": "Table IV", "caption_zh": "附录中的训练、控制和部署参数表，用于界定复现范围。"}
-      ]
+        {
+          "file": "figure-2-pipeline.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。",
+          "selection_reason_zh": "该摘录直接对应详情页对“Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.355
+              ],
+              "caption_anchor": "Fig. 2: Pipeline of Humanoid-Gym"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
+          }
+        },
+        {
+          "file": "figure-3-4-calibration.jpg",
+          "locator": "Figure 3-4",
+          "caption_zh": "MuJoCo 与实机正弦关节响应，以及 MuJoCo、实机和 Isaac Gym 的相图校准对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“人形步态周期、奖励组成与域随机化设计。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“人形步态周期、奖励组成与域随机化设计。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.5,
+                0.25,
+                0.92,
+                0.55
+              ],
+              "caption_anchor": "Fig. 3: Sine wave in Both MuJoCo"
+            },
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.5,
+                0.535,
+                0.92,
+                0.62
+              ],
+              "caption_anchor": "Fig. 4: Phase Portrait for MuJoCo"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
+          }
+        },
+        {
+          "file": "table-4-parameters.jpg",
+          "locator": "Table IV",
+          "caption_zh": "附录中的训练、控制和部署参数表，用于界定复现范围。",
+          "selection_reason_zh": "该摘录直接对应详情页对“附录中的训练、控制和部署参数表，用于界定复现范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“附录中的训练、控制和部署参数表，用于界定复现范围。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.28,
+                0.5,
+                0.64
+              ],
+              "caption_anchor": "TABLE IV: In defining the reward function"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
+          }
+        }
+      ],
+      "source_pdf_sha256": "f5a95d5797dc0b788087fc454fef0923f4d5055a14d69645902c0fcbc96e097e"
     },
     {
       "slug": "challenging-terrain-2410.03654v1",
@@ -63,10 +523,86 @@
       "pdf": "var/papers/2410.03654v1.pdf",
       "source_url": "https://arxiv.org/pdf/2410.03654v1",
       "figures": [
-        {"file": "figure-8-pretrain-finetune.jpg", "page": 20, "locator": "Figure 8", "caption_zh": "平地序列预训练与复杂地形 PPO 微调的两阶段结构。"},
-        {"file": "figure-9-sample-efficiency.jpg", "page": 26, "locator": "Figure 9", "caption_zh": "预训练初始化和从零训练在交互预算与最终性能上的对照。"},
-        {"file": "figure-11-gait.jpg", "page": 28, "locator": "Figure 11", "caption_zh": "预训练保留对称步态，从零策略出现拖腿的定性对照。"}
-      ]
+        {
+          "file": "figure-8-pretrain-finetune.jpg",
+          "locator": "Figure 8",
+          "caption_zh": "平地序列预训练与复杂地形 PPO 微调的两阶段结构。",
+          "selection_reason_zh": "该摘录直接对应详情页对“平地序列预训练与复杂地形 PPO 微调的两阶段结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“平地序列预训练与复杂地形 PPO 微调的两阶段结构。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 20,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.66
+              ],
+              "caption_anchor": "Figure 8: Method"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
+          }
+        },
+        {
+          "file": "figure-9-sample-efficiency.jpg",
+          "locator": "Figure 9",
+          "caption_zh": "预训练初始化和从零训练在交互预算与最终性能上的对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“预训练初始化和从零训练在交互预算与最终性能上的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“预训练初始化和从零训练在交互预算与最终性能上的对照。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 26,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.485
+              ],
+              "caption_anchor": "Figure 9: Comparison to scratch policy"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
+          }
+        },
+        {
+          "file": "figure-11-gait.jpg",
+          "locator": "Figure 11",
+          "caption_zh": "预训练保留对称步态，从零策略出现拖腿的定性对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“预训练保留对称步态，从零策略出现拖腿的定性对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“预训练保留对称步态，从零策略出现拖腿的定性对照。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 28,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.355
+              ],
+              "caption_anchor": "Figure 11: Comparison of gait patterns"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
+          }
+        }
+      ],
+      "source_pdf_sha256": "be622773db697aa0ea9ad7820f838163424675be7f19e566ef40ec129655ffed"
     },
     {
       "slug": "falcon-2505.06776v2",
@@ -74,10 +610,96 @@
       "pdf": "var/papers/2505.06776v2.pdf",
       "source_url": "https://arxiv.org/pdf/2505.06776v2",
       "figures": [
-        {"file": "figure-2-dual-agent.jpg", "page": 5, "locator": "Figure 2", "caption_zh": "上下身双 agent 共享历史、独立奖励与末端受力课程。"},
-        {"file": "table-1-2-force-curriculum.jpg", "page": 7, "locator": "Table 1-2", "caption_zh": "双策略结构和力矩可行外力采样的分离消融。"},
-        {"file": "table-4-hardware.jpg", "page": 8, "locator": "Table 4 / Figure 1", "caption_zh": "G1 载荷行走的定量误差与多平台受力任务展示。"}
-      ]
+        {
+          "file": "figure-2-dual-agent.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "上下身双 agent 共享历史、独立奖励与末端受力课程。",
+          "selection_reason_zh": "该摘录直接对应详情页对“上下身双 agent 共享历史、独立奖励与末端受力课程。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“上下身双 agent 共享历史、独立奖励与末端受力课程。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.17,
+                0.04,
+                0.83,
+                0.475
+              ],
+              "caption_anchor": "Figure 2: Overview of FALCON"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
+          }
+        },
+        {
+          "file": "table-1-2-force-curriculum.jpg",
+          "locator": "Table 1-2",
+          "caption_zh": "双策略结构和力矩可行外力采样的分离消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“双策略结构和力矩可行外力采样的分离消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“双策略结构和力矩可行外力采样的分离消融。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.18,
+                0.04,
+                0.82,
+                0.31
+              ],
+              "caption_anchor": "Table 1: Loco-Manipulation Evaluation"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.18,
+                0.04,
+                0.82,
+                0.225
+              ],
+              "caption_anchor": "Table 2: Evaluation of FALCON"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
+          }
+        },
+        {
+          "file": "table-4-hardware.jpg",
+          "locator": "Table 4",
+          "caption_zh": "G1 载荷行走的定量误差与多平台受力任务展示。",
+          "selection_reason_zh": "该摘录直接对应详情页对“G1 载荷行走的定量误差与多平台受力任务展示。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“G1 载荷行走的定量误差与多平台受力任务展示。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 9,
+              "crop": [
+                0.18,
+                0.04,
+                0.5,
+                0.25
+              ],
+              "caption_anchor": "Table 4: Real-world Tracking Errors"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
+          }
+        }
+      ],
+      "source_pdf_sha256": "b7a24864c7c890c4837753483a9e5c5299cd64e87fe5634083a1f3db2ec57e99"
     },
     {
       "slug": "ulc-2507.06905v2",
@@ -85,10 +707,106 @@
       "pdf": "var/papers/2507.06905v2.pdf",
       "source_url": "https://arxiv.org/pdf/2507.06905v2",
       "figures": [
-        {"file": "figure-2-unified-policy.jpg", "page": 5, "locator": "Figure 2", "caption_zh": "单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。"},
-        {"file": "table-3-4-figure-3.jpg", "page": 7, "locator": "Table III-IV / Figure 3", "caption_zh": "统一策略的跟踪精度、工作空间与真机任务。"},
-        {"file": "table-5-ablation.jpg", "page": 8, "locator": "Table V", "caption_zh": "顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。"}
-      ]
+        {
+          "file": "figure-2-unified-policy.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。",
+          "selection_reason_zh": "该摘录直接对应详情页对“单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.67
+              ],
+              "caption_anchor": "Fig. 2: Method overview"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
+          }
+        },
+        {
+          "file": "table-3-4-figure-3.jpg",
+          "locator": "Table III-IV / Figure 3",
+          "caption_zh": "统一策略的跟踪精度、工作空间与真机任务。",
+          "selection_reason_zh": "该摘录直接对应详情页对“统一策略的跟踪精度、工作空间与真机任务。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“统一策略的跟踪精度、工作空间与真机任务。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.35
+              ],
+              "caption_anchor": "TABLE III: Tracking accuracy comparison"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.36,
+                0.92,
+                0.45
+              ],
+              "caption_anchor": "TABLE IV: Reachable command ranges"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.39
+              ],
+              "caption_anchor": "Fig. 3: Time-series visualization"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
+          }
+        },
+        {
+          "file": "table-5-ablation.jpg",
+          "locator": "Table V",
+          "caption_zh": "顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.54,
+                0.5,
+                0.72
+              ],
+              "caption_anchor": "TABLE V: Ablation study"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
+          }
+        }
+      ],
+      "source_pdf_sha256": "58ab7764acb32367a215be7506e0b0b3f40638d2148679ec9452be53d46aa1e6"
     },
     {
       "slug": "asap-2502.01143v3",
@@ -96,10 +814,116 @@
       "pdf": "var/papers/2502.01143v3.pdf",
       "source_url": "https://arxiv.org/pdf/2502.01143v3",
       "figures": [
-        {"file": "figure-2-pipeline.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。"},
-        {"file": "figure-4-table-3.jpg", "page": 6, "locator": "Figure 4-5 / Table III", "caption_zh": "Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。"},
-        {"file": "table-5-real-world.jpg", "page": 9, "locator": "Table V", "caption_zh": "kick 与 OOD Silencer 两个真实动作的对齐前后误差。"}
-      ]
+        {
+          "file": "figure-2-pipeline.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。",
+          "selection_reason_zh": "该摘录直接对应详情页对“从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.44
+              ],
+              "caption_anchor": "Fig. 2. Overview of ASAP"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "15e27d8e347eb9bf4dd9d3dd24654d01126cb774351c749d875c23aadc2d8a53"
+          }
+        },
+        {
+          "file": "figure-4-table-3.jpg",
+          "locator": "Figure 4-5 / Table III",
+          "caption_zh": "Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.21
+              ],
+              "caption_anchor": "Fig. 4. Baselines of ASAP"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.485
+              ],
+              "caption_anchor": "Fig. 5. Replaying IsaacSim State-Action"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.45,
+                0.92,
+                0.62
+              ],
+              "caption_anchor": "TABLE III"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "12eabbebcb542fd3881bc9251bf0565b3a554034005ebe3f741cd85505333be2"
+          }
+        },
+        {
+          "file": "figure-8-table-5-real-world.jpg",
+          "locator": "Figure 8 / Table V",
+          "caption_zh": "kick 与 OOD Silencer 两个真实动作的对齐前后误差。",
+          "selection_reason_zh": "该摘录直接对应详情页对“kick 与 OOD Silencer 两个真实动作的对齐前后误差。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“kick 与 OOD Silencer 两个真实动作的对齐前后误差。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 9,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.35
+              ],
+              "caption_anchor": "Fig. 8. Visualization of LeBron James"
+            },
+            {
+              "pdf_page": 9,
+              "crop": [
+                0.5,
+                0.35,
+                0.92,
+                0.51
+              ],
+              "caption_anchor": "TABLE V"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "d1e5d5ec461b895927b58b0ec64e686ef874e2f4e09b17996b0a17633b494fe3"
+          }
+        }
+      ],
+      "source_pdf_sha256": "8ca60229d7e560769ceece6cb5571d8e6f528c6c485f631b7fd5162d503b7db0"
     },
     {
       "slug": "humanoid-badminton-2511.11218v3",
@@ -107,10 +931,106 @@
       "pdf": "var/papers/2511.11218v3.pdf",
       "source_url": "https://arxiv.org/pdf/2511.11218v3",
       "figures": [
-        {"file": "figure-2-training.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "足步、挥拍和羽毛球任务精调的三阶段强化学习。"},
-        {"file": "figure-3-4-control.jpg", "page": 7, "locator": "Figure 3-4", "caption_zh": "迎球足步、挥拍时序与预测目标接口。"},
-        {"file": "table-5-hardware.jpg", "page": 11, "locator": "Table V", "caption_zh": "46 次真机试验中目标预测与无预测策略的回球对照。"}
-      ]
+        {
+          "file": "figure-2-training.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "足步、挥拍和羽毛球任务精调的三阶段强化学习。",
+          "selection_reason_zh": "该摘录直接对应详情页对“足步、挥拍和羽毛球任务精调的三阶段强化学习。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“足步、挥拍和羽毛球任务精调的三阶段强化学习。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.08,
+                0.05,
+                0.92,
+                0.575
+              ],
+              "caption_anchor": "Fig. 2: System overview"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
+          }
+        },
+        {
+          "file": "figure-3-4-control.jpg",
+          "locator": "Figure 3-4",
+          "caption_zh": "迎球足步、挥拍时序与预测目标接口。",
+          "selection_reason_zh": "该摘录直接对应详情页对“迎球足步、挥拍时序与预测目标接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“迎球足步、挥拍时序与预测目标接口。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.05,
+                0.92,
+                0.495
+              ],
+              "caption_anchor": "Fig. 3: Simulation results"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.05,
+                0.49,
+                0.46
+              ],
+              "caption_anchor": "Fig. 4: Comparison between target-known"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
+          }
+        },
+        {
+          "file": "figure-5-6-hardware.jpg",
+          "locator": "Figure 5-6",
+          "caption_zh": "虚拟目标位置误差曲线与真机羽毛球命中序列；46+46 次发球分母来自相邻实验正文。",
+          "selection_reason_zh": "该摘录直接对应详情页对“46 次真机试验中目标预测与无预测策略的回球对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“46 次真机试验中目标预测与无预测策略的回球对照。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.5,
+                0.05,
+                0.92,
+                0.325
+              ],
+              "caption_anchor": "Fig. 5: Virtual-target swinging"
+            },
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.44
+              ],
+              "caption_anchor": "Fig. 6: Real-world shuttle hitting"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
+          }
+        }
+      ],
+      "source_pdf_sha256": "0121a91fb0baa21c1c28960df71bc0b2d7960610d49ffa881635d08b39a301cc"
     },
     {
       "slug": "beyondmimic-2508.08241v4",
@@ -118,10 +1038,96 @@
       "pdf": "var/papers/2508.08241v4.pdf",
       "source_url": "https://arxiv.org/pdf/2508.08241v4",
       "figures": [
-        {"file": "figure-2-hardware-tracking.jpg", "page": 25, "locator": "Figure 2", "caption_zh": "高动态运动跟踪在 G1 实机上的动作范围与控制结构。"},
-        {"file": "figure-5-guidance.jpg", "page": 28, "locator": "Figure 5-6", "caption_zh": "速度、waypoint、关键帧与 SDF 避障代价的测试时组合。"},
-        {"file": "figure-8-ablation.jpg", "page": 31, "locator": "Figure 8A-D", "caption_zh": "旋转表示、历史、人为延迟和自适应采样的关键消融。"}
-      ]
+        {
+          "file": "figure-2-hardware-tracking.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "高动态运动跟踪在 G1 实机上的动作范围与控制结构。",
+          "selection_reason_zh": "该摘录直接对应详情页对“高动态运动跟踪在 G1 实机上的动作范围与控制结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“高动态运动跟踪在 G1 实机上的动作范围与控制结构。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 25,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.77
+              ],
+              "caption_anchor": "Figure 2: Diverse motion tracking"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
+          }
+        },
+        {
+          "file": "figure-5-6-guidance.jpg",
+          "locator": "Figure 5-6",
+          "caption_zh": "命令条件运动、技能过渡与技能组合的生成控制结果。",
+          "selection_reason_zh": "该摘录直接对应详情页对“速度、waypoint、关键帧与 SDF 避障代价的测试时组合。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“速度、waypoint、关键帧与 SDF 避障代价的测试时组合。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 28,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.73
+              ],
+              "caption_anchor": "Figure 5: Command-conditioned locomotion"
+            },
+            {
+              "pdf_page": 29,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.7
+              ],
+              "caption_anchor": "Figure 6: Task transition and composition"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
+          }
+        },
+        {
+          "file": "figure-8-ablation.jpg",
+          "locator": "Figure 8",
+          "caption_zh": "旋转表示、历史、人为延迟和自适应采样的关键消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“旋转表示、历史、人为延迟和自适应采样的关键消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“旋转表示、历史、人为延迟和自适应采样的关键消融。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 31,
+              "crop": [
+                0.12,
+                0.04,
+                0.88,
+                0.76
+              ],
+              "caption_anchor": "Figure 8: Ablation studies"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
+          }
+        }
+      ],
+      "source_pdf_sha256": "6219a2b66ccdab4233a1043439bceaaea3252dadbb037b470671584fc1487db1"
     },
     {
       "slug": "textop-2602.07439v1",
@@ -129,10 +1135,116 @@
       "pdf": "var/papers/2602.07439v1.pdf",
       "source_url": "https://arxiv.org/pdf/2602.07439v1",
       "figures": [
-        {"file": "figure-2-streaming.jpg", "page": 3, "locator": "Figure 2-3", "caption_zh": "文本流、自回归机器人动作块与低层跟踪器的时序。"},
-        {"file": "table-1-2-hardware.jpg", "page": 7, "locator": "Table I-II", "caption_zh": "30 秒真机流式指令成功次数与计算/人感响应延迟。"},
-        {"file": "table-3-4-representation.jpg", "page": 8, "locator": "Table III-IV", "caption_zh": "机器人骨架生成表示和混合数据 tracker 的分布对照。"}
-      ]
+        {
+          "file": "figure-2-3-streaming.jpg",
+          "locator": "Figure 2-3",
+          "caption_zh": "文本流、自回归机器人动作块与低层跟踪器的时序。",
+          "selection_reason_zh": "该摘录直接对应详情页对“文本流、自回归机器人动作块与低层跟踪器的时序。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“文本流、自回归机器人动作块与低层跟踪器的时序。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.465
+              ],
+              "caption_anchor": "Fig. 2: Overview of TextOp's framework"
+            },
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.28
+              ],
+              "caption_anchor": "Fig. 3: Illustration of the time-aligned data format"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
+          }
+        },
+        {
+          "file": "table-1-2-hardware.jpg",
+          "locator": "Table I-II",
+          "caption_zh": "30 秒真机流式指令成功次数与计算/人感响应延迟。",
+          "selection_reason_zh": "该摘录直接对应详情页对“30 秒真机流式指令成功次数与计算/人感响应延迟。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“30 秒真机流式指令成功次数与计算/人感响应延迟。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.54,
+                0.92,
+                0.72
+              ],
+              "caption_anchor": "TABLE I: Quantitative evaluation"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.46,
+                0.49,
+                0.62
+              ],
+              "caption_anchor": "TABLE II: Real-time performance"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
+          }
+        },
+        {
+          "file": "table-3-4-representation.jpg",
+          "locator": "Table III-IV",
+          "caption_zh": "机器人骨架生成表示和混合数据 tracker 的分布对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“机器人骨架生成表示和混合数据 tracker 的分布对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“机器人骨架生成表示和混合数据 tracker 的分布对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.25
+              ],
+              "caption_anchor": "TABLE III: Comparison of motion generation"
+            },
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.24,
+                0.92,
+                0.47
+              ],
+              "caption_anchor": "TABLE IV: Simulation evaluation"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
+          }
+        }
+      ],
+      "source_pdf_sha256": "884c204fa9afddddf4179ea88e031ff42f68a526c72b24d185d4388cfec30aea"
     },
     {
       "slug": "host-2502.08378v2",
@@ -140,10 +1252,116 @@
       "pdf": "var/papers/2502.08378v2.pdf",
       "source_url": "https://arxiv.org/pdf/2502.08378v2",
       "figures": [
-        {"file": "figure-2-training.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "多 critic、分阶段奖励、探索拉力和动作幅度课程。"},
-        {"file": "table-2-3-ablation.jpg", "page": 6, "locator": "Table II-III", "caption_zh": "奖励/随机化设置与起身训练组件消融。"},
-        {"file": "table-4-figure-7-9.jpg", "page": 8, "locator": "Table IV / Figure 7 / Figure 9", "caption_zh": "真机重复起身、跨地面定性结果与动作平滑性对照。"}
-      ]
+        {
+          "file": "figure-2-training.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "多 critic、分阶段奖励、探索拉力和动作幅度课程。",
+          "selection_reason_zh": "该摘录直接对应详情页对“多 critic、分阶段奖励、探索拉力和动作幅度课程。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“多 critic、分阶段奖励、探索拉力和动作幅度课程。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.26
+              ],
+              "caption_anchor": "Fig. 2: Framework overview"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
+          }
+        },
+        {
+          "file": "table-2-3-ablation.jpg",
+          "locator": "Table II-III",
+          "caption_zh": "奖励/随机化设置与起身训练组件消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“奖励/随机化设置与起身训练组件消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“奖励/随机化设置与起身训练组件消融。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.25
+              ],
+              "caption_anchor": "TABLE II: Domain randomization"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.28
+              ],
+              "caption_anchor": "TABLE III: Main simulation results"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
+          }
+        },
+        {
+          "file": "table-4-figure-7-9.jpg",
+          "locator": "Table IV / Figure 7 / Figure 9",
+          "caption_zh": "真机重复起身、跨地面定性结果与动作平滑性对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“真机重复起身、跨地面定性结果与动作平滑性对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“真机重复起身、跨地面定性结果与动作平滑性对照。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.33
+              ],
+              "caption_anchor": "Fig. 7: Snapshot of real robot motion"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.51,
+                0.92,
+                0.65
+              ],
+              "caption_anchor": "TABLE IV: Main results for real robot"
+            },
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.3
+              ],
+              "caption_anchor": "Fig. 9: Sim-to-real analysis"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
+          }
+        }
+      ],
+      "source_pdf_sha256": "92961cf4b5eb503e9fcd5d8a7bfcd2bb7269025a49dfb832e34e52ebb1b74ec0"
     },
     {
       "slug": "frasa-2410.08655v3",
@@ -151,10 +1369,96 @@
       "pdf": "var/papers/2410.08655v3.pdf",
       "source_url": "https://arxiv.org/pdf/2410.08655v3",
       "figures": [
-        {"file": "figure-2-state-action.jpg", "page": 3, "locator": "Figure 2 / Equation 1-4", "caption_zh": "左右对称五自由度状态、增量动作与简洁奖励的定义。"},
-        {"file": "figure-4-training-table-2.jpg", "page": 4, "locator": "Figure 4 / Table II", "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。"},
-        {"file": "table-3-4-hardware.jpg", "page": 6, "locator": "Table III-IV", "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。"}
-      ]
+        {
+          "file": "figure-2-state-action.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "左右对称五自由度状态、增量动作与简洁奖励的定义。",
+          "selection_reason_zh": "该摘录直接对应详情页对“左右对称五自由度状态、增量动作与简洁奖励的定义。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“左右对称五自由度状态、增量动作与简洁奖励的定义。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.08,
+                0.2,
+                0.5,
+                0.39
+              ],
+              "caption_anchor": "Fig. 2. Left: target posture"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
+          }
+        },
+        {
+          "file": "figure-4-table-2.jpg",
+          "locator": "Figure 4 / Table II",
+          "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。",
+          "selection_reason_zh": "该摘录直接对应详情页对“CrossQ 学习速度分布和执行器/延迟域随机化范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“CrossQ 学习速度分布和执行器/延迟域随机化范围。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.28,
+                0.92,
+                0.475
+              ],
+              "caption_anchor": "Fig. 4. Reward variability"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.12,
+                0.49,
+                0.29
+              ],
+              "caption_anchor": "TABLE II"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
+          }
+        },
+        {
+          "file": "table-3-4-hardware.jpg",
+          "locator": "Table III-IV",
+          "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“真机起身时间和不同摆锤冲击能量下的恢复对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“真机起身时间和不同摆锤冲击能量下的恢复对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.29
+              ],
+              "caption_anchor": "TABLE III"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
+          }
+        }
+      ],
+      "source_pdf_sha256": "119942a95519200c4e95b93d84e02cc4c1a38533fde6c0e480ff0a76f8c16876"
     },
     {
       "slug": "amass-1904.03278",
@@ -162,10 +1466,86 @@
       "pdf": "var/papers/1904.03278.pdf",
       "source_url": "https://arxiv.org/pdf/1904.03278",
       "figures": [
-        {"file": "figure-2-mosh-plus.jpg", "page": 2, "locator": "Figure 2", "caption_zh": "MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。"},
-        {"file": "figure-6-reconstruction.jpg", "page": 7, "locator": "Figure 6", "caption_zh": "MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。"},
-        {"file": "figure-9-components.jpg", "page": 12, "locator": "Figure 9", "caption_zh": "体型与动态分量数量对重建误差的影响，用于判断统一模型容量。"}
-      ]
+        {
+          "file": "figure-2-mosh-plus.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。",
+          "selection_reason_zh": "该摘录直接对应详情页对“MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.08,
+                0.07,
+                0.49,
+                0.48
+              ],
+              "caption_anchor": "Figure 2: MoSh++ captures"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
+          }
+        },
+        {
+          "file": "figure-6-reconstruction.jpg",
+          "locator": "Figure 6",
+          "caption_zh": "MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.365
+              ],
+              "caption_anchor": "Figure 6: MoSh vs MoSh++"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
+          }
+        },
+        {
+          "file": "figure-9-components.jpg",
+          "locator": "Figure 9",
+          "caption_zh": "体型与动态分量数量对重建误差的影响，用于判断统一模型容量。",
+          "selection_reason_zh": "该摘录直接对应详情页对“体型与动态分量数量对重建误差的影响，用于判断统一模型容量。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“体型与动态分量数量对重建误差的影响，用于判断统一模型容量。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.08,
+                0.06,
+                0.49,
+                0.605
+              ],
+              "caption_anchor": "Figure 9: Optimal number"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
+          }
+        }
+      ],
+      "source_pdf_sha256": "2390a1d295d7519cdefcbe970eaa19bf2a8944ff06d1ada9debe07bf68bc2f94"
     },
     {
       "slug": "h2o-2403.04436",
@@ -173,10 +1553,106 @@
       "pdf": "var/papers/2403.04436.pdf",
       "source_url": "https://arxiv.org/pdf/2403.04436",
       "figures": [
-        {"file": "figure-4-pipeline.jpg", "page": 4, "locator": "Figure 4", "caption_zh": "从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。"},
-        {"file": "table-1-2-training.jpg", "page": 5, "locator": "Table I-II", "caption_zh": "运动跟踪奖励与仿真到现实动力学随机化范围。"},
-        {"file": "table-3-4-filtering.jpg", "page": 6, "locator": "Table III-IV", "caption_zh": "未清洗动作、可行性筛选与数据规模对跟踪结果的影响。"}
-      ]
+        {
+          "file": "figure-4-pipeline.jpg",
+          "locator": "Figure 4",
+          "caption_zh": "从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。",
+          "selection_reason_zh": "该摘录直接对应详情页对“从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.51
+              ],
+              "caption_anchor": "Fig. 4: Overview of H2O"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
+          }
+        },
+        {
+          "file": "table-1-2-training.jpg",
+          "locator": "Table I-II",
+          "caption_zh": "运动跟踪奖励与仿真到现实动力学随机化范围。",
+          "selection_reason_zh": "该摘录直接对应详情页对“运动跟踪奖励与仿真到现实动力学随机化范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“运动跟踪奖励与仿真到现实动力学随机化范围。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.34
+              ],
+              "caption_anchor": "TABLE I: Reward components"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.5,
+                0.34,
+                0.92,
+                0.6
+              ],
+              "caption_anchor": "TABLE II: The range of dynamics randomization"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
+          }
+        },
+        {
+          "file": "table-3-4-filtering.jpg",
+          "locator": "Table III-IV",
+          "caption_zh": "未清洗动作、可行性筛选与数据规模对跟踪结果的影响。",
+          "selection_reason_zh": "该摘录直接对应详情页对“未清洗动作、可行性筛选与数据规模对跟踪结果的影响。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“未清洗动作、可行性筛选与数据规模对跟踪结果的影响。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.205
+              ],
+              "caption_anchor": "TABLE III: Quantitative motion"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.21,
+                0.92,
+                0.32
+              ],
+              "caption_anchor": "TABLE IV: Quantitative results"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
+          }
+        }
+      ],
+      "source_pdf_sha256": "78d380da6e28949275137a7dd46922116a81efdf417a02aa81c6f40c5bcade22"
     },
     {
       "slug": "zmp-preview-kajita-2003",
@@ -184,10 +1660,136 @@
       "pdf": "var/papers/kajita-2003-zmp.pdf",
       "source_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
       "figures": [
-        {"file": "figure-6-8-preview.jpg", "page": 4, "locator": "Figure 6-8 / Equation 15", "caption_zh": "预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。"},
-        {"file": "figure-9-11-multibody.jpg", "page": 5, "locator": "Figure 9-11", "caption_zh": "HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。"},
-        {"file": "figure-12-13-stairs.jpg", "page": 6, "locator": "Figure 12-13", "caption_zh": "螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。"}
-      ]
+        {
+          "file": "figure-6-8-preview.jpg",
+          "locator": "Figure 6-8",
+          "caption_zh": "预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。",
+          "selection_reason_zh": "该摘录直接对应详情页对“预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.49,
+                0.92,
+                0.62
+              ],
+              "caption_anchor": "Figure 6: Preview controller gain"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.37
+              ],
+              "caption_anchor": "Figure 7: Body trajectory"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.32,
+                0.49,
+                0.62
+              ],
+              "caption_anchor": "Figure 8: With shorter previewing period"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
+          }
+        },
+        {
+          "file": "figure-9-11-multibody.jpg",
+          "locator": "Figure 9-11",
+          "caption_zh": "HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。",
+          "selection_reason_zh": "该摘录直接对应详情页对“HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.5,
+                0.055,
+                0.92,
+                0.355
+              ],
+              "caption_anchor": "Figure 9: HRP-2 Prototype"
+            },
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.5,
+                0.4,
+                0.92,
+                0.8
+              ],
+              "caption_anchor": "Figure 10: ZMP calculated"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.38
+              ],
+              "caption_anchor": "Figure 11: Modified ZMP"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
+          }
+        },
+        {
+          "file": "figure-12-13-stairs.jpg",
+          "locator": "Figure 12-13",
+          "caption_zh": "螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。",
+          "selection_reason_zh": "该摘录直接对应详情页对“螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.36
+              ],
+              "caption_anchor": "Figure 12: Planned trajectory"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.46
+              ],
+              "caption_anchor": "Figure 13: Snapshots of walking"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
+          }
+        }
+      ],
+      "source_pdf_sha256": "ddc30ab1e2c6b8ed1f375d53bfd3b16c2eee7f9906a8b1ca9c99d5057a77b683"
     },
     {
       "slug": "periodic-gaits-2011.01387",
@@ -195,10 +1797,116 @@
       "pdf": "var/papers/2011.01387.pdf",
       "source_url": "https://arxiv.org/pdf/2011.01387",
       "figures": [
-        {"file": "figure-1-2-gaits.jpg", "page": 2, "locator": "Figure 1-2", "caption_zh": "Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。"},
-        {"file": "figure-3-4-phase.jpg", "page": 4, "locator": "Figure 3-4", "caption_zh": "用周期相位、接触力与足端速度系数组合不同双足步态。"},
-        {"file": "table-1-figure-5-transfer.jpg", "page": 6, "locator": "Table I / Figure 5", "caption_zh": "动力学随机化范围及仿真和实机地面反力的对照。"}
-      ]
+        {
+          "file": "figure-1-2-gaits.jpg",
+          "locator": "Figure 1-2",
+          "caption_zh": "Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。",
+          "selection_reason_zh": "该摘录直接对应详情页对“Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 1,
+              "crop": [
+                0.5,
+                0.27,
+                0.92,
+                0.65
+              ],
+              "caption_anchor": "Fig. 1. In this work"
+            },
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.31
+              ],
+              "caption_anchor": "Fig. 2. A series of images"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b68472b73eb2d6d88db858b07b6254c270f1c21bf2e35a6bc7adb43a0041486a"
+          }
+        },
+        {
+          "file": "figure-3-4-phase.jpg",
+          "locator": "Figure 3-4",
+          "caption_zh": "用周期相位、接触力与足端速度系数组合不同双足步态。",
+          "selection_reason_zh": "该摘录直接对应详情页对“用周期相位、接触力与足端速度系数组合不同双足步态。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“用周期相位、接触力与足端速度系数组合不同双足步态。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.32
+              ],
+              "caption_anchor": "Fig. 3. The circular intervals"
+            },
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.35,
+                0.92,
+                0.575
+              ],
+              "caption_anchor": "Fig. 4. Plot of the expected value"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "ddba552fc336e2f384eb09c1ecffd184e2462b975cc7620b48c9275fbf758537"
+          }
+        },
+        {
+          "file": "table-1-figure-5-transfer.jpg",
+          "locator": "Table I / Figure 5",
+          "caption_zh": "动力学随机化范围及仿真和实机地面反力的对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“动力学随机化范围及仿真和实机地面反力的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“动力学随机化范围及仿真和实机地面反力的对照。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.64,
+                0.49,
+                0.81
+              ],
+              "caption_anchor": "TABLE I. The ranges for randomization"
+            },
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.04,
+                0.5,
+                0.35
+              ],
+              "caption_anchor": "Fig. 5. Comparison between"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "060cbdf5c28c4d0d933ecb337af63d8c0b18f00d54b6dfca7b6013dce43a0dd6"
+          }
+        }
+      ],
+      "source_pdf_sha256": "8a463e21e5e59bdbc8a3a8bf1c078e4daebcec4f07c803fe846924416b28bddb"
     },
     {
       "slug": "sentis-wbc-2006",
@@ -206,10 +1914,106 @@
       "pdf": "var/papers/sentis-2006-wbc.pdf",
       "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
       "figures": [
-        {"file": "figure-1-2-primitives.jpg", "page": 2, "locator": "Figure 1-2", "caption_zh": "约束、操作任务和姿态原语如何聚合成可组合的全身行为。"},
-        {"file": "figure-3-hierarchy.jpg", "page": 3, "locator": "Figure 3 / Equation 4-7", "caption_zh": "约束一致与任务一致零空间投影构成的动力学优先级。"},
-        {"file": "figure-5-6-impedance.jpg", "page": 4, "locator": "Figure 5-6", "caption_zh": "约束对任务有效惯量的改变，以及任务级阻抗控制层。"}
-      ]
+        {
+          "file": "figure-1-2-primitives.jpg",
+          "locator": "Figure 1-2",
+          "caption_zh": "约束、操作任务和姿态原语如何聚合成可组合的全身行为。",
+          "selection_reason_zh": "该摘录直接对应详情页对“约束、操作任务和姿态原语如何聚合成可组合的全身行为。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“约束、操作任务和姿态原语如何聚合成可组合的全身行为。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 1,
+              "crop": [
+                0.5,
+                0.28,
+                0.92,
+                0.595
+              ],
+              "caption_anchor": "Fig. 1. Control primitives"
+            },
+            {
+              "pdf_page": 2,
+              "crop": [
+                0.5,
+                0.24,
+                0.92,
+                0.545
+              ],
+              "caption_anchor": "Fig. 2. Control entities"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
+          }
+        },
+        {
+          "file": "figure-3-hierarchy.jpg",
+          "locator": "Figure 3",
+          "caption_zh": "约束一致与任务一致零空间投影构成的动力学优先级。",
+          "selection_reason_zh": "该摘录直接对应详情页对“约束一致与任务一致零空间投影构成的动力学优先级。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“约束一致与任务一致零空间投影构成的动力学优先级。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.08,
+                0.43,
+                0.49,
+                0.66
+              ],
+              "caption_anchor": "Fig. 3. A control hierarchy"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
+          }
+        },
+        {
+          "file": "figure-5-6-impedance.jpg",
+          "locator": "Figure 5-6",
+          "caption_zh": "约束对任务有效惯量的改变，以及任务级阻抗控制层。",
+          "selection_reason_zh": "该摘录直接对应详情页对“约束对任务有效惯量的改变，以及任务级阻抗控制层。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“约束对任务有效惯量的改变，以及任务级阻抗控制层。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.08,
+                0.48,
+                0.49,
+                0.77
+              ],
+              "caption_anchor": "Fig. 5. Effective inertia"
+            },
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.34
+              ],
+              "caption_anchor": "Fig. 6. Impedance control layer"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
+          }
+        }
+      ],
+      "source_pdf_sha256": "1f6d56348bad7f4d454974574afad228ac139424a0546dac83c9e136347e57ee"
     },
     {
       "slug": "tsid-hal-01136936",
@@ -217,10 +2021,116 @@
       "pdf": "var/papers/hal-01136936.pdf",
       "source_url": "https://hal.science/hal-01136936/document",
       "figures": [
-        {"file": "figure-1-actuator-model.jpg", "page": 13, "locator": "Figure 1", "caption_zh": "高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。"},
-        {"file": "table-1-3-tracking.jpg", "page": 22, "locator": "Table 1-3 / Figure 3", "caption_zh": "已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。"},
-        {"file": "figure-5-force-control.jpg", "page": 25, "locator": "Figure 5", "caption_zh": "右手末端正弦力参考的实机跟踪及高频振荡边界。"}
-      ]
+        {
+          "file": "figure-1-actuator-model.jpg",
+          "locator": "Figure 1",
+          "caption_zh": "高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。",
+          "selection_reason_zh": "该摘录直接对应详情页对“高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 13,
+              "crop": [
+                0.19,
+                0.04,
+                0.81,
+                0.7
+              ],
+              "caption_anchor": "Figure 1: Torque"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
+          }
+        },
+        {
+          "file": "table-1-3-tracking.jpg",
+          "locator": "Table 1-3 / Figure 3",
+          "caption_zh": "已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。",
+          "selection_reason_zh": "该摘录直接对应详情页对“已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 21,
+              "crop": [
+                0.19,
+                0.04,
+                0.81,
+                0.19
+              ],
+              "caption_anchor": "Table 1: Identified motor parameters"
+            },
+            {
+              "pdf_page": 21,
+              "crop": [
+                0.19,
+                0.62,
+                0.81,
+                0.9
+              ],
+              "caption_anchor": "Table 2: Average squared tracking error"
+            },
+            {
+              "pdf_page": 22,
+              "crop": [
+                0.19,
+                0.07,
+                0.81,
+                0.605
+              ],
+              "caption_anchor": "Figure 3: Friction identification"
+            },
+            {
+              "pdf_page": 22,
+              "crop": [
+                0.19,
+                0.62,
+                0.81,
+                0.9
+              ],
+              "caption_anchor": "Table 3: Maximum tracking error"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
+          }
+        },
+        {
+          "file": "figure-5-force-control.jpg",
+          "locator": "Figure 5",
+          "caption_zh": "右手末端正弦力参考的实机跟踪及高频振荡边界。",
+          "selection_reason_zh": "该摘录直接对应详情页对“右手末端正弦力参考的实机跟踪及高频振荡边界。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“右手末端正弦力参考的实机跟踪及高频振荡边界。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 25,
+              "crop": [
+                0.19,
+                0.04,
+                0.81,
+                0.49
+              ],
+              "caption_anchor": "Figure 5: Tracking of a sinusoidal force"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
+          }
+        }
+      ],
+      "source_pdf_sha256": "e3fdd4b6eecb138dd056487e0ae63dcc1df3b25c4ecde1902ea8f7e8ba55de50"
     },
     {
       "slug": "deepmimic-1804.02717",
@@ -228,10 +2138,86 @@
       "pdf": "var/papers/1804.02717.pdf",
       "source_url": "https://arxiv.org/pdf/1804.02717",
       "figures": [
-        {"file": "figure-2-policy.jpg", "page": 4, "locator": "Figure 2", "caption_zh": "相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。"},
-        {"file": "table-2-tracking.jpg", "page": 8, "locator": "Table 2", "caption_zh": "跨角色和高动态动作的跟踪回报、周期数与训练样本统计。"},
-        {"file": "table-4-task-imitation.jpg", "page": 11, "locator": "Table 4", "caption_zh": "去掉模仿目标或任务目标后的 100 次成功率对照。"}
-      ]
+        {
+          "file": "figure-2-policy.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。",
+          "selection_reason_zh": "该摘录直接对应详情页对“相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.68,
+                0.92,
+                0.9
+              ],
+              "caption_anchor": "Fig. 2. Schematic illustration"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "196c54b3c142265e088f69f5dfc4f6d48409f86542a2d534fead94e048982c0a"
+          }
+        },
+        {
+          "file": "table-2-tracking.jpg",
+          "locator": "Table 2",
+          "caption_zh": "跨角色和高动态动作的跟踪回报、周期数与训练样本统计。",
+          "selection_reason_zh": "该摘录直接对应详情页对“跨角色和高动态动作的跟踪回报、周期数与训练样本统计。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“跨角色和高动态动作的跟踪回报、周期数与训练样本统计。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.35
+              ],
+              "caption_anchor": "Table 2. Performance statistics"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "935df4fd96214dfdd77fae1c315d24647fd3d9902821034d267ae20270f326de"
+          }
+        },
+        {
+          "file": "table-4-task-imitation.jpg",
+          "locator": "Table 4",
+          "caption_zh": "去掉模仿目标或任务目标后的 100 次成功率对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“去掉模仿目标或任务目标后的 100 次成功率对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“去掉模仿目标或任务目标后的 100 次成功率对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 11,
+              "crop": [
+                0.08,
+                0.2,
+                0.49,
+                0.31
+              ],
+              "caption_anchor": "Table 4. Success rate"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "a1e099a58370af91e250f9bfcfc3df9d6235844693661589cfd617999d23a51f"
+          }
+        }
+      ],
+      "source_pdf_sha256": "4bd4cc353bd2dc19da99bb21a254cbfdb9840e49940ce69d484eb6d45bfa348f"
     },
     {
       "slug": "agile-soccer-2304.13653",
@@ -239,10 +2225,86 @@
       "pdf": "var/papers/2304.13653.pdf",
       "source_url": "https://arxiv.org/pdf/2304.13653",
       "figures": [
-        {"file": "figure-2-training.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。"},
-        {"file": "table-1-hardware.jpg", "page": 5, "locator": "Table 1", "caption_zh": "实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。"},
-        {"file": "figure-7-ablation.jpg", "page": 18, "locator": "Figure 7", "caption_zh": "高频控制、动力学随机化与行为正则化等组件的消融。"}
-      ]
+        {
+          "file": "figure-2-training.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。",
+          "selection_reason_zh": "该摘录直接对应详情页对“技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 3,
+              "crop": [
+                0.1,
+                0.51,
+                0.9,
+                0.77
+              ],
+              "caption_anchor": "Figure 2 | Agent training setup"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
+          }
+        },
+        {
+          "file": "table-1-hardware.jpg",
+          "locator": "Table 1",
+          "caption_zh": "实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.1,
+                0.53,
+                0.9,
+                0.87
+              ],
+              "caption_anchor": "Table 1 | Performance"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
+          }
+        },
+        {
+          "file": "figure-7-ablation.jpg",
+          "locator": "Figure 7",
+          "caption_zh": "高频控制、动力学随机化与行为正则化等组件的消融。",
+          "selection_reason_zh": "该摘录直接对应详情页对“高频控制、动力学随机化与行为正则化等组件的消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“高频控制、动力学随机化与行为正则化等组件的消融。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 19,
+              "crop": [
+                0.1,
+                0.16,
+                0.9,
+                0.6
+              ],
+              "caption_anchor": "Figure 7 | Comparison against ablations"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
+          }
+        }
+      ],
+      "source_pdf_sha256": "ee3185ffceb92fd7d0dcd8f6927f64ff02d871896a62382ec050e79fe7905ba6"
     },
     {
       "slug": "amp-2104.02180",
@@ -250,10 +2312,96 @@
       "pdf": "var/papers/2104.02180.pdf",
       "source_url": "https://arxiv.org/pdf/2104.02180",
       "figures": [
-        {"file": "figure-2-adversarial-prior.jpg", "page": 4, "locator": "Figure 2 / Equation 2-5", "caption_zh": "未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。"},
-        {"file": "table-1-2-tasks.jpg", "page": 8, "locator": "Table 1-2", "caption_zh": "多任务表现与不同运动数据集规模、时长的对照。"},
-        {"file": "table-3-figure-8-imitation.jpg", "page": 12, "locator": "Table 3 / Figure 8", "caption_zh": "单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。"}
-      ]
+        {
+          "file": "figure-2-adversarial-prior.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。",
+          "selection_reason_zh": "该摘录直接对应详情页对“未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.5,
+                0.08,
+                0.92,
+                0.38
+              ],
+              "caption_anchor": "Fig. 2. Schematic overview"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
+          }
+        },
+        {
+          "file": "table-1-2-tasks.jpg",
+          "locator": "Table 1-2",
+          "caption_zh": "多任务表现与不同运动数据集规模、时长的对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“多任务表现与不同运动数据集规模、时长的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“多任务表现与不同运动数据集规模、时长的对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 9,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.31
+              ],
+              "caption_anchor": "Table 1. Performance statistics"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
+          }
+        },
+        {
+          "file": "table-3-figure-8-imitation.jpg",
+          "locator": "Table 3 / Figure 8",
+          "caption_zh": "单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。",
+          "selection_reason_zh": "该摘录直接对应详情页对“单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.08,
+                0.05,
+                0.49,
+                0.59
+              ],
+              "caption_anchor": "Table 3. Performance statistics"
+            },
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.5,
+                0.05,
+                0.92,
+                0.51
+              ],
+              "caption_anchor": "Fig. 8. Learning curves"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
+          }
+        }
+      ],
+      "source_pdf_sha256": "93d9e8e40b3908d65e8b88ae3dcbe8d4cd69071d13f3234ad927462477472a29"
     },
     {
       "slug": "maskedmimic-2409.14393",
@@ -261,10 +2409,106 @@
       "pdf": "var/papers/2409.14393.pdf",
       "source_url": "https://arxiv.org/pdf/2409.14393",
       "figures": [
-        {"file": "figure-3-framework.jpg", "page": 5, "locator": "Figure 3", "caption_zh": "全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。"},
-        {"file": "table-1-2-tracking.jpg", "page": 10, "locator": "Table 1-2", "caption_zh": "全身和 VR 稀疏信号跟踪的成功率与误差对照。"},
-        {"file": "table-3-5-sparsity-tasks.jpg", "page": 12, "locator": "Table 3-5", "caption_zh": "关节稀疏度、复杂地形与新任务目标工程的量化边界。"}
-      ]
+        {
+          "file": "figure-3-framework.jpg",
+          "locator": "Figure 3",
+          "caption_zh": "全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。",
+          "selection_reason_zh": "该摘录直接对应详情页对“全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 5,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.875
+              ],
+              "caption_anchor": "Fig. 3. The MaskedMimic framework"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "fd9ca48ec62dffdf82c094b2a0bb49a6ae54a00de3ce4f44aab50f206e9c8920"
+          }
+        },
+        {
+          "file": "table-1-2-tracking.jpg",
+          "locator": "Table 1-2",
+          "caption_zh": "全身和 VR 稀疏信号跟踪的成功率与误差对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“全身和 VR 稀疏信号跟踪的成功率与误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“全身和 VR 稀疏信号跟踪的成功率与误差对照。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 11,
+              "crop": [
+                0.08,
+                0.36,
+                0.49,
+                0.69
+              ],
+              "caption_anchor": "Table 1. Full-body tracking"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b48decb1e1fa0342ca2fe82ef341de227f3ee28eeb76a79e0a6df6b11f16f99f"
+          }
+        },
+        {
+          "file": "table-3-5-sparsity-tasks.jpg",
+          "locator": "Table 3-5",
+          "caption_zh": "关节稀疏度、复杂地形与新任务目标工程的量化边界。",
+          "selection_reason_zh": "该摘录直接对应详情页对“关节稀疏度、复杂地形与新任务目标工程的量化边界。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“关节稀疏度、复杂地形与新任务目标工程的量化边界。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.08,
+                0.04,
+                0.49,
+                0.23
+              ],
+              "caption_anchor": "Table 3. MaskedMimic"
+            },
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.08,
+                0.23,
+                0.49,
+                0.49
+              ],
+              "caption_anchor": "Table 4. MaskedMimic"
+            },
+            {
+              "pdf_page": 12,
+              "crop": [
+                0.5,
+                0.04,
+                0.92,
+                0.25
+              ],
+              "caption_anchor": "Table 5. Tasks"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "b8fe88dae315b0869de8ba4a2d9d248ed3f01f77f7788ce54bd00efc8b56c4ee"
+          }
+        }
+      ],
+      "source_pdf_sha256": "31e79502e14262b6c9cec33eb4531e4f2f611e9d277a7d243b6f61c5d714b37d"
     },
     {
       "slug": "safefall-2511.18509",
@@ -272,10 +2516,116 @@
       "pdf": "var/papers/2511.18509.pdf",
       "source_url": "https://arxiv.org/pdf/2511.18509",
       "figures": [
-        {"file": "figure-2-framework.jpg", "page": 3, "locator": "Figure 2 / Table I", "caption_zh": "从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。"},
-        {"file": "table-2-3-predictor.jpg", "page": 6, "locator": "Table II-III", "caption_zh": "随机化范围和预测器在不同提前量下的漏报、误报与准确率。"},
-        {"file": "table-4-5-hardware.jpg", "page": 8, "locator": "Table IV-V / Figure 6", "caption_zh": "仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。"}
-      ]
+        {
+          "file": "figure-2-framework.jpg",
+          "locator": "Figure 2",
+          "caption_zh": "从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。",
+          "selection_reason_zh": "该摘录直接对应详情页对“从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。”的有限说明。",
+          "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+          "regions": [
+            {
+              "pdf_page": 4,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.385
+              ],
+              "caption_anchor": "Fig. 2. Overview of SafeFall"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "02d6b3216872bbc1b212f2afc043512ebce699eff003ff50b2153e68ac516291"
+          }
+        },
+        {
+          "file": "table-2-3-predictor.jpg",
+          "locator": "Table II-III",
+          "caption_zh": "训练随机化范围，以及预测器在不同提前量下的误报率与提前时间。",
+          "selection_reason_zh": "该摘录直接对应详情页对“随机化范围和预测器在不同提前量下的漏报、误报与准确率。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“随机化范围和预测器在不同提前量下的漏报、误报与准确率。”的有限说明。",
+          "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+          "regions": [
+            {
+              "pdf_page": 6,
+              "crop": [
+                0.08,
+                0.53,
+                0.49,
+                0.7
+              ],
+              "caption_anchor": "TABLE II"
+            },
+            {
+              "pdf_page": 7,
+              "crop": [
+                0.08,
+                0.25,
+                0.49,
+                0.42
+              ],
+              "caption_anchor": "TABLE III"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "4375306725915b7af9b3412cc535178b001018c3e50ebfa3dcf8e8899f112d14"
+          }
+        },
+        {
+          "file": "table-4-5-hardware.jpg",
+          "locator": "Table IV-V / Figure 6",
+          "caption_zh": "仿真量化消融、G1 真机保护动作序列和未见名义策略下的峰值力对照。",
+          "selection_reason_zh": "该摘录直接对应详情页对“仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+          "supports_zh": "支持详情页在原论文所述条件下对“仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。”的有限说明。",
+          "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+          "regions": [
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.04,
+                0.92,
+                0.2
+              ],
+              "caption_anchor": "TABLE IV"
+            },
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.18,
+                0.49,
+                0.385
+              ],
+              "caption_anchor": "Fig. 6. SafeFall mitigating damages"
+            },
+            {
+              "pdf_page": 8,
+              "crop": [
+                0.08,
+                0.67,
+                0.49,
+                0.82
+              ],
+              "caption_anchor": "TABLE V"
+            }
+          ],
+          "review": {
+            "status": "approved",
+            "reviewer": "codex-pdf-visual-audit-2026-08-12",
+            "reviewed_on": "2026-08-12",
+            "fingerprint": "5702485d26a6c5f31d26ac06c3808b91cd1a49d447b41df43f8c00ecd479b1a0"
+          }
+        }
+      ],
+      "source_pdf_sha256": "68e984f51b0646485a8101402ad176d273c34eb6949cfadff461d26830437692"
     }
   ]
 }

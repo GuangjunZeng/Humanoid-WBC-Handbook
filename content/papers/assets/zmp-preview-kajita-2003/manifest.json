@@ -1,33 +1,258 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "doi:10.1109/ROBOT.2003.1241826",
   "source_pdf": "https://doi.org/10.1109/ROBOT.2003.1241826",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "ddc30ab1e2c6b8ed1f375d53bfd3b16c2eee7f9906a8b1ca9c99d5057a77b683",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-6-8-preview.jpg",
       "source_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
-      "pdf_page": 4,
-      "source_locator": "Figure 6-8 / Equation 15",
+      "source_locator": "Figure 6-8",
       "caption_zh": "预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。",
-      "sha256": "bf2655932f683e5066edc9206ff6cdbe1d4d6673c06626887ef835256ff60438"
+      "selection_reason_zh": "该摘录直接对应详情页对“预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“预览增益及 1.6 秒与 0.8 秒预览窗口下的 ZMP 跟踪差异。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.49,
+            0.92,
+            0.62
+          ],
+          "caption_anchor": "Figure 6: Preview controller gain",
+          "caption_anchor_bbox": [
+            0.518862,
+            0.591664,
+            0.750064,
+            0.602851
+          ],
+          "caption_block_bbox": [
+            0.518862,
+            0.591664,
+            0.895512,
+            0.620006
+          ],
+          "page_text_sha256": "472f941472affcd1be30a10e7eb75c0453350466eaa70dfd8bdaa00784db75af"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.37
+          ],
+          "caption_anchor": "Figure 7: Body trajectory",
+          "caption_anchor_bbox": [
+            0.103295,
+            0.320663,
+            0.291988,
+            0.33185
+          ],
+          "caption_block_bbox": [
+            0.103295,
+            0.320663,
+            0.480209,
+            0.349154
+          ],
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.32,
+            0.49,
+            0.62
+          ],
+          "caption_anchor": "Figure 8: With shorter previewing period",
+          "caption_anchor_bbox": [
+            0.103295,
+            0.58116,
+            0.403599,
+            0.592347
+          ],
+          "caption_block_bbox": [
+            0.103295,
+            0.577958,
+            0.480139,
+            0.607353
+          ],
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3935,
+      "sha256": "b05911bf3e13b71381dccc6faad22c9c8b79b9102554ef21019ad33ba727f7ab",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
+      },
+      "review_fingerprint": "54f631ef35112cce80a8152a28a8f1617a939d8681552fb4e1a14089fa5c17cb"
     },
     {
       "asset": "figure-9-11-multibody.jpg",
       "source_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
-      "pdf_page": 5,
       "source_locator": "Figure 9-11",
       "caption_zh": "HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。",
-      "sha256": "c7f2c364ceeecec52d57414c467ec784d376bb80c0b8ba7ed99bfd59d266779d"
+      "selection_reason_zh": "该摘录直接对应详情页对“HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“HRP-2P 多刚体模型误差及通过 ZMP 修正迭代补偿的结果。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.055,
+            0.92,
+            0.355
+          ],
+          "caption_anchor": "Figure 9: HRP-2 Prototype",
+          "caption_anchor_bbox": [
+            0.558671,
+            0.337769,
+            0.753849,
+            0.348956
+          ],
+          "caption_block_bbox": [
+            0.558671,
+            0.337769,
+            0.855865,
+            0.348956
+          ],
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.4,
+            0.92,
+            0.8
+          ],
+          "caption_anchor": "Figure 10: ZMP calculated",
+          "caption_anchor_bbox": [
+            0.518862,
+            0.760627,
+            0.715013,
+            0.771815
+          ],
+          "caption_block_bbox": [
+            0.518862,
+            0.760627,
+            0.895659,
+            0.786671
+          ],
+          "page_text_sha256": "fe636fac96f45da2ceafea766fa8eb832536a5e6ce8148d557b5d5db7e655de3"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.38
+          ],
+          "caption_anchor": "Figure 11: Modified ZMP",
+          "caption_anchor_bbox": [
+            0.128928,
+            0.320663,
+            0.310396,
+            0.33185
+          ],
+          "caption_block_bbox": [
+            0.128928,
+            0.320663,
+            0.454676,
+            0.33185
+          ],
+          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 5284,
+      "sha256": "7517d8a0cb1d0e528cb43c6665e1d3fe9347d0f9d331852fb1023fae09c841ae",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
+      },
+      "review_fingerprint": "ea30f2eaf0420244e5f95ff0a579018c6843b53321d3fce61b9fa3e8ba236bfd"
     },
     {
       "asset": "figure-12-13-stairs.jpg",
       "source_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
-      "pdf_page": 6,
       "source_locator": "Figure 12-13",
       "caption_zh": "螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。",
-      "sha256": "e7894b276de47a0f4018bd06c2d66756769ebf59bd786bea252a9f1aa60e2508"
+      "selection_reason_zh": "该摘录直接对应详情页对“螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“螺旋楼梯规划轨迹与 HRP-2P 仿真序列，展示指定落脚约束下的生成结果。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.36
+          ],
+          "caption_anchor": "Figure 12: Planned trajectory",
+          "caption_anchor_bbox": [
+            0.518862,
+            0.298905,
+            0.741081,
+            0.310092
+          ],
+          "caption_block_bbox": [
+            0.518862,
+            0.298905,
+            0.896063,
+            0.339953
+          ],
+          "page_text_sha256": "10ee0875448eb55faa3b779585602ee97be87896b24870a40f37add65e2af3b3"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.46
+          ],
+          "caption_anchor": "Figure 13: Snapshots of walking",
+          "caption_anchor_bbox": [
+            0.103295,
+            0.417749,
+            0.330001,
+            0.428936
+          ],
+          "caption_block_bbox": [
+            0.103295,
+            0.417749,
+            0.479916,
+            0.443792
+          ],
+          "page_text_sha256": "25e62cff159e2ed171b45a8099a162d056275d871248d9c5456daea58910c8b8"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3733,
+      "sha256": "2216e9a85cabc57e54cf91e8f1f173ec99907b77a6e91029d0d09f1485144e0d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
+      },
+      "review_fingerprint": "9ed844ae31b10ea422df6d31b8d91895977eed83c0177b96d4845f748f7128b1"
     }
   ]
 }

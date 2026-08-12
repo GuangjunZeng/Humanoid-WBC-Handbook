@@ -47,7 +47,7 @@ Figure 2 / Equations 1-3 定义了这篇论文最重要的约束：左右关节�
 - Table III：各 20 次实机起身，俯卧 FRASA 2.135±0.042 s 对 KFB 3.154±0.005 s；仰卧 2.678±0.178 s 对 5.06±0.008 s。
 - Figure 5 / Table IV：0.9 kg 摆锤以 4.0–7.3 J 冲击，每配置 10 次；7.3 J 前/后向恢复 2.44/2.26 s，KFB 为 5.74/4.47 s。
 
-![Figure 4 / Table II：训练速度与 sim-to-real 随机化](assets/frasa-2410.08655v3/figure-4-training-table-2.jpg)
+![Figure 4 / Table II：训练速度与 sim-to-real 随机化](assets/frasa-2410.08655v3/figure-4-table-2.jpg)
 
 Figure 4 的 40 个代理分布说明 CrossQ/SAC 在该小尺寸对称问题上的学习速度，Table II 则说明这个速度不是在完全确定仿真中得到。但随机化范围仅与论文的 Sigmaban 和延迟模型对应，换成其他执行器时必须重新通过实验定义。
 

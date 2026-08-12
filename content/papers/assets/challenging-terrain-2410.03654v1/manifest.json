@@ -1,33 +1,143 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2410.03654v1",
   "source_pdf": "https://arxiv.org/pdf/2410.03654v1",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "be622773db697aa0ea9ad7820f838163424675be7f19e566ef40ec129655ffed",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-8-pretrain-finetune.jpg",
       "source_url": "https://arxiv.org/pdf/2410.03654v1",
-      "pdf_page": 20,
       "source_locator": "Figure 8",
       "caption_zh": "平地序列预训练与复杂地形 PPO 微调的两阶段结构。",
-      "sha256": "6d1364cf97b7fbbd7703f580bed404fd0f8e761fc27cfbdb1485a2738422c43e"
+      "selection_reason_zh": "该摘录直接对应详情页对“平地序列预训练与复杂地形 PPO 微调的两阶段结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“平地序列预训练与复杂地形 PPO 微调的两阶段结构。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 20,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.66
+          ],
+          "caption_anchor": "Figure 8: Method",
+          "caption_anchor_bbox": [
+            0.12691,
+            0.561432,
+            0.274602,
+            0.575108
+          ],
+          "caption_block_bbox": [
+            0.12691,
+            0.561432,
+            0.867997,
+            0.648066
+          ],
+          "page_text_sha256": "f22201823b8fb4803901af475b08c703452706cefa6aeda745dca099c7ea5f0c"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1744,
+      "sha256": "522d27b2c6239700aa7510e863e775f4bf1167f06324628116ae329181373c81",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
+      },
+      "review_fingerprint": "8ded73eb765f7fedaaf32aecbe3e2e38ba66114c4a742431b79c8e1f1fccc5b9"
     },
     {
       "asset": "figure-9-sample-efficiency.jpg",
       "source_url": "https://arxiv.org/pdf/2410.03654v1",
-      "pdf_page": 26,
       "source_locator": "Figure 9",
       "caption_zh": "预训练初始化和从零训练在交互预算与最终性能上的对照。",
-      "sha256": "3c6b7eef7d8f7565196115da255670d318eddb783ea5db9fc8424c79ee3fc779"
+      "selection_reason_zh": "该摘录直接对应详情页对“预训练初始化和从零训练在交互预算与最终性能上的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“预训练初始化和从零训练在交互预算与最终性能上的对照。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 26,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.485
+          ],
+          "caption_anchor": "Figure 9: Comparison to scratch policy",
+          "caption_anchor_bbox": [
+            0.12691,
+            0.386121,
+            0.45747,
+            0.399797
+          ],
+          "caption_block_bbox": [
+            0.12691,
+            0.386121,
+            0.867997,
+            0.472757
+          ],
+          "page_text_sha256": "ecad1cb8e60c32c622e27e0530f549b8d4be40f929aeae1e432358eef2d065e1"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1268,
+      "sha256": "2a4e6e16b7bdbd55bb12c9e5ec155178850f2aeb6d730cc4b8b73da330de732b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
+      },
+      "review_fingerprint": "b5d587406437ea0314fb29c9b133a99608d8d1e387fc0948befa61039efa78ae"
     },
     {
       "asset": "figure-11-gait.jpg",
       "source_url": "https://arxiv.org/pdf/2410.03654v1",
-      "pdf_page": 28,
       "source_locator": "Figure 11",
       "caption_zh": "预训练保留对称步态，从零策略出现拖腿的定性对照。",
-      "sha256": "a5f66f705f789b6e726ce428cfd43215c72b79befc37a735b1b8cf686e718bf2"
+      "selection_reason_zh": "该摘录直接对应详情页对“预训练保留对称步态，从零策略出现拖腿的定性对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“预训练保留对称步态，从零策略出现拖腿的定性对照。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 28,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.355
+          ],
+          "caption_anchor": "Figure 11: Comparison of gait patterns",
+          "caption_anchor_bbox": [
+            0.12691,
+            0.295197,
+            0.455184,
+            0.308873
+          ],
+          "caption_block_bbox": [
+            0.12691,
+            0.295197,
+            0.867996,
+            0.345353
+          ],
+          "page_text_sha256": "3bb5f24eac53a46eb98807d3d675614ea6063ebdcb2bc390ab1891e66ef40fa4"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 913,
+      "sha256": "3f32c413bf5fc34c961910d0c73852588578cb8205d8d17a9ed0f39983dafe64",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
+      },
+      "review_fingerprint": "e36c796b44c741b922163ab43f06e5a676806e318806c0894763109142559fb0"
     }
   ]
 }

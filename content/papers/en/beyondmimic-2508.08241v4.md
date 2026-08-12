@@ -15,8 +15,8 @@ A minimal tracking MDP with adaptive sampling produces broad motion data. A cond
 ## Key figures
 ![Figure 2: hardware tracking layer](../assets/beyondmimic-2508.08241v4/figure-2-hardware-tracking.jpg)
 The selected 34 motions demonstrate tracker breadth but do not provide per-motion random-trial success denominators.
-![Figures 5-7: guided state-action diffusion](../assets/beyondmimic-2508.08241v4/figure-5-guidance.jpg)
-Including future state lets waypoint and obstacle costs differentiate the proposed trajectory directly.
+![Figures 5-6: command-conditioned behavior, transitions, and composition](../assets/beyondmimic-2508.08241v4/figure-5-6-guidance.jpg)
+The selected command-conditioned behaviors and transitions show controllable composition, but not per-transition success denominators; the guidance mechanism still requires the paper's state-action diffusion evidence.
 ![Figure 8: representation, history, delay, and sampling](../assets/beyondmimic-2508.08241v4/figure-8-ablation.jpg)
 The negative delay/history results show that the minimal low-latency tracker is an active design choice.
 

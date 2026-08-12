@@ -15,7 +15,7 @@ The project trains a command-conditioned locomotion policy, checks it in a secon
 ## Key figures
 ![Figure 2: training-to-deployment pipeline](../assets/humanoid-gym-2404.05695v2/figure-2-pipeline.jpg)
 The pipeline makes cross-simulator replay an explicit gate before hardware.
-![Figure 3: reward design](../assets/humanoid-gym-2404.05695v2/figure-3-rewards.jpg)
+![Figures 3-4: MuJoCo-to-hardware calibration](../assets/humanoid-gym-2404.05695v2/figure-3-4-calibration.jpg)
 The reward breakdown shows which behaviors are task targets and which are regularizers.
 ![Table 4: randomized parameters](../assets/humanoid-gym-2404.05695v2/table-4-parameters.jpg)
 The ranges define the claimed robustness envelope and should not be copied without platform identification.

@@ -1,33 +1,143 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:1904.03278v1",
   "source_pdf": "https://arxiv.org/pdf/1904.03278",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "2390a1d295d7519cdefcbe970eaa19bf2a8944ff06d1ada9debe07bf68bc2f94",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-mosh-plus.jpg",
       "source_url": "https://arxiv.org/pdf/1904.03278",
-      "pdf_page": 2,
       "source_locator": "Figure 2",
       "caption_zh": "MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。",
-      "sha256": "13f3da5ace90b4e20408464be58ff964269a2f0f5ad596b3ec437fa8161b724a"
+      "selection_reason_zh": "该摘录直接对应详情页对“MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.08,
+            0.07,
+            0.49,
+            0.48
+          ],
+          "caption_anchor": "Figure 2: MoSh++ captures",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.344601,
+            0.272735,
+            0.355847
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.344601,
+            0.467917,
+            0.461511
+          ],
+          "page_text_sha256": "a2d31d31a4e31f9ee3fca616de89bb1ade4e95dd7beeb71766c0bf9eca06952b"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2130,
+      "sha256": "0cfddd7300e7953bfd34558e6df29337c64bff8b564c134eca3070b73a9167be",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
+      },
+      "review_fingerprint": "6fb37882f54eed6c8269889527d4af5cfe5159fd0bf706729a18b05c6ca1082b"
     },
     {
       "asset": "figure-6-reconstruction.jpg",
       "source_url": "https://arxiv.org/pdf/1904.03278",
-      "pdf_page": 7,
       "source_locator": "Figure 6",
       "caption_zh": "MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。",
-      "sha256": "3f845c53d55dcbf554ab75071362a50cfce1ce7992a163ae8f4ed11cfd360ffe"
+      "selection_reason_zh": "该摘录直接对应详情页对“MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.365
+          ],
+          "caption_anchor": "Figure 6: MoSh vs MoSh++",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.268559,
+            0.273548,
+            0.279804
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.268559,
+            0.890709,
+            0.355279
+          ],
+          "page_text_sha256": "ae8dfe680433f0ce68d13d006c16937bf071887fb7cdb8df9d022cdd9c000b81"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 857,
+      "sha256": "56d3422bc5c39b81e6aa565979446a510887179b71e7693defe41251cdad3b54",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
+      },
+      "review_fingerprint": "f64dda8ee8911f2165aec587c369608a3335542ea60aa7178fcc7da4eecd180c"
     },
     {
       "asset": "figure-9-components.jpg",
       "source_url": "https://arxiv.org/pdf/1904.03278",
-      "pdf_page": 12,
       "source_locator": "Figure 9",
       "caption_zh": "体型与动态分量数量对重建误差的影响，用于判断统一模型容量。",
-      "sha256": "2deaab91041f2e1fade4a625325847af021dcf1f010aa31c8922337211af768b"
+      "selection_reason_zh": "该摘录直接对应详情页对“体型与动态分量数量对重建误差的影响，用于判断统一模型容量。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“体型与动态分量数量对重建误差的影响，用于判断统一模型容量。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.08,
+            0.06,
+            0.49,
+            0.605
+          ],
+          "caption_anchor": "Figure 9: Optimal number",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.522936,
+            0.256879,
+            0.534182
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.522936,
+            0.467917,
+            0.594562
+          ],
+          "page_text_sha256": "6fdfd14a934e1c4749beb8cffc22b958160c30c1babf9997293da732a741c8fd"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2811,
+      "sha256": "f3445c95dc3b072440fc8400dc2e1d3cbe91c5aab4365dc722dca86421253802",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
+      },
+      "review_fingerprint": "5d89ced9149273aa1e3850c1af7fcd49b2b032c5a93d561d973398d75019e7af"
     }
   ]
 }

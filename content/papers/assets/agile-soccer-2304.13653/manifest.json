@@ -1,33 +1,143 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2304.13653v2",
   "source_pdf": "https://arxiv.org/pdf/2304.13653",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "ee3185ffceb92fd7d0dcd8f6927f64ff02d871896a62382ec050e79fe7905ba6",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-training.jpg",
       "source_url": "https://arxiv.org/pdf/2304.13653",
-      "pdf_page": 3,
       "source_locator": "Figure 2",
       "caption_zh": "技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。",
-      "sha256": "0fbb92c9bf51cb42a87736bf7a9bbe6ba39c97d8aade733e2db46fa4bb5983da"
+      "selection_reason_zh": "该摘录直接对应详情页对“技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.1,
+            0.51,
+            0.9,
+            0.77
+          ],
+          "caption_anchor": "Figure 2 | Agent training setup",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.686759,
+            0.31886,
+            0.697016
+          ],
+          "caption_block_bbox": [
+            0.104761,
+            0.686759,
+            0.895498,
+            0.7621
+          ],
+          "page_text_sha256": "35fbd3ece02bed6b3b25b6d760acde713c77024663d450e3cb79c21c26954606"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 792,
+      "sha256": "f38a869a41e8640af3648fabf3ceecf7a7e0f6e3bc9722eaacc16b1406939426",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
+      },
+      "review_fingerprint": "c014ce5311542353026fee7a31de58ec016ddadc29c372e66c6184f040cc9a17"
     },
     {
       "asset": "table-1-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2304.13653",
-      "pdf_page": 5,
       "source_locator": "Table 1",
       "caption_zh": "实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。",
-      "sha256": "fb9ae5a0e6c277171921334ba4c2222536acfaab261e9882bf53d8f5cb17e214"
+      "selection_reason_zh": "该摘录直接对应详情页对“实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.1,
+            0.53,
+            0.9,
+            0.87
+          ],
+          "caption_anchor": "Table 1 | Performance",
+          "caption_anchor_bbox": [
+            0.10431,
+            0.808439,
+            0.247987,
+            0.818674
+          ],
+          "caption_block_bbox": [
+            0.10431,
+            0.808439,
+            0.895245,
+            0.857726
+          ],
+          "page_text_sha256": "a4e88738a3324ad2cba07706511d581907bfc475c4b01976e113359c3661da22"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1018,
+      "sha256": "78522b933cf677b426da11a157a21e5d84a8f779bc7ffb75d5fac364e6650af9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
+      },
+      "review_fingerprint": "4e87c053a24623ca11092827b487ae923f1ae6a9919553d9e15f2c187189cd48"
     },
     {
       "asset": "figure-7-ablation.jpg",
       "source_url": "https://arxiv.org/pdf/2304.13653",
-      "pdf_page": 18,
       "source_locator": "Figure 7",
       "caption_zh": "高频控制、动力学随机化与行为正则化等组件的消融。",
-      "sha256": "00da5da89fcf781d61f07b30089e04e0414bf34c9d120e76908ae73079304c0b"
+      "selection_reason_zh": "该摘录直接对应详情页对“高频控制、动力学随机化与行为正则化等组件的消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“高频控制、动力学随机化与行为正则化等组件的消融。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 19,
+          "crop": [
+            0.1,
+            0.16,
+            0.9,
+            0.6
+          ],
+          "caption_anchor": "Figure 7 | Comparison against ablations",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.436387,
+            0.378023,
+            0.446643
+          ],
+          "caption_block_bbox": [
+            0.104761,
+            0.436387,
+            0.897326,
+            0.589831
+          ],
+          "page_text_sha256": "72c1a456414a2cbb749b49c810f8345400b4aa812c30965f084e16bf17cc615a"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1301,
+      "sha256": "d5ecc9f3867d0685137513fb5903cf151ef9ec619bf1b4c8d8c25e1207965669",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
+      },
+      "review_fingerprint": "432b2cf4d664b0d43cefc5b524caeea81d6a73c1ac3db11f2aca935c0b1c48a7"
     }
   ]
 }

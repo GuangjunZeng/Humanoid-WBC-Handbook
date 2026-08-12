@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2406.08858v1",
   "source_pdf": "https://arxiv.org/pdf/2406.08858v1",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "bedce4c95c9776d64cd29587029c1f4d8171ad20f45017493627b27eb6b3138e",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
-      "asset": "figure-2-system.jpg",
+      "asset": "figure-3-system.jpg",
       "source_url": "https://arxiv.org/pdf/2406.08858v1",
-      "pdf_page": 3,
-      "source_locator": "Figure 2",
+      "source_locator": "Figure 3",
       "caption_zh": "从人体动作、特权教师到头手稀疏输入学生的全链路。",
-      "sha256": "73dc03b32d7fc2f8ecd1481b955aa45e6f5ad7f38e1454ee0f51e741324be6e0"
+      "selection_reason_zh": "该摘录直接对应详情页对“从人体动作、特权教师到头手稀疏输入学生的全链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“从人体动作、特权教师到头手稀疏输入学生的全链路。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.17,
+            0.04,
+            0.83,
+            0.475
+          ],
+          "caption_anchor": "Figure 3: (a) OmniH2O retargets",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.405057,
+            0.371343,
+            0.415178
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.405057,
+            0.823532,
+            0.465495
+          ],
+          "page_text_sha256": "12c9b9617cd343b7d3868a51aa395fcf0fe775fd1c1950158cb58fe22056d00d"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1421,
+      "sha256": "cc19efd11513e46b3efe7ec58602a81b18f98d4e8ac555db9f399e00b949f1d9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
+      },
+      "review_fingerprint": "6c3d2b3e89505054ac80ae74671c722b5c53d58e840092240e7b60942620bdd8"
     },
     {
       "asset": "table-1-2-evaluation.jpg",
       "source_url": "https://arxiv.org/pdf/2406.08858v1",
-      "pdf_page": 6,
       "source_locator": "Table 1-2",
       "caption_zh": "仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。",
-      "sha256": "0da374482f9a2ac013f61021c3c7f68564657aea8c1d63469534eb83026b1ed1"
+      "selection_reason_zh": "该摘录直接对应详情页对“仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“仿真与 20 条真实站立动作上的历史、速度估计和 DAgger 对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.18,
+            0.04,
+            0.82,
+            0.3
+          ],
+          "caption_anchor": "Table 1: Simulation motion imitation evaluation",
+          "caption_anchor_bbox": [
+            0.235768,
+            0.072357,
+            0.517609,
+            0.082478
+          ],
+          "caption_block_bbox": [
+            0.235768,
+            0.072176,
+            0.764233,
+            0.082478
+          ],
+          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.49,
+            0.68,
+            0.83,
+            0.88
+          ],
+          "caption_anchor": "Table 2: Real-world motion tracking evaluation",
+          "caption_anchor_bbox": [
+            0.5,
+            0.694082,
+            0.784771,
+            0.704203
+          ],
+          "caption_block_bbox": [
+            0.5,
+            0.694082,
+            0.823523,
+            0.718509
+          ],
+          "page_text_sha256": "4e4c86c4be44bdf5a235ca144a1f4012667007c73a3b1d1f2752d627994a704e"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2143,
+      "sha256": "1f4b76f0ebbfbf88f7cde49070e5cec6664d24347611e789226e24ab75988e1c",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
+      },
+      "review_fingerprint": "ebf8d2f784e767e9f00fb808c1e4e57ced4063e1220e0b21a3e1816e0e0e39c8"
     },
     {
       "asset": "figure-9-motion-distribution.jpg",
       "source_url": "https://arxiv.org/pdf/2406.08858v1",
-      "pdf_page": 22,
       "source_locator": "Figure 9",
       "caption_zh": "固定下肢动作分布对稳定上肢任务的影响。",
-      "sha256": "191772d8f4fd816e3dc580e73f503f4bfd6f9c7a082748bf73e485dd9117c1dd"
+      "selection_reason_zh": "该摘录直接对应详情页对“固定下肢动作分布对稳定上肢任务的影响。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“固定下肢动作分布对稳定上肢任务的影响。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 22,
+          "crop": [
+            0.18,
+            0.72,
+            0.82,
+            0.85
+          ],
+          "caption_anchor": "Figure 9: The ablation of data augmentation",
+          "caption_anchor_bbox": [
+            0.368737,
+            0.821863,
+            0.631268,
+            0.831985
+          ],
+          "caption_block_bbox": [
+            0.368737,
+            0.821863,
+            0.631268,
+            0.831985
+          ],
+          "page_text_sha256": "99ce639507abbf09748ed34f19e401130d64038d1fb442f81c6141f38b35ca8d"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 477,
+      "sha256": "5720e615e62d0ec3cc70aaaf14e8c5595f64b1f73e2f7c8b03444a8a98e99856",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
+      },
+      "review_fingerprint": "bec3b93b1cd5bf378728e15da0331efba3a4ddb9beb30aecc2e53d2fb1d6b4f0"
     }
   ]
 }

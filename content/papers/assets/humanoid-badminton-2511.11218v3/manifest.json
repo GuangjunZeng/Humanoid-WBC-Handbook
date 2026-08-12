@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2511.11218v3",
   "source_pdf": "https://arxiv.org/pdf/2511.11218v3",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "0121a91fb0baa21c1c28960df71bc0b2d7960610d49ffa881635d08b39a301cc",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-training.jpg",
       "source_url": "https://arxiv.org/pdf/2511.11218v3",
-      "pdf_page": 4,
       "source_locator": "Figure 2",
       "caption_zh": "足步、挥拍和羽毛球任务精调的三阶段强化学习。",
-      "sha256": "75c27caaa3ab94f378e15f696e9840921c29a8b4815273b2a8c2b6ca42759bad"
+      "selection_reason_zh": "该摘录直接对应详情页对“足步、挥拍和羽毛球任务精调的三阶段强化学习。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“足步、挥拍和羽毛球任务精调的三阶段强化学习。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.05,
+            0.92,
+            0.575
+          ],
+          "caption_anchor": "Fig. 2: System overview",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.429406,
+            0.248174,
+            0.440803
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.429356,
+            0.919987,
+            0.562441
+          ],
+          "page_text_sha256": "1bfd047a6238c581785f5685c379a37169485d0abd4474c76641f897ec1df6bd"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1351,
+      "sha256": "82803d1a5a8bdc0c0707166e55b3bff992b8fef99a5c7484248fd5ef3aa7a7f9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
+      },
+      "review_fingerprint": "50914b704a2d6c7fc7ba1092b1b8806b205cf1065d0364924ab1f7c492a88e42"
     },
     {
       "asset": "figure-3-4-control.jpg",
       "source_url": "https://arxiv.org/pdf/2511.11218v3",
-      "pdf_page": 7,
       "source_locator": "Figure 3-4",
       "caption_zh": "迎球足步、挥拍时序与预测目标接口。",
-      "sha256": "005399b9807e3f7a246c0cf0b8107b6a3bb9c75a439de36148c4910998ba882c"
+      "selection_reason_zh": "该摘录直接对应详情页对“迎球足步、挥拍时序与预测目标接口。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“迎球足步、挥拍时序与预测目标接口。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.05,
+            0.92,
+            0.495
+          ],
+          "caption_anchor": "Fig. 3: Simulation results",
+          "caption_anchor_bbox": [
+            0.50976,
+            0.351555,
+            0.687589,
+            0.362952
+          ],
+          "caption_block_bbox": [
+            0.50976,
+            0.351555,
+            0.919985,
+            0.483712
+          ],
+          "page_text_sha256": "a9e49420c7ea329f8980e0991bf8e7b6d695b520eac20448d85e73e25b297035"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.05,
+            0.49,
+            0.46
+          ],
+          "caption_anchor": "Fig. 4: Comparison between target-known",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.359958,
+            0.376418,
+            0.371355
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.359958,
+            0.490223,
+            0.446828
+          ],
+          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 4351,
+      "sha256": "f632486b976065b2be07b405aca551bccd07ab915e8c738fdf9e6709ca1e9ddd",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
+      },
+      "review_fingerprint": "68c8f6ac401183a304258e28bf3745baa03e96c9c430b52d07986da8c57bbb00"
     },
     {
-      "asset": "table-5-hardware.jpg",
+      "asset": "figure-5-6-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2511.11218v3",
-      "pdf_page": 11,
-      "source_locator": "Table V",
-      "caption_zh": "46 次真机试验中目标预测与无预测策略的回球对照。",
-      "sha256": "3d09461ab46575d77616c1c6c2db9d0593b2ec5e4fe6183eb193132ce94c7bfe"
+      "source_locator": "Figure 5-6",
+      "caption_zh": "虚拟目标位置误差曲线与真机羽毛球命中序列；46+46 次发球分母来自相邻实验正文。",
+      "selection_reason_zh": "该摘录直接对应详情页对“46 次真机试验中目标预测与无预测策略的回球对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“46 次真机试验中目标预测与无预测策略的回球对照。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.5,
+            0.05,
+            0.92,
+            0.325
+          ],
+          "caption_anchor": "Fig. 5: Virtual-target swinging",
+          "caption_anchor_bbox": [
+            0.50976,
+            0.257707,
+            0.736018,
+            0.269103
+          ],
+          "caption_block_bbox": [
+            0.50976,
+            0.257707,
+            0.919985,
+            0.314389
+          ],
+          "page_text_sha256": "e9be37a4d06f235b317dbaeac2cfaae3245f8b246332731c9762945de855b5cd"
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.49,
+            0.44
+          ],
+          "caption_anchor": "Fig. 6: Real-world shuttle hitting",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.353927,
+            0.326882,
+            0.365323
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.353927,
+            0.490226,
+            0.425703
+          ],
+          "page_text_sha256": "a2b32c5ffee634a901f21c23eaa0a5b0a3b448511bc5da79907f5e66c41ac795"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3461,
+      "sha256": "276f86b89cee7e3a3ecd42ad710d9cad2f568d4197d0c90cc805f9263758f498",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
+      },
+      "review_fingerprint": "b3ce0867d286d9bf3b111b6c66e17c635e1dbd9ea040a8bf1a7af2de3caf708d"
     }
   ]
 }

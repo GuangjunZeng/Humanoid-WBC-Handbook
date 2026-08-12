@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2406.08858v1",
-  "source_fingerprint": "43d64f6173491e3b706f0023a4c12505a7006d39c6dba5d867cd965c9b0aa58d",
+  "source_fingerprint": "3f54a747cbc684b1be6ee5d6120bf179ba3ad63827494b9b72aca1128e4f443b",
   "title": "OmniH2O: Distilling Dense Motion into Sparse, History-Aware Humanoid Control",
   "content_lines": [
     "Source: [arXiv:2406.08858v1](https://arxiv.org/abs/2406.08858v1). Implementation references are restricted to the pinned official human2humanoid code linked on the Chinese page.",
@@ -15,7 +15,7 @@
     "A dense teacher learns whole-body tracking. The deployable student receives sparse target signals, proprioception, and history, then is trained by teacher distillation and task objectives. The teacher supplies a dynamically grounded completion target while history resolves short-term motion direction and phase.",
     "",
     "## Key figures",
-    "![Figure 2: teacher-student system](../assets/omnih2o-2406.08858v1/figure-2-system.jpg)",
+    "![Figure 3: teacher-student training and teleoperation system](../assets/omnih2o-2406.08858v1/figure-3-system.jpg)",
     "Figure 2 separates privileged dense supervision from the sparse deployment interface.",
     "![Tables 1-2: tracking and teleoperation evaluation](../assets/omnih2o-2406.08858v1/table-1-2-evaluation.jpg)",
     "The tables quantify sparse-control performance rather than relying on selected demonstrations.",

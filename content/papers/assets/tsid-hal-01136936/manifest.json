@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "hal:hal-01136936",
   "source_pdf": "https://hal.science/hal-01136936/document",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "e3fdd4b6eecb138dd056487e0ae63dcc1df3b25c4ecde1902ea8f7e8ba55de50",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-1-actuator-model.jpg",
       "source_url": "https://hal.science/hal-01136936/document",
-      "pdf_page": 13,
       "source_locator": "Figure 1",
       "caption_zh": "高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。",
-      "sha256": "7a0f6b618f425689cdce9d67d7242b0cf39bc153d35f7a009b5b5bfab9b3ad20"
+      "selection_reason_zh": "该摘录直接对应详情页对“高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 13,
+          "crop": [
+            0.19,
+            0.04,
+            0.81,
+            0.7
+          ],
+          "caption_anchor": "Figure 1: Torque",
+          "caption_anchor_bbox": [
+            0.197938,
+            0.613802,
+            0.337763,
+            0.625309
+          ],
+          "caption_block_bbox": [
+            0.197938,
+            0.613802,
+            0.800448,
+            0.689683
+          ],
+          "page_text_sha256": "53554c22c7f795a4791a6d7380dfc83a270fd81b731d379e643cf0f5ea7e2cc5"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2467,
+      "sha256": "8a67932d8b1933883b293c34f351aedf1d274b10a48b8c7739eb7c25b28af54b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
+      },
+      "review_fingerprint": "c4e809fad8f3d810a1b8b9907ac58102e78009d22b0a4487bc1458f9892e687c"
     },
     {
       "asset": "table-1-3-tracking.jpg",
       "source_url": "https://hal.science/hal-01136936/document",
-      "pdf_page": 22,
       "source_locator": "Table 1-3 / Figure 3",
       "caption_zh": "已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。",
-      "sha256": "7c82677fc5adcda4401288764c33a83c706440bad9a5b95a131e020fb194dd21"
+      "selection_reason_zh": "该摘录直接对应详情页对“已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 21,
+          "crop": [
+            0.19,
+            0.04,
+            0.81,
+            0.19
+          ],
+          "caption_anchor": "Table 1: Identified motor parameters",
+          "caption_anchor_bbox": [
+            0.348126,
+            0.15288,
+            0.650249,
+            0.164387
+          ],
+          "caption_block_bbox": [
+            0.348126,
+            0.15288,
+            0.650249,
+            0.164387
+          ],
+          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3"
+        },
+        {
+          "pdf_page": 21,
+          "crop": [
+            0.19,
+            0.62,
+            0.81,
+            0.9
+          ],
+          "caption_anchor": "Table 2: Average squared tracking error",
+          "caption_anchor_bbox": [
+            0.197938,
+            0.643913,
+            0.262369,
+            0.65542
+          ],
+          "caption_block_bbox": [
+            0.197938,
+            0.641633,
+            0.800447,
+            0.680064
+          ],
+          "page_text_sha256": "636418188ec4a87f7ab9ff1e14f0c4d52e643c70d94cf7d434402f515c3a2fc3"
+        },
+        {
+          "pdf_page": 22,
+          "crop": [
+            0.19,
+            0.07,
+            0.81,
+            0.605
+          ],
+          "caption_anchor": "Figure 3: Friction identification",
+          "caption_anchor_bbox": [
+            0.197938,
+            0.45115,
+            0.449913,
+            0.462657
+          ],
+          "caption_block_bbox": [
+            0.197938,
+            0.45115,
+            0.800444,
+            0.591407
+          ],
+          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed"
+        },
+        {
+          "pdf_page": 22,
+          "crop": [
+            0.19,
+            0.62,
+            0.81,
+            0.9
+          ],
+          "caption_anchor": "Table 3: Maximum tracking error",
+          "caption_anchor_bbox": [
+            0.197938,
+            0.66052,
+            0.473618,
+            0.672026
+          ],
+          "caption_block_bbox": [
+            0.197938,
+            0.65824,
+            0.80044,
+            0.68812
+          ],
+          "page_text_sha256": "36469464b94ae6b8b1e65bb5aeff975ed0d7f4001152c41335d55e01a0c419ed"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 4691,
+      "sha256": "1a54d7f7bd6e0986f96cf4ae72ad2c8ca8c2221c768c34136787940f66a90b3f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
+      },
+      "review_fingerprint": "b2b338f1564ca807c2fe6ec24d08195d3bd9cf347517dd07136b2ee4ee980dea"
     },
     {
       "asset": "figure-5-force-control.jpg",
       "source_url": "https://hal.science/hal-01136936/document",
-      "pdf_page": 25,
       "source_locator": "Figure 5",
       "caption_zh": "右手末端正弦力参考的实机跟踪及高频振荡边界。",
-      "sha256": "99fa734687ab46beb118f4defb8056586d81043fd04e375325a871bc0d9adb75"
+      "selection_reason_zh": "该摘录直接对应详情页对“右手末端正弦力参考的实机跟踪及高频振荡边界。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“右手末端正弦力参考的实机跟踪及高频振荡边界。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 25,
+          "crop": [
+            0.19,
+            0.04,
+            0.81,
+            0.49
+          ],
+          "caption_anchor": "Figure 5: Tracking of a sinusoidal force",
+          "caption_anchor_bbox": [
+            0.197938,
+            0.412379,
+            0.514674,
+            0.423886
+          ],
+          "caption_block_bbox": [
+            0.197938,
+            0.412379,
+            0.80045,
+            0.472168
+          ],
+          "page_text_sha256": "959591f98d4eec0d9dde56c3d2dc8d3d0b0f0d94c649dd421648f22cf8600294"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1700,
+      "sha256": "b7106fe9ced59b0e949de7ddb80a91fd211d05d27c8e0108fbdcaf5e3e5d9b1c",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
+      },
+      "review_fingerprint": "d3bf902cc3a522d253ccdcbecfa56a4850f17f4e3e2184a8804b4d0608a11916"
     }
   ]
 }

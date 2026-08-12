@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import json
+import hashlib
 from pathlib import Path
 import re
 from typing import Iterable, List, Mapping
@@ -118,6 +119,10 @@ def evaluate_brief(
         result.errors.append("missing figure manifest")
     else:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("schema_version") != 2:
+            result.errors.append("figure manifest must use audited crop schema v2")
+        if manifest.get("workflow_version") != "key-figure-audit-v2":
+            result.errors.append("figure manifest has stale workflow version")
         required_assets = {entry.get("asset") for entry in manifest.get("figures", [])}
         referenced = {Path(path).name for path in image_paths}
         missing_refs = required_assets - referenced
@@ -126,6 +131,38 @@ def evaluate_brief(
         for asset in required_assets:
             if asset and not (asset_root / slug / asset).is_file():
                 result.errors.append(f"missing figure asset: {asset}")
+        for entry in manifest.get("figures", []):
+            asset = entry.get("asset", "<unknown>")
+            review = entry.get("review", {})
+            if review.get("status") != "approved":
+                result.errors.append(f"figure lacks approved visual review: {asset}")
+            if review.get("fingerprint") != entry.get("review_fingerprint"):
+                result.errors.append(f"stale figure review fingerprint: {asset}")
+            for field in ("source_locator", "selection_reason_zh", "supports_zh", "limits_zh"):
+                if len(str(entry.get(field, "")).strip()) < 5:
+                    result.errors.append(f"figure lacks evidence boundary {field}: {asset}")
+            for region in entry.get("regions", []):
+                crop = region.get("crop")
+                caption_block = region.get("caption_block_bbox")
+                if not isinstance(crop, list) or len(crop) != 4:
+                    result.errors.append(f"invalid crop metadata: {asset}")
+                    continue
+                if (crop[2] - crop[0]) * (crop[3] - crop[1]) > 0.62:
+                    result.errors.append(f"crop retains too much of the PDF page: {asset}")
+                if not isinstance(caption_block, list) or len(caption_block) != 4:
+                    result.errors.append(f"missing complete-caption bbox: {asset}")
+                elif not (
+                    caption_block[0] >= crop[0] - 0.004
+                    and caption_block[1] >= crop[1] - 0.004
+                    and caption_block[2] <= crop[2] + 0.004
+                    and caption_block[3] <= crop[3] + 0.004
+                ):
+                    result.errors.append(f"complete caption falls outside crop: {asset}")
+            target = asset_root / slug / str(asset)
+            if target.is_file():
+                actual_hash = hashlib.sha256(target.read_bytes()).hexdigest()
+                if actual_hash != entry.get("sha256"):
+                    result.errors.append(f"figure checksum mismatch: {asset}")
 
     implementation_text = text[text.find("## 论文"):] if "## 论文" in text else text
     if code_status == "verified_official" and len(re.findall(r"`[^`\n]+`", implementation_text)) < 2:

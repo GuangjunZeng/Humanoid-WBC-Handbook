@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2410.08655v3",
   "source_pdf": "https://arxiv.org/pdf/2410.08655v3",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "119942a95519200c4e95b93d84e02cc4c1a38533fde6c0e480ff0a76f8c16876",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-state-action.jpg",
       "source_url": "https://arxiv.org/pdf/2410.08655v3",
-      "pdf_page": 3,
-      "source_locator": "Figure 2 / Equation 1-4",
+      "source_locator": "Figure 2",
       "caption_zh": "左右对称五自由度状态、增量动作与简洁奖励的定义。",
-      "sha256": "4931657af0cd83bbc46dabcc89ca5b45ccc941c217ef1e8be00050c8afa701d0"
+      "selection_reason_zh": "该摘录直接对应详情页对“左右对称五自由度状态、增量动作与简洁奖励的定义。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“左右对称五自由度状态、增量动作与简洁奖励的定义。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.2,
+            0.5,
+            0.39
+          ],
+          "caption_anchor": "Fig. 2. Left: target posture",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.362228,
+            0.236242,
+            0.371345
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.362228,
+            0.488238,
+            0.383214
+          ],
+          "page_text_sha256": "0b4c954e09a1d9fb3b21073665b6826365e3848f769e4fc11fe4db9b7f9cbdcd"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 994,
+      "sha256": "def0d9adbe82e0a5a5b9b5da5b11a1420849154e185f80b917676d5427e1e541",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
+      },
+      "review_fingerprint": "c668bf822b27fd1341e08a6af369fda894773e7379685cc521652f9f054ccc8c"
     },
     {
-      "asset": "figure-4-training-table-2.jpg",
+      "asset": "figure-4-table-2.jpg",
       "source_url": "https://arxiv.org/pdf/2410.08655v3",
-      "pdf_page": 4,
       "source_locator": "Figure 4 / Table II",
       "caption_zh": "CrossQ 学习速度分布和执行器/延迟域随机化范围。",
-      "sha256": "6ec1b437594670e9d53750d5bf158f7b9b04401b970691820bbb1b7e7f4de15e"
+      "selection_reason_zh": "该摘录直接对应详情页对“CrossQ 学习速度分布和执行器/延迟域随机化范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“CrossQ 学习速度分布和执行器/延迟域随机化范围。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.28,
+            0.92,
+            0.475
+          ],
+          "caption_anchor": "Fig. 4. Reward variability",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.438191,
+            0.667442,
+            0.447188
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.438191,
+            0.911767,
+            0.46983
+          ],
+          "page_text_sha256": "6fde99ed9c83fbb82cd654bf5135264f153bbe78c25608977a857fdddfb1cc6c"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.12,
+            0.49,
+            0.29
+          ],
+          "caption_anchor": "TABLE II",
+          "caption_anchor_bbox": [
+            0.261245,
+            0.146904,
+            0.315226,
+            0.155901
+          ],
+          "caption_block_bbox": [
+            0.093902,
+            0.146904,
+            0.482573,
+            0.17092
+          ],
+          "page_text_sha256": "a4bceb5aafd24d56df992b0c0f78e6cbd246521116f1986d40ea99f2a5793666"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1907,
+      "sha256": "8ed29dee5de43dc66506e7acb0594b695ce5414f946a3cd766875551d0f6fcb5",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
+      },
+      "review_fingerprint": "2cacc2624584aed16d0ccc84d1a9f38ac57e4ea9d852ea2b5c23d695893369cf"
     },
     {
       "asset": "table-3-4-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2410.08655v3",
-      "pdf_page": 6,
       "source_locator": "Table III-IV",
       "caption_zh": "真机起身时间和不同摆锤冲击能量下的恢复对照。",
-      "sha256": "4d70a17f4d738ac1c21de8db3d0e020a36e89c8aa621fe384771d8682812659d"
+      "selection_reason_zh": "该摘录直接对应详情页对“真机起身时间和不同摆锤冲击能量下的恢复对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“真机起身时间和不同摆锤冲击能量下的恢复对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.29
+          ],
+          "caption_anchor": "TABLE III",
+          "caption_anchor_bbox": [
+            0.682606,
+            0.063134,
+            0.740923,
+            0.072131
+          ],
+          "caption_block_bbox": [
+            0.523531,
+            0.063134,
+            0.899994,
+            0.087151
+          ],
+          "page_text_sha256": "e75e827cdfaf8966b0b996824d081bc971c25b3496be3eaec3dc150787057335"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1289,
+      "sha256": "9d469092e34104fec966c494ba8748b9cd57bd3a70bcd84c61c1b4ac25bf0ae2",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
+      },
+      "review_fingerprint": "8ddc86c0ab0ac185aa03289230cc8cf4305dd776fee55232e13f65db27eb1bf3"
     }
   ]
 }

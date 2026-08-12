@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2403.04436v1",
   "source_pdf": "https://arxiv.org/pdf/2403.04436",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "78d380da6e28949275137a7dd46922116a81efdf417a02aa81c6f40c5bcade22",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-4-pipeline.jpg",
       "source_url": "https://arxiv.org/pdf/2403.04436",
-      "pdf_page": 4,
       "source_locator": "Figure 4",
       "caption_zh": "从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。",
-      "sha256": "f82aa043c6305f34fb3eb86d87605cc5a6185b3245342d1487b4fd61cd5bbf6a"
+      "selection_reason_zh": "该摘录直接对应详情页对“从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.51
+          ],
+          "caption_anchor": "Fig. 4: Overview of H2O",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.411191,
+            0.260892,
+            0.422437
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.41104,
+            0.911773,
+            0.497912
+          ],
+          "page_text_sha256": "ac205d49b270b7bf1a39f00133398d7bffd5c22a9ccc35fc279de10610b90796"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1215,
+      "sha256": "e41c77a2809dbf0215205cd57c513b93a0763b232fcae543a437d89532702bd4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
+      },
+      "review_fingerprint": "b439c92aeb8440c4eef2ceb9aefb4be6a2a3c59fbece12763e1803491675d76f"
     },
     {
       "asset": "table-1-2-training.jpg",
       "source_url": "https://arxiv.org/pdf/2403.04436",
-      "pdf_page": 5,
       "source_locator": "Table I-II",
       "caption_zh": "运动跟踪奖励与仿真到现实动力学随机化范围。",
-      "sha256": "45c8c684ea9794d0a637d01fb743dcc9fb3ed0c208f080493646c8862b943a1e"
+      "selection_reason_zh": "该摘录直接对应详情页对“运动跟踪奖励与仿真到现实动力学随机化范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“运动跟踪奖励与仿真到现实动力学随机化范围。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.34
+          ],
+          "caption_anchor": "TABLE I: Reward components",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.065273,
+            0.715445,
+            0.076519
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.065273,
+            0.911766,
+            0.121804
+          ],
+          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.34,
+            0.92,
+            0.6
+          ],
+          "caption_anchor": "TABLE II: The range of dynamics randomization",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.404359,
+            0.83651,
+            0.415605
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.404359,
+            0.911766,
+            0.460889
+          ],
+          "page_text_sha256": "55f9851d42e02eb2153740758e494cca1c7e94138e468de9e42ab091dd128e84"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2846,
+      "sha256": "83e99f045a62a4005e79c2521e53205c131aace501f216bd324543b4addc6cd7",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
+      },
+      "review_fingerprint": "38e81da247e4f51cc4cded8059f5ff883b6a2c3e182a9da721afbae5eccae29a"
     },
     {
       "asset": "table-3-4-filtering.jpg",
       "source_url": "https://arxiv.org/pdf/2403.04436",
-      "pdf_page": 6,
       "source_locator": "Table III-IV",
       "caption_zh": "未清洗动作、可行性筛选与数据规模对跟踪结果的影响。",
-      "sha256": "3db4404902d32c94cb18deef6260d82f5a78f321447782bec91da222a0d7219f"
+      "selection_reason_zh": "该摘录直接对应详情页对“未清洗动作、可行性筛选与数据规模对跟踪结果的影响。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“未清洗动作、可行性筛选与数据规模对跟踪结果的影响。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.205
+          ],
+          "caption_anchor": "TABLE III: Quantitative motion",
+          "caption_anchor_bbox": [
+            0.166379,
+            0.066482,
+            0.381161,
+            0.077727
+          ],
+          "caption_block_bbox": [
+            0.166379,
+            0.064476,
+            0.833622,
+            0.077727
+          ],
+          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.21,
+            0.92,
+            0.32
+          ],
+          "caption_anchor": "TABLE IV: Quantitative results",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.210055,
+            0.728712,
+            0.2213
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.210055,
+            0.911766,
+            0.25149
+          ],
+          "page_text_sha256": "b344c5d1c469be9937964563b7f89cc12e75bcdfa795519aafff24a2e0fa49be"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1033,
+      "sha256": "582569eda8fe16967770c0fed3ea752d9eb0c8305644025b7adb244514bd3c09",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
+      },
+      "review_fingerprint": "1818559347fc7b77c5ed44b978c5fc56a0c1c78574435d79b50c65fad441e2fc"
     }
   ]
 }

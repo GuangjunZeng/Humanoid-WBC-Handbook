@@ -13,7 +13,7 @@ Head and hand targets are convenient for VR and teleoperation but underdetermine
 A dense teacher learns whole-body tracking. The deployable student receives sparse target signals, proprioception, and history, then is trained by teacher distillation and task objectives. The teacher supplies a dynamically grounded completion target while history resolves short-term motion direction and phase.
 
 ## Key figures
-![Figure 2: teacher-student system](../assets/omnih2o-2406.08858v1/figure-2-system.jpg)
+![Figure 3: teacher-student training and teleoperation system](../assets/omnih2o-2406.08858v1/figure-3-system.jpg)
 Figure 2 separates privileged dense supervision from the sparse deployment interface.
 ![Tables 1-2: tracking and teleoperation evaluation](../assets/omnih2o-2406.08858v1/table-1-2-evaluation.jpg)
 The tables quantify sparse-control performance rather than relying on selected demonstrations.

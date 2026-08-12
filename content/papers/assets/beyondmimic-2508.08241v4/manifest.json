@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2508.08241v4",
   "source_pdf": "https://arxiv.org/pdf/2508.08241v4",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "6219a2b66ccdab4233a1043439bceaaea3252dadbb037b470671584fc1487db1",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-hardware-tracking.jpg",
       "source_url": "https://arxiv.org/pdf/2508.08241v4",
-      "pdf_page": 25,
       "source_locator": "Figure 2",
       "caption_zh": "高动态运动跟踪在 G1 实机上的动作范围与控制结构。",
-      "sha256": "a0a528a9adfc62f76f0b38a564b9dd8d1864133b19d8ecd5bcd36fd147bd3fa8"
+      "selection_reason_zh": "该摘录直接对应详情页对“高动态运动跟踪在 G1 实机上的动作范围与控制结构。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“高动态运动跟踪在 G1 实机上的动作范围与控制结构。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 25,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.77
+          ],
+          "caption_anchor": "Figure 2: Diverse motion tracking",
+          "caption_anchor_bbox": [
+            0.117647,
+            0.725901,
+            0.394218,
+            0.739094
+          ],
+          "caption_block_bbox": [
+            0.117647,
+            0.725645,
+            0.88235,
+            0.739291
+          ],
+          "page_text_sha256": "338ac7894d873da86686eee6d1445f72cfd0fc0c0c7e504ac08cfc49641e8010"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2043,
+      "sha256": "5d7ad873c2101966324c2ba2851064b5dd4ca1c0e317028a76f1e74ea06cc31b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
+      },
+      "review_fingerprint": "57f0034cc3f39bddc48338dd16506d27af4831af5e95ee9483671f8df9e9d052"
     },
     {
-      "asset": "figure-5-guidance.jpg",
+      "asset": "figure-5-6-guidance.jpg",
       "source_url": "https://arxiv.org/pdf/2508.08241v4",
-      "pdf_page": 28,
       "source_locator": "Figure 5-6",
-      "caption_zh": "速度、waypoint、关键帧与 SDF 避障代价的测试时组合。",
-      "sha256": "02e27f8570b32576f0ccf6d252fdfc88e773ac80346bb3a0b10ba796219c942c"
+      "caption_zh": "命令条件运动、技能过渡与技能组合的生成控制结果。",
+      "selection_reason_zh": "该摘录直接对应详情页对“速度、waypoint、关键帧与 SDF 避障代价的测试时组合。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“速度、waypoint、关键帧与 SDF 避障代价的测试时组合。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 28,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.73
+          ],
+          "caption_anchor": "Figure 5: Command-conditioned locomotion",
+          "caption_anchor_bbox": [
+            0.117647,
+            0.700811,
+            0.490388,
+            0.714004
+          ],
+          "caption_block_bbox": [
+            0.117647,
+            0.700554,
+            0.88235,
+            0.7142
+          ],
+          "page_text_sha256": "acb2b143bef43ad9663e3715e99d54acfd7f01c7020d8f197b7641e9511bd52d"
+        },
+        {
+          "pdf_page": 29,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.7
+          ],
+          "caption_anchor": "Figure 6: Task transition and composition",
+          "caption_anchor_bbox": [
+            0.117647,
+            0.662085,
+            0.195258,
+            0.675278
+          ],
+          "caption_block_bbox": [
+            0.117647,
+            0.661828,
+            0.88235,
+            0.678884
+          ],
+          "page_text_sha256": "fdd4c40634f3e6f1c7eb1733e16bd6e1edd3edbc044261bee962d0269d88b28e"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3760,
+      "sha256": "ac5b043085b6c3da058ea026e829ffcb86852ba002e82ca1c2d4ed3d3dfa3431",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
+      },
+      "review_fingerprint": "c85702a78d06a78fc44e656252e63d90d01b11be95896aebf78259909019e6ec"
     },
     {
       "asset": "figure-8-ablation.jpg",
       "source_url": "https://arxiv.org/pdf/2508.08241v4",
-      "pdf_page": 31,
-      "source_locator": "Figure 8A-D",
+      "source_locator": "Figure 8",
       "caption_zh": "旋转表示、历史、人为延迟和自适应采样的关键消融。",
-      "sha256": "5fc44db3c51e9ad65aae6ab678345d867d7e10e3e4ae15d3409c155f48ecb0f6"
+      "selection_reason_zh": "该摘录直接对应详情页对“旋转表示、历史、人为延迟和自适应采样的关键消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“旋转表示、历史、人为延迟和自适应采样的关键消融。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 31,
+          "crop": [
+            0.12,
+            0.04,
+            0.88,
+            0.76
+          ],
+          "caption_anchor": "Figure 8: Ablation studies",
+          "caption_anchor_bbox": [
+            0.117647,
+            0.721218,
+            0.339307,
+            0.734411
+          ],
+          "caption_block_bbox": [
+            0.117647,
+            0.720962,
+            0.88235,
+            0.734608
+          ],
+          "page_text_sha256": "6f7ee5e0da8f8604c3710b419a8682c0962e73d0e8aef6f43a51451f65802995"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2016,
+      "sha256": "958de2f42e625ea098679f4ce46cb5c4f6ab6eecc9e0f93d4eb9daf91a65207f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
+      },
+      "review_fingerprint": "1cc6ace66486faf821e15ede5253a988caeb736f6f668b4a87e1343fe69a2705"
     }
   ]
 }

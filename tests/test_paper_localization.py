@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import unittest
 
 from wbc_handbook.paper_localization import (
@@ -20,6 +21,10 @@ class PaperLocalizationTests(unittest.TestCase):
         self.catalog = json.loads(
             (PROJECT_ROOT / "content" / "papers" / "catalog.json").read_text(encoding="utf-8")
         )
+        self.registry = json.loads(
+            (PROJECT_ROOT / "content" / "papers" / "registry.json").read_text(encoding="utf-8")
+        )
+        self.slugs = {paper["paper_id"]: paper["slug"] for paper in self.registry["papers"]}
 
     def test_all_representative_papers_have_current_english_pages(self):
         report = render_paper_translations(PROJECT_ROOT, check=True)
@@ -39,6 +44,24 @@ class PaperLocalizationTests(unittest.TestCase):
                 self.assertIn(f"## {heading}", target)
             self.assertEqual(target.count("!["), 3)
             self.assertIn(paper["paper_id"], translations)
+
+            slug = self.slugs[paper["paper_id"]]
+            manifest = json.loads(
+                (
+                    PROJECT_ROOT / "content" / "papers" / "assets" / slug / "manifest.json"
+                ).read_text(encoding="utf-8")
+            )
+            expected_assets = {entry["asset"] for entry in manifest["figures"]}
+            chinese_assets = {
+                Path(path).name
+                for path in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", source)
+            }
+            english_assets = {
+                Path(path).name
+                for path in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", target)
+            }
+            self.assertEqual(chinese_assets, expected_assets)
+            self.assertEqual(english_assets, expected_assets)
 
 
 if __name__ == "__main__":

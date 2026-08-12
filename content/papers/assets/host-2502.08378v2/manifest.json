@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2502.08378v2",
   "source_pdf": "https://arxiv.org/pdf/2502.08378v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "92961cf4b5eb503e9fcd5d8a7bfcd2bb7269025a49dfb832e34e52ebb1b74ec0",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-training.jpg",
       "source_url": "https://arxiv.org/pdf/2502.08378v2",
-      "pdf_page": 3,
       "source_locator": "Figure 2",
       "caption_zh": "多 critic、分阶段奖励、探索拉力和动作幅度课程。",
-      "sha256": "0b0d0604ddb1f6b228afa7bb45ca1db9beda7fca47764ce9903dd6a9155d2b63"
+      "selection_reason_zh": "该摘录直接对应详情页对“多 critic、分阶段奖励、探索拉力和动作幅度课程。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“多 critic、分阶段奖励、探索拉力和动作幅度课程。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.26
+          ],
+          "caption_anchor": "Fig. 2: Framework overview",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.218243,
+            0.240569,
+            0.22729
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.218243,
+            0.490224,
+            0.261325
+          ],
+          "page_text_sha256": "2318e3211f22583948d31967b0cd48b60aad59e2bdf056f9b414eb0074cf3d5d"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1140,
+      "sha256": "8b2c7d703c6462d6813cb8b1157e78a43567e5903749a263d51feb7769fce70b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
+      },
+      "review_fingerprint": "2c4d76de1137cfb169f02281016eab894a3dc78023f639e6fdcffca96f14899e"
     },
     {
       "asset": "table-2-3-ablation.jpg",
       "source_url": "https://arxiv.org/pdf/2502.08378v2",
-      "pdf_page": 6,
       "source_locator": "Table II-III",
       "caption_zh": "奖励/随机化设置与起身训练组件消融。",
-      "sha256": "aa8d42b2988238b384ed4afd1e75e62cdbe1fea22e3befc2a17e47eefb37898f"
+      "selection_reason_zh": "该摘录直接对应详情页对“奖励/随机化设置与起身训练组件消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“奖励/随机化设置与起身训练组件消融。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.25
+          ],
+          "caption_anchor": "TABLE II: Domain randomization",
+          "caption_anchor_bbox": [
+            0.532962,
+            0.069164,
+            0.721926,
+            0.078281
+          ],
+          "caption_block_bbox": [
+            0.532962,
+            0.069164,
+            0.896786,
+            0.078281
+          ],
+          "page_text_sha256": "7f25b3cd3c4d4f1bf81ca6af30a1187cca1c9eb39432a6f7c0b4de8f4ca20d1d"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.28
+          ],
+          "caption_anchor": "TABLE III: Main simulation results",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.069162,
+            0.286635,
+            0.078209
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.069162,
+            0.919985,
+            0.089602
+          ],
+          "page_text_sha256": "c548e1ec763d1eab88004821d6e104aee2f9c71e88a9e8581bc9f55a33fe3283"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1711,
+      "sha256": "38066b2efe5af6faa5528dfe139a3ba4a1c4241482648480474940edfcadc3cd",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
+      },
+      "review_fingerprint": "dabc2d8e872179655d511e07b5f8ac18aa82e2e751896d1e6ef2440c678b669f"
     },
     {
       "asset": "table-4-figure-7-9.jpg",
       "source_url": "https://arxiv.org/pdf/2502.08378v2",
-      "pdf_page": 8,
       "source_locator": "Table IV / Figure 7 / Figure 9",
       "caption_zh": "真机重复起身、跨地面定性结果与动作平滑性对照。",
-      "sha256": "e12aea746a8c42b999e1cba72e062433e02e50442fc3bf70e0bb4d7108d9a6d1"
+      "selection_reason_zh": "该摘录直接对应详情页对“真机重复起身、跨地面定性结果与动作平滑性对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“真机重复起身、跨地面定性结果与动作平滑性对照。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.33
+          ],
+          "caption_anchor": "Fig. 7: Snapshot of real robot motion",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.294694,
+            0.292625,
+            0.303741
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.294694,
+            0.919984,
+            0.326454
+          ],
+          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.51,
+            0.92,
+            0.65
+          ],
+          "caption_anchor": "TABLE IV: Main results for real robot",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.53534,
+            0.306651,
+            0.544387
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.53534,
+            0.919982,
+            0.55578
+          ],
+          "page_text_sha256": "00b39ed906457a8565d9fde055287b3040f91b25adf2c724c82e17f8c38e11d6"
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.3
+          ],
+          "caption_anchor": "Fig. 9: Sim-to-real analysis",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.261857,
+            0.238424,
+            0.270904
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.261857,
+            0.919985,
+            0.293617
+          ],
+          "page_text_sha256": "ef2a69f6bf87bec9d4269e7acf35898c4efbc099ca3690fd68abea8e39252fb6"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1813,
+      "sha256": "5b7f55b0b0d511a67d9363f20c9b50f3ff79dfa9a1de30d3c4795a376035d4e2",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
+      },
+      "review_fingerprint": "e0b8b0056fc378d35a07cd788d3d56baa0a243af82e0a4d9ae0a4594af500ce4"
     }
   ]
 }

@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2502.01143v3",
   "source_pdf": "https://arxiv.org/pdf/2502.01143v3",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "8ca60229d7e560769ceece6cb5571d8e6f528c6c485f631b7fd5162d503b7db0",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-pipeline.jpg",
       "source_url": "https://arxiv.org/pdf/2502.01143v3",
-      "pdf_page": 3,
       "source_locator": "Figure 2",
       "caption_zh": "从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。",
-      "sha256": "c6651ae8338f9fcfb47449decc77bd0e54d3b7e8bcc6c384b3c2b79fa9b0378e"
+      "selection_reason_zh": "该摘录直接对应详情页对“从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“从预训练、实机轨迹到 delta action 对齐仿真微调的完整管线。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.44
+          ],
+          "caption_anchor": "Fig. 2. Overview of ASAP",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.372878,
+            0.231964,
+            0.381874
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.372757,
+            0.919988,
+            0.42716
+          ],
+          "page_text_sha256": "fbd5e833f0dc4c89fccd4bcdd67906540f8a49e28f6b8d5a3cb199f40dc455ff"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1042,
+      "sha256": "5e6e23c5bb6bf1c8107efbb24786c36f381c28131faa7fe042fea12c8c7cafc0",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "15e27d8e347eb9bf4dd9d3dd24654d01126cb774351c749d875c23aadc2d8a53"
+      },
+      "review_fingerprint": "15e27d8e347eb9bf4dd9d3dd24654d01126cb774351c749d875c23aadc2d8a53"
     },
     {
       "asset": "figure-4-table-3.jpg",
       "source_url": "https://arxiv.org/pdf/2502.01143v3",
-      "pdf_page": 6,
       "source_locator": "Figure 4-5 / Table III",
       "caption_zh": "Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。",
-      "sha256": "5ab510ad2c7579f6c05130008923acaaa2796761772b3ecbc13b5bd7e84f97b6"
+      "selection_reason_zh": "该摘录直接对应详情页对“Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“Vanilla、SysID、Delta Dynamics 与 Delta Action 的结构和开环回放误差对照。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.21
+          ],
+          "caption_anchor": "Fig. 4. Baselines of ASAP",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.181575,
+            0.238398,
+            0.190571
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.181575,
+            0.919984,
+            0.201892
+          ],
+          "page_text_sha256": "33a24a04776013feceb5ef7c46402c63a4421a0b111f3955914acd73f007424d"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.485
+          ],
+          "caption_anchor": "Fig. 5. Replaying IsaacSim State-Action",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.442729,
+            0.308839,
+            0.451725
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.442729,
+            0.919984,
+            0.474368
+          ],
+          "page_text_sha256": "2cee7ce5d724f75521b3d485798188eb5e229c8c3893880d790245f5f9d822a8"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.45,
+            0.92,
+            0.62
+          ],
+          "caption_anchor": "TABLE III",
+          "caption_anchor_bbox": [
+            0.685714,
+            0.489196,
+            0.744031,
+            0.498193
+          ],
+          "caption_block_bbox": [
+            0.525077,
+            0.489196,
+            0.904679,
+            0.520835
+          ],
+          "page_text_sha256": "2cee7ce5d724f75521b3d485798188eb5e229c8c3893880d790245f5f9d822a8"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2467,
+      "sha256": "b93892927c26baeaa53297e4ddc1327e0b1c1cad4b77d276b91fc25f85d0db18",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "12eabbebcb542fd3881bc9251bf0565b3a554034005ebe3f741cd85505333be2"
+      },
+      "review_fingerprint": "12eabbebcb542fd3881bc9251bf0565b3a554034005ebe3f741cd85505333be2"
     },
     {
-      "asset": "table-5-real-world.jpg",
+      "asset": "figure-8-table-5-real-world.jpg",
       "source_url": "https://arxiv.org/pdf/2502.01143v3",
-      "pdf_page": 9,
-      "source_locator": "Table V",
+      "source_locator": "Figure 8 / Table V",
       "caption_zh": "kick 与 OOD Silencer 两个真实动作的对齐前后误差。",
-      "sha256": "0ad7da0d6b721e80298fd17924c044f8a03893261c2153abe3dabac1f1b1af34"
+      "selection_reason_zh": "该摘录直接对应详情页对“kick 与 OOD Silencer 两个真实动作的对齐前后误差。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“kick 与 OOD Silencer 两个真实动作的对齐前后误差。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.35
+          ],
+          "caption_anchor": "Fig. 8. Visualization of LeBron James",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.322104,
+            0.298056,
+            0.3311
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.322104,
+            0.919984,
+            0.353743
+          ],
+          "page_text_sha256": "812c0964e27ff7c3862d5c827fe7e83aa54dbe702e3d9d3908df692a33108ba2"
+        },
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.5,
+            0.35,
+            0.92,
+            0.51
+          ],
+          "caption_anchor": "TABLE V",
+          "caption_anchor_bbox": [
+            0.687518,
+            0.379308,
+            0.742228,
+            0.388305
+          ],
+          "caption_block_bbox": [
+            0.52134,
+            0.379308,
+            0.908411,
+            0.422268
+          ],
+          "page_text_sha256": "812c0964e27ff7c3862d5c827fe7e83aa54dbe702e3d9d3908df692a33108ba2"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1637,
+      "sha256": "0c170cdb732d9701e1591660b61a8d967fa0374b71c7d50d86c44d64cbcdf6b8",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "d1e5d5ec461b895927b58b0ec64e686ef874e2f4e09b17996b0a17633b494fe3"
+      },
+      "review_fingerprint": "d1e5d5ec461b895927b58b0ec64e686ef874e2f4e09b17996b0a17633b494fe3"
     }
   ]
 }

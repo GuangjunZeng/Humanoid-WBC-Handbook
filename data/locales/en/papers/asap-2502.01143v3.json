@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2502.01143v3",
-  "source_fingerprint": "ace3de451995790cee929358e8a879b8be77de643de8015d9b39533da5d0578c",
+  "source_fingerprint": "310d2ee248e727057c17fd4da58ab182075f08f979e6469c39406f964c1b0395",
   "title": "ASAP: Align Simulation to Hardware with Learned Delta Actions",
   "content_lines": [
     "Source: [arXiv:2502.01143v3](https://arxiv.org/abs/2502.01143v3). Code mapping refers to the pinned official ASAP revision linked by the Chinese page.",
@@ -19,7 +19,7 @@
     "Read the stages in order: pretrain/collect, learn residual, fine-tune in aligned simulation, deploy without residual.",
     "![Figure 4 and Table III: open-loop alignment](../assets/asap-2502.01143v3/figure-4-table-3.jpg)",
     "Cross-simulator replay separates delta action from system identification and delta dynamics.",
-    "![Table V: real and OOD motion](../assets/asap-2502.01143v3/table-5-real-world.jpg)",
+    "![Figure 8 and Table V: corrections and real/OOD motion](../assets/asap-2502.01143v3/figure-8-table-5-real-world.jpg)",
     "Kick and the OOD Silencer motion improve, but two motions cannot establish a universal real-dynamics model.",
     "",
     "## Decisive evidence",

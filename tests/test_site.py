@@ -109,6 +109,7 @@ class StaticSearchSiteTests(unittest.TestCase):
             "branches: [main]",
             "workflow_dispatch:",
             "wbc_handbook validate",
+            "scripts/extract_key_figures.py --check",
             "wbc_handbook render-problems",
             "--check",
             "wbc_handbook build-web-index",

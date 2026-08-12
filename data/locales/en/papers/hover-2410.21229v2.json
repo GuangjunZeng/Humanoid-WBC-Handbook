@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2410.21229v2",
-  "source_fingerprint": "aef422dade5c1be64d69607b3b96697a137d3ce15c26052c4ff4a6035aa5d031",
+  "source_fingerprint": "d26fa76f38cf8c77f02b0c409cd1dbe5a43bc845a47a3dfeec4f1ebe7b0f262f",
   "title": "HOVER: One Humanoid Controller with Explicit Command Masks",
   "content_lines": [
     "Source: [arXiv:2410.21229v2](https://arxiv.org/abs/2410.21229v2). The code mapping is tied to the pinned official HOVER repository linked by the Chinese page.",
@@ -15,7 +15,7 @@
     "Teachers provide competent behaviors for different control modes. A unified student observes a common state plus command values and masks, and learns through distillation and mode/switch training. The mask is semantic data: it says which objectives should constrain the current action.",
     "",
     "## Key figures",
-    "![Figures 1-2: command masks and modes](../assets/hover-2410.21229v2/figure-1-2-command-masks.jpg)",
+    "![Figure 2: distillation, command masks, and modes](../assets/hover-2410.21229v2/figure-2-command-masks.jpg)",
     "These figures define the unified input contract and distinguish inactive channels from numerical zeros.",
     "![Figure 4 and Tables 3-4: evaluation](../assets/hover-2410.21229v2/figure-4-table-3-4.jpg)",
     "The evaluations compare modes within one controller and expose mode-specific trade-offs.",

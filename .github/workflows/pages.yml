@@ -36,6 +36,7 @@ jobs:
         run: PYTHONPATH=src python3 -m wbc_handbook validate --data-dir data
       - name: Check bilingual paper pages and routes
         run: |
+          python3 scripts/extract_key_figures.py --check
           PYTHONPATH=src python3 scripts/check_paper_quality.py
           PYTHONPATH=src python3 scripts/render_paper_translations.py --check
           python3 scripts/render_paper_topics.py --check

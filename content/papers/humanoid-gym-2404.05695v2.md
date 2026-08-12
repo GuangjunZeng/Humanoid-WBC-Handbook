@@ -44,7 +44,7 @@ Figure 2 应当按“能力生成—偏差筛查—风险验收”来读。Isaac
 - Appendix Table III：噪声、延迟、摩擦、电机强度和载荷随机化范围。
 - Appendix Table IV：`exp(-w||e||²)` 型跟踪奖励与动作平滑、能耗、接触力惩罚。
 
-![Figure 3：实机与 MuJoCo 关节响应](assets/humanoid-gym-2404.05695v2/figure-3-rewards.jpg)
+![Figure 3-4：实机、MuJoCo 与 Isaac Gym 关节响应校准](assets/humanoid-gym-2404.05695v2/figure-3-4-calibration.jpg)
 
 Figure 3-4 的曲线只支持“校准后某些关节响应在定性上更接近”。它没有给出全关节、全频段和接触工况的系统辨识误差。因此这张图应作为校准的起点证据，而不是“仿真已等于实机”的终点证书。
 

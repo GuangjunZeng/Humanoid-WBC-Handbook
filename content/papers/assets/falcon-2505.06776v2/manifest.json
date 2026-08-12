@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2505.06776v2",
   "source_pdf": "https://arxiv.org/pdf/2505.06776v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "b7a24864c7c890c4837753483a9e5c5299cd64e87fe5634083a1f3db2ec57e99",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-dual-agent.jpg",
       "source_url": "https://arxiv.org/pdf/2505.06776v2",
-      "pdf_page": 5,
       "source_locator": "Figure 2",
       "caption_zh": "上下身双 agent 共享历史、独立奖励与末端受力课程。",
-      "sha256": "92051b890bf2126de487dbbab5b5b23dfe59e3f3f90b7325e7c84934df07413d"
+      "selection_reason_zh": "该摘录直接对应详情页对“上下身双 agent 共享历史、独立奖励与末端受力课程。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“上下身双 agent 共享历史、独立奖励与末端受力课程。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.17,
+            0.04,
+            0.83,
+            0.475
+          ],
+          "caption_anchor": "Figure 2: Overview of FALCON",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.413454,
+            0.396804,
+            0.424699
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.413454,
+            0.823535,
+            0.466021
+          ],
+          "page_text_sha256": "0ee9eb697154a66ccb8866a23b2656735c5b66c77435f11ccb58fc8bb66f93a6"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1421,
+      "sha256": "3e1a97f1939f8c80d85fd5812c5aae0f2b7e57bbf572d31efbf9f15f41f2049f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
+      },
+      "review_fingerprint": "2baa0e8e8eb6151329c0ec0bda5108f448c897bd1b78f95220da385837b358f8"
     },
     {
       "asset": "table-1-2-force-curriculum.jpg",
       "source_url": "https://arxiv.org/pdf/2505.06776v2",
-      "pdf_page": 7,
       "source_locator": "Table 1-2",
       "caption_zh": "双策略结构和力矩可行外力采样的分离消融。",
-      "sha256": "fbaade9663f438bbb2b53f65c4ed734baf13e674d1b8d3e01e2555bcadf47ecf"
+      "selection_reason_zh": "该摘录直接对应详情页对“双策略结构和力矩可行外力采样的分离消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“双策略结构和力矩可行外力采样的分离消融。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.18,
+            0.04,
+            0.82,
+            0.31
+          ],
+          "caption_anchor": "Table 1: Loco-Manipulation Evaluation",
+          "caption_anchor_bbox": [
+            0.238222,
+            0.280757,
+            0.496566,
+            0.292002
+          ],
+          "caption_block_bbox": [
+            0.238222,
+            0.280757,
+            0.76178,
+            0.292002
+          ],
+          "page_text_sha256": "8f3dd2b7590ebb950c3bf0698a06c78acbb821bfac592015d2726b4f464b2a66"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.18,
+            0.04,
+            0.82,
+            0.225
+          ],
+          "caption_anchor": "Table 2: Evaluation of FALCON",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.176649,
+            0.387362,
+            0.187895
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.176649,
+            0.823535,
+            0.215443
+          ],
+          "page_text_sha256": "f281a2bd3abfb56ac06daf291101c9d46a84428e5f5484b7ea50787b0e35ccc2"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1556,
+      "sha256": "f41786e8e972efc77f014b357c1879ea223602ca5ed99df86340e636062729eb",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
+      },
+      "review_fingerprint": "e1db2b767874d508411ba9e6d8a5e7cfd1fbfb8de3751413c0c5327790c3d562"
     },
     {
       "asset": "table-4-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2505.06776v2",
-      "pdf_page": 8,
-      "source_locator": "Table 4 / Figure 1",
+      "source_locator": "Table 4",
       "caption_zh": "G1 载荷行走的定量误差与多平台受力任务展示。",
-      "sha256": "e8bd16ec3dc03c819eb3134fc489e1f1fa12a272389d85e3777d9cf68d3adf37"
+      "selection_reason_zh": "该摘录直接对应详情页对“G1 载荷行走的定量误差与多平台受力任务展示。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“G1 载荷行走的定量误差与多平台受力任务展示。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.18,
+            0.04,
+            0.5,
+            0.25
+          ],
+          "caption_anchor": "Table 4: Real-world Tracking Errors",
+          "caption_anchor_bbox": [
+            0.21091,
+            0.227671,
+            0.452617,
+            0.238917
+          ],
+          "caption_block_bbox": [
+            0.21091,
+            0.227671,
+            0.452617,
+            0.238917
+          ],
+          "page_text_sha256": "ddaa3a260d2bc8c69618678d59e252d138e7e774ea652a975d146b56fdd8bde8"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1415,
+      "sha256": "9d46d56ad9c874389655e46510e1a987b0357205dd92b0867c453d7a971ce0e2",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
+      },
+      "review_fingerprint": "92472ebf2ca80e274a2fa87ea094ff4175172701a741369130dffa01cccba630"
     }
   ]
 }

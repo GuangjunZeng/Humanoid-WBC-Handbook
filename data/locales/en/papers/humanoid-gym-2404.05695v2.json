@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2404.05695v2",
-  "source_fingerprint": "ce9fe66e738bd114e8c0b280d36296fd2bdc637ac171c489f19ae54b66800b5c",
+  "source_fingerprint": "6bf25ceacef46182ea419e8f9b65ecd529bdfc5a759c0a45dc084f291688a293",
   "title": "Humanoid-Gym: A Minimal Open Sim-to-Real Locomotion Loop",
   "content_lines": [
     "Source: [arXiv:2404.05695v2](https://arxiv.org/abs/2404.05695v2). Implementation claims are restricted to the pinned official repository linked by the Chinese page.",
@@ -17,7 +17,7 @@
     "## Key figures",
     "![Figure 2: training-to-deployment pipeline](../assets/humanoid-gym-2404.05695v2/figure-2-pipeline.jpg)",
     "The pipeline makes cross-simulator replay an explicit gate before hardware.",
-    "![Figure 3: reward design](../assets/humanoid-gym-2404.05695v2/figure-3-rewards.jpg)",
+    "![Figures 3-4: MuJoCo-to-hardware calibration](../assets/humanoid-gym-2404.05695v2/figure-3-4-calibration.jpg)",
     "The reward breakdown shows which behaviors are task targets and which are regularizers.",
     "![Table 4: randomized parameters](../assets/humanoid-gym-2404.05695v2/table-4-parameters.jpg)",
     "The ranges define the claimed robustness envelope and should not be copied without platform identification.",

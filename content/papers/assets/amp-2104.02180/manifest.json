@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2104.02180v2",
   "source_pdf": "https://arxiv.org/pdf/2104.02180",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "93d9e8e40b3908d65e8b88ae3dcbe8d4cd69071d13f3234ad927462477472a29",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-adversarial-prior.jpg",
       "source_url": "https://arxiv.org/pdf/2104.02180",
-      "pdf_page": 4,
-      "source_locator": "Figure 2 / Equation 2-5",
+      "source_locator": "Figure 2",
       "caption_zh": "未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。",
-      "sha256": "4fb6764d3cbcb62bbfe583d198976d0388412e025d6040e86849a4468db81f83"
+      "selection_reason_zh": "该摘录直接对应详情页对“未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.08,
+            0.92,
+            0.38
+          ],
+          "caption_anchor": "Fig. 2. Schematic overview",
+          "caption_anchor_bbox": [
+            0.519534,
+            0.293141,
+            0.660293,
+            0.306223
+          ],
+          "caption_block_bbox": [
+            0.519534,
+            0.293141,
+            0.915353,
+            0.369632
+          ],
+          "page_text_sha256": "14c1ea677f382dd231b61cc6fcda8e56f50085a7190ff22db40df3615da6d490"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1536,
+      "sha256": "9e8cb1efa12c0df039ff1712ef602f2e9e305440cfa1c82c3444a5e992f18cfd",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
+      },
+      "review_fingerprint": "2f92c6d6667f2d252e8ebb9767f0b7a7c5645108d08fd8534b65397b116c2eb0"
     },
     {
       "asset": "table-1-2-tasks.jpg",
       "source_url": "https://arxiv.org/pdf/2104.02180",
-      "pdf_page": 8,
       "source_locator": "Table 1-2",
       "caption_zh": "多任务表现与不同运动数据集规模、时长的对照。",
-      "sha256": "b30a8cfb16642693c4b2c5421fdf8d8e5a17bcf3c6f11a792a3bb9713c2f8cfe"
+      "selection_reason_zh": "该摘录直接对应详情页对“多任务表现与不同运动数据集规模、时长的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“多任务表现与不同运动数据集规模、时长的对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.31
+          ],
+          "caption_anchor": "Table 1. Performance statistics",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.09862,
+            0.25559,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.084181,
+            0.09862,
+            0.481903,
+            0.187177
+          ],
+          "page_text_sha256": "228d4c8cadd9b23649458708896763d8feb0a2eedf3355697d87d1d65f36dd9c"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 721,
+      "sha256": "fff109d816b0b1e73874fdf6c4dc88d173fa8f68f970478c2cc3920ed3914748",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
+      },
+      "review_fingerprint": "e7f4c8f13eb5fb9cd55649029053d671f2a902a2a9b732a005ca3e76d82ac309"
     },
     {
       "asset": "table-3-figure-8-imitation.jpg",
       "source_url": "https://arxiv.org/pdf/2104.02180",
-      "pdf_page": 12,
       "source_locator": "Table 3 / Figure 8",
       "caption_zh": "单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。",
-      "sha256": "4d72cb2dea241ea729c2de3a762e09d52048f5aeb36e290f122a576b5d18d7f0"
+      "selection_reason_zh": "该摘录直接对应详情页对“单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.08,
+            0.05,
+            0.49,
+            0.59
+          ],
+          "caption_anchor": "Table 3. Performance statistics",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.09862,
+            0.247188,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.084181,
+            0.09862,
+            0.480471,
+            0.224914
+          ],
+          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569"
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.5,
+            0.05,
+            0.92,
+            0.51
+          ],
+          "caption_anchor": "Fig. 8. Learning curves",
+          "caption_anchor_bbox": [
+            0.519534,
+            0.372977,
+            0.647441,
+            0.386059
+          ],
+          "caption_block_bbox": [
+            0.519065,
+            0.372977,
+            0.916777,
+            0.499271
+          ],
+          "page_text_sha256": "b380a2938dff5cc123c1c93e097f554fec1fc5e4ea505616d18f2063aa3bc569"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 5083,
+      "sha256": "95450e565d897d6922a9aa053403bb0b2ee98da95d17a793bb3790b1a493c6dc",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
+      },
+      "review_fingerprint": "6c891bea1ef23f314141908b10fc552f89d194d1d6f259f6543111a645714497"
     }
   ]
 }

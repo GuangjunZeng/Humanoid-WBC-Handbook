@@ -50,7 +50,7 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 
 ## 阶段 D：升级为深度解读
 
-根据板块缺口和用户范围，选择有限数量的高优先级论文。对每篇执行 [`paper-interpretation.md`](paper-interpretation.md)：完整 PDF、官方代码映射、3–5 张关键图、中文为主的 3000+ 汉字解读、最强实验、作者/独立局限与安全边界。
+根据板块缺口和用户范围，选择有限数量的高优先级论文。对每篇执行 [`paper-interpretation.md`](paper-interpretation.md)：完整 PDF、官方代码映射、3–5 张“Figure/Table 本体 + 原始完整 caption”的紧裁剪、中文为主且去除空话的事实型解读、最强实验、作者/独立局限与安全边界。整页截图、猜页码或未人工查看 contact sheet 的图片不能进入深读页。
 
 只有以下检查全部通过才能更新 `registry.json`、深度 source 和 claim：
 

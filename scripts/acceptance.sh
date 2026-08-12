@@ -6,6 +6,10 @@ cd "$PROJECT_ROOT"
 
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 PYTHONPATH=src python3 -m wbc_handbook validate --data-dir data
+python3 scripts/extract_key_figures.py --check
+PYTHONPATH=src python3 scripts/check_paper_quality.py
+PYTHONPATH=src python3 scripts/render_paper_translations.py --check
+python3 scripts/render_paper_topics.py --check
 python3 scripts/check_corpus.py
 PYTHONPATH=src python3 -m wbc_handbook build-index --data-dir data --index var/handbook.sqlite
 PYTHONPATH=src python3 -m wbc_handbook query "unreviewed question" --index var/handbook.sqlite

@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2507.06905v2",
   "source_pdf": "https://arxiv.org/pdf/2507.06905v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "58ab7764acb32367a215be7506e0b0b3f40638d2148679ec9452be53d46aa1e6",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-unified-policy.jpg",
       "source_url": "https://arxiv.org/pdf/2507.06905v2",
-      "pdf_page": 5,
       "source_locator": "Figure 2",
       "caption_zh": "单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。",
-      "sha256": "1c91cea1da312c3f73fcd13c6f0cb3bfe6b366d03bbefb67e02fe4ae815f1cc0"
+      "selection_reason_zh": "该摘录直接对应详情页对“单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“单一 29 维策略、顺序技能课程、命令插值和载荷平衡管线。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.67
+          ],
+          "caption_anchor": "Fig. 2: Method overview",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.587571,
+            0.253343,
+            0.598817
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.587571,
+            0.91999,
+            0.659197
+          ],
+          "page_text_sha256": "a00b189608a2792bd28a7b7e304df1d207f25737070246ec32059ba2cee72f42"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1609,
+      "sha256": "6557790a6018ac3e9a4075fec82507a13dc434ce5f2afd66809d00cf43d06336",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
+      },
+      "review_fingerprint": "d08433c3401aec39fe9a43777bf74a052831dcb47478f81fb6ba8e92cb648684"
     },
     {
       "asset": "table-3-4-figure-3.jpg",
       "source_url": "https://arxiv.org/pdf/2507.06905v2",
-      "pdf_page": 7,
       "source_locator": "Table III-IV / Figure 3",
       "caption_zh": "统一策略的跟踪精度、工作空间与真机任务。",
-      "sha256": "57c53dd02ad9c5d9bdd72a6dc0c3e0daffe1cb59739adba166cae45f78c3d505"
+      "selection_reason_zh": "该摘录直接对应详情页对“统一策略的跟踪精度、工作空间与真机任务。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“统一策略的跟踪精度、工作空间与真机任务。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.35
+          ],
+          "caption_anchor": "TABLE III: Tracking accuracy comparison",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.268458,
+            0.378445,
+            0.279855
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.268458,
+            0.919997,
+            0.32514
+          ],
+          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.36,
+            0.92,
+            0.45
+          ],
+          "caption_anchor": "TABLE IV: Reachable command ranges",
+          "caption_anchor_bbox": [
+            0.509768,
+            0.432381,
+            0.773598,
+            0.443626
+          ],
+          "caption_block_bbox": [
+            0.509768,
+            0.432381,
+            0.919993,
+            0.443626
+          ],
+          "page_text_sha256": "7f7b37ecadc96e7c7e1d18e907798bf4c1a63437c7edee62cee01cea03370e09"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.39
+          ],
+          "caption_anchor": "Fig. 3: Time-series visualization",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.354273,
+            0.296644,
+            0.365519
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.354273,
+            0.91999,
+            0.380615
+          ],
+          "page_text_sha256": "d10e958c9c284ea47fbc4d60428e5766f6a904931eb05f4db01e305cc0f2ff64"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2183,
+      "sha256": "ffbba5f9f1d983c8195e8cb0cc7c6783d39fd60e9f611b3c23c390d3758ac692",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
+      },
+      "review_fingerprint": "866c0abfd4914f871789f7dfcb5223505faadea0a256dbefc1e70302961601d1"
     },
     {
       "asset": "table-5-ablation.jpg",
       "source_url": "https://arxiv.org/pdf/2507.06905v2",
-      "pdf_page": 8,
       "source_locator": "Table V",
       "caption_zh": "顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。",
-      "sha256": "533d7a3229def1370ff070f96e9f11840545afa967e4d8ba7b004b35cfee6204"
+      "selection_reason_zh": "该摘录直接对应详情页对“顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“顺序课程、残差手臂、CoM 跟踪和延迟随机化的消融。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.54,
+            0.5,
+            0.72
+          ],
+          "caption_anchor": "TABLE V: Ablation study",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.681478,
+            0.251357,
+            0.692723
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.681478,
+            0.490231,
+            0.707819
+          ],
+          "page_text_sha256": "8490fa75280c128d13dea6a30cb7d69c21e216b892ceb86416bec49f18ed39da"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 943,
+      "sha256": "99dc7a30da1bb65aed9c12ead2854ca3564b375828c3f74dddcd88f120647e10",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
+      },
+      "review_fingerprint": "7bf208513b7890e346dd9a09660156a9da6bb818bd38451fcc24a0ffd8a8768d"
     }
   ]
 }

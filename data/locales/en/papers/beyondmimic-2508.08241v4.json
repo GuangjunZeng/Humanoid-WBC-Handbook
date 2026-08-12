@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2508.08241v4",
-  "source_fingerprint": "5ede6a5967e226df374c2ba4ad1962cab08ef95c190be9d27bb82469b57b35e5",
+  "source_fingerprint": "5d5cf4de4614b7ea0d668135ee1622c2cde89b5daec0d43c0a82c560b722a1c9",
   "title": "BeyondMimic: Compose Humanoid Skills with Guided State-Action Latent Diffusion",
   "content_lines": [
     "Source: [arXiv:2508.08241v4](https://arxiv.org/abs/2508.08241v4). The public official repository covers the motion-tracking layer, not the complete CVAE/diffusion generator.",
@@ -17,8 +17,8 @@
     "## Key figures",
     "![Figure 2: hardware tracking layer](../assets/beyondmimic-2508.08241v4/figure-2-hardware-tracking.jpg)",
     "The selected 34 motions demonstrate tracker breadth but do not provide per-motion random-trial success denominators.",
-    "![Figures 5-7: guided state-action diffusion](../assets/beyondmimic-2508.08241v4/figure-5-guidance.jpg)",
-    "Including future state lets waypoint and obstacle costs differentiate the proposed trajectory directly.",
+    "![Figures 5-6: command-conditioned behavior, transitions, and composition](../assets/beyondmimic-2508.08241v4/figure-5-6-guidance.jpg)",
+    "The selected command-conditioned behaviors and transitions show controllable composition, but not per-transition success denominators; the guidance mechanism still requires the paper's state-action diffusion evidence.",
     "![Figure 8: representation, history, delay, and sampling](../assets/beyondmimic-2508.08241v4/figure-8-ablation.jpg)",
     "The negative delay/history results show that the minimal low-latency tracker is an active design choice.",
     "",

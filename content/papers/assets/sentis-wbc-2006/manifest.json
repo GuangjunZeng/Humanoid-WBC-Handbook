@@ -1,33 +1,189 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "pdf:sentis-khatib-2006-wbc",
   "source_pdf": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "1f6d56348bad7f4d454974574afad228ac139424a0546dac83c9e136347e57ee",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-1-2-primitives.jpg",
       "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
-      "pdf_page": 2,
       "source_locator": "Figure 1-2",
       "caption_zh": "约束、操作任务和姿态原语如何聚合成可组合的全身行为。",
-      "sha256": "47161c51f1b4bb5e22088aec129bdbee62c01ec89c1a04414c126d324002191f"
+      "selection_reason_zh": "该摘录直接对应详情页对“约束、操作任务和姿态原语如何聚合成可组合的全身行为。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“约束、操作任务和姿态原语如何聚合成可组合的全身行为。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.5,
+            0.28,
+            0.92,
+            0.595
+          ],
+          "caption_anchor": "Fig. 1. Control primitives",
+          "caption_anchor_bbox": [
+            0.514114,
+            0.516629,
+            0.670247,
+            0.527198
+          ],
+          "caption_block_bbox": [
+            0.514114,
+            0.516629,
+            0.916582,
+            0.583805
+          ],
+          "page_text_sha256": "8ad1728a7842a8bddadc813da5cbf3c3cfc5950e67c1511a0df015eb06db96ab"
+        },
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.5,
+            0.24,
+            0.92,
+            0.545
+          ],
+          "caption_anchor": "Fig. 2. Control entities",
+          "caption_anchor_bbox": [
+            0.514114,
+            0.475468,
+            0.663828,
+            0.486037
+          ],
+          "caption_block_bbox": [
+            0.514114,
+            0.475468,
+            0.916595,
+            0.531315
+          ],
+          "page_text_sha256": "f18be2de2889aae0e1802f7710b8f65590e18c9c6d6aaa0feb287bfebce3b906"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3141,
+      "sha256": "9e18a7d4f94023fc2d40b5ad7c405e800ba73892310edfd28599b1ba4f20c2b2",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
+      },
+      "review_fingerprint": "ec5dc1b4403d176ddaf1bdcdcbc7aecd77a4d0b623cb39c2603e202376d41dbb"
     },
     {
       "asset": "figure-3-hierarchy.jpg",
       "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
-      "pdf_page": 3,
-      "source_locator": "Figure 3 / Equation 4-7",
+      "source_locator": "Figure 3",
       "caption_zh": "约束一致与任务一致零空间投影构成的动力学优先级。",
-      "sha256": "b60ad6bb5b34237435f5376238a584d3f3417d61be938765449205009c4b0eb2"
+      "selection_reason_zh": "该摘录直接对应详情页对“约束一致与任务一致零空间投影构成的动力学优先级。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“约束一致与任务一致零空间投影构成的动力学优先级。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.43,
+            0.49,
+            0.66
+          ],
+          "caption_anchor": "Fig. 3. A control hierarchy",
+          "caption_anchor_bbox": [
+            0.089747,
+            0.643672,
+            0.242939,
+            0.654241
+          ],
+          "caption_block_bbox": [
+            0.089747,
+            0.643672,
+            0.124697,
+            0.654241
+          ],
+          "page_text_sha256": "05c24af217ab058c8fd38013988f4626f8f2095fff874347d833bded0bb2701a"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1217,
+      "sha256": "3c671a28428e02877e0c1ab9757525a05038c272073a0b74f90325a2fc2051a9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
+      },
+      "review_fingerprint": "4d87734bf6ee610069f6868d13a462d09816e5a60e13c79c5a0c03cf0f18a11b"
     },
     {
       "asset": "figure-5-6-impedance.jpg",
       "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
-      "pdf_page": 4,
       "source_locator": "Figure 5-6",
       "caption_zh": "约束对任务有效惯量的改变，以及任务级阻抗控制层。",
-      "sha256": "487722290e57a68d607a1aadeed4600ca5fc7fde4b2f3a3f93b0d14ec48f39ef"
+      "selection_reason_zh": "该摘录直接对应详情页对“约束对任务有效惯量的改变，以及任务级阻抗控制层。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“约束对任务有效惯量的改变，以及任务级阻抗控制层。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.08,
+            0.48,
+            0.49,
+            0.77
+          ],
+          "caption_anchor": "Fig. 5. Effective inertia",
+          "caption_anchor_bbox": [
+            0.083536,
+            0.687863,
+            0.234695,
+            0.698433
+          ],
+          "caption_block_bbox": [
+            0.083536,
+            0.687863,
+            0.486004,
+            0.756305
+          ],
+          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186"
+        },
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.34
+          ],
+          "caption_anchor": "Fig. 6. Impedance control layer",
+          "caption_anchor_bbox": [
+            0.514114,
+            0.288307,
+            0.697622,
+            0.298876
+          ],
+          "caption_block_bbox": [
+            0.514114,
+            0.288307,
+            0.916539,
+            0.310205
+          ],
+          "page_text_sha256": "24b35688bd99b6dd98af3ccbaf879e7a0549e927aa930a37429c89ab42ad1186"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3028,
+      "sha256": "e67fb9f5e62adb5e31592a945bc57ab24ef4cbe56a80b8b126286ae0d1a566b0",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
+      },
+      "review_fingerprint": "2878293f981eea14d93079a22ee21c41824a24f5118ef4adccf6cf05b88c2328"
     }
   ]
 }

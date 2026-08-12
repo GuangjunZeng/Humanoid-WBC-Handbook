@@ -17,8 +17,8 @@ S1 learns stable stationary/moving footwork; S2 adds sparse hit, racket-position
 Training trajectory targets and online deployment estimates share semantics but not noise/latency.
 ![Figures 3-4: simulated rally and perception variants](../assets/humanoid-badminton-2511.11218v3/figure-3-4-control.jpg)
 The best 21-hit rally is a capability example, not the mean rally length.
-![Figures 5-6: hardware accuracy and serve trials](../assets/humanoid-badminton-2511.11218v3/table-5-hardware.jpg)
-With explicit denominators, EKF achieves 42/46 serves versus 33/46 for the prediction-free policy and lower virtual-target error.
+![Figures 5-6: target error and hardware serve trials](../assets/humanoid-badminton-2511.11218v3/figure-5-6-hardware.jpg)
+Figure 5 shows lower EKF target-position error; Figure 6 visualizes hardware hits. The explicit 42/46 versus 33/46 serve denominator comes from the accompanying experiment text, not from a table in this crop.
 
 ## Decisive evidence
 The symmetric 46+46 serving-machine trial is stronger than selected rallies. The authors' decision not to use the lower-success prediction-free policy near humans is a valuable negative deployment result.

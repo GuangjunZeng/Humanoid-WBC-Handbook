@@ -24,9 +24,11 @@
 
 ![<Figure 定位 + 中文图注>](assets/<slug>/<asset-1>.jpg)
 
-*<图注：先说图上看到什么，再说它支持/不支持什么结论。>*
+*<图注：先说图上看到什么，再说它支持/不支持什么结论。只允许具体 Figure/Table 本体加原始完整 caption 的紧裁剪；严禁整页论文截图、无关正文、相邻图表残片或被截断 caption。>*
 
 <至少 3 张真实图，与其解释段落交错排列，不堆在文末。>
+
+作者记录（写入 `research/key-figures.json`，不复制到正文）：`source_pdf_sha256`、`pdf_page`、`crop`、`caption_anchor`、`locator`、`selection_reason_zh`、`supports_zh`、`limits_zh`。人工查看全分辨率 contact sheet 后才记录 review fingerprint。
 
 ## 最有说服力的实验
 

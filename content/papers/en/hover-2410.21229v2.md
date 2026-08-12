@@ -13,7 +13,7 @@ A humanoid stack may need velocity control, root/upper-body targets, end-effecto
 Teachers provide competent behaviors for different control modes. A unified student observes a common state plus command values and masks, and learns through distillation and mode/switch training. The mask is semantic data: it says which objectives should constrain the current action.
 
 ## Key figures
-![Figures 1-2: command masks and modes](../assets/hover-2410.21229v2/figure-1-2-command-masks.jpg)
+![Figure 2: distillation, command masks, and modes](../assets/hover-2410.21229v2/figure-2-command-masks.jpg)
 These figures define the unified input contract and distinguish inactive channels from numerical zeros.
 ![Figure 4 and Tables 3-4: evaluation](../assets/hover-2410.21229v2/figure-4-table-3-4.jpg)
 The evaluations compare modes within one controller and expose mode-specific trade-offs.

@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2410.21229v2",
   "source_pdf": "https://arxiv.org/pdf/2410.21229v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "13bb4bf03727efbda45b5e0f051279ba14b8763d8fd16e7d6881aa60d831303d",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
-      "asset": "figure-1-2-command-masks.jpg",
+      "asset": "figure-2-command-masks.jpg",
       "source_url": "https://arxiv.org/pdf/2410.21229v2",
-      "pdf_page": 2,
       "source_locator": "Figure 2",
       "caption_zh": "统一命令向量、控制模式掩码与教师-学生训练框架。",
-      "sha256": "11b1e07fa64ef8788ac0f4a3f0bf44f0e934edce9cc30e27f676cf18eae2e17e"
+      "selection_reason_zh": "该摘录直接对应详情页对“统一命令向量、控制模式掩码与教师-学生训练框架。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“统一命令向量、控制模式掩码与教师-学生训练框架。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.27
+          ],
+          "caption_anchor": "Fig. 2: Overview of HOVER distillation process",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.213855,
+            0.397934,
+            0.224112
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.213855,
+            0.911767,
+            0.261849
+          ],
+          "page_text_sha256": "aefe1ea58fb05a4b8e456927b06b2eaa99ff8839aed906f7521937f0bd66874b"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 623,
+      "sha256": "36df6c70be742d061b4adbdceb1895d1264bb30c3768bd87f531041a002ce59d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
+      },
+      "review_fingerprint": "98130dfa364ad422d51bfd3e04ca599a9178a1c19526288725e83e5e63739a55"
     },
     {
       "asset": "figure-4-table-3-4.jpg",
       "source_url": "https://arxiv.org/pdf/2410.21229v2",
-      "pdf_page": 5,
       "source_locator": "Figure 4 / Table III-IV",
       "caption_zh": "多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。",
-      "sha256": "ae3ff4014c547b0fcfbbe32d6b5080be0f2b25a1d8b75cbfe0f98a7b6c383053"
+      "selection_reason_zh": "该摘录直接对应详情页对“多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“多模式 RL 与教师蒸馏在 32 个模式-指标单元上的对照。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.39
+          ],
+          "caption_anchor": "TABLE III: Simulation motion imitation evaluation",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.066283,
+            0.398602,
+            0.076404
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.066101,
+            0.911771,
+            0.088983
+          ],
+          "page_text_sha256": "8521411abb84724919aa5731ab7b327b19f29aafbb293ff3d552b20e5388c990"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.26
+          ],
+          "caption_anchor": "TABLE IV: Comparison between HOVER and specialists",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.064365,
+            0.434467,
+            0.074486
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.064365,
+            0.488236,
+            0.087065
+          ],
+          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89"
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.49,
+            0.04,
+            0.92,
+            0.4
+          ],
+          "caption_anchor": "Fig. 4: We assess the tracking accuracy",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.344305,
+            0.748349,
+            0.354426
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.344305,
+            0.911766,
+            0.392164
+          ],
+          "page_text_sha256": "949d8ea8ccbe02a76da371a86ab934a04d06adc14b2476d47dd9750225dabd89"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3792,
+      "sha256": "2f898f0ad578b05ca53381757a2779bf3e4bacef0a91069870d4d74cbd78a9cd",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
+      },
+      "review_fingerprint": "53e4deb0538a378b6601c0215303a02e0917a89649d372371d00dcd4144af0a4"
     },
     {
       "asset": "table-5-switching.jpg",
       "source_url": "https://arxiv.org/pdf/2410.21229v2",
-      "pdf_page": 6,
-      "source_locator": "Table V",
+      "source_locator": "Table V / Figure 6",
       "caption_zh": "历史长度、掩码策略与运行时模式切换相关实验。",
-      "sha256": "ef536afc0a1803695b7291782133921e02cc58e5b7f389b95081bf6801f8c59d"
+      "selection_reason_zh": "该摘录直接对应详情页对“历史长度、掩码策略与运行时模式切换相关实验。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“历史长度、掩码策略与运行时模式切换相关实验。”的有限说明。",
+      "limits_zh": "组合摘录只支持各图表图注明示的结构与实验；展示轨迹不能替代统计分母，表中结果也不能外推到未报告平台。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.29
+          ],
+          "caption_anchor": "TABLE V: Real-world tracking evaluation",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.064365,
+            0.34243,
+            0.074486
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.064365,
+            0.488236,
+            0.099644
+          ],
+          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec"
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.04,
+            0.92,
+            0.38
+          ],
+          "caption_anchor": "Fig. 6: HOVER shows robustness",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.352118,
+            0.723896,
+            0.36224
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.352118,
+            0.911766,
+            0.374819
+          ],
+          "page_text_sha256": "a812059d34eabe99cabf5de4e066f19be60bd9b0f256e01d9642cc220cf2baec"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2994,
+      "sha256": "b40ecf399f4cb5676245f0013096455656c2d109d18f4afaef99e97a14d60c96",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
+      },
+      "review_fingerprint": "362b6829761f21cb68f3dfa169f44b5f4ca8d165f3a4f9f8566337fe69f72f54"
     }
   ]
 }

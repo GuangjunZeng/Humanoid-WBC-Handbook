@@ -1,33 +1,212 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2602.07439v1",
   "source_pdf": "https://arxiv.org/pdf/2602.07439v1",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "884c204fa9afddddf4179ea88e031ff42f68a526c72b24d185d4388cfec30aea",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
-      "asset": "figure-2-streaming.jpg",
+      "asset": "figure-2-3-streaming.jpg",
       "source_url": "https://arxiv.org/pdf/2602.07439v1",
-      "pdf_page": 3,
       "source_locator": "Figure 2-3",
       "caption_zh": "文本流、自回归机器人动作块与低层跟踪器的时序。",
-      "sha256": "a7a5c59a82f56ee297db205a0f1c80a2ae44743e0af2a5b77b42abbfa312f5a6"
+      "selection_reason_zh": "该摘录直接对应详情页对“文本流、自回归机器人动作块与低层跟踪器的时序。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“文本流、自回归机器人动作块与低层跟踪器的时序。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.465
+          ],
+          "caption_anchor": "Fig. 2: Overview of TextOp's framework",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.366747,
+            0.370965,
+            0.378144
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.366747,
+            0.919982,
+            0.453619
+          ],
+          "page_text_sha256": "5db66e8e861638a330fd283b801e27b2e17a20b89a7c1ad21bc9f661c32faa99"
+        },
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.28
+          ],
+          "caption_anchor": "Fig. 3: Illustration of the time-aligned data format",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.246858,
+            0.435803,
+            0.258255
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.246858,
+            0.490223,
+            0.273262
+          ],
+          "page_text_sha256": "a17d335e25120888db8e7ab90aa15391f4643c307c7fbc0cdc6833d604149ed1"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2316,
+      "sha256": "365afdad1c91bbffe71d514aaa75d41eb233b45d4ca2f4adfe0cec59cb4085d4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
+      },
+      "review_fingerprint": "4a465865ac31bbbd0e0363d99b6c5ba7ab60e41db2b5d64971fe53a99d257b75"
     },
     {
       "asset": "table-1-2-hardware.jpg",
       "source_url": "https://arxiv.org/pdf/2602.07439v1",
-      "pdf_page": 7,
       "source_locator": "Table I-II",
       "caption_zh": "30 秒真机流式指令成功次数与计算/人感响应延迟。",
-      "sha256": "71192d8ce15c7dc1c41ded3293f94ee0f710e862e32aa9cefd3835c8367694b2"
+      "selection_reason_zh": "该摘录直接对应详情页对“30 秒真机流式指令成功次数与计算/人感响应延迟。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“30 秒真机流式指令成功次数与计算/人感响应延迟。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.54,
+            0.92,
+            0.72
+          ],
+          "caption_anchor": "TABLE I: Quantitative evaluation",
+          "caption_anchor_bbox": [
+            0.50976,
+            0.548395,
+            0.763155,
+            0.559792
+          ],
+          "caption_block_bbox": [
+            0.50976,
+            0.548395,
+            0.919985,
+            0.605076
+          ],
+          "page_text_sha256": "c6f29211090d0426bc60a576a98939afc6a76f80982e16dfc13a8110f2d7616e"
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.08,
+            0.46,
+            0.49,
+            0.62
+          ],
+          "caption_anchor": "TABLE II: Real-time performance",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.473529,
+            0.327208,
+            0.484925
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.473529,
+            0.490223,
+            0.499932
+          ],
+          "page_text_sha256": "ffdfc2ecdeb48431f0a8be09f5839c67c591b37465d8791e6a70a6d528c5e3f8"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1779,
+      "sha256": "e007c79409eb5954c1d5664d5504ebecfffe73d3c789ac76c37e2e6d0ea1520d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
+      },
+      "review_fingerprint": "4fd84d89306009f4a7dc462b227bbb76aa02b2d994d86b3bd5b30dd418a1f211"
     },
     {
       "asset": "table-3-4-representation.jpg",
       "source_url": "https://arxiv.org/pdf/2602.07439v1",
-      "pdf_page": 8,
       "source_locator": "Table III-IV",
       "caption_zh": "机器人骨架生成表示和混合数据 tracker 的分布对照。",
-      "sha256": "c1bb14c1574e0d5849733bd72ee8533d61f1b3fbacb3f0749898a1e55366c718"
+      "selection_reason_zh": "该摘录直接对应详情页对“机器人骨架生成表示和混合数据 tracker 的分布对照。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“机器人骨架生成表示和混合数据 tracker 的分布对照。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.04,
+            0.92,
+            0.25
+          ],
+          "caption_anchor": "TABLE III: Comparison of motion generation",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.070069,
+            0.39916,
+            0.081466
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.070069,
+            0.919982,
+            0.12675
+          ],
+          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164"
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.08,
+            0.24,
+            0.92,
+            0.47
+          ],
+          "caption_anchor": "TABLE IV: Simulation evaluation",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.257294,
+            0.320664,
+            0.268691
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.257294,
+            0.919982,
+            0.329071
+          ],
+          "page_text_sha256": "67f730d83cd0ebb186814009e2baf4c32d5107cc2f3f62ba88f3b50ef6f03164"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1169,
+      "sha256": "87b3399f2c5cc6324e3e3a6818e1bcc5d4f9978fca91276914a0105612607766",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
+      },
+      "review_fingerprint": "32e5016cb59967c1da41ef05a571c1b90a9064702edefdc2b2a68587817725b9"
     }
   ]
 }

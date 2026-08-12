@@ -1,33 +1,166 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
   "paper_id": "arxiv:2404.05695v2",
   "source_pdf": "https://arxiv.org/pdf/2404.05695v2",
-  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
-  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "source_pdf_sha256": "f5a95d5797dc0b788087fc454fef0923f4d5055a14d69645902c0fcbc96e097e",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
   "figures": [
     {
       "asset": "figure-2-pipeline.jpg",
       "source_url": "https://arxiv.org/pdf/2404.05695v2",
-      "pdf_page": 2,
       "source_locator": "Figure 2",
       "caption_zh": "Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。",
-      "sha256": "34b224b9a395ca8ddbcae1f6f4d53cd3274dacba4f2d679be1fbdac344937ef6"
+      "selection_reason_zh": "该摘录直接对应详情页对“Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“Isaac Gym 并行训练、MuJoCo sim-to-sim 标定与真机部署管线。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 2,
+          "crop": [
+            0.08,
+            0.04,
+            0.5,
+            0.355
+          ],
+          "caption_anchor": "Fig. 2: Pipeline of Humanoid-Gym",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.24281,
+            0.339596,
+            0.254055
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.24281,
+            0.488237,
+            0.344625
+          ],
+          "page_text_sha256": "41b402c4d240e97a1d3e963fcec25f0465e3b17b96d81efeda6e85be557bbed6"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1609,
+      "sha256": "98c4445a074a780884794b5b4aff9079a7d5a2325fe46665dba99bb246e2184b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
+      },
+      "review_fingerprint": "978431534523681ccadaadcbaf8a098a2ea65278391e661407cf07b1539d8198"
     },
     {
-      "asset": "figure-3-rewards.jpg",
+      "asset": "figure-3-4-calibration.jpg",
       "source_url": "https://arxiv.org/pdf/2404.05695v2",
-      "pdf_page": 3,
-      "source_locator": "Figure 3",
-      "caption_zh": "人形步态周期、奖励组成与域随机化设计。",
-      "sha256": "4b641278e4c5f070065d7c8c5936725b7401005d77d651e81fbe193111283106"
+      "source_locator": "Figure 3-4",
+      "caption_zh": "MuJoCo 与实机正弦关节响应，以及 MuJoCo、实机和 Isaac Gym 的相图校准对照。",
+      "selection_reason_zh": "该摘录直接对应详情页对“人形步态周期、奖励组成与域随机化设计。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“人形步态周期、奖励组成与域随机化设计。”的有限说明。",
+      "limits_zh": "只支持图中可见的结构或图注明示的实验关系；不能把展示样例外推为全测试分布，也不能替代相邻正文中的分母。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.5,
+            0.25,
+            0.92,
+            0.55
+          ],
+          "caption_anchor": "Fig. 3: Sine wave in Both MuJoCo",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.375796,
+            0.748474,
+            0.387042
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.375796,
+            0.911766,
+            0.417231
+          ],
+          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904"
+        },
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.5,
+            0.535,
+            0.92,
+            0.62
+          ],
+          "caption_anchor": "Fig. 4: Phase Portrait for MuJoCo",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.587593,
+            0.738756,
+            0.598838
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.587593,
+            0.911766,
+            0.613933
+          ],
+          "page_text_sha256": "8470c947a335462cb244c80358cf0e594168774620a8bcb0203751abab44a904"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1982,
+      "sha256": "011deefe3f6e9aa76f96b102e6325342e8dc123f82a06e9c249e4df88220c435",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
+      },
+      "review_fingerprint": "be25e8b04c65313266df0aa6016608caba068fc539fa775205dba9f99148b0b1"
     },
     {
       "asset": "table-4-parameters.jpg",
       "source_url": "https://arxiv.org/pdf/2404.05695v2",
-      "pdf_page": 6,
       "source_locator": "Table IV",
       "caption_zh": "附录中的训练、控制和部署参数表，用于界定复现范围。",
-      "sha256": "eb10f3bf97be11f8a1d9acf63c167c450a6da566ebe4f07e4784537d5aaca029"
+      "selection_reason_zh": "该摘录直接对应详情页对“附录中的训练、控制和部署参数表，用于界定复现范围。”的解释，并保留原论文 caption 以核对图号与证据边界。",
+      "supports_zh": "支持详情页在原论文所述条件下对“附录中的训练、控制和部署参数表，用于界定复现范围。”的有限说明。",
+      "limits_zh": "只支持表中明确给出的基线、指标与评测条件，不能外推到未报告平台、分布、长期可靠性或安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.28,
+            0.5,
+            0.64
+          ],
+          "caption_anchor": "TABLE IV: In defining the reward function",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.33617,
+            0.410424,
+            0.347415
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.33617,
+            0.488238,
+            0.407795
+          ],
+          "page_text_sha256": "65d2e1e91ffdd6b05841b75c6526bd324fb4dab29c90de668d12ef412c88f293"
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1831,
+      "sha256": "0a77bd4051b826237bf3f49e418ffb883419021e3dd5009eb8cfcb8152cb4f92",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-12",
+        "reviewed_on": "2026-08-12",
+        "fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
+      },
+      "review_fingerprint": "95ade067bc61d040b81c253c3dccb8ab12db2ea9b1ae0f71ea7432f7c8003f1b"
     }
   ]
 }
