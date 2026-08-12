@@ -48,11 +48,12 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：13 个项目，其中已审代码 7 个、无对应论文的独立项目 3 个。
+- 当前收录：13 个项目，其中已审代码 8 个、无对应论文的独立项目 3 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [ProtoMotions](../projects/protomotions.md) | 论文官方实现 | 2286 | Apache-2.0 | 统一多种物理角色与人形动作学习方法，能在同一框架比较条件掩码、潜技能和跟踪任务。 |
 | 已审代码 | [HoloSoma](../projects/holosoma.md) | 论文官方实现 | 1582 | Apache-2.0 | 在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。 |
 | 已审代码 | [Unitree RL Lab](../projects/unitree-rl-lab.md) | 独立项目（无对应论文） | 1272 | Apache-2.0 | Unitree 官方 Isaac Lab 训练、策略导出与机器人部署入口，直接覆盖 H1/G1 工程链。 |
 | 已审代码 | [human2humanoid](../projects/human2humanoid.md) | 论文官方实现 | 1050 | CC-BY-NC-4.0 (project; inherited dependencies retain their own terms) | H2O 与 OmniH2O 的官方训练和部署代码，把人体输入、跟踪策略与真机接口连成闭环。 |
@@ -63,7 +64,6 @@
 | 待审代码 | [MuJoCo](https://github.com/google-deepmind/mujoco) | 基础设施 | 14525 | Apache-2.0 | WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。 |
 | 待审代码 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | 基础设施 | 7883 | BSD-3-Clause | 多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。 |
 | 待审代码 | [GR00T Whole-Body Control](https://github.com/NVlabs/GR00T-WholeBodyControl) | 论文官方实现 | 3248 | NOASSERTION | NVIDIA 的通用人形 WBC 平台，覆盖 SONIC、解耦控制与上层模型调用接口。 |
-| 待审代码 | [ProtoMotions](https://github.com/NVlabs/ProtoMotions) | 论文官方实现 | 2286 | Apache-2.0 | 统一多种物理角色与人形动作学习方法，能在同一框架比较条件掩码、潜技能和跟踪任务。 |
 | 待审代码 | [MimicKit](https://github.com/xbpeng/MimicKit) | 基础设施 | 2224 | Apache-2.0 | 在同一轻量框架复现多种动作模仿和运动先验方法，便于控制变量比较而非跨仓库拼接。 |
 | 待审代码 | [HoloMotion](https://github.com/HorizonRobotics/HoloMotion) | 论文官方实现 | 621 | Apache-2.0 | 把人体模型、重定向、动作库、跟踪模型、评测和 G1 部署放在同一官方工程中。 |
 

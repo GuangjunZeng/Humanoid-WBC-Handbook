@@ -1,0 +1,19 @@
+{
+  "source_id": "code.nvlabs.protomotions.5241478",
+  "kind": "source_code",
+  "title": "NVlabs/ProtoMotions official implementation",
+  "canonical_url": "https://github.com/NVlabs/ProtoMotions/tree/5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "version": "5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+  "summary": "Official ProtoMotions 3 framework exposing explicit MDP component bindings, environment context views, multiple motion-learning agents, MaskedMimic sparse conditioning, experiment composition, ONNX tracker export, and standalone MuJoCo inference. Inspected only, not vendored.",
+  "access_mode": "public_api",
+  "authors": ["NVlabs/ProtoMotions contributors"],
+  "publisher": "NVIDIA Research",
+  "license": "Apache-2.0 with separate third-party software, model, dataset, and asset licenses",
+  "metadata": {
+    "repository": "NVlabs/ProtoMotions",
+    "commit": "5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+    "mapped_symbols": ["MdpComponent", "EnvContext", "MaskedMimicControl", "MaskedMimicModel", "export_tracker", "build_onnx_inputs", "run"],
+    "redistribution": "No code, checkpoints, robot models, body models, motions, configurations, datasets, or assets are copied."
+  }
+}
