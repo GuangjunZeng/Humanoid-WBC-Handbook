@@ -363,6 +363,16 @@
       "status": "complete",
       "brief_path": "content/papers/maskedmimic-2409.14393.md",
       "brief_path_en": "content/papers/en/maskedmimic-2409.14393.md"
+    },
+    {
+      "paper_id": "arxiv:2304.13653",
+      "slug": "agile-soccer-2304.13653v2",
+      "title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning",
+      "primary_domain": "sports",
+      "coverage_role": "distilled_recovery_and_soccer_self_play",
+      "status": "complete",
+      "brief_path": "content/papers/agile-soccer-2304.13653v2.md",
+      "brief_path_en": "content/papers/en/agile-soccer-2304.13653v2.md"
     }
   ]
 }

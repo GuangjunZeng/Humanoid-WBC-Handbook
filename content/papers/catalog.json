@@ -388,7 +388,9 @@
       "coverage_roles": ["field_anchor", "sim_to_real", "recovery"],
       "paper_url": "https://arxiv.org/abs/2304.13653",
       "code": {"status": "not_public", "url": ""},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/agile-soccer-2304.13653v2.md",
+      "brief_path_en": "content/papers/en/agile-soccer-2304.13653v2.md",
       "why_zh": "小型人形真实 1v1 足球的代表性工作，统一了行走、踢球、策略与快速起身。"
     },
     {

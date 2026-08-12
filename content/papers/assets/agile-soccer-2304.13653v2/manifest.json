@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2304.13653",
+  "source_pdf": "https://arxiv.org/pdf/2304.13653v2",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-training-pipeline-03.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "先分别训练足球与起身技能，再通过多教师蒸馏和历史对手池训练统一 1v1 策略的两阶段管线。",
+      "sha256": "0fbb92c9bf51cb42a87736bf7a9bbe6ba39c97d8aade733e2db46fa4bb5983da"
+    },
+    {
+      "asset": "table-1-hardware-05.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "pdf_page": 5,
+      "source_locator": "Table 1",
+      "caption_zh": "真机起身射门、行走、转向、起身与踢球同仿真和脚本控制器的定量对照。",
+      "sha256": "fb9ae5a0e6c277171921334ba4c2222536acfaab261e9882bf53d8f5cb17e214"
+    },
+    {
+      "asset": "figure-5-behavior-08.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "pdf_page": 8,
+      "source_locator": "Figure 5",
+      "caption_zh": "起身射门、拦截、绕行、步幅适应和转身踢球等受控 set-piece 轨迹。",
+      "sha256": "f4c8a3ef7cbe84b0c893356b8412ba79112c7a1c1dd0ab95e09a04f98a186058"
+    },
+    {
+      "asset": "figure-7-ablation-19.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "pdf_page": 19,
+      "source_locator": "Figure 7",
+      "caption_zh": "五随机种子、六类固定对手下，自博弈对手池、技能正则和奖励塑形的消融。",
+      "sha256": "8d6b50f7ba36883cee465751c1ddbd2c2c8f4377f3b3f3688daf4c688460b5ff"
+    },
+    {
+      "asset": "figure-s3-table-s5-compute-34.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "pdf_page": 34,
+      "source_locator": "Figure S3 / Table S5",
+      "caption_zh": "起身/足球技能学习曲线以及三阶段分别消耗的环境步数、仿真时间与墙钟时间。",
+      "sha256": "481302c332ede6b9812afe0bcec0a03cde24db20efaa6b8c8e718aedf7dc2c00"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "applicability": {
+    "assumptions": [
+      "机器人运行在论文所述 5 m × 4 m 受保护场地，且可可靠获得球、对手、球门和机器人外部状态。",
+      "具备机器人特定的快速位置内环、已校准关节、充足电量、软地面和机械检查。",
+      "未经独立验证，不把结果外推到 51 cm、3.5 kg Robotis OP3 之外，也不转换为板载视觉证据。"
+    ],
+    "controllers": [
+      "带足球/起身教师正则的两阶段 Distributional MPO（DMPO）",
+      "从训练前四分之一快照采样历史对手的 self-play（自博弈）",
+      "40 Hz 关节位置目标策略、指数动作滤波与快速 PD/PID 跟踪"
+    ],
+    "environments": [
+      "5 m × 4 m 受保护场地上的简化 1v1 足球",
+      "初始化匹配的仿真/真机起身射门 set piece",
+      "隔离的行走、转向、起身和踢球测试协议"
+    ],
+    "robots": [
+      "Robotis OP3：51 cm、3.5 kg、20 个 XM430 驱动关节"
+    ],
+    "simulators": [
+      "MuJoCo 与 DeepMind Control Suite"
+    ]
+  },
+  "claim_id": "sports.skill-distillation-selfplay-bounded-op3.agile-soccer",
+  "confidence": 0.83,
+  "confidence_rationale": "论文提供完整 38 页方法与补充材料、五随机种子多对手消融、明确的脚本基线协议，以及匹配的 50 次仿真/50 次真机 set-piece 分母。置信度受限于训练代码未公开、若干战术 set piece 只有约十次试验、主 actor 依赖外部 MoCap 比赛状态，且证据只来自一台需定期维护的小型 OP3。",
+  "domain": "sports",
+  "evidence": [
+    {
+      "locator": "Figures 2, 5, and 7; Table 1; Supplementary Tables S1-S5 and Figures S3-S7",
+      "note": "给出两阶段教师—学生管线、历史对手自博弈、状态/动作接口、随机化与安全塑形、真机行为协议、匹配 50+50 set-piece 迁移、五随机种子消融、计算成本和有限视觉实验。",
+      "role": "support",
+      "source_id": "paper.agile-soccer.2304.13653v2",
+      "strength": "primary"
+    }
+  ],
+  "question": "如何把人形机器人的起身、行走、转向、踢球与对抗策略训练成一个可迁移真机的统一策略？",
+  "review_due_at": "2027-08-12T22:30:00+08:00",
+  "reviewed_at": "2026-08-12T22:30:00+08:00",
+  "safety_case": {
+    "simulation_validated": true,
+    "command_limits": "按机器人重新确定关节位置、速度、电流/力矩、温度、姿态和工作空间限制；OP3 数值和论文随机化范围只是证据记录，不是其他平台的下发指令。",
+    "emergency_stop": "动态试验前，验证独立有线或安全等级急停，并确保连续周期超时、MoCap/IMU 丢失、通信超时或保护区有人时进入确定的低能量状态。",
+    "protective_controls": "使用清空的软场地、适配平台的缓冲与结构保护、兼容时的防跌落装置、远程监控，以及位于机器人和球运动包络外的安全员。",
+    "robot_specific_warning": "公开证据仅适用于外部 MoCap 和定期维护下的 51 cm、3.5 kg OP3；成人尺寸人形的质量、惯量、跌落能量、感知与执行器限制显著不同。",
+    "staged_deployment": "依次通过确定性仿真、随机化仿真、悬挂或低能量关节检查、隔离的起身/移动/踢球、匹配 set piece，最后才在明确停止条件下开展受限双机器人对抗。"
+  },
+  "safety_level": "hardware_critical",
+  "statement": "在论文的 51 cm Robotis OP3、外部 MoCap、软地面与简化 1v1 ODD 内，先分别训练足球和起身技能，再用按姿态选择的自适应教师正则、训练前四分之一历史快照对手池，以及位置闭环外的延迟/零位/摩擦/载荷/扰动随机化，可得到统一真机策略；匹配的 get-up-and-shoot 试验中真机 29/50 进球、仿真 35/50，Figure 7 的五随机种子消融支持该训练配方，但结果不构成板载视觉、大尺寸人形或开放人机共域保证。",
+  "status": "reviewed",
+  "tags": [
+    "humanoid soccer",
+    "skill distillation",
+    "self-play",
+    "sim-to-real",
+    "fall recovery",
+    "Robotis OP3",
+    "DMPO"
+  ]
+}

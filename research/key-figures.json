@@ -417,6 +417,19 @@
         {"file": "figure-6-table-1-2-11.jpg", "page": 11, "locator": "Figure 6 / Table 1-2", "caption_zh": "完整动作跟踪与 VR 稀疏关节跟踪在 AMASS train/test 上的成功率和误差。"},
         {"file": "figure-8-table-6-14.jpg", "page": 14, "locator": "Figure 8 / Table 6", "caption_zh": "未见坐具交互和 history、VAE、residual prior、structured masking 的机制消融。"}
       ]
+    },
+    {
+      "slug": "agile-soccer-2304.13653v2",
+      "paper_id": "arxiv:2304.13653",
+      "pdf": "var/papers/2304.13653.pdf",
+      "source_url": "https://arxiv.org/pdf/2304.13653v2",
+      "figures": [
+        {"file": "figure-2-training-pipeline-03.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "先分别训练足球与起身技能，再通过多教师蒸馏和历史对手池训练统一 1v1 策略的两阶段管线。"},
+        {"file": "table-1-hardware-05.jpg", "page": 5, "locator": "Table 1", "caption_zh": "真机起身射门、行走、转向、起身与踢球同仿真和脚本控制器的定量对照。"},
+        {"file": "figure-5-behavior-08.jpg", "page": 8, "locator": "Figure 5", "caption_zh": "起身射门、拦截、绕行、步幅适应和转身踢球等受控 set-piece 轨迹。"},
+        {"file": "figure-7-ablation-19.jpg", "page": 19, "locator": "Figure 7", "caption_zh": "五随机种子、六类固定对手下，自博弈对手池、技能正则和奖励塑形的消融。"},
+        {"file": "figure-s3-table-s5-compute-34.jpg", "page": 34, "locator": "Figure S3 / Table S5", "caption_zh": "起身/足球技能学习曲线以及三阶段分别消耗的环境步数、仿真时间与墙钟时间。"}
+      ]
     }
   ]
 }
