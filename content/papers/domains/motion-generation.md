@@ -46,11 +46,13 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：14 个项目，其中已审代码 3 个、无对应论文的独立项目 1 个。
+- 当前收录：14 个项目，其中已审代码 5 个、无对应论文的独立项目 1 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [PHC](../projects/phc.md) | 论文官方实现 | 1275 | NOASSERTION | 大规模动作跟踪、容量扩展与失败恢复的经典物理人形控制实现。 |
+| 已审代码 | [PBHC / KungfuBot](../projects/pbhc.md) | 论文官方实现 | 1052 | CC-BY-NC-4.0 | 高动态功夫全身技能的官方训练与部署实现，是体育类 WBC 的高星代表。 |
 | 已审代码 | [Meta Motivo](../projects/meta-motivo.md) | 论文官方实现 | 778 | CC-BY-NC-4.0 | 面向虚拟物理人形的行为基础模型和多任务控制代码，可用于研究通用动作表征但不等同真机部署。 |
 | 已审代码 | [beyondAMP](../projects/beyondamp.md) | 独立项目（无对应论文） | 281 | NOASSERTION | 面向任意 Isaac Lab 本体接入 AMP 的模块化实现，适合隔离运动先验与任务奖励的贡献。 |
 | 已审代码 | [MultiModalWBC](../projects/multimodalwbc.md) | 论文官方实现 | 189 | BSD-3-Clause (core repository; bundled components and assets retain their own terms) | 把本体状态和多模态人体条件统一为人形跟踪与任务条件控制接口，属于项目型 WBC 基线。 |
@@ -58,8 +60,6 @@
 | 待审代码 | [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | 基础设施 | 2879 | NOASSERTION | 腿式与人形项目广泛使用的强化学习训练库，策略、存储和对称性等实现会影响复现结果。 |
 | 待审代码 | [ProtoMotions](https://github.com/NVlabs/ProtoMotions) | 论文官方实现 | 2286 | Apache-2.0 | 统一多种物理角色与人形动作学习方法，能在同一框架比较条件掩码、潜技能和跟踪任务。 |
 | 待审代码 | [MimicKit](https://github.com/xbpeng/MimicKit) | 基础设施 | 2224 | Apache-2.0 | 在同一轻量框架复现多种动作模仿和运动先验方法，便于控制变量比较而非跨仓库拼接。 |
-| 待审代码 | [PHC](https://github.com/ZhengyiLuo/PHC) | 论文官方实现 | 1275 | NOASSERTION | 大规模动作跟踪、容量扩展与失败恢复的经典物理人形控制实现。 |
-| 待审代码 | [PBHC / KungfuBot](https://github.com/TeleHuman/PBHC) | 论文官方实现 | 1052 | NOASSERTION | 高动态功夫全身技能的官方训练与部署实现，是体育类 WBC 的高星代表。 |
 | 待审代码 | [BFM-Zero](https://github.com/LeCAR-Lab/BFM-Zero) | 论文官方实现 | 727 | NOASSERTION | 无需动作数据的可提示行为基座，公开分阶段训练、专家数据与 G1 部署。 |
 | 待审代码 | [LATENT](https://github.com/GalaxyGeneralRobotics/LATENT) | 论文官方实现 | 678 | NOASSERTION | 从不完美人体动作学习人形网球技能，覆盖运动数据修正、击球时序和真机体育交互。 |
 | 待审代码 | [HoloMotion](https://github.com/HorizonRobotics/HoloMotion) | 论文官方实现 | 621 | Apache-2.0 | 把人体模型、重定向、动作库、跟踪模型、评测和 G1 部署放在同一官方工程中。 |

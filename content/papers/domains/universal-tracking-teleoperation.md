@@ -48,11 +48,12 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：12 个项目，其中已审代码 5 个、无对应论文的独立项目 3 个。
+- 当前收录：13 个项目，其中已审代码 6 个、无对应论文的独立项目 3 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [HoloSoma](../projects/holosoma.md) | 论文官方实现 | 1582 | Apache-2.0 | 在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。 |
 | 已审代码 | [Unitree RL Lab](../projects/unitree-rl-lab.md) | 独立项目（无对应论文） | 1272 | Apache-2.0 | Unitree 官方 Isaac Lab 训练、策略导出与机器人部署入口，直接覆盖 H1/G1 工程链。 |
 | 已审代码 | [Unitree RL Mjlab](../projects/unitree-rl-mjlab.md) | 独立项目（无对应论文） | 578 | Apache-2.0 | Unitree 官方 MuJoCo/MJLab 轻量训练和验证路线，可与 Omniverse 栈做受控对照。 |
 | 已审代码 | [WBC-AGILE](../projects/wbc-agile.md) | 论文官方实现 | 313 | Apache-2.0 (most code) / BSD-3-Clause (RSL-RL portion) | NVIDIA 面向人形移动操作学习的完整工作流，强调训练数据、WBC 基座与任务接口衔接。 |

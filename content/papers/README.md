@@ -1,6 +1,6 @@
 # Humanoid WBC 论文库
 
-本目录分成三层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文；[`project-catalog.json`](project-catalog.json) 单独记录高质量开源项目。当前论文快照收录 76 篇唯一作品，其中 35 篇已有完整中英文深度解读、41 篇经主来源核验后待深读；项目快照收录 43 个仓库，其中 11 个已有固定 commit 的完整中英文代码解读页。
+本目录分成三层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文；[`project-catalog.json`](project-catalog.json) 单独记录高质量开源项目。当前论文快照收录 76 篇唯一作品，其中 35 篇已有完整中英文深度解读、41 篇经主来源核验后待深读；项目快照收录 43 个仓库，其中 15 个已有固定 commit 的完整中英文代码解读页。
 
 这个目录是可按需更新的领域地图，不声称永久穷尽所有论文。更新只在用户明确要求时执行，不定时、不订阅、不推送。
 

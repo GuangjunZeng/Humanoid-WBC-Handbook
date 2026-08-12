@@ -41,24 +41,24 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：13 个项目，其中已审代码 3 个、无对应论文的独立项目 2 个。
+- 当前收录：13 个项目，其中已审代码 5 个、无对应论文的独立项目 2 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [HoloSoma](../projects/holosoma.md) | 论文官方实现 | 1582 | Apache-2.0 | 在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。 |
 | 已审代码 | [humanoid-control](../projects/humanoid-control.md) | 独立项目（无对应论文） | 412 | MIT | 在 MuJoCo 中公开 NMPC 与 WBC 的人形行走控制链，适合追踪模型式接口和求解器路径。 |
 | 已审代码 | [OpenLoong-Dyn-Control](../projects/openloong-dyn-control.md) | 独立项目（无对应论文） | 350 | Apache-2.0 | 面向真实人形机器人的开源全身动力学控制包，补齐经典模型式 WBC 工程实现。 |
+| 已审代码 | [TSID](../projects/tsid.md) | 论文官方实现 | 345 | BSD-2-Clause | 基于 Pinocchio 的任务空间逆动力学实现，是优化式全身控制的直接开源锚点。 |
 | 已审代码 | [WBC-AGILE](../projects/wbc-agile.md) | 论文官方实现 | 313 | Apache-2.0 (most code) / BSD-3-Clause (RSL-RL portion) | NVIDIA 面向人形移动操作学习的完整工作流，强调训练数据、WBC 基座与任务接口衔接。 |
 | 待审代码 | [MuJoCo](https://github.com/google-deepmind/mujoco) | 基础设施 | 14525 | Apache-2.0 | WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。 |
 | 待审代码 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | 基础设施 | 7883 | BSD-3-Clause | 多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。 |
 | 待审代码 | [Pinocchio](https://github.com/stack-of-tasks/pinocchio) | 基础设施 | 3648 | BSD-2-Clause | WBC、MPC 和状态估计常用的刚体动力学与解析导数基础库，工程证据丰富。 |
 | 待审代码 | [GR00T Whole-Body Control](https://github.com/NVlabs/GR00T-WholeBodyControl) | 论文官方实现 | 3248 | NOASSERTION | NVIDIA 的通用人形 WBC 平台，覆盖 SONIC、解耦控制与上层模型调用接口。 |
-| 待审代码 | [HoloSoma / OmniRetarget](https://github.com/amazon-far/holosoma) | 论文官方实现 | 1582 | Apache-2.0 | 把人体、物体、地形与接触关系共同纳入重定向，覆盖交互数据而非只有姿态对齐。 |
 | 待审代码 | [OCS2](https://github.com/leggedrobotics/ocs2) | 基础设施 | 1487 | BSD-3-Clause | 切换系统最优控制框架，包含腿式机器人 MPC 与约束实现，是模型式路线核心工具。 |
 | 待审代码 | [Crocoddyl](https://github.com/loco-3d/crocoddyl) | 论文官方实现 | 1274 | BSD-3-Clause | 多接触最优控制与 FDDP 的主流开源实现，适合生成和滚动优化 WBC 参考。 |
 | 待审代码 | [ros2_control](https://github.com/ros-controls/ros2_control) | 基础设施 | 974 | Apache-2.0 | 将控制器、硬件接口和实时更新循环连接起来，是 WBC 真机部署链的重要基础设施。 |
 | 待审代码 | [GRAIL](https://github.com/NVlabs/GRAIL) | 论文官方实现 | 466 | NOASSERTION | 从三维资产和视频先验生成移动操作轨迹，补齐交互数据合成与物理筛选路线。 |
-| 待审代码 | [TSID](https://github.com/stack-of-tasks/tsid) | 论文官方实现 | 345 | BSD-2-Clause | 基于 Pinocchio 的任务空间逆动力学实现，是优化式全身控制的直接开源锚点。 |
 
 项目解读规则见 [开源项目独立解读规范](../../../docs/project-interpretation.md)。候选发现不会自动收录，且不在后台定时运行。
 <!-- END GENERATED PROJECT CATALOG -->
