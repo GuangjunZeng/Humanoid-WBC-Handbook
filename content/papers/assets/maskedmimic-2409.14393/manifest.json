@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2409.14393v1",
+  "source_pdf": "https://arxiv.org/pdf/2409.14393",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-3-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 5,
+      "source_locator": "Figure 3",
+      "caption_zh": "全状态教师、条件先验蒸馏与掩码动作补全控制器的两阶段框架。",
+      "sha256": "1b5a521e3fbfda9c2ba07c2c5d22af1771c4df4fb55cf9bac628af5fab6012b1"
+    },
+    {
+      "asset": "table-1-2-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 10,
+      "source_locator": "Table 1-2",
+      "caption_zh": "全身和 VR 稀疏信号跟踪的成功率与误差对照。",
+      "sha256": "c05b2816d5ee185e9af87df153e0438b8bdeb1d0d0605fe29d140f08ee90afff"
+    },
+    {
+      "asset": "table-3-5-sparsity-tasks.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 12,
+      "source_locator": "Table 3-5",
+      "caption_zh": "关节稀疏度、复杂地形与新任务目标工程的量化边界。",
+      "sha256": "b3f2d5e1ea7da7ef73d215b70f34da805a8f9f6865a950047b210989cb3557e4"
+    }
+  ]
+}

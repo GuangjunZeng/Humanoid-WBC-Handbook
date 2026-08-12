@@ -1,0 +1,23 @@
+{
+  "applicability": {
+    "assumptions": ["A fully constrained teacher can track the source motion distribution.", "Deployment command/missingness patterns are represented by the versioned structured-mask distribution."],
+    "controllers": ["fully constrained motion tracker", "DAgger-distilled conditional-VAE partial-goal controller"],
+    "environments": ["simulated full-body, VR, keyframe, text, terrain, and object-conditioned character control"],
+    "robots": ["Simulated humanoid characters in the paper; real robots require separate dynamics and safety evidence"],
+    "simulators": ["ProtoMotions-supported simulation with matched scene, mask, and observation contracts"]
+  },
+  "claim_id": "motion-generation.maskedmimic-unifies-explicit-partial-goal-contracts",
+  "confidence": 0.88,
+  "confidence_rationale": "The two-stage derivation, cross-modality tables, and structured-mask/residual-prior ablations support the interface claim, while pinned official code exposes the relevant mask/model paths. Confidence is capped because compute is large, some modalities have explicit limitations, and all evidence is simulated-character control.",
+  "domain": "motion_generation",
+  "evidence": [
+    {"locator": "Figures 3 and 5; Tables 1-6; Sections 4-9", "note": "Defines teacher-to-partial-goal distillation and shows dense/sparse/multimodal results plus decisive structured-mask and prior ablations.", "role": "support", "source_id": "paper.maskedmimic.2409.14393v1", "strength": "primary"},
+    {"locator": "masked_mimic_control.py, masked_mimic_model.py, obs/masked_mimic.py, and tests at 5241478", "note": "Exposes mask sampling/shifting, conditional-VAE student, sparse observations, and component tests.", "role": "support", "source_id": "code.protomotions.5241478", "strength": "primary"}
+  ],
+  "question": "怎样让一个物理控制器同时接受全身轨迹、VR 头手、任意关节关键帧和文本等不同输入？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "informational",
+  "statement": "MaskedMimic 先训练完整未来目标的物理跟踪教师，再用 DAgger、结构化随机遮罩和 conditional VAE，把多种输入统一成显式的部分目标补全接口。它只覆盖训练过的遮罩/条件分布，不自动处理矛盾目标、长时规划、传感器偏置或真实机器人部署。",
+  "status": "reviewed",
+  "tags": ["MaskedMimic", "motion inpainting", "structured masking", "DAgger", "conditional VAE"]
+}

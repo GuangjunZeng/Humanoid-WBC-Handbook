@@ -1,0 +1,22 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": ["Nima Ghorbani", "AMASS contributors"],
+  "canonical_url": "https://github.com/nghorbani/amass/tree/a9888a92a4e62533454aa43e5f979d9a8bc8c893",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "e4a17f3ed01760e36c97fdf54b51eda5a48321443694bb3cadfeaab9749f1d9e",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "Non-commercial scientific research license; dataset, body models, and component datasets have additional terms",
+  "metadata": {
+    "commit": "a9888a92a4e62533454aa43e5f979d9a8bc8c893",
+    "redistribution": "No software, model files, or motion data are copied into this handbook.",
+    "repository": "nghorbani/amass"
+  },
+  "published_at": null,
+  "publisher": "AMASS / Max Planck Institute",
+  "source_id": "code.amass.a9888a9",
+  "summary": "The pinned official repository exposes AMASS NPZ preparation, train/validation/test splits, DFaust synthetic marker generation, and visualization utilities; it does not implement robot motion retargeting or whole-body control.",
+  "title": "nghorbani/amass official tools",
+  "version": "a9888a92a4e62533454aa43e5f979d9a8bc8c893"
+}

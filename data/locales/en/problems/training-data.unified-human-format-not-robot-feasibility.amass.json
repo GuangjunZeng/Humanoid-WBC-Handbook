@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "problem_id": "training-data.unified-human-format-not-robot-feasibility.amass",
+  "kind": "claim",
+  "source_fingerprint": "4920620313ebc08416ab9cd16d6aa85fe6decfc567b3407f1607ad9e951385c0",
+  "translations": {
+    "answer": "AMASS v1 unifies 15 marker-based mocap datasets in a common human SMPL-H representation. It does not check target-robot joints, contacts, collisions, torque limits, or closed-loop trackability. In an engineering pipeline, AMASS should remain the human-source layer; only robot-specific retargeting and dynamic closed-loop filtering should produce training labels.",
+    "applicability.assumptions.0": "The source sequences are licensed AMASS/SMPL-H records with explicit model versions.",
+    "applicability.assumptions.1": "Robot retargeting and closed-loop feasibility filtering are implemented as separate downstream stages.",
+    "applicability.controllers.0": "Motion-retargeting pipelines",
+    "applicability.controllers.1": "Motion-tracking policy data pipelines",
+    "applicability.environments.0": "Offline human-motion preprocessing",
+    "applicability.environments.1": "Robot-specific simulation filtering",
+    "applicability.robots.0": "Humanoid platforms receiving motions retargeted from human data",
+    "applicability.simulators.0": "Any simulator used for downstream closed-loop feasibility checks",
+    "confidence_rationale": "The full paper and pinned official tools clearly define AMASS as a unified human surface-motion representation, while the public code exposes human-data preparation rather than robot constraints. Confidence is capped because the effect of each downstream retargeting/filtering design is robot-specific.",
+    "evidence.0.locator": "Sections 1-3 and Figures 2, 6, and 9",
+    "evidence.0.note": "Defines the marker-to-SMPL-H reconstruction scope and validates human surface reconstruction, not robot tracking feasibility.",
+    "evidence.0.title": "AMASS: Archive of Motion Capture as Surface Shapes",
+    "evidence.1.locator": "prepare_data.py: dump_amass2pytroch, AMASS_Augment, prepare_amass; dfaust_synthetic_mocap.py: registration2markers at a9888a9",
+    "evidence.1.note": "Shows official data preparation and synthetic-marker tools without a robot URDF, contact, torque, or closed-loop controller gate.",
+    "evidence.1.title": "nghorbani/amass official tools",
+    "terms.0": "Inertial Measurement Unit (IMU, 惯性测量单元)",
+    "terms.1": "Joint Torque (关节力矩)",
+    "terms.2": "Motion Retargeting (动作重定向)",
+    "terms.3": "Motion Tracking (动作跟踪)",
+    "terms.4": "Dynamics (动力学)",
+    "title": "Can AMASS be used directly as humanoid motion-tracking labels after it unifies human motion formats?"
+  }
+}

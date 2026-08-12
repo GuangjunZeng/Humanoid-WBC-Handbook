@@ -12,15 +12,15 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：9 篇，其中深度解读 2 篇，有可核验官方代码 6 篇。
+- 当前收录：9 篇，其中深度解读 4 篇，有可核验官方代码 6 篇。
 - 必要覆盖角色：经典控制（classical control）、学习基线（learning anchor）、开源实现（open source）、地形（terrain）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
 |---|---|---:|---|---|---|
+| 深度解读 | [Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point](../zmp-preview-kajita-2003.md) | 2003 | 经典控制（classical control）、领域锚点（field anchor） | 未发现官方公开代码 | ZMP 预览控制的经典工作，是理解现代学习步态与模型控制分工的必要基线。 |
+| 深度解读 | [Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition](../periodic-gaits-2011.01387v2.md) | 2020 | 学习基线（learning anchor）、开源实现（open source） | [官方代码](https://github.com/osudrl/apex) | 在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。 |
 | 深度解读 | [Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer](../humanoid-gym-2404.05695v2.md) | 2024 | 开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/roboterax/humanoid-gym) | 开源 Isaac Gym 训练、MuJoCo sim-to-sim 和双尺寸真机部署的工程基线。 |
 | 深度解读 | [Learning Humanoid Locomotion over Challenging Terrain](../challenging-terrain-2410.03654v1.md) | 2024 | 地形（terrain）、机器人部署（robot deployment） | 未发现官方公开代码 | 用平地序列预训练 Transformer 再 PPO 微调，验证盲走 Digit 的复杂地形样本效率。 |
-| 待深读 | [Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point](https://doi.org/10.1109/ICRA.2003.1241826) | 2003 | 经典控制（classical control）、领域锚点（field anchor） | 未发现官方公开代码 | ZMP 预览控制的经典工作，是理解现代学习步态与模型控制分工的必要基线。 |
-| 待深读 | [Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition](https://arxiv.org/abs/2010.01909) | 2020 | 学习基线（learning anchor）、开源实现（open source） | [官方代码](https://github.com/osudrl/apex) | 在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。 |
 | 待深读 | [Humanoid Locomotion as Next Token Prediction](https://arxiv.org/abs/2402.19469) | 2024 | 学习基线（learning anchor）、机器人部署（robot deployment） | 未发现官方公开代码 | 把真实 Digit 行走建模为下一 token 预测，代表离线序列模型进入人形运动控制。 |
 | 待深读 | [Booster Gym: An End-to-End Reinforcement Learning Framework for Humanoid Robot Locomotion](https://arxiv.org/abs/2506.15132) | 2025 | 开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/BoosterRobotics/booster_gym) | 从训练、域随机化到 Booster T1 部署的端到端开源人形行走框架。 |
 | 待深读 | [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](https://arxiv.org/abs/2512.01996) | 2025 | 开源实现（open source）、学习基线（learning anchor）、机器人部署（robot deployment） | [官方代码](https://github.com/younggyoseo/FastTD3) | 用大规模并行离策略 RL 将 G1/T1 实机行走训练缩短到分钟级。 |

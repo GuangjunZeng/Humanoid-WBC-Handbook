@@ -1,0 +1,21 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": ["Handbook maintainers"],
+  "canonical_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "8265606f25ebb5b2fbfe7eb917039788734f9a918513bf92663fbd045486827f",
+  "excerpt": null,
+  "kind": "project_page",
+  "license": null,
+  "metadata": {
+    "code_status": "no_public_official_code_found",
+    "search_boundary": "DOI record, paper references, exact-title discovery, and author/project links checked; third-party implementations excluded."
+  },
+  "published_at": null,
+  "publisher": "Humanoid WBC Handbook audit",
+  "source_id": "project.kajita-zmp.code-status.2026-08-12",
+  "summary": "No author-maintained public implementation uniquely tied to the 2003 preview-control paper was found at capture time; the brief therefore maps equations to suggested modules without claiming official source correspondence.",
+  "title": "Kajita 2003 ZMP preview-control official-code status",
+  "version": "accessed-2026-08-12"
+}

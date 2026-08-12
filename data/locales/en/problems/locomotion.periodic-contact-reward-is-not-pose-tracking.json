@@ -1,0 +1,18 @@
+{
+  "schema_version": 1, "problem_id": "locomotion.periodic-contact-reward-is-not-pose-tracking", "kind": "claim",
+  "source_fingerprint": "505c1d5c4e0a92f8a2d914358e24f12ea8d9e71c3c8d10d62d3fa5a92ed11939",
+  "translations": {
+    "title": "How can a few contact-timing constraints train several biped gaits without joint-by-joint reference motion?",
+    "answer": "Periodic rewards use phase, duty factor, and relative leg phase to compose desired foot-force and swing-velocity timing for standing, walking, running, hopping, and related gaits without copying every joint trajectory. They specify contact rhythm only; phase mismatch, foot slip, impact, torque, and hardware safety still require independent constraints and validation.",
+    "applicability.assumptions.0": "A periodic phase variable and desired contact rhythm are meaningful for the target gait.",
+    "applicability.assumptions.1": "Torque, impact, posture, and slip are checked outside the contact clock.",
+    "applicability.controllers.0": "Phase-conditioned biped locomotion policy", "applicability.controllers.1": "Periodic-reward reinforcement learning",
+    "applicability.environments.0": "Periodic standing, walking, running, hopping, and gait-transition tasks",
+    "applicability.robots.0": "Cassie in the paper; other bipeds require new phase, reward, and hardware validation",
+    "applicability.simulators.0": "MuJoCo/Cassie simulation used by the paper and pinned APEX implementation",
+    "confidence_rationale": "The paper equations and phase/contact figures define the reward semantics, hardware experiments demonstrate multiple Cassie gaits, and the pinned code exposes the same clock-based interface. Confidence is capped because gait timing, actuation, and transfer bounds are platform-specific.",
+    "evidence.0.locator": "Equations 4-6; Figures 1-5; Table I", "evidence.0.note": "Defines smooth periodic force/velocity coefficients, composes multiple gait rhythms, and reports simulated and real Cassie results.", "evidence.0.title": "Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition",
+    "evidence.1.locator": "cassie/cassie.py and clock/reward configuration at 82c44af", "evidence.1.note": "Shows the official simulator and phase-clock reward path used for periodic-gait training and evaluation.", "evidence.1.title": "osudrl/apex official implementation",
+    "terms.0": "Center of Mass (CoM, 质心)", "terms.1": "Domain Randomization (域随机化)", "terms.2": "Ground Reaction Force (GRF, 地面反作用力)", "terms.3": "Joint Torque (关节力矩)", "terms.4": "Periodic Reward (周期奖励)", "terms.5": "Sim-to-Real (仿真到现实)"
+  }
+}

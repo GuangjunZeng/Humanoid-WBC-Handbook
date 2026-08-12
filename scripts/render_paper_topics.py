@@ -14,6 +14,9 @@ CATALOG = ROOT / "content" / "papers" / "catalog.json"
 DOMAIN_ROOT = ROOT / "content" / "papers" / "domains"
 BEGIN = "<!-- BEGIN GENERATED PAPER CATALOG -->"
 END = "<!-- END GENERATED PAPER CATALOG -->"
+README_BEGIN = "<!-- BEGIN GENERATED PAPER ROUTES -->"
+README_END = "<!-- END GENERATED PAPER ROUTES -->"
+README_FILES = {"en": ROOT / "README.md", "zh": ROOT / "README.zh-CN.md"}
 
 DOMAIN_FILES = {
     "training_data_retargeting": "training-data-retargeting.md",
@@ -52,6 +55,14 @@ def _paper_link(paper: dict) -> str:
         brief = Path(paper["brief_path"]).name
         return f"[{title}](../{brief})"
     return f"[{title}]({paper['paper_url']})"
+
+
+def _readme_paper_link(paper: dict, language: str) -> str:
+    title = str(paper["title"]).replace("|", "\\|")
+    brief = Path(paper["brief_path"]).name
+    if language == "en":
+        return f"[{title}](content/papers/en/{brief})"
+    return f"[{title}](content/papers/{brief})"
 
 
 def _code_link(paper: dict) -> str:
@@ -107,6 +118,66 @@ def _generated_section(domain: str, catalog: dict) -> str:
     return "\n".join(lines)
 
 
+def _generated_readme_section(catalog: dict, language: str) -> str:
+    by_id = {paper["paper_id"]: paper for paper in catalog["papers"]}
+    if language == "en":
+        lines = [
+            README_BEGIN,
+            "## Paper map: seven WBC engineering topics",
+            "",
+            "Start from a technical route, not a flat paper list. Each route keeps one field-defining or engineering-representative work; the linked brief explains the mechanism, decisive evidence, implementation mapping, and limits.",
+            "",
+            "| Topic | Technical route | Representative deep read |",
+            "|---|---|---|",
+        ]
+    else:
+        lines = [
+            README_BEGIN,
+            "## 论文地图：七个 WBC 工程板块",
+            "",
+            "这里按技术路线进入，而不是堆一长串论文。每条路线只保留一篇领域经典或工程代表作；详情页解释机制、关键证据、实现位置和适用边界。",
+            "",
+            "| 板块 | 技术路线 | 代表作深度解读 |",
+            "|---|---|---|",
+        ]
+    for domain in DOMAIN_FILES:
+        config = catalog["domains"][domain]
+        routes = config.get("readme_routes", [])
+        for index, route in enumerate(routes):
+            paper = by_id[route["paper_id"]]
+            topic = config["title_en" if language == "en" else "title_zh"] if index == 0 else ""
+            route_name = route["route_en" if language == "en" else "route_zh"]
+            lines.append(f"| {topic} | {route_name} | {_readme_paper_link(paper, language)} |")
+    if language == "en":
+        lines.extend([
+            "",
+            "The map is intentionally selective. The complete coverage catalogue—including queued classics and verified official-code works—lives in [`content/papers/`](content/papers/README.md).",
+        ])
+    else:
+        lines.extend([
+            "",
+            "这是一张有意克制的入口地图；包含待深读经典论文与已核验官方代码论文的完整目录见 [`content/papers/`](content/papers/README.md)。",
+        ])
+    lines.extend([README_END, ""])
+    return "\n".join(lines)
+
+
+def render_readme(path: Path, catalog: dict, language: str) -> str:
+    current = path.read_text(encoding="utf-8").rstrip() + "\n"
+    section = _generated_readme_section(catalog, language)
+    if README_BEGIN in current:
+        prefix, remainder = current.split(README_BEGIN, 1)
+        if README_END not in remainder:
+            raise ValueError(f"{path}: generated paper-route section has no end marker")
+        _, suffix = remainder.split(README_END, 1)
+        return prefix.rstrip() + "\n\n" + section + suffix.lstrip("\n")
+    anchor = "\n---\n"
+    if anchor not in current:
+        raise ValueError(f"{path}: expected README hero separator")
+    prefix, suffix = current.split(anchor, 1)
+    return prefix.rstrip() + "\n\n" + section + "\n---\n" + suffix.lstrip()
+
+
 def render_page(path: Path, domain: str, catalog: dict) -> str:
     current = path.read_text(encoding="utf-8").rstrip() + "\n"
     section = _generated_section(domain, catalog)
@@ -134,12 +205,19 @@ def main() -> int:
             stale.append(path)
             if not args.check:
                 path.write_text(rendered, encoding="utf-8")
+    for language, path in README_FILES.items():
+        rendered = render_readme(path, catalog, language)
+        current = path.read_text(encoding="utf-8")
+        if current != rendered:
+            stale.append(path)
+            if not args.check:
+                path.write_text(rendered, encoding="utf-8")
     if stale and args.check:
         for path in stale:
             print(f"stale topic page: {path.relative_to(ROOT)}", file=sys.stderr)
         return 1
     action = "checked" if args.check else "rendered"
-    print(f"{action} {len(DOMAIN_FILES)} topic pages")
+    print(f"{action} {len(DOMAIN_FILES)} topic pages and {len(README_FILES)} README files")
     return 0
 
 

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1, "problem_id": "loco-wbc.desired-torque-needs-identified-actuator-interface.hrp2", "kind": "claim",
+  "source_fingerprint": "3fdb11c9d80e37829110db2655f03718f8efe94b1133c18753c9a880778be77e",
+  "translations": {
+    "title": "Why can a position-controlled robot not execute a desired torque from WBC/TSID directly?",
+    "answer": "Desired torque is an upper-level dynamics result. High-ratio position-controlled joints still need calibrated sensing and inverse-dynamics estimation, platform identification, and bounded position offsets to map that torque into a validated actuator interface. HRP-2 identification cannot be copied to another robot or treated as equivalent to joint torque sensing.",
+    "applicability.assumptions.0": "External wrench sensing, IMU, and inertial model are calibrated for torque estimation.", "applicability.assumptions.1": "The position-servo actuator map is identified and monitored over direction, speed, and temperature.",
+    "applicability.controllers.0": "Task-space inverse dynamics", "applicability.controllers.1": "Position-offset torque-oriented control", "applicability.environments.0": "Model-based humanoid control on high-ratio position-controlled joints", "applicability.robots.0": "HRP-2 in the paper; other position-controlled robots require independent identification", "applicability.simulators.0": "Rigid-body dynamics models used for estimator and upper-level controller validation",
+    "confidence_rationale": "The paper provides an identified actuator model and HRP-2 trajectory/force experiments, while pinned TSID code confirms the separate upper-level inverse-dynamics layer. Confidence is capped because the low-level map is platform- and condition-specific and is not fully represented by modern TSID code.",
+    "evidence.0.locator": "Actuator identification in Figure 1 and Tables 1-3; force-control Figure 5", "evidence.0.note": "Shows the estimated torque-to-position-offset bridge and quantified HRP-2 tracking behavior.", "evidence.0.title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors",
+    "evidence.1.locator": "src/formulations/inverse-dynamics-formulation-acc-force.cpp at eae9618", "evidence.1.note": "Confirms that TSID supplies upper-level task-space inverse dynamics rather than the paper's full HRP-2 estimator and actuator mapping.", "evidence.1.title": "stack-of-tasks/tsid official implementation",
+    "terms.0": "Inertial Measurement Unit (IMU, 惯性测量单元)", "terms.1": "Inverse Dynamics (逆动力学)", "terms.2": "Joint Torque (关节力矩)", "terms.3": "Task-Space Inverse Dynamics (TSID, 任务空间逆动力学)", "terms.4": "Whole-Body Control (WBC, 全身控制)", "terms.5": "Position Control (位置控制)"
+  }
+}

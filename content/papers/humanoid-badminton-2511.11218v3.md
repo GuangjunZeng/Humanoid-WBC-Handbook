@@ -1,5 +1,7 @@
 # Humanoid Badminton：从步法、挥拍到任务精修的三阶段全身强化学习
 
+[English version](en/humanoid-badminton-2511.11218v3.md)
+
 来源：[arXiv:2511.11218v3](https://arxiv.org/abs/2511.11218v3) · [官方项目页](https://humanoid-badminton.github.io/)
 
 解读范围：完整 15 页正文与附录。项目页未提供可核验官方代码，本文不引用第三方实现。

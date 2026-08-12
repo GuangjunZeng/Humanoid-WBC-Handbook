@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:1804.02717v3",
+  "source_pdf": "https://arxiv.org/pdf/1804.02717",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-policy.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 4,
+      "source_locator": "Figure 2",
+      "caption_zh": "相位、本体状态与地形高度图进入策略网络并输出关节目标的接口。",
+      "sha256": "6c3d7042a124080b21e66a24a1384d116c3adffb336769a8faf1b638ad045351"
+    },
+    {
+      "asset": "table-2-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 8,
+      "source_locator": "Table 2",
+      "caption_zh": "跨角色和高动态动作的跟踪回报、周期数与训练样本统计。",
+      "sha256": "60bcfb9941238e3712ca8ac1848b96709743ce876b408fce2194bdc12194f015"
+    },
+    {
+      "asset": "table-4-task-imitation.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 11,
+      "source_locator": "Table 4",
+      "caption_zh": "去掉模仿目标或任务目标后的 100 次成功率对照。",
+      "sha256": "8bd146ca64defe7cd24806acd3015ef81a4eddff1fdabfd6cf307666b9919a46"
+    }
+  ]
+}

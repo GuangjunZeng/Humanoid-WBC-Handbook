@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Chen Tessler", "Yoni Kasten", "Yizhou Guo", "Shie Mannor", "Gal Chechik", "Xue Bin Peng"],
+  "canonical_url": "https://arxiv.org/abs/2409.14393v1",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "31e79502e14262b6c9cec33eb4531e4f2f611e9d277a7d243b6f61c5d714b37d",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "2409.14393", "full_paper_reviewed": true, "pages_read": 22, "license_note": "No paper text, motion data, or models are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.maskedmimic.2409.14393v1",
+  "summary": "MaskedMimic trains a fully constrained RL tracker, then uses DAgger, structured random masks, and a conditional VAE prior to control simulated characters from flexible partial goals.",
+  "title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting", "version": "arXiv:2409.14393v1"
+}

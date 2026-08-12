@@ -1,0 +1,14 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Siekun Kim", "Shih-Chun Lin", "C. Karen Liu"],
+  "canonical_url": "https://arxiv.org/abs/2011.01387v2",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "8a463e21e5e59bdbc8a3a8bf1c078e4daebcec4f07c803fe846924416b28bddb",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "2011.01387", "full_paper_reviewed": true, "pages_read": 9, "license_note": "No paper text or model weights are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.periodic-gaits.2011.01387v2",
+  "summary": "The paper composes smooth periodic foot-force and foot-velocity rewards from phase, duty factor, and relative leg phase to train multiple Cassie gaits and transitions, then evaluates sim-to-real transfer.",
+  "title": "Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition",
+  "version": "arXiv:2011.01387v2"
+}

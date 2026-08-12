@@ -1,0 +1,22 @@
+{
+  "applicability": {
+    "assumptions": ["Get-up and ball-skill teachers are independently competent and frozen for distillation.", "A historical opponent evaluation pool is preserved separately from training."],
+    "controllers": ["teacher-regularized unified soccer policy", "historical-pool self-play"],
+    "environments": ["1v1 biped soccer with repeatable skill and set-piece tests"],
+    "robots": ["Robotis OP3 in the paper; full-size humanoids require different impact and safety evidence"],
+    "simulators": ["Paper training simulator with matched position-control and delay interface"]
+  },
+  "claim_id": "sports.pretrain-minimal-skills-before-self-play.soccer",
+  "confidence": 0.84,
+  "confidence_rationale": "The paper's skill-prior/self-play ablations and fixed-count OP3 hardware tests support staged exploration and unified distillation. Confidence is capped because official code is unavailable, mocap supplies global state, and hardware evidence concerns a small protected platform.",
+  "domain": "sports",
+  "evidence": [
+    {"locator": "Figure 2, Figure 7, and Table 1", "note": "Shows separate soccer/get-up teachers, state-routed distillation, historical self-play, mechanism ablations, and quantified hardware skill/set-piece tests.", "role": "support", "source_id": "paper.agile-soccer.2304.13653v2", "strength": "primary"}
+  ],
+  "question": "复杂体育任务从稀疏奖励开始训练时，怎样避免策略倒地后永远碰不到有效回报？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "OP3 足球工作先训练起身与足球两个最小技能，再按状态用教师正则把它们蒸馏进统一策略，最后用历史快照池自博弈学习组合与对抗。该方法解决探索与遗忘，不代表端到端自博弈会自动产生基础技能，也不能把小型 OP3 的硬件边界外推到全尺寸人形。",
+  "status": "reviewed",
+  "tags": ["soccer", "skill pretraining", "distillation", "self-play", "get-up"]
+}

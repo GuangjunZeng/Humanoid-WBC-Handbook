@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Adrien Escande", "Nicolas Mansard", "Pierre-Brice Wieber"],
+  "canonical_url": "https://hal.science/hal-01136936v2",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "e3fdd4b6eecb138dd056487e0ae63dcc1df3b25c4ecde1902ea8f7e8ba55de50",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"hal_id": "hal-01136936", "full_paper_reviewed": true, "pages_read": 29, "license_note": "No paper text or robot parameters are redistributed."},
+  "published_at": null, "publisher": "HAL",
+  "source_id": "paper.hrp2-torque.hal-01136936",
+  "summary": "The paper estimates HRP-2 joint torque from inertial and force sensing, identifies a position-error/velocity actuator model, and maps desired torque to position offsets for a high-ratio position-controlled robot.",
+  "title": "Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors", "version": "hal-01136936v2"
+}

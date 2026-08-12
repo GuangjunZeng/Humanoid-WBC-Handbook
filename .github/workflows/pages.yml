@@ -6,7 +6,10 @@ on:
     paths:
       - ".github/workflows/pages.yml"
       - "content/problems/**"
+      - "content/papers/**"
       - "data/**"
+      - "README.md"
+      - "README.zh-CN.md"
       - "site/**"
       - "src/wbc_handbook/**"
       - "pyproject.toml"
@@ -31,6 +34,11 @@ jobs:
           python-version: "3.12"
       - name: Validate canonical data
         run: PYTHONPATH=src python3 -m wbc_handbook validate --data-dir data
+      - name: Check bilingual paper pages and routes
+        run: |
+          PYTHONPATH=src python3 scripts/check_paper_quality.py
+          PYTHONPATH=src python3 scripts/render_paper_translations.py --check
+          python3 scripts/render_paper_topics.py --check
       - name: Check generated problem pages
         run: >-
           PYTHONPATH=src python3 -m wbc_handbook render-problems

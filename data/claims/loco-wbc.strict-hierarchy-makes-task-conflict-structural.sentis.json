@@ -1,0 +1,22 @@
+{
+  "applicability": {
+    "assumptions": ["Robot dynamics and task/contact Jacobians are available and sufficiently accurate.", "Rank changes, inequalities, saturation, and sensing error are monitored separately."],
+    "controllers": ["operational-space whole-body control", "strict-priority task hierarchy"],
+    "environments": ["multi-task humanoid control with declared constraints and posture objectives"],
+    "robots": ["Humanoid platforms with model-based torque or acceleration control interfaces"],
+    "simulators": ["Any dynamics simulator used to validate the declared hierarchy"]
+  },
+  "claim_id": "loco-wbc.strict-hierarchy-makes-task-conflict-structural.sentis",
+  "confidence": 0.82,
+  "confidence_rationale": "The paper derives dynamically consistent constraint/task projectors and demonstrates hierarchical behaviors. Confidence is capped because the original experiments do not cover modern inequality handling, numerical edge cases, or broad hardware validation, and no exact maintained code was verified.",
+  "domain": "loco_manipulation_wbc",
+  "evidence": [
+    {"locator": "Equations 1-10 and Figures 1-6", "note": "Derives constraint-consistent and task-consistent null spaces, shows task hierarchy, and relates constraints to task-space inertia and impedance.", "role": "support", "source_id": "paper.sentis-wbc.2006", "strength": "primary"}
+  ],
+  "question": "多个全身任务冲突时，怎样避免靠一组难解释的权重决定谁让步？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "Sentis-Khatib WBC 用动力学一致的严格层级，使低优先级任务只能使用约束和高优先级任务剩余的自由度，从结构上规定冲突时谁让步。该结构不自动处理全部摩擦/碰撞不等式、力矩饱和、雅可比奇异或模型测量误差。",
+  "status": "reviewed",
+  "tags": ["whole-body control", "operational space", "task hierarchy", "null space", "dynamic consistency"]
+}

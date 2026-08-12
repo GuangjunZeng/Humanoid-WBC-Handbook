@@ -1,0 +1,36 @@
+# Humanoid Badminton: Stage Footwork, Contact, and Shot Outcome
+
+[中文版](../humanoid-badminton-2511.11218v3.md)
+
+Source: [arXiv:2511.11218v3](https://arxiv.org/abs/2511.11218v3). No unique official code repository and commit were public at the audited point.
+
+> **Bottom line:** One 21-DoF policy is trained in three stages: stable footwork, sparse racket contact with intermediate targets, then outcome-focused refinement after removing many style terms. An EKF intersection interface outperforms a five-frame prediction-free policy on hardware and is chosen for human-robot rally.
+
+## Engineering problem
+Badminton combines rapid foot placement, balance, and a narrow high-speed racket-contact window. Sparse over-net reward is rarely observed early, while permanent pose shaping can produce a plausible swing that misses the task outcome.
+
+## Method
+S1 learns stable stationary/moving footwork; S2 adds sparse hit, racket-position, and face-orientation signals; S3 removes much of the scaffolding to optimize shot result. The 50 Hz policy outputs joint targets to 500 Hz PD. Hardware uses 210 Hz mocap and EKF interception; the alternate policy infers timing from five ball-position frames.
+
+## Key figures
+![Figure 2: staged training and EKF deployment](../assets/humanoid-badminton-2511.11218v3/figure-2-training.jpg)
+Training trajectory targets and online deployment estimates share semantics but not noise/latency.
+![Figures 3-4: simulated rally and perception variants](../assets/humanoid-badminton-2511.11218v3/figure-3-4-control.jpg)
+The best 21-hit rally is a capability example, not the mean rally length.
+![Figures 5-6: hardware accuracy and serve trials](../assets/humanoid-badminton-2511.11218v3/table-5-hardware.jpg)
+With explicit denominators, EKF achieves 42/46 serves versus 33/46 for the prediction-free policy and lower virtual-target error.
+
+## Decisive evidence
+The symmetric 46+46 serving-machine trial is stronger than selected rallies. The authors' decision not to use the lower-success prediction-free policy near humans is a valuable negative deployment result.
+
+## Paper-to-implementation mapping
+Without official code, required interfaces are the three reward stages/checkpoints, shuttle simulator and trajectory generator, EKF/interception estimator, history observation, 50/500 Hz control path, racket collision, and safety supervisor. No author symbols are invented.
+
+## Limits and evidence boundary
+The paper reports mocap dependence, limited interception range and style, and weaker prediction-free results. Serving-machine trials are more repeatable than human shots, and human-robot shared space needs independent swept-volume, stop-distance, and timeout protection.
+
+## Bounded engineering takeaway
+Use shaping as removable scaffolding: validate each stage and explicitly test whether final outcome improves when process rewards are reduced. Prefer the perception interface with measured tail error and failure rate, not the one with the more end-to-end label.
+
+## Reproduction checklist
+Lock shuttle aerodynamics/contact, trajectory split, stage rewards/transitions, perception timing, EKF/history, action rates, and safety region. Report contact, over-net, valid landing, rally continuation, tail error, racket speed, falls, refusals, emergency stops, and unedited failures.

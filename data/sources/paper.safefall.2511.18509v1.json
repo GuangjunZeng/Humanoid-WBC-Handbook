@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["SafeFall authors"],
+  "canonical_url": "https://arxiv.org/abs/2511.18509v1",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "68e984f51b0646485a8101402ad176d273c34eb6949cfadff461d26830437692",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "2511.18509", "full_paper_reviewed": true, "pages_read": 10, "code_status": "No official public SafeFall training/deployment repository was verified at capture.", "license_note": "No paper text, trajectories, or models are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.safefall.2511.18509v1",
+  "summary": "SafeFall combines a proprioceptive GRU unavoidable-fall predictor with a separately trained damage-aware protective policy and reports simulated and Unitree G1 evidence.",
+  "title": "SafeFall: Learning Protective Control for Humanoid Robots", "version": "arXiv:2511.18509v1"
+}

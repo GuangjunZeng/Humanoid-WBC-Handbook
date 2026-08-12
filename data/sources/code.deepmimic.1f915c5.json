@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_api", "attention": {},
+  "authors": ["Xue Bin Peng", "DeepMimic contributors"],
+  "canonical_url": "https://github.com/xbpeng/DeepMimic/tree/1f915c52fcd4b95b5f5f15b759ae91bd81e9a801",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "a9f216f33fae935e017e03de379f2773452206ca8ff56e8cbb51a95715dec0d7",
+  "excerpt": null, "kind": "source_code", "license": "Custom repository license; inspect before reuse",
+  "metadata": {"commit": "1f915c52fcd4b95b5f5f15b759ae91bd81e9a801", "repository": "xbpeng/DeepMimic", "redistribution": "No source, motion data, or models are copied into the handbook."},
+  "published_at": null, "publisher": "GitHub / Xue Bin Peng",
+  "source_id": "code.deepmimic.1f915c5",
+  "summary": "The pinned official code exposes reference motion/phase, multi-clip selection, reward and termination interfaces, and implicit-PD character control.",
+  "title": "xbpeng/DeepMimic official implementation", "version": "1f915c52fcd4b95b5f5f15b759ae91bd81e9a801"
+}

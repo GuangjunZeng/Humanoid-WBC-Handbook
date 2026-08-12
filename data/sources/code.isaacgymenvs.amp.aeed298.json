@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_api", "attention": {},
+  "authors": ["NVIDIA IsaacGymEnvs contributors"],
+  "canonical_url": "https://github.com/isaac-sim/IsaacGymEnvs/tree/aeed298638a1f7b5421b38f5f3cc2d1079b6d9c3",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "cc150577b96e19594fd9b7ad88c455e37e1fb916e28b3d64ee826fb3bf30a91a",
+  "excerpt": null, "kind": "source_code", "license": "BSD-3-Clause",
+  "metadata": {"commit": "aeed298638a1f7b5421b38f5f3cc2d1079b6d9c3", "repository": "isaac-sim/IsaacGymEnvs", "redistribution": "No code, assets, data, or models are copied into the handbook."},
+  "published_at": null, "publisher": "GitHub / NVIDIA",
+  "source_id": "code.isaacgymenvs.amp.aeed298",
+  "summary": "The pinned repository exposes AMP transition observations, demonstration sampling, discriminator reward/loss, and current/replay policy buffers.",
+  "title": "IsaacGymEnvs AMP implementation", "version": "aeed298638a1f7b5421b38f5f3cc2d1079b6d9c3"
+}

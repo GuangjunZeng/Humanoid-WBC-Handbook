@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2511.18509v1",
+  "source_pdf": "https://arxiv.org/pdf/2511.18509",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 3,
+      "source_locator": "Figure 2 / Table I",
+      "caption_zh": "从名义策略扰动轨迹、GRU 不可避免跌倒预测到保护策略接管的全链路。",
+      "sha256": "fd51b3dc48663d20f810343fa6bb9e8eacd4cb750b59bf242f1b7d8e9c323916"
+    },
+    {
+      "asset": "table-2-3-predictor.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 6,
+      "source_locator": "Table II-III",
+      "caption_zh": "随机化范围和预测器在不同提前量下的漏报、误报与准确率。",
+      "sha256": "3985b9293a28c3d62406bbcfd37db52d319ee3ea9d695c40dd33314a1496bb45"
+    },
+    {
+      "asset": "table-4-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2511.18509",
+      "pdf_page": 8,
+      "source_locator": "Table IV-V / Figure 6",
+      "caption_zh": "仿真消融与 G1 实机峰值接触力、关节力矩和脆弱部件碰撞结果。",
+      "sha256": "1dcd8a5ff9063590f7b530fa59074a663428414f4203648aefc5144028b2be36"
+    }
+  ]
+}

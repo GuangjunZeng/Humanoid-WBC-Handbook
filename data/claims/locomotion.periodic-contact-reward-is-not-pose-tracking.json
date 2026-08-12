@@ -1,0 +1,23 @@
+{
+  "applicability": {
+    "assumptions": ["A periodic phase variable and desired contact rhythm are meaningful for the target gait.", "Torque, impact, posture, and slip are checked outside the contact clock."],
+    "controllers": ["phase-conditioned biped locomotion policy", "periodic-reward reinforcement learning"],
+    "environments": ["periodic standing, walking, running, hopping, and gait-transition tasks"],
+    "robots": ["Cassie in the paper; other bipeds require new phase, reward, and hardware validation"],
+    "simulators": ["MuJoCo/Cassie simulation used by the paper and pinned APEX implementation"]
+  },
+  "claim_id": "locomotion.periodic-contact-reward-is-not-pose-tracking",
+  "confidence": 0.87,
+  "confidence_rationale": "The paper equations and phase/contact figures define the reward semantics, hardware experiments demonstrate multiple Cassie gaits, and the pinned code exposes the same clock-based interface. Confidence is capped because gait timing, actuation, and transfer bounds are platform-specific.",
+  "domain": "locomotion_terrain",
+  "evidence": [
+    {"locator": "Equations 4-6; Figures 1-5; Table I", "note": "Defines smooth periodic force/velocity coefficients, composes multiple gait rhythms, and reports simulated and real Cassie results.", "role": "support", "source_id": "paper.periodic-gaits.2011.01387v2", "strength": "primary"},
+    {"locator": "cassie/cassie.py and clock/reward configuration at 82c44af", "note": "Shows the official simulator and phase-clock reward path used for periodic-gait training and evaluation.", "role": "support", "source_id": "code.apex.82c44af", "strength": "primary"}
+  ],
+  "question": "没有逐关节参考动作时，怎样用少量接触节拍训练多种双足步态？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "周期奖励可用相位、占空比和双腿相对相位，把足端接触力与摆动速度期望组合成站立、行走、跑步、跳跃等步态，而不逐关节复制轨迹。它只规定接触节拍；相位失配、足滑、冲击、力矩和硬件安全仍需独立约束与验证。",
+  "status": "reviewed",
+  "tags": ["periodic reward", "contact schedule", "Cassie", "gait", "sim-to-real"]
+}

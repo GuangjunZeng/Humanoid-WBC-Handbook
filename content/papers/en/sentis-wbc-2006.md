@@ -1,0 +1,36 @@
+# Sentis-Khatib WBC: Make Task Conflict a Structural Priority
+
+[中文版](../sentis-wbc-2006.md)
+
+Source: [paper PDF](https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf). No official maintained implementation tied exactly to this paper was verified.
+
+> **Bottom line:** The framework places constraints, operational tasks, and posture in a dynamically consistent strict hierarchy: a lower-priority task may only use the freedom left by higher levels. This gives a structural answer to conflict, but it does not automatically solve bad measurements, singularities, inequalities, or actuator saturation.
+
+## Engineering problem
+Humanoids must maintain contacts and balance while moving hands, gaze, and posture. A weighted sum can trade a hard support requirement against a convenient hand target when scales or conditions change.
+
+## Method
+Operational-space dynamics and dynamically consistent null-space projectors map each task into the residual freedom of higher-priority constraints. Task-space impedance then specifies behavior at each level. Priority is encoded in the algebra, not inferred from weight magnitude.
+
+## Key figures
+![Figures 1-2: behavioral primitives](../assets/sentis-wbc-2006/figure-1-2-primitives.jpg)
+The primitives show how constraints, tasks, and posture form composable whole-body behavior.
+![Figure 3: dynamic hierarchy](../assets/sentis-wbc-2006/figure-3-hierarchy.jpg)
+Figure 3 is the core dependency graph: every lower task is projected through higher-priority consistency spaces.
+![Figures 5-6: effective inertia and impedance](../assets/sentis-wbc-2006/figure-5-6-impedance.jpg)
+These figures show that constraints alter task-space inertia and therefore controller response.
+
+## Decisive evidence
+The simulations demonstrate simultaneous task execution under a declared hierarchy and show how constraint-consistent dynamics change behavior. They support conflict structure, not a universal numerical implementation.
+
+## Paper-to-implementation mapping
+A faithful implementation needs constrained dynamics, task Jacobians, dynamically consistent inverses/projectors, prioritized task recursion, posture/null-space control, and torque output. Since no exact official code was verified, concrete symbols are intentionally not fabricated.
+
+## Limits and evidence boundary
+Rank changes and ill-conditioned Jacobians require damping and diagnostics. Classical equalities do not directly encode all friction cones, torque bounds, collision inequalities, or discrete contact transitions. Model and force-sensing errors can violate the assumed hierarchy on hardware.
+
+## Bounded engineering takeaway
+Declare which tasks must never yield and which may use residual freedom. Keep hierarchy/rank/conditioning logs so a conflict is explainable, then add explicit inequality and actuator-limit handling where the classical formulation does not cover it.
+
+## Reproduction checklist
+Lock robot dynamics, contact model, Jacobians, task frames, priorities, gains, inverse damping, and update rate. Test conflicting tasks, rank loss, contact changes, model error, torque saturation, and force disturbances; report residuals and condition numbers per level.

@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_api", "attention": {},
+  "authors": ["Oregon State Dynamic Robotics Laboratory contributors"],
+  "canonical_url": "https://github.com/osudrl/apex/tree/82c44af2b5d7bffe884fd2f69856bb1b3c9948e0",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "428ac45efdc77b9a13227919b8d3f59458e3b13c00adc906123160a26d7ca723",
+  "excerpt": null, "kind": "source_code", "license": "BSD-3-Clause",
+  "metadata": {"commit": "82c44af2b5d7bffe884fd2f69856bb1b3c9948e0", "repository": "osudrl/apex", "redistribution": "No code, trained models, or robot assets are copied into the handbook."},
+  "published_at": null, "publisher": "GitHub / Oregon State DRL",
+  "source_id": "code.apex.82c44af",
+  "summary": "The pinned official APEX repository exposes Cassie simulation, phase-clock reward construction, policy training, and evaluation artifacts for the periodic-gait work.",
+  "title": "osudrl/apex official implementation", "version": "82c44af2b5d7bffe884fd2f69856bb1b3c9948e0"
+}

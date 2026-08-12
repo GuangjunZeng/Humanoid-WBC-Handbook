@@ -1,0 +1,23 @@
+{
+  "applicability": {
+    "assumptions": ["Demonstration and policy transitions use identical feature maps, timing, joint order, and normalization.", "The motion dataset has been audited for artifacts and required behavior coverage."],
+    "controllers": ["goal-conditioned policy with adversarial motion prior", "discriminator-based style reward"],
+    "environments": ["simulated physics-based character tasks with unstructured motion clips"],
+    "robots": ["Simulated characters in the paper; robot transfer requires new retargeting, feasibility, and safety validation"],
+    "simulators": ["Isaac Gym/IsaacGymEnvs AMP and equivalent matched environments"]
+  },
+  "claim_id": "motion-generation.amp-style-reward-inherits-data-support-and-bias",
+  "confidence": 0.89,
+  "confidence_rationale": "The paper's dataset-content experiments and discriminator ablations directly show that learned style follows data and feature design, while pinned code exposes observation, replay, and reward paths. Confidence is capped because style quality is partly distributional/subjective and the evidence is simulation-only.",
+  "domain": "motion_generation",
+  "evidence": [
+    {"locator": "Equations 2-7; Figure 2; Tables 1-3; Figure 8", "note": "Defines transition discrimination and shows dataset-dependent behavior plus velocity/regularization failure modes.", "role": "support", "source_id": "paper.amp.2104.02180v2", "strength": "primary"},
+    {"locator": "humanoid_amp.py and amp_continuous.py at aeed298", "note": "Exposes AMP observations, demonstration/current/replay samples, discriminator reward, and combined task/style reward.", "role": "support", "source_id": "code.isaacgymenvs.amp.aeed298", "strength": "primary"}
+  ],
+  "question": "AMP 不再逐帧跟踪参考动作后，为什么仍必须审计动作数据和判别器特征？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "informational",
+  "statement": "AMP 的判别器把动作数据支持的短时状态转移学成 style reward；它省去显式 clip/phase 选择，却会把数据中的足滑、坏接触和覆盖缺口变成奖励边界。数据版本、特征映射、采样时隔、判别器与策略必须作为同一可审计单元。",
+  "status": "reviewed",
+  "tags": ["AMP", "adversarial motion prior", "discriminator", "motion data", "style reward"]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2011.01387v2",
+  "source_pdf": "https://arxiv.org/pdf/2011.01387",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-2-gaits.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 2,
+      "source_locator": "Figure 1-2",
+      "caption_zh": "Cassie 在站立、行走、跳跃、跑步和跳步之间的策略表现与连续切换。",
+      "sha256": "976efee05ae482dcc1b99d7ba33c95979cb19640aaa2d93ae7c44d9ba8e6418f"
+    },
+    {
+      "asset": "figure-3-4-phase.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 4,
+      "source_locator": "Figure 3-4",
+      "caption_zh": "用周期相位、接触力与足端速度系数组合不同双足步态。",
+      "sha256": "d9b16daa301141a794c4df601cd9fe16bd8eece484e21717e56ee4ab1e062867"
+    },
+    {
+      "asset": "table-1-figure-5-transfer.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 6,
+      "source_locator": "Table I / Figure 5",
+      "caption_zh": "动力学随机化范围及仿真和实机地面反力的对照。",
+      "sha256": "f49a15f7636fb18d2471919a8495a2de11d533ea15bb5bffa1dad46a16aa2091"
+    }
+  ]
+}

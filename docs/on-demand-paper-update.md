@@ -57,10 +57,13 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 ```bash
 python3 scripts/extract_key_figures.py --check
 python3 scripts/check_paper_quality.py
+PYTHONPATH=src python3 scripts/render_paper_translations.py --check
 python3 scripts/render_paper_topics.py --check
 python3 scripts/check_corpus.py
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
+
+若新深读被选为 README 技术路线的代表作，必须先在 `data/locales/en/papers/` 补齐已审阅英文记录并生成 `content/papers/en/`；缺失或 stale 时不能更新 README 路线。普通队列论文不要建空白英文页冒充解读。
 
 ## 更新完成的报告
 

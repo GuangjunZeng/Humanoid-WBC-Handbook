@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Xue Bin Peng", "Ze Ma", "Pieter Abbeel", "Sergey Levine", "Angjoo Kanazawa"],
+  "canonical_url": "https://arxiv.org/abs/2104.02180v2",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "93d9e8e40b3908d65e8b88ae3dcbe8d4cd69071d13f3234ad927462477472a29",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "2104.02180", "full_paper_reviewed": true, "pages_read": 20, "license_note": "No paper text, motion data, or models are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.amp.2104.02180v2",
+  "summary": "AMP trains a least-squares discriminator on motion-data and policy state transitions, uses its score as a style reward, and combines that reward with goal-conditioned task reinforcement learning.",
+  "title": "AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control", "version": "arXiv:2104.02180v2"
+}

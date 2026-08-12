@@ -1,0 +1,24 @@
+{
+  "applicability": {
+    "assumptions": ["Future foothold timing and ZMP reference are known over a finite horizon.", "The 3D-LIPM/cart-table approximation and fixed-height assumptions are acceptable as a nominal planner."],
+    "controllers": ["ZMP preview walking-pattern generator", "downstream whole-body inverse kinematics/control"],
+    "environments": ["planned biped walking with prescribed footholds", "paper-reported spiral-stair simulation"],
+    "robots": ["HRP-2P model in the paper; other robots require new gains and validation"],
+    "simulators": ["OpenHRP in the reported experiment"]
+  },
+  "claim_id": "locomotion.future-zmp-preview-before-support-switch.kajita",
+  "confidence": 0.83,
+  "confidence_rationale": "The derivation and 1.6 s versus 0.8 s preview comparison directly isolate the future-reference mechanism, and the multibody correction experiment quantifies nominal-model error reduction. Confidence is capped because the spiral-stair result is simulation-only, official code is unavailable, and the model omits several hardware constraints.",
+  "domain": "locomotion_terrain",
+  "evidence": [
+    {"locator": "Equations 12-15; Figures 6-8 and 10-13", "note": "Derives integral/state/preview feedback, compares preview horizons, quantifies multibody ZMP correction, and reports only simulated spiral-stair walking.", "role": "support", "source_id": "paper.kajita-zmp.2003", "strength": "primary"},
+    {"locator": "Official-code status audit accessed 2026-08-12", "note": "Records that no version-pinned author implementation was found, limiting claims about code-level reproducibility.", "role": "context", "source_id": "project.kajita-zmp.code-status.2026-08-12", "strength": "secondary"}
+  ],
+  "question": "给定落脚位置生成 ZMP/质心轨迹时，为什么需要读取未来支撑参考？",
+  "review_due_at": "2027-08-12T16:00:00+08:00",
+  "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "Kajita 2003 将步态生成写成 ZMP 跟踪伺服；在论文参数下，1.6 秒预览能让 CoM 在支撑切换前响应，而 0.8 秒预览跟踪不足。可复用的是未来参考前馈、当前状态反馈和模型误差修正结构，不是 1.6 秒这一跨机器人常数，也不是完整实机稳定保证。",
+  "status": "reviewed",
+  "tags": ["ZMP", "preview control", "3D-LIPM", "CoM", "步态规划"]
+}

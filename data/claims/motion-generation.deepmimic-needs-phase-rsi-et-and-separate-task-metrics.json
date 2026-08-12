@@ -1,0 +1,23 @@
+{
+  "applicability": {
+    "assumptions": ["Reference motions are retargeted and physically meaningful for the simulated character.", "Phase synchronization is valid or explicitly monitored."],
+    "controllers": ["phase-conditioned reference tracking policy", "PPO physics-based character controller"],
+    "environments": ["simulated dynamic motion imitation and task-augmented skills"],
+    "robots": ["Simulated characters in the paper; robot hardware requires a separate feasibility and sim-to-real layer"],
+    "simulators": ["Bullet/DeepMimic and equivalent physics simulators with matched state, PD, and contacts"]
+  },
+  "claim_id": "motion-generation.deepmimic-needs-phase-rsi-et-and-separate-task-metrics",
+  "confidence": 0.9,
+  "confidence_rationale": "The paper's method, RSI/ET ablations, and task-versus-imitation table directly support the claim, and pinned official code exposes phase, reward, termination, and PD interfaces. Confidence is capped because all principal evidence is simulated-character rather than robot hardware evidence.",
+  "domain": "motion_generation",
+  "evidence": [
+    {"locator": "Sections 4-7; Tables 4-5; Figures 2 and 11", "note": "Defines phase-conditioned imitation, RSI, ET, and separate imitation/task outcomes with controlled ablations.", "role": "support", "source_id": "paper.deepmimic.1804.02717v3", "strength": "primary"},
+    {"locator": "KinCharacter.cpp, ClipsController.cpp, DeepMimicCore.cpp, and implicit-PD controllers at 1f915c5", "note": "Exposes phase/motion loading, clip selection, reward/termination, and low-level PD implementation boundaries.", "role": "support", "source_id": "code.deepmimic.1f915c5", "strength": "primary"}
+  ],
+  "question": "为什么只复制 DeepMimic 的模仿奖励，往往学不会长时高动态技能？",
+  "review_due_at": "2027-08-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "informational",
+  "statement": "DeepMimic 的可学习性来自相位条件模仿、reference-state initialization 和 early termination 的组合；任务奖励再负责投球、越障等结果。复现必须把 tracking 与 task success 分开报告，且论文的仿真角色证据不能直接升级为人形机器人实机能力。",
+  "status": "reviewed",
+  "tags": ["DeepMimic", "RSI", "early termination", "phase", "motion tracking"]
+}

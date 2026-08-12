@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Tuomas Haarnoja", "Ben Moran", "Guy Lever", "Sandy H. Huang", "Dhruva Tirumala", "Jan Humplik", "Mark Wulfmeier", "Saran Tunyasuvunakool", "Noah Y. Siegel", "Roland Hafner", "Martin Riedmiller", "Nicolas Heess"],
+  "canonical_url": "https://arxiv.org/abs/2304.13653v2",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "ee3185ffceb92fd7d0dcd8f6927f64ff02d871896a62382ec050e79fe7905ba6",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "2304.13653", "full_paper_reviewed": true, "pages_read": 30, "code_status": "No official training/deployment repository was verified at capture.", "license_note": "No paper text, videos, or models are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.agile-soccer.2304.13653v2",
+  "summary": "The paper pretrains soccer and get-up skills, distills state-routed teachers into one 1v1 policy, trains against a historical self-play pool, and evaluates zero-shot deployment on OP3.",
+  "title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning", "version": "arXiv:2304.13653v2"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1, "problem_id": "loco-wbc.strict-hierarchy-makes-task-conflict-structural.sentis", "kind": "claim",
+  "source_fingerprint": "9e97785a86dca44692081bd28de93808b54f63b3742b327ed47c44152909fa04",
+  "translations": {
+    "title": "When whole-body tasks conflict, how can priority be structural instead of hidden in hard-to-explain weights?",
+    "answer": "Sentis-Khatib WBC uses a dynamically consistent strict hierarchy so lower-priority tasks may use only the freedom left by constraints and higher-priority tasks. The structure declares who yields, but it does not automatically handle every friction/collision inequality, torque saturation, Jacobian singularity, or model and measurement error.",
+    "applicability.assumptions.0": "Robot dynamics and task/contact Jacobians are available and sufficiently accurate.", "applicability.assumptions.1": "Rank changes, inequalities, saturation, and sensing error are monitored separately.",
+    "applicability.controllers.0": "Operational-space whole-body control", "applicability.controllers.1": "Strict-priority task hierarchy",
+    "applicability.environments.0": "Multi-task humanoid control with declared constraints and posture objectives", "applicability.robots.0": "Humanoid platforms with model-based torque or acceleration control interfaces", "applicability.simulators.0": "Any dynamics simulator used to validate the declared hierarchy",
+    "confidence_rationale": "The paper derives dynamically consistent constraint/task projectors and demonstrates hierarchical behaviors. Confidence is capped because the original experiments do not cover modern inequality handling, numerical edge cases, or broad hardware validation, and no exact maintained code was verified.",
+    "evidence.0.locator": "Equations 1-10 and Figures 1-6", "evidence.0.note": "Derives constraint-consistent and task-consistent null spaces, shows task hierarchy, and relates constraints to task-space inertia and impedance.", "evidence.0.title": "A Whole-Body Control Framework for Humanoids",
+    "terms.0": "Joint Torque (关节力矩)", "terms.1": "Operational Space (操作空间)", "terms.2": "Task Hierarchy (任务层级)", "terms.3": "Whole-Body Control (WBC, 全身控制)", "terms.4": "Zero Moment Point (ZMP, 零力矩点)"
+  }
+}

@@ -1,6 +1,6 @@
 # Humanoid WBC 论文库
 
-本目录分成两层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文。当前快照收录 46 篇唯一作品，其中 14 篇深度解读、32 篇待深读。
+本目录分成两层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文。当前快照收录 46 篇唯一作品，其中 25 篇深度解读、21 篇待深读。
 
 这个目录是可按需更新的领域地图，不声称永久穷尽所有论文。更新只在用户明确要求时执行，不定时、不订阅、不推送。
 
@@ -8,13 +8,13 @@
 
 | 板块 | 收录 | 深度解读 | 待深读 | 可核验官方代码 |
 |---|---:|---:|---:|---:|
-| [训练数据与动作重定向](domains/training-data-retargeting.md) | 7 | 2 | 5 | 6 |
-| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 11 | 3 | 8 | 9 |
-| [行走与复杂地形](domains/locomotion-terrain.md) | 9 | 2 | 7 | 6 |
-| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 6 | 2 | 4 | 4 |
-| [体育与高动态技能](domains/sports-athletic-skills.md) | 7 | 2 | 5 | 3 |
-| [动作生成与可命令行为](domains/motion-generation.md) | 11 | 2 | 9 | 11 |
-| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 9 | 3 | 6 | 5 |
+| [训练数据与动作重定向](domains/training-data-retargeting.md) | 7 | 4 | 3 | 6 |
+| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 11 | 5 | 6 | 9 |
+| [行走与复杂地形](domains/locomotion-terrain.md) | 9 | 4 | 5 | 6 |
+| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 6 | 4 | 2 | 4 |
+| [体育与高动态技能](domains/sports-athletic-skills.md) | 7 | 4 | 3 | 3 |
+| [动作生成与可命令行为](domains/motion-generation.md) | 11 | 5 | 6 | 11 |
+| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 9 | 5 | 4 | 5 |
 
 同一篇论文可以属于多个 topic，所以板块行数之和大于 46；目录本身仍按 `paper_id` 与去版本的 arXiv 主键去重。
 
@@ -47,8 +47,9 @@ PYTHONPATH=src python3 -m wbc_handbook papers-discover \
 PYTHONPATH=src python3 -m wbc_handbook papers-status
 python3 scripts/extract_key_figures.py --check
 python3 scripts/check_paper_quality.py
+PYTHONPATH=src python3 scripts/render_paper_translations.py --check
 python3 scripts/render_paper_topics.py --check
 python3 scripts/check_corpus.py
 ```
 
-以上检查分别验证目录去重/角色覆盖、关键图完整性、中文全文解读、topic 页同步与 deep-read source/claim 闭环。
+以上检查分别验证目录去重/角色覆盖、关键图完整性、中文全文解读、英文译文覆盖与指纹、topic 页同步，以及 deep-read source/claim 闭环。

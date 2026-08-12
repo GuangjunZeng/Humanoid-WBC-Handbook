@@ -1,0 +1,45 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+import unittest
+
+from wbc_handbook.paper_localization import (
+    REQUIRED_HEADINGS,
+    load_translations,
+    render_paper_translations,
+    representative_papers,
+)
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+class PaperLocalizationTests(unittest.TestCase):
+    def setUp(self):
+        self.catalog = json.loads(
+            (PROJECT_ROOT / "content" / "papers" / "catalog.json").read_text(encoding="utf-8")
+        )
+
+    def test_all_representative_papers_have_current_english_pages(self):
+        report = render_paper_translations(PROJECT_ROOT, check=True)
+        self.assertEqual(report["papers"], 24)
+        self.assertEqual(report["stale"], [])
+
+    def test_english_pages_have_required_structure_and_bilingual_links(self):
+        translations = load_translations(PROJECT_ROOT)
+        for paper in representative_papers(self.catalog):
+            source_path = PROJECT_ROOT / paper["brief_path"]
+            target_path = PROJECT_ROOT / "content" / "papers" / "en" / source_path.name
+            source = source_path.read_text(encoding="utf-8")
+            target = target_path.read_text(encoding="utf-8")
+            self.assertIn(f"[English version](en/{source_path.name})", source)
+            self.assertIn(f"[中文版](../{source_path.name})", target)
+            for heading in REQUIRED_HEADINGS:
+                self.assertIn(f"## {heading}", target)
+            self.assertEqual(target.count("!["), 3)
+            self.assertIn(paper["paper_id"], translations)
+
+
+if __name__ == "__main__":
+    unittest.main()

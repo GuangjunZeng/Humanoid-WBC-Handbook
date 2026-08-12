@@ -1,5 +1,7 @@
 # HT-2：先从平地轨迹学会走，再用强化学习攻克复杂地形
 
+[English version](en/challenging-terrain-2410.03654v1.md)
+
 来源：[arXiv:2410.03654v1](https://arxiv.org/abs/2410.03654v1) · [官方项目页](https://humanoid-challenging-terrain.github.io/)
 
 解读范围：完整 42 页正文、方法、消融与补充材料。截点时官方页面未提供可核验代码仓库，因此没有伪造论文—代码映射。

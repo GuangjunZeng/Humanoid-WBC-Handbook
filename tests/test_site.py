@@ -14,11 +14,20 @@ class StaticSearchSiteTests(unittest.TestCase):
         hero = readme.split("\n---\n", 1)[0]
         pages_url = "https://guangjunzeng.github.io/Humanoid-WBC-Handbook/"
         self.assertIn("site/assets/search-preview.svg", hero)
-        self.assertIn("打开中英文快速搜索", hero)
-        self.assertIn("所有工程问题均可搜索", hero)
-        self.assertIn("可信度、状态和证据边界在独立详情页查看", hero)
-        self.assertEqual(hero.count(f"]({pages_url})"), 2)
+        self.assertIn("Open the bilingual quick search", hero)
+        self.assertIn("Search every engineering problem", hero)
+        self.assertIn("Confidence, resolution status, and evidence boundaries", hero)
+        self.assertEqual(hero.count(f"]({pages_url}?lang=en)"), 2)
+        self.assertIn("[中文](README.zh-CN.md)", hero)
         self.assertNotIn("](site/)", hero)
+
+        chinese = (PROJECT_ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+        chinese_hero = chinese.split("\n---\n", 1)[0]
+        self.assertIn("打开中英文快速搜索", chinese_hero)
+        self.assertIn("全部工程问题", chinese_hero)
+        self.assertIn("可信度、解决状态和证据边界", chinese_hero)
+        self.assertEqual(chinese_hero.count(f"]({pages_url}?lang=zh)"), 2)
+        self.assertIn("[English](README.md)", chinese_hero)
 
     def test_site_uses_only_repository_relative_assets(self):
         html = (PROJECT_ROOT / "site/index.html").read_text(encoding="utf-8")

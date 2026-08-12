@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "hal:hal-01136936",
+  "source_pdf": "https://hal.science/hal-01136936/document",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-actuator-model.jpg",
+      "source_url": "https://hal.science/hal-01136936/document",
+      "pdf_page": 13,
+      "source_locator": "Figure 1",
+      "caption_zh": "高减速比 HRP-2 关节的力矩—位置误差、迟滞与摩擦辨识证据。",
+      "sha256": "7a0f6b618f425689cdce9d67d7242b0cf39bc153d35f7a009b5b5bfab9b3ad20"
+    },
+    {
+      "asset": "table-1-3-tracking.jpg",
+      "source_url": "https://hal.science/hal-01136936/document",
+      "pdf_page": 22,
+      "source_locator": "Table 1-3 / Figure 3",
+      "caption_zh": "已辨识电机参数以及楼梯轨迹下位置与力矩控制误差。",
+      "sha256": "7c82677fc5adcda4401288764c33a83c706440bad9a5b95a131e020fb194dd21"
+    },
+    {
+      "asset": "figure-5-force-control.jpg",
+      "source_url": "https://hal.science/hal-01136936/document",
+      "pdf_page": 25,
+      "source_locator": "Figure 5",
+      "caption_zh": "右手末端正弦力参考的实机跟踪及高频振荡边界。",
+      "sha256": "99fa734687ab46beb118f4defb8056586d81043fd04e375325a871bc0d9adb75"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "applicability": {
+    "assumptions": ["Human motions are first retargeted to the target robot morphology.", "The feasibility policy uses controller and termination boundaries representative of the final tracking stack."],
+    "controllers": ["privileged motion imitator", "robust H1 motion-tracking policy"],
+    "environments": ["offline motion-corpus filtering", "RGB-based real-time whole-body teleoperation"],
+    "robots": ["Unitree H1 in the H2O setup"],
+    "simulators": ["Isaac Gym / PhysX in the official implementation"]
+  },
+  "claim_id": "teleop.closed-loop-sim-to-data-filtering.h2o",
+  "confidence": 0.8,
+  "confidence_rationale": "The paper includes controlled filtering and data-size ablations plus broad H1 demonstrations, and the pinned official repository exposes per-sequence closed-loop evaluation and failure-driven motion sampling. Confidence is capped because filtering thresholds and real-world robustness are tied to one robot/control stack and long-duration safety statistics are not reported.",
+  "domain": "universal_tracking_teleoperation",
+  "evidence": [
+    {"locator": "Figure 4, Tables III-IV, and Section IV", "note": "Connects SMPL-to-H1 retargeting, privileged sim-to-data filtering, robust policy training, and reported real H1 teleoperation.", "role": "support", "source_id": "paper.h2o.2403.04436v1", "strength": "primary"},
+    {"locator": "LeggedRobot reference-motion evaluation; OnPolicyRunner.run_eval_loop and update_training_data at commit 750f1fa", "note": "Maps closed-loop sequence evaluation, early termination, and failure-focused sampling to public implementation symbols.", "role": "support", "source_id": "code.lecar.human2humanoid.750f1fa", "strength": "primary"}
+  ],
+  "question": "人体动作完成运动学重定向后，为什么还要用闭环控制器做 sim-to-data 筛选？",
+  "review_due_at": "2027-08-12T16:00:00+08:00",
+  "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "在 H2O 的 H1 管线中，特权运动模仿器逐条闭环跟踪重定向动作并过滤失败序列，比只做运动学阈值清洗更能暴露接触、惯性和控制带宽造成的不可行标签；该机制值得作为训练前数据门，但其通过结果不能外推为另一机器人或实机安全保证。",
+  "status": "reviewed",
+  "tags": ["H2O", "sim-to-data", "motion filtering", "Unitree H1", "全身遥操"]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1, "problem_id": "sports.pretrain-minimal-skills-before-self-play.soccer", "kind": "claim",
+  "source_fingerprint": "b690d8e52d460ae36f1c69c5df65ef6e77032d8759a6180176953a4c78bb7cd5",
+  "translations": {
+    "title": "How can sparse-reward sports training avoid a policy that falls before it ever reaches useful reward?",
+    "answer": "The OP3 soccer work first trains the minimum get-up and soccer skills, then uses state-routed teacher regularization to distill them into one policy and a historical snapshot pool to learn combination and competition. This addresses exploration and forgetting; it does not mean end-to-end self-play creates basic skills automatically, and small OP3 hardware limits do not transfer to full-size humanoids.",
+    "applicability.assumptions.0": "Get-up and ball-skill teachers are independently competent and frozen for distillation.", "applicability.assumptions.1": "A historical opponent evaluation pool is preserved separately from training.", "applicability.controllers.0": "Teacher-regularized unified soccer policy", "applicability.controllers.1": "Historical-pool self-play", "applicability.environments.0": "1v1 biped soccer with repeatable skill and set-piece tests", "applicability.robots.0": "Robotis OP3 in the paper; full-size humanoids require different impact and safety evidence", "applicability.simulators.0": "Paper training simulator with matched position-control and delay interface",
+    "confidence_rationale": "The paper's skill-prior/self-play ablations and fixed-count OP3 hardware tests support staged exploration and unified distillation. Confidence is capped because official code is unavailable, mocap supplies global state, and hardware evidence concerns a small protected platform.",
+    "evidence.0.locator": "Figure 2, Figure 7, and Table 1", "evidence.0.note": "Shows separate soccer/get-up teachers, state-routed distillation, historical self-play, mechanism ablations, and quantified hardware skill/set-piece tests.", "evidence.0.title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning",
+    "terms.0": "Motion Capture (MoCap, 动作捕捉)", "terms.1": "Self-Play (自博弈)"
+  }
+}

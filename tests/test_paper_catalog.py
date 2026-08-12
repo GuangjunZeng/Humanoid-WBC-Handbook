@@ -34,6 +34,22 @@ class PaperCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(not row["missing_roles"] for row in report["domains"]))
 
+    def test_readme_routes_cover_seven_topics_with_24_representative_papers(self):
+        domains = self.catalog["domains"]
+        self.assertEqual(len(domains), 7)
+        routes = [route for domain in domains.values() for route in domain["readme_routes"]]
+        self.assertEqual(len(routes), 26)
+        self.assertEqual(len({route["paper_id"] for route in routes}), 24)
+        self.assertTrue(all(2 <= len(domain["readme_routes"]) <= 4 for domain in domains.values()))
+        by_id = {paper["paper_id"]: paper for paper in self.catalog["papers"]}
+        for route in routes:
+            paper = by_id[route["paper_id"]]
+            self.assertEqual(paper["analysis_status"], "deep_read")
+            chinese = PROJECT_ROOT / paper["brief_path"]
+            english = PROJECT_ROOT / "content" / "papers" / "en" / chinese.name
+            self.assertTrue(chinese.is_file())
+            self.assertTrue(english.is_file())
+
     def test_discovery_deduplicates_known_arxiv_versions(self):
         feed = b'''<?xml version="1.0" encoding="UTF-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">

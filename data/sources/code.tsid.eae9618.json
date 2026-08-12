@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_api", "attention": {},
+  "authors": ["Stack-of-Tasks TSID contributors"],
+  "canonical_url": "https://github.com/stack-of-tasks/tsid/tree/eae96180ed8d289bc2c634f9d0857020ebfa6d90",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "e5a195a7976fe29a705866d6cfa2640a171e7d4db336fe2042b24dbd99b381a2",
+  "excerpt": null, "kind": "source_code", "license": "BSD-2-Clause",
+  "metadata": {"commit": "eae96180ed8d289bc2c634f9d0857020ebfa6d90", "repository": "stack-of-tasks/tsid", "redistribution": "No code or robot model is copied into the handbook."},
+  "published_at": null, "publisher": "GitHub / Stack of Tasks",
+  "source_id": "code.tsid.eae9618",
+  "summary": "The pinned TSID repository implements optimization-based task-space inverse dynamics. It provides the upper-level desired dynamics, not the complete HRP-2 torque estimator and position-offset actuator loop from hal-01136936.",
+  "title": "stack-of-tasks/tsid official implementation", "version": "eae96180ed8d289bc2c634f9d0857020ebfa6d90"
+}

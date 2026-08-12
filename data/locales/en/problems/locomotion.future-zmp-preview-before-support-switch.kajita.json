@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "problem_id": "locomotion.future-zmp-preview-before-support-switch.kajita",
+  "kind": "claim",
+  "source_fingerprint": "9f3b2421f9f6a03053a82e20f5a54a46904ba88e4c558c5b1612597474228248",
+  "translations": {
+    "answer": "Kajita 2003 formulates walking-pattern generation as ZMP tracking. Under the paper's parameters, a 1.6-second preview lets the center of mass respond before support exchange, while a 0.8-second preview is insufficient. The reusable result is the structure of future-reference feedforward, current-state feedback, and model-error correction—not a robot-independent 1.6-second constant or a complete hardware-stability guarantee.",
+    "applicability.assumptions.0": "Future foothold timing and ZMP reference are known over a finite horizon.",
+    "applicability.assumptions.1": "The 3D-LIPM/cart-table approximation and fixed-height assumptions are acceptable as a nominal planner.",
+    "applicability.controllers.0": "ZMP preview walking-pattern generator",
+    "applicability.controllers.1": "Downstream whole-body inverse kinematics and control",
+    "applicability.environments.0": "Planned biped walking with prescribed footholds",
+    "applicability.environments.1": "Paper-reported spiral-stair simulation",
+    "applicability.robots.0": "HRP-2P model in the paper; other robots require new gains and validation",
+    "applicability.simulators.0": "OpenHRP in the reported experiment",
+    "confidence_rationale": "The derivation and 1.6 s versus 0.8 s preview comparison directly isolate the future-reference mechanism, and the multibody correction experiment quantifies nominal-model error reduction. Confidence is capped because the spiral-stair result is simulation-only, official code is unavailable, and the model omits several hardware constraints.",
+    "evidence.0.locator": "Equations 12-15; Figures 6-8 and 10-13",
+    "evidence.0.note": "Derives integral, state, and preview feedback; compares preview horizons; quantifies multibody ZMP correction; and reports only simulated spiral-stair walking.",
+    "evidence.0.title": "Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point",
+    "evidence.1.locator": "Official-code status audit accessed 2026-08-12",
+    "evidence.1.note": "Records that no version-pinned author implementation was found, limiting claims about code-level reproducibility.",
+    "evidence.1.title": "Kajita 2003 ZMP preview-control official-code status",
+    "terms.0": "Inverse Kinematics (IK, 逆运动学)",
+    "terms.1": "Inertial Measurement Unit (IMU, 惯性测量单元)",
+    "terms.2": "Center of Mass (CoM, 质心)",
+    "title": "Why must a ZMP/CoM trajectory generator read future support references when footholds are prescribed?"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Luis Sentis", "Oussama Khatib"],
+  "canonical_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "1f6d56348bad7f4d454974574afad228ac139424a0546dac83c9e136347e57ee",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"full_paper_reviewed": true, "pages_read": 6, "code_status": "No author-maintained implementation tied exactly to this paper was verified.", "license_note": "No paper text is redistributed."},
+  "published_at": null, "publisher": "IEEE ICRA / Stanford Robotics Lab",
+  "source_id": "paper.sentis-wbc.2006",
+  "summary": "The paper develops dynamically consistent strict prioritization of constraints, operational-space tasks, and posture for humanoid whole-body control.",
+  "title": "A Whole-Body Control Framework for Humanoids", "version": "ICRA 2006"
+}

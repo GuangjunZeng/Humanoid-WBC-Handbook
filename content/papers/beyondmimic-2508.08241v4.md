@@ -1,5 +1,7 @@
 # BeyondMimic：用状态—动作潜扩散在测试时组合人形技能
 
+[English version](en/beyondmimic-2508.08241v4.md)
+
 来源：[arXiv:2508.08241v4](https://arxiv.org/abs/2508.08241v4) · [官方项目页](https://beyondmimic.github.io/) · [官方运动跟踪代码](https://github.com/HybridRobotics/whole_body_tracking)
 
 解读范围：完整 34 页正文、方法和补充材料。官方 `whole_body_tracking` 仓库现可核验，但它明确只覆盖 BeyondMimic 的运动跟踪训练；本文不把它扩写为潜扩散生成层的完整开源。

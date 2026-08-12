@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "problem_id": "teleop.closed-loop-sim-to-data-filtering.h2o",
+  "kind": "claim",
+  "source_fingerprint": "aa003609878ba9e2e700fac1d82f3ba3799f03668261cd0c6cf14a1c38f64bf5",
+  "translations": {
+    "answer": "In H2O's H1 pipeline, a privileged motion imitator tracks every retargeted motion in closed loop and removes failed sequences. This exposes labels made infeasible by contact, inertia, or controller bandwidth more effectively than kinematic thresholds alone. It is a useful pre-training data gate, but passing it does not guarantee safety on another robot or on hardware.",
+    "applicability.assumptions.0": "Human motions are first retargeted to the target robot morphology.",
+    "applicability.assumptions.1": "The feasibility policy uses controller and termination boundaries representative of the final tracking stack.",
+    "applicability.controllers.0": "Privileged motion imitator",
+    "applicability.controllers.1": "Robust H1 motion-tracking policy",
+    "applicability.environments.0": "Offline motion-corpus filtering",
+    "applicability.environments.1": "RGB-based real-time whole-body teleoperation",
+    "applicability.robots.0": "Unitree H1 in the H2O setup",
+    "applicability.simulators.0": "Isaac Gym / PhysX in the official implementation",
+    "confidence_rationale": "The paper includes controlled filtering and data-size ablations plus broad H1 demonstrations, and the pinned official repository exposes per-sequence closed-loop evaluation and failure-driven motion sampling. Confidence is capped because filtering thresholds and real-world robustness are tied to one robot/control stack and long-duration safety statistics are not reported.",
+    "evidence.0.locator": "Figure 4, Tables III-IV, and Section IV",
+    "evidence.0.note": "Connects SMPL-to-H1 retargeting, privileged sim-to-data filtering, robust policy training, and reported real H1 teleoperation.",
+    "evidence.0.title": "Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
+    "evidence.1.locator": "LeggedRobot reference-motion evaluation; OnPolicyRunner.run_eval_loop and update_training_data at commit 750f1fa",
+    "evidence.1.note": "Maps closed-loop sequence evaluation, early termination, and failure-focused sampling to public implementation symbols.",
+    "evidence.1.title": "LeCAR-Lab/human2humanoid official OmniH2O implementation",
+    "terms.0": "Motion Retargeting (动作重定向)",
+    "terms.1": "Whole-Body Teleoperation (全身遥操作)",
+    "title": "Why run closed-loop sim-to-data filtering after kinematic retargeting of human motions?"
+  }
+}

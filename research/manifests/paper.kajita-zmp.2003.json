@@ -1,0 +1,14 @@
+{
+  "source_id": "paper.kajita-zmp.2003",
+  "kind": "paper",
+  "title": "Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point",
+  "canonical_url": "https://doi.org/10.1109/ROBOT.2003.1241826",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "published_at": "2003-09-14T00:00:00+00:00",
+  "version": "ICRA 2003 proceedings",
+  "summary": "Kajita et al. formulate prescribed-footstep walking-pattern generation as ZMP tracking and derive an LQ optimal preview servo with integral error, state feedback, future-reference feedforward, and multibody ZMP correction.",
+  "access_mode": "public_web",
+  "authors": ["Shuuji Kajita", "Fumio Kanehiro", "Kenji Kaneko", "Kiyoshi Fujiwara", "Kensuke Harada", "Kazuhito Yokoi", "Hirohisa Hirukawa"],
+  "publisher": "IEEE",
+  "metadata": {"doi": "10.1109/ROBOT.2003.1241826", "pages_read": 7, "full_paper_reviewed": true, "license_note": "Only links, factual locators, and original analysis are retained."}
+}

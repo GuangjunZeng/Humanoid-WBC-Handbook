@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:1904.03278v1",
+  "source_pdf": "https://arxiv.org/pdf/1904.03278",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-mosh-plus.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 2,
+      "source_locator": "Figure 2",
+      "caption_zh": "MoSh++ 从标记点序列恢复 SMPL-H 体型、姿态、手部与软组织动态的处理链。",
+      "sha256": "13f3da5ace90b4e20408464be58ff964269a2f0f5ad596b3ec437fa8161b724a"
+    },
+    {
+      "asset": "figure-6-reconstruction.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 7,
+      "source_locator": "Figure 6",
+      "caption_zh": "MoSh 与 MoSh++ 在体型和姿态重建误差上的受控对照。",
+      "sha256": "3f845c53d55dcbf554ab75071362a50cfce1ce7992a163ae8f4ed11cfd360ffe"
+    },
+    {
+      "asset": "figure-9-components.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 12,
+      "source_locator": "Figure 9",
+      "caption_zh": "体型与动态分量数量对重建误差的影响，用于判断统一模型容量。",
+      "sha256": "2deaab91041f2e1fade4a625325847af021dcf1f010aa31c8922337211af768b"
+    }
+  ]
+}

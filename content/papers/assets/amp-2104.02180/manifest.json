@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2104.02180v2",
+  "source_pdf": "https://arxiv.org/pdf/2104.02180",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-adversarial-prior.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 4,
+      "source_locator": "Figure 2 / Equation 2-5",
+      "caption_zh": "未标注动作片段、判别器风格奖励与任务策略的对抗训练闭环。",
+      "sha256": "4fb6764d3cbcb62bbfe583d198976d0388412e025d6040e86849a4468db81f83"
+    },
+    {
+      "asset": "table-1-2-tasks.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 8,
+      "source_locator": "Table 1-2",
+      "caption_zh": "多任务表现与不同运动数据集规模、时长的对照。",
+      "sha256": "b30a8cfb16642693c4b2c5421fdf8d8e5a17bcf3c6f11a792a3bb9713c2f8cfe"
+    },
+    {
+      "asset": "table-3-figure-8-imitation.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 12,
+      "source_locator": "Table 3 / Figure 8",
+      "caption_zh": "单片段模仿中 AMP 与显式跟踪方法的训练曲线与动作质量比较。",
+      "sha256": "4d72cb2dea241ea729c2de3a762e09d52048f5aeb36e290f122a576b5d18d7f0"
+    }
+  ]
+}

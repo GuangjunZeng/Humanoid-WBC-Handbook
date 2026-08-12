@@ -1,0 +1,14 @@
+{
+  "source_id": "paper.amass.1904.03278v1",
+  "kind": "paper",
+  "title": "AMASS: Archive of Motion Capture as Surface Shapes",
+  "canonical_url": "https://arxiv.org/abs/1904.03278v1",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "published_at": "2019-04-05T21:00:25+00:00",
+  "version": "arXiv:1904.03278v1",
+  "summary": "AMASS v1 unifies 15 optical marker-based motion-capture datasets by fitting a common SMPL-H surface representation with MoSh++, including body shape, pose, hands, marker placement, and soft-tissue dynamics.",
+  "access_mode": "public_web",
+  "authors": ["Naureen Mahmood", "Nima Ghorbani", "Nikolaus F. Troje", "Gerard Pons-Moll", "Michael J. Black"],
+  "publisher": "arXiv",
+  "metadata": {"arxiv_id": "1904.03278", "pages_read": 12, "full_paper_reviewed": true, "license_note": "The paper and AMASS data/software have separate terms; no paper text, model, or data is redistributed."}
+}

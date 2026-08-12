@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2304.13653v2",
+  "source_pdf": "https://arxiv.org/pdf/2304.13653",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-training.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "技能教师、动作蒸馏与 1v1 自博弈的两阶段训练结构。",
+      "sha256": "0fbb92c9bf51cb42a87736bf7a9bbe6ba39c97d8aade733e2db46fa4bb5983da"
+    },
+    {
+      "asset": "table-1-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653",
+      "pdf_page": 5,
+      "source_locator": "Table 1",
+      "caption_zh": "实机起身、行走、转向、踢球和射门任务与脚本基线的量化对照。",
+      "sha256": "fb9ae5a0e6c277171921334ba4c2222536acfaab261e9882bf53d8f5cb17e214"
+    },
+    {
+      "asset": "figure-7-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653",
+      "pdf_page": 18,
+      "source_locator": "Figure 7",
+      "caption_zh": "高频控制、动力学随机化与行为正则化等组件的消融。",
+      "sha256": "00da5da89fcf781d61f07b30089e04e0414bf34c9d120e76908ae73079304c0b"
+    }
+  ]
+}

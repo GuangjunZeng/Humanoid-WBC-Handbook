@@ -1,0 +1,13 @@
+{
+  "access_mode": "public_web", "attention": {},
+  "authors": ["Xue Bin Peng", "Pieter Abbeel", "Sergey Levine", "Michiel van de Panne"],
+  "canonical_url": "https://arxiv.org/abs/1804.02717v3",
+  "captured_at": "2026-08-12T16:00:00+08:00",
+  "content_sha256": "4bd4cc353bd2dc19da99bb21a254cbfdb9840e49940ce69d484eb6d45bfa348f",
+  "excerpt": null, "kind": "paper", "license": null,
+  "metadata": {"arxiv_id": "1804.02717", "full_paper_reviewed": true, "pages_read": 17, "license_note": "No paper text, motion clips, or models are redistributed."},
+  "published_at": null, "publisher": "arXiv",
+  "source_id": "paper.deepmimic.1804.02717v3",
+  "summary": "DeepMimic combines phase-conditioned imitation and task rewards with reference-state initialization and early termination to learn dynamic physics-based character skills.",
+  "title": "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills", "version": "arXiv:1804.02717v3"
+}

@@ -1,0 +1,30 @@
+{
+  "applicability": {
+    "assumptions": ["The fall predictor is revalidated for the active nominal policy, payload, firmware, and terrain.", "Component vulnerability weights and hard limits are rebuilt for the target robot."],
+    "controllers": ["proprioceptive GRU fall predictor", "damage-aware protective fall policy", "external takeover supervisor"],
+    "environments": ["flat or near-flat humanoid locomotion falls inside the validated disturbance distribution"],
+    "robots": ["Unitree G1 in the paper; any other robot requires new data, rewards, limits, and staged validation"],
+    "simulators": ["Contact simulator with independently checked collision geometry, solver, and damage proxies"]
+  },
+  "claim_id": "recovery-safety.safefall-separates-trigger-from-damage-mitigation",
+  "confidence": 0.78,
+  "confidence_rationale": "The paper provides predictor ablations, more than 5,000 simulated falls, metric-specific baselines, and G1 impulse experiments. Confidence is deliberately lower because official code/raw trials are unavailable, flat-terrain scope is explicit, collision proxies are simulator-dependent, and the predictor requires retraining across nominal policies.",
+  "domain": "recovery_safety_force",
+  "evidence": [
+    {"locator": "Figure 2; Tables II-V; Figures 5-6; Section V limitations", "note": "Defines the predictor/takeover/protector split, reports FAR/lead-time and simulated damage metrics, gives G1 impulse evidence, and states terrain/compute limitations.", "role": "support", "source_id": "paper.safefall.2511.18509v1", "strength": "primary"}
+  ],
+  "question": "保护性跌倒为什么要把“何时接管”和“接管后怎样减伤”分成两个可验收模块？",
+  "review_due_at": "2027-02-12T16:00:00+08:00", "reviewed_at": "2026-08-12T16:00:00+08:00",
+  "safety_level": "hardware_critical",
+  "safety_case": {
+    "simulation_validated": true,
+    "command_limits": "Use robot-specific joint, velocity, current, torque, contact, and impact limits that cannot be traded against the learned reward.",
+    "emergency_stop": "Provide an independent hardware emergency stop and deterministic fallback for predictor timeout, score chatter, invalid actions, or communication loss.",
+    "protective_controls": "Start with suspension or soft capture, low-energy perturbations, protected components, and automatic aborts before expanding direction, speed, or fall height.",
+    "robot_specific_warning": "Paper percentages and G1 vulnerability weights are not transferable command limits or a permission to fall another robot.",
+    "staged_deployment": "Validate labels and FAR/lead-time offline, then simulation damage metrics, low-energy tethered hardware, direction/speed matrices, and only then bounded untethered trials with inspection after every impact."
+  },
+  "statement": "SafeFall 将本体 GRU 的 unavoidable-fall 触发与 damage-aware 保护策略分开：正常时不改 locomotion，确认不可恢复后才接管。工程上必须分别验收 FAR/lead time 与接触/反力/力矩指标；论文的 G1 和近似平地结果不能替代目标机器人硬限、外部监督器和分阶段冲击测试。",
+  "status": "reviewed",
+  "tags": ["SafeFall", "fall predictor", "protective control", "damage mitigation", "G1"]
+}

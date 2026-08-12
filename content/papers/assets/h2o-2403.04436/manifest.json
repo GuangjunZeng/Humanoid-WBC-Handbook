@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2403.04436v1",
+  "source_pdf": "https://arxiv.org/pdf/2403.04436",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-4-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 4,
+      "source_locator": "Figure 4",
+      "caption_zh": "从 SMPL 形体对齐、动作重定向、sim-to-data 筛选到实机策略的完整链路。",
+      "sha256": "f82aa043c6305f34fb3eb86d87605cc5a6185b3245342d1487b4fd61cd5bbf6a"
+    },
+    {
+      "asset": "table-1-2-training.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 5,
+      "source_locator": "Table I-II",
+      "caption_zh": "运动跟踪奖励与仿真到现实动力学随机化范围。",
+      "sha256": "45c8c684ea9794d0a637d01fb743dcc9fb3ed0c208f080493646c8862b943a1e"
+    },
+    {
+      "asset": "table-3-4-filtering.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 6,
+      "source_locator": "Table III-IV",
+      "caption_zh": "未清洗动作、可行性筛选与数据规模对跟踪结果的影响。",
+      "sha256": "3db4404902d32c94cb18deef6260d82f5a78f321447782bec91da222a0d7219f"
+    }
+  ]
+}

@@ -23,3 +23,12 @@
 - 运行 `python3 scripts/check_paper_quality.py`，只有全部质量门通过才能把 `analysis_status` 改为 `deep_read`。
 
 完整解读只是证据输入，不会自动成为已评审 `EngineeringClaim`。
+
+## 代表作双语页
+
+README 技术路线选中的代表作必须同时有中英文页。中文深读是事实主记录；英文内容是已审阅的紧凑解读，保留工程问题、方法、三张关键图、决定性证据、代码/公开状态、边界、结论和复现清单，不运行时机翻。
+
+- 已审阅英文记录位于 `data/locales/en/papers/`，完整中文页的 SHA-256 存入 `source_fingerprint`。
+- 中文事实、图表或代码边界修改后，旧英文记录必须过期，不允许 CI 继续发布。
+- 英文页只能复用中文证据页已核验的外链；不得在翻译时新增未核验代码或项目链接。
+- 运行 `PYTHONPATH=src python3 scripts/render_paper_translations.py --check`，验证 24 篇当前代表作的覆盖、指纹、章节、图片和双向语言链接。

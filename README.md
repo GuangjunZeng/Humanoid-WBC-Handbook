@@ -1,14 +1,51 @@
 # Humanoid WBC Engineering Handbook
 
-[![Humanoid WBC Engineering Handbook 中英文快速搜索预览](site/assets/search-preview.svg)](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)
+**English | [中文](README.zh-CN.md)**
 
-**[打开中英文快速搜索](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/)**：所有工程问题均可搜索；可信度、状态和证据边界在独立详情页查看。
+[![Bilingual search preview for the Humanoid WBC Engineering Handbook](site/assets/search-preview.svg)](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/?lang=en)
 
+**[Open the bilingual quick search](https://guangjunzeng.github.io/Humanoid-WBC-Handbook/?lang=en)** — Search every engineering problem in Chinese, English, or a mixture of both. Confidence, resolution status, and evidence boundaries appear only on the detail page.
+
+<!-- BEGIN GENERATED PAPER ROUTES -->
+## Paper map: seven WBC engineering topics
+
+Start from a technical route, not a flat paper list. Each route keeps one field-defining or engineering-representative work; the linked brief explains the mechanism, decisive evidence, implementation mapping, and limits.
+
+| Topic | Technical route | Representative deep read |
+|---|---|---|
+| Training Data and Motion Retargeting | Unified human-motion corpus | [AMASS: Archive of Motion Capture as Surface Shapes](content/papers/en/amass-1904.03278v1.md) |
+|  | Robot motion retargeting | [Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking](content/papers/en/retargeting-matters-2510.02252v1.md) |
+|  | Robot-free demonstration with online feasibility feedback | [Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations](content/papers/en/humi-2602.06643v2.md) |
+| Universal Tracking and Whole-Body Teleoperation | Dense real-time whole-body teleoperation | [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](content/papers/en/h2o-2403.04436v1.md) |
+|  | Sparse head-and-hand commands | [OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning](content/papers/en/omnih2o-2406.08858v1.md) |
+|  | Mask-conditioned multimode control | [HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots](content/papers/en/hover-2410.21229v2.md) |
+| Locomotion and Challenging Terrain | ZMP preview control | [Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point](content/papers/en/zmp-preview-kajita-2003.md) |
+|  | Periodic-reward sim-to-real reinforcement learning | [Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition](content/papers/en/periodic-gaits-2011.01387v2.md) |
+|  | Open-source zero-shot transfer | [Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer](content/papers/en/humanoid-gym-2404.05695v2.md) |
+|  | Trajectory pretraining and terrain fine-tuning | [Learning Humanoid Locomotion over Challenging Terrain](content/papers/en/challenging-terrain-2410.03654v1.md) |
+| Loco-Manipulation and End-Effector WBC | Hierarchical operational-space whole-body control | [A Whole-Body Control Framework for Humanoids](content/papers/en/sentis-wbc-2006.md) |
+|  | Optimization-based task-space inverse dynamics | [Implementing Torque Control with High-Ratio Gear Boxes and without Joint-Torque Sensors](content/papers/en/hrp2-torque-control-hal-01136936.md) |
+|  | Force-aware dual-policy learning | [FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation](content/papers/en/falcon-2505.06776v2.md) |
+|  | Unified-policy curriculum learning | [ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation](content/papers/en/ulc-2507.06905v2.md) |
+| Sports and Highly Dynamic Skills | Example-guided dynamic skills | [DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills](content/papers/en/deepmimic-1804.02717v3.md) |
+|  | Integrated locomotion, recovery, and strategy | [Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning](content/papers/en/agile-soccer-2304.13653v2.md) |
+|  | Real-physics residual alignment | [ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills](content/papers/en/asap-2502.01143v3.md) |
+|  | Multi-stage task interaction | [Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning](content/papers/en/humanoid-badminton-2511.11218v3.md) |
+| Motion Generation and Commandable Behavior | Example-guided motion control | [DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills](content/papers/en/deepmimic-1804.02717v3.md) |
+|  | Adversarial motion prior | [AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control](content/papers/en/amp-2104.02180v2.md) |
+|  | Masked motion inpainting | [MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting](content/papers/en/maskedmimic-2409.14393v1.md) |
+|  | Test-time guided diffusion | [BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion](content/papers/en/beyondmimic-2508.08241v4.md) |
+| Recovery, Falling, and Force Safety | Unified fall recovery and stand-up | [FRASA: An End-to-End Reinforcement Learning Agent for Fall Recovery and Stand Up of Humanoid Robots](content/papers/en/frasa-2410.08655v3.md) |
+|  | Stand-up from diverse postures | [Learning Humanoid Standing-up Control across Diverse Postures](content/papers/en/host-2502.08378v2.md) |
+|  | Protective falling | [SafeFall: Learning Protective Control for Humanoid Robots](content/papers/en/safefall-2511.18509v1.md) |
+|  | Torque-aware force interaction | [FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation](content/papers/en/falcon-2505.06776v2.md) |
+
+The map is intentionally selective. The complete coverage catalogue—including queued classics and verified official-code works—lives in [`content/papers/`](content/papers/README.md).
+<!-- END GENERATED PAPER ROUTES -->
 ---
-
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and a quality-gated deep-read corpus. The current snapshot contains 46 unique papers (14 complete Chinese deep reads and 32 queued classics/open-source works). Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and a quality-gated deep-read corpus. The current snapshot contains 46 unique papers (25 complete Chinese deep reads and 21 queued classics/open-source works). The README map selects 24 unique representative deep reads across 26 technical routes, each with a reviewed English page. Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 
@@ -58,6 +95,23 @@ Chinese detail URLs remain `content/problems/<id>.md`; English versions are
 generated at `content/problems/en/<id>.md`. Both interface languages search the
 same bilingual corpus, while result links follow the selected interface language.
 Source fingerprints make CI reject missing or stale English records.
+
+Representative paper pages use the same reviewed-localization contract. Chinese
+analysis remains canonical; English records live in `data/locales/en/papers/`
+and bind to the complete Chinese source with SHA-256. Regenerate and verify them
+without a translation service:
+
+```bash
+PYTHONPATH=src python3 scripts/render_paper_translations.py
+PYTHONPATH=src python3 scripts/render_paper_translations.py --check
+python3 scripts/render_paper_topics.py --check
+PYTHONPATH=src python3 scripts/check_paper_quality.py
+```
+
+Any Chinese factual change makes the English record stale until a reviewer
+updates it. The English renderer also rejects missing route coverage, orphaned
+translations, invented external URLs, missing core sections, or broken language
+switches.
 
 Import one manually reviewed source record:
 
