@@ -24,7 +24,7 @@
 
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 76 unique papers (36 complete bilingual deep reads and 40 primary-source-verified queued works) plus 43 selected projects (24 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and separate quality gates for papers and open-source projects. The current snapshot contains 75 unique papers (36 complete bilingual deep reads and 39 primary-source-verified queued works) plus 43 selected projects (24 complete bilingual, commit-pinned code reviews). Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 

@@ -12,7 +12,7 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：20 篇，其中深度解读 10 篇，有可核验官方代码 20 篇。
+- 当前收录：19 篇，其中深度解读 10 篇，有可核验官方代码 19 篇。
 - 必要覆盖角色：领域锚点（field anchor）、潜技能（latent skill）、开源实现（open source）、机器人部署（robot deployment）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
@@ -29,7 +29,6 @@
 | 深度解读 | [TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control](../textop-2602.07439v1.md) | 2026 | 开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/TeleHuman/TextOp) | 用流式文本、自回归短动作块和独立跟踪器实现可随时改写的真机运动。 |
 | 待深读 | [CALM: Conditional Adversarial Latent Models for Directable Virtual Characters](https://arxiv.org/abs/2305.02195) | 2023 | 潜技能（latent skill）、开源实现（open source） | [官方代码](https://github.com/NVlabs/ProtoMotions) | 联合学习控制策略和动作编码器，使潜空间同时支持重建、风格和高层任务控制。 |
 | 待深读 | [Universal Humanoid Motion Representations for Physics-Based Control](https://arxiv.org/abs/2310.04582) | 2023 | 领域锚点（field anchor）、潜技能（latent skill）、多模式（multi-mode）、开源实现（open source） | [官方代码](https://github.com/ZhengyiLuo/PULSE) | PULSE 从大规模非结构化动作学习通用潜在表示，并用于跟踪、地形穿越和下游任务，是动作先验路线的代表作。 |
-| 待深读 | [Universal Humanoid Motion Representations for Physics-Based Control](https://openreview.net/forum?id=OrOd8PxOO2) | 2024 | 潜技能（latent skill）、领域锚点（field anchor） | [官方代码](https://github.com/ZhengyiLuo/PHC) | PULSE 将大规模通用跟踪器蒸馏为带本体条件先验的通用运动表示。 |
 | 待深读 | [BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning](https://arxiv.org/abs/2511.04131) | 2025 | 潜技能（latent skill）、多模式（multi-mode）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/LeCAR-Lab/BFM-Zero) | 无监督预训练可提示行为模型，代表从单任务跟踪走向可组合、可查询动作空间的开放实现。 |
 | 待深读 | [MoRE: Mixture of Residual Experts for Humanoid Lifelike Gaits Learning on Complex Terrains](https://arxiv.org/abs/2506.08840) | 2025 | 地形（terrain）、多模式（multi-mode）、开源实现（open source） | [官方代码](https://github.com/TeleHuman/MoRE) | 用残差专家混合在复杂地形上保持类人步态，连接动作风格、多模式策略与地形适应。 |
 | 待深读 | [Physics-Based Motion Imitation with Adversarial Differential Discriminators](https://arxiv.org/abs/2505.04961) | 2025 | 学习控制（learning）、开源实现（open source） | [官方代码](https://github.com/xbpeng/MimicKit) | 差分判别器比较动作变化而非只看绝对姿态，为物理动作模仿提供对风格和动态更敏感的目标。 |

@@ -490,17 +490,6 @@
       "why_zh": "联合学习控制策略和动作编码器，使潜空间同时支持重建、风格和高层任务控制。"
     },
     {
-      "paper_id": "openreview:OrOd8PxOO2",
-      "title": "Universal Humanoid Motion Representations for Physics-Based Control",
-      "year": 2024,
-      "topics": ["motion_generation"],
-      "coverage_roles": ["latent_skill", "field_anchor"],
-      "paper_url": "https://openreview.net/forum?id=OrOd8PxOO2",
-      "code": {"status": "verified_official", "url": "https://github.com/ZhengyiLuo/PHC"},
-      "analysis_status": "queued",
-      "why_zh": "PULSE 将大规模通用跟踪器蒸馏为带本体条件先验的通用运动表示。"
-    },
-    {
       "paper_id": "arxiv:2409.14393",
       "title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
       "year": 2024,

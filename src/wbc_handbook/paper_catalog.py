@@ -44,6 +44,7 @@ def validate_catalog(catalog: Mapping, registry: Optional[Mapping] = None) -> Li
 
     seen = set()
     base_ids = set()
+    normalized_titles: Dict[str, str] = {}
     allowed_statuses = set(catalog.get("status_values", []))
     allowed_code_statuses = set(catalog.get("code_status_values", []))
     roles_by_domain: Dict[str, set] = defaultdict(set)
@@ -61,6 +62,17 @@ def validate_catalog(catalog: Mapping, registry: Optional[Mapping] = None) -> Li
         if paper_id in seen:
             errors.append(f"duplicate paper_id: {paper_id}")
         seen.add(paper_id)
+        title = str(paper.get("title", "")).strip()
+        normalized_title = re.sub(r"[^a-z0-9]+", " ", title.casefold()).strip()
+        if normalized_title:
+            previous_id = normalized_titles.get(normalized_title)
+            if previous_id is not None and previous_id != paper_id:
+                errors.append(
+                    "duplicate paper title across identifiers: "
+                    f"{previous_id} and {paper_id}"
+                )
+            else:
+                normalized_titles[normalized_title] = paper_id
         base_id = base_arxiv_id(paper_id)
         if base_id and base_id in base_ids:
             errors.append(f"duplicate arXiv work across versions: {base_id}")

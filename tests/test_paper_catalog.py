@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 from pathlib import Path
 import tempfile
 import unittest
@@ -47,6 +48,19 @@ class PaperCatalogTests(unittest.TestCase):
         candidates = discover_candidates(self.catalog, 2, fetcher=lambda _: feed)
         self.assertEqual([item["paper_id"] for item in candidates], ["arxiv:2608.01234"])
         self.assertGreater(len(candidates[0]["proposed_topics"]), 1)
+
+    def test_catalog_rejects_same_work_under_two_identifiers(self):
+        duplicate = deepcopy(self.catalog["papers"][0])
+        duplicate["paper_id"] = "openreview:duplicate-work"
+        duplicate["analysis_status"] = "queued"
+        duplicate.pop("brief_path", None)
+        duplicate.pop("brief_path_en", None)
+        catalog = deepcopy(self.catalog)
+        catalog["papers"].append(duplicate)
+        errors = validate_catalog(catalog)
+        self.assertTrue(
+            any("duplicate paper title across identifiers" in error for error in errors)
+        )
 
     def test_candidate_run_is_explicitly_not_auto_accepted(self):
         with tempfile.TemporaryDirectory() as tmp:
