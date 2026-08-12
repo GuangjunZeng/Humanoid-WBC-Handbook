@@ -1,0 +1,25 @@
+{
+  "source_id": "code.loco-3d.crocoddyl.46974c3",
+  "kind": "source_code",
+  "title": "loco-3d/crocoddyl official implementation",
+  "canonical_url": "https://github.com/loco-3d/crocoddyl/tree/46974c3c49ed956e41f8f95a329cf8537af7550b",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "version": "46974c3c49ed956e41f8f95a329cf8537af7550b",
+  "summary": "Official BSD-3-Clause implementation exposing the FDDP solver, contact forward dynamics, shooting problem contract, and biped gait examples. Inspected only, not vendored.",
+  "access_mode": "public_api",
+  "authors": [
+    "Crocoddyl contributors"
+  ],
+  "publisher": "loco-3d",
+  "license": "BSD-3-Clause",
+  "metadata": {
+    "repository": "loco-3d/crocoddyl",
+    "commit": "46974c3c49ed956e41f8f95a329cf8537af7550b",
+    "mapped_symbols": [
+      "crocoddyl::SolverFDDP",
+      "crocoddyl::DifferentialActionModelContactFwdDynamics",
+      "crocoddyl::ShootingProblem"
+    ],
+    "redistribution": "No code, assets, configurations, or weights are copied."
+  }
+}

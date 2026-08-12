@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-12T00:00:00+08:00",
+  "purpose": "Records candidate identifiers rejected or corrected during discovery. Aggregation repositories are discovery sources only; title, identifier, paper URL, and official code relation must be rechecked against primary sources before catalog entry.",
+  "discovery_source": {
+    "name": "humanoid-motion-intelligence",
+    "url": "https://github.com/RealXiaoze/humanoid-motion-intelligence",
+    "reviewed_commit": "ec6a16c2c352f32e29defd6c49fe6512a89fa230",
+    "license": "CC-BY-NC-SA-4.0",
+    "use_boundary": "Discovery only. No prose or images are copied into this handbook."
+  },
+  "discovery_snapshot": {
+    "candidate_paper_records_seen": 146,
+    "candidate_project_records_seen": 168,
+    "new_papers_selected_after_primary_verification": 30,
+    "current_selected_projects_after_primary_verification": 43,
+    "topic_decision": "Candidates were mapped only to the seven existing catalog topics. No topic was added or renamed.",
+    "selection_boundary": "Not every aggregation entry is accepted. Relevance, primary identifier, official-code relationship, license visibility, duplication, project activity, and the star floor are checked independently."
+  },
+  "identifier_corrections": [
+    {
+      "project_id": "github:GalaxyGeneralRobotics/LATENT",
+      "rejected_paper_id": "arxiv:2603.18861",
+      "rejected_primary_title": "A Passive Elastic-Folding Mechanism for Stackable Airdrop Sensors",
+      "rejected_primary_url": "https://arxiv.org/abs/2603.18861",
+      "accepted_paper_id": "arxiv:2603.12686",
+      "accepted_primary_title": "Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data",
+      "accepted_primary_url": "https://arxiv.org/abs/2603.12686",
+      "decision": "rejected_identifier_corrected"
+    },
+    {
+      "project_id": "github:TeleHuman/humanoid_skateboarding",
+      "rejected_paper_id": "arxiv:2603.19749",
+      "rejected_primary_title": "Reynolds Leibniz bialgebras of any weight",
+      "rejected_primary_url": "https://arxiv.org/abs/2603.19749",
+      "accepted_paper_id": "arxiv:2602.03205",
+      "accepted_primary_title": "HUSKY: Humanoid Skateboarding System via Physics-Aware Whole-Body Control",
+      "accepted_primary_url": "https://arxiv.org/abs/2602.03205",
+      "decision": "rejected_identifier_corrected"
+    },
+    {
+      "project_id": "github:InternRobotics/Humanoid-Goalkeeper",
+      "rejected_paper_id": "arxiv:2510.08333",
+      "rejected_primary_title": "New Machine Learning Approaches for Intrusion Detection in ADS-B",
+      "rejected_primary_url": "https://arxiv.org/abs/2510.08333",
+      "accepted_paper_id": "arxiv:2510.18002",
+      "accepted_primary_title": "Humanoid Goalkeeper: Learning from Position Conditioned Task-Motion Constraints",
+      "accepted_primary_url": "https://arxiv.org/abs/2510.18002",
+      "decision": "rejected_identifier_corrected"
+    }
+  ],
+  "project_rejections": [
+    {
+      "project_id": "github:Renforce-Dynamics/soccerLab",
+      "primary_url": "https://github.com/Renforce-Dynamics/soccerLab",
+      "stars_at_review": 41,
+      "reviewed_at": "2026-08-12",
+      "decision": "rejected_below_conditional_star_floor",
+      "reason": "The official GitHub snapshot was below the hard 60-star conditional floor; organizational ownership alone does not waive the gate."
+    }
+  ]
+}

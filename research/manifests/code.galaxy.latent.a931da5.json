@@ -1,0 +1,27 @@
+{
+  "source_id": "code.galaxy.latent.a931da5",
+  "kind": "source_code",
+  "title": "GalaxyGeneralRobotics/LATENT official partial implementation",
+  "canonical_url": "https://github.com/GalaxyGeneralRobotics/LATENT/tree/a931da5a70320ba3f07d38debcf71458a005530d",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "version": "a931da5a70320ba3f07d38debcf71458a005530d",
+  "summary": "Official snapshot exposing motion preprocessing, G1 tennis tracker training, playback, evaluation, and export. The README marks DAgger distillation, the latent model, high-level tennis training, and sim-to-real design as unreleased. Inspected only, not vendored.",
+  "access_mode": "public_api",
+  "authors": [
+    "GalaxyGeneralRobotics/LATENT contributors"
+  ],
+  "publisher": "GalaxyGeneralRobotics",
+  "license": "NOASSERTION at project root; bundled assets retain separate terms",
+  "metadata": {
+    "repository": "GalaxyGeneralRobotics/LATENT",
+    "commit": "a931da5a70320ba3f07d38debcf71458a005530d",
+    "mapped_symbols": [
+      "g1_tracking_tennis_task_config",
+      "G1TrackingTennisEnv",
+      "PlayG1TrackingTennisEnv.step",
+      "motion_preprocess"
+    ],
+    "release_boundary": "Tracker and a small motion subset only; DAgger, latent model, high-level tennis policy, and sim-to-real design are TODOs.",
+    "redistribution": "No code, model, motion, dataset, configuration, or robot asset is copied."
+  }
+}

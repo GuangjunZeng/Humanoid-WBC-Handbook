@@ -1,0 +1,23 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://arxiv.org/abs/2205.01906",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "e4151dfddd0f79ef496092b58c10ef67b519e9a5be3b4d5b2067c575124050c7",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2205.01906",
+    "full_paper_reviewed": true,
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 18
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.ase.2205.01906",
+  "summary": "ASE learns a reusable adversarial skill embedding from unstructured motion data and conditions hierarchical downstream policies, demonstrated only on simulated characters.",
+  "title": "ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters",
+  "version": "arXiv:2205.01906"
+}

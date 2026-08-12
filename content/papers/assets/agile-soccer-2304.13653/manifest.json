@@ -47,8 +47,8 @@
       "sha256": "f38a869a41e8640af3648fabf3ceecf7a7e0f6e3bc9722eaacc16b1406939426",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
-        "reviewed_on": "2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
         "fingerprint": "7bc4fe8a3365543bace483b7b00ffc64e004806b1ce3e5397b71d98d03872b23"
       },
       "review_fingerprint": "7bc4fe8a3365543bace483b7b00ffc64e004806b1ce3e5397b71d98d03872b23"
@@ -93,8 +93,8 @@
       "sha256": "e7cd060f2dbfad58444459fb1cb6b6919a1d33aa8c8206ce320a3a1490a21fec",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
-        "reviewed_on": "2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
         "fingerprint": "10a6f951fbaf7f44ee5862750a43cba4eeca351c08a8de83d51576c3e6e9767e"
       },
       "review_fingerprint": "10a6f951fbaf7f44ee5862750a43cba4eeca351c08a8de83d51576c3e6e9767e"
@@ -139,11 +139,128 @@
       "sha256": "400501775dd0169c634afd28a5115d0ee4184698cd941498062b8bcc3715a09d",
       "review": {
         "status": "approved",
-        "reviewer": "codex-pdf-visual-audit-2026-08-12-final",
-        "reviewed_on": "2026-08-12",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
         "fingerprint": "2776be1757b5332c55c6b41a41b6226ad10e79f51fd82604b6d6976a8072fdc2"
       },
       "review_fingerprint": "2776be1757b5332c55c6b41a41b6226ad10e79f51fd82604b6d6976a8072fdc2"
+    },
+    {
+      "asset": "figure-5-behavior.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653",
+      "source_locator": "Figure 5",
+      "caption_zh": "起身射门、拦截、绕行、步幅适应和转身踢球等受控 set-piece 轨迹。",
+      "selection_reason_zh": "Figure 5 直接对照实机与仿真设定式行为，是核对行为分析主张的关键原论文证据。",
+      "supports_zh": "支持论文对五类 set-piece 行为及 sim-to-real 对照的定性分析。",
+      "limits_zh": "展示轨迹不能替代失败分母，也不能外推到未报告对手、场地或硬件。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.09,
+            0.07,
+            0.91,
+            0.74
+          ],
+          "caption_anchor": "Figure 5 | Behavior analysis",
+          "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.618808,
+            0.29701,
+            0.629064
+          ],
+          "caption_block_bbox": [
+            0.103512,
+            0.618808,
+            0.897334,
+            0.733201
+          ],
+          "page_text_sha256": "329d105560d6dd5ae17d2cb8d5d9a37bc15441561b2a9e06a47e59cba136b4ac",
+          "extra_text_word_count": 12
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1906,
+      "sha256": "5946d2ba86663bf3852279ad6af2b29e0f878fbe8f946b88530943636c45d157",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "206f9b50090918fda8255a0bf607fc4502f905fd11bdc9b2f50092036c899a6a"
+      },
+      "review_fingerprint": "206f9b50090918fda8255a0bf607fc4502f905fd11bdc9b2f50092036c899a6a"
+    },
+    {
+      "asset": "figure-s3-table-s5-compute.jpg",
+      "source_url": "https://arxiv.org/pdf/2304.13653",
+      "source_locator": "Figure S3 / Table S5",
+      "caption_zh": "起身/足球技能学习曲线以及三阶段的环境步数、仿真时间与墙钟时间。",
+      "selection_reason_zh": "Figure S3 与 Table S5 同时给出学习趋势和实际计算成本，是界定“学会”与“训练成本”的关键证据。",
+      "supports_zh": "支持技能策略曲线趋于平稳以及论文报告的环境步数、仿真天数与墙钟时间。",
+      "limits_zh": "只支持论文的分布式仿真设置；仿真时间不是墙钟时间，也不能外推到不同硬件或并行度。",
+      "regions": [
+        {
+          "pdf_page": 34,
+          "crop": [
+            0.09,
+            0.07,
+            0.91,
+            0.45
+          ],
+          "caption_anchor": "Figure S3 | Learning curves for the get-up and soccer skills",
+          "visual_review_note": "全分辨率目视确认 Figure 3（补充材料 S3）本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.259635,
+            0.510993,
+            0.269891
+          ],
+          "caption_block_bbox": [
+            0.104761,
+            0.259635,
+            0.897331,
+            0.32196
+          ],
+          "page_text_sha256": "a9e351aadcbc48a0dc346e30ade522c5ee1442a75bfd2da891aa9d5004e4df33",
+          "extra_text_word_count": 58
+        },
+        {
+          "pdf_page": 34,
+          "crop": [
+            0.09,
+            0.35,
+            0.91,
+            0.46
+          ],
+          "caption_anchor": "Table S5 | The time spent training each agent",
+          "visual_review_note": "全分辨率目视确认 Table 5（补充材料 S5）本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.10431,
+            0.422866,
+            0.405289,
+            0.433101
+          ],
+          "caption_block_bbox": [
+            0.10431,
+            0.422866,
+            0.405289,
+            0.433101
+          ],
+          "page_text_sha256": "a9e351aadcbc48a0dc346e30ade522c5ee1442a75bfd2da891aa9d5004e4df33",
+          "extra_text_word_count": 31
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1437,
+      "sha256": "aa0fddd81ec3c8c69243a470833c1a92e8690a65054a4ee83d437d2d721e72bf",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "837a72c15b64bc2a12bc2cf54c6adf71907151a3fa268f7d9a48532792078c1b"
+      },
+      "review_fingerprint": "837a72c15b64bc2a12bc2cf54c6adf71907151a3fa268f7d9a48532792078c1b"
     }
   ]
 }

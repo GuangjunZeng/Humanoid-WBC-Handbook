@@ -1,0 +1,23 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://arxiv.org/abs/2512.01996",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "9c8bcf509b6973af2a42c7f8ab4dd3adb53ca876bf76ffec7441316b7f467114",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2512.01996",
+    "full_paper_reviewed": true,
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 12
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.fast-humanoid-locomotion.2512.01996",
+  "summary": "The paper reports wall-clock-efficient off-policy sim-to-real humanoid locomotion, with a narrow 15-minute claim and a separate, more expensive whole-body tracking setup.",
+  "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+  "version": "arXiv:2512.01996"
+}

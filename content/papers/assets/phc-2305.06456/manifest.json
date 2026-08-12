@@ -1,0 +1,270 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2305.06456",
+  "source_pdf": "https://arxiv.org/pdf/2305.06456",
+  "source_pdf_sha256": "7032182d647e65d6c850a3b8e699fbcd3aa8b978fa8475e6227d029091ec8cda",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-perpetual-control.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "source_locator": "Figure 1",
+      "caption_zh": "PHC 在仿真人体形状上连续跟踪、跌倒恢复并追赶远处参考动作的目标。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“PHC 在仿真人体形状上连续跟踪、跌倒恢复并追赶远处参考动作的目标。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“PHC 在仿真人体形状上连续跟踪、跌倒恢复并追赶远处参考动作的目标。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.04,
+            0.2,
+            0.96,
+            0.53
+          ],
+          "caption_anchor": "Figure 1: We propose a motion imitator",
+          "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.479014,
+            0.316475,
+            0.49026
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.479014,
+            0.890705,
+            0.49026
+          ],
+          "page_text_sha256": "edced8ca0f3e57ac6fc2fb384f014c92ec35f9ea1e451965ef3a31c7c0ed42fd",
+          "extra_text_word_count": 53
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 799,
+      "sha256": "cd08310856e7b034709110d414db2e451fa4fce2fd72b90697d8f27ebdbcab32",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "85df8228771be411176f4d8ddf3ccc2ccf59461dcdf1caa03a83619ee3b6d9e6"
+      },
+      "review_fingerprint": "85df8228771be411176f4d8ddf3ccc2ccf59461dcdf1caa03a83619ee3b6d9e6"
+    },
+    {
+      "asset": "figure-2-3-pmcp.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "source_locator": "Figure 2-3",
+      "caption_zh": "渐进式多控制原语 PMCP、composer 与目标条件策略的训练结构。",
+      "selection_reason_zh": "选择 Figure 2-3，因为它直接展示“渐进式多控制原语 PMCP、composer 与目标条件策略的训练结构。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“渐进式多控制原语 PMCP、composer 与目标条件策略的训练结构。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.04,
+            0.11,
+            0.96,
+            0.31
+          ],
+          "caption_anchor": "Figure 2: Our progressive training procedure",
+          "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.279928,
+            0.347719,
+            0.291174
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.27841,
+            0.890709,
+            0.30474
+          ],
+          "page_text_sha256": "d04a71f7fc50b015825964bd9e6eb528b0126a196962dbf7ed7761d58d83d327",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.07,
+            0.3,
+            0.9,
+            0.54
+          ],
+          "caption_anchor": "Figure 3: Goal-conditioned RL framework",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.494537,
+            0.337962,
+            0.505783
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.494537,
+            0.467916,
+            0.505783
+          ],
+          "page_text_sha256": "d04a71f7fc50b015825964bd9e6eb528b0126a196962dbf7ed7761d58d83d327",
+          "extra_text_word_count": 159
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1133,
+      "sha256": "10333507c48c1858647cca327752cb4b603431814850342ecda3546c945f84f8",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "670eca24e1e3e63a895a45ae3745afa90d3bd1f96ee245d10c5ae79ad168bf4c"
+      },
+      "review_fingerprint": "670eca24e1e3e63a895a45ae3745afa90d3bd1f96ee245d10c5ae79ad168bf4c"
+    },
+    {
+      "asset": "table-1-2-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "source_locator": "Table 1-2",
+      "caption_zh": "AMASS/H36M 高质量与视频噪声动作跟踪成功率和误差对照。",
+      "selection_reason_zh": "选择 Table 1-2，因为它直接展示“AMASS/H36M 高质量与视频噪声动作跟踪成功率和误差对照。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“AMASS/H36M 高质量与视频噪声动作跟踪成功率和误差对照。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.05,
+            0.96,
+            0.29
+          ],
+          "caption_anchor": "Table 1: Quantitative results",
+          "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.092947,
+            0.250995,
+            0.104193
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.092947,
+            0.890701,
+            0.117757
+          ],
+          "page_text_sha256": "2ad3eff9e3b5f6407d57a515e1a117858bbc4425be84f40ac7eedc77a5da08ba",
+          "extra_text_word_count": 157
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.23,
+            0.96,
+            0.48
+          ],
+          "caption_anchor": "Table 2: Motion imitation on noisy motion",
+          "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.242724,
+            0.345088,
+            0.25397
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.242724,
+            0.467907,
+            0.25397
+          ],
+          "page_text_sha256": "2ad3eff9e3b5f6407d57a515e1a117858bbc4425be84f40ac7eedc77a5da08ba",
+          "extra_text_word_count": 243
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1187,
+      "sha256": "2447562362e236478d77c522d498fd89fcb3e5f0fbd6f9033d6b44bf61ec0c63",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "044a7795201be13c0cb0d34b85e6b5255ab13f45bd37c8e31e74e7aea1bd08c3"
+      },
+      "review_fingerprint": "044a7795201be13c0cb0d34b85e6b5255ab13f45bd37c8e31e74e7aea1bd08c3"
+    },
+    {
+      "asset": "table-3-4-recovery.jpg",
+      "source_url": "https://arxiv.org/pdf/2305.06456",
+      "source_locator": "Table 3-4",
+      "caption_zh": "组件消融以及倒地、远离参考和组合失败状态的恢复统计。",
+      "selection_reason_zh": "选择 Table 3-4，因为它直接展示“组件消融以及倒地、远离参考和组合失败状态的恢复统计。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“组件消融以及倒地、远离参考和组合失败状态的恢复统计。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.04,
+            0.05,
+            0.49,
+            0.32
+          ],
+          "caption_anchor": "Table 3: Ablation on components",
+          "visual_review_note": "全分辨率目视确认 Table 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.081882,
+            0.092947,
+            0.298036,
+            0.104193
+          ],
+          "caption_block_bbox": [
+            0.081882,
+            0.092947,
+            0.467914,
+            0.104193
+          ],
+          "page_text_sha256": "150fd5629657ea95ff435856614dda617e3aa91812da7817bb39a65dcf8ea825",
+          "extra_text_word_count": 76
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.5,
+            0.05,
+            0.96,
+            0.32
+          ],
+          "caption_anchor": "Table 4: We measure whether our controller can recover",
+          "visual_review_note": "全分辨率目视确认 Table 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.504676,
+            0.092946,
+            0.837548,
+            0.104192
+          ],
+          "caption_block_bbox": [
+            0.504676,
+            0.092946,
+            0.890702,
+            0.104192
+          ],
+          "page_text_sha256": "150fd5629657ea95ff435856614dda617e3aa91812da7817bb39a65dcf8ea825",
+          "extra_text_word_count": 106
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2541,
+      "sha256": "7ad5c301098532826f7a84abf1501e5822516030bf38082d3cb850e40022c7d4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "e206d0e71b918913946cc5c67e759bc80fe7976db2f9353c3be51d1144c19e70"
+      },
+      "review_fingerprint": "e206d0e71b918913946cc5c67e759bc80fe7976db2f9353c3be51d1144c19e70"
+    }
+  ]
+}

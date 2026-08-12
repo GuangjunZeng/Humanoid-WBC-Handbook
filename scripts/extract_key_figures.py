@@ -420,8 +420,8 @@ def validate_paper_spec(paper: dict) -> list[str]:
     if not re.fullmatch(r"[0-9a-f]{64}", source_hash):
         errors.append(f"{slug}: invalid or missing source_pdf_sha256")
     figures = paper.get("figures", [])
-    if len(figures) != 3:
-        errors.append(f"{slug}: expected exactly three key-figure assets")
+    if not 3 <= len(figures) <= 5:
+        errors.append(f"{slug}: expected three to five key-figure assets")
     names = [figure.get("file") for figure in figures]
     if len(names) != len(set(names)):
         errors.append(f"{slug}: duplicate figure asset names")

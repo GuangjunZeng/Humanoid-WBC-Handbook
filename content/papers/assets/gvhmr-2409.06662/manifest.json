@@ -1,0 +1,174 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2409.06662",
+  "source_pdf": "https://arxiv.org/pdf/2409.06662",
+  "source_pdf_sha256": "3aaf2bb42fc13ba23b944db10519c77bf5b60e4d9b95655346a76c5e465026c5",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-3-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.06662",
+      "source_locator": "Figure 3",
+      "caption_zh": "GVHMR 从视频特征、相对相机旋转到重力对齐世界轨迹的完整框架。",
+      "selection_reason_zh": "选择 Figure 3，因为它直接展示“GVHMR 从视频特征、相对相机旋转到重力对齐世界轨迹的完整框架。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“GVHMR 从视频特征、相对相机旋转到重力对齐世界轨迹的完整框架。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.08,
+            0.1,
+            0.92,
+            0.5
+          ],
+          "caption_anchor": "Fig. 3. Overview of the proposed framework",
+          "visual_review_note": "全分辨率目视确认 Fig. 3. Overview of the proposed framework 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.420268,
+            0.353915,
+            0.43335
+          ],
+          "caption_block_bbox": [
+            0.08426,
+            0.420268,
+            0.916783,
+            0.496246
+          ],
+          "page_text_sha256": "0c9a3bc87929377dc5f63a026c4728efb21b6105ea090d4779a8348e85841b2b",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1042,
+      "sha256": "e1472d3154ad87f0dc2bce99eef5a9d6b339f72491361b39b61d30a574f5e85a",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "a3b14a06a361ea2c1c789565bfc6e661337cac5ade383031ba4540846f9cc09e"
+      },
+      "review_fingerprint": "a3b14a06a361ea2c1c789565bfc6e661337cac5ade383031ba4540846f9cc09e"
+    },
+    {
+      "asset": "table-1-2-results.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.06662",
+      "source_locator": "Table 1-2",
+      "caption_zh": "RICH、EMDB 与 3DPW 上的世界坐标和相机坐标定量结果。",
+      "selection_reason_zh": "选择 Table 1-2，因为它直接展示“RICH、EMDB 与 3DPW 上的世界坐标和相机坐标定量结果。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“RICH、EMDB 与 3DPW 上的世界坐标和相机坐标定量结果。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.095,
+            0.92,
+            0.31
+          ],
+          "caption_anchor": "Table 1. World-grounded metrics",
+          "visual_review_note": "全分辨率目视确认 Table 1. World-grounded metrics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.09862,
+            0.283098,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.09862,
+            0.917356,
+            0.124281
+          ],
+          "page_text_sha256": "86b4a7231698ff3b050fe1541a214121b248e2353cb72edfbdd61a453d4c21e6",
+          "extra_text_word_count": 182
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.08,
+            0.27,
+            0.92,
+            0.36
+          ],
+          "caption_anchor": "Table 2. Camera-space metrics",
+          "visual_review_note": "全分辨率目视确认 Table 2. Camera-space metrics 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.084299,
+            0.277792,
+            0.269345,
+            0.290874
+          ],
+          "caption_block_bbox": [
+            0.084299,
+            0.277792,
+            0.915346,
+            0.303453
+          ],
+          "page_text_sha256": "86b4a7231698ff3b050fe1541a214121b248e2353cb72edfbdd61a453d4c21e6",
+          "extra_text_word_count": 36
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 836,
+      "sha256": "3c7f3c6381221a0f8d1cfb02c62f57914435aff957e1fc1a7a333e08260d772f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "c0a6e6c76bf35e124edb15cce9099b6f541d987920098f2356644a94641d725a"
+      },
+      "review_fingerprint": "c0a6e6c76bf35e124edb15cce9099b6f541d987920098f2356644a94641d725a"
+    },
+    {
+      "asset": "figure-9-orientation-drift.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.06662",
+      "source_locator": "Figure 9",
+      "caption_zh": "GVHMR 与 WHAM 在长序列上的全局方向误差累积对照。",
+      "selection_reason_zh": "选择 Figure 9，因为它直接展示“GVHMR 与 WHAM 在长序列上的全局方向误差累积对照。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“GVHMR 与 WHAM 在长序列上的全局方向误差累积对照。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 11,
+          "crop": [
+            0.08,
+            0.11,
+            0.92,
+            0.36
+          ],
+          "caption_anchor": "Fig. 9. Global orientation error along time",
+          "visual_review_note": "全分辨率目视确认 Fig. 9. Global orientation error along time 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.327681,
+            0.332827,
+            0.340763
+          ],
+          "caption_block_bbox": [
+            0.084181,
+            0.327681,
+            0.916786,
+            0.353343
+          ],
+          "page_text_sha256": "43c5b2dd44bc447c270ffd78c8acac523679e0ac4508f38c40c1c21d7aa2bec9",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 673,
+      "sha256": "1fb9800847525471dd60c0ccd1d9c647fe345a8f1d5ea9b22cf47c81b0409c3a",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "f7cc7a194dca926e1747861fc83eeae48d61a4865bde037fd9d5a9fde145b100"
+      },
+      "review_fingerprint": "f7cc7a194dca926e1747861fc83eeae48d61a4865bde037fd9d5a9fde145b100"
+    }
+  ]
+}

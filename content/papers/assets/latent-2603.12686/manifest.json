@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2603.12686",
+  "source_pdf": "https://arxiv.org/pdf/2603.12686",
+  "source_pdf_sha256": "80650a11fd9effc5be61e60da002a28ca1a1063a980e7e8add81e111c9773af3",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "source_locator": "Figure 2",
+      "caption_zh": "LATENT 的动作跟踪、在线蒸馏、高层策略与 sim-to-real 四阶段管线。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“LATENT 的动作跟踪、在线蒸馏、高层策略与 sim-to-real 四阶段管线。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“LATENT 的动作跟踪、在线蒸馏、高层策略与 sim-to-real 四阶段管线。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.04,
+            0.06,
+            0.96,
+            0.52
+          ],
+          "caption_anchor": "Figure 2 Overview of LATENT",
+          "visual_review_note": "全分辨率目视确认 Figure 2 Overview of LATENT 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.069477,
+            0.446771,
+            0.262821,
+            0.459603
+          ],
+          "caption_block_bbox": [
+            0.069477,
+            0.446198,
+            0.930529,
+            0.48859
+          ],
+          "page_text_sha256": "d2f565721ac0a07154317065ab98db34603f9f22427705276644e5e3eabc8eb5",
+          "extra_text_word_count": 126
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1091,
+      "sha256": "5aa9f2da97f8f7d9d40e9dd9ad8ecb89227207a00df831ef6352c2da37fcc70b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "e2179e2daceac8be1f7c7088e1ee3adc2f556146830d9abf2894a3979e64b56a"
+      },
+      "review_fingerprint": "e2179e2daceac8be1f7c7088e1ee3adc2f556146830d9abf2894a3979e64b56a"
+    },
+    {
+      "asset": "figure-4-lab.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "source_locator": "Figure 4 / Equation 4",
+      "caption_zh": "Latent Action Barrier 使用状态依赖标准差和 tanh 限制潜在动作探索。",
+      "selection_reason_zh": "选择 Figure 4 / Equation 4，因为它直接展示“Latent Action Barrier 使用状态依赖标准差和 tanh 限制潜在动作探索。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“Latent Action Barrier 使用状态依赖标准差和 tanh 限制潜在动作探索。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.4,
+            0.96,
+            0.64
+          ],
+          "caption_anchor": "Figure 4 The motivation of Latent Action Barrier",
+          "visual_review_note": "全分辨率目视确认 Figure 4 The motivation of Latent Action Barrier 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.551654,
+            0.551018,
+            0.851802,
+            0.56385
+          ],
+          "caption_block_bbox": [
+            0.551654,
+            0.551018,
+            0.893923,
+            0.56385
+          ],
+          "page_text_sha256": "e4ff9c78091901ce0642533a0e77b29743cb7d0a3c5a5f75cbedc488121e3e00",
+          "extra_text_word_count": 49
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1137,
+      "sha256": "063ae898242bfa95be001362a4f56ab3604139d403fe9d22f4d275bcf93655e5",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "4608aa4ffb7c0909a49bf28462b8b23eb16d9f7447f863e78f7d7d5a5a5058c9"
+      },
+      "review_fingerprint": "4608aa4ffb7c0909a49bf28462b8b23eb16d9f7447f863e78f7d7d5a5a5058c9"
+    },
+    {
+      "asset": "table-3-4-simulation.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "source_locator": "Table 3-4",
+      "caption_zh": "一万次仿真试验中的基线对照与手腕修正、LAB 消融。",
+      "selection_reason_zh": "选择 Table 3-4，因为它直接展示“一万次仿真试验中的基线对照与手腕修正、LAB 消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“一万次仿真试验中的基线对照与手腕修正、LAB 消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.05,
+            0.96,
+            0.22
+          ],
+          "caption_anchor": "Table 3 Comparison with baseline methods",
+          "visual_review_note": "全分辨率目视确认 Table 3 Comparison with baseline methods 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.213972,
+            0.053191,
+            0.484067,
+            0.066023
+          ],
+          "caption_block_bbox": [
+            0.213972,
+            0.052617,
+            0.785628,
+            0.067335
+          ],
+          "page_text_sha256": "4ef378e81c1a7de24ecefcb3c4b27b8b169352df83ad2cbcc50a5ee799c53ee1",
+          "extra_text_word_count": 142
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.17,
+            0.96,
+            0.26
+          ],
+          "caption_anchor": "Table 4 Ablation study",
+          "visual_review_note": "全分辨率目视确认 Table 4 Ablation study 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.276722,
+            0.193482,
+            0.421317,
+            0.206314
+          ],
+          "caption_block_bbox": [
+            0.276722,
+            0.192909,
+            0.722877,
+            0.207627
+          ],
+          "page_text_sha256": "4ef378e81c1a7de24ecefcb3c4b27b8b169352df83ad2cbcc50a5ee799c53ee1",
+          "extra_text_word_count": 56
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 669,
+      "sha256": "61ce74bad18c870d72836c38896a68eb125e6fc30685c49ccdcfdf982bab41cc",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "29074d3934f3c49b60082a9fa9e14c068b74daf5fc1e5e8dab8a8f7d04b02693"
+      },
+      "review_fingerprint": "29074d3934f3c49b60082a9fa9e14c068b74daf5fc1e5e8dab8a8f7d04b02693"
+    },
+    {
+      "asset": "table-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2603.12686",
+      "source_locator": "Table 5",
+      "caption_zh": "20 组连续人机回合中球动力学随机化和观测噪声的真机消融。",
+      "selection_reason_zh": "选择 Table 5，因为它直接展示“20 组连续人机回合中球动力学随机化和观测噪声的真机消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“20 组连续人机回合中球动力学随机化和观测噪声的真机消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.05,
+            0.05,
+            0.95,
+            0.22
+          ],
+          "caption_anchor": "Table 5 Real-world performance",
+          "visual_review_note": "全分辨率目视确认 Table 5 Real-world performance 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.514654,
+            0.053191,
+            0.718114,
+            0.066023
+          ],
+          "caption_block_bbox": [
+            0.514654,
+            0.052617,
+            0.932611,
+            0.067335
+          ],
+          "page_text_sha256": "76606ad7948a16dda27e849872efcd8bf55089e21702bb27e0638024b1ff0c7e",
+          "extra_text_word_count": 131
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 447,
+      "sha256": "0dc682e2f917706d4c40fa07fb35b2d6b5697afabb42ea5ef75443f203b82867",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "4eef372518ecdd02b701a19fcc870e1e3c78e3102b941698d3a047ecf0f6262e"
+      },
+      "review_fingerprint": "4eef372518ecdd02b701a19fcc870e1e3c78e3102b941698d3a047ecf0f6262e"
+    }
+  ]
+}

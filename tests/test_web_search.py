@@ -22,7 +22,7 @@ from wbc_handbook.web_search import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TRANSLATIONS_DIR = PROJECT_ROOT / "data/locales/en/problems"
-EXPECTED_BASELINE_PROBLEMS = 336
+EXPECTED_BASELINE_PROBLEMS = 349
 
 
 class WebSearchTests(unittest.TestCase):

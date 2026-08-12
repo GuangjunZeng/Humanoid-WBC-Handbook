@@ -1,0 +1,174 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:1909.04947",
+  "source_pdf": "https://arxiv.org/pdf/1909.04947",
+  "source_pdf_sha256": "1cd97138d605353eb552498afbe71371c545eb4cc81f9fb51d31eba7dc646022",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-contact-formulation.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "source_locator": "Figure 1 / Equation 1-4",
+      "caption_zh": "Crocoddyl 多接触最优控制任务与全身刚体接触动力学形式化。",
+      "selection_reason_zh": "选择 Figure 1 / Equation 1-4，因为它直接展示“Crocoddyl 多接触最优控制任务与全身刚体接触动力学形式化。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“Crocoddyl 多接触最优控制任务与全身刚体接触动力学形式化。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.5,
+            0.22,
+            0.96,
+            0.49
+          ],
+          "caption_anchor": "Fig. 1. Crocoddyl: an efficient and versatile framework",
+          "visual_review_note": "全分辨率目视确认 Fig. 1. Crocoddyl 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.449667,
+            0.817611,
+            0.458664
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.449667,
+            0.911767,
+            0.481305
+          ],
+          "page_text_sha256": "a686685a4c05a44dd5d54617e1686844c5a5941f2f608301a9685c37286106eb",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1273,
+      "sha256": "7308b94082ea36e97d407c668882241b841f0ad33111c832ece64a8e9b01f58a",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "126f12b66c3ee384fd47a2dd66a21ea4982e513ad39198a8b0e73ddebe065888"
+      },
+      "review_fingerprint": "126f12b66c3ee384fd47a2dd66a21ea4982e513ad39198a8b0e73ddebe065888"
+    },
+    {
+      "asset": "figure-2-gap-convergence.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "source_locator": "Figure 2",
+      "caption_zh": "FDDP 在高动态跳跃中允许早期动力学 gap 保持开放的收敛过程。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“FDDP 在高动态跳跃中允许早期动力学 gap 保持开放的收敛过程。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“FDDP 在高动态跳跃中允许早期动力学 gap 保持开放的收敛过程。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.07,
+            0.96,
+            0.44
+          ],
+          "caption_anchor": "Fig. 2. Gaps contraction, step length, and convergence rates",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. Gaps contraction, step length, and convergence rates 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.312762,
+            0.842693,
+            0.321758
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.312762,
+            0.911767,
+            0.43497
+          ],
+          "page_text_sha256": "d7577d299bd2d62a80921efa8b60b1ff842ad1502f58e0276997a8db08a82831",
+          "extra_text_word_count": 57
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1723,
+      "sha256": "cc4c95dfba0fe4ebade20bbbeb0451ebe579c7adc8f2d26ca37af1c07ffd3da4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "dc301391a930caadc3f3ba0a0f87df003a691c319c37b58c6b41662e735214d7"
+      },
+      "review_fingerprint": "dc301391a930caadc3f3ba0a0f87df003a691c319c37b58c6b41662e735214d7"
+    },
+    {
+      "asset": "figure-3-5-runtime.jpg",
+      "source_url": "https://arxiv.org/pdf/1909.04947",
+      "source_locator": "Figure 3-5",
+      "caption_zh": "高动态动作快照与不同 CPU、线程数、动作的单次迭代频率。",
+      "selection_reason_zh": "选择 Figure 3-5，因为它直接展示“高动态动作快照与不同 CPU、线程数、动作的单次迭代频率。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“高动态动作快照与不同 CPU、线程数、动作的单次迭代频率。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.04,
+            0.05,
+            0.96,
+            0.41
+          ],
+          "caption_anchor": "Fig. 3. Snapshots of generated highly-dynamic maneuvers",
+          "visual_review_note": "全分辨率目视确认 Fig. 3. Snapshots of generated highly-dynamic maneuvers 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.088235,
+            0.385769,
+            0.416963,
+            0.394766
+          ],
+          "caption_block_bbox": [
+            0.088235,
+            0.385769,
+            0.91176,
+            0.406087
+          ],
+          "page_text_sha256": "555e4534614d46dd4d103984cb3e6079d62692c0f156befce22a2d91a98b75f4",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.5,
+            0.41,
+            0.96,
+            0.58
+          ],
+          "caption_anchor": "Fig. 5. Computation frequency per iteration",
+          "visual_review_note": "全分辨率目视确认 Fig. 5. Computation frequency per iteration 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.511765,
+            0.515779,
+            0.768423,
+            0.524776
+          ],
+          "caption_block_bbox": [
+            0.511765,
+            0.515779,
+            0.911767,
+            0.558739
+          ],
+          "page_text_sha256": "555e4534614d46dd4d103984cb3e6079d62692c0f156befce22a2d91a98b75f4",
+          "extra_text_word_count": 21
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1661,
+      "sha256": "f386b400dc4b23cfe0a27201da3ae8f00fc9dc8bf676bb66d4e8df1a11a89ea8",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "3c84e479b5732afcf50bcdc1475b29ca9839095d600895676c16505c7ed45680"
+      },
+      "review_fingerprint": "3c84e479b5732afcf50bcdc1475b29ca9839095d600895676c16505c7ed45680"
+    }
+  ]
+}

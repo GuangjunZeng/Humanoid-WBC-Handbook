@@ -1,0 +1,23 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://arxiv.org/abs/2506.12851",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "7923130fa60005719fb75aabcce763686c6010515e1a6abbe93fd2dd8c06490c",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2506.12851",
+    "full_paper_reviewed": true,
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 28
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.kungfubot.2506.12851",
+  "summary": "KungfuBot combines motion correction, adaptive tracking, and sim-to-real deployment for several high-dynamic humanoid skills, with uneven quantitative hardware evidence.",
+  "title": "KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills",
+  "version": "arXiv:2506.12851"
+}

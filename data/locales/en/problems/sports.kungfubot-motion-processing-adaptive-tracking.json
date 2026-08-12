@@ -1,0 +1,23 @@
+{
+  "kind": "claim",
+  "problem_id": "sports.kungfubot-motion-processing-adaptive-tracking",
+  "schema_version": 1,
+  "source_fingerprint": "05e5fb8be6c1a7cb2d86c778a8326c9252070fa60efbb74c1ba2bdc848f71172",
+  "translations": {
+    "answer": "KungfuBot demonstrates an open high-dynamic skill pipeline from motion-feasibility correction through adaptive tracking to G1 deployment. Each motion uses a separately trained policy, the system has no environment awareness, and most skills other than Tai Chi lack equally extensive repeated quantitative hardware evaluation.",
+    "applicability.assumptions.0": "Raw human motion has been corrected for dynamic feasibility and adapted to the robot morphology.",
+    "applicability.assumptions.1": "Each skill policy has been trained independently and tuned through staged hardware-safety tests.",
+    "applicability.controllers.0": "PBHC motion processing and adaptive tracking policy",
+    "applicability.environments.0": "Predefined high-dynamic skills such as Tai Chi, boxing, and kicking",
+    "applicability.robots.0": "Unitree G1",
+    "applicability.simulators.0": "Isaac Gym and physical-hardware deployment",
+    "confidence_rationale": "The paper, supplement, and official PBHC code expose the full pipeline. Repeated quantitative hardware tests concentrate on Tai Chi, while other skills are mostly qualitative demonstrations and the system lacks environment perception.",
+    "evidence.0.locator": "Sections 3-5, Figures 2-9, Tables 1-4, and the appendix",
+    "evidence.0.note": "Describes motion correction, adaptive sigma, tracking rewards, ablations, and hardware-skill results.",
+    "evidence.0.title": "KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills",
+    "terms.0": "Simulation-to-Real (Sim2Real, 仿真到现实)",
+    "terms.1": "Motion Tracking (动作跟踪)",
+    "terms.2": "Dynamics (动力学)",
+    "title": "Does KungfuBot provide one unified policy that autonomously selects and reliably performs every martial-arts skill in an unknown environment?"
+  }
+}

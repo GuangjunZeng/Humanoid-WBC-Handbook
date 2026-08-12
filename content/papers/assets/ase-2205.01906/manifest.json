@@ -1,0 +1,270 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2205.01906",
+  "source_pdf": "https://arxiv.org/pdf/2205.01906",
+  "source_pdf_sha256": "e4151dfddd0f79ef496092b58c10ef67b519e9a5be3b4d5b2067c575124050c7",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "source_locator": "Figure 2",
+      "caption_zh": "对抗式动作分布匹配、技能互信息预训练和高层任务迁移两阶段框架。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“对抗式动作分布匹配、技能互信息预训练和高层任务迁移两阶段框架。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“对抗式动作分布匹配、技能互信息预训练和高层任务迁移两阶段框架。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.04,
+            0.21,
+            0.5,
+            0.63
+          ],
+          "caption_anchor": "Fig. 2. The ASE framework consists of two stages",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. The ASE framework consists of two stages 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.512747,
+            0.346819,
+            0.525829
+          ],
+          "caption_block_bbox": [
+            0.08452,
+            0.512747,
+            0.482473,
+            0.626462
+          ],
+          "page_text_sha256": "6ad01447f4fb5902b548d757b36226e0c777eaf72a29666b060c72589bf02056",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1948,
+      "sha256": "d8464cd7d57d358c45ad5d5a04dec23cdc47f8be263c93f0e22d8d1453fa6c6c",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "0efac2a04e1b30e748ffa74ca91952a7f8aeebc5c1e21e2e1b6abb7d9cac9173"
+      },
+      "review_fingerprint": "0efac2a04e1b30e748ffa74ca91952a7f8aeebc5c1e21e2e1b6abb7d9cac9173"
+    },
+    {
+      "asset": "figure-5-architecture.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "source_locator": "Figure 4-5",
+      "caption_zh": "37-DoF 持剑盾角色以及策略、判别器和 von Mises-Fisher encoder 网络。",
+      "selection_reason_zh": "选择 Figure 4-5，因为它直接展示“37-DoF 持剑盾角色以及策略、判别器和 von Mises-Fisher encoder 网络。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“37-DoF 持剑盾角色以及策略、判别器和 von Mises-Fisher encoder 网络。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.04,
+            0.07,
+            0.49,
+            0.31
+          ],
+          "caption_anchor": "Fig. 4. Our framework is used to learn skill embeddings",
+          "visual_review_note": "全分辨率目视确认 Fig. 4. Our framework is used to learn skill embeddings 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.269495,
+            0.377807,
+            0.282578
+          ],
+          "caption_block_bbox": [
+            0.08465,
+            0.269495,
+            0.482639,
+            0.295157
+          ],
+          "page_text_sha256": "84ab8994bfa4006917aae435bc27290cccf7973f015652ca0c7e98fb9920afed",
+          "extra_text_word_count": 19
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.51,
+            0.07,
+            0.96,
+            0.35
+          ],
+          "caption_anchor": "Fig. 5. Network architectures",
+          "visual_review_note": "全分辨率目视确认 Fig. 5. Network architectures 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.519534,
+            0.288275,
+            0.681713,
+            0.301357
+          ],
+          "caption_block_bbox": [
+            0.519534,
+            0.288275,
+            0.917523,
+            0.339094
+          ],
+          "page_text_sha256": "84ab8994bfa4006917aae435bc27290cccf7973f015652ca0c7e98fb9920afed",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2479,
+      "sha256": "5a0be910f07c04edebdc17d2af7cf806c2643cf2494d98a537bdf5025788c4a7",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "59f3e5846a47468b7d9c49a0cd6c882f9e653f17d4c9c5dcc607ba4eda48ce84"
+      },
+      "review_fingerprint": "59f3e5846a47468b7d9c49a0cd6c882f9e653f17d4c9c5dcc607ba4eda48ce84"
+    },
+    {
+      "asset": "table-1-transitions.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "source_locator": "Table 1 / Figure 9-11",
+      "caption_zh": "技能发现/多样性消融的任务回报、数据覆盖和跨技能转移。",
+      "selection_reason_zh": "选择 Table 1 / Figure 9-11，因为它直接展示“技能发现/多样性消融的任务回报、数据覆盖和跨技能转移。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“技能发现/多样性消融的任务回报、数据覆盖和跨技能转移。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.51,
+            0.07,
+            0.96,
+            0.36
+          ],
+          "caption_anchor": "Table 1. Performance of the different skill models",
+          "visual_review_note": "全分辨率目视确认 Table 1. Performance of the different skill models 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.519183,
+            0.09862,
+            0.783926,
+            0.111703
+          ],
+          "caption_block_bbox": [
+            0.519065,
+            0.09862,
+            0.916782,
+            0.174598
+          ],
+          "page_text_sha256": "ca10447949f7da6ffc61571c9a63d5cdbb2bed30118cb6bf8db44cd6fff3188c",
+          "extra_text_word_count": 111
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.04,
+            0.34,
+            0.49,
+            0.47
+          ],
+          "caption_anchor": "Fig. 11. Learning curves",
+          "visual_review_note": "全分辨率目视确认 Fig. 11. Learning curves 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.355046,
+            0.20966,
+            0.368128
+          ],
+          "caption_block_bbox": [
+            0.084181,
+            0.355046,
+            0.480469,
+            0.456181
+          ],
+          "page_text_sha256": "ca10447949f7da6ffc61571c9a63d5cdbb2bed30118cb6bf8db44cd6fff3188c",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2017,
+      "sha256": "f25f5b0d3d4120437848833091b686409f744a830aa996df420806945b7741a4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "0f05c09623187116e1664574d4f9c2fc07252202da11fbdb2521437924b41e47"
+      },
+      "review_fingerprint": "0f05c09623187116e1664574d4f9c2fc07252202da11fbdb2521437924b41e47"
+    },
+    {
+      "asset": "figure-13-14-recovery.jpg",
+      "source_url": "https://arxiv.org/pdf/2205.01906",
+      "source_locator": "Figure 13-14",
+      "caption_zh": "500 次仿真扰动后的起身序列与恢复时间分布。",
+      "selection_reason_zh": "选择 Figure 13-14，因为它直接展示“500 次仿真扰动后的起身序列与恢复时间分布。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“500 次仿真扰动后的起身序列与恢复时间分布。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 13,
+          "crop": [
+            0.04,
+            0.36,
+            0.49,
+            0.56
+          ],
+          "caption_anchor": "Fig. 13. The low-level policy can consistently recover",
+          "visual_review_note": "全分辨率目视确认 Fig. 13. The low-level policy can consistently recover 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.08465,
+            0.515074,
+            0.382267,
+            0.528156
+          ],
+          "caption_block_bbox": [
+            0.08465,
+            0.515074,
+            0.480699,
+            0.553314
+          ],
+          "page_text_sha256": "ae9abc41de54634bef562a48469fb5533f1080f1fc78a42d93a57cda8817ed45",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 13,
+          "crop": [
+            0.51,
+            0.36,
+            0.96,
+            0.54
+          ],
+          "caption_anchor": "Fig. 14. Time required",
+          "visual_review_note": "全分辨率目视确认 Fig. 14. Time required 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.519534,
+            0.476162,
+            0.640602,
+            0.489244
+          ],
+          "caption_block_bbox": [
+            0.519534,
+            0.476162,
+            0.915356,
+            0.526982
+          ],
+          "page_text_sha256": "ae9abc41de54634bef562a48469fb5533f1080f1fc78a42d93a57cda8817ed45",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1834,
+      "sha256": "a3a6b0e8719eda6764cda58c7a9d7e36267e712360d956898a9ac22baeaded0f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "241c4e84f76a998f3f87ed54be10de85718ac5e80ae90c0438489085034e0f36"
+      },
+      "review_fingerprint": "241c4e84f76a998f3f87ed54be10de85718ac5e80ae90c0438489085034e0f36"
+    }
+  ]
+}

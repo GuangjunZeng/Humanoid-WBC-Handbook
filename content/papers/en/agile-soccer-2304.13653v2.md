@@ -17,8 +17,12 @@ Separate soccer and key-pose get-up policies become teachers. A unified student 
 The final controller is one policy; teacher routing is a training signal, not a runtime skill switch.
 ![Table 1: hardware skill benchmarks](../assets/agile-soccer-2304.13653/table-1-hardware.jpg)
 The table reports explicit scripted baselines and a 29/50 real versus 35/50 simulated set-piece result, preserving the transfer gap.
+![Figure 5: controlled set-piece behavior analysis](../assets/agile-soccer-2304.13653/figure-5-behavior.jpg)
+The side-by-side simulated and real trajectories show get-up-and-shoot, interception, obstacle avoidance, adaptive footwork, and turn-and-kick behaviors; selected trajectories do not replace the full trial denominator.
 ![Figure 7: curriculum ablations](../assets/agile-soccer-2304.13653/figure-7-ablation.jpg)
 Without skill priors, sparse-reward policies exhibit lying or accidental ball-pushing behavior.
+![Figure S3 and Table S5: learning curves and compute](../assets/agile-soccer-2304.13653/figure-s3-table-s5-compute.jpg)
+The get-up and soccer curves are paired with environment steps, simulated days, and wall-clock hours. These costs depend on the paper's distributed setup and are not hardware-independent training-time guarantees.
 
 ## Decisive evidence
 Behavior-level hardware benchmarks and fixed-count set pieces are stronger than highlight matches. The failure of direct current-control transfer is also important: a theoretically direct action interface was less robust than the identified position-control path on this platform.

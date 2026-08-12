@@ -28,7 +28,7 @@ class PaperLocalizationTests(unittest.TestCase):
 
     def test_all_representative_papers_have_current_english_pages(self):
         report = render_paper_translations(PROJECT_ROOT, check=True)
-        self.assertEqual(report["papers"], 25)
+        self.assertEqual(report["papers"], 38)
         self.assertEqual(report["stale"], [])
 
     def test_english_pages_have_required_structure_and_bilingual_links(self):
@@ -42,7 +42,8 @@ class PaperLocalizationTests(unittest.TestCase):
             self.assertIn(f"[中文版](../{source_path.name})", target)
             for heading in REQUIRED_HEADINGS:
                 self.assertIn(f"## {heading}", target)
-            self.assertEqual(target.count("!["), 3)
+            self.assertGreaterEqual(target.count("!["), 3)
+            self.assertLessEqual(target.count("!["), 5)
             self.assertIn(paper["paper_id"], translations)
 
             slug = self.slugs[paper["paper_id"]]

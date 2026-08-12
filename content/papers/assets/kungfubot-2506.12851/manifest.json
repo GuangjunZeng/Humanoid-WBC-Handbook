@@ -1,0 +1,291 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2506.12851",
+  "source_pdf": "https://arxiv.org/pdf/2506.12851",
+  "source_pdf_sha256": "7923130fa60005719fb75aabcce763686c6010515e1a6abbe93fd2dd8c06490c",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "source_locator": "Figure 1",
+      "caption_zh": "视频动作提取、物理过滤、接触修正、IK 重定向与自适应跟踪全流程。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“视频动作提取、物理过滤、接触修正、IK 重定向与自适应跟踪全流程。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“视频动作提取、物理过滤、接触修正、IK 重定向与自适应跟踪全流程。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.07,
+            0.07,
+            0.93,
+            0.43
+          ],
+          "caption_anchor": "Figure 1: An overview of PBHC",
+          "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.385547,
+            0.393456,
+            0.396793
+          ],
+          "caption_block_bbox": [
+            0.176064,
+            0.385547,
+            0.823525,
+            0.424341
+          ],
+          "page_text_sha256": "7c9ef61efc21b18ada3369d60a1439d7737ed5ad31c57221d0a27e71306d8e5c",
+          "extra_text_word_count": 65
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 924,
+      "sha256": "e107a6507bcca73ecb7d15d9f128bff4d8e734824f626def60393776de0bf08c",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "bd612e418f69b59f3705c7675255aabf854f28a654535c29f3b5680c0bc60a21"
+      },
+      "review_fingerprint": "bd612e418f69b59f3705c7675255aabf854f28a654535c29f3b5680c0bc60a21"
+    },
+    {
+      "asset": "figure-3-4-adaptive.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "source_locator": "Figure 3-4",
+      "caption_zh": "跟踪误差 EMA 驱动容差因子单调收紧的闭环及拳击手部误差演化。",
+      "selection_reason_zh": "选择 Figure 3-4，因为它直接展示“跟踪误差 EMA 驱动容差因子单调收紧的闭环及拳击手部误差演化。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“跟踪误差 EMA 驱动容差因子单调收紧的闭环及拳击手部误差演化。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.07,
+            0.3,
+            0.49,
+            0.62
+          ],
+          "caption_anchor": "Figure 3: Closed-loop adjustment",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.588833,
+            0.402804,
+            0.600078
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.588833,
+            0.480596,
+            0.613852
+          ],
+          "page_text_sha256": "93cce856399792c5a1c22c1d60e578dd8b0d5aa196a968d7e8403b2d2b22ebd4",
+          "extra_text_word_count": 42
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.51,
+            0.3,
+            0.93,
+            0.65
+          ],
+          "caption_anchor": "Figure 4: Example of the right hand",
+          "visual_review_note": "全分辨率目视确认 Figure 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.519412,
+            0.588833,
+            0.753171,
+            0.600078
+          ],
+          "caption_block_bbox": [
+            0.519412,
+            0.588631,
+            0.826376,
+            0.642772
+          ],
+          "page_text_sha256": "93cce856399792c5a1c22c1d60e578dd8b0d5aa196a968d7e8403b2d2b22ebd4",
+          "extra_text_word_count": 96
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 3388,
+      "sha256": "2237025ea7d053f4b2fdc6128692adab5d9f12a0e6daafb25190c5ce4612024a",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "299ba62d070ff8dca8fcab0cb50b7518f9a50b5c30e22df4055ca1328bc42b40"
+      },
+      "review_fingerprint": "299ba62d070ff8dca8fcab0cb50b7518f9a50b5c30e22df4055ca1328bc42b40"
+    },
+    {
+      "asset": "table-1-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "source_locator": "Table 1",
+      "caption_zh": "按动作难度比较 PBHC、OmniH2O、ExBody2 和 oracle 基线的六项误差。",
+      "selection_reason_zh": "选择 Table 1，因为它直接展示“按动作难度比较 PBHC、OmniH2O、ExBody2 和 oracle 基线的六项误差。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“按动作难度比较 PBHC、OmniH2O、ExBody2 和 oracle 基线的六项误差。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.07,
+            0.05,
+            0.93,
+            0.46
+          ],
+          "caption_anchor": "Table 1: Main results",
+          "visual_review_note": "全分辨率目视确认 Table 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.175966,
+            0.09091,
+            0.323445,
+            0.102155
+          ],
+          "caption_block_bbox": [
+            0.175966,
+            0.09091,
+            0.824099,
+            0.157251
+          ],
+          "page_text_sha256": "53e1270d715a316376a2c5827b49dd3069c01b55b88f38f1a15debe362d0d96d",
+          "extra_text_word_count": 220
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1043,
+      "sha256": "6724d4696b05beb100aca0fd4f612dac7f2b5ae0163c0504e8406431d24b548e",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "fe3587bd5efa88fd6fd5121e93d918b36a62ec84c42166ec666e5be38fa0f4f9"
+      },
+      "review_fingerprint": "fe3587bd5efa88fd6fd5121e93d918b36a62ec84c42166ec666e5be38fa0f4f9"
+    },
+    {
+      "asset": "figure-8-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "source_locator": "Figure 7-8",
+      "caption_zh": "固定/自适应跟踪因子消融与 G1 高动态真机动作序列。",
+      "selection_reason_zh": "选择 Figure 7-8，因为它直接展示“固定/自适应跟踪因子消融与 G1 高动态真机动作序列。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“固定/自适应跟踪因子消融与 G1 高动态真机动作序列。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.07,
+            0.34,
+            0.93,
+            0.68
+          ],
+          "caption_anchor": "Figure 8: Our robot masters",
+          "visual_review_note": "全分辨率目视确认 Figure 8 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.199131,
+            0.635612,
+            0.380964,
+            0.646857
+          ],
+          "caption_block_bbox": [
+            0.199131,
+            0.635612,
+            0.800875,
+            0.646857
+          ],
+          "page_text_sha256": "f3173adf75e13314b0b5b17606880f48db356716711031c4d4246837e180e966",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 875,
+      "sha256": "bb6ef8078fb5118de9cef54e4634ca64ac4c0e357774a17ac80f219d66d9ee4d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "92de7f7baec4e7f048997a760ff925b889d3062636853b96ed7c5d08a3a36e8a"
+      },
+      "review_fingerprint": "92de7f7baec4e7f048997a760ff925b889d3062636853b96ed7c5d08a3a36e8a"
+    },
+    {
+      "asset": "table-2-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2506.12851",
+      "source_locator": "Table 2 / Figure 9",
+      "caption_zh": "太极动作十次实机试验的仿真—现实误差及三类动作训练收敛曲线。",
+      "selection_reason_zh": "选择 Table 2 / Figure 9，因为它直接展示“太极动作十次实机试验的仿真—现实误差及三类动作训练收敛曲线。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“太极动作十次实机试验的仿真—现实误差及三类动作训练收敛曲线。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 10,
+          "crop": [
+            0.07,
+            0.05,
+            0.93,
+            0.22
+          ],
+          "caption_anchor": "Table 2: Comparison of tracking performance",
+          "visual_review_note": "全分辨率目视确认 Table 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.175966,
+            0.09091,
+            0.481137,
+            0.102155
+          ],
+          "caption_block_bbox": [
+            0.175966,
+            0.09091,
+            0.823535,
+            0.115929
+          ],
+          "page_text_sha256": "6712fd5cde81a88cde841e9700e6866ead13e927bf5dc6fa0f072318a7d5d0ae",
+          "extra_text_word_count": 36
+        },
+        {
+          "pdf_page": 10,
+          "crop": [
+            0.07,
+            0.45,
+            0.93,
+            0.57
+          ],
+          "caption_anchor": "Figure 9: Mean episodic length",
+          "visual_review_note": "全分辨率目视确认 Figure 9 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.523311,
+            0.237475,
+            0.534557
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.523311,
+            0.823525,
+            0.548332
+          ],
+          "page_text_sha256": "6712fd5cde81a88cde841e9700e6866ead13e927bf5dc6fa0f072318a7d5d0ae",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 782,
+      "sha256": "f51233b06737d6ed5d51c74cb35413cea26795a645d6f451515881a7900c192e",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "43a87637bc3d8817d6ecbb885b41a7c79be884a65afb20a42750e065f007c69b"
+      },
+      "review_fingerprint": "43a87637bc3d8817d6ecbb885b41a7c79be884a65afb20a42750e065f007c69b"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2512.01996",
+  "source_pdf": "https://arxiv.org/pdf/2512.01996",
+  "source_pdf_sha256": "9c8bcf509b6973af2a42c7f8ab4dd3adb53ca876bf76ffec7441316b7f467114",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-summary.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "source_locator": "Figure 1",
+      "caption_zh": "FastSAC/FastTD3 在 G1、T1 行走和全身动作跟踪上的训练时间与实机概览。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“FastSAC/FastTD3 在 G1、T1 行走和全身动作跟踪上的训练时间与实机概览。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“FastSAC/FastTD3 在 G1、T1 行走和全身动作跟踪上的训练时间与实机概览。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.09,
+            0.47,
+            0.91,
+            0.91
+          ],
+          "caption_anchor": "Figure 1: Summary of results",
+          "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.792228,
+            0.377715,
+            0.803625
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.792228,
+            0.825558,
+            0.90173
+          ],
+          "page_text_sha256": "ec10bb85f3f1fb48b14756f8f7862e8ac2c0658694301ea93d1e0fbd54454d6c",
+          "extra_text_word_count": 81
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1167,
+      "sha256": "d012754ab489e16d5931414bb5895490007fc6cb2caf3c285bc8a15bbb1b1813",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "2f4726dad9ebb80ca5918d032a8c5b1df4e718ad6b3166deb8d59b02a8995944"
+      },
+      "review_fingerprint": "2f4726dad9ebb80ca5918d032a8c5b1df4e718ad6b3166deb8d59b02a8995944"
+    },
+    {
+      "asset": "figure-2-recipe-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "source_locator": "Figure 2",
+      "caption_zh": "平均双 Q、更新次数、LayerNorm、折扣与熵目标等离策略配方消融。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“平均双 Q、更新次数、LayerNorm、折扣与熵目标等离策略配方消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“平均双 Q、更新次数、LayerNorm、折扣与熵目标等离策略配方消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.09,
+            0.07,
+            0.91,
+            0.47
+          ],
+          "caption_anchor": "Figure 2: FastSAC Analyses",
+          "visual_review_note": "全分辨率目视确认 Figure 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.398678,
+            0.372184,
+            0.410074
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.398678,
+            0.823803,
+            0.46517
+          ],
+          "page_text_sha256": "e4c20b548471911a2a9ee15d8ba180bdf40847f938d56d53407a04f6cc36aad9",
+          "extra_text_word_count": 150
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1066,
+      "sha256": "fe795ad73fffdf2834fa8575952a99958f0e55b70db4ea0c53f432ba69a0f4b1",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "d246e6f92d8910bf4cdcb02c008d6814b2f80089b012d5b0ccdea5063bdcd23a"
+      },
+      "review_fingerprint": "d246e6f92d8910bf4cdcb02c008d6814b2f80089b012d5b0ccdea5063bdcd23a"
+    },
+    {
+      "asset": "figure-3-locomotion.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "source_locator": "Figure 3",
+      "caption_zh": "单张 RTX 4090 上 G1/T1 速度跟踪的墙钟训练曲线与 PPO 对照。",
+      "selection_reason_zh": "选择 Figure 3，因为它直接展示“单张 RTX 4090 上 G1/T1 速度跟踪的墙钟训练曲线与 PPO 对照。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“单张 RTX 4090 上 G1/T1 速度跟踪的墙钟训练曲线与 PPO 对照。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.07,
+            0.06,
+            0.93,
+            0.43
+          ],
+          "caption_anchor": "Figure 3: Locomotion",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.35067,
+            0.327802,
+            0.362067
+          ],
+          "caption_block_bbox": [
+            0.17525,
+            0.35067,
+            0.82393,
+            0.417164
+          ],
+          "page_text_sha256": "6c76f1df40c1d8016a9e3a88e080a9d85e71da476edc9face2a6fbca5c8df9c2",
+          "extra_text_word_count": 133
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 948,
+      "sha256": "65a514f5602897d3131ec3e46071153b43865df7870c44d31c83a4e6e5903410",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "320e1d92ea7350611f244a87d5b418484dd9338bfdbd1556a2e267282ce2efef"
+      },
+      "review_fingerprint": "320e1d92ea7350611f244a87d5b418484dd9338bfdbd1556a2e267282ce2efef"
+    },
+    {
+      "asset": "figure-5-6-tracking.jpg",
+      "source_url": "https://arxiv.org/pdf/2512.01996",
+      "source_locator": "Figure 5-6",
+      "caption_zh": "多 GPU 全身跟踪曲线与舞蹈、拳击、抗推的仿真到实机展示。",
+      "selection_reason_zh": "选择 Figure 5-6，因为它直接展示“多 GPU 全身跟踪曲线与舞蹈、拳击、抗推的仿真到实机展示。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“多 GPU 全身跟踪曲线与舞蹈、拳击、抗推的仿真到实机展示。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.05,
+            0.06,
+            0.95,
+            0.33
+          ],
+          "caption_anchor": "Figure 5: Whole-body tracking results",
+          "visual_review_note": "全分辨率目视确认 Figure 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.277764,
+            0.448998,
+            0.28916
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.277764,
+            0.823807,
+            0.316708
+          ],
+          "page_text_sha256": "792a3e303f6b381fa4e5b6fb4356f48c166345302fea1b2fecbf1959a8c92863",
+          "extra_text_word_count": 48
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.05,
+            0.05,
+            0.95,
+            0.36
+          ],
+          "caption_anchor": "Figure 6: Whole-body tracking examples",
+          "visual_review_note": "全分辨率目视确认 Figure 6 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.314731,
+            0.464644,
+            0.326127
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.314731,
+            0.826239,
+            0.353751
+          ],
+          "page_text_sha256": "275e092e94448b623693de0c690afeee76f237a7f966ad1ccfdbe58c61ef903a",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1419,
+      "sha256": "a5f5c29df12a2ed431c5035b239064329e8df72254f440c958d7051b17e21d29",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "48f520c65872baf734b4de2aa04f61d093fafa4cfbc2b7c4156db05862091d91"
+      },
+      "review_fingerprint": "48f520c65872baf734b4de2aa04f61d093fafa4cfbc2b7c4156db05862091d91"
+    }
+  ]
+}

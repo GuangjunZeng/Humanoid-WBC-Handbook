@@ -1,0 +1,19 @@
+{
+  "source_id": "code.leggedrobotics.legged-gym.8fa29ac",
+  "kind": "source_code",
+  "title": "leggedrobotics/legged_gym official implementation",
+  "canonical_url": "https://github.com/leggedrobotics/legged_gym/tree/8fa29acc6fd1910c3d9659eef6310bdd301cde0a",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "version": "8fa29acc6fd1910c3d9659eef6310bdd301cde0a",
+  "summary": "Official BSD-3-Clause environment framework exposing vectorized step timing, PD and actuator-network torque paths, reward binding, terrain and command curricula, randomization, termination, task registration, and policy export. Inspected only, not vendored.",
+  "access_mode": "public_api",
+  "authors": ["leggedrobotics/legged_gym contributors"],
+  "publisher": "ETH Zurich Robotic Systems Lab",
+  "license": "BSD-3-Clause with separate asset and dependency licenses",
+  "metadata": {
+    "repository": "leggedrobotics/legged_gym",
+    "commit": "8fa29acc6fd1910c3d9659eef6310bdd301cde0a",
+    "mapped_symbols": ["LeggedRobot.step", "LeggedRobot.post_physics_step", "LeggedRobot._prepare_reward_function", "TaskRegistry", "export_policy_as_jit"],
+    "redistribution": "No code, actuator networks, robot models, configurations, or assets are copied."
+  }
+}

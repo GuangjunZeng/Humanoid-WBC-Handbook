@@ -1,6 +1,6 @@
 # Humanoid WBC 论文库
 
-本目录分成两层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文。当前快照收录 46 篇唯一作品，其中 25 篇深度解读、21 篇待深读。
+本目录分成两层：[`catalog.json`](catalog.json) 是经典论文、官方开源工作和板块缺口的覆盖目录；[`registry.json`](registry.json) 只包含已通过全文解读质量门的论文。当前快照收录 75 篇唯一作品，其中 38 篇深度解读、37 篇待深读。
 
 这个目录是可按需更新的领域地图，不声称永久穷尽所有论文。更新只在用户明确要求时执行，不定时、不订阅、不推送。
 
@@ -8,22 +8,22 @@
 
 | 板块 | 收录 | 深度解读 | 待深读 | 可核验官方代码 |
 |---|---:|---:|---:|---:|
-| [训练数据与动作重定向](domains/training-data-retargeting.md) | 7 | 4 | 3 | 6 |
-| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 11 | 5 | 6 | 9 |
-| [行走与复杂地形](domains/locomotion-terrain.md) | 9 | 4 | 5 | 6 |
-| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 6 | 4 | 2 | 4 |
-| [体育与高动态技能](domains/sports-athletic-skills.md) | 7 | 4 | 3 | 3 |
-| [动作生成与可命令行为](domains/motion-generation.md) | 11 | 5 | 6 | 11 |
-| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 9 | 5 | 4 | 5 |
+| [训练数据与动作重定向](domains/training-data-retargeting.md) | 16 | 7 | 9 | 15 |
+| [通用跟踪与全身遥操](domains/universal-tracking-teleoperation.md) | 22 | 8 | 14 | 20 |
+| [行走与复杂地形](domains/locomotion-terrain.md) | 20 | 8 | 12 | 17 |
+| [移动操作与末端 WBC](domains/loco-manipulation-wbc.md) | 15 | 5 | 10 | 12 |
+| [体育与高动态技能](domains/sports-athletic-skills.md) | 11 | 6 | 5 | 7 |
+| [动作生成与可命令行为](domains/motion-generation.md) | 19 | 10 | 9 | 19 |
+| [起身恢复、跌倒与受力安全](domains/recovery-safety-force.md) | 16 | 8 | 8 | 11 |
 
-同一篇论文可以属于多个 topic，所以板块行数之和大于 46；目录本身仍按 `paper_id` 与去版本的 arXiv 主键去重。
+同一篇论文可以属于多个 topic，所以板块行数之和大于 75；目录本身仍按 `paper_id` 与去版本的 arXiv 主键去重。
 
 ## 深度解读完成门
 
 - 阅读锁定版本的完整论文与相关附录，不以摘要代替全文；
 - 中文为主，关键术语使用“中文（English）”；长度服从证据，不为字数、段落、类比或“金句”配额补写空话；
 - 说清工程痛点、输入 → 处理 → 输出机制、最强实验、可执行但有边界的结论；
-- 嵌入至少 3 张从锁定 PDF 渲染的关键图/表，解释它们能与不能支持的结论；
+- 嵌入 3–5 张从锁定 PDF 渲染的关键图/表，解释它们能与不能支持的结论；
 - 每张图有源 PDF、页码、定位、中文图注和 SHA-256 清单，只用于分析原论文；
 - 官方实现映射到至少两个文件/函数/类，或明确写代码未公开或无法核验；
 - 作者明确局限与独立工程判断分开，实机结论包含 ODD、缺失保护与 sim-to-real 不确定性；

@@ -1,0 +1,22 @@
+{
+  "kind": "claim",
+  "problem_id": "training-data.phc-progressive-recovery-simulation-only",
+  "schema_version": 1,
+  "source_fingerprint": "9bc51850926fcb8dd63e2ca74f7dd5b6eb7645af7cd2571e0076e87a327e7199",
+  "translations": {
+    "answer": "PHC uses progressive capacity expansion to cover a large reference-motion collection and a dedicated recovery module to return fallen or diverged states to the tracking domain. It reports high coverage on simulated AMASS tests but no physical-robot experiment, so it is a strong scaling and recovery-training baseline rather than a validated perpetual hardware controller.",
+    "applicability.assumptions.0": "Reference motions have been converted to the simulated humanoid morphology and joint convention used by the paper.",
+    "applicability.assumptions.1": "Policy capacity, training samples, and failure-state coverage are comparable to the scale reported in the paper.",
+    "applicability.controllers.0": "PHC progressive motion-tracking and recovery policies",
+    "applicability.environments.0": "Physics-based tracking over large human-motion collections",
+    "applicability.robots.0": "The paper's simulated humanoid avatars; these are not direct evidence for a physical robot",
+    "applicability.simulators.0": "Isaac Gym",
+    "confidence_rationale": "The paper reports large-scale AMASS tests and recovery ablations, and the official code exposes the key implementation. All evidence is from simulated avatars, however, and cannot establish physical-humanoid deployment performance.",
+    "evidence.0.locator": "Sections 3-5, Tables 1-3, Figures 2-6, and the appendix",
+    "evidence.0.note": "Defines progressive multiplicative control, failure-state recovery, and large-scale motion evaluation, including training cost and simulation results.",
+    "evidence.0.title": "Perpetual Humanoid Control for Real-time Simulated Avatars",
+    "terms.0": "Inertial Measurement Unit (IMU, 惯性测量单元)",
+    "terms.1": "Motion Tracking (动作跟踪)",
+    "title": "Has PHC proved that one policy can perpetually track tens of thousands of motions and recover automatically on a physical humanoid robot?"
+  }
+}

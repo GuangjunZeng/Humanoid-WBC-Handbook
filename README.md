@@ -45,7 +45,7 @@ The map is intentionally selective. The complete coverage catalogue—including 
 ---
 An original, offline-first toolkit for turning papers, code, issues, releases, official documentation, and authorized field notes into auditable answers to concrete humanoid whole-body-control questions.
 
-Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and a quality-gated deep-read corpus. The current snapshot contains 46 unique papers (25 complete Chinese deep reads and 21 queued classics/open-source works). All 25 deep reads have reviewed English pages; the README map highlights 24 of them across 26 technical routes. Content still requires qualified human technical and safety review before hardware use.
+Status: alpha implementation with a coverage catalog spanning seven WBC engineering domains and a quality-gated deep-read corpus. The current snapshot contains 75 unique papers (38 complete bilingual deep reads and 37 queued classics/open-source works). The README map remains a selective entry point with 24 representatives across 26 technical routes. Content still requires qualified human technical and safety review before hardware use.
 
 ## What makes an answer publishable
 

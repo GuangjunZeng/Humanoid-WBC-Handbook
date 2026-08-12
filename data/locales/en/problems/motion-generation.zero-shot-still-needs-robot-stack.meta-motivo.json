@@ -1,0 +1,24 @@
+{
+  "kind": "claim",
+  "problem_id": "motion-generation.zero-shot-still-needs-robot-stack.meta-motivo",
+  "schema_version": 1,
+  "source_fingerprint": "dd180d95f9502dbd579fecd9d85bc3f5fee2009b5c73a815afedcbe48f1c0cee",
+  "translations": {
+    "answer": "FB-CPR can infer reward, goal, and tracking tasks without policy retraining in a simulated SMPL humanoid, but robot use still requires morphology retargeting, dynamics tracking, constraint enforcement, and independent hardware validation.",
+    "applicability.assumptions.0": "Tasks can be expressed by rewards, goals, or reference states represented in the learned occupancy space.",
+    "applicability.assumptions.1": "Robot transfer adds morphology adaptation and a dynamics-feasible low-level controller.",
+    "applicability.controllers.0": "FB-CPR behavioral foundation model.",
+    "applicability.environments.0": "HumEnv reward, goal, and tracking tasks.",
+    "applicability.robots.0": "The paper evaluates only a simulated SMPL humanoid.",
+    "applicability.simulators.0": "MuJoCo and HumEnv.",
+    "confidence_rationale": "A broad benchmark and official implementation support unified zero-shot task inference in simulation; no robot hardware evidence supports direct WBC deployment.",
+    "evidence.0.locator": "Figure 2, Table 1, and Figures 3–4.",
+    "evidence.0.note": "Defines FB-CPR and evaluates reward, goal, and tracking inference with ablations and human preference.",
+    "evidence.0.title": "Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models",
+    "terms.0": "Whole-Body Control (全身控制, WBC)",
+    "terms.1": "Motion tracking (动作跟踪)",
+    "terms.2": "Motion retargeting (动作重定向)",
+    "terms.3": "Dynamics (动力学)",
+    "title": "Can zero-shot behavioral foundation-model control directly serve as a humanoid robot WBC?"
+  }
+}

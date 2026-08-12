@@ -1,0 +1,89 @@
+# PRIME: Joint Offline Estimation of Motion, Contact Force, and Inertial Parameters
+
+[中文版](../prime-2605.17681.md)
+
+Sources: [arXiv:2605.17681](https://arxiv.org/abs/2605.17681) · [pinned official code](https://github.com/well-robotics/PRIME/tree/b848ceecd451f4786ce39dcefa59e96dbaa369ba)
+
+Review scope: the full fourteen-page paper, appendix, and references, plus official differentiable Anitescu contact, inertial parameterization, contact-ID action model, and FDDP integration.
+
+> In one sentence: PRIME formulates noisy kinematics, joint torque, unknown contact force, and inertial parameters as a smooth-contact MAP/FDDP problem, producing physically consistent offline trajectories but taking about 400 seconds for fifteen seconds of G1 data.
+
+Key terms include physically consistent estimation (物理一致估计), maximum a posteriori estimation (MAP，最大后验估计), smooth Anitescu contact (平滑 Anitescu 接触), frictional impulse (摩擦冲量), inertial parameter identification (惯性参数识别), log-Cholesky parameterization (对数 Cholesky 参数化), implicit analytical derivatives (隐式解析导数), and observability (可观测性).
+
+## Engineering problem
+
+Robot logs often disagree internally. Motion capture or odometry may show feet sliding or penetrating the ground; differentiation amplifies noise; nominal URDF inertia may omit batteries, wiring, or payload. A WBC that trusts these fields can interpret model error as contact force or state error.
+
+Filters often fix the contact schedule before estimating state, while identification assumes state and force are known. PRIME asks for one trajectory that stays near measurements, obeys rigid-body and frictional contact, explains joint torque, and corrects inertia.
+
+The problem resembles synchronizing video, audio, and a musical score. Smoothing one channel alone may make it pretty while contradicting the others. Joint optimization seeks one explanation for all measurements and physics.
+
+## Method
+
+Rigid contact and Coulomb friction are nonsmooth. PRIME uses a smooth Anitescu formulation with a log-barrier Newton solve to obtain differentiable impulses from distance, velocity, and friction. Equations 15–20 define contact and recovered impulses. Finite smoothness allows small force at distance in exchange for stable gradients.
+
+Motion, contact, and inertia enter a MAP objective. Measurement residuals provide likelihood, trajectory and parameter terms provide priors, and contact dynamics enforce consistency. Log-Cholesky parameterization preserves physically valid mass and rotational inertia.
+
+Implicit derivatives come from contact-solver optimality conditions; Equations 33–34 give state and parameter sensitivities. FDDP/PFIE optimizes the long trajectory. No force sensor is required as input, but computation and model dependence make the method offline.
+
+### Input → processing → output
+
+Inputs are robot geometry and nominal inertia, sampled kinematics, and joint torque, potentially from motion capture or onboard estimation. At each step, a differentiable contact action model solves barrier impulses from signed distance, velocity, friction, and control, then propagates dynamics.
+
+The outer loss penalizes measurement mismatch, physical inconsistency, control, and parameter deviation. PFIE updates shooting trajectory, contact impulse or force, and log-Cholesky inertia. Planar contact geometry is still modeled, while point forces are inferred.
+
+Go2 uses about ten seconds and 1,000 samples at 0.01 seconds, solved in roughly 200 seconds. G1 uses fifteen seconds and 1,500 samples, solved in roughly 400 seconds. This is log refinement and calibration, not a high-rate WBC estimator.
+
+Outputs include consistent state trajectories, contact impulse or force, and identified inertia. They can label training data and update models. Online use should consume validated parameters or a learned lightweight estimator rather than running PRIME inside the control period.
+
+## Key figures
+
+![Figure 1: PRIME overview](../assets/prime-2605.17681/figure-1-overview.jpg)
+
+Figure 1 maps kinematics and torque to trajectory, force, and inertia through batch optimization. The force plate is experimental ground truth, not required algorithm input.
+
+![Figures 3–4: Go2 and G1 reconstruction](../assets/prime-2605.17681/figure-3-4-reconstruction.jpg)
+
+Figures 3–4 compare raw kinematics with contact-consistent reconstruction, including heel-to-toe transitions in G1 dance. Visual plausibility must be read with measurement residual and force error so regularization does not simply beautify motion.
+
+![Tables I–III: inertia and G1 force plate](../assets/prime-2605.17681/table-1-3-identification.jpg)
+
+G1 nominal mass is 35.115 kg while scale measurement is 38.029 kg, a 2.914 kg difference; PRIME estimates about 3.4 kg extra. With identification, force RMSE is 24.486 N and FIE cost 1.016×10³, versus 26.141 N and 1.880×10³ without identification. Force improvement is modest, while overall physical cost improves substantially.
+
+![Figures 10–12 and Table VI: contact baseline and smoothness](../assets/prime-2605.17681/figure-10-12-contact-analysis.jpg)
+
+A fixed-contact baseline has 73.103 N force RMSE and 52.693% relative error, versus PRIME at 19.833 N and 10.494%. Smoothness `κ` trades compliant force-at-distance against difficult optimization; about 500 is an experiment-specific compromise, not a universal constant.
+
+## Decisive evidence
+
+The strongest evidence combines G1 force-plate validation, inertia identification, and a fixed-contact baseline. Force sensors are not estimation inputs but provide an external check, and identification reduces the physical objective.
+
+True G1 inertia is unavailable; a scale validates total mass, not each inertia axis. The authors explicitly identify observability and identifiability under limited sensing as future work. Results depend on whether the motion excites the parameters.
+
+## Paper-to-implementation mapping
+
+At commit `b848ceecd451f4786ce39dcefa59e96dbaa369ba`, `include/crocoddyl/contact_id/anitescu/DifferentiableAnitescuSimulator.hpp::solveBarrierNewton` and its sensitivity path implement smooth contact and implicit derivatives. `include/crocoddyl/contact_id/anitescu/Logchol.hpp` implements valid inertial parameterization.
+
+`include/crocoddyl/contact_id/actions/contact-fwddyn-anitescu-id.hxx` and `src/contact_id/problem/contact-anitescu-id.cpp` construct the contact-ID action problem, while `src/core/solvers/fddp.cpp` integrates the outer solver. Pin dependencies, robot model, contact points, coordinates, and covariance.
+
+## Limits and evidence boundary
+
+The authors explicitly call for observability and identifiability analysis under limited sensing. Runtime is about twenty to twenty-seven times data duration, unmodeled G1 fingers contribute torque mismatch, and full hardware inertia truth is unavailable.
+
+Independent limitations include force-at-distance from smoothing, strong dependence on covariance and priors, contact-geometry errors absorbed by inertia or force, time offset mistaken for parameter error, and multiple parameter sets explaining insufficiently exciting motion. Multi-start variance or sensitivity should accompany point estimates.
+
+PRIME output is not an online safety state. Offline smoothing uses future information, and inferred force is not validated across every regime. Parameter updates require change bounds, cross-validation motions, versioning, and rollback.
+
+## Bounded engineering takeaway
+
+PRIME can transform logs into contact- and force-consistent training data and diagnose nominal inertia or payload error. It distinguishes visual smoothness from a trajectory dynamics can explain.
+
+It is not a real-time estimator and cannot guarantee all parameters are identifiable. Use it offline across multiple motions, preserve uncertainty and raw logs, and feed only stable validated parameters or labels into online systems.
+
+## Reproduction checklist
+
+Pin PDF, commit, model, contact points, friction, coordinates, sample rate, synchronization, noise, and priors. First inject known mass, COM, inertia, kinematic noise, and contact-timing errors in synthetic data and measure recovery.
+
+For hardware, preserve raw logs, reconstructed trajectories, force-plate comparisons, and parameter versions. Report state residual, force RMSE, FIE cost, mass error, runtime, and multi-start variance, using held-out motions for validation.
+
+Sweep `κ`, friction, covariance, and prior; inspect force-at-distance, penetration, convergence, and parameter drift. Any model update must pass held-out WBC simulation before tethered low-risk hardware tests. A precise estimate from unexciting data may still be a well-formatted guess.

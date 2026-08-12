@@ -12,18 +12,27 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：7 篇，其中深度解读 4 篇，有可核验官方代码 6 篇。
+- 当前收录：16 篇，其中深度解读 7 篇，有可核验官方代码 15 篇。
 - 必要覆盖角色：领域锚点（field anchor）、开源实现（open source）、机器人数据质量（robot data quality）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
 |---|---|---:|---|---|---|
 | 深度解读 | [DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills](../deepmimic-1804.02717v3.md) | 2018 | 领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/xbpeng/DeepMimic) | 参考动作跟踪与任务目标联合训练的经典起点，对后续高动态动作学习影响深远。 |
 | 深度解读 | [AMASS: Archive of Motion Capture as Surface Shapes](../amass-1904.03278v1.md) | 2019 | 领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/nghorbani/amass) | 将多个人体动作库统一到 SMPL/SMPL-H 表示，是今日大规模人形跟踪的数据起点。 |
+| 深度解读 | [Perpetual Humanoid Control for Real-time Simulated Avatars](../phc-2305.06456.md) | 2023 | 领域锚点（field anchor）、开源实现（open source）、恢复（recovery） | [官方代码](https://github.com/ZhengyiLuo/PHC) | 用渐进容量分配扩展到万级动作，并把失败状态恢复纳入同一物理控制器。 |
+| 深度解读 | [World-Grounded Human Motion Recovery via Gravity-View Coordinates](../gvhmr-2409.06662.md) | 2024 | 机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/zju3dv/GVHMR) | 从单目视频恢复世界坐标中的人体运动与相机轨迹，为机器人重定向提供带重力和全局位移的一致输入。 |
 | 深度解读 | [Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking](../retargeting-matters-2510.02252v1.md) | 2025 | 机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/YanjieZe/GMR) | 用下游跟踪成功率直接检验重定向伪影，并提供通用开源实现。 |
 | 深度解读 | [Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations](../humi-2602.06643v2.md) | 2026 | 机器人数据质量（robot data quality）、稀疏命令（sparse command） | [公开计划，待核验](https://humanoid-manipulation-interface.github.io/) | 代表无机器人示教、人在环可行性反馈与分层全身跟踪的数据路线。 |
-| 待深读 | [Perpetual Humanoid Control for Real-time Simulated Avatars](https://arxiv.org/abs/2305.06456) | 2023 | 领域锚点（field anchor）、开源实现（open source）、恢复（recovery） | [官方代码](https://github.com/ZhengyiLuo/PHC) | 用渐进容量分配扩展到万级动作，并把失败状态恢复纳入同一物理控制器。 |
+| 深度解读 | [PRIME: Physically-consistent Robotic Inertial and Motion Estimation for Legged and Humanoid Robots](../prime-2605.17681.md) | 2026 | 机器人数据质量（robot data quality）、优化控制（optimization）、开源实现（open source） | [官方代码](https://github.com/well-robotics/PRIME) | 物理一致的惯性与运动估计直接关系到 WBC 状态反馈、落地冲击和恢复判断，补齐感知—控制接口。 |
+| 待深读 | [WHAM: Reconstructing World-grounded Humans with Accurate 3D Motion](https://arxiv.org/abs/2312.07531) | 2023 | 领域锚点（field anchor）、机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/yohanshin/WHAM) | 以世界坐标、人体动力学先验和视频运动线索恢复长序列，是视频动作资产进入重定向流水线的重要代表作。 |
+| 待深读 | [TRAM: Global Trajectory and Motion of 3D Humans from in-the-wild Videos](https://arxiv.org/abs/2403.17346) | 2024 | 机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/yufu-wang/tram) | 联合相机运动估计与人体重建，补足野外视频转机器人动作时最容易缺失的全局轨迹。 |
+| 待深读 | [OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction](https://arxiv.org/abs/2509.26633) | 2025 | 机器人数据质量（robot data quality）、任务交互（task interaction）、开源实现（open source） | [官方代码](https://github.com/amazon-far/holosoma) | 重定向时显式保持人与物、人与场景的交互约束，直接面向全身移动操作训练数据的可执行性。 |
 | 待深读 | [PHUMA: Physically-Grounded Humanoid Locomotion Dataset](https://arxiv.org/abs/2510.26236) | 2025 | 机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/DAVIAN-Robotics/PHUMA) | 把大规模人类视频动作转换为带关节、接触和脚滑约束的可跟踪人形数据。 |
 | 待深读 | [TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System](https://arxiv.org/abs/2511.02832) | 2025 | 稀疏命令（sparse command）、开源实现（open source）、机器人数据质量（robot data quality） | [官方代码](https://github.com/amazon-far/TWIST2) | 用便携 VR 和低成本机器人颈部取代昂贵 MoCap，面向可规模化数据采集。 |
+| 待深读 | [A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challenging Motion Dataset and Autonomous Fall-Resilient Tracking](https://arxiv.org/abs/2602.13656v1) | 2026 | 机器人数据质量（robot data quality）、任务交互（task interaction）、实机证据（hardware evidence）、恢复（recovery）、开源实现（open source） | [官方代码](https://github.com/NPCLEI/KungFuAthleteBot) | 把高动态动作数据、平衡挑战跟踪与自主跌倒恢复放在同一真机系统中，适合跨三个既有 topic 对照。 |
+| 待深读 | [GRAIL: Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors](https://arxiv.org/abs/2606.05160) | 2026 | 机器人数据质量（robot data quality）、任务交互（task interaction）、开源实现（open source） | [官方代码](https://github.com/NVlabs/GRAIL) | 结合三维资产与视频先验生成可交互全身动作，代表从互联网数据到仿真可训练轨迹的工程路线。 |
+| 待深读 | [HoloMotion-1 Technical Report](https://arxiv.org/abs/2605.15336) | 2026 | 多模式（multi-mode）、实机证据（hardware evidence）、机器人数据质量（robot data quality）、开源实现（open source） | [官方代码](https://github.com/HorizonRobotics/HoloMotion) | 以统一数据与控制栈连接动作资产、全身跟踪和可部署技能，适合作为大型开源系统的架构案例。 |
+| 待深读 | [Make Tracking Easy: Neural Motion Retargeting for Humanoid Whole-body Control](https://arxiv.org/abs/2603.22201) | 2026 | 机器人数据质量（robot data quality）、学习控制（learning）、开源实现（open source） | [官方代码](https://github.com/NJU3DV-HumanoidGroup/MakeTrackingEasy) | 把神经动作重定向与后续全身跟踪协同考虑，针对传统逐帧优化产生的难跟踪轨迹。 |
 
 更新不在后台定时运行。当用户明确要求更新该板块时，按 [论文库按需更新流程](../../../docs/on-demand-paper-update.md) 执行。
 <!-- END GENERATED PAPER CATALOG -->

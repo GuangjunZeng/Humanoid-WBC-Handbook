@@ -1,0 +1,338 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2605.17681",
+  "source_pdf": "https://arxiv.org/pdf/2605.17681",
+  "source_pdf_sha256": "bfd41a996b6858caa8cb1e7b4e50bdac593371f1154b12293fe82b1460334aaa",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-overview.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "source_locator": "Figure 1",
+      "caption_zh": "PRIME 从运动学测量和关节力矩联合恢复物理一致轨迹、接触力和惯性。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“PRIME 从运动学测量和关节力矩联合恢复物理一致轨迹、接触力和惯性。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“PRIME 从运动学测量和关节力矩联合恢复物理一致轨迹、接触力和惯性。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.5,
+            0.18,
+            0.96,
+            0.51
+          ],
+          "caption_anchor": "Fig. 1. Overview of PRIME",
+          "visual_review_note": "全分辨率目视确认 Fig. 1. Overview of PRIME 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.50976,
+            0.462743,
+            0.666779,
+            0.471739
+          ],
+          "caption_block_bbox": [
+            0.50976,
+            0.462743,
+            0.919986,
+            0.505703
+          ],
+          "page_text_sha256": "522b7d8b96feb9d2023a3f9104868f81bd7a4b6cf411518962b093d8b6cfa308",
+          "extra_text_word_count": 4
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1541,
+      "sha256": "949e195504b5fc05c7f883eb68a74a32b8d5e8a7c2d6692e46e2d7b05aaf7c56",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "8d77e2c6fece873942a5688b3d27409dd8c1d174e532d2fed0dba161b023eb8f"
+      },
+      "review_fingerprint": "8d77e2c6fece873942a5688b3d27409dd8c1d174e532d2fed0dba161b023eb8f"
+    },
+    {
+      "asset": "figure-3-4-reconstruction.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "source_locator": "Figure 3-4",
+      "caption_zh": "Go2 与 G1 上原始运动学和 PRIME 接触一致重建的对照。",
+      "selection_reason_zh": "选择 Figure 3-4，因为它直接展示“Go2 与 G1 上原始运动学和 PRIME 接触一致重建的对照。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“Go2 与 G1 上原始运动学和 PRIME 接触一致重建的对照。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.06,
+            0.96,
+            0.34
+          ],
+          "caption_anchor": "Fig. 3. Quadrupedal robot Go2 motion estimation",
+          "visual_review_note": "全分辨率目视确认 Fig. 3. Quadrupedal robot Go2 motion estimation 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.28917,
+            0.350513,
+            0.298166
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.28917,
+            0.919984,
+            0.332129
+          ],
+          "page_text_sha256": "9838255db283c86fd687451c5c5dea2471b2e972e1cec51a88e869cd4cb59777",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.33,
+            0.96,
+            0.69
+          ],
+          "caption_anchor": "Fig. 4. Humanoid G1 motion estimation experiment",
+          "visual_review_note": "全分辨率目视确认 Fig. 4. Humanoid G1 motion estimation experiment 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.641475,
+            0.380362,
+            0.650472
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.641475,
+            0.919984,
+            0.684435
+          ],
+          "page_text_sha256": "9838255db283c86fd687451c5c5dea2471b2e972e1cec51a88e869cd4cb59777",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1525,
+      "sha256": "f683a73debea1df4aadf023c9d1338013ccc54e955bf08631c14cb096c20efbc",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "7ecffec828dbc6cdd24009d6f841a274b2e4bdb5bbfbafb8b8d18dff3303a3fb"
+      },
+      "review_fingerprint": "7ecffec828dbc6cdd24009d6f841a274b2e4bdb5bbfbafb8b8d18dff3303a3fb"
+    },
+    {
+      "asset": "table-1-3-identification.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "source_locator": "Table I-III / Figure 6",
+      "caption_zh": "Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。",
+      "selection_reason_zh": "选择 Table I-III / Figure 6，因为它直接展示“Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "caption_anchor": "TABLE I",
+          "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.12,
+            0.06,
+            0.46,
+            0.1
+          ],
+          "caption_anchor_bbox": [
+            0.260291,
+            0.068081,
+            0.309935,
+            0.077078
+          ],
+          "caption_block_bbox": [
+            0.12,
+            0.06,
+            0.46,
+            0.1
+          ],
+          "page_text_sha256": "68b92b4575f24edd9b4ea803e613bc0997d0f55b54bc523b9d1a30a1460cf5df",
+          "extra_text_word_count": 61
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.04,
+            0.2,
+            0.49,
+            0.36
+          ],
+          "caption_anchor": "IDENTIFICATION OF TORSO INERTIA AND COM ON G1",
+          "visual_review_note": "全分辨率目视确认 TABLE II 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.12,
+            0.21,
+            0.46,
+            0.24
+          ],
+          "caption_anchor_bbox": [
+            0.131676,
+            0.226393,
+            0.438555,
+            0.23539
+          ],
+          "caption_block_bbox": [
+            0.12,
+            0.21,
+            0.46,
+            0.24
+          ],
+          "page_text_sha256": "68b92b4575f24edd9b4ea803e613bc0997d0f55b54bc523b9d1a30a1460cf5df",
+          "extra_text_word_count": 44
+        },
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.51,
+            0.05,
+            0.96,
+            0.19
+          ],
+          "caption_anchor": "TABLE III",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.685714,
+            0.068081,
+            0.744031,
+            0.077078
+          ],
+          "caption_block_bbox": [
+            0.548101,
+            0.068081,
+            0.881643,
+            0.0884
+          ],
+          "page_text_sha256": "68b92b4575f24edd9b4ea803e613bc0997d0f55b54bc523b9d1a30a1460cf5df",
+          "extra_text_word_count": 15
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2229,
+      "sha256": "5d00baabb0b3d84fb231dfa0a95f6d4fd9aa5e23b91573a0b10d5f7041b43b81",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "13cd65c9dfec3ebec694a67a63d93f274c7dd61402c5550c9480f72522872218"
+      },
+      "review_fingerprint": "13cd65c9dfec3ebec694a67a63d93f274c7dd61402c5550c9480f72522872218"
+    },
+    {
+      "asset": "figure-10-12-contact-analysis.jpg",
+      "source_url": "https://arxiv.org/pdf/2605.17681",
+      "source_locator": "Figure 10-12 / Table VI",
+      "caption_zh": "固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。",
+      "selection_reason_zh": "选择 Figure 10-12 / Table VI，因为它直接展示“固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 11,
+          "crop": [
+            0.5,
+            0.05,
+            0.96,
+            0.68
+          ],
+          "caption_anchor": "Fig. 10.",
+          "visual_review_note": "全分辨率目视确认 Figure 10 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.5,
+            0.6,
+            0.96,
+            0.68
+          ],
+          "caption_anchor_bbox": [
+            0.50976,
+            0.611906,
+            0.55353,
+            0.620902
+          ],
+          "caption_block_bbox": [
+            0.5,
+            0.6,
+            0.96,
+            0.68
+          ],
+          "page_text_sha256": "19e9a304d801af1acfab826f8f310be712f3358e3a9e2217e35ce43a388bbcc6",
+          "extra_text_word_count": 28
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.04,
+            0.05,
+            0.49,
+            0.24
+          ],
+          "caption_anchor": "Fig. 11. Effects of the smoothing parameter",
+          "visual_review_note": "全分辨率目视确认 Figure 11 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.199249,
+            0.33383,
+            0.208246
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.199249,
+            0.490224,
+            0.230887
+          ],
+          "page_text_sha256": "edb90e2683308691b6249fc40b9c2d2fd4c248168b7408f2b1ef65c9b6888c6e",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 12,
+          "crop": [
+            0.04,
+            0.32,
+            0.49,
+            0.41
+          ],
+          "caption_anchor": "Fig. 12. Effects of the smoothing parameter",
+          "visual_review_note": "全分辨率目视确认 Figure 12 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.364451,
+            0.33383,
+            0.373448
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.364451,
+            0.490224,
+            0.39609
+          ],
+          "page_text_sha256": "edb90e2683308691b6249fc40b9c2d2fd4c248168b7408f2b1ef65c9b6888c6e",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 4239,
+      "sha256": "d9f33024ba5d79d41dba5e44a2318a623199145f2de3d7beda4d2a6a71756db4",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "fcb979e49e206a00c0f2f22e41dc42a1d31ed4b33e31839cf124a9877270d740"
+      },
+      "review_fingerprint": "fcb979e49e206a00c0f2f22e41dc42a1d31ed4b33e31839cf124a9877270d740"
+    }
+  ]
+}

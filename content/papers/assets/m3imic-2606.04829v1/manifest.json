@@ -1,0 +1,224 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2606.04829v1",
+  "source_pdf": "https://arxiv.org/pdf/2606.04829v1",
+  "source_pdf_sha256": "c6e01cffe231ec1d141516023778020101ab9b805273c3a3f85c22bf11863e44",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-framework.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "source_locator": "Figure 2",
+      "caption_zh": "机器人关节、人体姿态与末端位姿经专用编码器进入共享潜在指令空间。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“机器人关节、人体姿态与末端位姿经专用编码器进入共享潜在指令空间。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“机器人关节、人体姿态与末端位姿经专用编码器进入共享潜在指令空间。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.05,
+            0.08,
+            0.95,
+            0.41
+          ],
+          "caption_anchor": "Fig. 2: Overview of the M3imic framework",
+          "visual_review_note": "全分辨率目视确认 Fig. 2 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.368807,
+            0.376085,
+            0.380053
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.368807,
+            0.91999,
+            0.410242
+          ],
+          "page_text_sha256": "bf26b919c1e68d930d54f721f9d297f1320473a02bf3557c382d65b83458306e",
+          "extra_text_word_count": 62
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 815,
+      "sha256": "9f44442074cf6bff703345f42a5be419b961080a9f71b5aa7a6d3f498175554d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "5111f683c5cf496136c9f779741de48539966e11131564a83584bc72af2ec381"
+      },
+      "review_fingerprint": "5111f683c5cf496136c9f779741de48539966e11131564a83584bc72af2ec381"
+    },
+    {
+      "asset": "table-3-4-generalization.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "source_locator": "Table III-IV / Figure 3",
+      "caption_zh": "训练集与未见 OMOMO 测试集上的跟踪精度—鲁棒性取舍。",
+      "selection_reason_zh": "选择 Table III-IV / Figure 3，因为它直接展示“训练集与未见 OMOMO 测试集上的跟踪精度—鲁棒性取舍。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“训练集与未见 OMOMO 测试集上的跟踪精度—鲁棒性取舍。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.05,
+            0.68,
+            0.49,
+            0.77
+          ],
+          "caption_anchor": "TABLE III: Main Metrics in Training Dataset",
+          "visual_review_note": "全分辨率目视确认 TABLE III 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.706038,
+            0.395749,
+            0.717284
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.706038,
+            0.490231,
+            0.732379
+          ],
+          "page_text_sha256": "7855ce8855e85131e083fde951a378243d7b7d1beb4cfd2a333791e37b26b804",
+          "extra_text_word_count": 28
+        },
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.5,
+            0.24,
+            0.95,
+            0.34
+          ],
+          "caption_anchor": "TABLE IV: Main Metrics on the Test Dataset",
+          "visual_review_note": "全分辨率目视确认 TABLE IV 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.511307,
+            0.249709,
+            0.819806,
+            0.260954
+          ],
+          "caption_block_bbox": [
+            0.511307,
+            0.249709,
+            0.918455,
+            0.260954
+          ],
+          "page_text_sha256": "7855ce8855e85131e083fde951a378243d7b7d1beb4cfd2a333791e37b26b804",
+          "extra_text_word_count": 58
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 966,
+      "sha256": "59e89d88bff21378cbd1173f1292691495b1d535706925029237fe48622d8ea6",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "8e120b734400e56ff5dd05883ad719c789e80e11d2f025d5c9da00f544e957a8"
+      },
+      "review_fingerprint": "8e120b734400e56ff5dd05883ad719c789e80e11d2f025d5c9da00f544e957a8"
+    },
+    {
+      "asset": "figure-7-table-5-6.jpg",
+      "source_url": "https://arxiv.org/pdf/2606.04829v1",
+      "source_locator": "Figure 7 / Table V-VI",
+      "caption_zh": "G1 真机光学动捕遥操与课程、数据量、网络规模消融。",
+      "selection_reason_zh": "选择 Figure 7 / Table V-VI，因为它直接展示“G1 真机光学动捕遥操与课程、数据量、网络规模消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“G1 真机光学动捕遥操与课程、数据量、网络规模消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.05,
+            0.07,
+            0.95,
+            0.49
+          ],
+          "caption_anchor": "Fig. 7: Real-world teleoperation experiments",
+          "visual_review_note": "全分辨率目视确认 Fig. 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.437803,
+            0.380545,
+            0.449049
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.437803,
+            0.91999,
+            0.464144
+          ],
+          "page_text_sha256": "6e5c3ea2befd6251808dbd089e8ade896afdc28f05a94ab4c5add61e64b691e9",
+          "extra_text_word_count": 0
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.05,
+            0.48,
+            0.52,
+            0.57
+          ],
+          "caption_anchor": "TABLE V: Ablation study on the curriculum learning",
+          "visual_review_note": "全分辨率目视确认 TABLE V 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.491391,
+            0.451309,
+            0.502636
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.491391,
+            0.490233,
+            0.532826
+          ],
+          "page_text_sha256": "6e5c3ea2befd6251808dbd089e8ade896afdc28f05a94ab4c5add61e64b691e9",
+          "extra_text_word_count": 16
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.05,
+            0.61,
+            0.52,
+            0.7
+          ],
+          "caption_anchor": "TABLE VI: Ablation study on the effects of dataset size",
+          "visual_review_note": "全分辨率目视确认 TABLE VI 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.080007,
+            0.624651,
+            0.460864,
+            0.635896
+          ],
+          "caption_block_bbox": [
+            0.080007,
+            0.624651,
+            0.490231,
+            0.650991
+          ],
+          "page_text_sha256": "6e5c3ea2befd6251808dbd089e8ade896afdc28f05a94ab4c5add61e64b691e9",
+          "extra_text_word_count": 23
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1871,
+      "sha256": "44a34d461808a0694cf4cb53e6eaafdec5e27ecd6eaebc26d5c334918821595f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "8ebc438c74bdd8e3587ea9439ea30d5fb0860673a38af6020828b08cf049ade6"
+      },
+      "review_fingerprint": "8ebc438c74bdd8e3587ea9439ea30d5fb0860673a38af6020828b08cf049ade6"
+    }
+  ]
+}

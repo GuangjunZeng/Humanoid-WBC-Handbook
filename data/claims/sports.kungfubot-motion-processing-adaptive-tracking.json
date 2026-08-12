@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["原始人体动作已经过动力学可行性修正并适配机器人形态。", "每个技能分别训练策略并完成真机安全调参。"],
+    "controllers": ["PBHC motion processing 与 adaptive tracking policy"],
+    "environments": ["太极、拳击、踢击等预先定义的高动态技能"],
+    "robots": ["Unitree G1"],
+    "simulators": ["Isaac Gym 与真实硬件部署"]
+  },
+  "claim_id": "sports.kungfubot-motion-processing-adaptive-tracking",
+  "confidence": 0.81,
+  "confidence_rationale": "论文、补充材料和官方 PBHC 代码覆盖完整流水线；定量真机重复实验主要集中在太极，其余技能多为定性展示，且不含环境感知。",
+  "domain": "sports",
+  "evidence": [{
+    "locator": "Sections 3-5, Figures 2-9, Tables 1-4 and appendix",
+    "note": "描述动作修正、自适应 sigma、跟踪奖励、消融和真机技能结果。",
+    "role": "support",
+    "source_id": "paper.kungfubot.2506.12851",
+    "strength": "primary"
+  }],
+  "question": "KungfuBot 是否已经提供一个统一策略，可在未知环境中自主选择并稳定完成所有武术动作？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "KungfuBot 展示了从动作可行性修正到自适应跟踪和 G1 部署的开源高动态技能链路，但每段动作对应独立策略，系统没有环境感知，且除太极外多数真机技能缺少同等规模的定量重复实验。",
+  "status": "reviewed",
+  "tags": ["KungfuBot", "PBHC", "motion tracking", "sports", "sim-to-real"]
+}

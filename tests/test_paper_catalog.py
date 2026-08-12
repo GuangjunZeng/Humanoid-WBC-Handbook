@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from wbc_handbook.paper_catalog import (
+    base_arxiv_id,
     coverage_report,
     discover_candidates,
     load_json,
@@ -25,6 +26,9 @@ class PaperCatalogTests(unittest.TestCase):
     def test_repository_catalog_is_consistent(self):
         self.assertEqual(validate_catalog(self.catalog, self.registry), [])
         report = coverage_report(self.catalog)
+        self.assertEqual(len(self.catalog["papers"]), 75)
+        self.assertEqual(report["counts"]["deep_read"], 38)
+        self.assertEqual(report["counts"]["queued"], 37)
         self.assertEqual(
             report["counts"]["deep_read"], len(self.registry.get("papers", []))
         )
@@ -33,6 +37,33 @@ class PaperCatalogTests(unittest.TestCase):
             len(self.catalog.get("papers", [])), len(self.registry.get("papers", []))
         )
         self.assertTrue(all(not row["missing_roles"] for row in report["domains"]))
+
+    def test_repository_has_no_duplicate_work_identity(self):
+        papers = self.catalog["papers"]
+        titles = [" ".join(paper["title"].casefold().split()) for paper in papers]
+        arxiv_ids = [
+            base_arxiv_id(paper["paper_id"])
+            for paper in papers
+            if base_arxiv_id(paper["paper_id"])
+        ]
+        doi_ids = [
+            paper["paper_id"].casefold()
+            for paper in papers
+            if paper["paper_id"].casefold().startswith("doi:")
+        ]
+        openreview_ids = [
+            paper["paper_id"].casefold()
+            for paper in papers
+            if paper["paper_id"].casefold().startswith("openreview:")
+        ]
+        for identities in (titles, arxiv_ids, doi_ids, openreview_ids):
+            self.assertEqual(len(identities), len(set(identities)))
+
+        by_id = {paper["paper_id"]: paper for paper in papers}
+        self.assertIn("doi:10.1109/ROBOT.2003.1241826", by_id)
+        self.assertIn("arxiv:2310.04582", by_id)
+        self.assertIn("pdf:sentis-khatib-2006-wbc", by_id)
+        self.assertNotIn("arxiv:2310.04582v1", by_id)
 
     def test_readme_routes_cover_seven_topics_with_24_representative_papers(self):
         domains = self.catalog["domains"]

@@ -22,11 +22,12 @@ class KeyFigureTests(unittest.TestCase):
             (PROJECT_ROOT / "research" / "key-figures.json").read_text(encoding="utf-8")
         )
 
-    def test_all_deep_reads_have_three_audited_crops(self):
+    def test_all_deep_reads_have_three_to_five_audited_crops(self):
         self.assertEqual(self.spec["schema_version"], 2)
-        self.assertEqual(len(self.spec["papers"]), 25)
-        self.assertEqual(sum(len(paper["figures"]) for paper in self.spec["papers"]), 75)
+        self.assertEqual(len(self.spec["papers"]), 38)
         for paper in self.spec["papers"]:
+            self.assertGreaterEqual(len(paper["figures"]), 3)
+            self.assertLessEqual(len(paper["figures"]), 5)
             self.assertEqual(key_figures.validate_paper_spec(paper), [])
             self.assertEqual(key_figures.check_paper(paper), [])
             for figure in paper["figures"]:
@@ -50,6 +51,22 @@ class KeyFigureTests(unittest.TestCase):
         self.assertLessEqual(caption_bbox[3], crop[3])
         canonical = key_figures.canonical_region(region)
         self.assertEqual(canonical["caption_bbox"], caption_bbox)
+
+    def test_agile_soccer_keeps_five_reviewed_figures(self):
+        paper = next(
+            paper for paper in self.spec["papers"]
+            if paper["paper_id"] == "arxiv:2304.13653v2"
+        )
+        self.assertEqual(
+            [figure["file"] for figure in paper["figures"]],
+            [
+                "figure-2-training.jpg",
+                "table-1-hardware.jpg",
+                "figure-7-ablation.jpg",
+                "figure-5-behavior.jpg",
+                "figure-s3-table-s5-compute.jpg",
+            ],
+        )
 
     def test_full_page_or_stale_review_is_rejected(self):
         paper = json.loads(json.dumps(self.spec["papers"][0]))

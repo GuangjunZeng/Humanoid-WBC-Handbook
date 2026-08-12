@@ -1,0 +1,27 @@
+{
+  "applicability": {
+    "assumptions": ["人体姿态估计、固定欧拉角映射与定制 H1 形态已经逐项标定。", "延迟、遮挡和视觉相机位姿处于论文测试范围。"],
+    "controllers": ["Humanoid Shadowing Transformer 与 ACT 视觉模仿策略"],
+    "environments": ["室内人体影子模仿、机器人示教采集与短时视觉任务"],
+    "robots": ["定制 33-DoF Unitree H1"],
+    "simulators": ["Isaac Gym 训练与真实硬件部署"]
+  },
+  "claim_id": "teleoperation.humanplus-shadowing-fixed-retargeting",
+  "confidence": 0.82,
+  "confidence_rationale": "论文公开系统结构、官方实现、用户研究和硬件任务结果；样本人数、任务次数、相机视角、形态定制和坐姿旁路限制了通用性。",
+  "domain": "universal_tracking_teleoperation",
+  "evidence": [{
+    "locator": "Sections 3-5, Figures 2-8, Tables 1-3 and appendix",
+    "note": "描述 HST、固定人体到机器人映射、数据采集、ACT 模仿与受限真机评估。",
+    "role": "support",
+    "source_id": "paper.humanplus.2406.10454",
+    "strength": "primary"
+  }],
+  "question": "HumanPlus 是否提供了无需标定、可直接迁移到任意人形机器人的通用人体影子模仿与视觉技能方案？",
+  "review_due_at": "2027-08-12T12:00:00+08:00",
+  "reviewed_at": "2026-08-12T12:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "HumanPlus 把人体影子模仿、机器人示教采集和第一视角视觉模仿串成完整链路，但系统依赖定制 H1、固定欧拉角 retargeting、特定相机与任务设置；它证明了链路可行性，不等于无需重新标定即可迁移到任意机器人和环境。",
+  "status": "reviewed",
+  "tags": ["HumanPlus", "teleoperation", "shadowing", "imitation learning", "H1"]
+}

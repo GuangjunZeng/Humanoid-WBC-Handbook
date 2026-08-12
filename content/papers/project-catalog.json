@@ -1,0 +1,900 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-12T00:00:00+08:00",
+  "purpose": "High-signal open-source projects that directly implement or enable one or more of the seven fixed WBC paper topics. Stars are a discovery gate, never technical confidence.",
+  "selection_policy": {
+    "default_min_stars": 80,
+    "conditional_min_stars": 60,
+    "snapshot_rule": "Refresh star counts only during a user-triggered update; never schedule collection.",
+    "conditional_rule": "A 60-79 star project requires official ownership, direct topic-gap coverage, a linked primary paper, and a written exception. Projects below 60 are rejected.",
+    "review_rule": "Only deep_review projects have bilingual independent pages pinned to a 40-character commit."
+  },
+  "discovery_sources": [
+    {
+      "kind": "curated_discovery_only",
+      "url": "https://github.com/RealXiaoze/humanoid-motion-intelligence",
+      "commit": "ec6a16c2c352f32e29defd6c49fe6512a89fa230",
+      "license": "CC-BY-NC-SA-4.0",
+      "use_boundary": "Used only to discover candidate titles and primary URLs. No prose, tables, or images are copied."
+    },
+    {
+      "kind": "primary_verification",
+      "url": "https://api.github.com/search/repositories",
+      "snapshot_at": "2026-08-12T00:00:00Z"
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "github:YanjieZe/GMR",
+      "name": "GMR",
+      "repo_url": "https://github.com/YanjieZe/GMR",
+      "topics": [
+        "training_data_retargeting"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2510.02252v1"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "bb1bbe40774794fceb2a7c579a3464a28e68c844",
+      "detail_path_zh": "content/papers/projects/gmr.md",
+      "detail_path_en": "content/papers/projects/en/gmr.md",
+      "stars": 2581,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "MIT",
+      "selection_reason_zh": "跨多种人形本体的实时 CPU 动作重定向基线，配置、几何约束与结果可直接复核。"
+    },
+    {
+      "project_id": "github:zju3dv/GVHMR",
+      "name": "GVHMR",
+      "repo_url": "https://github.com/zju3dv/GVHMR",
+      "topics": [
+        "training_data_retargeting"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2409.06662"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "6ec3ca39336c50492c0fae65fba2fb831fc7d866",
+      "detail_path_zh": "content/papers/projects/gvhmr.md",
+      "detail_path_en": "content/papers/projects/en/gvhmr.md",
+      "stars": 1840,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Custom educational, research, and non-commercial license",
+      "selection_reason_zh": "从移动相机视频恢复世界坐标人体运动，是机器人重定向前的数据入口代表。"
+    },
+    {
+      "project_id": "github:amazon-far/holosoma",
+      "name": "HoloSoma",
+      "repo_url": "https://github.com/amazon-far/holosoma",
+      "topics": [
+        "training_data_retargeting",
+        "universal_tracking_teleoperation",
+        "locomotion_terrain",
+        "loco_manipulation_wbc"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2509.26633",
+        "arxiv:2512.01996"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "6e146b0af5d7cd8a39b8bb2ed05b977cf70445d3",
+      "detail_path_zh": "content/papers/projects/holosoma.md",
+      "detail_path_en": "content/papers/projects/en/holosoma.md",
+      "stars": 1582,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。"
+    },
+    {
+      "project_id": "github:NVIDIA/soma-retargeter",
+      "name": "SOMA Retargeter",
+      "repo_url": "https://github.com/NVIDIA/soma-retargeter",
+      "topics": [
+        "training_data_retargeting"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "b3ef2708d84bfd1314ddb52d0db6c9c211df1f57",
+      "detail_path_zh": "content/papers/projects/soma-retargeter.md",
+      "detail_path_en": "content/papers/projects/en/soma-retargeter.md",
+      "stars": 526,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "基于 Newton 与 Warp 的 BVH 到人形运动重定向库，适合独立检查数据接口和批处理实现。"
+    },
+    {
+      "project_id": "github:NVlabs/GRAIL",
+      "name": "GRAIL",
+      "repo_url": "https://github.com/NVlabs/GRAIL",
+      "topics": [
+        "training_data_retargeting",
+        "loco_manipulation_wbc"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2606.05160"
+      ],
+      "analysis_status": "queued",
+      "stars": 466,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "从三维资产和视频先验生成移动操作轨迹，补齐交互数据合成与物理筛选路线。"
+    },
+    {
+      "project_id": "github:NVlabs/GR00T-WholeBodyControl",
+      "name": "GR00T Whole-Body Control",
+      "repo_url": "https://github.com/NVlabs/GR00T-WholeBodyControl",
+      "topics": [
+        "universal_tracking_teleoperation",
+        "motion_generation",
+        "loco_manipulation_wbc"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2511.07820"
+      ],
+      "analysis_status": "queued",
+      "stars": 3248,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "NVIDIA 的通用人形 WBC 平台，覆盖 SONIC、解耦控制与上层模型调用接口。"
+    },
+    {
+      "project_id": "github:NVlabs/ProtoMotions",
+      "name": "ProtoMotions",
+      "repo_url": "https://github.com/NVlabs/ProtoMotions",
+      "topics": [
+        "universal_tracking_teleoperation",
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2409.14393v1",
+        "arxiv:2305.02195"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+      "detail_path_zh": "content/papers/projects/protomotions.md",
+      "detail_path_en": "content/papers/projects/en/protomotions.md",
+      "stars": 2286,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "统一多种物理角色与人形动作学习方法，能在同一框架比较条件掩码、潜技能和跟踪任务。"
+    },
+    {
+      "project_id": "github:LeCAR-Lab/human2humanoid",
+      "name": "human2humanoid",
+      "repo_url": "https://github.com/LeCAR-Lab/human2humanoid",
+      "topics": [
+        "universal_tracking_teleoperation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2403.04436v1",
+        "arxiv:2406.08858v1"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "750f1fa052641f0fde43669d50cb4e407dabe6c8",
+      "detail_path_zh": "content/papers/projects/human2humanoid.md",
+      "detail_path_en": "content/papers/projects/en/human2humanoid.md",
+      "stars": 1050,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "CC-BY-NC-4.0 (project; inherited dependencies retain their own terms)",
+      "selection_reason_zh": "H2O 与 OmniH2O 的官方训练和部署代码，把人体输入、跟踪策略与真机接口连成闭环。"
+    },
+    {
+      "project_id": "github:HorizonRobotics/HoloMotion",
+      "name": "HoloMotion",
+      "repo_url": "https://github.com/HorizonRobotics/HoloMotion",
+      "topics": [
+        "universal_tracking_teleoperation",
+        "motion_generation",
+        "training_data_retargeting"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2605.15336"
+      ],
+      "analysis_status": "queued",
+      "stars": 621,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "把人体模型、重定向、动作库、跟踪模型、评测和 G1 部署放在同一官方工程中。"
+    },
+    {
+      "project_id": "github:Renforce-Dynamics/trackerLab",
+      "name": "trackerLab",
+      "repo_url": "https://github.com/Renforce-Dynamics/trackerLab",
+      "topics": [
+        "training_data_retargeting",
+        "universal_tracking_teleoperation"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "1e5ccc062b445712a0aa7308cfb99edd7296cc88",
+      "detail_path_zh": "content/papers/projects/trackerlab.md",
+      "detail_path_en": "content/papers/projects/en/trackerlab.md",
+      "stars": 243,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "MIT",
+      "selection_reason_zh": "以 Isaac Lab 统一重定向、轨迹跟踪与技能控制，适合作为跨本体 Tracker 对照平台。"
+    },
+    {
+      "project_id": "github:Renforce-Dynamics/MultiModalWBC",
+      "name": "MultiModalWBC",
+      "repo_url": "https://github.com/Renforce-Dynamics/MultiModalWBC",
+      "topics": [
+        "universal_tracking_teleoperation",
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2606.04829v1"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "1628d0e3c0e05b9e2ec95c141568bd8c3f480e51",
+      "detail_path_zh": "content/papers/projects/multimodalwbc.md",
+      "detail_path_en": "content/papers/projects/en/multimodalwbc.md",
+      "stars": 189,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "BSD-3-Clause (core repository; bundled components and assets retain their own terms)",
+      "selection_reason_zh": "把本体状态和多模态人体条件统一为人形跟踪与任务条件控制接口，属于项目型 WBC 基线。"
+    },
+    {
+      "project_id": "github:xbpeng/MimicKit",
+      "name": "MimicKit",
+      "repo_url": "https://github.com/xbpeng/MimicKit",
+      "topics": [
+        "universal_tracking_teleoperation",
+        "motion_generation"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [
+        "arxiv:1804.02717v3",
+        "arxiv:2104.02180v2"
+      ],
+      "analysis_status": "queued",
+      "stars": 2224,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "在同一轻量框架复现多种动作模仿和运动先验方法，便于控制变量比较而非跨仓库拼接。"
+    },
+    {
+      "project_id": "github:roboterax/humanoid-gym",
+      "name": "Humanoid-Gym",
+      "repo_url": "https://github.com/roboterax/humanoid-gym",
+      "topics": [
+        "locomotion_terrain"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2404.05695v2"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "ae46e201c85a2b17e7f2cea59a441dae7ea88a8f",
+      "detail_path_zh": "content/papers/projects/humanoid-gym.md",
+      "detail_path_en": "content/papers/projects/en/humanoid-gym.md",
+      "stars": 2062,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "BSD-3-Clause (project; inherited dependencies and robot assets retain their own terms)",
+      "selection_reason_zh": "人形 PPO、Isaac Gym、MuJoCo Sim2Sim 与 XBot 部署的经典开源闭环。"
+    },
+    {
+      "project_id": "github:leggedrobotics/legged_gym",
+      "name": "legged_gym",
+      "repo_url": "https://github.com/leggedrobotics/legged_gym",
+      "topics": [
+        "locomotion_terrain"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2109.11978"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "8fa29acc6fd1910c3d9659eef6310bdd301cde0a",
+      "detail_path_zh": "content/papers/projects/legged-gym.md",
+      "detail_path_en": "content/papers/projects/en/legged-gym.md",
+      "stars": 3079,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "BSD-3-Clause (code; bundled assets and dependencies retain separate terms)",
+      "selection_reason_zh": "大规模并行腿式强化学习的经典工程基线，奖励、地形、随机化和部署接口影响后续人形框架。"
+    },
+    {
+      "project_id": "github:unitreerobotics/unitree_rl_lab",
+      "name": "Unitree RL Lab",
+      "repo_url": "https://github.com/unitreerobotics/unitree_rl_lab",
+      "topics": [
+        "locomotion_terrain",
+        "universal_tracking_teleoperation"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "4960b84732b0c2ec593dccbfe963fda1bcd7b1e3",
+      "detail_path_zh": "content/papers/projects/unitree-rl-lab.md",
+      "detail_path_en": "content/papers/projects/en/unitree-rl-lab.md",
+      "stars": 1272,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "Unitree 官方 Isaac Lab 训练、策略导出与机器人部署入口，直接覆盖 H1/G1 工程链。"
+    },
+    {
+      "project_id": "github:unitreerobotics/unitree_rl_mjlab",
+      "name": "Unitree RL Mjlab",
+      "repo_url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+      "topics": [
+        "locomotion_terrain",
+        "universal_tracking_teleoperation"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+      "detail_path_zh": "content/papers/projects/unitree-rl-mjlab.md",
+      "detail_path_en": "content/papers/projects/en/unitree-rl-mjlab.md",
+      "stars": 578,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "Unitree 官方 MuJoCo/MJLab 轻量训练和验证路线，可与 Omniverse 栈做受控对照。"
+    },
+    {
+      "project_id": "github:project-instinct/InstinctLab",
+      "name": "InstinctLab",
+      "repo_url": "https://github.com/project-instinct/InstinctLab",
+      "topics": [
+        "locomotion_terrain",
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [
+        "arxiv:2601.07718"
+      ],
+      "analysis_status": "queued",
+      "stars": 766,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "Project Instinct 的人形训练任务底座，覆盖感知跑酷、动作编辑、板载部署与恢复相关能力。"
+    },
+    {
+      "project_id": "github:Renforce-Dynamics/beyondAMP",
+      "name": "beyondAMP",
+      "repo_url": "https://github.com/Renforce-Dynamics/beyondAMP",
+      "topics": [
+        "locomotion_terrain",
+        "motion_generation",
+        "recovery_safety_force"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "cee88cdc0958c417e316f9452f802e25a71bc289",
+      "detail_path_zh": "content/papers/projects/beyondamp.md",
+      "detail_path_en": "content/papers/projects/en/beyondamp.md",
+      "stars": 281,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "面向任意 Isaac Lab 本体接入 AMP 的模块化实现，适合隔离运动先验与任务奖励的贡献。"
+    },
+    {
+      "project_id": "github:BoosterRobotics/booster_gym",
+      "name": "Booster Gym",
+      "repo_url": "https://github.com/BoosterRobotics/booster_gym",
+      "topics": [
+        "locomotion_terrain"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2506.15132"
+      ],
+      "analysis_status": "queued",
+      "stars": 295,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "Booster T1 的训练、MuJoCo/Webots 验证和真机入口形成完整官方部署链。"
+    },
+    {
+      "project_id": "github:LeCAR-Lab/BFM-Zero",
+      "name": "BFM-Zero",
+      "repo_url": "https://github.com/LeCAR-Lab/BFM-Zero",
+      "topics": [
+        "locomotion_terrain",
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2511.04131"
+      ],
+      "analysis_status": "queued",
+      "stars": 727,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "无需动作数据的可提示行为基座，公开分阶段训练、专家数据与 G1 部署。"
+    },
+    {
+      "project_id": "github:stack-of-tasks/pinocchio",
+      "name": "Pinocchio",
+      "repo_url": "https://github.com/stack-of-tasks/pinocchio",
+      "topics": [
+        "loco_manipulation_wbc",
+        "locomotion_terrain"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 3648,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "devel",
+      "license": "BSD-2-Clause",
+      "selection_reason_zh": "WBC、MPC 和状态估计常用的刚体动力学与解析导数基础库，工程证据丰富。"
+    },
+    {
+      "project_id": "github:stack-of-tasks/tsid",
+      "name": "TSID",
+      "repo_url": "https://github.com/stack-of-tasks/tsid",
+      "topics": [
+        "loco_manipulation_wbc"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "hal:hal-01136936"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "eae96180ed8d289bc2c634f9d0857020ebfa6d90",
+      "detail_path_zh": "content/papers/projects/tsid.md",
+      "detail_path_en": "content/papers/projects/en/tsid.md",
+      "stars": 345,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "devel",
+      "license": "BSD-2-Clause",
+      "selection_reason_zh": "基于 Pinocchio 的任务空间逆动力学实现，是优化式全身控制的直接开源锚点。"
+    },
+    {
+      "project_id": "github:loco-3d/crocoddyl",
+      "name": "Crocoddyl",
+      "repo_url": "https://github.com/loco-3d/crocoddyl",
+      "topics": [
+        "loco_manipulation_wbc",
+        "locomotion_terrain"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:1909.04947"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "46974c3c49ed956e41f8f95a329cf8537af7550b",
+      "detail_path_zh": "content/papers/projects/crocoddyl.md",
+      "detail_path_en": "content/papers/projects/en/crocoddyl.md",
+      "stars": 1274,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "devel",
+      "license": "BSD-3-Clause",
+      "selection_reason_zh": "多接触最优控制与 FDDP 的主流开源实现，适合生成和滚动优化 WBC 参考。"
+    },
+    {
+      "project_id": "github:leggedrobotics/ocs2",
+      "name": "OCS2",
+      "repo_url": "https://github.com/leggedrobotics/ocs2",
+      "topics": [
+        "loco_manipulation_wbc",
+        "locomotion_terrain"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 1487,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "BSD-3-Clause",
+      "selection_reason_zh": "切换系统最优控制框架，包含腿式机器人 MPC 与约束实现，是模型式路线核心工具。"
+    },
+    {
+      "project_id": "github:nvidia-isaac/WBC-AGILE",
+      "name": "WBC-AGILE",
+      "repo_url": "https://github.com/nvidia-isaac/WBC-AGILE",
+      "topics": [
+        "loco_manipulation_wbc",
+        "universal_tracking_teleoperation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2603.20147v1"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "7259792cf10803aab814d101134d493d24c8f22f",
+      "detail_path_zh": "content/papers/projects/wbc-agile.md",
+      "detail_path_en": "content/papers/projects/en/wbc-agile.md",
+      "stars": 313,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0 (most code) / BSD-3-Clause (RSL-RL portion)",
+      "selection_reason_zh": "NVIDIA 面向人形移动操作学习的完整工作流，强调训练数据、WBC 基座与任务接口衔接。"
+    },
+    {
+      "project_id": "github:loongOpen/OpenLoong-Dyn-Control",
+      "name": "OpenLoong-Dyn-Control",
+      "repo_url": "https://github.com/loongOpen/OpenLoong-Dyn-Control",
+      "topics": [
+        "loco_manipulation_wbc",
+        "locomotion_terrain"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "4dd7a7e42a9cfd588afc78f3e429998ed8a30f4e",
+      "detail_path_zh": "content/papers/projects/openloong-dyn-control.md",
+      "detail_path_en": "content/papers/projects/en/openloong-dyn-control.md",
+      "stars": 350,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "面向真实人形机器人的开源全身动力学控制包，补齐经典模型式 WBC 工程实现。"
+    },
+    {
+      "project_id": "github:pocketxjl/humanoid-control",
+      "name": "humanoid-control",
+      "repo_url": "https://github.com/pocketxjl/humanoid-control",
+      "topics": [
+        "loco_manipulation_wbc",
+        "locomotion_terrain"
+      ],
+      "relation": "project_only",
+      "related_paper_ids": [],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "3b5ffec98d29827730194b0dbf2f119fb7b265ca",
+      "detail_path_zh": "content/papers/projects/humanoid-control.md",
+      "detail_path_en": "content/papers/projects/en/humanoid-control.md",
+      "stars": 412,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "MIT",
+      "selection_reason_zh": "在 MuJoCo 中公开 NMPC 与 WBC 的人形行走控制链，适合追踪模型式接口和求解器路径。"
+    },
+    {
+      "project_id": "github:TeleHuman/PBHC",
+      "name": "PBHC / KungfuBot",
+      "repo_url": "https://github.com/TeleHuman/PBHC",
+      "topics": [
+        "sports",
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2506.12851"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "ffac5cded61fe78b39b051f09ac2ed0f6a1ccea0",
+      "detail_path_zh": "content/papers/projects/pbhc.md",
+      "detail_path_en": "content/papers/projects/en/pbhc.md",
+      "stars": 1052,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "CC-BY-NC-4.0",
+      "selection_reason_zh": "高动态功夫全身技能的官方训练与部署实现，是体育类 WBC 的高星代表。"
+    },
+    {
+      "project_id": "github:GalaxyGeneralRobotics/LATENT",
+      "name": "LATENT",
+      "repo_url": "https://github.com/GalaxyGeneralRobotics/LATENT",
+      "topics": [
+        "sports",
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2603.12686"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "a931da5a70320ba3f07d38debcf71458a005530d",
+      "detail_path_zh": "content/papers/projects/latent.md",
+      "detail_path_en": "content/papers/projects/en/latent.md",
+      "stars": 678,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "从不完美人体动作学习人形网球技能，覆盖运动数据修正、击球时序和真机体育交互。"
+    },
+    {
+      "project_id": "github:TeleHuman/humanoid_skateboarding",
+      "name": "HUSKY Humanoid Skateboarding",
+      "repo_url": "https://github.com/TeleHuman/humanoid_skateboarding",
+      "topics": [
+        "sports",
+        "locomotion_terrain"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2602.03205"
+      ],
+      "analysis_status": "queued",
+      "stars": 271,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "滑板上的动态平衡与推进控制要求持续接触和高动态全身协调，区别于普通平地行走。"
+    },
+    {
+      "project_id": "github:InternRobotics/Humanoid-Goalkeeper",
+      "name": "Humanoid Goalkeeper",
+      "repo_url": "https://github.com/InternRobotics/Humanoid-Goalkeeper",
+      "topics": [
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2510.18002"
+      ],
+      "analysis_status": "queued",
+      "stars": 187,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "守门任务把位置条件、扑救动作、倒地和恢复纳入同一高动态技能链。"
+    },
+    {
+      "project_id": "github:TeleHuman/TextOp",
+      "name": "TextOp",
+      "repo_url": "https://github.com/TeleHuman/TextOp",
+      "topics": [
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2602.07439v1"
+      ],
+      "analysis_status": "queued",
+      "stars": 527,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "MIT",
+      "selection_reason_zh": "流式文本驱动运动生成与人形控制的官方实现，覆盖在线命令而非离线动作回放。"
+    },
+    {
+      "project_id": "github:ZhengyiLuo/PULSE",
+      "name": "PULSE",
+      "repo_url": "https://github.com/ZhengyiLuo/PULSE",
+      "topics": [
+        "motion_generation",
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2310.04582"
+      ],
+      "analysis_status": "queued",
+      "stars": 365,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "学习可复用人形潜在动作表示，使高层任务组合与低层物理控制分离。"
+    },
+    {
+      "project_id": "github:facebookresearch/metamotivo",
+      "name": "Meta Motivo",
+      "repo_url": "https://github.com/facebookresearch/metamotivo",
+      "topics": [
+        "motion_generation"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2504.11054"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "ff8dcc55cf58f766d365ab0be23a021a7e34d53d",
+      "detail_path_zh": "content/papers/projects/meta-motivo.md",
+      "detail_path_en": "content/papers/projects/en/meta-motivo.md",
+      "stars": 778,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "CC-BY-NC-4.0",
+      "selection_reason_zh": "面向虚拟物理人形的行为基础模型和多任务控制代码，可用于研究通用动作表征但不等同真机部署。"
+    },
+    {
+      "project_id": "github:OpenRobotLab/HoST",
+      "name": "HoST",
+      "repo_url": "https://github.com/OpenRobotLab/HoST",
+      "topics": [
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2502.08378v2"
+      ],
+      "analysis_status": "queued",
+      "stars": 616,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "MIT",
+      "selection_reason_zh": "多初始姿态起身策略的官方实现，包含姿态课程、训练配置和实机结果。"
+    },
+    {
+      "project_id": "github:RunpeiDong/HumanUP",
+      "name": "HumanUP",
+      "repo_url": "https://github.com/RunpeiDong/HumanUP",
+      "topics": [
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2502.12152"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "7516e0f27e6f4d1e7365cf64ea577a78247bd8cb",
+      "detail_path_zh": "content/papers/projects/humanup.md",
+      "detail_path_en": "content/papers/projects/en/humanup.md",
+      "stars": 231,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "真实人形起身策略的官方代码，突出起身初始化、策略切换和实机安全边界。"
+    },
+    {
+      "project_id": "github:ZhengyiLuo/PHC",
+      "name": "PHC",
+      "repo_url": "https://github.com/ZhengyiLuo/PHC",
+      "topics": [
+        "training_data_retargeting",
+        "motion_generation",
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2305.06456"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "846988d433ce1f341e85ac6fbd2cd51911bb3341",
+      "detail_path_zh": "content/papers/projects/phc.md",
+      "detail_path_en": "content/papers/projects/en/phc.md",
+      "stars": 1275,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "大规模动作跟踪、容量扩展与失败恢复的经典物理人形控制实现。"
+    },
+    {
+      "project_id": "github:NPCLEI/KungFuAthleteBot",
+      "name": "KungFuAthleteBot",
+      "repo_url": "https://github.com/NPCLEI/KungFuAthleteBot",
+      "topics": [
+        "sports",
+        "recovery_safety_force",
+        "training_data_retargeting"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2602.13656v1"
+      ],
+      "analysis_status": "deep_review",
+      "reviewed_commit": "1e3f207013245a5a0db75e6f70e1cdf762e28e9c",
+      "detail_path_zh": "content/papers/projects/kungfu-athlete-bot.md",
+      "detail_path_en": "content/papers/projects/en/kungfu-athlete-bot.md",
+      "stars": 259,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "MIT",
+      "selection_reason_zh": "公开功夫动作数据、GMR 重定向、强化学习训练、跌倒恢复与 G1 部署链，适合项目级复核。"
+    },
+    {
+      "project_id": "github:LeCAR-Lab/ASAP",
+      "name": "ASAP",
+      "repo_url": "https://github.com/LeCAR-Lab/ASAP",
+      "topics": [
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "official_paper_code",
+      "related_paper_ids": [
+        "arxiv:2502.01143v3"
+      ],
+      "analysis_status": "queued",
+      "stars": 2088,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "MIT",
+      "selection_reason_zh": "把实机状态转移残差带回仿真训练，是高动态技能 Sim2Real 对齐的高星官方实现。"
+    },
+    {
+      "project_id": "github:isaac-sim/IsaacLab",
+      "name": "Isaac Lab",
+      "repo_url": "https://github.com/isaac-sim/IsaacLab",
+      "topics": [
+        "locomotion_terrain",
+        "loco_manipulation_wbc",
+        "universal_tracking_teleoperation",
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 7883,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "BSD-3-Clause",
+      "selection_reason_zh": "多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。"
+    },
+    {
+      "project_id": "github:google-deepmind/mujoco",
+      "name": "MuJoCo",
+      "repo_url": "https://github.com/google-deepmind/mujoco",
+      "topics": [
+        "locomotion_terrain",
+        "loco_manipulation_wbc",
+        "universal_tracking_teleoperation",
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 14525,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。"
+    },
+    {
+      "project_id": "github:leggedrobotics/rsl_rl",
+      "name": "rsl_rl",
+      "repo_url": "https://github.com/leggedrobotics/rsl_rl",
+      "topics": [
+        "locomotion_terrain",
+        "motion_generation",
+        "sports",
+        "recovery_safety_force"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 2879,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "main",
+      "license": "NOASSERTION",
+      "selection_reason_zh": "腿式与人形项目广泛使用的强化学习训练库，策略、存储和对称性等实现会影响复现结果。"
+    },
+    {
+      "project_id": "github:ros-controls/ros2_control",
+      "name": "ros2_control",
+      "repo_url": "https://github.com/ros-controls/ros2_control",
+      "topics": [
+        "locomotion_terrain",
+        "loco_manipulation_wbc",
+        "recovery_safety_force"
+      ],
+      "relation": "infrastructure",
+      "related_paper_ids": [],
+      "analysis_status": "queued",
+      "stars": 974,
+      "star_snapshot_at": "2026-08-12",
+      "default_branch": "master",
+      "license": "Apache-2.0",
+      "selection_reason_zh": "将控制器、硬件接口和实时更新循环连接起来，是 WBC 真机部署链的重要基础设施。"
+    }
+  ]
+}

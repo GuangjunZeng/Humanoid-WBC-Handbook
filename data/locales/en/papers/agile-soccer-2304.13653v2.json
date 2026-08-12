@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paper_id": "arxiv:2304.13653v2",
-  "source_fingerprint": "e2d2677870641576773d15bed9c6cc685d64fa629d9aaf335c33f55986f9171f",
+  "source_fingerprint": "c260b10c2e8abb73147c8d0bc8a95569682046f7ca8fd66b49954e8c584ded2f",
   "title": "Agile Soccer: Pretrain Get-Up and Ball Skills Before Self-Play",
   "content_lines": [
     "Source: [arXiv:2304.13653v2](https://arxiv.org/abs/2304.13653v2). Official training/deployment code was not public at the audited point.",
@@ -19,8 +19,12 @@
     "The final controller is one policy; teacher routing is a training signal, not a runtime skill switch.",
     "![Table 1: hardware skill benchmarks](../assets/agile-soccer-2304.13653/table-1-hardware.jpg)",
     "The table reports explicit scripted baselines and a 29/50 real versus 35/50 simulated set-piece result, preserving the transfer gap.",
+    "![Figure 5: controlled set-piece behavior analysis](../assets/agile-soccer-2304.13653/figure-5-behavior.jpg)",
+    "The side-by-side simulated and real trajectories show get-up-and-shoot, interception, obstacle avoidance, adaptive footwork, and turn-and-kick behaviors; selected trajectories do not replace the full trial denominator.",
     "![Figure 7: curriculum ablations](../assets/agile-soccer-2304.13653/figure-7-ablation.jpg)",
     "Without skill priors, sparse-reward policies exhibit lying or accidental ball-pushing behavior.",
+    "![Figure S3 and Table S5: learning curves and compute](../assets/agile-soccer-2304.13653/figure-s3-table-s5-compute.jpg)",
+    "The get-up and soccer curves are paired with environment steps, simulated days, and wall-clock hours. These costs depend on the paper's distributed setup and are not hardware-independent training-time guarantees.",
     "",
     "## Decisive evidence",
     "Behavior-level hardware benchmarks and fixed-count set pieces are stronger than highlight matches. The failure of direct current-control transfer is also important: a theoretically direct action interface was less robust than the identified position-control path on this platform.",

@@ -1,0 +1,21 @@
+{
+  "kind": "claim",
+  "problem_id": "motion-generation.ase-latent-skills-simulation-boundary",
+  "schema_version": 1,
+  "source_fingerprint": "e0a92195da885d905358361b5e775527e4c47ff294346c919a05cd677c6466b9",
+  "translations": {
+    "answer": "ASE learns a reusable latent skill embedding from an unstructured motion collection and substantially simplifies several downstream simulated tasks. Its subject is a 37-DoF sword-and-shield simulated character, pretraining takes roughly ten days, and there is no robot-hardware experiment; it is a motion-prior baseline, not a ready-to-deploy physical controller.",
+    "applicability.assumptions.0": "The downstream task distribution can be covered by combinations of skills represented in the pretraining motion data.",
+    "applicability.assumptions.1": "Sufficient compute is available to train the adversarial skill prior and a stable high-level policy.",
+    "applicability.controllers.0": "Adversarial Skill Embeddings (ASE) and a hierarchical high-level policy",
+    "applicability.environments.0": "Simulated navigation, attack, and recovery tasks for a sword-and-shield character",
+    "applicability.robots.0": "A 37-DoF simulated character; no physical-robot evidence",
+    "applicability.simulators.0": "Isaac Gym",
+    "confidence_rationale": "The paper reports multi-task, ablation, and recovery experiments, and the official code exposes skill encoding and high-level training. All results use a simulated character, pretraining costs about ten days, and hardware transfer is not demonstrated.",
+    "evidence.0.locator": "Sections 3-6, Figures 2-12, Tables 1-2, and the appendix",
+    "evidence.0.note": "Defines adversarial skill embeddings, the latent prior, and high-level task training, then reports multiple simulation experiments.",
+    "evidence.0.title": "ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters",
+    "terms.0": "Inertial Measurement Unit (IMU, 惯性测量单元)",
+    "title": "Has ASE proved that its reusable skill embedding can directly serve as a general motion generator for physical humanoid robots?"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2109.11978",
+  "source_pdf": "https://arxiv.org/pdf/2109.11978",
+  "source_pdf_sha256": "48014ee8af3e5a7fc26de2a5aac0de9ad593725075627c1a210d9d0f1e4ee62a",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-3-curriculum.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "source_locator": "Figure 3",
+      "caption_zh": "4000 个并行机器人根据成功与失败在地形难度上自动升降级。",
+      "selection_reason_zh": "选择 Figure 3，因为它直接展示“4000 个并行机器人根据成功与失败在地形难度上自动升降级。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“4000 个并行机器人根据成功与失败在地形难度上自动升降级。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.16,
+            0.13,
+            0.84,
+            0.42
+          ],
+          "caption_anchor": "Figure 3: 4000 robots progressing through the terrains",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.330564,
+            0.538038,
+            0.341809
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.330564,
+            0.823535,
+            0.369357
+          ],
+          "page_text_sha256": "7235896fbc4ab1902e995de8d6bd0221ffba7617dc8fa7d93847224b63668dc9",
+          "extra_text_word_count": 46
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 938,
+      "sha256": "87fea0231dc71e61208a14e27abcde1b233fa46d9b91a65822ad952ad90ba766",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "43ba14b5d705c456db168d50acd692c05c8dc7ab7542ec7877ae8cf95252a48b"
+      },
+      "review_fingerprint": "43ba14b5d705c456db168d50acd692c05c8dc7ab7542ec7877ae8cf95252a48b"
+    },
+    {
+      "asset": "figure-4-parallelism.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "source_locator": "Figure 4",
+      "caption_zh": "并行机器人数、batch size、收益与训练时间的实证取舍。",
+      "selection_reason_zh": "选择 Figure 4，因为它直接展示“并行机器人数、batch size、收益与训练时间的实证取舍。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“并行机器人数、batch size、收益与训练时间的实证取舍。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.14,
+            0.68,
+            0.86,
+            0.93
+          ],
+          "caption_anchor": "Figure 4: (a) Average and standard deviation",
+          "visual_review_note": "全分辨率目视确认 Figure 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.176471,
+            0.845455,
+            0.475479,
+            0.856701
+          ],
+          "caption_block_bbox": [
+            0.176471,
+            0.845455,
+            0.823535,
+            0.925571
+          ],
+          "page_text_sha256": "4926d593c457821da6b28962fd137cfdadcdeead1421bcb71eb9fa7ce29c4048",
+          "extra_text_word_count": 3
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 775,
+      "sha256": "f5e232fad8092501e30790992773fd7dfd6a1b17fc2ee0e6ac5a668e9f58c19f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "1768e6ca807afa036d1be661812dfd004305397f611b42459f48e1c9796b5cdc"
+      },
+      "review_fingerprint": "1768e6ca807afa036d1be661812dfd004305397f611b42459f48e1c9796b5cdc"
+    },
+    {
+      "asset": "figure-7-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2109.11978",
+      "source_locator": "Figure 7",
+      "caption_zh": "20 分钟内训练的 ANYmal 复杂地形策略真机部署。",
+      "selection_reason_zh": "选择 Figure 7，因为它直接展示“20 分钟内训练的 ANYmal 复杂地形策略真机部署。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“20 分钟内训练的 ANYmal 复杂地形策略真机部署。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.19,
+            0.13,
+            0.81,
+            0.29
+          ],
+          "caption_anchor": "Figure 7: Locomotion policy, trained in under 20min",
+          "visual_review_note": "全分辨率目视确认 Figure 7 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.221528,
+            0.206184,
+            0.569828,
+            0.217429
+          ],
+          "caption_block_bbox": [
+            0.221528,
+            0.206184,
+            0.778473,
+            0.217429
+          ],
+          "page_text_sha256": "4885c26cef17cf09e8648daee5cc70274b4d74533e98fbad2af506856ef54b3d",
+          "extra_text_word_count": 52
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 590,
+      "sha256": "bb9da0a63bca0958c467781f07aa353fe1e99ffb2cd91e2d504000b1117ba12f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "0896a73f549156f729f63c787ddad02da0f894ab34c3dc3a89e732d100838cb1"
+      },
+      "review_fingerprint": "0896a73f549156f729f63c787ddad02da0f894ab34c3dc3a89e732d100838cb1"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "claim",
+  "problem_id": "locomotion.fast-offpolicy-fifteen-minute-boundary",
+  "schema_version": 1,
+  "source_fingerprint": "1f0a6e87d4b3c65989e42c577b7540067dce7fadd921bf748ec0f1e6411be81d",
+  "translations": {
+    "answer": "The paper reduces single-GPU, massively parallel off-policy locomotion training to about fifteen minutes and demonstrates G1/T1 deployment. That number does not cover its more expensive whole-body tracking experiment and does not replace robot identification, domain randomization, or repeated hardware acceptance tests.",
+    "applicability.assumptions.0": "Training hardware, parallel-environment count, network, and hyperparameters are close to the paper's locomotion recipe.",
+    "applicability.assumptions.1": "Platform-specific identification of robot dynamics and actuators, plus domain randomization, has been completed.",
+    "applicability.controllers.0": "FastTD3/FastSAC off-policy reinforcement-learning locomotion policy",
+    "applicability.environments.0": "Velocity-command walking on G1/T1; whole-body tracking is a separate, more expensive experiment",
+    "applicability.robots.0": "Unitree G1 and Booster T1",
+    "applicability.simulators.0": "GPU-parallel MuJoCo/Holosoma workflow",
+    "confidence_rationale": "The paper supplies wall-clock curves, cross-robot hardware demonstrations, and public code. The fifteen-minute title applies only to the locomotion setting on one RTX 4090, and no large repeated hardware success-rate table is reported.",
+    "evidence.0.locator": "Sections 3-5, Figures 1-7, Tables 1-2, and the appendix",
+    "evidence.0.note": "Separates the budget for fifteen-minute single-GPU locomotion from multi-GPU whole-body tracking and reports sim-to-real deployment.",
+    "evidence.0.title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+    "terms.0": "Whole-Body Control (WBC, 全身控制)",
+    "terms.1": "Reinforcement Learning (RL, 强化学习)",
+    "terms.2": "Simulation-to-Real (Sim2Real, 仿真到现实)",
+    "terms.3": "Domain Randomization (DR, 域随机化)",
+    "terms.4": "Graphics Processing Unit (GPU, 图形处理器)",
+    "terms.5": "Actuator (执行器)",
+    "terms.6": "Center of Mass (CoM, 质心)",
+    "terms.7": "Dynamics (动力学)",
+    "title": "Does 'training in 15 minutes' mean any humanoid whole-body task can be trained on one consumer GPU and deployed reliably in fifteen minutes?"
+  }
+}

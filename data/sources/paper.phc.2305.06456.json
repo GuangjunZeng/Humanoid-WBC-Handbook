@@ -1,0 +1,23 @@
+{
+  "access_mode": "public_web",
+  "attention": {},
+  "authors": [],
+  "canonical_url": "https://arxiv.org/abs/2305.06456",
+  "captured_at": "2026-08-12T12:00:00+08:00",
+  "content_sha256": "7032182d647e65d6c850a3b8e699fbcd3aa8b978fa8475e6227d029091ec8cda",
+  "excerpt": null,
+  "kind": "paper",
+  "license": null,
+  "metadata": {
+    "arxiv_id": "2305.06456",
+    "full_paper_reviewed": true,
+    "license_note": "Link and original bilingual analysis only; no paper text is redistributed.",
+    "pages_read": 14
+  },
+  "published_at": null,
+  "publisher": "arXiv",
+  "source_id": "paper.phc.2305.06456",
+  "summary": "PHC scales simulated humanoid motion tracking with progressive capacity expansion and a recovery policy, while its evidence remains limited to simulated avatars.",
+  "title": "Perpetual Humanoid Control for Real-time Simulated Avatars",
+  "version": "arXiv:2305.06456"
+}

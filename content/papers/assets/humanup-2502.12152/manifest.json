@@ -1,0 +1,232 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2502.12152",
+  "source_pdf": "https://arxiv.org/pdf/2502.12152",
+  "source_pdf_sha256": "5a594169d416cf9903bf79224a3461e70b69b20800ad360b2591c4426b7a8cc4",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-real-world.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "source_locator": "Figure 1",
+      "caption_zh": "G1 从仰卧、俯卧及不同真实地面完成翻身与起身。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“G1 从仰卧、俯卧及不同真实地面完成翻身与起身。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“G1 从仰卧、俯卧及不同真实地面完成翻身与起身。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.04,
+            0.19,
+            0.96,
+            0.69
+          ],
+          "caption_anchor": "Fig. 1: HUMANUP provides a simple and general two-stage training method",
+          "visual_review_note": "全分辨率目视确认 Fig. 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.635619,
+            0.6068,
+            0.646865
+          ],
+          "caption_block_bbox": [
+            0.079998,
+            0.635619,
+            0.919991,
+            0.677054
+          ],
+          "page_text_sha256": "d905da47d7af9a5a0aed0e2dfe947511eec2d8a96b2330473302c309507783d5",
+          "extra_text_word_count": 26
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1182,
+      "sha256": "b8345c4c241ea2e8198187de5532e56b13f3ec87de236baa4f335651bca05e7b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "29d4d560df5a74657f64cd24748a994b1cd7b6202fd7866f7f98662696b27ee8"
+      },
+      "review_fingerprint": "29d4d560df5a74657f64cd24748a994b1cd7b6202fd7866f7f98662696b27ee8"
+    },
+    {
+      "asset": "figure-2-two-stage.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "source_locator": "Figure 2",
+      "caption_zh": "Stage I 动作发现到 Stage II 减速追踪、正则化和域随机化的课程。",
+      "selection_reason_zh": "选择 Figure 2，因为它直接展示“Stage I 动作发现到 Stage II 减速追踪、正则化和域随机化的课程。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“Stage I 动作发现到 Stage II 减速追踪、正则化和域随机化的课程。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 3,
+          "crop": [
+            0.04,
+            0.07,
+            0.96,
+            0.48
+          ],
+          "caption_anchor": "Fig. 2. HUMANUP system overview",
+          "visual_review_note": "全分辨率目视确认 Fig. 2. HUMANUP system overview 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079998,
+            0.352516,
+            0.334404,
+            0.363913
+          ],
+          "caption_block_bbox": [
+            0.079495,
+            0.352516,
+            0.922023,
+            0.469578
+          ],
+          "page_text_sha256": "8869dd21e4233cf0214bd8a49825736f4b6599c08decdc17d6f3ec8071eea465",
+          "extra_text_word_count": 85
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 980,
+      "sha256": "ff86d33772ec73238e2109876401a53c523e383114f02ec1d613caf00f6da066",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "fdb5f216f78a79c5bc5caa80687b4d5727548065503c9a1655cb787102d0969a"
+      },
+      "review_fingerprint": "fdb5f216f78a79c5bc5caa80687b4d5727548065503c9a1655cb787102d0969a"
+    },
+    {
+      "asset": "table-1-simulation.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "source_locator": "Table I / Figure 4",
+      "caption_zh": "完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。",
+      "selection_reason_zh": "选择 Table I / Figure 4，因为它直接展示“完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 6,
+          "crop": [
+            0.04,
+            0.05,
+            0.96,
+            0.37
+          ],
+          "caption_anchor": "TABLE I: Simulation results",
+          "visual_review_note": "全分辨率目视确认 TABLE I 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.079495,
+            0.070069,
+            0.279407,
+            0.081466
+          ],
+          "caption_block_bbox": [
+            0.079234,
+            0.070069,
+            0.922838,
+            0.172035
+          ],
+          "page_text_sha256": "44ca1722b2c3ebb25ed3c8883fd4568cd47c350fed59c2b267f80824d3bbd317",
+          "extra_text_word_count": 251
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 776,
+      "sha256": "d9ccbea007aaa077ae0ffe5a5a9557154a6ed33486c2b69ff268622268499b96",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "5a9018cfea2660256dcf10085126f7ce681444eca4c64da5739948d5ea260f3c"
+      },
+      "review_fingerprint": "5a9018cfea2660256dcf10085126f7ce681444eca4c64da5739948d5ea260f3c"
+    },
+    {
+      "asset": "figure-3-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "source_locator": "Figure 3-4",
+      "caption_zh": "六类真实地面上的重复试验成功数及单阶段训练失败曲线。",
+      "selection_reason_zh": "选择 Figure 3-4，因为它直接展示“六类真实地面上的重复试验成功数及单阶段训练失败曲线。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“六类真实地面上的重复试验成功数及单阶段训练失败曲线。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.04,
+            0.05,
+            0.96,
+            0.45
+          ],
+          "caption_anchor": "Fig. 3: Real-world results",
+          "visual_review_note": "全分辨率目视确认 Fig. 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.07,
+            0.36,
+            0.93,
+            0.45
+          ],
+          "caption_anchor_bbox": [
+            0.079998,
+            0.367391,
+            0.259947,
+            0.378788
+          ],
+          "caption_block_bbox": [
+            0.07,
+            0.36,
+            0.93,
+            0.45
+          ],
+          "page_text_sha256": "6f2b42ee4778fb7983ed3bcbd91868f2abc8ed1911f766a15b9b61b202335bd2",
+          "extra_text_word_count": 137
+        },
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.5,
+            0.48,
+            0.96,
+            0.78
+          ],
+          "caption_anchor": "Fig. 4: Learning curve",
+          "visual_review_note": "全分辨率目视确认 Fig. 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_bbox": [
+            0.5,
+            0.64,
+            0.96,
+            0.78
+          ],
+          "caption_anchor_bbox": [
+            0.50976,
+            0.648985,
+            0.6753,
+            0.660381
+          ],
+          "caption_block_bbox": [
+            0.5,
+            0.64,
+            0.96,
+            0.78
+          ],
+          "page_text_sha256": "6f2b42ee4778fb7983ed3bcbd91868f2abc8ed1911f766a15b9b61b202335bd2",
+          "extra_text_word_count": 5
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2335,
+      "sha256": "3b08fc4ca620d1eb86667b9c857d473307f34c762e89a82ada16a08c255113d7",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "ec234c125f19a183a2c58b948ea87a032058e2ee38f2c9b33c2a2703672c402a"
+      },
+      "review_fingerprint": "ec234c125f19a183a2c58b948ea87a032058e2ee38f2c9b33c2a2703672c402a"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2406.10454",
+  "source_pdf": "https://arxiv.org/pdf/2406.10454",
+  "source_pdf_sha256": "94c5fe16631e2d1c5b5bdd8326adda17c719ad63b2630979ca6aa9e0a7af4dd2",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-full-stack.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "source_locator": "Figure 1",
+      "caption_zh": "HumanPlus 从真人动作影子跟踪、第一视角数据采集到自主模仿任务的全栈目标。",
+      "selection_reason_zh": "选择 Figure 1，因为它直接展示“HumanPlus 从真人动作影子跟踪、第一视角数据采集到自主模仿任务的全栈目标。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“HumanPlus 从真人动作影子跟踪、第一视角数据采集到自主模仿任务的全栈目标。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 1,
+          "crop": [
+            0.04,
+            0.15,
+            0.96,
+            0.78
+          ],
+          "caption_anchor": "Figure 1: Stanford HumanPlus Robot",
+          "visual_review_note": "全分辨率目视确认 Figure 1 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.714663,
+            0.389964,
+            0.725881
+          ],
+          "caption_block_bbox": [
+            0.104761,
+            0.714663,
+            0.897079,
+            0.768436
+          ],
+          "page_text_sha256": "e08ead6b2378cacd832ab604a0fc8162f0afed21cf685964c70a097ad744f5c8",
+          "extra_text_word_count": 21
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1606,
+      "sha256": "00158c9dbfc1201814d6d5633fd95e5bd8cf8a45a3583c23eb10ec90a9baad69",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "c407131bdd5dac86a2754383647d2db02c433f371f0fc089ff24c8821d95f122"
+      },
+      "review_fingerprint": "c407131bdd5dac86a2754383647d2db02c433f371f0fc089ff24c8821d95f122"
+    },
+    {
+      "asset": "figure-3-retargeting.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "source_locator": "Figure 3",
+      "caption_zh": "单目身体与手部估计、固定关节映射和全身 shadowing 数据链路。",
+      "selection_reason_zh": "选择 Figure 3，因为它直接展示“单目身体与手部估计、固定关节映射和全身 shadowing 数据链路。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“单目身体与手部估计、固定关节映射和全身 shadowing 数据链路。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.05,
+            0.08,
+            0.95,
+            0.33
+          ],
+          "caption_anchor": "Figure 3: Shadowing and Retargeting",
+          "visual_review_note": "全分辨率目视确认 Figure 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.119844,
+            0.248827,
+            0.39955,
+            0.260045
+          ],
+          "caption_block_bbox": [
+            0.119844,
+            0.248827,
+            0.880155,
+            0.260045
+          ],
+          "page_text_sha256": "3367f82d95c3097486acc351bc5a38564dee00ae8e1c70a4a85574c4f7975caa",
+          "extra_text_word_count": 69
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 684,
+      "sha256": "bb7b73966fba145d0304d662116eddc674dcaca0de281c793b1cd919bc10793b",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "774d3a67ea0443736a8ebefdba6563a1ea4c3501b62f3b5add68245f37696718"
+      },
+      "review_fingerprint": "774d3a67ea0443736a8ebefdba6563a1ea4c3501b62f3b5add68245f37696718"
+    },
+    {
+      "asset": "figure-4-models.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "source_locator": "Figure 4 / Table 1-2",
+      "caption_zh": "HST 历史 Transformer 与 HIT 动作块/未来视觉特征预测架构。",
+      "selection_reason_zh": "选择 Figure 4 / Table 1-2，因为它直接展示“HST 历史 Transformer 与 HIT 动作块/未来视觉特征预测架构。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“HST 历史 Transformer 与 HIT 动作块/未来视觉特征预测架构。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 5,
+          "crop": [
+            0.05,
+            0.07,
+            0.95,
+            0.31
+          ],
+          "caption_anchor": "Figure 4: Model Architectures",
+          "visual_review_note": "全分辨率目视确认 Figure 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104761,
+            0.274326,
+            0.324753,
+            0.285545
+          ],
+          "caption_block_bbox": [
+            0.104761,
+            0.274326,
+            0.895234,
+            0.299698
+          ],
+          "page_text_sha256": "09ef709e711d22c635fb7c23c882eaf86119a62a5c70d9cf68b787b0c88e8a3f",
+          "extra_text_word_count": 9
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 660,
+      "sha256": "9018c592baea51d296568337aed93cb548d6c564ec6e0c41f712ad8859c4c200",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "f57f64b165ad0519aa0ffd3219f74a456b4536d39ad40868436e3df537256682"
+      },
+      "review_fingerprint": "f57f64b165ad0519aa0ffd3219f74a456b4536d39ad40868436e3df537256682"
+    },
+    {
+      "asset": "table-3-user-study.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "source_locator": "Table 3",
+      "caption_zh": "六名参与者在装仓与脱鞋任务上的遥操时间与全身能力对照。",
+      "selection_reason_zh": "选择 Table 3，因为它直接展示“六名参与者在装仓与脱鞋任务上的遥操时间与全身能力对照。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“六名参与者在装仓与脱鞋任务上的遥操时间与全身能力对照。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.09,
+            0.06,
+            0.91,
+            0.23
+          ],
+          "caption_anchor": "Table 3: Teleop Comparisons & User Studies",
+          "visual_review_note": "全分辨率目视确认 Table 3 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.110391,
+            0.208429,
+            0.436599,
+            0.219648
+          ],
+          "caption_block_bbox": [
+            0.110391,
+            0.208429,
+            0.889059,
+            0.219648
+          ],
+          "page_text_sha256": "4a92ae0696a34170483101c21e24ef32f4cf0a6a251fdc39eca5c138eb31708e",
+          "extra_text_word_count": 57
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 526,
+      "sha256": "376fbb7236c2591f3d2317b1d23a6b9c67debf332867a4e04c29ccafc56153b9",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "d6774ecc4e39c25c1317d822f2c5080bb22e38e5eee1b5fe50f5a2849be3bc9b"
+      },
+      "review_fingerprint": "d6774ecc4e39c25c1317d822f2c5080bb22e38e5eee1b5fe50f5a2849be3bc9b"
+    },
+    {
+      "asset": "table-4-5-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2406.10454",
+      "source_locator": "Table 4-5",
+      "caption_zh": "扰动恢复、动作范围与六类自主模仿任务的真实试验统计。",
+      "selection_reason_zh": "选择 Table 4-5，因为它直接展示“扰动恢复、动作范围与六类自主模仿任务的真实试验统计。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“扰动恢复、动作范围与六类自主模仿任务的真实试验统计。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.09,
+            0.04,
+            0.91,
+            0.25
+          ],
+          "caption_anchor": "Table 4: Robustness Evaluation",
+          "visual_review_note": "全分辨率目视确认 Table 4 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104209,
+            0.163224,
+            0.341122,
+            0.174442
+          ],
+          "caption_block_bbox": [
+            0.104209,
+            0.163224,
+            0.895556,
+            0.188596
+          ],
+          "page_text_sha256": "7291e9b6ca829dfb32a7cf11ccfc2128ee1b877e3cb8d520c691e3f0e78ae493",
+          "extra_text_word_count": 36
+        },
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.09,
+            0.04,
+            0.91,
+            0.63
+          ],
+          "caption_anchor": "Table 5: Comparisons on Imitation",
+          "visual_review_note": "全分辨率目视确认 Table 5 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.104209,
+            0.58747,
+            0.366949,
+            0.598688
+          ],
+          "caption_block_bbox": [
+            0.104209,
+            0.58747,
+            0.895233,
+            0.612841
+          ],
+          "page_text_sha256": "9cdaa31e016149650f2ca38275d29d06a051cd980fab14fe15d6ad8c208abacb",
+          "extra_text_word_count": 244
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 2292,
+      "sha256": "4f1ec6fe5e2fd2f42c77e9ecea40dd63ff2e69af5ebac04c91e558095ec4eaba",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "d82254245044100a3ee9d1d133b31da6e8c72a2c991558ecd2bf15cd11bb8792"
+      },
+      "review_fingerprint": "d82254245044100a3ee9d1d133b31da6e8c72a2c991558ecd2bf15cd11bb8792"
+    }
+  ]
+}

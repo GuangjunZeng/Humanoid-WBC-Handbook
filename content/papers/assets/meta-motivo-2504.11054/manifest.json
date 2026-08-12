@@ -1,0 +1,195 @@
+{
+  "schema_version": 2,
+  "workflow_version": "key-figure-audit-v2",
+  "paper_id": "arxiv:2504.11054",
+  "source_pdf": "https://arxiv.org/pdf/2504.11054",
+  "source_pdf_sha256": "490821522c0db55b145615a4a3a748e672992bdbad2a58e608582574c1e15435",
+  "render_method": "Poppler page render at 220 DPI; normalized audited crops; Pillow Lanczos composition at 1600px content width",
+  "copyright": "Third-party paper figures remain under their original copyright; cropped excerpts are reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-2-fbcpr.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "source_locator": "Figure 2 / Equation 7-11",
+      "caption_zh": "FB-CPR 用条件判别器对齐策略占用分布与无动作标注动作集。",
+      "selection_reason_zh": "选择 Figure 2 / Equation 7-11，因为它直接展示“FB-CPR 用条件判别器对齐策略占用分布与无动作标注动作集。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“FB-CPR 用条件判别器对齐策略占用分布与无动作标注动作集。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 4,
+          "crop": [
+            0.1,
+            0.12,
+            0.9,
+            0.36
+          ],
+          "caption_anchor": "Figure 2 Illustration of the main components of FB-CPR",
+          "visual_review_note": "全分辨率目视确认 Figure 2 Illustration of the main components of FB-CPR 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.115794,
+            0.279252,
+            0.465111,
+            0.289882
+          ],
+          "caption_block_bbox": [
+            0.115794,
+            0.279252,
+            0.88445,
+            0.345579
+          ],
+          "page_text_sha256": "be42eaceb17015a5086f35ad43242cad10dc139a6a48af72cf1bb06237b5cd09",
+          "extra_text_word_count": 0
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 677,
+      "sha256": "cdd3080101cbb747155606a7efafca86fe6a4b1a955324609688305a31d9578d",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "602b736e314567a492c9b4e20749d30231d72c45e189c22d4760fbd3e791d9e8"
+      },
+      "review_fingerprint": "602b736e314567a492c9b4e20749d30231d72c45e189c22d4760fbd3e791d9e8"
+    },
+    {
+      "asset": "table-1-main-results.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "source_locator": "Table 1",
+      "caption_zh": "奖励优化、目标到达与动作跟踪三类 zero-shot 任务的主结果。",
+      "selection_reason_zh": "选择 Table 1，因为它直接展示“奖励优化、目标到达与动作跟踪三类 zero-shot 任务的主结果。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“奖励优化、目标到达与动作跟踪三类 zero-shot 任务的主结果。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持表中明确报告的基线、指标与实验条件；不能外推到未报告机器人、分布、长期可靠性或实机安全边界。",
+      "regions": [
+        {
+          "pdf_page": 7,
+          "crop": [
+            0.09,
+            0.07,
+            0.91,
+            0.38
+          ],
+          "caption_anchor": "Table 1 Summary results comparing FB-CPR",
+          "visual_review_note": "全分辨率目视确认 Table 1 Summary results comparing FB-CPR 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.11534,
+            0.29149,
+            0.405682,
+            0.302121
+          ],
+          "caption_block_bbox": [
+            0.11534,
+            0.29149,
+            0.88682,
+            0.371295
+          ],
+          "page_text_sha256": "1d62889aef193144a189e32ba64a28e74fbcf8fd0b8a3dccdd5845c17a802e69",
+          "extra_text_word_count": 138
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 839,
+      "sha256": "e62ef5cce944589b2aaebd238ce0a778646b63bf29c2f0dd269ee77a4ccb8f69",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "f38ec4b49d467cfab24f410ea5fbd2a8e0686d4915a0a3f274039d23430712e1"
+      },
+      "review_fingerprint": "f38ec4b49d467cfab24f410ea5fbd2a8e0686d4915a0a3f274039d23430712e1"
+    },
+    {
+      "asset": "figure-3-human-eval.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "source_locator": "Figure 3",
+      "caption_zh": "50 名人类评估者对 FB-CPR 与单任务 TD3 的成功和人类似然性评判。",
+      "selection_reason_zh": "选择 Figure 3，因为它直接展示“50 名人类评估者对 FB-CPR 与单任务 TD3 的成功和人类似然性评判。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“50 名人类评估者对 FB-CPR 与单任务 TD3 的成功和人类似然性评判。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 8,
+          "crop": [
+            0.1,
+            0.07,
+            0.9,
+            0.33
+          ],
+          "caption_anchor": "Figure 3 Human-evaluation",
+          "visual_review_note": "全分辨率目视确认 Figure 3 Human-evaluation 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.115794,
+            0.244074,
+            0.290843,
+            0.254704
+          ],
+          "caption_block_bbox": [
+            0.11531,
+            0.244074,
+            0.884207,
+            0.282367
+          ],
+          "page_text_sha256": "6f219f950d0bef6512f37832ee0665e38ab250217b5965156e091064fd812799",
+          "extra_text_word_count": 54
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 730,
+      "sha256": "e1e24f3b0e9c14e5f2ba314d54c2cebc33d6d37b1bf5b8d450174c724c82f28f",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "27bf8f1a659e3f72e7badde49ebcd18c4741729ba86e26c83c7191e3611f2802"
+      },
+      "review_fingerprint": "27bf8f1a659e3f72e7badde49ebcd18c4741729ba86e26c83c7191e3611f2802"
+    },
+    {
+      "asset": "figure-4-ablations.jpg",
+      "source_url": "https://arxiv.org/pdf/2504.11054",
+      "source_locator": "Figure 4",
+      "caption_zh": "判别器条件化、FB 目标、数据/容量扩展与在线训练的消融。",
+      "selection_reason_zh": "选择 Figure 4，因为它直接展示“判别器条件化、FB 目标、数据/容量扩展与在线训练的消融。”，是核对详情页方法或实验主张的关键原论文证据。",
+      "supports_zh": "支持详情页在论文明确报告的条件下，对“判别器条件化、FB 目标、数据/容量扩展与在线训练的消融。”作有限、可定位的工程解释。",
+      "limits_zh": "只支持图中可见结构、流程或图注明示的实验关系；展示样例不能替代统计分母，也不能证明未报告的实机安全性。",
+      "regions": [
+        {
+          "pdf_page": 9,
+          "crop": [
+            0.07,
+            0.06,
+            0.93,
+            0.48
+          ],
+          "caption_anchor": "Figure 4 FB-CPR ablations",
+          "visual_review_note": "全分辨率目视确认 Figure 4 FB-CPR ablations 本体完整且保留原始完整 caption；裁剪边界无无关正文、无相邻图表残片、无页眉页脚。",
+          "caption_anchor_bbox": [
+            0.115794,
+            0.406688,
+            0.308517,
+            0.417319
+          ],
+          "caption_block_bbox": [
+            0.115794,
+            0.406688,
+            0.88421,
+            0.472656
+          ],
+          "page_text_sha256": "4c3efcbfd2db18ebee25b29ce0ab503d8bc8dcb80ea4e23d19aef21c2f90ab4d",
+          "extra_text_word_count": 115
+        }
+      ],
+      "pixel_width": 1656,
+      "pixel_height": 1068,
+      "sha256": "33c242845e82956b8b10a71c2a044aafbf841c0b355a009635814fc91abc48a8",
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-pdf-visual-audit-2026-08-13",
+        "reviewed_on": "2026-08-13",
+        "fingerprint": "b747954ef47900c6c4ca6bd44f800f8ebd21cdcfb694e3943da6cd0629adb294"
+      },
+      "review_fingerprint": "b747954ef47900c6c4ca6bd44f800f8ebd21cdcfb694e3943da6cd0629adb294"
+    }
+  ]
+}
