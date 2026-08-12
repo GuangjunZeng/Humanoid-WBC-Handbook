@@ -353,6 +353,16 @@
       "status": "complete",
       "brief_path": "content/papers/safefall-2511.18509.md",
       "brief_path_en": "content/papers/en/safefall-2511.18509.md"
+    },
+    {
+      "paper_id": "arxiv:2409.14393",
+      "slug": "maskedmimic-2409.14393",
+      "title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
+      "primary_domain": "motion_generation",
+      "coverage_role": "structured_masked_motion_inpainting",
+      "status": "complete",
+      "brief_path": "content/papers/maskedmimic-2409.14393.md",
+      "brief_path_en": "content/papers/en/maskedmimic-2409.14393.md"
     }
   ]
 }

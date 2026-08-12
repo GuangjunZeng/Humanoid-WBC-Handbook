@@ -1,0 +1,24 @@
+{
+  "access_mode": "public_api",
+  "attention": {},
+  "authors": ["NVlabs/ProtoMotions contributors"],
+  "canonical_url": "https://github.com/NVlabs/ProtoMotions/tree/5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "content_sha256": "b155de03cc2e7098d4116c25df0ebb941be6fa65e2ab164be28cd1b6de30061e",
+  "excerpt": null,
+  "kind": "source_code",
+  "license": "Apache-2.0 with separate third-party software, model, dataset, and asset licenses",
+  "metadata": {
+    "commit": "5241478e35a7dcf5d1455dac2df0486d5e7f440a",
+    "mapped_symbols": ["MaskedMimicControl._sample_body_masks", "MaskedMimicControl.populate_context", "MaskedMimicModel.forward", "MaskedMimicModel.forward_inference", "MaskedMimicModel.kl_loss"],
+    "repository": "NVlabs/ProtoMotions",
+    "version_note": "ProtoMotions 3 is a 2025-2026 refactor. Its public MaskedMimic entry verifies the sparse-pose VAE mechanism but differs from the 2024 paper configuration and does not expose the full paper-era text/object pipeline.",
+    "redistribution": "No code, checkpoints, robot models, body models, motions, configurations, datasets, or assets are copied."
+  },
+  "published_at": null,
+  "publisher": "NVIDIA Research",
+  "source_id": "code.nvlabs.protomotions.5241478",
+  "summary": "Pinned official ProtoMotions 3 code exposing sparse future-pose masking, partial-goal context, learned-prior and residual-encoder VAE paths, inference without the privileged encoder, and KL scheduling.",
+  "title": "NVlabs/ProtoMotions official implementation",
+  "version": "5241478e35a7dcf5d1455dac2df0486d5e7f440a"
+}

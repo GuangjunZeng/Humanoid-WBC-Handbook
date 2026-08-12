@@ -1,0 +1,29 @@
+{
+  "kind": "claim",
+  "problem_id": "motion-generation.maskedmimic-structured-masking-simulation-boundary",
+  "schema_version": 1,
+  "source_fingerprint": "3e75e99256f186d1a527255994c6c64e79be190c85f0fe655f8626d802f28ea8",
+  "translations": {
+    "answer": "Within MaskedMimic's 69-DoF simulated SMPL character, AMASS/HumanML3D/SAMP data, and Isaac Gym environment, a full-motion teacher is trained first and then distilled with student-distribution DAgger, temporally persistent structured masking, and a learned-prior conditional VAE. This allows one partially constrained policy to reuse keyframe, sparse-joint, text, and object interfaces. In Table 6, removing structured masking reduces the held-out seating-task success rate from 96.9% to 0%, but this evidence does not guarantee humanoid-robot hardware or safety-critical deployment.",
+    "applicability.assumptions.0": "A full-motion teacher can already track the target corpus in the simulated character and scene distribution.",
+    "applicability.assumptions.1": "User interfaces can be encoded as persistent partial pose, text, terrain, or object constraints with explicit masks and target times.",
+    "applicability.assumptions.2": "Deployment remains within the paper's simulated SMPL character setting; robot hardware requires an independent transfer and safety case.",
+    "applicability.controllers.0": "MaskedMimic partially constrained conditional-VAE student",
+    "applicability.controllers.1": "fully constrained motion-tracking teacher",
+    "applicability.environments.0": "AMASS evaluation on flat and procedurally irregular terrain",
+    "applicability.environments.1": "SAMP held-out seating objects",
+    "applicability.environments.2": "goal-engineered simulation tasks",
+    "applicability.robots.0": "69-DoF neutral-shape SMPL simulated character; no humanoid-robot hardware",
+    "applicability.simulators.0": "Isaac Gym",
+    "confidence_rationale": "The paper reports full-body and VR tracking, irregular-terrain tasks, 5,000-episode goal-engineered evaluations, and a strong object-interaction ablation in which removing structured masking reduces success from 96.9% to 0%. Pinned official code exposes the sparse masking and learned-prior VAE mechanisms. Confidence is capped because the evidence is simulation-only, some comparison baselines are inherited from prior reports, and current ProtoMotions 3 does not reproduce the complete paper-era text and object configuration.",
+    "evidence.0.locator": "Figures 3 and 5, Equations 6-8, Tables 1-6, and Appendix A-B",
+    "evidence.0.note": "Defines full-teacher to partial-student distillation, structured masks, learned-prior conditional VAE, simulation scale, tracking and task metrics, and the mechanism ablation.",
+    "evidence.0.title": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
+    "evidence.1.locator": "MaskedMimicControl._sample_body_masks/populate_context and MaskedMimicModel.forward/forward_inference/kl_loss at commit 5241478",
+    "evidence.1.note": "Maps sparse future-pose visibility and learned-prior/residual-encoder inference to pinned official code while preserving the documented paper-versus-refactor differences.",
+    "evidence.1.title": "NVlabs/ProtoMotions official implementation",
+    "terms.0": "Inertial Measurement Unit (IMU，惯性测量单元)",
+    "terms.1": "Application Programming Interface (API，应用程序接口)",
+    "title": "How can one physics-based policy accept full-body references, sparse joints, keyframes, text, and object control interfaces?"
+  }
+}

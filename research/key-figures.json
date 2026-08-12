@@ -405,6 +405,18 @@
         {"file": "table-3-predictor.jpg", "page": 7, "locator": "Table III / Figure 5", "caption_zh": "预测器架构、时间分段与课程对准确率、误报和提前量的消融。"},
         {"file": "table-4-5-hardware.jpg", "page": 8, "locator": "Table IV-V / Figure 6", "caption_zh": "仿真损伤指标、跨 nominal policy 泛化与真实 G1 保护动作及冲量统计。"}
       ]
+    },
+    {
+      "slug": "maskedmimic-2409.14393",
+      "paper_id": "arxiv:2409.14393",
+      "pdf": "var/papers/2409.14393.pdf",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "figures": [
+        {"file": "figure-3-framework-05.jpg", "page": 5, "locator": "Figure 3", "caption_zh": "完整动作教师、结构化遮挡的在线蒸馏，以及仅用部分约束推理的三阶段框架。"},
+        {"file": "figure-5-vae-08.jpg", "page": 8, "locator": "Figure 5", "caption_zh": "部分目标 learned prior、完整目标 residual encoder 与共享 decoder 的条件 VAE。"},
+        {"file": "figure-6-table-1-2-11.jpg", "page": 11, "locator": "Figure 6 / Table 1-2", "caption_zh": "完整动作跟踪与 VR 稀疏关节跟踪在 AMASS train/test 上的成功率和误差。"},
+        {"file": "figure-8-table-6-14.jpg", "page": 14, "locator": "Figure 8 / Table 6", "caption_zh": "未见坐具交互和 history、VAE、residual prior、structured masking 的机制消融。"}
+      ]
     }
   ]
 }

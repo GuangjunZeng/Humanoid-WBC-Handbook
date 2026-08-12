@@ -1,0 +1,40 @@
+{
+  "applicability": {
+    "assumptions": [
+      "A full-motion teacher can already track the target corpus in the simulated character and scene distribution.",
+      "User interfaces can be encoded as persistent partial pose, text, terrain, or object constraints with explicit masks and target times.",
+      "The deployment remains within the paper's simulated SMPL character setting; robot hardware requires an independent transfer and safety case."
+    ],
+    "controllers": ["MaskedMimic partially constrained C-VAE student", "fully constrained motion-tracking teacher"],
+    "environments": ["AMASS flat and procedurally irregular terrain evaluation", "SAMP held-out seating objects", "goal-engineered simulation tasks"],
+    "robots": ["69-DoF neutral-shape SMPL simulated character; no humanoid robot hardware"],
+    "simulators": ["Isaac Gym"]
+  },
+  "claim_id": "motion-generation.maskedmimic-structured-masking-simulation-boundary",
+  "confidence": 0.8,
+  "confidence_rationale": "The paper reports full/VR tracking, irregular-terrain tasks, 5,000-episode goal-engineered evaluations, and a strong object-interaction ablation where removing structured masking drops success from 96.9% to 0%; official pinned code exposes the sparse masking and learned-prior VAE mechanisms. Confidence is capped because the evidence is simulation-only, some comparison baselines are inherited from prior reports, and current ProtoMotions 3 does not reproduce the complete paper-era text/object configuration.",
+  "domain": "motion_generation",
+  "evidence": [
+    {
+      "locator": "Figures 3 and 5, Equations 6-8, Tables 1-6, and Appendix A-B",
+      "note": "Defines full-teacher to partial-student distillation, structured masks, learned-prior C-VAE, simulation scale, tracking/task metrics, and the mechanism ablation.",
+      "role": "support",
+      "source_id": "paper.maskedmimic.2409.14393",
+      "strength": "primary"
+    },
+    {
+      "locator": "MaskedMimicControl._sample_body_masks/populate_context and MaskedMimicModel.forward/forward_inference/kl_loss at commit 5241478",
+      "note": "Maps sparse future-pose visibility and learned-prior/residual-encoder inference to pinned official code while preserving the documented paper-versus-refactor differences.",
+      "role": "support",
+      "source_id": "code.nvlabs.protomotions.5241478",
+      "strength": "primary"
+    }
+  ],
+  "question": "如何用一个物理控制策略同时接受全身参考、稀疏关节、关键帧、文字和物体等不同控制接口？",
+  "review_due_at": "2027-08-12T14:00:00+08:00",
+  "reviewed_at": "2026-08-12T14:00:00+08:00",
+  "safety_level": "caution",
+  "statement": "在 MaskedMimic 的 69-DoF 仿真 SMPL 角色、AMASS/HumanML3D/SAMP 数据和 Isaac Gym 环境内，先训练完整动作教师，再用学生分布 DAgger、跨时间持续的结构化遮挡和 learned-prior C-VAE 蒸馏，可让一个部分约束策略复用关键帧、稀疏关节、文字与物体接口；Table 6 中移除结构化遮挡后坐具任务成功率从 96.9% 降至 0%，但该证据不构成人形机器人真机或安全关键部署保证。",
+  "status": "reviewed",
+  "tags": ["MaskedMimic", "motion inpainting", "structured masking", "DAgger", "conditional VAE", "simulation-only"]
+}

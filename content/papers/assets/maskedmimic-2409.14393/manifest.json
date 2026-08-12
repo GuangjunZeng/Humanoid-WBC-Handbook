@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2409.14393",
+  "source_pdf": "https://arxiv.org/pdf/2409.14393",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-3-framework-05.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 5,
+      "source_locator": "Figure 3",
+      "caption_zh": "完整动作教师、结构化遮挡的在线蒸馏，以及仅用部分约束推理的三阶段框架。",
+      "sha256": "eae3476b080bfa0b39c727d8cb722b09f431bd673a18b50a23e1f58ea7a41bf9"
+    },
+    {
+      "asset": "figure-5-vae-08.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 8,
+      "source_locator": "Figure 5",
+      "caption_zh": "部分目标 learned prior、完整目标 residual encoder 与共享 decoder 的条件 VAE。",
+      "sha256": "dcc5fb8ae0d3d7859e637398a8be8bd9c6c7dd75b8895578bf7266822c0f3943"
+    },
+    {
+      "asset": "figure-6-table-1-2-11.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 11,
+      "source_locator": "Figure 6 / Table 1-2",
+      "caption_zh": "完整动作跟踪与 VR 稀疏关节跟踪在 AMASS train/test 上的成功率和误差。",
+      "sha256": "fa53d324dd2dff3ab5730140a5d16d5131098afdd1f8ea341f1458a489e615f2"
+    },
+    {
+      "asset": "figure-8-table-6-14.jpg",
+      "source_url": "https://arxiv.org/pdf/2409.14393",
+      "pdf_page": 14,
+      "source_locator": "Figure 8 / Table 6",
+      "caption_zh": "未见坐具交互和 history、VAE、residual prior、structured masking 的机制消融。",
+      "sha256": "f088e2fff4c52ee0886d51a79d1ce3e660f4e641ce2ddf56aefa6e25ea657965"
+    }
+  ]
+}

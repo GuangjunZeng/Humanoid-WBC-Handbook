@@ -508,7 +508,9 @@
       "coverage_roles": ["latent_skill", "open_source", "multi_mode"],
       "paper_url": "https://arxiv.org/abs/2409.14393",
       "code": {"status": "verified_official", "url": "https://github.com/NVlabs/ProtoMotions"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/maskedmimic-2409.14393.md",
+      "brief_path_en": "content/papers/en/maskedmimic-2409.14393.md",
       "why_zh": "把关键帧、文本、场景和稀疏目标统一为掩码动作补全问题。"
     },
     {
