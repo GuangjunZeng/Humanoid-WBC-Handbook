@@ -1,0 +1,19 @@
+{
+  "source_id": "code.zju3dv.gvhmr.6ec3ca3",
+  "kind": "source_code",
+  "title": "zju3dv/GVHMR official implementation",
+  "canonical_url": "https://github.com/zju3dv/GVHMR/tree/6ec3ca39336c50492c0fae65fba2fb831fc7d866",
+  "captured_at": "2026-08-12T00:00:00+08:00",
+  "version": "6ec3ca39336c50492c0fae65fba2fb831fc7d866",
+  "summary": "Official implementation exposing the video preprocessing, temporal gravity-view network, world-coordinate decoder, optional postprocessing, and evaluation paths. Inspected only, not vendored.",
+  "access_mode": "public_api",
+  "authors": ["zju3dv/GVHMR contributors"],
+  "publisher": "Zhejiang University 3D Vision Group",
+  "license": "Custom educational, research, and non-commercial license",
+  "metadata": {
+    "repository": "zju3dv/GVHMR",
+    "commit": "6ec3ca39336c50492c0fae65fba2fb831fc7d866",
+    "mapped_symbols": ["Pipeline.forward", "NetworkEncoderRoPE.forward", "get_R_c2gv", "DemoPL.predict"],
+    "redistribution": "No code, checkpoints, body models, videos, datasets, configurations, or assets are copied."
+  }
+}

@@ -48,11 +48,14 @@
       "topics": ["training_data_retargeting"],
       "relation": "official_paper_code",
       "related_paper_ids": ["arxiv:2409.06662"],
-      "analysis_status": "queued",
+      "analysis_status": "deep_review",
+      "reviewed_commit": "6ec3ca39336c50492c0fae65fba2fb831fc7d866",
+      "detail_path_zh": "content/papers/projects/gvhmr.md",
+      "detail_path_en": "content/papers/projects/en/gvhmr.md",
       "stars": 1840,
       "star_snapshot_at": "2026-08-12",
       "default_branch": "main",
-      "license": "NOASSERTION",
+      "license": "Custom educational, research, and non-commercial license",
       "selection_reason_zh": "从移动相机视频恢复世界坐标人体运动，是机器人重定向前的数据入口代表。"
     },
     {
@@ -234,11 +237,14 @@
       "topics": ["locomotion_terrain"],
       "relation": "official_paper_code",
       "related_paper_ids": ["arxiv:2109.11978"],
-      "analysis_status": "queued",
+      "analysis_status": "deep_review",
+      "reviewed_commit": "8fa29acc6fd1910c3d9659eef6310bdd301cde0a",
+      "detail_path_zh": "content/papers/projects/legged-gym.md",
+      "detail_path_en": "content/papers/projects/en/legged-gym.md",
       "stars": 3079,
       "star_snapshot_at": "2026-08-12",
       "default_branch": "master",
-      "license": "NOASSERTION",
+      "license": "BSD-3-Clause (code; bundled assets and dependencies retain separate terms)",
       "selection_reason_zh": "大规模并行腿式强化学习的经典工程基线，奖励、地形、随机化和部署接口影响后续人形框架。"
     },
     {

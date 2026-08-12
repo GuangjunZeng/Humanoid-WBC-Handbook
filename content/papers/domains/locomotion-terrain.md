@@ -46,11 +46,12 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：19 个项目，其中已审代码 8 个、无对应论文的独立项目 5 个。
+- 当前收录：19 个项目，其中已审代码 9 个、无对应论文的独立项目 5 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [legged_gym](../projects/legged-gym.md) | 论文官方实现 | 3079 | BSD-3-Clause (code; bundled assets and dependencies retain separate terms) | 大规模并行腿式强化学习的经典工程基线，奖励、地形、随机化和部署接口影响后续人形框架。 |
 | 已审代码 | [Humanoid-Gym](../projects/humanoid-gym.md) | 论文官方实现 | 2062 | BSD-3-Clause (project; inherited dependencies and robot assets retain their own terms) | 人形 PPO、Isaac Gym、MuJoCo Sim2Sim 与 XBot 部署的经典开源闭环。 |
 | 已审代码 | [HoloSoma](../projects/holosoma.md) | 论文官方实现 | 1582 | Apache-2.0 | 在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。 |
 | 已审代码 | [Crocoddyl](../projects/crocoddyl.md) | 论文官方实现 | 1274 | BSD-3-Clause | 多接触最优控制与 FDDP 的主流开源实现，适合生成和滚动优化 WBC 参考。 |
@@ -62,7 +63,6 @@
 | 待审代码 | [MuJoCo](https://github.com/google-deepmind/mujoco) | 基础设施 | 14525 | Apache-2.0 | WBC Sim2Sim、模型控制和轻量训练常用的主流开源物理引擎，接触与执行器语义直接影响结论。 |
 | 待审代码 | [Isaac Lab](https://github.com/isaac-sim/IsaacLab) | 基础设施 | 7883 | BSD-3-Clause | 多个人形学习项目共用的官方仿真训练底座，环境、执行器、传感器与并行训练接口可审计。 |
 | 待审代码 | [Pinocchio](https://github.com/stack-of-tasks/pinocchio) | 基础设施 | 3648 | BSD-2-Clause | WBC、MPC 和状态估计常用的刚体动力学与解析导数基础库，工程证据丰富。 |
-| 待审代码 | [legged_gym](https://github.com/leggedrobotics/legged_gym) | 论文官方实现 | 3079 | NOASSERTION | 大规模并行腿式强化学习的经典工程基线，奖励、地形、随机化和部署接口影响后续人形框架。 |
 | 待审代码 | [rsl_rl](https://github.com/leggedrobotics/rsl_rl) | 基础设施 | 2879 | NOASSERTION | 腿式与人形项目广泛使用的强化学习训练库，策略、存储和对称性等实现会影响复现结果。 |
 | 待审代码 | [OCS2](https://github.com/leggedrobotics/ocs2) | 基础设施 | 1487 | BSD-3-Clause | 切换系统最优控制框架，包含腿式机器人 MPC 与约束实现，是模型式路线核心工具。 |
 | 待审代码 | [ros2_control](https://github.com/ros-controls/ros2_control) | 基础设施 | 974 | Apache-2.0 | 将控制器、硬件接口和实时更新循环连接起来，是 WBC 真机部署链的重要基础设施。 |
