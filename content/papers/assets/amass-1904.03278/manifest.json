@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:1904.03278",
+  "source_pdf": "https://arxiv.org/pdf/1904.03278",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-unified-corpus.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "15 个异构 marker 动捕库被统一到同一 SMPL-H+DMPL 表示。",
+      "sha256": "0d92bd6472adc0c15ce40da286e6bf81a312197cec789187c8753dc3b1579dba"
+    },
+    {
+      "asset": "figure-3-moshpp-smpl.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 5,
+      "source_locator": "Figure 3 / Equation 5-7",
+      "caption_zh": "MoSh++ 两阶段拟合及 SMPL 标准骨架与旧 MoSh/BlendSCAPE 的差异。",
+      "sha256": "636093b6dd2f3f46f61e89bbd49921088423bf0a22eff6dd3708b0a42969950d"
+    },
+    {
+      "asset": "figure-6-8-evaluation.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 8,
+      "source_locator": "Figure 6-8 / Table 1",
+      "caption_zh": "形状、姿态、软组织和手部拟合误差以及 AMASS 数据规模。",
+      "sha256": "f30f5c79731bba5303db5d33a9d7301a63b4b5123595663d5c39d256742833f8"
+    },
+    {
+      "asset": "figure-9-model-size.jpg",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "pdf_page": 12,
+      "source_locator": "Figure 9",
+      "caption_zh": "16 个 shape 参数和 8 个 DMPL 动态参数的验证集选择依据。",
+      "sha256": "2deaab91041f2e1fade4a625325847af021dcf1f010aa31c8922337211af768b"
+    }
+  ]
+}

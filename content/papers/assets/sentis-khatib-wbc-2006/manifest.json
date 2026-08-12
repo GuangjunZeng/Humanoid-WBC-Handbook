@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "pdf:sentis-khatib-2006-wbc",
+  "source_pdf": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-primitives.jpg",
+      "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "约束、任务和姿态三层控制 primitive 的职责划分。",
+      "sha256": "1b45ae3697d70bf91e4ef3af4ccf45eede4841f4faf17266afc798cd23ce1a31"
+    },
+    {
+      "asset": "figure-3-4-hierarchy.jpg",
+      "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "pdf_page": 3,
+      "source_locator": "Figure 3-4 / Equation 2-6",
+      "caption_zh": "动力学一致零空间投影构成的优先级全身控制层级。",
+      "sha256": "b60ad6bb5b34237435f5376238a584d3f3417d61be938765449205009c4b0eb2"
+    },
+    {
+      "asset": "figure-8-obstacle.jpg",
+      "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "pdf_page": 6,
+      "source_locator": "Figure 8 / Equation 17-19",
+      "caption_zh": "近身障碍被提升为约束后仍维持手部轨迹的仿真示例。",
+      "sha256": "8ade5450c9e667aff7ed7cfbfb26f69dd4d5cc2aa116e4ae60297b85034fa9d0"
+    },
+    {
+      "asset": "figure-10-wall.jpg",
+      "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "pdf_page": 8,
+      "source_locator": "Figure 10",
+      "caption_zh": "越墙抓取同时结合支撑接触、避障、手任务和姿态目标。",
+      "sha256": "8d3aec6b57c8b379e1c209dd361ed564383e63b9431c28f3c092106545317b04"
+    }
+  ]
+}

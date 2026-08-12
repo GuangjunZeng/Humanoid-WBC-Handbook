@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2502.12152",
+  "source_pdf": "https://arxiv.org/pdf/2502.12152",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-real-world.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "G1 从仰卧、俯卧及不同真实地面完成翻身与起身。",
+      "sha256": "799391775c06c0885733865c766210265218046d59673cfe9b665eefa08fba07"
+    },
+    {
+      "asset": "figure-2-two-stage.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "pdf_page": 3,
+      "source_locator": "Figure 2",
+      "caption_zh": "Stage I 动作发现到 Stage II 减速追踪、正则化和域随机化的课程。",
+      "sha256": "8d9dbb48b48a29ba7ae0b4b678eda491c2c91f6c9dfb183a8c3c146b93893077"
+    },
+    {
+      "asset": "table-1-simulation.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "pdf_page": 6,
+      "source_locator": "Table I / Figure 4",
+      "caption_zh": "完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。",
+      "sha256": "cbf72d3b8db4e2ca2a65e6c55132e9e74a7b11296a97def5dce717c071f3ed5d"
+    },
+    {
+      "asset": "figure-3-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "pdf_page": 7,
+      "source_locator": "Figure 3-4",
+      "caption_zh": "六类真实地面上的重复试验成功数及单阶段训练失败曲线。",
+      "sha256": "1ebf25b9b80ab0accf14d4610a2ebbad51b4fda880e308d568abbe0c33135fae"
+    }
+  ]
+}

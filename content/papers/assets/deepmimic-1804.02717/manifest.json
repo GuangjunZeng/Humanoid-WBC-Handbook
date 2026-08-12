@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:1804.02717",
+  "source_pdf": "https://arxiv.org/pdf/1804.02717",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-skills.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "从动捕参考学习出的翻滚与 Atlas 旋踢等高动态物理技能。",
+      "sha256": "616e8043eda7e5b4166bfec1be7955c87af4c052084a6cf40def75434cf586a1"
+    },
+    {
+      "asset": "figure-3-rsi-et.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 6,
+      "source_locator": "Figure 3 / Table 1",
+      "caption_zh": "多形态角色与 reference state initialization、early termination 的训练动机。",
+      "sha256": "6d168cfdf27fe2ecde4ebd40c4fc561b1db0c9b03f915aef44eb599e3a3cef48"
+    },
+    {
+      "asset": "figure-6-repertoire.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 9,
+      "source_locator": "Figure 6",
+      "caption_zh": "同一框架覆盖步态、翻腾、起身、格斗和爬行的动作谱系。",
+      "sha256": "6d2b3e610e2701dcb6f6b70804a960fd9027d4f918b7d870f877680ed535ba4d"
+    },
+    {
+      "asset": "table-4-task-ablation.jpg",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "pdf_page": 11,
+      "source_locator": "Table 4 / Figure 8-9",
+      "caption_zh": "模仿目标与任务目标的击打、投掷成功率消融及多片段切换。",
+      "sha256": "8bd146ca64defe7cd24806acd3015ef81a4eddff1fdabfd6cf307666b9919a46"
+    }
+  ]
+}

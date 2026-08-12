@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2104.02180",
+  "source_pdf": "https://arxiv.org/pdf/2104.02180",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-tasks.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "无逐片段跟踪目标时，动作先验仍能约束越障与目标行走风格。",
+      "sha256": "d493a49d8cc6176e44591ebae42044d7b3ec387c70f1a238d6662faeba19ec47"
+    },
+    {
+      "asset": "figure-2-overview.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 4,
+      "source_locator": "Figure 2 / Equation 1-2",
+      "caption_zh": "任务奖励与判别器产生的 style reward 在策略更新中组合。",
+      "sha256": "4fb6764d3cbcb62bbfe583d198976d0388412e025d6040e86849a4468db81f83"
+    },
+    {
+      "asset": "figure-3-task-suite.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 8,
+      "source_locator": "Figure 3 / Table 1-2",
+      "caption_zh": "从 56 段动作先验组合出的导航、运球、击打和障碍任务。",
+      "sha256": "b30a8cfb16642693c4b2c5421fdf8d8e5a17bcf3c6f11a792a3bb9713c2f8cfe"
+    },
+    {
+      "asset": "figure-7-ablation-context.jpg",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "pdf_page": 11,
+      "source_locator": "Figure 7-8 / Table 3",
+      "caption_zh": "跨形态泛化、跟踪基线对照与梯度惩罚消融的上下文。",
+      "sha256": "4ec6142b0eb952cceedcc6cbca6e53eaaf957032b17c550258d3acacd824a39e"
+    }
+  ]
+}

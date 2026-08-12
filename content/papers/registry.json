@@ -213,6 +213,76 @@
       "status": "complete",
       "brief_path": "content/papers/prime-2605.17681.md",
       "brief_path_en": "content/papers/en/prime-2605.17681.md"
+    },
+    {
+      "paper_id": "arxiv:1904.03278",
+      "slug": "amass-1904.03278",
+      "title": "AMASS: Archive of Motion Capture as Surface Shapes",
+      "primary_domain": "training_data_retargeting",
+      "coverage_role": "unified_motion_dataset_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/amass-1904.03278.md",
+      "brief_path_en": "content/papers/en/amass-1904.03278.md"
+    },
+    {
+      "paper_id": "arxiv:2403.04436",
+      "slug": "human2humanoid-2403.04436",
+      "title": "Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
+      "primary_domain": "universal_tracking_teleoperation",
+      "coverage_role": "sim_to_data_teleoperation_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/human2humanoid-2403.04436.md",
+      "brief_path_en": "content/papers/en/human2humanoid-2403.04436.md"
+    },
+    {
+      "paper_id": "arxiv:2011.01387",
+      "slug": "apex-2011.01387",
+      "title": "Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition",
+      "primary_domain": "locomotion_terrain",
+      "coverage_role": "periodic_reward_multi_gait_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/apex-2011.01387.md",
+      "brief_path_en": "content/papers/en/apex-2011.01387.md"
+    },
+    {
+      "paper_id": "pdf:sentis-khatib-2006-wbc",
+      "slug": "sentis-khatib-wbc-2006",
+      "title": "A Whole-Body Control Framework for Humanoids Operating in Human Environments",
+      "primary_domain": "loco_manipulation_wbc",
+      "coverage_role": "hierarchical_operational_space_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/sentis-khatib-wbc-2006.md",
+      "brief_path_en": "content/papers/en/sentis-khatib-wbc-2006.md"
+    },
+    {
+      "paper_id": "arxiv:1804.02717",
+      "slug": "deepmimic-1804.02717",
+      "title": "DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills",
+      "primary_domain": "sports",
+      "coverage_role": "example_guided_skill_learning_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/deepmimic-1804.02717.md",
+      "brief_path_en": "content/papers/en/deepmimic-1804.02717.md"
+    },
+    {
+      "paper_id": "arxiv:2104.02180",
+      "slug": "amp-2104.02180",
+      "title": "AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control",
+      "primary_domain": "motion_generation",
+      "coverage_role": "adversarial_motion_prior_anchor",
+      "status": "complete",
+      "brief_path": "content/papers/amp-2104.02180.md",
+      "brief_path_en": "content/papers/en/amp-2104.02180.md"
+    },
+    {
+      "paper_id": "arxiv:2502.12152",
+      "slug": "humanup-2502.12152",
+      "title": "Learning Getting-Up Policies for Real-World Humanoid Robots",
+      "primary_domain": "recovery_safety_force",
+      "coverage_role": "two_stage_real_world_getting_up",
+      "status": "complete",
+      "brief_path": "content/papers/humanup-2502.12152.md",
+      "brief_path_en": "content/papers/en/humanup-2502.12152.md"
     }
   ]
 }

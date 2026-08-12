@@ -12,18 +12,18 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：20 篇，其中深度解读 5 篇，有可核验官方代码 17 篇。
+- 当前收录：20 篇，其中深度解读 6 篇，有可核验官方代码 17 篇。
 - 必要覆盖角色：经典控制（classical control）、学习基线（learning anchor）、开源实现（open source）、地形（terrain）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
 |---|---|---:|---|---|---|
 | 深度解读 | [Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control](../crocoddyl-1909.04947.md) | 2019 | 优化控制（optimization）、经典控制（classical control）、开源实现（open source） | [官方代码](https://github.com/loco-3d/crocoddyl) | 多接触最优控制与微分动态规划的高质量开源框架，是学习方法之外理解 WBC 优化栈的重要经典锚点。 |
+| 深度解读 | [Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition](../apex-2011.01387.md) | 2020 | 学习基线（learning anchor）、开源实现（open source） | [官方代码](https://github.com/osudrl/apex) | 在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。 |
 | 深度解读 | [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../learning-walk-2109.11978.md) | 2021 | 学习基线（learning anchor）、仿真到现实（sim-to-real）、开源实现（open source） | [官方代码](https://github.com/leggedrobotics/legged_gym) | 大规模并行强化学习训练腿式运动的经典工程基线，legged_gym 也成为大量人形项目的基础设施。 |
 | 深度解读 | [Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer](../humanoid-gym-2404.05695v2.md) | 2024 | 开源实现（open source）、机器人部署（robot deployment） | [官方代码](https://github.com/roboterax/humanoid-gym) | 开源 Isaac Gym 训练、MuJoCo sim-to-sim 和双尺寸真机部署的工程基线。 |
 | 深度解读 | [Learning Humanoid Locomotion over Challenging Terrain](../challenging-terrain-2410.03654v1.md) | 2024 | 地形（terrain）、机器人部署（robot deployment） | 未发现官方公开代码 | 用平地序列预训练 Transformer 再 PPO 微调，验证盲走 Digit 的复杂地形样本效率。 |
 | 深度解读 | [Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data](../latent-2603.12686.md) | 2026 | 任务交互（task interaction）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/GalaxyGeneralRobotics/LATENT) | 从不完美人体动作学习网球中的移动、击球和时序协同，官方来源也纠正了聚合清单的错误 arXiv 映射。 |
 | 待深读 | [Biped Walking Pattern Generation by Using Preview Control of Zero-Moment Point](https://doi.org/10.1109/ICRA.2003.1241826) | 2003 | 经典控制（classical control）、领域锚点（field anchor） | 未发现官方公开代码 | ZMP 预览控制的经典工作，是理解现代学习步态与模型控制分工的必要基线。 |
-| 待深读 | [Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition](https://arxiv.org/abs/2010.01909) | 2020 | 学习基线（learning anchor）、开源实现（open source） | [官方代码](https://github.com/osudrl/apex) | 在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。 |
 | 待深读 | [Universal Humanoid Motion Representations for Physics-Based Control](https://arxiv.org/abs/2310.04582) | 2023 | 领域锚点（field anchor）、潜技能（latent skill）、多模式（multi-mode）、开源实现（open source） | [官方代码](https://github.com/ZhengyiLuo/PULSE) | PULSE 从大规模非结构化动作学习通用潜在表示，并用于跟踪、地形穿越和下游任务，是动作先验路线的代表作。 |
 | 待深读 | [Humanoid Locomotion as Next Token Prediction](https://arxiv.org/abs/2402.19469) | 2024 | 学习基线（learning anchor）、机器人部署（robot deployment） | 未发现官方公开代码 | 把真实 Digit 行走建模为下一 token 预测，代表离线序列模型进入人形运动控制。 |
 | 待深读 | [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](https://arxiv.org/abs/2504.14305) | 2025 | 多模式（multi-mode）、任务交互（task interaction）、开源实现（open source） | [官方代码](https://github.com/TeleHuman/ALMI-Open) | 联合对抗式步态与动作模仿，展示一套策略同时覆盖移动、跟踪和上肢任务的路线。 |

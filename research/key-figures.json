@@ -235,6 +235,90 @@
         {"file": "table-1-3-identification.jpg", "page": 8, "locator": "Table I-III / Figure 6", "caption_zh": "Go2/G1 惯性识别、G1 力板对照和 FIE 代价改善。"},
         {"file": "figure-10-12-contact-analysis.jpg", "page": 12, "locator": "Figure 10-12 / Table VI", "caption_zh": "固定接触序列基线与平滑参数 kappa 对力重建和收敛的影响。"}
       ]
+    },
+    {
+      "slug": "amass-1904.03278",
+      "paper_id": "arxiv:1904.03278",
+      "pdf": "var/papers/1904.03278.pdf",
+      "source_url": "https://arxiv.org/pdf/1904.03278",
+      "figures": [
+        {"file": "figure-1-unified-corpus.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "15 个异构 marker 动捕库被统一到同一 SMPL-H+DMPL 表示。"},
+        {"file": "figure-3-moshpp-smpl.jpg", "page": 5, "locator": "Figure 3 / Equation 5-7", "caption_zh": "MoSh++ 两阶段拟合及 SMPL 标准骨架与旧 MoSh/BlendSCAPE 的差异。"},
+        {"file": "figure-6-8-evaluation.jpg", "page": 8, "locator": "Figure 6-8 / Table 1", "caption_zh": "形状、姿态、软组织和手部拟合误差以及 AMASS 数据规模。"},
+        {"file": "figure-9-model-size.jpg", "page": 12, "locator": "Figure 9", "caption_zh": "16 个 shape 参数和 8 个 DMPL 动态参数的验证集选择依据。"}
+      ]
+    },
+    {
+      "slug": "human2humanoid-2403.04436",
+      "paper_id": "arxiv:2403.04436",
+      "pdf": "var/papers/2403.04436.pdf",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "figures": [
+        {"file": "figure-1-real-time-teleop.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "单目 RGB 人体姿态驱动 H1 完成踢球、搬箱和推车等实时动作。"},
+        {"file": "figure-4-pipeline.jpg", "page": 4, "locator": "Figure 4", "caption_zh": "形状拟合、动作重定向、sim-to-data 清洗、鲁棒训练与实时部署全链路。"},
+        {"file": "table-3-4-sim2data.jpg", "page": 6, "locator": "Table III-IV", "caption_zh": "sim-to-data、138 维状态及动作数据量对未清洗测试集成功率的影响。"},
+        {"file": "figure-5-7-hardware.jpg", "page": 7, "locator": "Figure 5-7", "caption_zh": "H1 真机下肢跟踪、连续动作与踢击扰动恢复演示及局限。"}
+      ]
+    },
+    {
+      "slug": "apex-2011.01387",
+      "paper_id": "arxiv:2011.01387",
+      "pdf": "var/papers/2011.01387.pdf",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "figures": [
+        {"file": "figure-1-system.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "相位比例与 clock 输入驱动 LSTM 输出 PD 目标和增益的 Cassie 控制回路。"},
+        {"file": "figure-3-phase-reward.jpg", "page": 3, "locator": "Figure 3 / Equation 1", "caption_zh": "Von Mises 相位区间如何把足力和足速偏好变成平滑周期奖励。"},
+        {"file": "figure-4-gait-composition.jpg", "page": 4, "locator": "Figure 4 / Equation 2", "caption_zh": "通过左右相位偏移和支撑比例组合 hopping、running 与 skipping。"},
+        {"file": "figure-5-grf.jpg", "page": 6, "locator": "Figure 5 / Table II", "caption_zh": "仿真 ground reaction force 与期望相位系数的对应，以及通用策略完整奖励。"}
+      ]
+    },
+    {
+      "slug": "sentis-khatib-wbc-2006",
+      "paper_id": "pdf:sentis-khatib-2006-wbc",
+      "pdf": "var/papers/sentis-khatib-2006-wbc.pdf",
+      "source_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
+      "figures": [
+        {"file": "figure-1-primitives.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "约束、任务和姿态三层控制 primitive 的职责划分。"},
+        {"file": "figure-3-4-hierarchy.jpg", "page": 3, "locator": "Figure 3-4 / Equation 2-6", "caption_zh": "动力学一致零空间投影构成的优先级全身控制层级。"},
+        {"file": "figure-8-obstacle.jpg", "page": 6, "locator": "Figure 8 / Equation 17-19", "caption_zh": "近身障碍被提升为约束后仍维持手部轨迹的仿真示例。"},
+        {"file": "figure-10-wall.jpg", "page": 8, "locator": "Figure 10", "caption_zh": "越墙抓取同时结合支撑接触、避障、手任务和姿态目标。"}
+      ]
+    },
+    {
+      "slug": "deepmimic-1804.02717",
+      "paper_id": "arxiv:1804.02717",
+      "pdf": "var/papers/1804.02717.pdf",
+      "source_url": "https://arxiv.org/pdf/1804.02717",
+      "figures": [
+        {"file": "figure-1-skills.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "从动捕参考学习出的翻滚与 Atlas 旋踢等高动态物理技能。"},
+        {"file": "figure-3-rsi-et.jpg", "page": 6, "locator": "Figure 3 / Table 1", "caption_zh": "多形态角色与 reference state initialization、early termination 的训练动机。"},
+        {"file": "figure-6-repertoire.jpg", "page": 9, "locator": "Figure 6", "caption_zh": "同一框架覆盖步态、翻腾、起身、格斗和爬行的动作谱系。"},
+        {"file": "table-4-task-ablation.jpg", "page": 11, "locator": "Table 4 / Figure 8-9", "caption_zh": "模仿目标与任务目标的击打、投掷成功率消融及多片段切换。"}
+      ]
+    },
+    {
+      "slug": "amp-2104.02180",
+      "paper_id": "arxiv:2104.02180",
+      "pdf": "var/papers/2104.02180.pdf",
+      "source_url": "https://arxiv.org/pdf/2104.02180",
+      "figures": [
+        {"file": "figure-1-tasks.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "无逐片段跟踪目标时，动作先验仍能约束越障与目标行走风格。"},
+        {"file": "figure-2-overview.jpg", "page": 4, "locator": "Figure 2 / Equation 1-2", "caption_zh": "任务奖励与判别器产生的 style reward 在策略更新中组合。"},
+        {"file": "figure-3-task-suite.jpg", "page": 8, "locator": "Figure 3 / Table 1-2", "caption_zh": "从 56 段动作先验组合出的导航、运球、击打和障碍任务。"},
+        {"file": "figure-7-ablation-context.jpg", "page": 11, "locator": "Figure 7-8 / Table 3", "caption_zh": "跨形态泛化、跟踪基线对照与梯度惩罚消融的上下文。"}
+      ]
+    },
+    {
+      "slug": "humanup-2502.12152",
+      "paper_id": "arxiv:2502.12152",
+      "pdf": "var/papers/2502.12152.pdf",
+      "source_url": "https://arxiv.org/pdf/2502.12152",
+      "figures": [
+        {"file": "figure-1-real-world.jpg", "page": 1, "locator": "Figure 1", "caption_zh": "G1 从仰卧、俯卧及不同真实地面完成翻身与起身。"},
+        {"file": "figure-2-two-stage.jpg", "page": 3, "locator": "Figure 2", "caption_zh": "Stage I 动作发现到 Stage II 减速追踪、正则化和域随机化的课程。"},
+        {"file": "table-1-simulation.jpg", "page": 6, "locator": "Table I / Figure 4", "caption_zh": "完整碰撞体、姿态随机化和两阶段训练对安全与成功率的消融。"},
+        {"file": "figure-3-hardware.jpg", "page": 7, "locator": "Figure 3-4", "caption_zh": "六类真实地面上的重复试验成功数及单阶段训练失败曲线。"}
+      ]
     }
   ]
 }

@@ -57,7 +57,9 @@
       "coverage_roles": ["field_anchor", "open_source"],
       "paper_url": "https://arxiv.org/abs/1904.03278",
       "code": {"status": "verified_official", "url": "https://github.com/nghorbani/amass"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/amass-1904.03278.md",
+      "brief_path_en": "content/papers/en/amass-1904.03278.md",
       "why_zh": "将多个人体动作库统一到 SMPL/SMPL-H 表示，是今日大规模人形跟踪的数据起点。"
     },
     {
@@ -68,7 +70,9 @@
       "coverage_roles": ["field_anchor", "open_source"],
       "paper_url": "https://arxiv.org/abs/1804.02717",
       "code": {"status": "verified_official", "url": "https://github.com/xbpeng/DeepMimic"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/deepmimic-1804.02717.md",
+      "brief_path_en": "content/papers/en/deepmimic-1804.02717.md",
       "why_zh": "参考动作跟踪与任务目标联合训练的经典起点，对后续高动态动作学习影响深远。"
     },
     {
@@ -127,7 +131,9 @@
       "coverage_roles": ["field_anchor", "open_source"],
       "paper_url": "https://arxiv.org/abs/2403.04436",
       "code": {"status": "verified_official", "url": "https://github.com/LeCAR-Lab/human2humanoid"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/human2humanoid-2403.04436.md",
+      "brief_path_en": "content/papers/en/human2humanoid-2403.04436.md",
       "why_zh": "早期真实全尺寸人形学习式实时全身遥操锚点，建立 sim-to-data 筛选管线。"
     },
     {
@@ -223,14 +229,16 @@
       "why_zh": "ZMP 预览控制的经典工作，是理解现代学习步态与模型控制分工的必要基线。"
     },
     {
-      "paper_id": "arxiv:2010.01909",
+      "paper_id": "arxiv:2011.01387",
       "title": "Sim-to-Real Learning of All Common Bipedal Gaits via Periodic Reward Composition",
       "year": 2020,
       "topics": ["locomotion_terrain"],
       "coverage_roles": ["learning_anchor", "open_source"],
-      "paper_url": "https://arxiv.org/abs/2010.01909",
+      "paper_url": "https://arxiv.org/abs/2011.01387",
       "code": {"status": "verified_official", "url": "https://github.com/osudrl/apex"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/apex-2011.01387.md",
+      "brief_path_en": "content/papers/en/apex-2011.01387.md",
       "why_zh": "在 Cassie 上将周期奖励组合为多步态真实迁移，是双足深度强化学习的早期可复现锚点。"
     },
     {
@@ -294,13 +302,15 @@
     },
     {
       "paper_id": "pdf:sentis-khatib-2006-wbc",
-      "title": "A Whole-Body Control Framework for Humanoids",
+      "title": "A Whole-Body Control Framework for Humanoids Operating in Human Environments",
       "year": 2006,
       "topics": ["loco_manipulation_wbc"],
       "coverage_roles": ["classical_control", "field_anchor"],
       "paper_url": "https://khatib.stanford.edu/publications/pdfs/Sentis_2006_ICRA.pdf",
       "code": {"status": "not_public", "url": ""},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/sentis-khatib-wbc-2006.md",
+      "brief_path_en": "content/papers/en/sentis-khatib-wbc-2006.md",
       "why_zh": "层级操作空间全身控制的经典文献，定义了多任务优先级与动力学一致的基本语言。"
     },
     {
@@ -440,7 +450,9 @@
       "coverage_roles": ["field_anchor", "open_source", "latent_skill"],
       "paper_url": "https://arxiv.org/abs/2104.02180",
       "code": {"status": "verified_official", "url": "https://github.com/isaac-sim/IsaacGymEnvs"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/amp-2104.02180.md",
+      "brief_path_en": "content/papers/en/amp-2104.02180.md",
       "why_zh": "用对抗运动先验取代繁重的逐项风格奖励，是后续动作先验控制的关键基线。"
     },
     {
@@ -521,7 +533,9 @@
       "coverage_roles": ["recovery", "open_source", "hardware_evidence"],
       "paper_url": "https://arxiv.org/abs/2502.12152",
       "code": {"status": "verified_official", "url": "https://github.com/RunpeiDong/HumanUP"},
-      "analysis_status": "queued",
+      "analysis_status": "deep_read",
+      "brief_path": "content/papers/humanup-2502.12152.md",
+      "brief_path_en": "content/papers/en/humanup-2502.12152.md",
       "why_zh": "HumanUP 先放开约束发现起身轨迹，再细化为平滑、低速、可迁移的真机策略。"
     },
     {

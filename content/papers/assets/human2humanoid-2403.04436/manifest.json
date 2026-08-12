@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2403.04436",
+  "source_pdf": "https://arxiv.org/pdf/2403.04436",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-real-time-teleop.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "单目 RGB 人体姿态驱动 H1 完成踢球、搬箱和推车等实时动作。",
+      "sha256": "c7a7e1107ba969df70812a86082865cbb26d57d900f9896ca485b827594a4422"
+    },
+    {
+      "asset": "figure-4-pipeline.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 4,
+      "source_locator": "Figure 4",
+      "caption_zh": "形状拟合、动作重定向、sim-to-data 清洗、鲁棒训练与实时部署全链路。",
+      "sha256": "f82aa043c6305f34fb3eb86d87605cc5a6185b3245342d1487b4fd61cd5bbf6a"
+    },
+    {
+      "asset": "table-3-4-sim2data.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 6,
+      "source_locator": "Table III-IV",
+      "caption_zh": "sim-to-data、138 维状态及动作数据量对未清洗测试集成功率的影响。",
+      "sha256": "3db4404902d32c94cb18deef6260d82f5a78f321447782bec91da222a0d7219f"
+    },
+    {
+      "asset": "figure-5-7-hardware.jpg",
+      "source_url": "https://arxiv.org/pdf/2403.04436",
+      "pdf_page": 7,
+      "source_locator": "Figure 5-7",
+      "caption_zh": "H1 真机下肢跟踪、连续动作与踢击扰动恢复演示及局限。",
+      "sha256": "a56611657e439072407f46c1d0b3b4a5f11768f9c84844bb8cf7fc16cf1a7e9a"
+    }
+  ]
+}

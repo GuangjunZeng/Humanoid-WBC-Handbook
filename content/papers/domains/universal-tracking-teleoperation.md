@@ -12,12 +12,13 @@
 
 下表由 [`catalog.json`](../catalog.json) 生成。“深度解读”已通过中文全文分析与关键图质量门；“待深读”已经过主记录、去重、经典性/开源性与板块缺口审查，但不冒充完整解读。
 
-- 当前收录：22 篇，其中深度解读 5 篇，有可核验官方代码 20 篇。
+- 当前收录：22 篇，其中深度解读 6 篇，有可核验官方代码 20 篇。
 - 必要覆盖角色：领域锚点（field anchor）、开源实现（open source）、稀疏命令（sparse command）、多模式（multi-mode）。
 
 | 状态 | 论文 | 年份 | 收录角色 | 代码 | 为什么收录 |
 |---|---|---:|---|---|---|
 | 深度解读 | [HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots](../hover-2410.21229v2.md) | 2024 | 多模式（multi-mode）、开源实现（open source） | [官方代码](https://github.com/NVlabs/HOVER) | 用统一命令向量、模式掩码与稀疏掩码训练一个多模式全身控制器。 |
+| 深度解读 | [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](../human2humanoid-2403.04436.md) | 2024 | 领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/LeCAR-Lab/human2humanoid) | 早期真实全尺寸人形学习式实时全身遥操锚点，建立 sim-to-data 筛选管线。 |
 | 深度解读 | [OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning](../omnih2o-2406.08858v1.md) | 2024 | 稀疏命令（sparse command）、开源实现（open source） | [官方代码](https://github.com/LeCAR-Lab/human2humanoid) | 用头手稀疏命令、历史观测和教师蒸馏实现全身遥操与任务学习。 |
 | 深度解读 | [Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models](../meta-motivo-2504.11054.md) | 2025 | 潜技能（latent skill）、领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/facebookresearch/metamotivo) | Meta Motivo 用行为基础模型展示零样本全身控制，是高 Star 无独立页面项目转为论文—代码联合解读的关键案例。 |
 | 深度解读 | [Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations](../humi-2602.06643v2.md) | 2026 | 机器人数据质量（robot data quality）、稀疏命令（sparse command） | [公开计划，待核验](https://humanoid-manipulation-interface.github.io/) | 代表无机器人示教、人在环可行性反馈与分层全身跟踪的数据路线。 |
@@ -26,7 +27,6 @@
 | 待深读 | [ExBody2: Advanced Expressive Humanoid Whole-Body Control](https://arxiv.org/abs/2412.13196) | 2024 | 多模式（multi-mode）、领域锚点（field anchor） | 未发现官方公开代码 | 将关键点跟踪与根速度控制解耦，并在两种真实人形平台上验证表达性动作。 |
 | 待深读 | [Expressive Whole-Body Control for Humanoid Robots](https://arxiv.org/abs/2402.16796) | 2024 | 多模式（multi-mode）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/chengxuxin/expressive-humanoid) | 以稀疏指令实现上肢表达与下肢稳定协同，是全身遥操和交互控制的早期代表性真机路线。 |
 | 待深读 | [HumanPlus: Humanoid Shadowing and Imitation from Humans](https://arxiv.org/abs/2406.10454) | 2024 | 领域锚点（field anchor）、开源实现（open source）、稀疏命令（sparse command） | [官方代码](https://github.com/MarkFzp/humanplus) | 把真人影子模仿、全身数据采集与自主视觉模仿连成完整系统。 |
-| 待深读 | [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](https://arxiv.org/abs/2403.04436) | 2024 | 领域锚点（field anchor）、开源实现（open source） | [官方代码](https://github.com/LeCAR-Lab/human2humanoid) | 早期真实全尺寸人形学习式实时全身遥操锚点，建立 sim-to-data 筛选管线。 |
 | 待深读 | [MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting](https://arxiv.org/abs/2409.14393) | 2024 | 潜技能（latent skill）、开源实现（open source）、多模式（multi-mode） | [官方代码](https://github.com/NVlabs/ProtoMotions) | 把关键帧、文本、场景和稀疏目标统一为掩码动作补全问题。 |
 | 待深读 | [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](https://arxiv.org/abs/2504.14305) | 2025 | 多模式（multi-mode）、任务交互（task interaction）、开源实现（open source） | [官方代码](https://github.com/TeleHuman/ALMI-Open) | 联合对抗式步态与动作模仿，展示一套策略同时覆盖移动、跟踪和上肢任务的路线。 |
 | 待深读 | [BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning](https://arxiv.org/abs/2511.04131) | 2025 | 潜技能（latent skill）、多模式（multi-mode）、实机证据（hardware evidence）、开源实现（open source） | [官方代码](https://github.com/LeCAR-Lab/BFM-Zero) | 无监督预训练可提示行为模型，代表从单任务跟踪走向可组合、可查询动作空间的开放实现。 |

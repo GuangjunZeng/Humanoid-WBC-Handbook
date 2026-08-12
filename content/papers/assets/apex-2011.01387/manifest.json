@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "paper_id": "arxiv:2011.01387",
+  "source_pdf": "https://arxiv.org/pdf/2011.01387",
+  "render_method": "pdftoppm JPEG at 150 DPI; full pinned PDF page retained for context",
+  "copyright": "Third-party paper figures remain under their original copyright; reproduced for commentary and technical analysis.",
+  "figures": [
+    {
+      "asset": "figure-1-system.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 1,
+      "source_locator": "Figure 1",
+      "caption_zh": "相位比例与 clock 输入驱动 LSTM 输出 PD 目标和增益的 Cassie 控制回路。",
+      "sha256": "d4f8a1099ed7e22ec3101cc95b2c492b143cff6b39b18398e222afed02f15e48"
+    },
+    {
+      "asset": "figure-3-phase-reward.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 3,
+      "source_locator": "Figure 3 / Equation 1",
+      "caption_zh": "Von Mises 相位区间如何把足力和足速偏好变成平滑周期奖励。",
+      "sha256": "d8ed330eb2562c9985ad15343217e3ff28a1d9de3c3b3acc5de9cf5dcbbf011d"
+    },
+    {
+      "asset": "figure-4-gait-composition.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 4,
+      "source_locator": "Figure 4 / Equation 2",
+      "caption_zh": "通过左右相位偏移和支撑比例组合 hopping、running 与 skipping。",
+      "sha256": "d9b16daa301141a794c4df601cd9fe16bd8eece484e21717e56ee4ab1e062867"
+    },
+    {
+      "asset": "figure-5-grf.jpg",
+      "source_url": "https://arxiv.org/pdf/2011.01387",
+      "pdf_page": 6,
+      "source_locator": "Figure 5 / Table II",
+      "caption_zh": "仿真 ground reaction force 与期望相位系数的对应，以及通用策略完整奖励。",
+      "sha256": "f49a15f7636fb18d2471919a8495a2de11d533ea15bb5bffa1dad46a16aa2091"
+    }
+  ]
+}
