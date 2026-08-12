@@ -42,17 +42,17 @@
 
 项目与论文使用不同证据链。stars 只作为按需发现门槛，不参与技术可信度排序；“已审代码”项目已固定 commit 并提供完整中英文独立页，“待审代码”只保留官方仓库与当前快照，不冒充完成解读。
 
-- 当前收录：9 个项目，其中已审代码 5 个、无对应论文的独立项目 2 个。
+- 当前收录：9 个项目，其中已审代码 6 个、无对应论文的独立项目 2 个。
 - stars 快照：2026-08-12T00:00:00+08:00；后续只在用户要求更新时刷新。
 
 | 状态 | 项目 | 关系 | stars | 许可证 | 为什么收录 |
 |---|---|---|---:|---|---|
+| 已审代码 | [GMR](../projects/gmr.md) | 论文官方实现 | 2581 | MIT | 跨多种人形本体的实时 CPU 动作重定向基线，配置、几何约束与结果可直接复核。 |
 | 已审代码 | [HoloSoma](../projects/holosoma.md) | 论文官方实现 | 1582 | Apache-2.0 | 在同一官方框架中覆盖人形 locomotion、全身跟踪、多仿真后端、FastSAC 与 OmniRetarget 相关路径。 |
 | 已审代码 | [PHC](../projects/phc.md) | 论文官方实现 | 1275 | NOASSERTION | 大规模动作跟踪、容量扩展与失败恢复的经典物理人形控制实现。 |
 | 已审代码 | [SOMA Retargeter](../projects/soma-retargeter.md) | 独立项目（无对应论文） | 526 | Apache-2.0 | 基于 Newton 与 Warp 的 BVH 到人形运动重定向库，适合独立检查数据接口和批处理实现。 |
 | 已审代码 | [KungFuAthleteBot](../projects/kungfu-athlete-bot.md) | 论文官方实现 | 259 | MIT | 公开功夫动作数据、GMR 重定向、强化学习训练、跌倒恢复与 G1 部署链，适合项目级复核。 |
 | 已审代码 | [trackerLab](../projects/trackerlab.md) | 独立项目（无对应论文） | 243 | MIT | 以 Isaac Lab 统一重定向、轨迹跟踪与技能控制，适合作为跨本体 Tracker 对照平台。 |
-| 待审代码 | [GMR](https://github.com/YanjieZe/GMR) | 论文官方实现 | 2581 | MIT | 跨多种人形本体的实时 CPU 动作重定向基线，配置、几何约束与结果可直接复核。 |
 | 待审代码 | [GVHMR](https://github.com/zju3dv/GVHMR) | 论文官方实现 | 1840 | NOASSERTION | 从移动相机视频恢复世界坐标人体运动，是机器人重定向前的数据入口代表。 |
 | 待审代码 | [HoloMotion](https://github.com/HorizonRobotics/HoloMotion) | 论文官方实现 | 621 | Apache-2.0 | 把人体模型、重定向、动作库、跟踪模型、评测和 G1 部署放在同一官方工程中。 |
 | 待审代码 | [GRAIL](https://github.com/NVlabs/GRAIL) | 论文官方实现 | 466 | NOASSERTION | 从三维资产和视频先验生成移动操作轨迹，补齐交互数据合成与物理筛选路线。 |
