@@ -57,7 +57,7 @@
 | 待审代码 | [ASAP](https://github.com/LeCAR-Lab/ASAP) | 论文官方实现 | 2088 | MIT | 把实机状态转移残差带回仿真训练，是高动态技能 Sim2Real 对齐的高星官方实现。 |
 | 待审代码 | [ros2_control](https://github.com/ros-controls/ros2_control) | 基础设施 | 974 | Apache-2.0 | 将控制器、硬件接口和实时更新循环连接起来，是 WBC 真机部署链的重要基础设施。 |
 | 待审代码 | [InstinctLab](https://github.com/project-instinct/InstinctLab) | 基础设施 | 766 | NOASSERTION | Project Instinct 的人形训练任务底座，覆盖感知跑酷、动作编辑、板载部署与恢复相关能力。 |
-| 待审代码 | [HoST](https://github.com/InternRobotics/HoST) | 论文官方实现 | 616 | MIT | 多初始姿态起身策略的官方实现，包含姿态课程、训练配置和实机结果。 |
+| 待审代码 | [HoST](https://github.com/OpenRobotLab/HoST) | 论文官方实现 | 616 | MIT | 多初始姿态起身策略的官方实现，包含姿态课程、训练配置和实机结果。 |
 | 待审代码 | [PULSE](https://github.com/ZhengyiLuo/PULSE) | 论文官方实现 | 365 | NOASSERTION | 学习可复用人形潜在动作表示，使高层任务组合与低层物理控制分离。 |
 | 待审代码 | [Humanoid Goalkeeper](https://github.com/InternRobotics/Humanoid-Goalkeeper) | 论文官方实现 | 187 | NOASSERTION | 守门任务把位置条件、扑救动作、倒地和恢复纳入同一高动态技能链。 |
 

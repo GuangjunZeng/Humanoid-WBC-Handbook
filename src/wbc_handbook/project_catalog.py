@@ -15,6 +15,10 @@ from urllib.request import Request, urlopen
 
 GITHUB_SEARCH_API = "https://api.github.com/search/repositories"
 GITHUB_REPO = re.compile(r"^https://github\.com/([^/]+)/([^/#?]+?)/?$", re.I)
+GITHUB_REFERENCE = re.compile(
+    r"^https://github\.com/([^/]+)/([^/#?]+?)(?:/(?:tree|blob|commit)/[^/?#]+.*)?$",
+    re.I,
+)
 STATUS_VALUES = {"queued", "deep_review"}
 RELATION_VALUES = {"project_only", "official_paper_code", "infrastructure"}
 
@@ -26,11 +30,21 @@ def _repo_key(url: str) -> str:
     return f"{match.group(1)}/{match.group(2)}".lower()
 
 
+def _reference_repo_key(url: str) -> str:
+    """Return owner/repository for a GitHub root or version-pinned reference."""
+
+    match = GITHUB_REFERENCE.fullmatch(str(url).strip())
+    if not match:
+        return ""
+    return f"{match.group(1)}/{match.group(2)}".lower()
+
+
 def validate_project_catalog(
     catalog: Mapping,
     paper_domains: Mapping,
     root: Optional[Path] = None,
     paper_ids: Optional[set[str]] = None,
+    paper_records: Optional[Iterable[Mapping]] = None,
 ) -> List[str]:
     """Return deterministic errors for the reviewed project inventory."""
 
@@ -48,6 +62,11 @@ def validate_project_catalog(
         errors.append("selection_policy.conditional_min_stars must be in [1, default]")
         conditional = 60
 
+    paper_by_id = {
+        str(paper.get("paper_id")): paper
+        for paper in (paper_records or [])
+        if isinstance(paper, Mapping) and paper.get("paper_id")
+    }
     seen_ids = set()
     seen_repos = set()
     topic_counts = defaultdict(Counter)
@@ -84,6 +103,23 @@ def validate_project_catalog(
             errors.append(f"{project_id}: project_only cannot list related_paper_ids")
         if relation == "official_paper_code" and not project.get("related_paper_ids"):
             errors.append(f"{project_id}: official_paper_code needs related_paper_ids")
+        if relation == "official_paper_code" and paper_records is not None:
+            for related_id in project.get("related_paper_ids", []):
+                paper = paper_by_id.get(str(related_id))
+                if paper is None:
+                    continue
+                code = paper.get("code", {})
+                code_repo = _reference_repo_key(code.get("url", ""))
+                if code.get("status") != "verified_official" or not code_repo:
+                    errors.append(
+                        f"{project_id}: related paper {related_id} has no "
+                        "verified official GitHub repository"
+                    )
+                elif code_repo != repo_key:
+                    errors.append(
+                        f"{project_id}: repository does not match official code "
+                        f"for {related_id} ({code_repo})"
+                    )
         if paper_ids is not None:
             missing_papers = set(project.get("related_paper_ids", [])) - paper_ids
             if missing_papers:

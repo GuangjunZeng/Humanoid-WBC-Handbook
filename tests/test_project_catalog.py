@@ -35,6 +35,7 @@ class ProjectCatalogTests(unittest.TestCase):
                 self.paper_catalog["domains"],
                 root=PROJECT_ROOT,
                 paper_ids={paper["paper_id"] for paper in self.paper_catalog["papers"]},
+                paper_records=self.paper_catalog["papers"],
             ),
             [],
         )
@@ -68,6 +69,42 @@ class ProjectCatalogTests(unittest.TestCase):
         }
         errors = validate_project_catalog(catalog, self.paper_catalog["domains"])
         self.assertTrue(any("selection_exception" in error for error in errors))
+
+    def test_official_project_repository_must_match_paper_code(self):
+        catalog = {
+            "selection_policy": {
+                "default_min_stars": 80,
+                "conditional_min_stars": 60,
+            },
+            "projects": [{
+                "project_id": "github:owner/wrong-repo",
+                "name": "wrong-repo",
+                "repo_url": "https://github.com/owner/wrong-repo",
+                "topics": ["locomotion_terrain"],
+                "relation": "official_paper_code",
+                "related_paper_ids": ["arxiv:test"],
+                "analysis_status": "queued",
+                "stars": 100,
+                "star_snapshot_at": "2026-08-12",
+                "default_branch": "main",
+                "license": "MIT",
+                "selection_reason_zh": "test",
+            }],
+        }
+        paper_records = [{
+            "paper_id": "arxiv:test",
+            "code": {
+                "status": "verified_official",
+                "url": "https://github.com/owner/canonical-repo",
+            },
+        }]
+        errors = validate_project_catalog(
+            catalog,
+            self.paper_catalog["domains"],
+            paper_ids={"arxiv:test"},
+            paper_records=paper_records,
+        )
+        self.assertTrue(any("does not match official code" in error for error in errors))
 
     def test_discovery_uses_official_records_and_never_auto_accepts(self):
         observed = []

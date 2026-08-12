@@ -564,9 +564,9 @@
       "selection_reason_zh": "面向虚拟物理人形的行为基础模型和多任务控制代码，可用于研究通用动作表征但不等同真机部署。"
     },
     {
-      "project_id": "github:InternRobotics/HoST",
+      "project_id": "github:OpenRobotLab/HoST",
       "name": "HoST",
-      "repo_url": "https://github.com/InternRobotics/HoST",
+      "repo_url": "https://github.com/OpenRobotLab/HoST",
       "topics": ["recovery_safety_force"],
       "relation": "official_paper_code",
       "related_paper_ids": ["arxiv:2502.08378v2"],

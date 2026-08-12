@@ -1245,6 +1245,7 @@ def command_projects_status(args: argparse.Namespace) -> int:
             paper_catalog.get("domains", {}),
             root=Path(args.root),
             paper_ids={paper.get("paper_id") for paper in paper_catalog.get("papers", [])},
+            paper_records=paper_catalog.get("papers", []),
         )
         report = project_coverage_report(
             project_catalog, paper_catalog.get("domains", {})
@@ -1267,6 +1268,7 @@ def command_projects_discover(args: argparse.Namespace) -> int:
             paper_catalog.get("domains", {}),
             root=Path(args.root),
             paper_ids={paper.get("paper_id") for paper in paper_catalog.get("papers", [])},
+            paper_records=paper_catalog.get("papers", []),
         )
         if errors:
             raise ValueError("; ".join(errors))
