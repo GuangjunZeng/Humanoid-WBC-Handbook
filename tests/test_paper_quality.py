@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import inspect
 from pathlib import Path
 import tempfile
 import unittest
@@ -29,6 +30,35 @@ class PaperQualityTests(unittest.TestCase):
             text = "## 关键图解\n\n![a](assets/paper/a.jpg)"
             result = evaluate_brief("paper", text, root, "not_public", minimum_cjk=0)
         self.assertTrue(any("manifest figures not embedded" in error for error in result.errors))
+
+    def test_quality_gate_does_not_require_filler_quotas(self):
+        source = Path(__file__).parents[1] / "src" / "wbc_handbook" / "paper_quality.py"
+        text = source.read_text(encoding="utf-8")
+        default = inspect.signature(evaluate_brief).parameters["minimum_cjk"].default
+        self.assertIsNone(default)
+        self.assertNotIn("evidence-bearing prose paragraphs", text)
+        self.assertNotIn("fewer than 2 explanatory analogies", text)
+
+    def test_project_template_demands_pinned_repository_facts(self):
+        template = (
+            Path(__file__).parents[1] / "templates" / "project-brief.md"
+        ).read_text(encoding="utf-8")
+        for required in ("官方仓库固定提交", "核心调用链", "论文—代码映射", "静态核验，未运行", "永久链接"):
+            self.assertIn(required, template)
+        self.assertIn("删除目录罗列", template)
+
+    def test_bans_promotional_ai_filler(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = evaluate_brief(
+                "filler",
+                "具有重要意义。进一步研究将深入探讨。",
+                Path(tmp),
+                "unknown",
+                minimum_cjk=0,
+            )
+        self.assertIn("banned generic phrase: 具有重要意义", result.errors)
+        self.assertIn("banned generic phrase: 进一步研究", result.errors)
+        self.assertIn("banned generic phrase: 深入探讨", result.errors)
 
 
 if __name__ == "__main__":

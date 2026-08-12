@@ -17,6 +17,8 @@
 6. For papers, follow `docs/paper-interpretation.md` and `docs/on-demand-paper-update.md` before marking a paper-backed claim reviewed.
 7. For hardware-critical material, complete every safety field and obtain qualified human review.
 
+Paper and official-project interpretations are evidence briefs, not length-optimized essays. Do not pad them to hit word, paragraph, analogy, or quote quotas. Every paragraph must change an engineering decision by explaining a mechanism, locating a fact, mapping an implementation, defining an acceptance test, or stating a boundary. For official repositories, pin a commit and follow the project/code interpretation section in `docs/paper-interpretation.md` plus `templates/project-brief.md`.
+
 Paper figures must be tight crops of the named Figure/Table plus its complete original caption—never a full PDF page. Record the locked PDF digest, crop, caption anchor, support/limit boundary, and an explicit post-contact-sheet visual review. CI verifies the review fingerprint but never creates it.
 
 ## Social engineering experience

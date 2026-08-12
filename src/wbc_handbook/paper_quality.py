@@ -18,7 +18,17 @@ BILINGUAL = re.compile(
 )
 IMAGE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 LOCATOR = re.compile(r"\b(?:Figure|Fig\.|Table|Equation)\s*[A-Za-z0-9IVXivx.-]+")
-BANNED = ("综上所述", "值得注意的是", "深入探讨", "至关重要")
+BANNED = (
+    "综上所述",
+    "值得注意的是",
+    "深入探讨",
+    "至关重要",
+    "通过本研究",
+    "进一步研究",
+    "具有重要意义",
+    "你猜怎么着",
+    "你有没有想过",
+)
 SECTION_GROUPS = {
     "problem": ("工程痛点", "问题与背景", "研究问题", "故事的起点"),
     "mechanism": ("方法主线", "核心洞察", "方法详解"),
@@ -74,7 +84,7 @@ def evaluate_brief(
     text: str,
     asset_root: Path,
     code_status: str,
-    minimum_cjk: int = 3000,
+    minimum_cjk: int | None = None,
 ) -> BriefQuality:
     cjk_chars = len(CJK.findall(text))
     latin_chars = len(LATIN.findall(text))
@@ -91,14 +101,12 @@ def evaluate_brief(
         locators=len(LOCATOR.findall(text)),
     )
 
-    if cjk_chars < minimum_cjk:
+    if minimum_cjk is not None and cjk_chars < minimum_cjk:
         result.errors.append(f"Chinese depth below {minimum_cjk} CJK characters")
     if ratio < 0.6:
         result.errors.append("Chinese must be the main language (ratio < 0.60)")
-    if result.paragraphs < 15:
-        result.errors.append("fewer than 15 prose paragraphs")
-    if bilingual_terms < 6:
-        result.errors.append("fewer than 6 Chinese-English term pairs")
+    if bilingual_terms < 1:
+        result.errors.append("missing Chinese-English terminology")
     if len(image_paths) < 3:
         result.errors.append("fewer than 3 embedded key figures")
     if result.locators < 3:
@@ -108,8 +116,6 @@ def evaluate_brief(
             result.errors.append(f"missing required section: {group}")
     if "作者" not in text or "独立" not in text:
         result.errors.append("author-stated and independent limitations must be separated")
-    if len(re.findall(r"像|好比|可以把.{0,24}理解为|类比", text)) < 2:
-        result.errors.append("fewer than 2 explanatory analogies")
     for phrase in BANNED:
         if phrase in text:
             result.errors.append(f"banned generic phrase: {phrase}")
